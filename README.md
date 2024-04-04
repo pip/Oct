@@ -33,7 +33,7 @@ To build something close to a similar setup to mine, you'll probably want to exe
 
   `git clone https://GitHub.Com/Pip/Oct`  # which should crE8 the Oct/ sub-directory in your Current-Working-Directory (or:`pwd`),
 
-  `cd Oct; cp -a lib bin .vim .Hrc .Xrc .bashrc .lrc .lsrc .shl.style .vimrc .zshrc ~; chsh $(which zsh); cd ~; zsh`
+  `cd Oct; cp -a lib bin dox .Hrc .Xrc .bashrc .lrc .lsrc .shl.style .vim .vimrc .zshrc ~; chsh $(which zsh); cd ~; zsh`
 
   and you'll want to: `cpanm ...` or `pmei Time::DaysInMonth` since I (through Oct) depend on that module, but am not maintainer of it;
 
