@@ -1,7 +1,7 @@
 #    Oct
  Originally "Octology" (my ontology of 8), upd8d and renamed to just Oct. `$VERSION='0.000001';$d8VS='O44M8888';`
 
-Much of Oct can still be seen in my [6-minute Lightning-Talk](https://YouTu.be/Oul8KrS7TQk) which I presented for the-Perl-Conference-in-the-Cloud on June 24th, 2020 (`d8=K6O`)
+Much of Oct can be seen quickly in my [6-minute Lightning-Talk](https://YouTu.be/Oul8KrS7TQk) which I presented for the-Perl-Conference-in-the-Cloud on June 24th, 2020 (`d8=K6O`)
 
 <!-- show  tstc short after lsd8 ~ && reso spec HD pre Pi color greps elabor8 aliases,fully amidst reph new crystal clarity layers of some transparency now;-->
 
@@ -33,7 +33,7 @@ To build something close to a similar setup to mine, you'll probably want to exe
 
   `git clone https://GitHub.Com/Pip/Oct`  # which should crE8 the Oct/ sub-directory in your Current-Working-Directory (or:`pwd`),
 
-  `cd Oct; cp -a lib bin dox dvl gfx gmz muz mvz .Hrc .Xrc .bashrc .lrc .lsrc .shl.style .vimrc .zshrc ~; chsh $(which zsh); cd ~; zsh`
+  `cd Oct; cp -a lib bin .vim .Hrc .Xrc .bashrc .lrc .lsrc .shl.style .vimrc .zshrc ~; chsh $(which zsh); cd ~; zsh`
 
   and you'll want to: `cpanm ...` or `pmei Time::DaysInMonth` since I (through Oct) depend on that module, but am not maintainer of it;
 
