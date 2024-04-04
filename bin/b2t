@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+# O3TMB2TP:b2t crE8dby PipStuart <Pip@CPAN.Org> to wrap bitmapfont2ttf quickly && easily for now;
+use warnings;use strict;use utf8;use v5.22;
+my @filz=<*.bdf>;@filz=@ARGV if(@ARGV); # try 2 take either bdf-file-name parameters or just auto-run on all .bdf filez in cur-wrkng-dir;
+system("/home/pip/dvl/f8/ttf/bitmapfont2ttf/bin/bitmapfont2ttf $_ 2>/dev/null") for(@filz); # might want 2>&1>/dev/null to cull regular out fn && glyf cnt?;

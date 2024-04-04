@@ -1,0 +1,225 @@
+#!/usr/bin/perl
+# D8JMEWHO:d8ok crE8d by PipStuart <Pip@CPAN.Org> to be a text-mode Curses clock, adapted from original `ptok` to now use Oct::d8 instead of old Time::PT;
+# 2du:tSt wdht2mk sure barz|help|info fit term,add optionz4othr colrd d8 outputz CPAN && ISO,add XtNded colrset togl esp4betr barz unfilled portionz in8pal8,
+#   add bkgrnd colrz optionz,mk big radial display option,mAB mk big colored figlet option,abstract logic to l8r also serve SDL|Tk|Gtk|Android|GearVR versionz,
+#   add new full-terminal mode for 80x25,160x50,&&240x67 wich usez figlet to show huge letterz of 8-char centered && surrounded by expanded format d8ok textz,
+#   stuD tty-clock src && mAB try2 4k it in2 new ncurses d80k.c wi undrscorz alowd in -a delay-nanosecs 333_222_111 4 just undr 1/3rd-of-a-sec, add .f0nt blox;
+# Keyz: 'f'     togglez display of Full format.    'c' Clearz screen after every draw.     's' rot8z upd8 Speed.    'p' rot8z Profilez.    'i' Info.
+#       'B'     togglez visual spectrum Barz.      'b' togglez Bold fontz when possible.   'r' togglez Random colorz on each draw upd8.    'h' Help.
+#       'C'     rot8z Barz-mode fill Character.    'd' togglez Bold fontz when possible...                        ...on each draw upd8.
+#     'x|q|Esc' eXitz.    -f -B -b -d -c -s -p -r -h (with the same meaningz as above) can be given on the command-line.
+use warnings;use strict;use utf8;use    v5.22;use Oct::a8;use Oct::b8;
+use Encode;use open qw(:std :encoding(UTF-8));use Oct::d8;use Curses::Simp;
+my $VERSION='0.0';my $d8VS='O1PL0TIN';my $Auth='PipStuart <Pip@CPAN.Org>';my $name=$0;$name=~s/.*\///;my $d8im;my @fldz;my @lasf;my @text;my @fclr;my $okey='';
+my $sepr=' YeKKeo ';my $d8bo=$cmap{'d8bo'};my $prof=$d8bo;my @limz=(63,12,31,42,23); # 'YGTBUDSN'&&'Fo57ZNVp'; # tryng2set sepr BlO 2lOd pP prOfIlz in2 Y&&o;
+# now all default base colrz @bclz below start Bold being above index 7, downside being that custom .pal8 filez won't be able to change o or p like RYGCBM
+my $bilt=0;       my @bclz= split( //,$d8bo);my $fulc=' ';my $parm='';my $barz=0;my $bold=0;my $sbld=1;my $sped= 0.975;my @spdz=(0, 0.015, 0.151, 0.475,$sped);
+my $argz='';$argz= join(' ',@ARGV) if(@ARGV);my $bchr='#';my $keey=-1;my $rand=0;my $clea=0;my $demo=0; # old speed progression:(   0.016, 0.064, 0.256      )
+my $tmbo="$bclz[4] $bclz[5] $bclz[6] $bclz[7] ";$sepr=" $bclz[2]eKKe$bclz[1] ";my $sepd=$sepr;
+if($argz=~ /h/i){print " $name v$VERSION $d8VS - by $Auth
+ $name is a basic interactive Curses::Simp d8 clOcK for Oct.
+ $name command-line parameters are very similar to the keys that
+       are available in normal interactive mode.
+   h - displays this Help text and exits
+   8 - toggles compressed   only Format  [printd left-justified]
+   4 - toggles compressed + full Format  [printd wider together]
+   2 - toggles comprSd b256+full Format  [printd wideall2gether]
+   1 - toggles comprSd+card+full Format  [printd wideall2gether]
+   9 - toggles CJKIdeoGrphs+full Format  [printd wideall2gether]
+   f - toggles compressed / full Format  [default is compressed]
+   B - toggles Bars mode (show field spectrums) [default is off]
+   b - toggles Bold mode (font w8, if possible) [default is off]
+   d - toggles bolD mode (with SpeeD reDraw r8) [default is ON ]
+   r - toggles Rand mode (mix-up bright colors) [default is off]
+   c - Clear screen before each draw upd8       [default is off]
+   s - rot8s upd8 Speed thru dur8 cycles 4 each time param given
+   D - Demonstr8ion of most above options in an autom8d running;";say '' unless(exists($ENV{'COLUMNS'}) && $ENV{'COLUMNS'} > 80);exit();}
+# would be nicer to capture current title first somehow, to then be able to restore it at exit, but it seemz like I'll just have to follow with manUal chti
+# ooh, aparNtly `xprop -notype|g WM_NAME` gives a little target to click in any window body to grab that title,so just autom8 4curNt wi -id on :ACTIVE:?
+#say("\e\]0;$name$argz\e\\"); # change the window title (with appended joined parameter argumentz) before starting Simp (needs say newline to upd8 1st)
+# lookz like `xdotool getwindowfocus getwindowname` will let me get the :ACTIVE: window title to save if I ever need to chng it temporarily for Simp appz,
+#   or `xprop -id $(xprop -root 32x '\t$0' _NET_ACTIVE_WINDOW | cut -f 2) _NET_WM_NAME` might be able to do it without the added dependency on xdotool?
+# other viable mechanismz for resolving this same issue are described at HTTPS://SuperUser.Com/questions/382616/detecting-currently-active-window
+$d8im = Oct::d8->new();@fldz = split(//, $d8im);@lasf = @fldz unless(@lasf);my $pfms=eval("(-M \'$pfil\')");my $d93k=b93k(b10("$d8im"));my $d256;
+my $d128=b128(b10($fldz[4])+64) . ' ' . b128(b10($fldz[5])+64) . ' ' . b128(b10($fldz[6])+64) . ' ' . b128(b10($fldz[7])+64) . ' ' ;$d256=b256(b10("$d8im"));
+if($argz=~ /1/ && $lasf[6] eq $fldz[6] && $lasf[7] eq $fldz[7]){ # abov crE8 simple UTF-8 base-128 varE8ion of hmsp time as Chess pieces&&playing Cards;
+  open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";binmode $out8,':encoding(UTF-8)'; # crE8 local duplic8 of global
+  say     $out8 "d8im:$d8im; d128:$d128;\nPlease Press Enter...";<STDIN>; # test just saying b128 before Curses has been started;
+  close   $out8             or die "Can't close duplic8 STDOUT handle: $!";}
+my $simp= tie(@text,'Curses::Simp','flagaudr'=>0,'flagcntr'=>0);my $barh= int(($simp->Hite()-9)/8)-1; # not using a8 here for chti, so chngng titl manUly abov
+          tie(@fclr,'Curses::Simp::FClr',$simp);@fclr=(' ' x 25  . join('',@bclz) . ' ');
+while($argz=~ s/s//i){ for(0..$#spdz){ if($sped == $spdz[$_]){ if($_ == $#spdz){ $sped = $spdz[0];      } # cycle speed
+                                                               else            { $sped = $spdz[$_ + 1]; } last; } } }
+$fulc  =                $bclz[2] x 3 . ' ' . $bclz[1] x 3 . ' ' . $bclz[2] x 2 . ' ' . $bclz[4] x 2 . 'u' .
+   $bclz[5] x 2 . 'u' . $bclz[6] x 2 . 'u' . $bclz[7] x 2 . ' ' . $bclz[3] x 5 . ' ' . $bclz[0] x 4 . ' ' ;
+if($argz=~ /f/i){$parm  = 'f';$fclr[0] =             $fulc ;$okey=$parm;} # do some very basic parameter flag handling
+if($argz=~ /1/ ){$parm  = '1';$fclr[0] ="$d8bo$tmbo$fulc"  ;$okey=$parm;}
+#f($argz=~ /2/ ){$parm  = '2';$fclr[0] = $d8bo."YoBGRCMp$fulc";$okey=$parm;} # add colrz 4 Yk && YkdA thN b256 d8im B4 full();
+if($argz=~ /2/ ){$parm  = '2';$fclr[0] = $d8bo." bkKwBp $fulc";$okey=$parm;} # add colrz 4 Yk && YkdA thN b256 d8im B4 full();
+if($argz=~ /4/ ){$parm  = '4';$fclr[0] ="$d8bo$sepr$fulc"  ;$okey=$parm;} # proly 48pt TrueTypeFont && 49 or 50 charz wId
+if($argz=~ /8/ ){$parm  = '8';$fclr[0] ="$d8bo "           ;$okey=$parm;}
+if($argz=~ /9/ ){$parm  = '9';$fclr[0] ="$d8bo YCM $fulc"  ;$okey=$parm;}
+if($argz=~ /r/i){$rand ^=  1 ;RandClrz();$simp->Draw();} # this rand is pretty poor. will be better to use a8:2&&8pal8 rot8z. 'f' twice resets in interactive.
+if($argz=~ /b/ ){$bold ^=  1 ;}
+if($argz=~ /d/ ){$sbld ^=  1 ;}
+if($argz=~ /D/ ){$demo ^=  1 ;}
+#f($argz=~ /D/ ){$w4mb ^=  1 ;} # toggle Wide49ModeBold flag
+if($argz=~ /c/i){$clea ^=  1 ;}
+if($argz=~ /B/ ){$barz ^=  1 ;}
+$simp->FlagABA7('asin' => $bold);
+sub RandClrz{my @orig;for(0..7){$orig[$_] = $bclz[$_];} my $orij= join('',@orig); # save original colorz, to be replaced in FClr below
+  if($rand){          for(0..7){$bclz[$_] = b64(int(rand(64))) while($bclz[    $_   ]  =~ /^[a-z02468.]$/ || # only accept bright colorz
+                                                                     $orij             =~ /$bclz[$_]/     || #   that weren't in there originally
+                                                  ($_ > 0 && join('',@bclz[0..($_-1)]) =~ /$bclz[$_]/));}}   #   && that aren't already chosen
+  else     {                    @bclz     = split(//,$d8bo);} # restore simple defaultz
+  for(0..7){$fclr[0] =~ s/$orig[$_]/$bclz[$_]/g;}} # just substitute first line's colorz with the upd8z from above
+sub BildBarz{
+  if($bilt){ my $blin = $bchr x $simp->Widt();
+    for(my $i    = 0; $i < 8; $i++){ if($lasf[$i] ne $fldz[$i]){
+        my $timz = int(($simp->Widt() / 64.0) *  b10($fldz[$i]));
+        my $line = $bclz[$i] x $timz;
+      if(  $i   >= 5 || b10($fldz[$i]) < $limz[$i]){
+        if($i   <  5){
+           $timz = int(($simp->Widt() / 64.0) * ($limz[$i] - b10($fldz[$i])));
+          if   ($i == 1){$line .=          'c'  x $timz;}   # special Month case  # cw wKb
+          elsif($i == 2){$line .=          'K'  x $timz;}   # special Day   case
+          else          {$line .= lc($bclz[$i]) x $timz;}}  # Year,zone,hour
+        elsif(b10($fldz[$i]) < 59){                         # min ,sec ,frm
+           $timz = int(($simp->Widt() / 64.0) * (59 - b10($fldz[$i])));
+          if   ($i == 5){$line .=          'K'  x $timz;}
+          elsif($i == 6){$line .=          'w'  x $timz;}
+          elsif($i == 7){$line .=          'c'  x $timz;}
+          else          {$line .= lc($bclz[$i]) x $timz;}}}
+      $line     .= 'k' if(length($fclr[-1]) < $simp->Widt());
+        my $indx = 1 + ($i * ($barh+1)); for($indx..($indx+$barh)){ $fclr[$_] = $line; } $simp->Draw();}
+    }      @lasf = @fldz; }
+  else     {
+    for(my $i    = 0; $i < 8; $i++){
+      push(@text, $bchr x $simp->Widt()) for(0..$barh);my $timz = int(($simp->Widt() / 64.0) * b10($fldz[$i]));
+      push(@fclr, $bclz[$i] x $timz);
+      if(  $i     >= 5 || b10($fldz[$i]) < $limz[$i]){
+        if($i     <  5){
+          $timz = int(($simp->Widt() / 64.0) * ($limz[$i] - b10($fldz[$i])));
+          if   ($i == 1){$fclr[-1] .=          'c'  x $timz;}   # special Month case
+          elsif($i == 2){$fclr[-1] .=          'K'  x $timz;}   # special Day   case
+          else          {$fclr[-1] .= lc($bclz[$i]) x $timz;}}  # Year,zone,hour
+        elsif(b10($fldz[$i]) < 59){                             # min ,sec ,frm
+          $timz = int(($simp->Widt() / 64.0) * (59 - b10($fldz[$i])));
+          if   ($i == 5){$fclr[-1] .=          'K'  x $timz;}
+          elsif($i == 6){$fclr[-1] .=          'w'  x $timz;}
+          elsif($i == 7){$fclr[-1] .=          'c'  x $timz;}
+          else          {$fclr[-1] .= lc($bclz[$i]) x $timz;}}}
+      if(length($fclr[-1]) <      $simp->Widt() ){ $fclr[-1] .= 'k'; }
+      for(1..$barh){ push(@fclr, $fclr[-1]);}}
+    push(@text, 'The YEAR   in RED     is a spectrum from 2000 to 2063.');
+    push(@text, 'The MONTH  in ORANGE  is a spectrum from    1 to   12 (January  to December).');
+    push(@text, 'The DAY    in YELLOW  is a spectrum from    1 to   31.');
+    push(@text, 'The ZONE   in GREEN   is a spectrum from    0 to   42 (  0 UTC  to 42 CHADT).');
+    push(@text, 'The HOUR   in CYAN    is a spectrum from    0 to   23 (Midnight to 11 PM   ).');
+    push(@text, 'The MINUTE in BLUE    is a spectrum from    0 to   59.');
+    push(@text, 'The SECOND in MAGENTA is a spectrum from    0 to   59.');
+    push(@text, 'The 60th   in PURPLE  is a spectrum from    0 to   59.'); push(@fclr, $bclz[$_]) for(0..$#bclz);$simp->Draw();$bilt = 1;}}
+while  (lc($keey) ne 'x' && lc($keey) ne 'q' && ord($keey) != 27){
+  if   (   $keey  eq 'c'){    $clea ^=   1;                      }                                            # toggle Clear         flag
+  elsif(   $keey  eq 'C'){ if($bchr eq  '#'){ $bchr        = '%';}                                            # rotate Bars  char
+                        elsif($bchr eq  '%'){ $bchr        = '@';}
+                        elsif($bchr eq  '@'){ $bchr        = '#';} $barz = 1;$bilt = 0;@text = ($text[0]);BildBarz();}
+  elsif(lc($keey) eq 'd'){    $sbld ^=   1 ;                                       }                          # toggle Speed  Bold   flag
+# elsif(   $keey  eq 'D'){    $w4mb ^=   1 ;                                       }                          # toggle W49ModeBold   flag
+  elsif(   $keey  eq 'D'){    $demo ^=   1 ;                                       }                          # toggle Demonstr8ion  flag
+  elsif(   $keey  eq 'b'){    $bold ^=   1 ;  $simp->FlagABA7(    'asin' => $bold);}                          # toggle AllBoldAbove7 flag
+  elsif(   $keey  eq 'B'){    @text  = ($text[0]);if($simp->Hite() <= 16){$bold ^= 1;$simp->FlagABA7('asin' => $bold);} # toggle Bars or Bold  flag
+                           if($barz ^=   1 ){ $bilt = 0; BildBarz(); $simp->FlagMaxi(1); } $simp->ShokScrn(2);$simp->Draw();}
+  elsif(lc($keey) eq 's'){ for(0..$#spdz){ if($sped == $spdz[$_]){ if($_ == $#spdz){ $sped = $spdz[0];      } # cycle speed
+                                                                   else            { $sped = $spdz[$_ + 1]; } last; } }     }
+  PrfM();  $prof=$cmap{'d8bo'}; #=$prof=$pldh{$1};                                 #$tmbo="$bclz[4] $bclz[5] $bclz[6] $bclz[7] ";
+  if (     $d8bo  ne $prof && length($prof) >= 8){$d8bo=$prof;@bclz=split(//,$d8bo);$tmbo=join(' ',@bclz[4..7]).' ';$sepr=" $bclz[2]eKKe$bclz[1] ";
+    $fulc=               $bclz[2] x 3 . ' ' . $bclz[1] x 3 . ' ' . $bclz[2] x 2 . ' ' . $bclz[4] x 2 . 'u' .
+    $bclz[5] x 2 . 'u' . $bclz[6] x 2 . 'u' . $bclz[7] x 2 . ' ' . $bclz[3] x 5 . ' ' . $bclz[0] x 4 . ' ' ;        $sepd=$sepr; # need2upd8 sepd wi sepr;
+                           if(length($parm)){ $parm =  '';                                }
+                           else             { $parm = $okey                              ;}
+           $keey=$okey;    while( $#text){pop(@text);} while($#fclr){pop(@fclr);} $bilt=0;}
+  if   ($keey=~ /^[29]$/){ if(length($parm)){ $sepr =      $sepd; } else{ $sepr = $d8bo  ;} } # swap out sepR8or char colrz 4 d8bo when toglng 2 or 9;
+  elsif($keey=~ /^[48]$/){                    $sepr =      $sepd;                           } # keep orig sep colrz on 4 or 8;
+  if   (lc($keey) eq 'f'){ if(length($parm)){ $parm =  ''; $fclr[0] = ' ' x 25 . "$d8bo ";}
+                           else             { $parm = 'f'; $fclr[0] =             $fulc  ;}$okey=$keey;}
+  elsif(   $keey  eq '1'){ if(length($parm)){ $parm =  ''; $fclr[0] = ' ' x 25 . "$d8bo ";}
+                           else             { $parm = '1'; $fclr[0] ="$d8bo$tmbo$fulc"   ;}$okey=$keey;}
+  elsif(   $keey  eq '2'){ if(length($parm)){ $parm =  ''; $fclr[0] = ' ' x 25 . "$d8bo ";}
+#                          else             { $parm = '2'; $fclr[0] = $d8bo."YoBGRCMp$fulc";}$okey=$keey;} # add colrz 4 Yk && YkdA thN b256 d8im B4 full();
+                           else             { $parm = '2'; $fclr[0] = $d8bo." bkKwBp $fulc";}$okey=$keey;} # add colrz 4 Yk && YkdA thN b256 d8im B4 full();
+  elsif(   $keey  eq '4'){ if(length($parm)){ $parm =  ''; $fclr[0] = ' ' x 25 . "$d8bo ";}
+                           else             { $parm = '4'; $fclr[0] ="$d8bo$sepr$fulc"   ;}$okey=$keey;}
+  elsif(   $keey  eq '8'){ if(length($parm)){ $parm =  ''; $fclr[0] = ' ' x 25 . "$d8bo ";}
+                           else             { $parm = '8'; $fclr[0] ="$d8bo "            ;}$okey=$keey;}
+  elsif(   $keey  eq '9'){ if(length($parm)){ $parm =  ''; $fclr[0] = ' ' x 25 . "$d8bo ";}
+                           else             { $parm = '9'; $fclr[0] ="$d8bo YCM $fulc"   ;}$okey=$keey;}
+  elsif(lc($keey) eq 'r'){    $rand ^=   1 ;             RandClrz();                       $simp->Draw()  ; } # toggle Randomized Colorz
+  elsif(lc($keey) eq 'i'){
+    if($simp->Widt() >= 53 && $simp->Hite() >= 17){ # only if the whole dialog with borders will fit in the terminal...
+       $simp->Mesg('type' => 'info', # display an Info dialog window
+" $name v$VERSION $d8VS - by $Auth 
+ 
+ $name was written to be my primary clock in a
+   single-row terminal configured to display in a
+   very large font (or to optionally show anim8ing 
+   spectrum bars and descriptive text when run in
+   a normally sized terminal of 80x25 or 160x50).
+ 
+ I hope you find $name both worthwhile and useful.
+ 
+ Please support the HTTPS://FSF.Org and
+                the HTTPS://EFF.Org when possible.
+ 
+ Thank you for running my code. L8r. =)    -Pip\n " );}else{$simp->Move(0,0);$simp->Prnt("$name v$VERSION $d8VS - by PipStuart");$simp->GetK(4);}}
+  elsif(lc($keey) eq 'h' || $keey eq '?' || $keey eq 'KEY_F1'){
+    if($simp->Widt() >= 53 && $simp->Hite() >= 17){ # only if the whole dialog with borders will fit in the terminal...
+       $simp->Mesg('type' => 'help', # display a  Help dialog window
+" $name v$VERSION $d8VS - by $Auth 
+ 
+                    Global Keys:                   
+   h - displays this Help screen                   
+   8 - toggles compressed   only format            
+   4 - toggles compressed + Full format            
+   2 - toggles comprSd b256+Full format            
+   1 - toggles comprSd+card+Full format            
+   9 - toggles CJKIdeoGrphs+Full format            
+   f - toggles compressed / Full format            
+   B - toggles Bars mode                           
+   b - toggles Bold mode  (font w8, if possible)   
+   d - toggles bolD mode  (with SpeeD reDraw r8)   
+   r - toggles Rand mode  (mix-up bright colors)   
+   s - rot8s   upd8 Speed (dur8ion delay inbtwn)   
+   C - rot8s   bars Character ('#', '%', or '\@')   
+   c - Clear screen before each draw upd8          
+   D - toggles Demo mode  (with autom8d run&&w8)   
+ 
+                   System Stuff:
+   ?/H/F1 - Help  :  i - Info  :  x/q/Esc - eXit   ");}else{$simp->Move(0,0);$simp->Prnt("$name - press 'x' to eXit,841fBbdrsCcD");$simp->GetK(4);}}
+  if   ($demo       ){$sped= 0 ;
+    if ($demo ==  1 ){$parm='f';$fclr[0] =           $fulc ;}
+    if ($demo == 48 ){$parm='4';$fclr[0] ="$d8bo$sepr$fulc";}
+    if ($demo == 88 ){$parm='8';$fclr[0] ="$d8bo "         ;}
+    if ($demo ==128 ){$bold^=1 ;}
+    if ($demo ==168 ){$rand^=1 ;}
+    if ($demo ==208 ){$barz^=1 ;}
+        $demo++;}
+  RandClrz() if($rand);$d8im = Oct::d8->new();@fldz = split(//, $d8im);@lasf = @fldz unless(@lasf);
+  $d128= #encode('UTF-8',
+         b128(b10($fldz[4])+64) . ' ' . b128(b10($fldz[5])+64) . ' ' .
+         b128(b10($fldz[6])+64) . ' ' . b128(b10($fldz[7])+64) . ' '      # reload spaced out Chess && Cards represent8ionz of time hmsp fieldz;
+      # ,Encode::FB_CROAK)
+        ;
+  if   ($parm eq 'f'){$text[0] =                   $d8im->full( ) . ' ';} # used to do `pt $parm` here before there was a d8 object with methodz
+  elsif($parm eq '1'){$text[0] = "$d8im$d128"    . $d8im->full( ) . ' ';}
+  elsif($parm eq '2'){$d256=b256(b10("$d8im"));
+#                     $text[0] = "$d8im"  . b64(int($d8im->{'k'})) . $d8im->{'K'} . $d256 . $d8im->full( ) . ' ';} # added Yk && YkDay (k && K) to 4 below;
+                      $text[0] = "$d8im $d256 "  . $d8im->full( ) . ' ';} # added Yk && YkDay (k && K) to 4 below;
+  elsif($parm eq '4'){$text[0] = "$d8im " . b64(int($d8im->{'k'})) . '-==-' . $d8im->{'K'} . ' ' . $d8im->full( ) . ' ';} # mAB betr l8r 2 nest 4 tst in f tst
+  elsif($parm eq '8'){$text[0] =  $d8im                           . ' ';}                                                 #   so else 4 can stRt wi d8im!spcz;
+  elsif($parm eq '9'){$d93k=b93k(b10("$d8im"));
+                      $text[0] = "$d8im $d93k "  . $d8im->full( ) . ' ';}                                                 #   so else 4 can stRt wi d8im!spcz;
+  else               {$text[0] = ' ' x 25        . $d8im          . ' ';}
+  if   ($sbld       ){$bold   ^=  1;$simp->FlagABA7('asin' =>  $bold    );} # SpeedBold flipper; 2du:stil need 2 try 2 add test 4 w4mb && way 2 limt
+  $simp->ShokScrn(3 ) if($clea); if($barz){BildBarz();}else{$simp->Draw();} $keey=$simp->GetK($sped);$keey='h' if($demo == 256);}
+$simp->CScr(); say "$d128; $d256; $d93k;";

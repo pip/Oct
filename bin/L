@@ -1,0 +1,54 @@
+#!/usr/bin/perl
+# J24LM5hR:L crE8d by PipStuart <Pip@CPAN.Org> 2 slightly manipul8 basic `ls`;
+# 2du:if -W9 or gr8r,mA nEd 2 rEdo ls output 2 setup dif columnz that can fit,
+#   mk a -W7:9 optn 4 dir: row hedrz 2B 7wId nstd of Dflt 3 or autofit2 lRgSt,
+#   ck @ARGV 4 non-Dflt flagz,multiple directorEz,&& shL glob pRamz wich shud
+#     alter output in any consistently useful ways that can B discovered 4thM,
+#   piping thru c8 nicely redoes columns && colors R pretty wL popUl8d ther 2,
+#     or @ lEst c8 used to redo columnz&&colrz but doezn't seem 2 anymor why?,
+#   but stil nEdng wA 2 let c8 look back at `ls` parameters used here somehow,
+#   mAB wrap $t0 in b8c 2 colr t0tlz mor lIk lsd8 doez,doQmNt -a(djust)better;
+# NCCL8LSL:`ls --color=always *(D)|pe 's/^(.*):\n$/\0$B$d$Y\/$W:  $z/ if(/^(.*):\n$/ && ($d=sprintf("%16s",$1)));s/\n/  /g;s/^\0/\b\b\n/'` Cmz preT similR;
+# O3JM2duL:@lz=split \s\s+ shud B upd8d 2 hndl skip of "\\  " && fix `L *\(*`;
+use warnings;use strict;use utf8;use v5.22; # DfltParm,T0tl,Lz,LineTxt,TxtLeng
+use Oct::b8;my $dp=' --color=always ';my $t0;my @lz;my $lt;my $tl;
+use Oct::d8;my $cw=160;$cw=$ENV{'COLUMNS'} if exists($ENV{'COLUMNS'});
+my $VERSION='0.0';my $d8VS='O3JM7d8a';my $Auth='PipStuart <Pip@CPAN.Org>';
+open my   $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";
+binmode   $out8,':encoding(UTF-8)'; # crE8 local duplic8 of global handle
+my $az="@ARGV";my $pt=0;my $ws=5;my $Cv='-Cv';my @ldat; # ArgZ,PrevT0tl,WidSiz
+   $az=~s/(^|\s)--\s.*$//; # don't process CLI optionz after double-dash seen;
+if($az=~ /(^|\s)-+(h)(elp)?(\s|$)/i){print $out8 "  $0 - sLightLy manipuL8d" .
+  " Ls coLumnar Listing Vers:$VERSION d8VS:$d8VS Auth:$Auth
+ -Wnum - set chars per column minWidth to num (dflt 5)
+ -V - togl dflt -v version sorting(inversionV from ls)
+ -h - help text only -h(elp) && -a(djust?nsi?ll?4gotN);";}else{
+  if  ($az=~ /(^|\s)(-+W)\s*([0-9A-Za-z._]+)(\s|$)/){$ws=$3;my $Ws=$2;
+    $ws=b10($ws) if($ws=~ /[A-Za-z._]/);my $prva=''; # assume b10 if !wi letrz
+    for(0..$#ARGV){if($ARGV[$_]=~s/^$Ws$ws$//){last;}elsif($_ && length($prva)
+      && $prva eq $Ws && $ARGV[$_]=~s/^$ws$//){$ARGV[$_-1]='';last;}else{
+         $prva=$ARGV[$_] if($ARGV[$_]=~ /^(-+W)$/);}}} # shudBchopng -V or -W;
+  for(@ARGV){s/([()])/\\$1/g if(/^\s*[^-]/);} # fixz sh unXpectd eror 4 *(* ?;
+  if  ($az=~ /(^|\s)-+(V)(\s|$)/){$Cv=~s/v//;for(@ARGV){last if(s/^-+(V)$//);}
+  }   @ldat=`ls $Cv -w $cw $dp @ARGV`; # mABUz -W0 nstdof -a -A 2flag!adjstd?;
+  for(@ldat){if(/^total\s+(\d+)/){$t0=b64($1);s/^total\s+(\d+)K?/t0:${t0}K/i;}
+    if($az!~ /(^|\s)-+(a)/i && /\s\s+/){@lz=split(/\s\s+/,$_);$lt='';
+      for  my $le(@lz){my $lT=$le;$tl=0; # loop Ech Temp lINe out of lINEz…
+        while($lT=~ s/^(\e\[[0-9;:]*m|.)//){$tl++ if(length($1)==1);$lt.=$1;}
+        $lt  .= ' ' ;$lt=~ s/\t/ /g; # both wer2 \s spAczB4 $lt.=&&s/\t/  /g;
+        my    $lE=$lT;my $LM= $tl % ($ws+1); # this cOd mOstly alInz wL 4now;
+        if   ($tl >  $ws){ # when text-length beyond min width-size 4 columz:
+          if ($LM){$lt .=   ' ' x ($ws-$LM);}
+          else    {$lt .=   ' ' x  $ws;}} # 2du:mk flag2 disAbl this wIdNing;
+        else{ # 2du:figUr out how mIt B bSt 2 gNeraly alIn in $ws columns wL;
+          $lt.= ' ' x ($ws-$tl)  if($tl <  $ws);}} # setup WidthSize&&WColon;
+      $_= $lt if( length($lt));s/\s+$/\n/    ;}
+    if  (/^(\S+)  :     /x && length($1) < 3){my $sl=length($1);my $sp=
+      ' ' x (3-$sl);s/^(\S+):/$1$sp:/;} # try2spc-out colon 2 subdrz 3-or-lS;
+    if  (/^(\S+\s*:)\s*$/    ){s/\s+$//      ;$pt=1;}
+    else{$_ =(' ' x ($ws-  1)) . $_  if(!$pt);$pt=0;}
+    s/\s       (\e?\[?[0-9;]*m?      )+
+      (Oct(\e?\[?[0-9;]*m?|\s*)*)+
+      \s       (\e?\[?[0-9;]*m?|Pip)+/$1 $2 $4/x;
+    print $out8 $_ if /\S/;}}
+close     $out8             or die "Can't close duplic8 STDOUT handle: $!";

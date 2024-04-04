@@ -1,0 +1,163 @@
+#!/usr/bin/perl
+# N8BM7IMP:p8ed crE8d from cmc8 by PipStuart <Pip@CPAN.Org> which still had most of ckm8, but now hopefully can distill down to become a Pal8 EDitor soon;
+# GPL:This code is released under version 3 of the GNU General Public License;
+# 2du:get f8.pm to load ALL contents of every .pal8 file with maps to layered:color keyz like pal8 does, mk colr chooser && edit interface for selecting &&
+#   upd8ing particular colrz wich can wrIt bak ovr orig fIlz, add togl 2 show 3 8bowz nstd of 16 2pal8z, add mouse clix aftr kb, a8:%f8pm has map to filez;
+use warnings;use strict;use utf8;use v5.22;
+#se Math::BaseCnv qw(:all);
+use Oct::a8;
+use Oct::b8;
+use Oct::d8;
+use Oct::f8;
+my $ucsf = eval('use Curses::Simp;8');
+my $sdlf = 8; # set to 0 to ignore SDL but for now will need at least one of Simp or SDL to render through
+if($sdlf){    # if neither ucsf or sdlf are set, should eventually just dump ANSI text to console && maybe get input from <STDIN> or ReadLine or just quit out?
+use SDL;      # originally tried to eval all use SDL lines here hoping to just fallback on Simp if any needed SDL module could not be loaded..
+use SDL::Video; #  ..but critical constants wouldn't export properly into the local namespc when eval'd so it seems SDL is mostly required now rather than opt
+use SDL::Event;
+use SDL::Events;
+use SDL::Joystick;
+use SDL::GFX::Rotozoom;
+use SDLx::App;
+use SDLx::Text;
+use SDLx::Sprite;} $sdlf = 0 if(exists($ENV{'TERM'}) && $ENV{'TERM'} eq 'linux'); # disable SDL when in fullscrn txt-mode acordng2 $TERM or betr way2ck?
+my $VERSION='0.0';my $d8VS='N8CMIPrl';my $name=$0;$name =~ s/^.*\///;         my $spnf = 1;my $sele = 11;my $keey;my @text;my @fclr;my @bclr;#Show Pc NamesFlag
+my $auth = 'PipStuart <Pip@CPAN.Org>';my $G   = "\e[01;32m"; # AUTHor inform8ion && single bright Green ANSI escape code for printing at end
+my $xscl = 1.4;my $widt =160; #if(exists($ENV{'COLUMNS'})){$widt = $ENV{'COLUMNS'};} # SDL X && Y SCaLes rel8ive to inherited text dimensions * 8x16
+my $yscl = 1.2;my $hite = 50; #if(exists($ENV{'LINES'}  )){$hite = $ENV{'LINES'}  ;} # default 160x50 => 1280x800
+my $fsof =   0;my %sprm = ();my %lmap = ();my @f0nt = ();my $scal = 1.0;my $simp;  # get the handle from return of tie some text array to Curs::Simp;
+my %sttf =  ();my %pd8a = (); # load all .pal8 file d8a into hash keyed by a8:%f8pm keyz with valuez array of cmnd pRamEtrz (incldng optnz && layr:colr mapz);
+for(sort(keys(%f8pm))){$pd8a{$_}=[];open(my $p8fh,'<',$ENV{'HOME'} . '/lib/Oct/f8/pal8/' . $f8pm{$_} . '.pal8') or die "!*EROR*! Couldn't open $_.pal8!";
+  my @pltd=<$p8fh>;close($p8fh) or die "!*EROR*! Couldn't close $_.pal8!";for my $line (@pltd){if($line=~ /^\s*pal8\s+(.+)$/){my $prmz=$1;
+      push(@{$pd8a{$_}},split(/\s+/,$prmz));}}} # sepR8 pal8 call lInz shud have distinct entries in d8a-structure && prmz shud B parsed apart carefully l8r;
+my $sxap;my $evnt;my $jstk;my $jnam;my $nbtz;my $sfss;my $stir;my $stof; # SdlX APplic8ion&&EVeNT objects, JoySTicK, JoyNAMe, joyNumBuTnZ, SdlFullScreenSurface
+my %bstt;my @bnmz =(qw(Tr Ci Ex Sq L1 R1 L2 R2 Se St L3 R3 Up Rt Dn Lt)); #if($jnam eq 'ZEROPLUS PS(R) Gamepad Adaptor')
+if($sdlf){ #SDL::init_sub_system(SDL_INIT_JOYSTICK); # below w(idth) h(eight) d(epth) f(lags) resizeable(just r does!work but SDL_RESIZABLE f does) EndOnQuit
+   $sxap  = SDLx::App->new(w => $widt*8*$xscl,h => $hite*16*$yscl,d => 32,t => $name,f => SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_HWACCEL | SDL_RESIZABLE,eoq =>1);
+   $sfss  = SDL::Surface->new(SDL_HWSURFACE | SDL_ASYNCBLIT, $widt*8, $hite*16, 32, 0, 0, 0, 0); # above spelling diff SDL_RESIZABLE && resizeable 
+   $evnt  = SDL::Event  ->new( );my $tmpt;
+   $tmpt  = SDLx::Text  ->new( font => '/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf', color => [255,255,255,255], size => 13, bold=>0);
+  #size=>13,bold=>0 fitz widt;  #size => 16, x => 0, y => 0, h_align => 'left', shadow => 1, bold => 1, text => 'Test',  # other Text->new atrbutz
+   $sttf{'LibM-W13'} = $tmpt;
+   $sxap->draw_rect([ 0,  0,$widt*8*$xscl,$hite*16*$yscl],[0,0,0,0]); # start blank full app bkgr (wish alpha'd bg thru2dsktp like GnomTerm)
+  #$sxap->fullscreen() if($fsof);#exists($ENV{'HOSTNAME'}) && $ENV{'HOSTNAME'} eq 'Chun'); # hardcode Chun FullScreen for now?
+  if(0&& $sdlf && defined($evnt)&& $evnt->type == SDL_MOUSEBUTTONDOWN){my($evbx,$evby)=($evnt->button_x    ,$evnt->button_y     );
+                                                                       my($evbw,$evbb)=($evnt->button_which,$evnt->button_button);
+    $text[-1].= " evbx:$evbx evby:$evby evbw:$evbw evbb:$evbb";}
+  for   my $lndx (0..$#text){my @ltxd = split(//,$text[$lndx]); # start looping Line iNDeX through text rows, load Line TeXt             D8a
+                             my @lfcd = split(//,$fclr[$lndx]); # start looping Line iNDeX through text rows, load Line Foreground Color D8a
+                             my @lbcd = split(//,$bclr[$lndx]); # start looping Line iNDeX through text rows, load Line Background Color D8a
+    for my $cndx (0..$#ltxd){ if($cndx < $widt){                # start looping Colm iNDeX through current         Line TeXt             D8a
+      unless(exists($sprm{$ltxd[$cndx] . $lfcd[$cndx] . $lbcd[$cndx]})){ # could eventually add f0nt V8 field, scales, pal8s, etc.
+        my @frgb = split(//,$lmap{$lfcd[$cndx]}); for(@frgb){$_ = b10($_)*4;}
+        my @brgb = split(//,$lmap{$lbcd[$cndx]}); for(@brgb){$_ = b10($_)*4;}
+        $sprm{      $ltxd[$cndx] . $lfcd[$cndx] . $lbcd[$cndx]} = SDLx::Sprite->new(width => 8,height => 16 );
+        $sprm{      $ltxd[$cndx] . $lfcd[$cndx] . $lbcd[$cndx]}->surface->draw_rect([    0,    0,      8,16 ],[@brgb,255]);
+        for   my $rndx (0..15){ # Row   iNDeX
+          for my $pndx (0.. 7){ # Pixel iNDeX
+            if(defined($ltxd[$cndx]) && defined($f0nt[ord($ltxd[$cndx])]) && defined($f0nt[ord($ltxd[$cndx])][$rndx]) &&
+              substr($f0nt[ord($ltxd[$cndx])][$rndx],$pndx,1) eq '#'){my $prwd = 1;my $prht = 1;my $opnd = $pndx;my $ornd = $rndx;
+              $sprm{$ltxd[$cndx] . $lfcd[$cndx] . $lbcd[$cndx]}->surface->draw_rect([$opnd,$ornd,$prwd,$prht],[@frgb,255]);}}}}
+      $sprm{        $ltxd[$cndx] . $lfcd[$cndx] . $lbcd[$cndx]}->         draw_xy  ( $sfss,$cndx*8,$lndx*16);}}}
+  my $rowc = 0;    # 8 H P
+  for   my $p8ky (qw(       d p  B R S T b c f g n r s t y  F)){ # put 8bow pal8z as 1st 3,thN rSt 2pal8 skipng Default256,put Flipped last;
+    $sttf{'LibM-W13'}->write_xy($sfss, 0, $rowc*3*16+16,"$p8ky $f8pm{$p8ky}");my $colc=0;my $cshf=80;
+    for my $dndx (0..@{$pd8a{$p8ky}}-1){if($pd8a{$p8ky}[$dndx] =~ /^([0-9A-Za-z._]{3,4})$/){my $rcod=$1;my @rgbl=split(//,$rcod);
+        $rgbl[0] = b10($rgbl[0])*4;$rgbl[1] = b10($rgbl[1])*4;$rgbl[2] = b10($rgbl[2])*4;if($#rgbl == 3){ # slice out low bitz
+          $rgbl[0]+=2 if($sb10{$rgbl[3]} & 32);$rgbl[0]+=1 if($sb10{$rgbl[3]} & 16);
+          $rgbl[1]+=2 if($sb10{$rgbl[3]} &  8);$rgbl[1]+=1 if($sb10{$rgbl[3]} &  4);
+          $rgbl[2]+=2 if($sb10{$rgbl[3]} &  2);$rgbl[2]+=1 if($sb10{$rgbl[3]} &  1);pop(@rgbl);} # put colm colr sprite up
+        $sprm{$rcod} = SDLx::Sprite->new(width =>     8*8,  height => 3*16);
+        $sprm{$rcod}->surface->draw_rect([ 0, 0,      8*8,            3*16],[@rgbl,255]);
+        $sprm{$rcod}->         draw_xy  ( $sfss,$colc*9*8+$cshf,$rowc*3*16);$cshf=96 if(++$colc > 7);}} $rowc++;}
+  my $zmsf = SDL::GFX::Rotozoom::zoom_surface($sfss,$xscl,$yscl,SMOOTHING_ON ); # use ZooMSurFace && SPrite to scale SdlFullScreenSurface at end
+  my $zmsp = SDLx::Sprite->new(width =>  $widt*8*$xscl,height => $hite*16*$yscl,surface => $zmsf); $zmsp->draw_xy($sxap,0,0);$sxap->update();}
+sub Upd8SXAp { #$sxap->draw_rect([ 0,  0,$widt*8*$xscl,$hite*16*$yscl],[0,0,0,0]); # start blank full app bkgr (wish alpha'd bg thru2dsktp like GnomTerm)
+# my $tsxt = 'A Bunch of Test Text! font: /usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf colr: ____  size: 13 ;  ' .
+#            'Column 128 * on the asterisk && going 2 160;';
+# for(0.. 3){$tsxt=~ s/^../$_/ if($_ > 9);
+#  #$sttf->write_xy($sfss,int(rand($widt*4)),int(rand($hite*12)),substr($tsxt,int(rand(120)),int(rand(20))+20));
+#   $sttf->write_xy($sfss,               0  ,         $_   *16  ,       $tsxt);}
+  my $zmsf = SDL::GFX::Rotozoom::zoom_surface($sfss,$xscl,$yscl,SMOOTHING_ON );
+  my $zmsp = SDLx::Sprite->new(width =>  $widt*8*$xscl,height => $hite*16*$yscl,surface => $zmsf);$zmsp->draw_xy($sxap,0,0);
+# for(0.. 1){$tsxt=~ s/^../$_/ if($_ > 9);
+#  #$sttf->write_xy($sxap,int(rand($widt*4)),int(rand($hite*12)),substr($tsxt,int(rand(120)),int(rand(20))+20));
+#   $sttf->write_xy($sxap,               0  ,         $_   *16  ,       $tsxt);}
+  $sxap->update();}
+while(!defined($keey) || ($keey !~ /^[xq]$/i && ord($keey) != 27)){$keey = '-1';$keey = $simp->GetK(0) if($ucsf && defined($simp));
+  if(  defined($keey) &&  $keey eq '-1' && $sdlf){ # only potentially load keey from SDL events if!already set
+            SDL::Events::pump_events();
+    if(     SDL::Events::poll_event($evnt)){
+      if     ($evnt->type    == SDL_VIDEORESIZE){ # first handle resize events, then more typical input events
+        my($evrw,$evrh)=($evnt->resize_w    ,$evnt->resize_h     ); $sxap->resize($evrw,$evrh);
+        $xscl = $evrw / ($widt* 8.0);
+        $yscl = $evrh / ($hite*16.0);Upd8SXAp();
+      }elsif ($evnt->type    == SDL_MOUSEBUTTONDOWN){
+        my($evbx,$evby)=($evnt->button_x    ,$evnt->button_y     );
+        my($evbw,$evbb)=($evnt->button_which,$evnt->button_button);
+        if($evbx < ($scal*2*8*8*$xscl) && 16*$yscl <= $evby && $evby < (($scal*16*8*$yscl)+16*$yscl)){ # based on scale,if click in bord,
+          my $cndx = int(($evby-(16*$yscl))/($scal*16*$yscl))*8 + int($evbx/($scal*2*$xscl*8)); # then based on rot8n find xy squr loc8n && set sele && keey
+          my %rotm =('0'=>0,'1'=>3,'2'=>2,'3'=>1); # ROT8ion Map happens oddly && needs to swap 1 && 3 in @brnm 2get correct event indices
+          $keey = ' '; # below allow clik to re-pik diff Pc
+        }elsif($evbx >= ($scal*2*8*$xscl*8) && 16*$yscl <= $evby && $evby < (($scal*16*$yscl*4)+16*$yscl)){$keey = 'u'; # top lt quad clik undo
+            if($evbx >= ($scal*2*8*$xscl*8)+(($widt - ($scal*2*8))/2)*$xscl*8                            ){$keey = 'r';}# top rt quad clik rot8
+        }else                                                                                             {$keey = 'U'; # bot lt quad clik redo
+            if($evbx >= ($scal*2*8*$xscl*8)+(($widt - ($scal*2*8))/2)*$xscl*8                            ){$keey = 'R';}# bot rt quad clik Rot8 CCW
+        } # else click off-board can call up un/redo, rot8, scal menu
+      }elsif ($evnt->type    == SDL_MOUSEBUTTONUP  ){ # see if special case of dragging piece
+        my($evbx,$evby)=($evnt->button_x    ,$evnt->button_y     );
+        my($evbw,$evbb)=($evnt->button_which,$evnt->button_button);
+        if($evbx < ($scal*2*8*8*$xscl) && 16*$yscl <= $evby && $evby < (($scal*16*8*$yscl)+16*$yscl)){ # based on scale,if click in bord,
+          my $cndx = int(($evby-(16*$yscl))/($scal*16*$yscl))*8 + int($evbx/($scal*2*$xscl*8)); # then based on rot8n find xy squr loc8n && set sele && keey
+          my %rotm =('0'=>0,'1'=>3,'2'=>2,'3'=>1); # ROT8ion Map happens oddly && needs to swap 1 && 3 in @brnm 2get correct event indices
+        } # below st8 is either "jbutton_SDL_PRESSED" or "jbutton_SDL_RELEASED"?
+      }elsif ($evnt->type    == SDL_JOYBUTTONDOWN){my($ejbw,$ejbb,$ejbs)=($evnt->jbutton_which,$evnt->jbutton_button,$evnt->jbutton_state);
+        if   ($ejbb          == 12            ){$keey = 'KEY_UP'   ;}
+        elsif($ejbb          == 13            ){$keey = 'KEY_RIGHT';}
+        elsif($ejbb          == 14            ){$keey = 'KEY_DOWN' ;}
+        elsif($ejbb          == 15            ){$keey = 'KEY_LEFT' ;}
+        else                                   {$keey = ' '        ;} # only set keey2spc 4 normal butnz && set arowz 4 stick directn butnz (hat duplic8z) abov
+      }elsif ($evnt->type    == SDL_KEYDOWN){
+        if   ($evnt->key_sym == SDLK_i        ){$keey = 'i';} # Simp Mesg dialogz wi GetK(-1) originally caused SDL sync issuez
+        elsif($evnt->key_sym == SDLK_h        ||
+              $evnt->key_sym == SDLK_QUESTION ||
+              $evnt->key_sym == SDLK_F1       ){$keey = 'h';
+          for my $sprz (0..63){my $xoff=int(rand($widt));my $yoff=int(rand($hite));my $skey=$keey . b64($sprz);
+  #         $sxap->draw_rect([$xoff,$yoff,int(rand($widt*8*$xscl-$xoff)),int(rand($hite*16*$yscl-$yoff))],[int(rand(255)),int(rand(255)),int(rand(255)),255]);
+            $sprm{$skey} = SDLx::Sprite->new(width => 8,height => 16); # maybe drawing rect directly in sxap doesn't work && need to mk sprite to draw more?
+            $sprm{$skey}->surface->draw_rect([   0,   0,        8,16]        ,[int(rand(255)),int(rand(255)),int(rand(255)),255]);            # set bg rect
+            $sprm{$skey}->surface->draw_rect([int(rand(6)),int(rand(14)),1,1],[int(rand(255)),int(rand(255)),int(rand(255)),255]) for(0..63); # set Fg dots
+            $sprm{$skey}->         draw_xy  ( $sfss,int(rand($widt))*8,int(rand($hite))*16);} Upd8SXAp();}
+        elsif($evnt->key_sym == SDLK_n        ){$keey = 'n';}
+        elsif($evnt->key_sym == SDLK_f        ){$keey = 'f';}
+        elsif($evnt->key_sym == SDLK_r        ){$keey = 'r';$keey = uc($keey) if($evnt->key_mod & KMOD_SHIFT);} # ck key_mod shft st8 4 Rvrs Rot8
+        elsif($evnt->key_sym == SDLK_s        ){$keey = 's';$keey = uc($keey) if($evnt->key_mod & KMOD_SHIFT);} # ck key_mod shft st8 4 rvrs Scal
+        elsif($evnt->key_sym == SDLK_u        ){$keey = 'u';$keey = uc($keey) if($evnt->key_mod & KMOD_SHIFT);} # ck key_mod shft st8 4 rvrs Undo (redo)
+        elsif($evnt->key_sym == SDLK_c        ){$keey = 'c';}
+        elsif($evnt->key_sym == SDLK_RIGHT    ){$keey = 'KEY_RIGHT';}
+        elsif($evnt->key_sym == SDLK_LEFT     ){$keey = 'KEY_LEFT' ;}
+        elsif($evnt->key_sym == SDLK_DOWN     ){$keey = 'KEY_DOWN' ;}
+        elsif($evnt->key_sym == SDLK_UP       ){$keey = 'KEY_UP'   ;}
+        elsif($evnt->key_sym == SDLK_SPACE    ||
+              $evnt->key_sym == SDLK_RETURN   ){$keey = ' ';}
+        elsif($evnt->key_sym == SDLK_x        ||
+              $evnt->key_sym == SDLK_q        ||
+              $evnt->key_sym == SDLK_ESCAPE   ){$keey = 'x';}
+      }elsif ($evnt->type    == SDL_QUIT      ){$keey = 'x';
+      }}} # add tstz 4 un/redo,rot8,scal,namz,colr click zones && JS menus, hist jmpz, bord txt drag select or dbl-clik, WM chgz
+  if(  defined($keey) && $keey ne '-1'){
+    if    ( lc($keey) eq 'i'                                           ){
+    }elsif( lc($keey) eq 'h'    || lc($keey) eq '?'|| $keey eq 'KEY_F1'){
+    }elsif( lc($keey) eq 'n'                                           ){$spnf ^= 1;
+    }elsif( lc($keey) eq 'f'    &&    $sdlf                            ){$fsof ^= 1; #$sxap->fullscreen();# if(exists($ENV{'HOSTNAME'}) && $ENV{'HOSTNAME'} ne 'Aku'); # disable FulScrn on Aku since doesn't restore properly; Problems on Oni too;
+    }elsif(    $keey  eq 'r'                                           ){
+    }elsif(    $keey  eq 'R'                                           ){
+    }elsif(    $keey  eq 's'                                           ){$scal++;$scal = 1 if($scal == 7);
+    }elsif(    $keey  eq 'S'                                           ){$scal--;$scal = 6 if($scal == 0);
+    }elsif( lc($keey) eq 'c'                                           ){
+    }elsif(    $keey  eq 'KEY_RIGHT'                                   ){ # mayb shd mk all arowz consistent by keepng2 rank||file rathr than incr around edge?
+    }elsif(    $keey  eq 'KEY_LEFT'                                    ){
+    }elsif(    $keey  eq 'KEY_DOWN'                                    ){
+    }elsif(    $keey  eq 'KEY_UP'                                      ){
+    }elsif(    $keey  eq ' ' || ord($keey) == 13                       ){ # space or Return/Enter picks or moves a Pc
+    }}}

@@ -1,0 +1,337 @@
+#!/usr/bin/perl
+use strict;use warnings;use utf8;use v5.22;use Oct::a8;use Oct::d8;my $nwd8=new Oct::d8;my $d8VS='NBSL4hLp';my $dbug=0; 
+my $edsp=$ENV{'DISPLAY'};my $xrgo=`xrandr`;my @ifcs; # was xrg aliased to xrandr|grep '^[DH][^ ]*'  # 2du:obtain VirtDsktp 4WxH2 dimNsionz from Utl2;
+my @ifca=([],[]);my @lrge=(0,0,0,0);my %if2n;my $wmow=0;my $wmoh=0;my $wmcd=`wmctrl -d`;if($wmcd =~ /(\d+)x(\d+)/){$wmow=int($1/4);$wmoh=int($2/2);}
+sub chvp{my $vprm=shift || 0;my $vwid=0;my $vhit=0;if($vprm >= 4){$vhit=$wmoh;$vprm -= 4;} $vwid=$vprm*$wmow;system("wmctrl -o $vwid,$vhit");}
+if($edsp ne ''){my $ondx=0; # OrdriNDeX 2 incremNt 4 InterFace2oNdx && !nEd ManualIF2Map BlO?
+  for(split(/\n/,$xrgo)){my $dcnf=0;my $ifac='';my $prim=0;$prim=1 if(s/ primary//);
+    my @wrdz=split(/\s+/,$_);
+    if($wrdz[    0] =~ /^DisplayPort-(\d+)$/ ){$ifac="DP$1";
+    }elsif($wrdz[0] =~ /^HDMI-(\w+) -(\d+)$/x){$ifac="H$1$2";
+    }elsif($wrdz[0] =~ /^DVI- (\w+) -(\d+)$/x){$ifac="D$1$2";}
+    my %if2m=('DP0' => -1, 'DP1' =>  0, 'DP2' =>  1, 'HA0' =>  2, 'DD0' => -1);
+    if($wrdz[    1] eq    'connected'){$if2n{  $ifac}=$ondx++; # just try2numbr conectd IntrFacez in ordr hEre
+    }elsif($wrdz[1] eq 'disconnected'){$if2n{  $ifac}=     -1;$dcnf=1;push(@{$ifca[$dcnf]},$ifac);}
+    if($wrdz[    2] =~ /^(\d+)x(\d+)\+(\d+)\+(\d+)$/ && length($ifac)){ # $1WxH2,3XoY4 && ndXz in @{@ifca};
+      push(@{$ifca[$dcnf]},[$ifac,$1,$2,$3,$4,$prim,$if2n{$ifac}]);
+      $lrge[0]=$1 if($lrge[0] < $1);$lrge[1]=$2 if($lrge[1] < $2); # track largests
+      $lrge[2]=$3 if($lrge[2] < $3);$lrge[3]=$4 if($lrge[3] < $4);}} my @vwhn=(-1);
+  for(1..4){
+    if($wmow && $wmoh){
+      if   ($_ eq '4'){$vwhn[$_]=$wmoh;}
+      else            {$vwhn[$_]=$wmow   *$_      ;}
+    } elsif($_ eq '4'){$vwhn[$_]=$lrge[1]+$lrge[3];   # EROR! wmc -d didn't match geometry dimensions so try just using largests from xrandr
+    } else            {$vwhn[$_]=$lrge[0]+$lrge[2];}}
+  # whoa! can probably just give custom sort curly block 2 look at index fieldz, but seemz monitorid is not available && sort is by port2moni layout so...
+  if      (scalar(@{$ifca[0]}) >= 1){ # load InterFacesConnectedSorted array with 0,1 then maybe 2,3 as grid based on offsets
+    for      (@{$ifca[0]}){if($_->[3] ==        0                              && $_->[4] ==       0    ){$ifcs[0]=[$_->[0],$_->[1],$_->[2],$_->[3],
+                                                                                                                    $_->[4],$_->[5],$_->[6]];}}
+    if    (scalar(@{$ifca[0]}) >= 2){
+      for    (@{$ifca[0]}){if($_->[3] ==  $ifcs[0][1]                          && $_->[4] ==       0    ){$ifcs[1]=[$_->[0],$_->[1],$_->[2],$_->[3],
+                                                                                                                    $_->[4],$_->[5],$_->[6]];}}
+      if  (scalar(@{$ifca[0]}) >= 3){ # 2du:ck if 4 has hite && 3rd is not flat
+        for  (@{$ifca[0]}){if($_->[3] == ($ifcs[0][1]+$ifcs[1][1])             && $_->[4] ==       0    ){$ifcs[2]=[$_->[0],$_->[1],$_->[2],$_->[3], # if 3or4
+                                                                                                                    $_->[4],$_->[5],$_->[6]];}  #   wide R flat
+                        elsif($_->[3] ==        0                              && $_->[4] == $ifcs[0][2]){$ifcs[2]=[$_->[0],$_->[1],$_->[2],$_->[3], #...or 3rd
+                                                                                                                    $_->[4],$_->[5],$_->[6]];}} #  dn from 1st?
+        if(scalar(@{$ifca[0]}) >= 4){
+          for(@{$ifca[0]}){if($_->[3] == ($ifcs[0][1]+$ifcs[1][1]+$ifcs[2][1]) && $_->[4] ==       0    ){$ifcs[3]=[$_->[0],$_->[1],$_->[2],$_->[3], # if     4
+                                                                                                                    $_->[4],$_->[5],$_->[6]];}  # wide     flat
+                        elsif($_->[3] ==              $ifcs[1][1]              && $_->[4] == $ifcs[1][2]){$ifcs[3]=[$_->[0],$_->[1],$_->[2],$_->[3], #...or 4th
+                                                                                                                    $_->[4],$_->[5],$_->[6]];}} #  dn from 2nd?
+# O1MLINx6:mAB can't du tib as -B(uttons) properly wiot Xport bak 2 Zsh?;
+        }}}}
+  if      (@ARGV){ # don't print xir reminder if just wanting to grab 1234 variable number outputs, debug layout d8a, or changing ViewPort only;
+    if    ($ARGV[0] =~ /^-*([1234])$/){print $vwhn[$1];exit;} # use this from .zshrc to gener8 $HVW 1,2,3 && $HVH1 as 4
+    elsif ($ARGV[0] =~ /^-*d(ebug)?$/ || $dbug){say "Port Widt Hite Xofs Yofs prIm dMid ";for(@ifcs){for my $ifdm (@{$_}){printf("%4s ",$ifdm);}
+        say '';} say    "Disconnected: @{$ifca[1]}; \$HVW1=$vwhn[1] \$HVW2=$vwhn[2] \$HVW3=$vwhn[3] x (4)\$HVH1=$vwhn[4];";exit;}
+    elsif ($ARGV[0] =~ /^-*[bB](uttons)?$/){
+      # Xport HDisplLt='DisplayPort-0';
+      # Xport HDisplMd='DisplayPort-1';
+      # Xport HDisplRt='DisplayPort-2';
+      #HDisplUR='DisplayPort-0';               #                                      (my UpRight  screen)  ## mAB 2du l8r is Dtect && add -h --help tXt message;
+      #HDisplDL='DisplayPort-2';               # desired display device from `xrandr` (my DnLeft   screen)  ## executable name "tib" short for TabletInitButtons,
+      #HDisplDR='HDMI-A-0';                    # desired display device from `xrandr` (my DnRight  screen)  ##   but also maps display input && disables touch;
+      #HDisplUL='DVI-D-0';                     #                                      (my UpLeft   screen)  ## nOt:conditional syntax BlO mIt nEd /usr/bin/zsh?;
+    #  HDisplUL='DVI-D-0';
+    #  HDisplUR='DisplayPort-2';
+    #  HDisplDL='HDMI-A-0'     ; # from: HTTPS://GitHub.Com/LinuxWacom/input-wacom/wiki/Device-IDs :
+    #  HDisplDR='DisplayPort-1'; #   mAB my DvIc is: "056a:0303 	CTH-680 	Intuos Pen & Touch (M) 		3.14 	2.6.30*† 	0.9" or similR?;
+    #  HPTPadDv='Wacom Intuos PT M 2 Pad pad'; # desired    pad  device from `xinput`
+    #  HStylsDi="$HDisplDL";  ## DnRt is Dflt; # l8r allow Command-Line-Parameters to specify remap of Stylus Identifier to any Display device in my quad-grid;
+      #HStylsDi="$HDisplMd";  ## Midl is Dflt;
+    #  HStylsId=`xinput | grep                "Pen stylus"                    | cut -f 2 | cut -c 4-5`;
+    #  HTouchId=`xinput | grep                                 "Finger touch" | cut -f 2 | cut -c 4-5`;
+      #HTouchDi="$HDisplRt";  ## Rite is Dflt;
+    #  HTouchDi="$HDisplDR";  ## DnLt is Dflt; # l8r allow Command-Line-Parameters to specify remap of Touch  Identifier to any Display device in my quad-grid;
+#       xsetwacom set "$HPTPadDv" Touch                        off; # mAB 2du l8r add pRam tStz 4 NAbling Touch && Gesturez AgN;
+#       xsetwacom set "$HPTPadDv" Gesture                      off;
+#       #setwacom set "$HPTPadDv" "Wacom Proximity Threshold"  32 ; # normally 10 for Intuos (property not supported,does not exist on mine) && 42 for Graphire
+#       xsetwacom set "$HPTPadDv" Button 1 "key +ctrl +z -z -ctrl"; # UpLtCls undo
+#       xsetwacom set "$HPTPadDv" Button 3 "key        3         "; # UpLtFar 3 AutoZoom (Krita)  # not sure yet what these keys do in (Gimp), (InkScape), etc.
+#       xsetwacom set "$HPTPadDv" Button 8 "key        h         "; # UpRtCls HotColrBar (Krita)
+#       xsetwacom set "$HPTPadDv" Button 9 "key        e         "; # UpRtFar EraserMode (Krita)
+#       if     [[ "$1" !=   "" ]]; then # test command-line params for anything resembling display loc8ion or interface with index number as 2-char codes to ID them;
+#         if   [[ "$1" ==  "l" || "$1" ==  "0"                                                                 ]]; then HStylsDi="$HDisplLt";
+#         elif [[ "$1" ==  "m" || "$1" ==  "1"                                                                 ]]; then HStylsDi="$HDisplMd";
+#         elif [[ "$1" ==  "r" || "$1" ==  "2"                                                                 ]]; then HStylsDi="$HDisplRt"; fi; fi
+#       # if   [[ "$1" == "UL" || "$1" == "ul" || "$1" == "D0" || "$1" == "d0" || "$1" == "DV" || "$1" == "dv" ]]; then HStylsDi="$HDisplUL";
+#       # elif [[ "$1" == "UR" || "$1" == "ur" || "$1" == "P0" || "$1" == "p0" || "$1" == "DP" || "$1" == "dp" ]]; then HStylsDi="$HDisplUR";
+#       # elif [[ "$1" == "DL" || "$1" == "dl" || "$1" == "P2" || "$1" == "p2" || "$1" == "2P" || "$1" == "2p" ]]; then HStylsDi="$HDisplDL";
+#       # elif [[ "$1" == "DR" || "$1" == "dr" || "$1" == "H0" || "$1" == "h0" || "$1" == "HD" || "$1" == "hd" ]]; then HStylsDi="$HDisplDR";
+#       # elif [[ "$1" == "TL" || "$1" == "tl"                                                                 ]]; then HStylsDi="$HDisplUL"; # also add TopLeft &&
+#       # elif [[ "$1" == "TR" || "$1" == "tr"                                                                 ]]; then HStylsDi="$HDisplUR"; #          BotRite ;
+#       # elif [[ "$1" == "BL" || "$1" == "bl"                                                                 ]]; then HStylsDi="$HDisplDL";
+#       # elif [[ "$1" == "BR" || "$1" == "br"                                                                 ]]; then HStylsDi="$HDisplDR"; fi; fi
+#       if     [[ "$2" !=   "" ]]; then # && allow for a second parameter in the same format as the first for specifying a display for just touch instead of stylus;
+#         if   [[ "$2" ==  "l" || "$2" ==  "0"                                                                 ]]; then HTouchDi="$HDisplLt";
+#         elif [[ "$2" ==  "m" || "$2" ==  "1"                                                                 ]]; then HTouchDi="$HDisplMd";
+#         elif [[ "$2" ==  "r" || "$2" ==  "2"                                                                 ]]; then HTouchDi="$HDisplRt"; fi; fi
+#       # if   [[ "$2" == "UL" || "$2" == "ul" || "$2" == "D0" || "$2" == "d0" || "$2" == "DV" || "$2" == "dv" ]]; then HTouchDi="$HDisplUL";
+#       # elif [[ "$2" == "UR" || "$2" == "ur" || "$2" == "P0" || "$2" == "p0" || "$2" == "DP" || "$2" == "dp" ]]; then HTouchDi="$HDisplUR";
+#       # elif [[ "$2" == "DL" || "$2" == "dl" || "$2" == "P2" || "$2" == "p2" || "$2" == "2P" || "$2" == "2p" ]]; then HTouchDi="$HDisplDL";
+#       # elif [[ "$2" == "DR" || "$2" == "dr" || "$2" == "H0" || "$2" == "h0" || "$2" == "HD" || "$2" == "hd" ]]; then HTouchDi="$HDisplDR";
+#       # elif [[ "$2" == "TL" || "$2" == "tl"                                                                 ]]; then HTouchDi="$HDisplUL";
+#       # elif [[ "$2" == "TR" || "$2" == "tr"                                                                 ]]; then HTouchDi="$HDisplUR";
+#       # elif [[ "$2" == "BL" || "$2" == "bl"                                                                 ]]; then HTouchDi="$HDisplDL";
+#       # elif [[ "$2" == "BR" || "$2" == "br"                                                                 ]]; then HTouchDi="$HDisplDR"; fi; fi
+#       xinput map-to-output $HStylsId $HStylsDi;
+#       echo -e "Stylus mapped to: $W$HStylsDi$Y &&$w $HTouchDi$G :is where Touch";
+#       echo    " ... is mapped (but Touch disabled by Dflt);";
+#       xinput map-to-output $HTouchId $HTouchDi; # uncommented to limit touch to Left screen && right with stylus (but maybe better to set Touch off)
+#       xinput --set-prop 'Wacom Intuos PT M 2 Finger touch' 'Device Enabled' 0; # attempt another way to go about disabling touch to hopefully focus stylus;
+#       exit 0; # not sure why touch keeps getting re-activ8d, but hopefully mapping them to sepR8 screens will isol8 inputs from each other better;
+#       # running: `xsetwacom get 'Wacom Intuos PT M 2 Pad pad' all` shows that very few of the standard configur8ion options are available on this tablet!  =(
+    }
+    elsif ($ARGV[0] =~ /^-*c(\d)$/   ){  chvp($1)       ;exit;}
+    say    $nwd8->colr('a') . "$z$w:$W `$G xir$g &&$G TI$W `$z ...$Y usually$R run$o after$B boot$M initializ8ion$C together$W;$z";
+    if    ($ARGV[0] =~ /^-*h(elp)?$/ ){ # above prints a colorful helpful reminder of my X11InputResolution `xir` utl usually B4 TI;
+      say "TI - TerminalInitializ8ion utility d8VS:$d8VS by PipStuart <Pip\@CPAN.Org> to spawn && place term windows around my multi-monitor setups.";
+      say " -h --help prints out this Help text then exits. Without options, TI should crE8 at least 3 d8ok (clock) terms && 4 rel8ively normal terms.";
+      say " -c[0-7]   Changes ViewPort (VirtualDesktop) to the index given (where usually 4Wx2H grid has 0-3 horiz left to right top row, 4-7 bottom).";
+      say " -d --debug prnts out Debugging text then exits. Below digits correspond to 4 of my .zshrc variables: \$HVW1, \$HVW2, \$HVW3, and \$HVH1 (as 4).";
+      say " -[1234]   prints x-offset coordin8 of my 2nd (ndx1) ViewPort as 1,ndx2 as 2, 3 as 3, and the y-offset coordin8 of my lower row of VP as 4.";
+      say " -B --Buttons calls xsetwacom && xinput like old tib basic shell-script which was too hard to get output of qx/ TI -d / to handle there. ?;";
+      say "2du:colr -d(ebug) output only if -t printing to TTY,add autO pOsition lAbLz (Uppp|Down).(Left,Midl,Rite) 2nAm dMid bAsd on Monitorz lAyout;";
+      exit;}} # nO mor pRamz 2 procS yet?
+  if      (scalar(@ifcs) >= 1){ # d8k8
+    my $gtwd= 256;my $gtxo=$ifcs[0][1]-$gtwd;my $gtWd=300; # gtwd was 300;
+    my $gtht=  72;my $gtyo=$ifcs[0][2]-$gtht;
+    system(        "env TERM_PROGRAM=gt gnome-terminal --geometry=+$gtxo-0 --hide-menubar --window-with-profile=d8k8 --role=d8k8 &      sleep 1;
+                    wmctrl -r :ACTIVE: -T                           d8k8                  ;wmctrl -r :ACTIVE: -b add,skip_pager,sticky;
+                    wmctrl -r :ACTIVE: -e                       10,$gtxo,$gtyo,$gtWd,$gtht;wmctrl -r :ACTIVE: -b add,skip_taskbar,below;sleep 1;
+                    env TERM_PROGRAM=gt gnome-terminal --geometry=+$gtht+0 --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=2du &
+            sleep 1;wmctrl -r :ACTIVE: -T                           2du                   ;
+                    env TERM_PROGRAM=gt gnome-terminal --geometry=+$gtwd+0 --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=sys &
+            sleep 1;wmctrl -r :ACTIVE: -T                           sys                   ;");
+    if    (scalar(@ifcs) >= 2){ # d8k4 && check if vertical?
+      my $gtwd=1919;my $gtxo=$ifcs[1][1]-$gtwd+$ifcs[0][1];my $gtx0=$ifcs[0][1];my $smwp='--show-menubar --window-with-profile';
+      my $gtht=  74;my $gtyo=$ifcs[1][2]-$gtht            ;my $gtx1=      0    ;my $wdeh="--working-directory=$ENV{'HOME'}";
+                                                              $gtx1=$ifcs[2][1] if(scalar(@ifcs) >= 3); # shift it back to middle if 3 wide
+      system(      "env TERM_PROGRAM=gt gnome-terminal --geometry=+$gtxo-0 --hide-menubar --window-with-profile=d8k4 --role=d8k4 &      sleep 1;
+                    wmctrl -r :ACTIVE: -T                           d8k4                  ;wmctrl -r :ACTIVE: -b add,skip_pager,sticky;
+                    wmctrl -r :ACTIVE: -e                       10,$gtxo,$gtyo,$gtwd,$gtht;wmctrl -r :ACTIVE: -b add,skip_taskbar,below;sleep 1;
+                    env TERM_PROGRAM=gt gnome-terminal --geometry=+$gtx0+0 $smwp=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=mvz  $wdeh/mvz/U2b &
+            sleep 1;wmctrl -r :ACTIVE: -T                           mvz                   ;
+                    env TERM_PROGRAM=gt gnome-terminal --geometry=-$gtx1+0 $smwp=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=muz  $wdeh/muz/U2b &
+            sleep 1;wmctrl -r :ACTIVE: -T                           muz                   ;");
+      if  (scalar(@ifcs) >= 3){ # d8k4 if flat  && vertical d8k8
+        my $gtwd=1919;my $gtxo=$ifcs[2][1]-$gtwd+$ifcs[1][1]+$ifcs[0][1];
+        my $gtht=  74;my $gtyo=$ifcs[2][2]-$gtht;
+        system(    "env TERM_PROGRAM=gt gnome-terminal --geometry=+$gtxo-0 --hide-menubar --window-with-profile=d8k4 --role=d8k4 &      sleep 1;
+                    wmctrl -r :ACTIVE: -T                           d8k4                  ;wmctrl -r :ACTIVE: -b add,skip_pager,sticky;
+                    wmctrl -r :ACTIVE: -e                       10,$gtxo,$gtyo,$gtwd,$gtht;wmctrl -r :ACTIVE: -b add,skip_taskbar,below;sleep 1;");
+        if(scalar(@ifcs) >= 4){ # none if grid  && d8k8  if flat
+          if($ifcs[2][4]){ # should be grid with positive y-offset in 3rd display but maybe check for sameness with 4th display too?
+          }else{              # should be flat
+          }}}}} # now loop thru all 7 othr chvpz && spawn regular gtz around the d8okz...
+ if(0){ # testing but code block commented 4 now
+  for(1..7){chvp($_);sleep 1;
+    if      (scalar(@ifcs) >= 1){
+      my $gtx0=$ifcs[1][1]+$ifcs[2][1];
+      system(    "env TERM_PROGRAM=gt gnome-terminal --geometry=+0-0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=Othr &
+          sleep 1;wmctrl -r :ACTIVE: -T                           Othr                  ;
+                  env TERM_PROGRAM=gt gnome-terminal --geometry=-$gtx0+0 --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=Ckm8 &
+          sleep 1;wmctrl -r :ACTIVE: -T                           Ckm8                  ;
+                  env TERM_PROGRAM=gt gnome-terminal --geometry=+0+0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=Test &
+          sleep 1;wmctrl -r :ACTIVE: -T                           Test                  ;");
+      if    (scalar(@ifcs) >= 2){
+        my $gtx0=$ifcs[0][1];
+        my $gtx1=$ifcs[2][1];
+        system(  "env TERM_PROGRAM=gt gnome-terminal --geometry=-$gtx1+0 --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=Ckm8 &
+          sleep 1;wmctrl -r :ACTIVE: -T                           Ckm8                  ;
+                  env TERM_PROGRAM=gt gnome-terminal --geometry=+$gtx0+0 --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=Test &
+          sleep 1;wmctrl -r :ACTIVE: -T                           Test                  ;");
+        if  (scalar(@ifcs) >= 3){
+          my $gtx0=$ifcs[0][1]+$ifcs[1][1];
+          system("env TERM_PROGRAM=gt gnome-terminal --geometry=-0+0     --show-menubar --window-with-profile=Pips8025GnomTerm-NiceFont-K2FL8025 --role=8025 &
+          sleep 1;wmctrl -r :ACTIVE: -T                           8025                  ;
+                  env TERM_PROGRAM=gt gnome-terminal --geometry=+$gtx0+0 --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=Test &
+          sleep 1;wmctrl -r :ACTIVE: -T                           Test                  ;");
+          if(scalar(@ifcs) >= 4){ # 2du:add 4th display termz...
+            if($ifcs[2][4]){ # should be grid with positive y-offset in 3rd display but maybe check for sameness with 4th display too?
+            }else{           # should be flat
+            }}}}}} chvp(0);
+ }
+}
+# HC3L0DNV:noglob eval around backticks may try to reach out to propag8 exported upd8 dimensions to invoking parent environment && variables, workz without?;
+#f       [[ "${(L)HHst}" ==  oni    ]] ||
+#        [[ "${(L)HHst}" ==  aku    ]]; then # 664||-1882,-e2586 1294w 3840-1958=-1882 wmc -r :ACTIVE: -e 0,664,-1,-1,-1;wmc -r:ACTIVE:-e 0,-1882,-1,-1,-1;
+  # Most of these below originally had --title= parameters like d8ok,d8ok-f,othr,2du,muz,mvz but current version no longer supports it. I've run s/title/role/g
+  #   since their purpose is similar but I wish GT would just enable titles&&less than 4 rowz again like B4. Lookz like wmctrl is Able2resolv all these issuez.
+  #     gtss;wmc -r :ACTIVE: -b add,sticky,below; # this was all linez aftr any d8ok (B4Itried2set -Titlez,add skip_(pager|taskbar) && upd8 geom wi -e rEsize)
+  # Apparently 1st resize field is gravity:0-WinMngr shud use grav specified in WM_SIZE_HINTS.win_gravity,1-NW,2-N,3-NE,4-W,5-cNtr,6-E,7-SW,8-S,9-SE,10-static.
+  # Same page: HTTPS://SuperUser.Com/questions/576057/bash-resize-terminal-xterm has `echo -e "\e[8;1;34t"` which also workz nicely 2 resize my d8ok terminalz.
+#if      [[ "$DISPLAY"               !=  "" ]] &&    # K3EMJoke:nEded 2 tSt for X.Org DISPLAY so that full-screen console linux TERM doesn't print warnings;
+#        [[ `xrg|g -c ' connected '` == "4" ]]; then # K3EM2x2H:crE8d new condition for grid monitor layout that tries2auto-detect connected count from `xrg`;
+# alias gtI='gt --geometry=+1620-$HHt0  --hide-menubar --window-with-profile=d8k8                               --role=d8k8                                 &;
+#  gtss;gtss;wmc -r :ACTIVE: -T d8k8                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
+#            wmc -r :ACTIVE: -e  10,1620,1008,300,72;wmc -r :ACTIVE: -b add,skip_taskbar,below;
+#            gt --geometry=+1620-0      --hide-menubar --window-with-profile=d8k8                               --role=d8k8                                 &;
+#       gtss;wmc -r :ACTIVE: -T d8k8                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
+#            wmc -r :ACTIVE: -e  10,1620,2088,300,72;wmc -r :ACTIVE: -b add,skip_taskbar,below;
+#            gt --geometry=-0-$HHt0     --hide-menubar --window-with-profile=d8k4                               --role=d8k4                                 &;
+#       gtss;wmc -r :ACTIVE: -T d8k4                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
+#            wmc -r :ACTIVE: -e 10,1921,1006,1919,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
+#            gt --geometry=+0+$HHt0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
+#       gtss;wmc -r :ACTIVE: -T test                ;
+#            gt --geometry=+$HWd0+$HHt0 --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=Test                                 &;
+#       gtss;wmc -r :ACTIVE: -T Test                ;
+#            gt --geometry=+$HWd0+0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
+#       gtss;wmc -r :ACTIVE: -T test                ;
+#            gt --geometry=+0-$HHt0     --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=ckm8                                 &;
+#       gtss;wmc -r :ACTIVE: -T ckm8                ;
+#            gt --geometry=+$HWd0-0     --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=Ckm8                                 &;
+#       gtss;wmc -r :ACTIVE: -T Ckm8                ;
+#            gt --geometry=-$HWd0+0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &;
+#       gtss;wmc -r :ACTIVE: -T othr                ;
+#            gt --geometry=-0+$HHt0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=Othr                                 &;
+#       gtss;wmc -r :ACTIVE: -T Othr                ;
+#            gt --geometry=-$HWd0+$HHt0 --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=8xt                                  &;
+#       gtss;wmc -r :ACTIVE: -T 8xt                
+#            gt --geometry=+0-0         --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                  &;
+#       gtss;wmc -r :ACTIVE: -T 2du                 ;
+#            gt --geometry=-0+0         --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=sys                                  &;
+#       gtss;wmc -r :ACTIVE: -T sys                '; # might want to experiment with 5-centered or 10-static gravity to see if they're any better than S && SE
+# alias gtm='gt --geometry=+0+$HHt0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
+#       gtss;wmc -r :ACTIVE: -T test                ;
+#            gt --geometry=+0-0         --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=ckm8                                 &;
+#       gtss;wmc -r :ACTIVE: -T ckm8                ;
+#            gt --geometry=-$HWd0+$HHt0 --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &;
+#       gtss;wmc -r :ACTIVE: -T othr                ;
+#            gt --geometry=+0+0         --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
+#       gtss;wmc -r :ACTIVE: -T test                ;
+#            gt --geometry=+$HWd0+0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
+#       gtss;wmc -r :ACTIVE: -T test                ;
+#            gt --geometry=+$HWd0+$HHt0 --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
+#       gtss;wmc -r :ACTIVE: -T test                ;
+#            gt --geometry=+$HWd0-0     --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=ckm8                                 &;
+#       gtss;wmc -r :ACTIVE: -T ckm8                ;
+#            gt --geometry=-0+$HHt0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &;
+#       gtss;wmc -r :ACTIVE: -T othr                ;
+#            gt --geometry=-0+0         --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=Othr                                 &;
+#       gtss;wmc -r :ACTIVE: -T Othr                ;
+#            gt --geometry=-$HWd0+0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=muz    --working-directory=~/muz/U2b &;
+#       gtss;wmc -r :ACTIVE: -T muz                 ;
+#            gt --geometry=+0-$HHt0     --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=mvz    --working-directory=~/mvz/U2b &;
+#       gtss;wmc -r :ACTIVE: -T mvz                '; # Aku gti below fully loadz GTz in all 8 ViewPortz
+# alias gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt8;gtss;chv4;gtss;gt8;gtss;chv5;gtss;gt8;gtss;chv6;gtss;gt8;gtss;chv7;gtss;gt8;gtss;chv3;gtss;gt8;chv0';
+#elif    [[ "$DISPLAY"               !=  "" ]] &&
+#        [[ `xrg|g -c ' connected '` == "3" ]] && [[ "$H3WF" == "1" ]]; then # H78M19EK:insertd new H variable test for whether using Sony50"1080iTV or ...
+  #   ... 32"Viotek display as 3-Wide-Flag 4Aku; # Below used to just have "-e ~/bin/d8ok" before appending the -d parameter so needing the -x instead.
+  # I71M8wxh:Maybe Ubu18.04 upd8d GnomTerm or GnomTwekTool gone dropd scaling so old d8ok32->36 && main8->7.9 nEdz x664,4504,2584 chopd 4 4mor char widthz;
+  # q 1306/34=38.41176470588235294117647058823529411765
+  # 1306-1292=14 mAB scrlbR widt; 4x38=152; 512,4352,2432; mIt nEd2scAl 1306 wIdr2 1458; try even shorter 1268, wi each of 34 char widz 38px or 33 wo padspc?
+  # q 1458/34=42.882352941176470; 4x42=166; 496,4336,2416; othr was +306+0 up2 466;
+# alias gtI='gt --geometry=+784-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
+#       gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
+#            wmc -r :ACTIVE: -e  10,824,1006,1108,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
+#            gt --geometry=-0-0       --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
+#       gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
+#            wmc -r :ACTIVE: -e 10,4504,1006,1268,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
+#            gt --geometry=-0-0       --hide-menubar --window-with-profile=d8fd                               --role=d8fd                                   &;
+#       gtss;wmc -r :ACTIVE: -T d8fd                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
+#            wmc -r :ACTIVE: -e 10,2416,1006,1458,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
+#            gt --geometry=+466+0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                   &;
+#       gtss;wmc -r :ACTIVE: -T othr                ;
+#            gt --geometry=-1920+0    --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=sys                                    &;
+#       gtss;wmc -r :ACTIVE: -T sys                 ;
+#            gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &;
+#       gtss;wmc -r :ACTIVE: -T 2du                '; # might want to experiment with 5-centered or 10-static gravity to see if they're any better than S && SE
+# alias gtm='gt --geometry=+0+0       --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                   &;
+#       gtss;wmc -r :ACTIVE: -T test                ;
+#            gt --geometry=-1920+0    --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=Othr                                   &;
+#       gtss;wmc -r :ACTIVE: -T Othr                ;
+#            gt --geometry=-3840+0    --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=muz    --working-directory=~/muz/U2b   &;
+#       gtss;wmc -r :ACTIVE: -T muz                 ;
+#            gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=mvz    --working-directory=~/mvz/U2b   &;
+#       gtss;wmc -r :ACTIVE: -T mvz                '; # Aku gti below fully loadz GTz in all 8 ViewPortz
+# alias gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt5;gtss;chv4;gtss;gt5;gtss;chv5;gtss;gt5;gtss;chv6;gtss;gt5;gtss;chv7;gtss;gt5;gtss;chv3;gtss;gt5;chv0';
+#else # back to older Aku GnomTerm aliases for just 2 24-inch Asus displays, before adding SonyTV or new curved as 3rd display
+# alias gtI='gt --geometry=-1882-0    --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
+#       gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
+#            wmc -r :ACTIVE: -e  10,664,1006,1306,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
+#            gt --geometry=-0-0       --hide-menubar --window-with-profile=d8fd                               --role=d8fd                                   &;
+#       gtss;wmc -r :ACTIVE: -T d8ok-fd             ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
+#            wmc -r :ACTIVE: -e 10,2584,1006,1306,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
+#            gt --geometry=-1920+0    --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                   &;
+#       gtss;wmc -r :ACTIVE: -T othr                ;
+#            gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=sys                                    &;
+#       gtss;wmc -r :ACTIVE: -T sys                 ;
+#            gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &;
+#       gtss;wmc -r :ACTIVE: -T 2du                '; # might want to experiment with 5-centered or 10-static gravity to see if they're any better than S && SE
+# alias gtm='gt --geometry=+0+0       --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                   &;
+#       gtss;wmc -r :ACTIVE: -T test                ;
+#            gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=Othr                                   &;
+#       gtss;wmc -r :ACTIVE: -T Othr                ;
+#            gt --geometry=-1920+0    --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=muz    --working-directory=~/muz/U2b   &;
+#       gtss;wmc -r :ACTIVE: -T muz                 ;
+#            gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=mvz    --working-directory=~/mvz/U2b   &;
+#       gtss;wmc -r :ACTIVE: -T mvz                ';
+# alias gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt4;gtss;chv4;gtss;gt4;gtss;chv5;gtss;gt4;gtss;chv6;gtss;gt4;gtss;chv0'; # Aku loadz GTz in left 6 ViewPortz
+#fi
+#else # following settings will hopefully work well for single-screen Ryu, Ken, && Chun (Taki's hard drive failz && she runz slow && hot, she's pretty dead)
+# if     [[ "${(L)HHst}" ==  ken*   ]]; then # should be almost the same as Aku's left screen, but mAB 10-static like Chun will also position best?
+#   alias gtI='gt --geometry=-0-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
+#       gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
+#            wmc -r :ACTIVE: -e  10,664,1006,1306,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
+#            gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                   &;
+#       gtss;wmc -r :ACTIVE: -T othr                ;
+#            gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &;
+#       gtss;wmc -r :ACTIVE: -T 2du                ';
+# elif   [[ "${(L)HHst}" ==  ryu*   ]]; then # Ryu should just resize to Aku's d8ok y-offset + 120    (for display pixel heightz 1200 - 1080)
+#   alias gtI='gt --geometry=-0-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
+#       gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
+#            wmc -r :ACTIVE: -e  10,664,1126,1306,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
+#            gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                   &;
+#       gtss;wmc -r :ACTIVE: -T othr                ;
+#            gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &;
+#       gtss;wmc -r :ACTIVE: -T 2du                ';
+# elif   [[ "${(L)HHst}" ==  chun*  ]]; then # d8ok resize geometry to fit Chun best, starting 421 602 886 198, each row is 49 pixlz high so less 147 for 3
+#   alias gtI='gt --geometry=-0-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
+#  gtss;gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
+#            wmc -r :ACTIVE: -e    10,420,749,886,51;wmc -r :ACTIVE: -b add,skip_taskbar,below;
+#            gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                   &;
+#       gtss;wmc -r :ACTIVE: -T othr                ;
+#            gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &;
+#       gtss;wmc -r :ACTIVE: -T 2du                ';
+# fi
+# alias gtm='gt --geometry=+0+0       --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                   &;
+#       gtss;wmc -r :ACTIVE: -T test                ;
+#            gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=muz    --working-directory=~/muz/U2b   &;
+#       gtss;wmc -r :ACTIVE: -T muz                 ;
+#            gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=mvz    --working-directory=~/mvz/U2b   &;
+#       gtss;wmc -r :ACTIVE: -T mvz                ';
+# alias gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt3;gtss;chv3;gtss;gt3;gtss;chv0'; fi; #xport Hm='muz';export HM='mvz'; # can I even use these 4 anythingd?;
+#alias cti='ct   ti'; # ChangeTitle 2 Init as quick simple similar command B4 gti or ti to call right after booting up && starting my first default GnomTerm;
+#alias  ti='cti;gti'; # maybe l8r mk a custom TermInit alias here wich spawnz more than just GTz but mAB some alpha'd Sakuraz|LilyTermz|QTerminalz etc. too;
+#lias gti='gtI;sleep 3;wmctrl -o 1280,0;sleep 3;gt3;sleep 3;wmctrl -o 2560,0;sleep 3;gt3;sleep 3;wmctrl -o 3840,0;sleep 3;gt3;sleep 3;wmctrl -o 0,0';
+# abov are new Ubu14.10 GT aliasz tstd on Chun; mA nEd geom chgz 4 Akuz 2 monitorz; tryd 2 ch d8ok profile 2 autorun d8ok nstd of zsh but can't figure out yet;
+#   mIt also want 2 try 2 figure out how 2 autom8 dangling d8ok over edge && Dflt visible on all wrkspcz && hide wndw bordr tItlbar;
+# according 2 HTTP://AskUbuntu.Com/questions/41093/is-there-a-command-to-go-a-specific-workspace I can send Ckm8+Othr GTz 2> wrkspcz wi wmctrl or xdotool:
+#   Chun:`wmctrl -d`:0  * DG:  5120x800   VP: 0,0  WA: 73,24 1207x776   N/A; thN wmctrl -o 0,0 or 1280,0 or 2560,0 or 3840,0 for 4Compiz ViewPorts in1 DsktpGrp
+#    Aku:`wmctrl -d`:0  * DG: 15360x2160  VP: 0,0  WA:  0,24 3840x1056  N/A; thN_1920, 3840, _5760, 7680, _9600, 11520, _13440, 15360; rEspAcd2alIn both dimz
+#     add`wmctrl -b add,sticky,below` after -r IdNtify d8ok window or just :ACTIVE: after spawnd;d8ok wmctrl -e -1,664,1004 [geom +664(-0|+1004)] &&-e +2586-0;
+# M8HMHpix:Wanting to start updating above gti stuff to use an entirely new system that just reads connected monitors dimensions && layout from xrg then cfgz
+#   d8okz with wmc mapping to displays easily then throws GTz in all vcz around the d8okz for any known layout. Will probably start just re-aliasing ti 1st;
+# Wish I could parse xrg in perl. Maybe can?

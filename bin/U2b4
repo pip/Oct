@@ -1,0 +1,2 @@
+#!/usr/bin/perl
+use strict;use warnings;use utf8;use v5.22;use Oct::U8;U2b4(@ARGV);

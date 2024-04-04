@@ -1,0 +1,83 @@
+#!/usr/bin/perl
+use strict;use warnings;use utf8;use v5.22;my $d8VS='O33LL33O';my @bfts=(); #'01234567Testing.GHIJ'); # Big-F0nt-Text-Strings;
+use Oct::a8;use   Oct::f8       ;my @od8a=();my $widt=$ENV{'COLUMNS'}  ;my $ccod='Rb';
+my   $stin; my $dlf8 = Oct::f8->new();my @Sd8a=();my $hite=$ENV{'LINES'  }  ; # mAB mk q8?; 2du:get full lsd8 2 pIp in2 f8 thN mAB bak in2 columnz wiclps;
+if(!-t STDIN){ $stin = join('',<STDIN>); # nEd UTF8 DcOd hEr? hmm hite mismatch between char map height from f8.pm but term LINES here somewhat, shud unify;
+  o9($stin) if($stin && 0); # sO it Cmz th@ yS I can get full lsd8 colrz thru stdin thN shOing from print-out9 hEr yet, but how shud it B unstripd rIt 4 in;
+} # 2du:hndl stin full DtAilz like lca lsd8 --color=always,parse-out SKpz in bfts like for stin,fix misalIgnmNt BtwEn stdin segment && filler up2 64x16 blox,
+  #   SKp f0nt cOdz 2 chng thOz 2,add dbl-wId xx -2 skipz altrn8 lInz;
+if(@ARGV){for(@ARGV){push(@bfts,$_); # probably Dtect pRamz, flagz, optnz, help, mostly betr from here than l8r with full bfts;
+}}        my $hhit=$hite - ($hite % 16); # this is no pipe of hopefully mainly just ForeGround STDinput so pad out single self-segment blocks
+             $hhit=    15; # if(1); # just stRt 1 row
+if(  defined($stin) && $stin){   # then perhaps pad columns && bild q8 d8a struct of S cOdz && mAB spec 2 trunc8 big charz or pad down to at min 16?
+  my $btln=0;my $l8SS=''; # 'Gb'; # Botm-Line && latest-SKp-S-cOd
+  my $rtcl=0; # Rite-Colm, ahem don't need these since you can just keep pushing new append anon-arrays at the right times to, but jumping && indexing l8r tho;
+  while  ($stin=~ s/^(.|\n)//){my $hedc=$1;
+    if   ($hedc eq "\e"   ){ # handl SKpz 2 set nXt S [0] cOd from
+    # 2du:rEd thru full stin 2 lOd od8a proprly 4 all SKpz 2 pass && filtr;
+      # detect stin nXt hed '[' \d ;:m etc CquNcz 2 upd8 S cOdz furthr;
+      if  ($stin =~ s/^(\[[0-9:;]*m)//){my $skpc="\e$1";my $rsSc=c($skpc); # add ^ , ; or wutevr 2 kEp apNdng cOd segmNtz;
+        o9($rsSc) if($rsSc); # c seemz 2 B just getting FDAL && probably adding S3_ FG 256 Ndx nstd of bg or :SGRz why?;
+      # $od8a[  $btln][$rtcl-1][0].=$rsSc if($rtcl); # prEpNd S cOdz OvrId but shud merg smRtly probably
+      # $od8a[  $btln][$rtcl-1][1].=$skpc; # try apNdng SKp 2 prEVous tXt fEld 4 propag8ing orig lsd8 or wutevr?;
+      # @{$od8a[$btln][$rtcl++]}=(              ''  ,$skpc); # mAB apNd just SKp tXt wi nO S cOd str?;
+      # $od8a[  $btln][$rtcl  ][1].=                 $skpc ; # mAB apNd 2 curNt tXt?;
+        if($rsSc =~  /^[0-9A-Z._:=~%\^]+$/i){ #$l8SS=$rsSc ; # mA want some mor complX chkng 4 wut 2 upd8 or how 2 merg thM, rEvert, etc. 4 further;
+          $od8a[$btln][$rtcl  ][0] =                 $rsSc ; # apNd S cOdz 2 curNt [0] but shud smRtly prEpNd F: or Fb: 2 wutevr; cud .= ",$rsSc" AgN lIk B4;
+        }} # && also mAB sometImz str8 OvrId or cnfigUrably merg wi Xisting?;
+    }else{push(@od8a, []) while(@od8a < $hhit); # probably normal UTF-8 I need to collapse to ASCII ord or psfu f0nt ...
+      if ($hedc eq "\n"   ){ # if \n, want 2 mAB drop blankd bkgrnd spAcd blox until EoL B4 advancing nXt botm od8a line
+        @{    $od8a[$btln][$rtcl++]}=(($l8SS || ':N'),  ' ') while($rtcl < ($widt-3)); # trak cOdz && handl tabz mAB filing mor charz lIk in lsd8 t0tl ?;
+      # @{    $od8a[$btln][$rtcl++]}=(($l8SS || ''  ), "\n"); # mAB apNd NwLnz 2 B4 padng spAcd 2 Nd?;
+        $rtcl=0;$btln++; # proly blank to end tho abov B4 rEset hEr? was 'Cm' trAil spAcz, 'Rb' NwLn, && 'Gb' BlOw for the normal new head-char;
+      }else{@{$od8a[$btln][$rtcl++]}=(($l8SS || ''  ),$hedc);}}}
+}else{for    my $lndx (0..$hhit){ # or [0] && [1] 4 S prE cOd && F tXtchr;
+    for      my $cndx (0..$widt){@{$od8a[$lndx][$cndx]}=('wk',' ');}} # so no input just got initd to all spaces wich can thN B popUl8d with bfts in b;
+# $od8a[          0][    0][0]=':N';     # try a :Normal reset ^ zer0 to stRt the top-left;
+};my $sOfR=0; # O2TLLOvN:tAkz any b64 f0nt char && S cOdstr && undrlAyz (or OvrIdz) bakgrnd of STDIN wi big charz && l8r wrIt 2 SGR lAyrz && dur8-bAsd anim8nz;
+# O32L6Hrc:from ~/.Hrc the following brief sections should expand 2 .f0nt namz;
+# cf:01234567 ->   7c93O537 => standrd0, roman-1 , futura-2, lat4-163 ,  lat4-16+, finnish5, gr.f16  , thin7   ; # c8:f0nt:Dfalt b64 ordr filename map
+# cf:89ABCDEF ->   59ABCDEF => tallg88d, france9 , Alt-8x16, Bold     ,  CyrilliC, moDern-1, EurotypE, Fraktur ; # almOst alwAys oppOsing cAse rEin4cez  V8z
+# cf:GHIJKLMN ->   GHIJKLMN => Greek   , Hebrew  , Inverted, scottJ   ,  blocK   , Lcd     , Modern-2, Norway  ; # mv all filenamez 2     cAse rEin4ce more?
+# cf:OPQRSTUV ->   OPQRSTUV => crOstall, suPer   , teQton  , ReveRse  ,  Surreal , Thai    , coUrier , silVer  ;
+# cf:WXYZabcd ->   WXYZABCD => backWard, bigXerif, stretchY, ZanZurf  ,  FUTURa-1, bROADWAY, cALLIGRA, dECO    ;
+# cf:efghijkl ->   EFGHIJKL => eMPTY   , fAT     , gRFIXED , hEARST   ,  iTALiCS , CRAKRjAK, kIDS-1  , lEDFONT ; # V8 failz:035789JQ XYZxz._ pre rename && mv
+# cf:mnopqrst ->   MNOPQRST => mED     , nICEFnT , FRESNo  , SLOppY   ,  ANTIqUE , rOMAN3  , sCRIPT  , tEKtItE ; # swapd fRAKTUR && Fat to match cs:Fraktur on
+# cf:uvwxyz._ ->   UVWXYZ__ => COMPuTER, MEDIEvAL, wEIRD   , xANxERIF ,  HyLAS   , zWIzz-1 , bnc.drop, bnc_blok; # max4th level rash sOfR _Lm:*
+my @f0nz=qw( standrd0 roman-1  futura-2 lat4-163  lat4-16+ finnish5 gr.f16   thin7     tallg88d france9  Alt-8x16 Bold      CyrilliC moDern-1 EurotypE Fraktur
+             Greek    Hebrew   Inverted scottJ    blocK    Lcd      Modern-2 Norway    crOstall suPer    teQton   ReveRse   Surreal  Thai     coUrier  silVer
+             backWard bigXerif stretchY ZanZurf   FUTURa-1 bROADWAY cALLIGRA dECO      eMPTY    fAT      gRFIXED  hEARST    iTALiCS  CRAKRjAK kIDS-1   lEDFONT
+             mED      nICEFnT  FRESNo   SLOppY    ANTIqUE  rOMAN3   sCRIPT   tEKtItE   COMPuTER MEDIEvAL wEIRD    xANxERIF  HyLAS zWIzz-1 bnc.drop bnc_blok );
+my $SFOF='G'; # SKp Foreground On  Forgrnd; # abov just b10 of f0nt b64 name-key should index full base-namez abov without nEding unordrd hash or LUT;
+my $Sbob='b'; # SKp bACKGROUND oFF bAKGRND; # padf is char-width of big-charz, Big-Char-Column-Offset can adjust from alwayz 8 x big-charz output sOfR, f0nt c;
+my $SbOF='c';my $padf=8;my $bcco=0;my $fc0d='t'; # split bfts in2 od8a alsO... or just interleave S cOdz && f 2;
+for          my $bftx(           @bfts    ){ # $(f8 Mr testwordnextdone Yc testwordnext Rb testword Wg test) shOz colrz nIcly now, shud kEp wId positn BtwEn;
+  if                 ($bftx =~ /^-?-?he?l?p?$/       ){                         # probably mk some -help tXt output 2 doQmNt CLI;
+  }elsif             ($bftx =~ /^-?-?f0?n?t?=?(\S)$/ ){my $nwf0=$1;             # nEd 2 loadf0nt on proper abrEV8n 4 fIlnAm or betr load new f8 obj;
+    if   ($nwf0 =~ /^[0-9A-Z._]$/i){$fc0d=$nwf0; #$dlf8->loadf0nt("$f0nz[$sb10{$nwf0}].f0nt");  # hopefuly just lOd new .f0nt Ovr Dfalt or earlier one?;
+      $dlf8 = Oct::f8->new("$ENV{'HOME'}/lib/Oct/f8/f0nt/$f0nz[$sb10{$nwf0}].f0nt");} # if nwf0 =~ sb64 indX nAm && lOd new obj 2 Uz new f0nt with;
+  }elsif             ($bftx =~ /^([0-9A-Z._])([0-9A-Z._]?)$/i){$SbOF=$1;if(defined($2)){$Sbob=$2;}else{$Sbob='b';} # bAsic Fb b64 colr cOd alOn setz 4 nXt tXt;
+  }elsif             ($bftx =~ /^([FDALOHbdalohf]*):([-:0-9A-Z._,~=%^]+)$/i){my($lyrz,$codz)=($1,$2); #$od8a[$_   ][($sOfR*$padf)+$bcco+   7 ][0].=",$bftx";
+    if   ($lyrz =~      /^[FDALOH]/ && $codz =~      /^(\S)/){$SbOF=$1;}elsif($lyrz =~ /^\S{1}[FDALOH]/ && $codz =~ /^\S{1}(\S)/){$SbOF=$1;}
+    elsif($lyrz =~      /^[bdaloh]/ && $codz =~      /^(\S)/){$Sbob=$1;}elsif($lyrz =~ /^\S{1}[bdaloh]/ && $codz =~ /^\S{1}(\S)/){$Sbob=$1;}
+    for(0..15){$od8a[$_   ][($sOfR*$padf)+$bcco+   7 ][0].=",$bftx";} # du I nEd anothr loop 4 columnz sO I'm not just upd8ing last 7th char ? Hmm. ;
+  }elsif             ($bftx =~ /^-?-?b?c?co=?(-?\d+)$/){my $nwco=$1;$bcco=$nwco; # Big-Char-Colm-Ofset 2 rEalIn aftr pad9 jmpz bak2 pad8(bAsic incr4all pad9z);
+  }elsif             ($bftx =~ /^-?-?pad?c?=?(-?\d+)$/){my $nwpd=$1;$padf=$nwpd; # mA want 2 skip sOfR or ofset calQ or custom 2 jmp from pad9 2 8 Ovr gapz?;
+  }else{ # 2du:fix bug wher just Sing F colr wich shud get autO k for Sbob duzn't rEset a caret ^ zer0 :Normal sO stRt of F blEdz Ovr Byond Sbob off colr cool;
+    for      my $bndx (0..(length($bftx)-1)){ # need to parse-out SKpz thN substr or split //;
+      for    my $rndx (0..   15){
+        for  my $cndx (0..    7){
+          $od8a[       0+  $rndx][(($sOfR+$bndx)*$padf)+$bcco+$cndx][0]  =  $SFOF ; #  'b:'; # $SFOF ; # 'K' ; # proly betr2just autO-setOnly b: 4 OF && ob ?;
+          if(substr($dlf8->{'f0ntgd8a'}[ord(substr($bftx,$bndx,1))][$rndx],$cndx,1) eq '#'){ # only truth bit 2 assume, or betr 2 neg8 dash nstd?;
+          # $od8a[     0+  $rndx][(($sOfR+$bndx)*$padf)+$bcco+$cndx][0]  =~ s/^(:N)*,*/:N,/; # just prEpNd a singl solo :Normal 2 Ech oFF cell;
+            $od8a[     0+  $rndx][(($sOfR+$bndx)*$padf)+$bcco+$cndx][0] .=  $SbOF ; # 'b'; # ='Bg'
+            $od8a[     0+  $rndx][(($sOfR+$bndx)*$padf)+$bcco+$cndx][1]  =    '#' unless($od8a[ $rndx][(($sOfR+$bndx)*$padf)+$bcco+$cndx][1]);
+          }else{ # dash or spAc or dot or equals or something small;
+            $od8a[     0+  $rndx][(($sOfR+$bndx)*$padf)+$bcco+$cndx][0]  =~ s/^(:N)*,*/:N,/; # just prEpNd a singl solo :Normal 2 Ech oFF cell;
+            $od8a[     0+  $rndx][(($sOfR+$bndx)*$padf)+$bcco+$cndx][0] .=  $Sbob ; #. "N,:N,b:$Sbob"; # 'k'; # ='Yr' # try :N rEset (clobrng Sbob probly);
+            $od8a[     0+  $rndx][(($sOfR+$bndx)*$padf)+$bcco+$cndx][1]  =    '-' unless($od8a[ $rndx][(($sOfR+$bndx)*$padf)+$bcco+$cndx][1]);
+          }} #$od8a[   0+  $rndx][(($sOfR+$bndx)*$padf)+$bcco+   7 ][1] .=  $z    ; # try alwAyz zer0 :N SKp aftr tXt of last big-char sub-char pixL but EoL?;
+      }; $sOfR+=($bndx+1) if($bndx == (length($bftx)-1));}}} my $rz=0;
+for       my $lndx (0..$hhit){
+  for     my $cndx (0..$widt){$Sd8a[ $lndx].=S($od8a[$lndx][$cndx][0]) if( length($od8a[$lndx][$cndx][0])); #exit($rz);
+    if    (  $cndx <   $widt){$Sd8a[ $lndx].=  $od8a[$lndx][$cndx][1]  if(defined($od8a[$lndx][$cndx][1]));}else{$Sd8a[$lndx].="\n";}}} $rz+=o8($_) for(@Sd8a);

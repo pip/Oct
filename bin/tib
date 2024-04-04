@@ -1,0 +1,106 @@
+#!/usr/bin/zsh
+# HB5L80f8:~/bin/tib crE8d by PipStuart <Pip@CPAN.Org> from HTTPS://AskUbuntu.Com/questions/839161/limit-a-graphics-tablet-to-one-monitor for tablet; `xrg`:
+# M8FMGNUL:used to have 4 displays in a grid but now just have 3 in a horizontal bar so no more UpLt DnRt && now just l,m,r;
+# M8MMEnew:added Dell 2407WFP to have grid again so reverted settings but should use TI to obtain displays in layout so won't have to redo settings often;
+# DisplayPort-0    connected primary 1920x1080+1920+0    (normal left inverted right x axis y axis) 521mm x 293mm
+# DisplayPort-1 disconnected                             (normal left inverted right x axis y axis)
+# DisplayPort-2    connected         1920x1080+0+1080    (normal left inverted right x axis y axis) 531mm x 299mm
+#      HDMI-A-0    connected         1920x1080+1920+1080 (normal left inverted right x axis y axis) 531mm x 299mm
+#       DVI-D-0    connected         1920x1080+0+0       (normal left inverted right x axis y axis) 698mm x 393mm
+# L91MIGHT:when called without tablet plugged into USB   (which should be detected for && handled maybe more gracefully), yields:
+# Cannot find device 'Wacom Intuos PT M 2 Pad pad'.
+# Cannot find device 'Wacom Intuos PT M 2 Pad pad'.
+# Cannot find device 'Wacom Intuos PT M 2 Pad pad'.
+# Cannot find device 'Wacom Intuos PT M 2 Pad pad'.
+# Cannot find device 'Wacom Intuos PT M 2 Pad pad'.
+# Cannot find device 'Wacom Intuos PT M 2 Pad pad'.
+# Usage: xinput map-to-output <device> <output name>
+# Stylus mapped to: HDMI-A-0 && DisplayPort-2 :is where Touch is mapped (but Touch disabled by Dflt);
+# Usage: xinput map-to-output <device> <output name>
+# unable to find device Wacom Intuos PT M 2 Finger touch;
+  VERSION='0.0';d8VS='O2ILJ1RG'; # HTTPS://UbuntuForums.Org/showthread.php?t=1515562 describes setting up /etc/X11/xorg.conf && other somewhat old stuff;
+#HDisplLt='DisplayPort-0'; # O1MLHx0r:gotta Uz `TI -d` rEsultz2upd8hEr in .pl?;
+# Port Widt Hite Xofs Yofs prIm dMid    ## 2du:just add xsetwacom cmndz 2 .pl,
+#  DP2 1920 1080    0    0    0    2    ##   && call `TI -B` 4 tib instead?;
+#  DP1 1920 1080 1920    0    0    1 
+#  DP0 1920 1080 3840    0    1    0 
+# Disconnected: HA0 DD0; $HVW1=5760 $HVW2=11520 $HVW3=17280 x (4)$HVH1=1080;
+ HDisplLt='DisplayPort-2';
+HDisplMd='DisplayPort-1';
+#HDisplRt='DisplayPort-2'; # M9IMHDTI:shud use TI 2 get xrandr layout;
+ HDisplRt='DisplayPort-0';
+#HDisplUR='DisplayPort-0';               #                                      (my UpRight  screen)  ## mAB 2du l8r is Dtect && add -h --help tXt message;
+#HDisplDL='DisplayPort-2';               # desired display device from `xrandr` (my DnLeft   screen)  ## executable name "tib" short for TabletInitButtons,
+#HDisplDR='HDMI-A-0';                    # desired display device from `xrandr` (my DnRight  screen)  ##   but also maps display input && disables touch;
+#HDisplUL='DVI-D-0';                     #                                      (my UpLeft   screen)  ## nOt:conditional syntax BlO mIt nEd /usr/bin/zsh?;
+ HDisplUL='DVI-D-0';
+ HDisplUR='DisplayPort-2';
+ HDisplDL='HDMI-A-0'     ; # from: HTTPS://GitHub.Com/LinuxWacom/input-wacom/wiki/Device-IDs :
+ HDisplDR='DisplayPort-1'; #   mAB my DvIc is: "056a:0303 	CTH-680 	Intuos Pen & Touch (M) 		3.14 	2.6.30*† 	0.9" or similR?;
+#HPTPadDv='Wacom Intuos PT M 2 Pad pad'; # desired    pad  device from `xinput`
+#HPTPadDv='UGTABLET 13.3 inch PenDisplay'; # O2ILIxOr:sO `xinput` is probably one of:
+ HPTPadDv='UGTABLET 13.3 inch PenDisplay Pen (0)' ;
+#HPTPadDv='UGTABLET 13.3 inch PenDisplay Mouse'   ;
+#HPTPadDv='UGTABLET 13.3 inch PenDisplay Keyboard';
+ HStylsDi="$HDisplLt";  ## Left is Dflt; # l8r allow Command-Line-Parameters to specify remap of Stylus Identifier to any Display device in my quad-grid;
+#HStylsDi="$HDisplMd";  ## Midl is Dflt;
+ HStylsId=`xinput | grep                "Pen stylus"                    | cut -f 2 | cut -c 4-5`;
+ HTouchId=`xinput | grep                                 "Finger touch" | cut -f 2 | cut -c 4-5`;
+#HTouchDi="$HDisplRt";  ## Rite is Dflt;
+ HTouchDi="$HDisplLt";  ## Left is Dflt; # l8r allow Command-Line-Parameters to specify remap of Touch  Identifier to any Display device in my quad-grid;
+#echo -e "$G      DVI-D-0  <=  UpLt, UpRt  =>  DisplayPort-0;";
+#echo      'DisplayPort-2  <=  DnLt, DnRt  =>       HDMI-A-0;';
+#echo      'Dflt HDMI-A-0            DnRt  =>  xinput map-to-output stylus ...';
+#echo 'unless $1 param is: UL,UR,DL,DR or D0,P0,P2,H0 to remap from Dflt DnRt;';
+#echo      'Wacom Intuos PT M 2 Pad pad, "Pen stylus" and "Finger touch",  Tou';
+#echo 'ch and Gesture off, Buttons:  UpLtFar 3, Cls Ctrl-z,  UpRtCls h, Far e;';
+#echo -e "$G DisplayPort-0  <=  Left, *DP-1 == Midl, Rite  =>  DisplayPort-2 ;";
+#echo      ' Dflt               Midl   DP-1 => xinput map-to-output stylus ...';
+#echo 'unless $1 param is: l,m,r or 0,1,2 to remap from Dflt Midl;';
+#echo 'Wacom Intuos PT M 2 Pad pad, "Pen stylus" and "Finger touch", Touch and';
+#echo ' Gesture off, Buttons:  UpLtFar 3, ULClose Ctrl-z,  UpRtClose h, Far e;';
+# undo (pad upper-left close Btn 1) pen lower middle-mouse-btn3, upper right-mouse-btn2, stylus contact with pad left-mouse-btn1
+xsetwacom set "$HPTPadDv" Touch                        off; # mAB 2du l8r add pRam tStz 4 NAbling Touch && Gesturez AgN;
+xsetwacom set "$HPTPadDv" Gesture                      off;
+#setwacom set "$HPTPadDv" "Wacom Proximity Threshold"  32 ; # normally 10 for Intuos (property not supported,does not exist on mine) && 42 for Graphire
+xsetwacom set "$HPTPadDv" Button 1 "key +ctrl +z -z -ctrl"; # UpLtCls undo
+xsetwacom set "$HPTPadDv" Button 3 "key        3         "; # UpLtFar 3 AutoZoom (Krita)  # not sure yet what these keys do in (Gimp), (InkScape), etc.
+xsetwacom set "$HPTPadDv" Button 8 "key        h         "; # UpRtCls HotColrBar (Krita)
+xsetwacom set "$HPTPadDv" Button 9 "key        e         "; # UpRtFar EraserMode (Krita)
+if     [[ "$1" !=   "" ]]; then # test command-line params for anything resembling display loc8ion or interface with index number as 2-char codes to ID them;
+  if   [[ "$1" ==  "l" || "$1" ==  "0"                                                                 ]]; then HStylsDi="$HDisplLt";
+  elif [[ "$1" ==  "m" || "$1" ==  "1"                                                                 ]]; then HStylsDi="$HDisplMd";
+  elif [[ "$1" ==  "r" || "$1" ==  "2"                                                                 ]]; then HStylsDi="$HDisplRt"; fi; fi
+# if   [[ "$1" == "UL" || "$1" == "ul" || "$1" == "D0" || "$1" == "d0" || "$1" == "DV" || "$1" == "dv" ]]; then HStylsDi="$HDisplUL";
+# elif [[ "$1" == "UR" || "$1" == "ur" || "$1" == "P0" || "$1" == "p0" || "$1" == "DP" || "$1" == "dp" ]]; then HStylsDi="$HDisplUR";
+# elif [[ "$1" == "DL" || "$1" == "dl" || "$1" == "P2" || "$1" == "p2" || "$1" == "2P" || "$1" == "2p" ]]; then HStylsDi="$HDisplDL";
+# elif [[ "$1" == "DR" || "$1" == "dr" || "$1" == "H0" || "$1" == "h0" || "$1" == "HD" || "$1" == "hd" ]]; then HStylsDi="$HDisplDR";
+# elif [[ "$1" == "TL" || "$1" == "tl"                                                                 ]]; then HStylsDi="$HDisplUL"; # also add TopLeft &&
+# elif [[ "$1" == "TR" || "$1" == "tr"                                                                 ]]; then HStylsDi="$HDisplUR"; #          BotRite ;
+# elif [[ "$1" == "BL" || "$1" == "bl"                                                                 ]]; then HStylsDi="$HDisplDL";
+# elif [[ "$1" == "BR" || "$1" == "br"                                                                 ]]; then HStylsDi="$HDisplDR"; fi; fi
+if     [[ "$2" !=   "" ]]; then # && allow for a second parameter in the same format as the first for specifying a display for just touch instead of stylus;
+  if   [[ "$2" ==  "l" || "$2" ==  "0"                                                                 ]]; then HTouchDi="$HDisplLt";
+  elif [[ "$2" ==  "m" || "$2" ==  "1"                                                                 ]]; then HTouchDi="$HDisplMd";
+  elif [[ "$2" ==  "r" || "$2" ==  "2"                                                                 ]]; then HTouchDi="$HDisplRt"; fi; fi
+# if   [[ "$2" == "UL" || "$2" == "ul" || "$2" == "D0" || "$2" == "d0" || "$2" == "DV" || "$2" == "dv" ]]; then HTouchDi="$HDisplUL";
+# elif [[ "$2" == "UR" || "$2" == "ur" || "$2" == "P0" || "$2" == "p0" || "$2" == "DP" || "$2" == "dp" ]]; then HTouchDi="$HDisplUR";
+# elif [[ "$2" == "DL" || "$2" == "dl" || "$2" == "P2" || "$2" == "p2" || "$2" == "2P" || "$2" == "2p" ]]; then HTouchDi="$HDisplDL";
+# elif [[ "$2" == "DR" || "$2" == "dr" || "$2" == "H0" || "$2" == "h0" || "$2" == "HD" || "$2" == "hd" ]]; then HTouchDi="$HDisplDR";
+# elif [[ "$2" == "TL" || "$2" == "tl"                                                                 ]]; then HTouchDi="$HDisplUL";
+# elif [[ "$2" == "TR" || "$2" == "tr"                                                                 ]]; then HTouchDi="$HDisplUR";
+# elif [[ "$2" == "BL" || "$2" == "bl"                                                                 ]]; then HTouchDi="$HDisplDL";
+# elif [[ "$2" == "BR" || "$2" == "br"                                                                 ]]; then HTouchDi="$HDisplDR"; fi; fi
+# Port Widt Hite Xofs Yofs prIm dMid 
+#  DP0 1920 1080    0    0    1    0 
+#  DP2 1920 1080 1920    0    0    2 
+#  HA0 1920 1080    0 1080    0    3 
+#  DP1 1920 1080 1920 1080    0    1 
+# Disconnected: DD0; $HVW1=3840 $HVW2=7680 $HVW3=11520 x (4)$HVH1=2160;
+xinput map-to-output $HStylsId $HStylsDi;
+echo -e "Stylus mapped to: $W$HStylsDi$Y &&$w $HTouchDi$G :is where Touch";
+echo    " ... is mapped (but Touch disabled by Dflt);";
+xinput map-to-output $HTouchId $HTouchDi; # uncommented to limit touch to Left screen && right with stylus (but maybe better to set Touch off)
+xinput --set-prop 'Wacom Intuos PT M 2 Finger touch' 'Device Enabled' 0; # attempt another way to go about disabling touch to hopefully focus stylus;
+exit 0; # not sure why touch keeps getting re-activ8d, but hopefully mapping them to sepR8 screens will isol8 inputs from each other better;
+# running: `xsetwacom get 'Wacom Intuos PT M 2 Pad pad' all` shows that very few of the standard configur8ion options are available on this tablet!  =(

@@ -1,0 +1,3 @@
+#!/usr/bin/perl
+use warnings;use strict;use utf8;use v5.22;use Oct::a8; # insrt WhItz 4 `coma` positnz in 4wRd d8ColrStrng if comma Dtectd in input,but dzn't handle ...
+d8cs('WRoYGWCBMp') if(@ARGV && $ARGV[0]=~ /,/);o8(bfr8c(@ARGV)); #  ... piping commaz thru STDIN yet, which `b8clr` should handle pretty well though instead;

@@ -1,0 +1,183 @@
+#!/usr/bin/perl
+# FCDL7piI:dic crE8d by PipStuart <Pip@CPAN.Org> as a basic very colorful wrapper similar to `dict word|colorit` with some reformatting capabilities as well;
+# 2du:4 `d RFC` fix "(18 October 2020)", ' 1969, ', "1 +April +YYYY", etc., hIlIt all the URLz (ht|f)(tp)://\S+ && CamelCase wi Bep'z Utl, &&colr PERL @botm,
+#   fix mor than 2 lIn join 4 Caliphate && othr tStz aftr thinkng mor abou probz,mAB accept word8 pRamz&&rEplAc wi "ate?" &&l8r try othr spLngz th@ R DfInd,
+#   Dtect -h with nO folOing Host srvr or --help 2prnt some Help txt from here B4 passing latter on2`dict`,accept&&highlight&&loop multiple word pRameterz,
+#   fix2hndl quotd spAcd pRamz2pass thru like `dict 'et cetera'`,Dtect&&auto-apNd comNtz4faild queriez,mk mode2fillin all old faild queriez&&mAB agreg8 thM2,
+#   demarc8 which 8-words are not yet in 8.txt top list (maybe with uc && spelling remaps like 'ci8'=>'C8','pi8'=>'P8','i8'=>'E8','u8'=>'U8', etc.),
+#     maybe for this part, just prefixes && pre-letters could be matched within ~/.log/8pc.ls instead of trying to load all of 8.txt similar either way,
+#   (if possible) it would be nice to eventually figure out how to enable zsh Tab-completion for dict to also work the same for both dic && just d alias too;
+#  `d card` has WordNet && FOLDoC,Jargon,VERA with 8 dFinitNz && '[Obs.]' before Webster in GCIDE; # alsO @Nd of `d card` fix "(RFC 4066)" 2 colr clOs pRN')';
+#  `d flip` has FOLDoC    # `d pip` fits a single 160x50 terminal screen page very nicely on: K6F;
+#  `d cube` has Jargon    # Example backticks here assume .zshrc, .bashrc, or some shell sets "alias d='dic';" for extra brief definition display && also that
+#  `d dice` has V.E.R.A.  #   each major dict d8a-base is installed via dict-(wn|foldoc|jargon|gcide|vera|devil|bouvier|gazetteer2k|elements|moby-thesaurus);
+#  `d hope` has Devil's   # Not sure if dict-((free|x)dict|stardic) are useful to me yet for probably language transl8ion for Free && residual-config other 2?
+#  `d rent` has Bouvier   # ... ## …… ??;   ###;
+#  `d gate` has gaz2k-places with lotz of sub-fieldz which could be colrd && Yearz2alIn l8r (if I evr stRt Uzng the gaz plAcz dict.db 4 any recuring purpose);
+#  `d four` has last entry: "a playing card or domino or die whose upward face shows four pips" which are each key partz of Oct && ~/.Hrc =)
+# H9NMN12d:upd8d /etc/dictd/dictd.order to add other installed dicts and place Moby last (but then have2 `dictdconfig -w` && `/etc/init.d/dictd restart`) with:
+#web1913 gcide wn foldoc jargon vera devil elements easton hitchcock bouvier gazetteer gaz2k-zips gaz2k-places gaz2k-counties moby-thesaurus
+# HC2LNewD:fixd `d BLT` to properly Decode UTF-8 double-quotes from dict && noted also qw(server reverse reserve severer)=~ s/e//g; # srvr rvrs rsrv svrr;
+# Currently, the only special pRameter that `dic` swallows 4 itself is lone '-w' which design8s any dFinitions should be formatted as *NOT* default Wide mode.
+# O3IMLUTD: d lifo limn lige limu limy lind lith lich ling; ## these were manually selected out for hmsp around now in many pagez of $( d li\t ) Tab-complEtn…
+# O?I!List: d lido lion lief lill lilt lily lima lixt liza; ##   && serchng 4 evry unfamiliR 4-letr m@ch (or just mAB Dscriptiv of topic clOse 2 curNt tIm)?;
+use warnings;use strict;use utf8;use v5.22;use Encode;my $VERSION='0.000001';my $d8VS='O3SMNbat'; # origfrom TeST Substitute Input,nowXtNded d8 util,l8r c8 IF?
+use Oct::a8;my $word='';my $wclr=S('Wr');my $logd="$ENV{'HOME'}/.log";my %dlog; # setup global word colr SKp && LogDirectory && DicLog hash
+use Oct::d8;my $Stxt   ;my $eclr=S('Yf');my $widf=1  ; # BlO hopefully strips -w param 2flag disabling dflt wide-mode or load $word 4l8r colr8ion if!flag
+my $cw=160;$cw=$ENV{'COLUMNS'} if(exists($ENV{'COLUMNS'})); # try to setup potentially wider ColumnWidth for when attempting to join shorter linez
+my $aw=  0; # attempt to AlignWebster (1913) blocks to end-of-line flag. disabling by default for now since multi-line definition blocks were getting lost;
+mkdir ( $logd,0750) unless(-d "$logd");my $dlfn= $logd . '/dic.log'; # attempt to crE8 non-XistNt log-directory in User's ~ && setup DicLogFileName
+my $ppcf=1; # setup new parameter -c to override default of coloring output with pickedProfileC8ColorCodezFlag to be cleared 2 just use normal non-Prof colrz;
+if(@ARGV){for(my $andx=$#ARGV;$andx>=0;$andx--){if($ARGV[$andx]=~ /^-?-?c$/){$ppcf=0;splice(@ARGV,$andx,1);}}}
+#y($R,$O,$o,$Y,$G)=(S($cmsp{'d8bo'}[0]),S($cmsp{'d8bo'}[1]),S($cmsp{'d8bo'}[1]),S($cmsp{'d8bo'}[2]),S($cmsp{'d8bo'}[3])); # tmprEmap bAslvl8bOsnglz wicur d8bo;
+#y($C,$B,$M,$P,$p)=(S($cmsp{'d8bo'}[4]),S($cmsp{'d8bo'}[5]),S($cmsp{'d8bo'}[6]),S($cmsp{'d8bo'}[7]),S($cmsp{'d8bo'}[7])); # just S on cmsp mIt!get FDAL orSGRz;
+my($R,$O,$o,$Y,$G, $C,$B,$M,$P,$p)=($R,$O,$o,$Y,$G, $C,$B,$M,$P,$p); # just init own copies of the original a8.pm exportz in case default prOfIl colrz RUzdBlO;
+  ($R,$O,$o,$Y,$G, $C,$B,$M,$P,$p)=($d8cS[0],$d8cS[1],$d8cS[1],$d8cS[2],$d8cS[3], $d8cS[4],$d8cS[5],$d8cS[6],$d8cS[7],$d8cS[7]) if($ppcf); # hopefully tmp lOd;
+open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";                            binmode $out8,':encoding(UTF-8)'; # crE8 local duplic8
+unless(    -e $dlfn){ # initialize dic log "history" file if none existz
+  open     my $dlfh,'>' ,$dlfn or die "!*EROR*! Couldn't open  dic log file:$dlfn for writing! $!\n";binmode $dlfh,':encoding(UTF-8)';
+  my     $nwd8=Oct::d8->new();print $dlfh "# $nwd8:~/.log/dic.log gener8d by Oct's `dic` command with VERSION:$VERSION d8VS:$d8VS; ";
+                                   say   $dlfh "You may append comments (preceded with '#') && they will persist;";
+  close       $dlfh            or die "!*EROR*! Couldn't close dic log file:$dlfn! $!\n";}
+if    (    -e $dlfn){my $argz= join(' ',@ARGV); # load dic.log so that duplic8z can be discarded
+  open     my $dlfh,'<' ,$dlfn or die "!*EROR*! Couldn't open  dic log file:$dlfn for reading! $!\n";binmode $dlfh,':encoding(UTF-8)';
+  while     (<$dlfh>){if(/^\s*[0-9A-Z._]{8}:(.+)$/i){my $hwrd=$1;$hwrd=~ s/\s*#.*//;$dlog{lc($hwrd)}=1;}} # strip l8r added trailing dic log "history" commentz
+  close       $dlfh            or die "!*EROR*! Couldn't close dic log file:$dlfn! $!\n";
+  unless(!length($argz) || exists($dlog{lc($argz)})){
+    open   my $dlfh,'>>',$dlfn or die "!*EROR*! Couldn't open  dic log file:$dlfn for writing! $!\n";binmode $dlfh,':encoding(UTF-8)';
+    my   $nwd8=Oct::d8->new();say $dlfh "$nwd8:$argz";
+    close     $dlfh            or die "!*EROR*! Couldn't close dic log file:$dlfn! $!\n";}}
+if(@ARGV){for(my $andx=$#ARGV;$andx>=0;$andx--){if($ARGV[$andx]=~ /^-?-?w$/){$widf=0;splice(@ARGV,$andx,1);}else{$word=$ARGV[$andx];}}}
+if(@ARGV)       {$Stxt=decode('UTF-8',`dict @ARGV`);} # orig had b64 countz&&color8ion but b10 is better for now&&had buggy c8 cmds, so changing back
+elsif(!-t STDIN){$Stxt= join('',           <STDIN>);  # enable piping through like colorit if STDIN is not a TTY
+  if ($Stxt=~  /\nFrom [^\n]*\n\n  (\w+)/){$word=$1;  # try to detect first defined parameter word for highlighting
+    unless(exists($dlog{lc($word)})){
+      open my $dlfh,'>>',$dlfn or die "!*EROR*! Couldn't open  dic log file:$dlfn for writing! $!\n";binmode $dlfh,':encoding(UTF-8)';
+      my $nwd8=Oct::d8->new();say $dlfh "$nwd8:$word";
+      close   $dlfh            or die "!*EROR*! Couldn't close dic log file:$dlfn! $!\n";}}}
+exit unless(length($Stxt)); # probably "No definitions found..." already output on STDERR so just exit having nothing to color
+#     $Stxt=~ s/\s*(\[1913 Webster\]\n)(  \n)+\n*/ $1/g; # try a different approach to joining multi-blank linez first with further new-line charz required?;
+      $Stxt=~ s/\s*(\[1913 Webster\]\n)\n*/ $1/g; # these need to strip leading spaces in order to attempt desired right alignment next
+#     $Stxt=~ s/\s*(\[1913 Webster\]\n)([\t ]*\n+)*/ $1/g; # can this clean up extra blank linez in way above can't?;
+      $Stxt=~ s/\s*(\[PJC\])/ $1/g;
+my @St=split(/\n/,$Stxt);$Stxt=''; # so thN above just try 2 singl-spAc any remaining dbl-spAcd lInz AgN (EvN thO probably only occur aftr 1913Web)?;
+for(0..$#St-1){my $bp;if($aw){ # alIgnmNt atMpt intrOducz trailng newlInz && sometImz skipz Over unXpectedly,just !BhAving as intNded sO disAbl4now;  #BlokPad;
+  if    ($St[$_  ]=~  /^(.*)(\[1913 Webster\].*)$/                  ){$bp=' 'x ($cw - length("$1$2")); # maybe should space align all regexez using /x
+         $St[$_  ]= "$1$bp$2";}             # .*$/
+  elsif ($St[$_  ]=~  /^(.*)(\[cant\] \[PJC\].*)$/                  ){$bp=' 'x ($cw - length("$1$2")); # need sepR8 tSt4 rFz th@ canB 2gether already
+         $St[$_  ]= "$1$bp$2";}
+  elsif ($St[$_  ]!~  /\[cant\]/ && $St[$_  ]=~  /^(.*)(\[PJC\].*)$/){$bp=' 'x ($cw - length("$1$2")); # try Xclusively cant vs. PJC?
+         $St[$_  ]= "$1$bp$2";}
+} if($widf){ # this wide-mode line concaten8ion is extremely basic && may ruin some l8r color8ion && alignment of some numbered lists && such
+    if    ($St[$_  ]=~  /^( {4,})/         ){my $il=length($1); # IndentLength
+      if  ($St[$_+1]=~  /^ {$il}/ &&  length("$St[$_]$St[$_+1]") < $cw){
+           $St[$_+1]=~ s/^ +/  / ;$St[$_].=$St[$_+1];$St[$_+1]='';}}
+# sinc `d Caliphate` shOwd mor than just2lInz shud proly B joind smtImz,tryd 2 add 3rd BlO && workd just for that but ruind `d four`&&proly othrz so cmntd4now
+#   if    ($St[$_  ]=~  /^  +/             ){
+#     if  ($St[$_+1]=~  /^  +/ &&  length("$St[$_]$St[$_+1]") < $cw){
+#          $St[$_+1]=~ s/^  +/  /;$St[$_].=$St[$_+1];$St[$_+1]=''; # sinc `d Caliphate` shOwd mor than just2lInz shud proly B joind smtImz,tryd 2 add 3rd BlO
+#       if(    $_    <  ($#St-1)){#  && # avoid uninit warning at end
+##f(        $St[$_+2]=~  /^  ( +)/ &&  length("$St[$_]$St[$_+2]") - length($1) < $cw){ # try 2 not Xpect IndentLength spAcez on 3rd lIn but at lEst 2?
+#if(        $St[$_+2]=~  /^  ( +)/){
+##rint "$W d_:$_ $M 02:",length("$St[$_]$St[$_+2]")," $Y d1:",length($1)," $C cw:",$cw,"\n";
+##rint "$W '",                  "$St[$_]$St[$_+2]'\n";
+# if(length("$St[$_]$St[$_+2]") - length($1) < $cw){ # try 2 not Xpect IndentLength spAcez on 3rd lIn but at lEst 2?
+##rint "$R GotHere!\n";
+#          $St[$_+2]=~ s/^  +/  /;$St[$_].=$St[$_+2];$St[$_+2]='';}}} # mAB nEd 4th or thEs shud just B loopz until leng wud surpass $cw nstd?
+# }}
+    if    ($St[$_  ]=~  /^(  \S| {7}\d+\.)/){my $il=length($1); # IndentLength  # sepR8 smarter indent tests for Bouvier where normal blocks seem to have just
+      if  ($St[$_+1]=~  /^  / &&  $St[$_+1]!~  /^ {7}\d+\./ && length("$St[$_]$St[$_+1]") < $cw){ # 2-spc indNt but furthr NtrEz have 7-spc indNt then \d+\.
+           $St[$_+1]=~ s/^  +/  /;$St[$_].=$St[$_+1];$St[$_+1]='';}}}
+      $Stxt.="$St[$_]\n";}# if(length($St[$_])); # decent attempt to join consecutive linez with the same indent level (but \d[.:]|(\w) should DpN)
+      $Stxt.="$St[-1]\n"; # finish rebuilding last line
+#     $Stxt=~ s/([^:]\n) *\n/$1/g; # try 2 strip blank lInz left from 3-lIn join atMptz 4 Caliphate wich brOk othrz so cmntd4now
+      # if non-STDERR results
+      $Stxt=~ s/(;)                                                                      /$C$1$G/gx; # this ruined SKpz when done l8r
+      $Stxt=~ s/(Collaborative)(\sInternational)(\sDictionary)(\sof)(\sEnglish)          /$C$1$M$2$W$3$c$4$Y$5/gx; # done early so *ative cando 8-word colr BlO
+  if(length($word)){ # below tries2catch pRt-of-sPch&&1st dFinition num aftr WN word (&& ignrcAs2);  # BlO colr lookd-up word (ifDtectd)&&more BlO colr tail...
+      $Stxt=~ s/($word\ +)(imp|vb|v|t|i|n|p|pr|cf|fr|a|ad[jv])(\ +)(1:\ +)                 /$1$R$2$3$C$4/gix; #   ... of most common 8-words for distinction...
+      $Stxt=~ s/($word   )                                                            /$wclr$1$z$G/gix;}      #   ... (some matched pronunC8ions will differ);
+      $Stxt=~ s/(\w)((reat|ated?|atron|(ait|[ae]ight|at\B))(en|est|ant|or|ure|ize?)?(ed|i(ng|ve|ons?a?l?y?|ous))?(istic|ness|ment|ly|s)?)
+                (\W|$)                                                                     /$1$eclr$2$z$G$9/gix; # BlO special Ks on sepR8 lIn hEr Bcuz abov...
+      $Stxt=~ s/(\w)(aight(forward)?|ata)(\W|$)                                            /$1$eclr$2$z$G$4/gix; #   ... was alreD rIt up AgNst rIt 158 colums;
+if(   $Stxt=~  /^(\d+)\sdefinition(s)?\sfound/          ){my $dFct=$1;my $dFst=' dFinitN';$dFst.='z' if(defined($2)); # tried2add non-word Boundary aftr at
+      $Stxt=~ s/^ \d+ \sdefinitions? (\sfound)                                           /$C$dFct$Y$dFst$M$1$G/x;}
+if(   $Stxt=~  /(\n\ +?)(\d+)(\sMoby\sThesaurus\swords)/){my $MTct=$2;my $MTin=$1;   chop($MTin)     if( length($2) > 2);
+# if(length($1) > length(b64($1))){$MTct=' 'x (length($1) - length(b64($1))) . $MTct;} # just realign Moby since count indentz unlike /^/ top dF count
+      $Stxt=~ s/(\n\ +?)(\d+)(\sMoby\sThesaurus\swords)                                    /$MTin$B$MTct$G$3/x;}
+      $Stxt=~ s/(\n\ +?\n\s+?)(\ \(\d{4}-\d{2}-\d{2}\)\n)(\ +\n)                         /$2 /x; # O3SMNKd8:d stochastic had blankz around FOLDOC date foot;
+     #$Stxt=~ s/(\n\ +?\n\ \ )(\ *?See also)                                             /$2/x;  #   this one doesn't work right yet. <prob> also spaced stil;
+     #$Stxt=~ s/(\n\ *?\n    )(\s* See also)                                             /$2/x;  #   try just all space?; Doesn't work either! =( ;
+      $Stxt=~ s/(\n\ +?\n)(\ +?Note:   )                                                 /$2/x;
+      $Stxt=~ s/(\n\ *?\n\ *?)(\ \[[^\]]{1,32}\]\ *?\n)                                  /$2/x;
+      $Stxt=~ s/(\n\ {2})(\n)                                                            /$2/x;
+      $Stxt=~ s/(\]:)\n/$1/g; # just strip a basic new-line (Carriage-Return) when found where no longer desired (without doing any coloring here);
+      $Stxt=~ s/\s+$//;       # also strip any empty white-space (either multiple space-bar or horizontal-tab characters which precede a new-line invisibly);
+      $Stxt=~ s/(\()([12][7-90-2]\d\d)(-)([12][7-90-2]\d\d)(\))                          /$p$1$R$2$C$3$R$4$p$5$g/gx; # new (BornYear-DiedYear) m@ch4`d Venn`;
+      $Stxt=~ s/(\ v)(\.)(\d+)(\.)(\d+)                                                  /$P$1$W$2$B$3$W$4$R$5$g/gx; # thEs wer (.) SKpd \. literal dotz now;
+      $Stxt=~ s/(\[)(g)(c)(i)(d)(e)(\])                                                  /$B$1$O$2$C$3$M$4$W$5$Y$6$B$7$G/gx; # broke  CIDE  apart like above;
+      $Stxt=~ s/(Word)(Net\ )(\()(r)(\))(\ 3)(.)(0)                                      /$O$1$M$2$w$3$Y$4$w$5$B$6$W$7$M$8$g/x;
+      $Stxt=~ s/\ (\()(2006)(\))                                                        / $c$1$R$2$c$3$g/x;
+      $Stxt=~ s/(\[)(w)(n)(\])                                                           /$B$1$O$2$M$3$B$4$G/x;
+      $Stxt=~ s/(Free)(\ On)(-)(line)(\ Dictionary)(\ of)(\ Computing)                   /$Y$1$B$2$C$3$M$4$W$5$w$6$O$7/gx;
+      $Stxt=~ s/\ (\()(\d+)(\ January|\ March)(\ 20\d+)(\))                             / $c$1$Y$2$o$3$R$4$c$5/gx; # may want to join all Month names here l8r
+      $Stxt=~ s/(\[)(f)(o)(l)(d)(o)(c)(\])                                               /$B$1$Y$2$B$3$M$4$W$5$w$6$O$7$B$8$G/gx; # broke FOLDoC apart lIk abov
+      $Stxt=~ s/(Jargon)(\ File\ )(\()(version)(\ \d+)(\.)(\d+)(\.)(\d+)                 /$C$1$R$2$G$3$P$4$B$5$W$6$M$7$W$8$Y$9/gx;
+      $Stxt=~ s/,(\ \d+)(\ \w+)(\ 20\d+)(\)\ )(\[)(jargon)(\])                          /,$Y$1$o$2$R$3$G$4$B$5$C$6$B$7/gx;
+      $Stxt=~ s/(V\.)(E\.)(R\.)(A\.)                                                     /$M$1$Y$2$R$3$C$4/gx;
+      $Stxt=~ s/(Virtual)(\ Entity)(\ of)(\ Relevant)(\ Acronyms\ )(\()(\w+)(\ 20\d+)(\))/$M$1$Y$2$c$3$R$4$C$5$g$6$o$7$R$8$g$9/gx;
+      $Stxt=~ s/(\[)(v)(e)(r)(a)(\])                                                     /$B$1$M$2$Y$3$R$4$C$5$B$6$G/gx;
+      $Stxt=~ s/(The)(\ Devil')(s)(\ Dictionary\ )(\()(\d+)(-)(\d+)(\))                  /$z$1$R$2$R$3$W$4$M$5$R$6$Y$7$R$8$M$9/gx;
+      $Stxt=~ s/(\[)(devil)(\])                                                          /$B$1$R$2$B$3$G/x;
+      $Stxt=~ s/(\[)(moby)(-)(thesaurus)(\])                                             /$B$1$M$2$Y$3$R$4$B$5$G/x;
+      $Stxt=~ s/(Moby)(\ Thesaurus)                                                      /$M$1$R$2$G/gx;
+      $Stxt=~ s/(\ II)(\ by)(\ Grady)(\ Ward,)(\ 1)(.)(0)                                /$C$1$w$2$O$3$C$4$B$5$W$6$M$7/x;
+      $Stxt=~ s/(Bouvier')(s)(\ Law)(\ Dictionary,)(\ Revised)(\ 6th)(\ Ed)              /$O$1$O$2$C$3$W$4$R$5$M$6$Y$7/gx;
+      $Stxt=~ s/\ (\()(1856)(\)\ )(\[)(bouvier)(\])                                     / $G$1$R$2$G$3$B$4$O$5$B$6$G/gx;
+      $Stxt=~ s/(U\.)(S\.)(\ Gazetteer)(\ Places)                                        /$Y$1$B$2$C$3$M$4/gx;
+      $Stxt=~ s/\ (\()(20\d+)(\)\ )(\[)(gaz)(2k)(-)(places)(\])                         / $G$1$R$2$G$3$B$4$C$5$R$6$O$7$M$8$B$9$G/gx;
+      $Stxt=~ s/\ (\()((19|20)\d\d)(\))                                                 / $c$1$R$2$c$4$G/gx;     #     try2get mainly all Gazetteer paren Yearz
+      $Stxt=~ s/\ (\()(\w+\ +)((19|20)\d\d)(\))                                         / $c$1$o$2$R$3$c$5$G/gx; # thN try2get (Month  Year) of   some FOlDoC
+      $Stxt=~ s/\ (\()((19|20)\d\d)(-)([01]?\d)(-)([0123]?\d)(\))                       / $c$1$R$2$C$4$o$5$C$6$Y$7$c$8$G/gx; # try2get(Year-Mo-Da)ofNdoFOlDoC
+      $Stxt=~ s/(\()(\d+\ )(December\ )((19|20)\d\d)(\))                                 /$M$1$Y$2$o$3$R$4$M$6$G/gx; # from `d syllogism` (newSt d8 Cn4FOlDoC)
+      $Stxt=~ s/(\[)(Webster\ )(1913\ )(Suppl\.)(\])(\n|$)                               /$C$1$B$2$R$3$M$4$C$5$G/gx; # from `d manic    `
+      $Stxt=~ s/(\[)(1913)(\ Webster\ \+)(PJC  )(\])(\n|$)                               /$C$1$R$2$B$3$C$4$C$5$G/gx; # from `d epigee   `
+      @St  =  split(/\[1913 Webster\]/,$Stxt);$Stxt=''; # L2QL6xWe:tried 2 split bakout 4 Web blox 2 rIt-alIgn by counting up sS lengthz from prev newlIn?;
+      # L2QL7bp1:disabled atMpt 2 alIgn blox since weird off-by-2 errors (or 4) are showing up, so I'll have to return to fixing it all nicely sometIm l8r;
+for(0..$#St-1){my $bp;if($aw){ # alIgnmNt atMpt intrOducz trailng newlInz && sometImz skipz Over unXpectedly, just not BhAving as intNded sO disAbl 4 now;
+  if    ($St[$_]=~  /\n([^\n]*\n*)$/ && length($1) < ($cw - 16)){$bp=' 'x ($cw - length(sS($1) . '[1913 Webster]'));$St[$_]= "\n$1$bp";}
+} $Stxt.=$St[$_] . '[1913 Webster]'; } $Stxt.=$St[-1]; # re-join last line also after end (which shudn't have split on 1913Web blok);
+#     $Stxt=~ s/(\[)(1913)(\sWebster)(\])(\s|$)(\s\s)?\n*/$C$1$R$2$B$3$C$4$G$5/g ; # L2QL6new: tried 2 apNd (  )?\n* 2 strip blank lInz hEr nstd of abov,
+      $Stxt=~ s/(\[)(1913)(\sWebster)(\])(\s|$)       \n*/$C$1$R$2$B$3$C$4$G$5/gx; # L2QLJFJF: trying 2 apNd without 2-spAcd as better, or worse? Guessing! ;)
+      $Stxt=~ s/(\[)(PJC)(\])(\n|$)                                                      /$Y$1$C$2$Y$3$G/gx; #   but just swapping $5 2B aftr $G did the trick
+      $Stxt=~ s/(\[)(cant)(\]\ ?)                                                        /$Y$1$M$2$Y$3$G/gx; # sOfROnly Cn prECdng PJC so not testing \n|$ yet
+      $Stxt=~ s/\s*\n(From\ (The)?)                                                    /\n$K$1/gx;
+      $Stxt=~ s/(\W)(syn:)                                                                 /$1$M$2/gix;
+      $Stxt=~ s/(\W)(ant:)                                                                 /$1$Y$2/gix;
+      $Stxt=~ s/(\W)(imp|vb|v|t|i|n|p|pr|cf|fr|a|adv)(\.)/$1$R$2$3/gx;    # try 2 keep watch 4 any othrz that shO up uncolrd 2 add here l8r too
+      $Stxt=~ s/(\n\ +?)(n|v|adj|adv)\ +(\d+[\.:]\ )     /$1$R$2 $C$3/gx; # shud upd8 2 accept all pRtz of sPch B4 NdX && mAB shft bak so digz alIn
+      $Stxt=~ s/(\n\ +?|\S\ \ )(\d+[\.:]\ )              /$1$C$2/gx;      # try 2 altern8ly accept alreD joind new NdXz wich shud folO 2 spAcz aftr prEv tXt
+      $Stxt=~ s/(\n?\ +?)(\()([a-z])(\)\ )                                                 /$1$P$2$Y$3$P$4$G/gx;
+      $Stxt=~ s/(\D[^m\e])([\[\]])/$1$O$2$G/gx; # colr all remaining [] which aren't already prECded by SKpz from above && aren't part of SKpz either
+      $Stxt=~ s/(\D[^m])([\(\)])                                                           /$1$B$2$G/gx; # `d soar` has 1993] so failz the non-Digit char
+      $Stxt=~ s/(\ km)([\)])                                                               /$1$B$2$G/gx; # `d gate` gaz2k shows /km\)$/ matching SKp code...
+      $Stxt=~ s/([\{\}])                                                                 /$M$1$G/gx;     #   ... Nd sO nO colr,mA nEd2parse apart 2B thorough
+      $Stxt=~ s/([<>])                                                                   /$Y$1$G/gx;
+      $Stxt=~ s/\n *\n/\n/g; # this is just for collapsing blank lines && does not even pertain to color8ion, but is only for more dense formatting of spacing;
+      $Stxt=~ s/([^-\n\ ])(-)([^-\n\ \e])                                                  /$1$W$2$G$3/gx; # try2c@ch typical mid-word hyphNs4sepR8 distinction
+      $Stxt=~ s/(--)                                                                     /$O$1$G/gx;
+      $Stxt=~ s/(\\)                                                                     /$O$1$G/gx; # this ruined SKpz?
+      $Stxt=~ s/(\.)                                                                     /$W$1$G/gx;
+      $Stxt=~ s/(\^)                                                                     /$B$1$G/gx;
+      $Stxt=~ s/(\@)                                                                     /$B$1$G/gx;
+      $Stxt=~ s/(\*)                                                                     /$C$1$G/gx;
+      $Stxt=~ s/(\+)                                                                     /$M$1$G/gx;
+      $Stxt=~ s/(\?)                                                                     /$W$1$G/gx;
+      $Stxt=~ s/(`)                                                                      /$O$1$G/gx;
+      $Stxt=~ s/(,)                                                                      /$Y$1$G/gx;
+      $Stxt=~ s/(:)                                                                      /$W$1$G/gx;
+      $Stxt=~ s/(=)                                                                      /$M$1$G/gx;
+      $Stxt=~ s/(")                                                                      /$Y$1$G/gx;
+      $Stxt=~ s/(')                                                                      /$W$1$G/gx;
+      $Stxt=~ s/(&)                                                                      /$C$1$G/gx;print $out8 $Stxt;
+close   $out8             or die "Can't close duplic8 STDOUT handle: $!";

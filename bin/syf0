@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+# A7CMKivR:syf0 crE8d by PipStuart <Pip@CPAN.Org> to autom8 gener8ion of various versions of my preferred classic bitmapped font file formats;
+use warnings;use strict;use utf8;use v5.22;
+#for(<*.psf>,<*.fnt>){printf("psf2f0nt %-32s...\n",$_);`psf2f0nt $_`;} # these were the old original tStz of gNr8ing all posibl .f0nt thN bak2 .psf (OvrItz);
+#for(<*.f0nt>       ){printf("f0nt2psf %-32s...\n",$_);`f0nt2psf $_`;}
+my  @filz= <*.f0nt>;@filz=@ARGV if(@ARGV); # try 2 take either f0nt-file-name parameters or just auto-run on all .f0nt filez in cur-wrkng-dir;
+for(@filz){my $ffnm=$_;my $bsnm=$ffnm;$bsnm=~ s/\.f0nt$//; # may want 2 touch back the mod-stamp && test to only upd8 modifiedz?
+  printf("  f2p   %-64s...\n","  $_"       );`  f2p   $_`; # hopefully inject proper FONT besides just psf in bdf header wi --fn optn BlO;
+  `mv $bsnm.psf f8$bsnm.psf`;$bsnm=~ s/^/f8/; # prepend f8 so all my gNr8d TTFz wil sort @top 2gethr 4 EZer uninstall/reinstall cyclez?; # just 8 didn't work!;
+  printf("psf2bdf %-64s...\n",  "$bsnm.psf");`psf2bdf --fontname=$bsnm $bsnm.psf $bsnm.bdf`; # mAB mk w8 or whatever 'Regular' instead of 'Medium'?
+  printf("  b2t   %-64s...\n",  "$bsnm.bdf");`  b2t                              $bsnm.bdf`; # >/dev/null`; # hIde Xtra FF output?;
+}

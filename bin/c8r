@@ -1,0 +1,55 @@
+#!/usr/bin/perl
+# L65M9c8r:c8r crE8d by PipStuart <Pip@CPAN.Org> to make a very basic new c8-input-getting interface for the 2021 Perl/Raku Conference-in-the-Cloud talk text;
+use strict;use warnings;use utf8;use Encode;use Oct::a8;my $VERSION='0.0';my $d8VS='L6PM9c8r'; # considrDtectng&&adng customXtra --help bAsic tXt outpu2;
+use Term::ReadKey   ;     my $rkey;         use Oct::d8;my $std8   =Oct::d8->new();
+END{      ReadMode 0;} # good practice to auto-restore orig TTY read settingz at END
+          ReadMode 3;  # setup 4 raw mode or 3 cbreak mode where Ctrl-C workz since signalz are enabled
+#ENV{'TERM'}='linux';  # this is needed for arrow cursor keyz to get interpreted properly (vt100 does not do it); Also select below then pipe should unbuffer;
+open      my    $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";binmode $out8,':encoding(UTF-8)';select($out8);$|=1; # crE8locl dup of globl;
+while   (!defined( $rkey) || $rkey !~  /^[xq]$/ix){          my $crd8   =Oct::d8->new(); # eXit when x or q(uit) key pressed, else get CuRent d8 of loop;
+  if    (!defined( $rkey)){
+      print     $out8 $crd8->colr('a') . " ";}
+  elsif (                    $rkey =~  /^ \w $/ix){
+    if  (  exists( $ENV{'HWid'})){
+      if   (       $ENV{'HWid'} <=  40){
+        print   $out8 "_40k:$rkey;\n";}
+      elsif(       $ENV{'HWid'} <=  80){
+        if   ($rkey =~  /^[n] $/ix){
+          print $out8 "\n";}
+        elsif($rkey =~  /^[0b]$/ix){
+          print $out8 "\e[1;1H";}
+        else                       {
+          print $out8 "$rkey";}
+        print   $out8 "\e[s\e[" . abs($ENV{'HWid'} - 16) . "G$r$std8$w:" . $crd8->colr('a') . "\e[u"; # CSI row ; col H or f  "\e[1;1H" 2topleft
+  $rkey=  ReadKey(2    );   $rkey='' if(!defined($rkey));
+        print   $out8 "_80k:$rkey;"  if(  length($rkey));print $out8 "\n" if($rkey =~  /^[n]$/ix);}
+      else                             {
+        print   $out8 "160k:$rkey;\n";}}}
+  $rkey=  ReadKey(0.989);} # w8 up 2 float-seconds 4 key-press;
+close           $out8             or die "Can't close duplic8 STDOUT handle: $!";
+      # Crucial C1 (8-bit) Control Characters:
+      # Esc [       : CSI - Control        Sequence   Introducer(0x9B)
+      # Esc \       : ST  - String         Termin8or            (0x9C)
+      # Esc ]       : OSC - Operating      System     Command   (0x9D)
+      # Esc P       : DCS - Device         Control    String    (0x90)
+      # Esc X       : SOS - Start          Of         String    (0x98)
+      # Esc D       : IND -                Index                (0x84) move/scroll window up   one line
+      # Esc M       : RI  - Reverse        Index                (0x8D) move/scroll window down one line
+      # Esc E       : NEL - Next           Line                 (0x85) move               to  next line
+      # CSI n     E : CNL - Cursor         Next       Line      (like B but xcrs=0)
+      # CSI n     F : CPL - Cursor         Previous   Line      (like A but xcrs=0)
+      # CSI n     G : CHA - Cursor         Horizontal Absolute
+      # CSI n ; m H : CUP - Cursor                    Position  (row;column are 1-based)
+      # CSI n     J : ED  - Erase                     Display   (0=cursor to EndOfScreen,1=cursor to BeginningOfScreen,2=clear entire screen&&mv cursor2toplft)
+      # CSI n     K : EL  - Erase      in             Line      (0=cursor to EOL,1=cursor to BOL,2=clear entire line)
+      # CSI n     S : SU  - Scroll                    Up
+      # CSI n     T : SD  - Scroll                    Down
+      # CSI n ; m f : HVP - Horizontal and Vertical   Position  (f:HVP same as H:CUP)
+      # CSI n     m : SGR - Select         Graphic    Rendition (lots of parameter codes for dim, italic, underline, blink, reverse, strikethrough, fonts etc.)
+      # CSI 5i      :       AUX  Port  On
+      # CSI 4i      :       AUX  Port  Off
+      # CSI 6     n : DSR - Device         Status     Report    (prints CPR - Cursor Position Report like CSI n ; m R)
+      # CSI       s : SCP - Save           Cursor     Position  (only when DECLRMM is disabled)
+      # CSI       u : RCP - Restore        Cursor     Position
+      # CSI ?25l    : DECTCEM    Hide      Cursor
+      # CSI ?25h    : DECTCEM    Show      Cursor

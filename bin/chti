@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+use warnings;use strict;use utf8;use v5.22;use Oct::a8;o8( chti(@ARGV));
+# basic CHange window && icon TItle functn using XTerm dtterm control sequence:
+#   OSC Ps;Pt ST ...like "\e\]\d;NwTi\e\\" with \d being just a [012] param
+#   where 0=both, 1=IconName, 2=WindowTitle;

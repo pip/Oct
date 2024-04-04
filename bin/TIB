@@ -1,0 +1,51 @@
+#!/usr/bin/perl
+use strict;use warnings;use utf8;use v5.22;use Oct::a8;my $disp=shift(@ARGV) // 'HA0';my $d8VS='O32L00lo';
+                                                            my $dvid=shift(@ARGV) //   18 ;my $rslt;
+if   ($disp =~ /^-?-?r$/i  ){$rslt = system(qq(xinput --set-prop $dvid 157  1 0 0  0 1 0  0 0 1));} # special just -r (eset)
+elsif($disp =~ /^\d$/  ){$disp =~   s/^/DisplayPort-/;} # Xpand just digitz to DP, letrz 2 whatevr...
+elsif($disp =~ /^([a-c])$/i){$disp=~s/^($1)$/HDMI-$1-0/;} # \U UprKs the cap2r?
+elsif($disp =~ /^([d-h])$/i){$disp=~s/^($1)$/DVI-D-0/;} # $1
+elsif($disp =~ /^DP\d$/){$disp =~ s/^DP/DisplayPort-/;} # I think thEz shud Xpnd disp wL? ;
+elsif($disp =~ /^DI\d$/){$disp =~ s/^DI/DVI-I-/ ;} #  DP0 1920 1080    0    0    1    0 # Port Widt Hite Xofs Yofs prIm dMid 
+elsif($disp =~ /^DD\d$/){$disp =~ s/^DD/DVI-D-/ ;} #  DP2 1920 1080 1920    0    0    2 #  $HVW1=3840 $HVW2=7680 $HVW3=11520 x (4)$HVH1=2160;
+elsif($disp =~ /^HA\d$/){$disp =~ s/^HA/HDMI-A-/;} #  HA0 1920 1080    0 1080    0    3 
+elsif($disp =~ /^HB\d$/){$disp =~ s/^HB/HDMI-B-/;} #  DP1 1920 1080 1920 1080    0    1 # Disconnected: DD0;
+if(defined($disp) && $disp && $disp =~ /^H?D?M?V?I?(isplayPort)?-([A-I]-)?\d$/){
+  $rslt = system(qq(xinput map-to-output $dvid $disp));} # else mAB autO-varE on -r (eset) 2 B othr wA?; 'UGTABLET 13.3 inch PenDisplay', not 10 or 14 but 18?;
+# O31LIGHT:Before reboot was below name, but since: 'XP-Pen 13.3 inch PenDisplay';
+#HPTPadDv='UGTABLET 13.3 inch PenDisplay'; # O2ILIxOr:sO `xinput` is probably one of:
+#HPTPadDv='UGTABLET 13.3 inch PenDisplay Pen (0)' ;
+#HPTPadDv='UGTABLET 13.3 inch PenDisplay Mouse'   ;
+#HPTPadDv='UGTABLET 13.3 inch PenDisplay Keyboard';
+# mAB xinput set-prop on CTM (Coordinate Transformation Matrix) back to default 1.0 && 0.0 probably identity should restore from map-to-output?:xinput list
+# ⎡ Virtual core pointer                    	id=2	[master pointer  (3)]
+# ⎜   ↳ Virtual core XTEST pointer              	id=4	[slave  pointer  (2)]
+# ⎜   ↳ UGTABLET 13.3 inch PenDisplay Mouse     	id=8	[slave  pointer  (2)]
+# ⎜   ↳ Kensington Kensington Slimblade Trackball	id=12	[slave  pointer  (2)]
+# ⎜   ↳ UGTABLET 13.3 inch PenDisplay Pen (0)   	id=14	[slave  pointer  (2)]
+#     ↳ XP-Pen Mouse                            	id=16
+# ⎜   ↳ XP-Pen Pen Pen (0)                      	id=18	[slave  pointer  (2)]
+# ⎣ Virtual core keyboard                   	id=3	[master keyboard (2)]
+#     ↳ Virtual core XTEST keyboard             	id=5	[slave  keyboard (3)]
+#     ↳ Power Button                            	id=6	[slave  keyboard (3)]
+#     ↳ Power Button                            	id=7	[slave  keyboard (3)]
+#     ↳ UGTABLET 13.3 inch PenDisplay Keyboard  	id=9	[slave  keyboard (3)]
+#     ↳ UGTABLET 13.3 inch PenDisplay           	id=10	[slave  keyboard (3)]
+#     ↳ Chicony PFU-65 USB Keyboard             	id=11	[slave  keyboard (3)]
+#     ↳ C922 Pro Stream Webcam                  	id=13	[slave  keyboard (3)]
+#     ↳ XP-Pen Pen                              	id=14	[slave  keyboard (3)]
+#     ↳ XP-Pen Eraser                           	id=15	[slave  keyboard (3)]
+#     ↳ XP-Pen Mouse                            	id=17
+# [pip@OniO2ILJoxq~/bin]xinput list-props 14
+# Device 'UGTABLET 13.3 inch PenDisplay Pen (0)':
+#         Device Enabled (155):	1
+#         Coordinate Transformation Matrix (157):	0.500000, 0.000000, 0.000000, 0.000000, 0.500000, 0.500000, 0.000000, 0.000000, 1.000000
+#         libinput Send Events Modes Available (277):	1, 0
+#         libinput Send Events Mode Enabled (278):	0, 0
+#         libinput Send Events Mode Enabled Default (279):	0, 0
+#         Device Node (280):	"/dev/input/event4"
+#         Device Product ID (281):	10429, 2347
+#         libinput Tablet Tool Pressurecurve (615):	0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000, 1.000000
+#         Coordinate Transformation Matrix (157): 1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000
+# xinput --set-prop {device-id} {ctm-property-id 157} 1 0 0   0 1 0    0 0 1
+exit($rslt); # O31LMapN:mAB prop 14 shud stil usu B XP-Pen Pen wanted?;  # or prop ID 10 not 14 4 just Pen?; pretty sure they used to work on 10&&14 but stopd;

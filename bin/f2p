@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+# A78MD2HG:2psf crE8d by PipStuart <Pip@CPAN.Org> to convert f0nt files to psf;
+# NACM2psf:f2p rEnAmd Bcuz orig was confusing with the newest psf2 file format;
+use warnings;use strict;use utf8;use v5.22;use Oct::f8;
+while(  @ARGV){ # might want some better error checking on names && types l8r?;
+  my    $srcf = shift(@ARGV);$srcf .= '.f0nt' unless(-r $srcf);
+  my    $dstf =              $srcf; # gNr8 dStin8ion if nXt Rg !.psfu? XtNsion;
+  if (  @ARGV && $ARGV[0] =~ /\.psfu?$/){$dstf = shift(@ARGV);}
+        $dstf =~  s/(\.f0nt)?$/.psf/  if($dstf !~ /\.psfu?$/);
+  if(-r $srcf){$|=1; # mAB open STDOUT for UTF-8 dstf filename
+    my  $f8ob = Oct::f8->new(       $srcf);print '.'; # tiny progrS upd8z;
+        $f8ob->savef0nt(                 $dstf);} # loopz thru *.f0nt argUmNtz;
+  else{ print "!*EROR*! Source f0nt file:$srcf not found!\n";}}

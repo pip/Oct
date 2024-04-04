@@ -1,0 +1,185 @@
+#!/usr/bin/perl
+# N4CMLAST:prym crE8d by PipStuart <Pip@CPAN.Org>; 2du:bild up a progression of difz && mxdfz,trak if certain coprmz in each mndx always stay loww or high,
+#   mk csgz compression-stagez when thresholdz of lengz jumped mxdifz off 160 before stage 7 && 9 or 3 && 4 should be encoded/decoded,du 80-colm thresh cstgz;
+use warnings;use strict;use utf8;use v5.22;use open qw(:std :encoding(UTF-8));my $VERSION='0.0';my $d8VS='N4UMJUMP';my $name=$0;$name =~ s/.*\///;
+use Oct::b8;my $Auth='PipStuart <Pip@CPAN.Org>';my $mlin;my $llin;my $slin;my $dlin;#my %tmdz=();my %tmxv=();my %tmxs=();my %trvl=(); # Temp hashz4tstng
+use Oct::d8;use Curses::Simp;my $plfh;my $prmf='Prym.ls';my $path='';#$path="$ENV{'HOME'}/.log/"; # abov mlin:ModzLine llin:LastLine slin:Second2lastLine
+my $maxp=shift(@ARGV) ||    2**32;my $mdfh;my $modf='Modz.ls'; # maximum prime (nth); 5x8z:15,16,20,24,30 6x12z:13,21,26,28,36,42 6x16z:17,32,34,40,48,60
+my $draw=shift(@ARGV) ||        1;my $erfh;my $errf='Eror.ls';my $keey='-1';my $tmot=2;my @prmz=();my %mxms=();my %rvlu=(); # MaX Modz Scaled,ReVerse LookUp
+my @text=();my @fclr=();my @bclr=() ;
+if(length($path)){$path=~ s/\/*$/\//;$prmf="$path$prmf";$modf="$path$modf";$errf="$path$errf";};my @mdnz=(3,4,5,8,12,7,9,15,16,20,24,11,13,21,17,32);
+my $line='';my $cand=2;my $mcnd=0;my $mxck=2;my $mcsq=4;my %modz=();my @mndz=([3,5,10,7],[4,8,12,9],[15,20],[16,24],[11],[13],[21],[17],[32]);
+my @csgz=([3,4],[7,9],[5,8],[10,12],[20,24],[15,16],[13,21],[17,32],[11]);my @cslz=(10,100,1000,10**4,10**5,10**6,2*10**6,4*10**6,6*10**6,10**7);my $stag=0;
+# when re-running from scratch,trak threshz that chng leng of grpz of size,
+# setup valz as threshz with common @csgz indicez joind wi wher 2 oper8 on 4 cmprSion && add optnz 4 colmz widt stage-setz wi l8r suport 4 93k widez az wel;
+my $simp=  tie(@text,'Curses::Simp'             );my $widt=$simp->Widt();my $hite=$simp->Hite();my %mxmv=();my $xlgx=0;my $pagz=1;my $tlin=1;my $fail=0;
+           tie(@fclr,'Curses::Simp::FClr', $simp);for(0..48){$fclr[$_+1]=substr('RoYGCBMp',$_ % 8,1);} # 14 && 18 are hex groupz doubling 7 && 9 so omitted;
+           tie(@bclr,'Curses::Simp::BClr', $simp);for(0..48){$bclr[$_+1]=substr(' kb'     ,$_ % 3,1);} # strt striping linez wi bkgrnd pretty darkest colrz;
+$text[0]=" $name v$VERSION $d8VS by $Auth to gener8 prime numbers and interesting modulo totient co-prime categories can usefully sub-partition them!";
+$fclr[0]=" " . 'G' x length($name) . ' p' . 'C' x length($VERSION) . ' RoYGCBMp oo ' . 'B' x length($Auth);$fclr[0].='w' x ($widt - length($fclr[0]));
+if       (!-r  $prmf){push(@prmz,2,3,5,7,11,13,17,19,23,27,31,37);$line='0:' . join(' ',@prmz);$cand=$prmz[-1];
+  while  (                                $mcsq < $cand){$mxck=$prmz[++$mcnd];$mcsq=$mxck*$mxck;}
+  while  (!-r  $prmf){$fail=0;$cand+=2;if($mcsq < $cand){$mxck=$prmz[++$mcnd];$mcsq=$mxck*$mxck;}
+    for my $cknd (1..$mcnd){unless($cand % $prmz[$cknd]){$fail=1;last;}}
+    unless($fail){push(@prmz,$cand);
+      if (length("$line$cand ") > $widt){$line =~ s/\s+$//;#s/(\s\d+)\s$//;
+        open ( $plfh, '>',$prmf) or (endwin() && die "!EROR! Cannot open $prmf for writing!\n");
+        print  $plfh "$line\n";$text[$tlin++] =$line;
+        close( $plfh);$line ="$#prmz:$cand ";}
+      else{           $line.=       "$cand ";}}}}
+else{open(     $plfh, '<',$prmf) or (endwin() && die "!EROR! Cannot open $prmf for reading!\n");$fclr[$hite-1]='G';my $xpnt=8;
+  while  (    <$plfh>){chomp;s/^(\d+)://;
+    if   ($1 !=@prmz){               endwin();   die "!EROR! Primes list file index: $1 did not match number in array!\n"; }
+    if   ($1 > 2**$xpnt   ){$text[$hite-1]="loading:2**${xpnt}th prime...";$xpnt++;};
+    push (     @prmz,split(/\s+/,$_));}
+  close  (     $plfh);               $line=($#prmz+1) . ':';$cand=$prmz[-1];while($mcsq < $cand){$mxck=$prmz[++$mcnd];$mcsq=$mxck*$mxck;}}
+if       ( -r  $modf){
+  open       ( $mdfh, '<',$modf) or (endwin() && die "!EROR! Cannot open $modf for reading!\n"); # now Modz shud strt with last 2 linez of Prym.ls (or @text);
+  $slin=<$mdfh>;if($slin=~ /^(\d+):(\d+)/){my($pndx,$prim)=($1,$2);if($prmz[$pndx] != $prim){endwin();die "!EROR! pndx:$pndx prmz:$prmz[$pndx] != $prim!\n";}}
+  $llin=<$mdfh>;if($llin=~ /^(\d+):(\d+)/){my($pndx,$prim)=($1,$2);if($prmz[$pndx] != $prim){endwin();die "!EROR! pndx:$pndx prmz:$prmz[$pndx] != $prim!\n";}}
+  $dlin=<$mdfh>;$mlin=$dlin;$mlin=~ s/(^\d+(\.\d+)?\s+|\s+$)//g;my @mndt=split(/\s+/,$mlin); # strip x/ln(x) && trailing spacez;
+  for(@mndt){         my $dlim=      ':';my @mndm=();   my   $sdlm='/'    ;
+    if   (       /^(\d+)($dlim)(\S+)$/   ){ @mndm=($1,$3);
+      if ($mndm[1]=~   s/$sdlm(\d+)$//   ){ $mndm[2]= $1 ;}}
+#   if   (/^([^$dlim]+)([$dlim])(\S+)/   ){ $dlim=$2;        @mndm=($1,$3); @mndm=split(/$dlim/,$_); # this stuf doesn't work well
+#     if ($#mndm == 1 && $mndm[1] =~   s/([|$sdlm])(.+)$// ){$sdlm= $1    ;              $mndm[-1]=$2;}}
+#   elsif(/^(  [^:=;]+)([$dlim])(.+)$/x  ){ $dlim=$2;        @mndm=($1,$3);#@mndm=split(/$dlim/,$_);
+#     if ($#mndm == 1 && $mndm[1] =~   s/([;$sdlm])(\S+)// ){$sdlm= $1    ;              $mndm[-1]=$2;
+#      #if($sdlm eq '/'){$mndm[1]=b210($mndm[1]);$mndm[2]=b210($mndm[2])  ;}
+# }}elsif(/^(      \d+)([:]    )(\S+)/x  ){ $dlim=$2;        @mndm=($1,$3); @mndm=split(/$dlim/,$_);
+#     if ($#mndm == 1 && $mndm[1] =~   s/([<])(\S+)//      ){$sdlm= $1    ;              $mndm[-1]=$2;}}
+#   elsif(      /^(\d+)([:])(\S+)/       ){ $dlim=$2;        @mndm=($1,$3);#@mndm=split(/$dlim/,$_);
+#     if ($#mndm == 1 && $mndm[1] =~   s/([=])(\S+)//      ){$sdlm= $1    ;              $mndm[-1]=$2;}}
+   #if($mndm[0] =~ /^[34]$/ ){$mndm[1]=b210($mndm[1]);$mndm[2]=b210($mndm[2]);} # base-transl8 back from b256 to decimal when loading
+   #if($mndm[0] =~ /^[79]$/ ){$mndm[1]=b210($mndm[1]);$mndm[2]=b210($mndm[2]);}
+                        $mxmv{$mndm[0]}{'diff'}=$mndm[1];$mxmv{$mndm[0]}{'mxdf'}=$mndm[2];   # %modz==%tmdz, %mxmv==%tmxv, %mxms==%tmxs, %rvlu==%trvl;
+    if($mndm[0] eq '5'){$mxmv{    '10'}{'diff'}=$mndm[1];$mxmv{    '10'}{'mxdf'}=$mndm[2];}} # need to load 10z with same as 5z
+  for       my $mset (@mndz   ){$mlin=<$mdfh>;$mlin=~ s/\s*$//; # each mset should get its own mline; try 2 just while && regex each off without matchng mndxz
+    while            ($mlin   =~ s/^([^:]+):(1=\S+(\s[6789]=\S+)*)\s*//){my($mndx,$csmz)=($1,$2);$csmz=~ s/\s+//g;
+      $text[$hite-1]=sprintf("loading:%2d into mlin with csmz:%s",          $mndx,$csmz);my @mctz=split(/,/,$csmz);
+      for   my $mdct (@mctz   ){$mdct=~ /^\s*(\d+)=([^,]+)$/;my($modu,$mcnt)=($1,$2);#($modu,$mcnt)=(b210($1),b210($2)) if($mndx =~ /^[79]$/);
+        $modz{$mndx}{$modu }=$mcnt;
+        $mxmv{$mndx}{'loww'}=$mcnt if(!exists($mxmv{$mndx}{'loww'}) || $mxmv{$mndx}{'loww'} > $mcnt);
+        $mxmv{$mndx}{'high'}=$mcnt if(!exists($mxmv{$mndx}{'high'}) || $mxmv{$mndx}{'high'} < $mcnt);}
+      $mxmv{$mndx}{'diff'}= $mxmv{$mndx}{'high'} -  $mxmv{$mndx}{'loww'}; # mayb shud set diff here rather than just from diffz line of Modz.ls but shud B same
+      $mxmv{$mndx}{'mxdf'}= $mxmv{$mndx}{'diff'} if(!exists($mxmv{$mndx}{'mxdf'}) || $mxmv{$mndx}{'mxdf'} < $mxmv{$mndx}{'diff'});}}
+  $mlin=<$mdfh>; # strip header key:#mndx:copz:diffscld:mxdfscld:scldsumm/prmz_x_1000;
+  while(      <$mdfh>){chomp;       #   3:   2:    1068:    1264:1.194163143578149899;
+    if (  /^(\s*\d+:){4}(\s*\d+\.\d+\s*;)$/){$mlin=$_;$mlin=~ s/(\s+|;$)//g;my @tscf=split(/:/,$mlin);
+      $mxms{$tscf[0]}{'modz'}= $tscf[1];
+      $mxms{$tscf[0]}{'scdf'}= $tscf[2];
+      $mxms{$tscf[0]}{'scmd'}= $tscf[3];
+      $mxms{$tscf[0]}{'scsm'}= $tscf[4];
+      $rvlu{$mxms{$tscf[0]}{'scsm'}}=$tscf[0] if($tscf[0] ne '10');}
+    elsif(/^([^=]+)=(.+)$/){$mlin=$_;my $b2nd=$1;my $pndx=b210($1);my @dflz=split(/\s+/,$2);
+      for my $dndx (0..$#dflz){$dflz[$dndx]=b210($dflz[$dndx]);}  ;my $tlin="$pndx:" . join(' ',@dflz) . "\n";} # could cmpr 1st wi slin && 2nd wi llin
+    elsif(/^(\S+)\s+(([^=]+=[^\/]+\/\S+\s*)+)$/){$mlin=$_;my $pcfa=b210($1);my @dflz=split(/\s+/,$mlin);$dflz[0]=$pcfa;my $hm2n=$hite-$#mndz-2;
+      for my $dndx (1..$#dflz){if($dflz[$dndx]=~ /^([^=]+)=([^\/]+)\/(\S+)$/){my($b1mn,$b1df,$b1md)=(b210($1),b210($2),b210($3));
+          $dflz[$dndx]="$b1mn:$b1df/$b1md";}}my $tlin=join(' ',@dflz)."\n";
+      if ($dlin ne $tlin){$text[$hm2n]=$dlin;$text[$hm2n+1]=$tlin;$fclr[$hm2n+1]=$fclr[$hm2n]='G';$keey=$simp->GetK($tmot*4);}}
+    elsif(/^([^\|]+\|1~[^,]+,.+)$/){$mlin=$_;    my @dflz=split(/\s+/,$mlin);for my $dndx (0..$#dflz){if($dflz[$dndx]=~ /^([^\|]+)\|(\S+)$/){
+          my($mndx,$b2mn,$mgcz)=(b210($1),$1,$2);my @mgpz=split(/,/  ,$mgcz);for my $gndx (0..$#mgpz){if($mgpz[$gndx]=~ /^([^~]+)~([^,]+)$/){
+              $mgpz[$gndx]=b210($1).'='.b210($2);}}$mgcz=join(',',@mgpz);$dflz[$dndx]="$mndx:$mgcz";}}my $tlin=join(' ',@dflz)."\n";}
+    else{                                    $text[$hite-1]="did not matchanyknownline:$_;"      ;$keey=$simp->GetK($tmot*4);}}
+  close      ( $mdfh);
+}else{                        $text[$hite-2] = 'modz:';$fclr[$hite-2] = 'G';
+  for     my $mset (@mndz   ){
+    for   my $mndx (@{$mset}){$text[$hite-2].="$mndx ";}}
+  for     my $mset (@mndz   ){
+    for   my $mndx (@{$mset}){$text[$hite-1] =sprintf("loading:%2d into modz",$mndx);
+      for (11..$#prmz){my $prmm=$prmz[$_] % $mndx;$modz{$mndx}{$prmm}++;my $lo; # only strt cnting modz 4 12th prm (37) onward... 2skip early modz being 0;
+        if(!exists($mxmv{$mndx}{'loww'})){$mxmv{$mndx}{'loww'}=$modz{$mndx}{$prmm};}
+        if(        $mxmv{$mndx}{'loww'}==($modz{$mndx}{$prmm}-1)){$lo=$mxmv{$mndx}{'loww'}=$modz{$mndx}{$prmm};$mxmv{$mndx}{'diff'}=$mxmv{$mndx}{'high'}-$lo;}
+        if(        $mxmv{$mndx}{'loww'}> ($modz{$mndx}{$prmm}-2)){    $mxmv{$mndx}{'loww'}=$modz{$mndx}{$prmm};} # not sure if this shud B -2 or gr8r?
+        if(!exists($mxmv{$mndx}{'high'}) || $mxmv{$mndx}{'high'} < $modz{$mndx}{$prmm }){$mxmv{$mndx}{'high'}=$modz{$mndx}{$prmm};}
+        if(!exists($mxmv{$mndx}{'diff'}) || $mxmv{$mndx}{'diff'}!=($mxmv{$mndx}{'high'} -$mxmv{$mndx}{'loww'})){
+                                            $mxmv{$mndx}{'diff'} = $mxmv{$mndx}{'high'} -$mxmv{$mndx}{'loww'};}
+        if(!exists($mxmv{$mndx}{'mxdf'}) || $mxmv{$mndx}{'mxdf'} < $mxmv{$mndx}{'diff'}){$mxmv{$mndx}{'mxdf'}=$mxmv{$mndx}{'diff'};}
+        $text[$hite-1].='.' unless($_ % (int($#prmz/8)+1));}}}}$text[$hite-1]='';
+while    (@prmz < $maxp){$fail=0;$cand+=2;if($mcsq < $cand){$mxck=$prmz[++$mcnd];$mcsq=$mxck*$mxck;}
+  for   my $cknd (1..$mcnd){unless($cand % $prmz[$cknd]){$fail=1;last;}}
+  unless ( $fail){#$line=~ s/\s(\d+)\s$//;
+    if   (length("$line$cand ") <= $widt){push(@prmz,$cand);$line.="$cand ";
+      for       my $mset (@mndz   ){
+        for     my $mndx (@{$mset}){my $cmdm=$cand % $mndx;$modz{$mndx}{$cmdm}++; # Candid8 MoDulo Mindex
+          if($mxmv{$mndx}{'loww'} == ($modz{$mndx}{$cmdm}-1)){my $lo=$mxmv{$mndx}{'loww'}=$modz{$mndx}{$cmdm};$mxmv{$mndx}{'diff'}= $mxmv{$mndx}{'high'}-$lo;}
+          if($mxmv{$mndx}{'high'} <   $modz{$mndx}{$cmdm}   ){my $hi=$mxmv{$mndx}{'high'}=$modz{$mndx}{$cmdm};$mxmv{$mndx}{'diff'}= $hi-$mxmv{$mndx}{'loww'};}
+          $mxmv{$mndx}{'mxdf'}= $mxmv{$mndx}{'diff'} if(!exists($mxmv{$mndx}{'mxdf'}) || $mxmv{$mndx}{'mxdf'} < $mxmv{$mndx}{'diff'});}}
+    }else{$line=~ s/\s+$//; # try to append l8st prymz only at the end of each full page nstd of aftr each line
+      $text[$tlin++]=$line;
+      open   ( $plfh,'>>',$prmf) or (endwin() && die "!EROR! Cannot open $prmf for apnding!\n");
+      print    $plfh "$line\n"; # HTTPS://En.WikiPedia.Org/wiki/Prime_number_theorem  # prime-counting-function approxim8ion of x/ln(x)
+      close  ( $plfh);
+      push(@prmz,$cand);$line="$#prmz:$cand ";
+      for       my $mset (@mndz   ){
+        for     my $mndx (@{$mset}){my $cmdm=$cand % $mndx;$modz{$mndx}{$cmdm}++; # Candid8 MoDulo Mindex
+          if($mxmv{$mndx}{'loww'} == ($modz{$mndx}{$cmdm}-1)){my $lo=$mxmv{$mndx}{'loww'}=$modz{$mndx}{$cmdm};$mxmv{$mndx}{'diff'}= $mxmv{$mndx}{'high'}-$lo;}
+          if($mxmv{$mndx}{'high'} <   $modz{$mndx}{$cmdm}   ){my $hi=$mxmv{$mndx}{'high'}=$modz{$mndx}{$cmdm};$mxmv{$mndx}{'diff'}= $hi-$mxmv{$mndx}{'loww'};}
+          $mxmv{$mndx}{'mxdf'}= $mxmv{$mndx}{'diff'} if(!exists($mxmv{$mndx}{'mxdf'}) || $mxmv{$mndx}{'mxdf'} < $mxmv{$mndx}{'diff'});}}
+      if($tlin == $hite-$#mndz-2){$tlin=1;$pagz++;my $pcfa=int($cand / log($cand));$simp->FlagAuDr(0); # PrimeCountingFunctionApproxim8ion might want to int;
+        $text[                                 $hite-$#mndz-2      ] ="$pcfa ";
+        $fclr[                                 $hite-$#mndz-2      ] ='G' x length( $pcfa) . 'w'; # looping for diffz after modz done
+        for   my $msnd (0..$#mndz ){     $text[$hite-$#mndz-1+$msnd] =$fclr[$hite-$#mndz-1+$msnd]='';
+          for my $mndx (@{$mndz[$msnd]}){$text[$hite-$#mndz-1+$msnd].="$mndx:";my $scnd=0;
+            $fclr[                             $hite-$#mndz-1+$msnd].='M' x length( $mndx) . 'w';
+            for my $modu (sort { $a <=> $b } keys(%{$modz{$mndx}})){my $spad='';if(($mndx=~ /^[12]0$/ && $modu==       9   ) || # for 10 && 20, space-pad 9 to
+                                                                                   ($mndx==    17     && $modu=~ /^[6789]$/) || #   align w/11z below it&&othrz
+                                                                                   ($mndx=~ /^1[13]$/ && $modu=~ /^[6789]$/)){$spad=' ';}
+              my $mmmo=$modz{$mndx}{$modu};#$mmmo=b256($mmmo) if($mndx=~ /^[79]$/); # base-transl8 into 256 the modz mndx modu mcnt for those compressing
+              $text[                           $hite-$#mndz-1+$msnd].="$spad$modu=$mmmo,";
+              $fclr[                           $hite-$#mndz-1+$msnd].=substr('RoYGCBMp', $scnd++  % 8,1) x length("$spad$modu") . 'w' .
+                                                                      substr('RoYGCBMp',($scnd+3) % 8,1) x length("$mmmo"     ) . 'w';
+              if($mxmv{$mndx}{'loww'} > $modz{$mndx}{$modu}){$mxmv{$mndx}{'loww'}=$modz{$mndx}{$modu};}
+              if($mxmv{$mndx}{'high'} < $modz{$mndx}{$modu}){$mxmv{$mndx}{'high'}=$modz{$mndx}{$modu};}}
+            $mxmv{$mndx}{'diff'}= $mxmv{$mndx}{'high'}-$mxmv{$mndx}{'loww'};
+            $mxmv{$mndx}{'mxdf'}= $mxmv{$mndx}{'diff'} if($mxmv{$mndx}{'mxdf'} < $mxmv{$mndx}{'diff'});
+            $text[                             $hite-$#mndz-1+$msnd]=~s/^(.*),/$1 /;}}%rvlu=(); # need to add diffz && maxdiffz after upd8ing all the modz linz
+        for   my $mndx (@mdnz){my($dclr,$mclr)=(substr('RoYGCBMp',$mndx % 8,1),substr('HOyDTSmP',$mndx % 8,1));
+                               my($mdif,$mmxd)=($mxmv{$mndx}{'diff'},$mxmv{$mndx}{'mxdf'});
+                               my($msdf,$msmd)=(     $mdif ,     $mmxd );
+                                #($msdf,$msmd)=(b256($mdif),b256($mmxd)) if($mndx =~ /^[79]$/);
+          $text[$hite-$#mndz-2].=            "$mndx:"      .                $msdf  . '/' .                $msmd  . ' ';
+          $fclr[$hite-$#mndz-2].='M' x length($mndx) . 'w' . $dclr x length($msdf) . 'w' . $mclr x length($msmd) . ' ';}
+#       while          (length($text[$hite-$#mndz-2]) > $widt){ # this way could regex subst out last mndx:diff/mxdf as all decimal,find in fclr,scal dn2b256…
+#       }
+        for   my $mset (@mndz   ){
+          for my $mndx (@{$mset}){my $scal=scalar(keys(%{$modz{$mndx}}))  ; # tried setting scale to one less than num of coprimez in mod setz but was not betr
+            $mxms{$mndx}{'modz'}=                        $scal;
+            $mxms{$mndx}{'scdf'}= $mxmv{$mndx}{'diff'} * $scal;
+            $mxms{$mndx}{'scmd'}= $mxmv{$mndx}{'mxdf'} * $scal;
+            $mxms{$mndx}{'scsm'}=($mxms{$mndx}{'scdf'} + $mxms{$mndx}{'scmd'}) / $#prmz * 1000;
+            $rvlu{$mxms{$mndx}{'scsm'}}=$mndx if($mndx != 10);}}
+       #open (   $plfh,'>>',$prmf) or (endwin() && die "!EROR! Cannot open $prmf for apnding!\n");
+       #print    $plfh "$text[$_]\n" for(1..($hite-$#mndz-3));
+       #close(   $plfh); # this should loop thru text && apnd a page at a time nstd of opening for every new line like before, but need 2 test 2 mk sure alind;
+        open (   $mdfh, '>',$modf) or (endwin() && die "!EROR! Cannot open $modf for writing!\n");
+        for(($hite-$#mndz-4)..($hite-1)){$text[$_]=~ s/\s+$// if($#text >= $_ && defined($text[$_]));
+          print  $mdfh "$text[$_]\n";} # backtick for bgcd below is way slow for large primez;
+        print    $mdfh "mndx:copz:diffscld:mxdfscld:scldsumm/prmz_x_1000;\n"; # table header keyz for sorted mndx entriez
+        for   my $scsm (sort { $a <=> $b } keys(%rvlu)){ #0.968456004427227 15 decimal digitz;
+          printf $mdfh "%4d:%4d:%8d:%8d:%18.18f;\n",$rvlu{$scsm}         ,$mxms{$rvlu{$scsm}}{'modz'},
+                                              $mxms{$rvlu{$scsm}}{'scdf'},$mxms{$rvlu{$scsm}}{'scmd'},$scsm;}my @dflz=();my $pndx;my $b2nd;
+        for     my $rndx (0..     1){ # loop twice on -4 && -3 for regular primez linez (2nd2last && last);
+          $mlin=$text[$hite-$#mndz-4+$rndx];if($mlin=~s/^(\d+)://){$pndx=$1;$b2nd=b256($1);@dflz=split(/\s+/,$mlin);
+            for my $dndx (0..$#dflz){$dflz[$dndx]=b256($dflz[$dndx]);}
+            print  $mdfh "$b2nd=" . join(' ',@dflz)."\n";}}
+        $mlin  =$text[$hite-$#mndz-2      ]; @dflz=split(/\s+/,$mlin);$dflz[0]=b256($dflz[0]);for my $dndx (1..$#dflz){
+          if($dflz[$dndx]=~ /^(\d+):(\d+)\/(\d+)$/){$dflz[$dndx]=b256($1) .'='.b256($2) .'/'. b256($3);}}
+        print    $mdfh join(' ',@dflz)."\n";
+        for   my $msnd (0..$#mndz){$mlin=$text[$hite-$#mndz-1+$msnd];$mlin=~ s/(,)\s([6789]=)/$1$2/g;@dflz=split(/\s+/,$mlin);
+          for my $dndx (0..$#dflz){if ($dflz[$dndx]=~ /^(\d+):(1=\S+)$/){my($b2mn,$mndx,$mgcz)=(b256($1),$1,$2);my @mgpz=split(/,/,$mgcz);
+              for my $gndx (0..$#mgpz){if($mgpz[$gndx]=~ /^(\d+)=(\d+)$/){$mgpz[$gndx]=b256($1).'~'.b256($2);}}
+              $mgcz =  join(',',@mgpz);$dflz[$dndx]="$b2mn|$mgcz";}}
+          print  $mdfh join(' ',@dflz)."\n";}
+        my $bgcd='perl bgcd ' . ($prmz[$pagz]*16) . " 1|sS";#print $mdfh `$bgcd`;
+        close(   $mdfh);if($draw){$simp->Draw();$simp->FlagAuDr(1);}$keey=$simp->GetK(0);
+        if     (defined($keey) &&
+                $keey ne      '-1'){
+          if   ($keey =~ /^[xq]$/i){last;} # eXit (Quit) prym
+          elsif($keey =~ /^ \d $/x){$tmot =  $keey;} # set TimeOut to digit-keey seconds
+          elsif($keey eq      'p' ){$keey =  $simp->GetK(-1);$keey='-1' if($keey =~ /^[p ]$/);} # 'p' pause until next key hit, but betr 2 hit spac 2 togl draw
+          elsif($keey eq      ' ' ){$draw^=1;$simp->FlagAuDr($draw);} # toggle whether Simp should Draw
+          elsif($keey eq      'd' ){$draw =0;$simp->FlagAuDr($draw);} # lowercase 'd' turnz drawz off 0
+          elsif($keey eq      'D' ){$draw =1;$simp->FlagAuDr($draw);} # UPPERcase 'D' Turnz Drawz Onn 1
+        }}}}
+} #endwin();

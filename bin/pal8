@@ -1,0 +1,138 @@
+#!/usr/bin/perl
+# DBILFtqq:pal8 by PipStuart <Pip@CPAN.Org> to centralize color palette configur8ion && change terminal colors in several quick, intuitive, && efficient ways;
+# 2du:IBSLAPal:mAB XprmNt intrlEvd rBg 1.5,1.5,3 bitz 2 sngl b64 colr rep,r3B3 1st b64 char g6 2nd 4 2char rep,Dflt ceil in 255 zOnz abovEqul .5 half||.16 6th?
+#   Before committing to such a peculiar approach like that, 1st confirm that Green sight range sensitivity deserves gradu8ion dominance fromXpctd RGB222/222;
+use warnings;use strict;use utf8;use v5.22;use Oct::a8;use Oct::b8;my $VERSION='0.0';my $d8VS='N8AMHome';
+my $term='';$term = $ENV{'TERM'    } if(exists($ENV{'TERM'    }) && $ENV{'TERM'    }); # Terminal type
+my $pqef= 0;$pqef = $ENV{'Pal8Qiet'} if(exists($ENV{'Pal8Qiet'}) && $ENV{'Pal8Qiet'}); # Pal8QietEnvFlag
+my $dfpl= "000 g00 gL0 0g0 0gg 00g g0g ggg  LLL _LL __L L_L L__ LL_ _L_ ___"; # DeFault kernel PaL8 colors after booting (in 2pal8 order) but =~ s/P/L/g;
+my $dxpl= "000 W00 WW0 0W0 0WW 00W W0W mmm  WWW _00 __0 0_0 0__ 00_ _0_ ___"; # Default Xterm  PaL8 colors from base 256 (in 2pal8 order)
+my $cmpl= "000 g00 _SI 0g0 0gg DPf g0g CCC  ggg z99 __L L_L L__ Sdp kOr ___"; # CnvGTP28($cmsv); # CheckMate ckm8 PaL8 colors (from GnomTerm) 2pal8 order
+my @fvpl=("215 T34 _WI 0F9 0SX 06A xK_ GUZ  6DJ _JU __C B_b L__ 7V_ xX_ sy_", # krOgcbPw KRYGCBMW orig TigsFavs converted to 2pal8 order but modified
+          "EEE WEM pX0 EI4 8SQ GQU V9p WWU  QQQ _Qj pp0 QZ8 Guq Xpw p0p __y", # ehodtspi EHyDTSmI with hand gener8d darks ((round Bright/4)*2) other than op
+          "KKK M44 WSO GWQ UWW 00G SSW WSM  eee i88 _vn V_r y__ 00W vv. _th", # .fuaznlj _FUAZNLJ  although looking up dark version3 of each might improve
+          "00I M6C WQ0 6Q6 8GM 4IW UGU WUQ  00Y iCO _r0 CpC HWj 7a_ xWx .wr");# 02468xvq 13579XVQ; # BlO CkM8 StringValue in ~/.gconf/apps/gnome-terminal/
+my $cmsv= "#000000000000:#AAAA00000000:#0000AAAA0000:#FF8FBE3548C1:#34346565A4A4:#AAAA0000AAAA:#0000AAAAAAAA:#323232323232:" . # /profiles/Profile4/%gconf.xml
+          "#AAAAAAAAAAAA:#F4AE24172417:#5555FFFF5555:#FFFFFFFF5555:#72729F9FCFCF:#BB056102D47A:#5555FFFFFFFF:#FFFFFFFFFFFF";my $dfvf=1; # DefaultFaVoritezFlag
+sub CnvGTP28{my $tpsv = shift(@_) || $cmsv;my $crps = ''; # CoNVert GnomeTerminal Palette 2 pal8, Term Pal <stringvalue>, Converted Return Pal8 String
+  my @bdpe = split(/:/,$tpsv);s/^#// for(@bdpe);my @bdpf; # Broken Down Palette Entries, BDP Fields
+  for(0..$#bdpe){$bdpf[$_][0] = b64(int(dec(substr($bdpe[$_],0,4)) / 1024));
+                 $bdpf[$_][1] = b64(int(dec(substr($bdpe[$_],4,4)) / 1024));
+                 $bdpf[$_][2] = b64(int(dec(substr($bdpe[$_],8,4)) / 1024));}
+  splice(@bdpf, 2,0,splice(@bdpf, 3,1)); # swap   3 Orange before  2 green               # transl8 ANSI to 2pal8 order
+  splice(@bdpf, 4,0,splice(@bdpf, 6,1)); # slide  6 cyan   before  4 blue  (and Purple )
+  splice(@bdpf,10,0,splice(@bdpf,11,1)); # swap  11 Yellow before 10 Green
+  splice(@bdpf,12,0,splice(@bdpf,14,1)); # slide 14 Cyan   before 12 Blue  (and Magenta)
+  for(0..$#bdpe){$bdpe[$_]    = join('',@{$bdpf[$_]});
+    $crps     .= $bdpe[$_] . ' '; $crps .= ' ' if($_ == 7); # double-space center like above
+  } $crps     =~ s/\s$//;print "cmpl:$cmpl\ncrps:$crps\n";return($crps);
+}  my   $argu = '';my $gtpl = '';my $mapn = '8pal8';my $ccml='F';my $ccmo;my @lcco=();my @laco=();my $rcou=0; # ARGUment,GnomTermPaL,MapName(from a8.pm %cmap),
+while  (@ARGV){$argu = shift(@ARGV);                           # CustomColorMapLayer, CustomColorMapOrder, LayeredColorCodesOrder, LayerAndCodeOrder, RgbCOUnt;
+  if   ($argu =~ /^-+q/          ){$pqef    =        1 ;}
+  elsif($argu =~ /^-+d/          ){$fvpl[0] = $dfpl    ;}
+  elsif($argu =~ /^-+D/          ){$fvpl[0] = $dxpl    ;for(0..255){printf("\e]4;%d;#%s\a",$_,lc($x256[$_])) if($term =~ /^xterm/);}} # reset all 256 2 Dfltz
+  elsif($argu =~ /^-+c/          ){$fvpl[0] = $cmpl    ;}
+  elsif($argu =~ /^-+([123])$/   ){$fvpl[0] = $fvpl[$1];}
+  elsif($argu =~ /^-+h/ && !$pqef){print "pal8 v$VERSION d8VS:$d8VS Auth:$Auth usage:
+ -q  sets Quiet mode to not print  default 2pal8 d8a
+ -0  loads    primary 2pal8 within default 8pal8 (clen)
+ -1  loads  secondary 2pal8 within default 8pal8 (neon)
+ -2  loads   tertiary 2pal8 within default 8pal8 (wash)
+ -3  loads quaternary 2pal8 within default 8pal8 (melo)
+ -c  loads Ckm8 custom pal8
+ -a  loads All custom 8pal8 with RgbL default colors
+ -d  loads the Default kernel palette after boot (but s/P/L/g;)
+ -D  loads the Default xterm  palette from 256 (resets all 256)
+ -m=<O:a8-colors-map-name> from Oct::a8, currently:
+ VGA =kbgcrPOw KBGCRMYW # also ANSI, 2pal8, pal82 are 1st 16 of below;
+8ANSI=krgObPcw KRGYBMCW ehdospti EHDySmTI .faunlzj _FAUNLZJ 0264xv8q 1375XV9Q
+8pal8=krOgcbPw KRYGCBMW ehodtspi EHyDTSmI .fuaznlj _FUAZNLJ 02468xvq 13579XVQ
+pal88=RoYGCBMp kKrgcbwW HOyDTSmP eEhdtsiI FuUAZNLl ._faznjJ 34579XVv 01268xqQ
+pal8 =RoYGCBMp; # 8bow && d8bo are aliases to pal8;
+ -l=<pal8-abrV8n-map-char> from Oct::a8, currently:
+    B=Bepspurp, c=cOOL    , d=dARKZ   , R=deepRed, P=Penguin,
+    b=bLUES   , p=DARKpRIM, D=Default , F=Flipped, H=Heather,
+    g=gOOFY   , S=Sweet   , f=TIGSfAVS, t=t,  r=r, 8=8bow   ,
+    n=nICE    , s=sILLY   , T=Tigzfavz, y=yEL; # exits after load;
+  FDAL:<b64-chars> just specifying Fore, Dark, Avrg, or Lite then a
+     colon followed by any number of 8pal8 b64 chars sets color map
+  <3or4-b64-chars> (up to 256 of them in 18-bit RGB or 24-bit h2rl)
+     can be given in FDAL x 8pal8 (or the -m color map name) order;
+ -h  prints this Help text and exits;\n";exit();}
+  elsif($argu =~ /^-m=?([0-9A-Za-z._]*)/){my $acmn='';if(defined($1) && length($1)){$acmn=$1;}elsif(@ARGV && exists($cmap{$ARGV[0]})){$acmn=shift(@ARGV);}
+    else{print "!*Warn*! No valid -m Oct::a8 Order of Colors Map Name argument was found!\n";}       if(exists($cmap{$acmn   })){$mapn=      $acmn ;
+    my $cmnm=$cmap{$mapn};$cmnm=~ s/\s+//g;$rcou=length($cmnm);}} # hopefully setting map explicitly to 8pal8 (already default) will also run thru all 64 colrz
+  elsif($argu =~ /^-l=?([0-9A-Za-z._]?)/){my $p8fa='';if(defined($1) && length($1)){$p8fa=$1;}elsif(@ARGV && exists($f8pm{$ARGV[0]})){$p8fa=shift(@ARGV);}
+    else{print "!*Warn*! No valid -l Oct::a8 Pal8 AbbreV8ion Map Char argument was found!\n";} $ENV{'Pal8Qiet'}=$pqef if($pqef);
+    if(length($p8fa) && exists($f8pm{$p8fa})){system("$f8pm{$p8fa}.pal8");exit();}} # XeQt && Xit if valid ~/lib/O*/f8/pal8/ fIlnAm map-char givN
+  elsif($argu =~ /^-a/){print "#!/bin/sh\n";my $p88c=$cmap{'8pal8'};$p88c=~ s/\s+//g;for my $layr (qw(F D A L)){print "pal8 $layr:$p88c ";
+      for my $clrc (split(//,$p88c)){print h2rl($x256[$p8k2{$layr}{$clrc}]) . ' ';print ' ' if($clrc =~ /^[WIJQ]$/i);} print "\n";}} # All 256 as huge cmndz
+  elsif($argu =~ /^([bFDAL]:)?([0-9A-Z._]{1,2}|[0-9A-Z._]{5,})$/i){if(defined($1) && length($1)){$ccml=$1;$ccml=~ s/:$//;} if(defined($2)){$ccmo=$2;}
+    if(length($ccmo)){$ccml='F' unless(defined($ccml) && length($ccml) && $ccml=~ /^[bFDAL]$/i);push(@laco,"$ccml:$ccmo");
+    for my $ccod (split(//,$ccmo)){push(@lcco,"$ccml:$ccod");}}}
+  elsif($argu =~ /^[0-9A-Za-z._]{3,4}$/){$rcou++;if($dfvf){$dfvf=0;$fvpl[0]="$argu ";}else{$fvpl[0].="$argu ";}}}
+$fvpl[0] =~ s/^((\w+\s){8})(\w)/$1 $3/; # try 2 insert an extra space to sepR8 low8 from high8 of typical 2pal8 if they compacted, FavPalSePar8d||SPlit BlO
+my @fpsp=split(/\s+/,join(' ',@fvpl));unless(@lcco){$_= $cmap{$mapn} if(exists($cmap{$mapn}));$_=$ccmo if(defined($ccmo) && length($ccmo));s/\s+//g;
+  $ccml='F' unless(defined($ccml) && length($ccml) && $ccml=~ /^[bFDAL]$/i);for my $ccac (split(//,$_)){push(@lcco,"$ccml:$ccac");}} # ColrCodeAbbrevChar
+if  (@fpsp >=  8 && $term =~ /linux$/){ # should revert to ANSI order (or VGA?) for full-screen console in my GenToo VM;
+  (  $fpsp[ 2],$fpsp[ 3]          )=($fpsp[ 3],$fpsp[ 2]          );  # remap oy  && g
+  (  $fpsp[10],$fpsp[11]          )=($fpsp[11],$fpsp[10]          );  #       OY     G
+  if(@fpsp >= 16){ # try switching around @fpsp nstd of @lcco?
+    ($fpsp[ 4],$fpsp[ 5],$fpsp[ 6])=($fpsp[ 5],$fpsp[ 6],$fpsp[ 4]);  # remap bmp && pbm
+    ($fpsp[12],$fpsp[13],$fpsp[14])=($fpsp[13],$fpsp[14],$fpsp[12]);} pop(@lcco) while(@lcco > 16);$rcou=@lcco;}
+$rcou = 16 unless($rcou);
+unless( @laco){pop(@lcco) while($#lcco >= $rcou);} # go bak 2 limitng Dfalt run 2 just do 2pal8 nstd of whole 8pal8 if no custm layrz:codez were pasd
+for(0..$#lcco){$pmap{$lcco[$_]} = $fpsp[$_];} # this will be popul8ing %pmap with new Layer:Colorcode keyz to provided Pal8s (or from FaVz) SePar8d
+my $jpms=''; # Joined Pal8 Mapd Strngs    # orig below B4 switchd 2 lcco was: for(0..$#{$cmsp{'ANSI'}}){my @rgbd = split(//,$pmap{$cmsp{'ANSI'}[$_]});
+print $G . "pal8 " . join(' ',@laco) if(!$pqef);print ' ' if(!$pqef && @laco);print "$fvpl[0]\n" if(!$pqef);
+for(0..$#lcco){my @rgbd = split(//,$pmap{$lcco[$_]});my $curl='F';my $curc=$lcco[$_];if($curc=~ s/^([bFDAL])?://i){$curl=$1 if(defined($1) && length($1));}
+  if($#rgbd == 3){my $hxst=rl2h(join('',@rgbd));my @hdgz=split(//,$hxst);for my $cndx (0..$#hdgz){$hdgz[$cndx]=dec($hdgz[$cndx]);}
+    @rgbd=($hdgz[0]*16+$hdgz[1], $hdgz[2]*16+$hdgz[3], $hdgz[4]*16+$hdgz[5]);} # should take RgbL 24-bit b64 4m@ && cnv to 0..255 R,G,&& B
+  else           {for my $cndx (0..$#rgbd){$rgbd[$cndx]=b10($rgbd[$cndx])*4;}} # should take RGB  18-bit b64 4m@ (which was the original)
+  my $p82a=0;if($curl ne 'F' || $curc !~ /^[krOgcbPwKRYGCBMW]$/){$p82a=$p8k2{$curl}{$curc};}else{
+    for my $apnx (0..15){if($cmsp{'ANSI'}[$apnx] eq $curc){$p82a=$apnx;last;}}}# search for 8Pal8 2 8Ansi index for Escape below
+  $jpms .=                                       $pmap{$lcco[$_]} . ' ';my $rl4c=$pmap{$lcco[$_]};$rl4c.='0' if(length($rl4c) == 3); # set RgbLow 4 Color
+  printf("%s"                                      , S($lcco[$_])) if(!$pqef); # Escape foreground color for row
+ #print  $SKp8, ($_ < 8) ? '47m' : '40m'; # background w or k color
+  printf("%3d %s %s #%2.2X%2.2X%2.2X %3d,%3d,%3d; ",$_,$lcco[$_],$rl4c,@rgbd,@rgbd) if(!$pqef);print "\n" if(!$pqef && !(($_+1) % 4));
+  print  "\n" if(!$pqef && !(($_+3) % 4) && exists($ENV{'COLUMNS'}) && $ENV{'COLUMNS'} < 160); # try to wrap twice as much if proly 80-colmz
+ #printf("\e]P%1.1X%2.2X%2.2X%2.2X"                ,$_,                @rgbd) if($term =~ /^xterm/); # GNU/Lin Console? m// 4 -256color also;
+  printf("\e]P%1.1x%2.2x%2.2x%2.2x"                ,$_,                @rgbd) if($term =~ /linux$/ && $_ < 16); # GNU/Lin Console mAB uc(X)?;
+# printf("\e]4;%d;#%2.2x%2.2x%2.2x\e\\"            ,$_,                @rgbd) if($term =~ /^xterm/); # works in GnomTerm AgN (try4screen too?)
+  printf("\e]4;%d;#%2.2x%2.2x%2.2x\a"              ,$p82a,             @rgbd) if($term =~ /^xterm/); # chngd ST to BEL Alarm to fix konsole;
+  # switching from ST to BEL 4 OSC termin8or workz fine for xt, gt, && sak which I've tested so far, but konsole colors aren't changing either way it's ended;
+# $rgbd[0] *= 256;$rgbd[1] *= 256;$rgbd[2] *= 256;    # scale 8-bit RGB d8a up to 16-bit by mult by 256;             # GnomTerm window focus chng did reset B4
+# $gtpl .= sprintf("#%4.4X%4.4X%4.4X:"             ,                   @rgbd);
+  $rgbd[0] = sprintf("%2.2X%2.2X",$rgbd[0],$rgbd[0]); # scale 8-bit RGB d8a up to 16-bit by just duping 2 HEX charz to 4;
+  $rgbd[1] = sprintf("%2.2X%2.2X",$rgbd[1],$rgbd[1]);
+  $rgbd[2] = sprintf("%2.2X%2.2X",$rgbd[2],$rgbd[2]);
+  $gtpl .= '#' . join('', @rgbd) . ':'; # already in  HEX 16-bit per RGB channelz so no need to sprintf them;
+} $gtpl =~ s/:$//;my @gtpf=split(/:/,$gtpl);my $bb=S('b:b');for(@gtpf){s/^(#)(..)(..)(..)(..)(..)(..)$/$C$1$R$2$bb$3$z$G$4$bb$5$z$B$6$bb$7$z$W/;}
+for(1..$#gtpf){$gtpf[$_] =~ s/^/\n/ unless($_ % 8);} $gtpl=join(':',@gtpf);
+say "$G$gtpl" if(!$pqef); # maybe above should also set bkgr && frgr 0 && 7 like etfp did?
+#my $wefp=`which etfp`;chomp($wefp);system("etfp $jpms"                      ) if($term eq  'linux' && -x "$wefp"); # only try if in path; N8DMIsA4:~/bin/etfp was wrong IOCTL for device so mvd 2 etfpo then which here failed so probably need 2 recompile old etfp.c src 4 Gen2 here, or find altern8ive Utl 2 set palz;
+# "\e]P0ff0000" should set console cndx to rrggbb && "\e[8]" should set whatever current 40..47 as default bg (wi mAB 7 or 9 as Fg?);
+# In term emul8or: printf %b '\e]11;#ccffcc\a'; upd8 bg. It also works fine on mlterm, rxvt, gnome-terminal, konsole etc.
+# altern8ive form \e]11;rgb:cc/ff/cc\a (taken from HTTPS://SuperUser.Com/a/593228/949214?_gl=1*167isnh*_ga*MTU2NDk5NjEzMS4xNTk4OTAyNDE4*_ga_S812YQPLT2*MTY5MjIwNTEzNC4yMC4wLjE2OTIyMDUxMzQuMC4wLjA.)
+#   is not supported in konsole (tested with with 12.16.0 version). This will not work inside tmux or screen.
+# All of xterm's escapes are documented in the ctlseqs.txt file from its source code. HTTPS://Invisible-Island.Net/xterm/ctlseqs/ctlseqs.txt
+# N8GMCOLR:Above examples from: HTTPS://Unix.StackExchange.Com/questions/474502/how-to-set-the-background-color-of-the-linux-console-screen ;
+#void RsetPale(){int pndx,fndx; // reset palette through appropriate method
+#  if(LOCL && strcmp(term,"xterm")){ // just reset local virtual terminal
+#    if(escr){printf("\e]R");} // escape reset (doesn't work on xterm) ... or GNU/Linux anymore either? =(
+#    else{for(pndx=0;pndx<16;pndx++){if(!strcmp(term,"xterm")){ // xterm
+#          printf(   "\e]4;%d;#%2.2x%2.2x%2.2x\e\\",pndx,b10c(dpal[(pndx*4)+0]) * 4,b10c(dpal[(pndx*4)+1]) * 4,b10c(dpal[(pndx*4)+2]) * 4);
+#          if       (pndx == 0) { // If setting 'black', also set the background
+#            printf( "\e]11;#%2.2x%2.2x%2.2x\e\\"  ,     b10c(dpal[(pndx*4)+0]) * 4,b10c(dpal[(pndx*4)+1]) * 4,b10c(dpal[(pndx*4)+2]) * 4);
+#          } else if(pndx == 7) { // if setting 'white', also set the foreground
+#            printf( "\e]10;#%2.2x%2.2x%2.2x\e\\"  ,     b10c(dpal[(pndx*4)+0]) * 4,b10c(dpal[(pndx*4)+1]) * 4,b10c(dpal[(pndx*4)+2]) * 4);
+#          }}
+#        else{printf("\e]P%1.1X%2.2X%2.2X%2.2X"    ,pndx,b10c(dpal[(pndx*4)+0]) * 4,b10c(dpal[(pndx*4)+1]) * 4,b10c(dpal[(pndx*4)+2]) * 4);}}}} //GNU/LinConsol
+#  else{for(pndx=0;pndx<16;pndx++){for(fndx=0;fndx<3;fndx++){cpal[(pndx*3)+fndx]=b10c(dpal[(pndx*4)+fndx]) * 4;}} // re-initialize global palette
+#    if(ioctl(0,PIO_CMAP,&cpal) == -1){perror("PIO_CMAP");exit(-1);}}}
+#void SettPale(int pndx,int redd,int grnn,int bluu){redd*=4;grnn*=4;bluu*=4; // set pal8 valz,scaled decimalz of b64valz2intz in the 0..255 (actually 252) rang
+#  if(LOCL){ // just change local virtual terminal // may want to scal 0..'_' to 0..255 nstd tho?
+#    if(!strcmp(term,"xterm")){printf("\e]4;%d;#%2.2x%2.2x%2.2x\e\\",pndx,redd,grnn,bluu); // xterm
+#      if     (pndx == 0){     printf("\e]11;#%2.2x%2.2x%2.2x\e\\",       redd,grnn,bluu);}  // If setting 'black', also set the background
+#      else if(pndx == 7){     printf("\e]10;#%2.2x%2.2x%2.2x\e\\",       redd,grnn,bluu);}} // if setting 'white', also set the foreground
+#    else{                     printf("\e]P%1.1X%2.2X%2.2X%2.2X",    pndx,redd,grnn,bluu);}} // GNU/Linux console

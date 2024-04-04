@@ -1,0 +1,46 @@
+#!/usr/bin/perl
+# IC8L823c:U23c crE8d by PipStuart <Pip@CPAN.Org> 2 turn U2b Xl8d ClosedCaption transcripts in2 3 aligned columns (53x3=159-characters of maximum line-width);
+# O3RM2xUc:2du:nEd2procS ARGz 4 -c$scpc B4 naro calcd,Dtect hedngz&&4m@ thM 2;
+use strict;use warnings;use utf8;use v5.22;use Path::Tiny;my  $d8VS='O3PMGr8c';my $fpat="*.subs";my  $dflg=0;use Oct::b8; # -d probably lEvz tImz decimal;
+my $scpc=3;   $scpc--       if($ENV{'COLUMNS'} <  160);   my  $d8Vs='O3KM3sub';my $fpa2="*.cc"  ;my  $oflg=0;use Oct::d8; # SubsColumnsPillarsCount Dflt…;
+my $TSff=0;my $ISff=0;my $twid=$ENV{'COLUMNS'} // 160 ;$twid-- if $twid;         # /(^|\n)(TranScript)\n/i or IntroSectn fOUNDfLAGZfALS;  &&pullbak2TermWidth?;
+   $scpc= int($twid/  53 ) if($twid >  160); # so almost 5 shud fit 256x64;
+my $naro= int($twid/$scpc)-8;  # nOt:this is pOst sfil, alreD split in2now $_..$#tlnz 4 going thru orig sfil linz ther...; ## this naro line was by while ntll;
+if(!@ARGV || $ARGV[0]=~ /^-?-?([dh]|c[1-9]\d*$)/i || -e "$ARGV[0]"){if(defined($1) && length($1)){ # nEd2loop ARGz!;
+    if    ($1 eq 'h'){ # say some help text in a heredoc thN Xit!;
+    }elsif($1 eq 'd'){$dflg=1;} # sOfROnly ckz1st Rg4optn flag||colmzCnt pRam;
+     else            {$scpc=$1;$scpc=~ s/\D//g;$scpc=2 if($scpc!~ /^\d+$/);
+       $naro= int($twid/$scpc)-8;}
+    shift(@ARGV);}else{ # tk pRamEtr glob optnz4tXt transcript flnmz
+    $fpat=shift(@ARGV) if(@ARGV && -r "$ARGV[0]"); # mAB add this to a8.pm:sumb -2ndPg && add -help tXt?;
+    for my $sfnm (<"$fpat">){my $sfil=path($sfnm)->slurp_utf8();my $sfno=$sfnm;
+      if($sfno=~ s/^(.+)\.(utf|txt|log|x?scr?p?t?|subs?|cc)$/$1-$d8VS.$2/i){my $sijt='';my $si3c='';say "gener8ing $sfnm\n     into $sfno...";
+      # GamePlan:first buildup sijt to join time-stamps with following subtitles, then buildup ScriptIn3Columns as composited text below;
+        while($sfil=~ s/^( *|\t+|# ?[^\n]*)*\n// ){my $iscz=$1; # IndentSpace&&CommentZ; # BlO alreD obVusly insId rEmoval of hedr blank or comNt lIn...
+          $TSff=1 if($sfil=~ s/^(Transcript)\n//i);  # so fLAGfOUND ScriptSectnz
+          $ISff=1 if($sfil=~ s/^(Intro     )\n//x);} #  … &&gObak2hndl cmNtz2?;  ## 2du:hndl l8r sectnz th@ shud B nXt decimal tIm-stamp aftr lIn-tXt but…; ;;
+        my @tlnz=split(/\n/,$sfil);                       for(0..$#tlnz){if($tlnz[$_]=~ /^(\d+):(\d\d):?(\d*)$/){ # slice && loop linez, then 1st look 4 tImz…
+            my $dr8h='{'.b64($1).b64($2);$dr8h.=b64($3) if(defined($3) && length($3));$dr8h.='0} '; #.$tlnz[$_+1]."\n";
+            while((my $ntll= length($tlnz[$_+1])) > $naro){ # stor wId NxtTxtLineLeng sub-captn shud split by nIc fitng logic wi unsh4preT;
+              my $nlin = reverse(substr($tlnz[$_+1],0,$naro)); # NarrowLine from wider TranscripTexTLinez? reverse to just find first index of space B4 \n;
+              my $sndx =   index($nlin, " "   );my $nmsn= abs($naro-$sndx  ); # SpcTab-iNDeX but mIt prEfer regX /[ \t]/ mor4new split points?,NaroMinusSNdx;
+              my $tndx =   index($nlin,"\t"   );   $nmsn= abs($naro-$tndx  ) if($tndx >= 0 && ( abs($tndx) <  abs($sndx) || $sndx == -1)); # mIt offBy1 on -1…;
+              if($nmsn >   -1){ # may bug if solid string wi no spc or tab for more than naro chars && doesn't yet inject newline proper there yet?;
+                if($tlnz[$_+1]=~  /^(.{$nmsn})([ \t]?) /x){my $next=$1;my $osot=$2; # cud mk regX glObl||whIloop singlz&&handl if more is nEded after hEr?;
+                   $tlnz[$_+1]=~ s/^(.{$nmsn})([ \t]?)//  ;my $chpd=$1; # $next=~ s/\s*$/\n/; # just want one (or all) next OptionalSpaceOrTab(z)? && Nd SpcN?;
+                  #$next = sprintf("%-*s", $naro, $next); # pad each next to proper sub-column width; ## this one's not needed if choping right at naro Ithink;
+                  if($dflg){$sijt.= $tlnz[$_] . " $next\n";}else{$sijt.= "$dr8h$next\n";}}} # this shud now slice off top block from next wide line,nEd Ls?;
+             #if($tlnz[$_+1]=~  /^(([^\n]{,$naro}\n)*)([^\n]{$naro})([^\n])/ ){my $prnz=$1;my $next=$3;my $aftr=$4;
+             #   $tlnz[$_+1]=~ s/^(([^\n]{,$naro}\n)*)([^\n]{$naro})([^\n])/$prnz$next\n$aftr/;} # gix? lEv prnz out of rEplAcmNt but stuf @Nd of sijt no dr8h;
+              # just force slice next found block apart from head or just any wide non-newlinez within early range (or thruout whol)?;
+            } # tSt COLUMNS prEfer HWid thO or? segment GTwxh?;
+            if($dflg){$sijt.=$tlnz[$_].' '.$tlnz[$_+1]."\n";}else{ #lEv dECIML?
+      # 2du:hEr:posibly filtr subs tXt B4 simplSt tIm-stampz wil bInd ziprpAir,
+      #   thNdu sLectiv filtr8n wher comon long strz abrEV8,thN rE4m@ \n colmz;
+            # $sijt.='{'.b64($1).b64($2);$sijt.=b64($3) if(defined($3) && length($3));$sijt.='0} '.$tlnz[$_+1]."\n";
+              $sijt.=$dr8h. sprintf("%-*s", $naro, $tlnz[$_+1]) ."\n";$_++;}}} # alwAz asum MpT ZrO pHASS tAl Nd;
+        my @slnz=split(/\n/,$sijt);my $part=int($#slnz/$scpc);for(0..$#slnz){$slnz[$_]=sprintf("%-*s",int( $twid/$scpc),$slnz[$_]);}
+        for           (0..$part){ #BlO.=Uzd2B=~s/\s*$/\n/; && B4 th@ got #chomp($si3c);$si3c.=';';
+          for my $scnm(0..7    ){$si3c.=$slnz[($part+1)*$scnm+$_] if(($part+1)*$scnm+$_ <= $#slnz && $scpc > $scnm);} $si3c=~ s/\s*$/\n/;}
+        open my $outs,'>',$sfno or die "Can't open  Output Script handle: $!";binmode $outs,    ':encoding(UTF-8)';print $outs "## $sfno ;;\n$si3c";
+        close   $outs           or die "Can't close Output Script handle: $!";}}}}
