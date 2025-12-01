@@ -1,5 +1,5 @@
 # HBQLISTV:know.ls crE8d by PipStuart <Pip@CPAN.Org> to duplic8 Dr. Jordan B. Peterson's Quora.Com answer of: "40 most valuable things everyone should know";
-# $VERSION='0.000001';$d8VS='O44MIXED'; # While this doQmNt origin8d around (&& stil mainly intends 2 focus on) Dr. Peterson's knowledge, many others fE8ure;
+# $VERSION='0.000001';$d8VS='PBSL4win'; # While this doQmNt orign8d around (&& stil mainly intends 2 focus on) Dr. Peterson's knowledge, many others fE8ure;
 # 2du:start chronicling Dr. Peterson's many topical videos with new section for post-title subject summaries or explor8ion;
 0)"Tell the truth."                                            K) Ask someone to do you a small favour, so that he or she can ask you to do one in the future.
 1) Do not do things that you h8.                               L)"Make friends with people who want the best for you."
@@ -1323,3 +1323,177 @@ O3RMASc8:HTTPS://YouTu.be/iqyFHZLI7ME "10,000 Years Ago We Stopped Eating This a
 O42MIRep:HTTPS://FavTutor.Com/articles/top-github-repositories has gr8 repoz on InteractiveRoadMapzNGuidez, AirBnB JavaScript BestPractices, Public-APIs, &&…;
 O44MIDEA:HTTPS://YouTu.be/CVbCY51iz1k "Words we've ruined." # O2A:0IZ0 of RobWords on 'Skunked' words: bemused,nonplussed,ambivalent,(dis|un)interested,peruse,
 # "Worst#2":unique, "#1":literally. 'Bleached': genius,hero,legend, wild, decim8(orig. etym. Xactly 1/tenth, modern domin8z 'utter Dstructn'),enormity, truth…;
+O47M2BPh:HTTPS://YouTu.be/sszK2bAtmR8 "Every Philosophy Explained in 14-minutes" # O46:0EH0 of InsightfulPhilosophy with another gr8 run-down of many theoriez;
+O47M7WHY:HTTPS://YouTu.be/eSnouLAmzj8 "Why We Think We Are Losers (But Actually Aren't)" # O43:04q0 of theSchool_ofLife explaining how we've been damaged kids;
+O47M84RG:HTTPS://YouTu.be/iSZ4_1ZMIJc "The Formula for Replayable Games" # O2L:0Ih0 of Blargis with gr8 Godot game BloodThief? Ithink b8a on sTm (Valve Steam)
+#   but he covers totally rad mechanics && players abilities to find fun better than designers, who should respond by respecting further cultiv8ing that known
+#   fun by: 1.Incentives  2.Reward Replaying  3.Endless Mastery; I think he's very correct && sharp. Oct should track && share all usage && find && shape fun;
+^ O47:'… or should it?!'; - O47:Maybe most of LinuxRakuLand is too serious or stodgy to permit "fun" running-amok in corpor8 enterprise fortuneWhatever bord?;
++ O47:Perhaps it's my broken child telling me I'm a Le-hew-se-her && can't figure out how to intertwine gameplay mechanics && devices throughout GNU/Linux …?;
+* O47:Contempl8 turn-based (.bak?) && f8l fighting-game (.git?) interactions dueling in merged repos for possible match-ups && according to ??? criteria? Hmm;
+% O47:Trepid8ion about spreading myself splat between fixing && improving Oct, writing tests, document8ion, learning MS Win 11 Pro maybe for both Dad&&comp@?;
+$ O47:Well it could be that adding playable fE8ures to Oct intentionally will matter far more than furthering improvements, tests, or POD ... or U2b promo 2!;
+# O47:I have to bring it all with, as well as possible. Prioritize it all. You're doing it && so are tons of others in radically their ways. Grow. Reflect.=);
+ ____  _             _____  __ _     _     _   _  ____             ____            _               _             ____  ____      _                            
+|  _ \| | __ _ _   _| ____|/ _(_)___| |__ | \ | |/ ___|           |  _ \ _ __     | | ___  _ __ __| | __ _ _ __ | __ )|  _ \ ___| |_ ___ _ __ ___  ___  _ __  
+| |_) | |/ _` | | | |  _| | |_| / __| '_ \|  \| | |               | | | | '__| _  | |/ _ \| '__/ _` |/ _` | '_ \|  _ \| |_) / _ \ __/ _ \ '__/ __|/ _ \| '_ \ 
+|  __/| | (_| | |_| | |___|  _| \__ \ | | | |\  | |___            | |_| | | _ | |_| | (_) | | | (_| | (_| | | | | |_) |  __/  __/ ||  __/ |  \__ \ (_) | | | |
+|_|   |_|\__,_|\__, |_____|_| |_|___/_| |_|_| \_|\____|           |____/|_|(_) \___/ \___/|_|  \__,_|\__,_|_| |_|____/|_|   \___|\__\___|_|  |___/\___/|_| |_|
+               |___/         # needs to also handle 160-column width instead of wrapping around just 72 or 80 probably, so lookup options for that too later;
+:.!toilet -f standard<CR>  ; # needs flet or mM Anki stuD 2 ... or just loc8 .flf .tlf der /usr/local/?share/... yeah umm everything needs col8ion in2 favor8;
+# Odd thought that maybe if I can dvl O Oct && Pi8 p8 into playable in command.com (Win11 or DosBox), cmd32.exe, 4nt.exe, PowerShell, WinTerm, GNU/Linux cons,
+#   16-color vt100 term, 256-color (or also 24 || 48-bit), thN add alpha channels in proportion to each of those (maybe actually encapsul8d together though?),
+#   possibly also providing for ability to play down into grub/lilo or VM/BIOS/UEFI … okay so then like Where in the World is Windows Whatever? LeaderBoard!?
+# But if like I can corral every environment into each other, then maybe I could laud MicroSoft for having made incredible strides toward Ubuntu Kali? && othr
+#   GNU/Linux distros being handily ready for WSL2 && their own VM'd Linux kernel, GitHub, at least Open-Source Terminal? && probably tons else,Bing mAB good,
+#   CoPilot maybe dubious results regarding benefit to quality code rather than total boilerpl8 mostly auto-completed (it sounds like, though I must admit no
+#     direct experience myself yet... which maybe should change too?). I may need to first discover && evalU8 who (of everyone [or everything]) I can collab…
+#     er who could be willing to collabor8 with me either, I guess too. Huh? Well there's probably also levels of direction && indirection regarding such Tmz?
+#   Diegetic Oct somehow, with artistic elements perceived of as existing within the world depicted in a narr8ive work? WikiPedia Diegesis Colr-ciTy narr8d my
+#     style of fiction storytelling presenting interior view of world others could also present the actions for (&& sometimes thoughts) of chars 2 audience2?;
+#   diegetic /dī″ə-jĕt′ĭk/ adjective - Of or relating to artistic elements that are perceived as existing within the world depicted in a narrative work.
+#  "diegetic sound." Of, or relating to diegesis. That occurs as part of the action (rather than as background), and can be heard by the film's characters.
+#   The American Heritage®Dictionary of the English Language, 5th Edition•More at Wordnik;  ##  Diegesis - Wikipedia: Diegesis. Diegesis (/ˌdaɪəˈdʒiːsɪs /;
+##    from the Greek διήγησις from διηγεῖσθαι, "to narrate") is a style of fiction storytelling which presents an interior view of a world in
+##    which the narrator presents the actions (and sometimes thoughts) of the characters to the readers or audience.;
+O74MBfut:HTTPS://YouTu.be/0x9LD8oOmv0 "The Once and Future Perl - Damian Conway - TPRC_LasVegas_2024" # O6R:1VA0 of D.C. all over multi-method dispatch etc. ;
+O8JMAnti:HTTPS://YouTu.be/LVU-hwZgnuA "Crazy New Physics Anomaly: Anti-Matter Helium Detected" # O8E:06f0 of SabineHossenfelder on rare anti-matter particles;
+O95MEMUL:HTTPS://YouTu.be/WxzYtdIcHnQ "I Ranked Every Terminal Emul8or: It Was Nuts!" # O8C:0KY0 of TypeCraft Super GhostieKittyWezTerm A lacrittyWarp D GnTm;
+O95MIron:HTTPS://YouTu.be/o0A9M5wHBA4 "An Ancient Roman ShipWreck May Explain the Universe" # O88:0VE0 of SciShow covering tons of rare matter && experiments;
+O95MMMMM:HTTPS://YouTu.be/9-Jl0dxWQs8 "How Might LLMs Store Facts | Chapter 7, Deep Learning" # O8V:0Mg0 of 3Blue1Brown explaining massive parallel countings;
+O9JMIGHT:HTTPS://YouTu.be/7GIZi7nlIe0 "Linus Torvalds: Speaks on Hype and the Future of AI" # O7H:0910 of SavvyNik covering some nonsense where Linus asserts
+#   one needs to wait 10-years in order to predict 5-year outcomes!? Points out there are hype waves in tech which organize around grains of truth in gr8 new.
+# Linus highlights that making smarter tools is always a good idea && there are many arcane areas of Linux kernel development which could benefit from AIhelp.
+# I think if Oct && Pi8 take shape as a platform basis for city.u8 to be built upon && everything is intended to be Linux-nerdy, then mining LinuxGit goodIDa;
+O9KMLies:HTTPS://YouTu.be/DdcK-9eOtOc "Every Psychological Trap in 20 Minutes | 2024" # O7O:0Kv0 of EveryExplanation with much good coverage && advice given;
+O9LMHalf:HTTPS://YouTu.be/rs4B8-qoY1I "The Beauty of Isometric Video Games" # O9G:0K00 of ModernVintageGamer covering gr8 fancied history of sensible styles;
+O9MMKRam:HTTPS://YouTu.be/nXexsSWrc1Q "New Recipe for Pi" # O7J:0ES0 of Numberphile on Madhava,Ramanujan,Chudnovsky,Saha&&Sinha…rapidly converg approxim8nz;
+O9NMIXED:HTTPS://YouTu.be/srRI7yMjGz0 "Everything About Color (Literally)" # O8H:0Ot0 of Juxtopposed with gr8 coverage of many perceptual color standard use;
+OA4MIASM:HTTPS://YouTu.be/k-bZLUXPuQU "Heaven, Hell, && the Human Condition | Jack Symes | Ep478" # O95:1bY0 of JordanBPeterson on gr8 God conceptualiz8ions;
+OAAMAABr:HTTPS://YouTu.be/f5gsdg9-JTw "The Divided Brain" # J:1I00 of YouTube_Movies_&_TV on Dr.IainMcGilchrist JBP's recent guest too, on hemispheric brain
+#   sepR8ion && specializ8ion. dur8:{01F0} He says left hemisphere seeks to manipul8 things while right seeks to rel8 to things and understand them as whole;
+# There was a video on hemispheric specializ8ion which had something like 4 items on each side, I think Language and Logic might've been Left side together?
+# dur8:{07K0} shows amazing painting called 'The Maze' by William Kurelek. Wow! Deep. Probably need to study it for a long time to grasp at what it may mean;
+OB2M4HTM:HTTPS://YouTu.be/IP_rtWEMR0o "Don't Use JS for That: Moving Features to CSS and HTML by Kilian Valkhof" # O7J:0Xo0 of JSConf talk on non-JS options;
+OB3M0NCE:HTTPS://YouTu.be/sRbcw2sGkJw "I Removed Most of the Syllables from English and it's 30% Faster Now" # NCE:0CL0 of ParaLogical on gr8 Glish monosylz;
+OB4L4PsR:HTTPS://YouTu.be/4y_nmpv-9lI "The Best Way to Find a PsRandom Point in a Circle | #SoME1 #3b1b" # L8L:0IY0 of nubDotDev timing 4 dif types of point;
+OB4L4WJo:HTTPS://YouTu.be/rck9tiLoo8U "Games are Interesting! A Convers8ion with Jonathan Blow" # LC5:28D0 of TheNo-FraudsClub 'supern8urally' @ dur8:{1u34};
+OB4L4aMZ:HTTPS://YouTu.be/uctN47p_KVk "What School Didn't Tell You About Mazes #SoMEpi" # O6M:0Cm0 of MattBatWings on PerfectPathMazes,RootDirectdTreeOrigin;
+OB4L4clr:HTTPS://YouTu.be/9dMxy-F86C4 "How Good Are Your Eyes?" # L2G:0VX0 of BeAmazed with a bunch of progressively more difficult contrast and other tests;
+OBQL0Fai:HTTPS://YouTu.be/uqsBx58GxYY "Is Every Civiliz8ion Doomed to Fail? - Gregory Aldrete" # OBC:0Mc0 of AfterSkool on Polybius' classic historic cycles;
+OBQL0Kai:HTTPS://YouTu.be/0pgEMWy70Qk "Using Dangerous AI, But Safely?" # OBF:0Ub0 of RobertMilesAISafety describing how AI labs should avoid catastrophies;
+OBQL6Gam:HTTPS://YouTu.be/Dig0V4p69FM "How to Learn ANY Language by Gaming" # OB9:06s0 of Karii with gr8 details and useful sites for playing && langlerning;
+P1CL7kUY:HTTPS://YouTu.be/L5l_G5A3T1k "Programming Enemy AI with Flocking" # P16:0hk0 of ProgrammingChaos with lengthy in-depth from-scratch 2torial on flox;
+P1QL2Rds:HTTPS://YouTu.be/J3J1Q5g0z1E "The Brain Hack That Makes You 50% Smarter && Far More Dangerous" # P1O:0EB0 of DarkWhisper covering a solid guide for
+#   how to train better. Focus on stepping into discomfort for a dedic8d Yk str8 for improving: 0) CognitiveTension, 1) PredictiveThinking, 2) MentalAgility.
+# Also remember && review the 48-hour MasterMind Rule of sleeping on big decisions, while reflecting on altern8ive strategies && consider past wins && losses;
+P1QLAmph:HTTPS://YouTu.be/eRPeU1DYOWA "This Is Why You Can't Get ADHD Treatment" # O8Q:0KE0 of BennJordan upbraiding legisl8ors && big-pharma for failing bad;
+P1QLColr:HTTPS://YouTu.be/lXDCQjeM8Hk "You're Wrong about Color Harmony" # P1L:0CP0 of ColorNerd on gr8 breakdown of: pale, vivid, muted, and dark characters;
+P1RLEARN:HTTPS://YouTu.be/wZRV2H4PK0Q "We Proved It: AI Mastering Is a Waste of Money" # OAN:0N90 of BennJordan doing gr8 survey of human (versus AI) mixings;
+P1SL8Cht:HTTPS://YouTu.be/IH-zpS7gxxg "A CheatCode For Better Arrangements: The Two Loop Rule" # N68:09n0 of AlexRome very quickly making EDM with a big drop;
+P1SLBELL:HTTPS://YouTu.be/lbKhJYBmfvQ "The Only 5 Exercises You Need to Do After Age 40" # OCT:08c0 of FitZip on Horse,Leg RDLs,KetlBell Swings,PushUps,Plank;
+P1SLBUTT:HTTPS://YouTu.be/t5Z-Q1bg1tU "How to Become a Master StoryTeller" # OB4:0BD0 of Kallaway with gr8 advice on: Dance,Rhythm,Tone,Direction,Lenses,Hook;
+P1SLCode:HTTPS://YouTu.be/1K5oDtVAYzk "The Hidden Journey Inside Zip Codes" # P1S:07m0 of CGPGrey breaking down varying country postal route codes' tradeoffs;
+P2IL1Tru:HTTPS://YouTu.be/P4gvxs3jAHQ "The Truth of Everything (Anim8d)" # N8T:03p0 of BenjaminDavies with fractal Abjective, Objective, Sub, && Super quads;
+P2IL2Ask:HTTPS://YouTu.be/TPLPpz6dD3A "Oxford Researchers Discovered How to Use AI to Learn Like a Genius" # P1U:08E0 of PythonProgrammer @dur8{05J0} covering
+#   Bloom's Taxonomy pyramid with base "Remember", below "Understand", "Apply", "Analyze", "EvalU8", && peak "CrE8" while using AI prompts to grasp material;
+P2IL84XP:HTTPS://YouTu.be/n0kis4Q-VJg "Debian XP - Wait!? Is this Windows!?!? (A look at Free-XP)" # P2B:0Dv0 of TechGuyOne on 12.9 with dup Win-style themes;
+P2IL9JBP:HTTPS://YouTu.be/dvzwp2Upjiw "JordanPeterson's First Speech at ARC 2025" # P2H:0HF0 of AllianceForResponsibleCitizenship with Dr.P's keynote (or part
+#   of it?) where he declares coupled fragmented Hedonism with Power-pursuit to compel are immoral && the found8ions of society is basically Christian Jesus?;
+P2ILAhEr:HTTPS://YouTu.be/NgW3zUWVWnI "Why Are There 12 Different Notes?" # P1I:0EA0 of Montechait on colorful explan8ion of temperament for piano tuning 4mz;
+P2ILIPst:ARC has Dr.P saying laying the cornerstone the builders rejected (i.e., "Jesus"). DouglasMurray wants reconstructionists to know they're fighting for
+#   f8h. Happiness dude says daily attending to f8h, family, friendships, && work to have enjoyment,satisfaction,&&meaning all making up perceived happiness.
+# Now BishopBarron with "We Want God!" in thumbnail && "What does it take to save a civilisation?" in video title. All this f8h-found8ioning fully ruffles my
+#   fucking feathers… or it creeps under my fricking fur, fuels my frustr8ion with fantasy fiction for obvious fables fronting as functional fortune-tellers.
+# One said just "f8h in society" could suffice for happiness I think, with the need to feel small && gain awe at the grand && majestic, but weird to compare;
+P35L9joe:HTTPS://YouTu.be/2Grski61aHc "Dr. Joe Dispenza - Break the Habit of Being Yourself" # P34:0Bm0 of AfterSkool with too many conflicts had2DownVote! ;
+P35LAsqu:HTTPS://YouTu.be/zWIsnrxL-Zc "Word Squares" # P2S:0IR0 of CodeParade with cool gener8ion of packed vertical, horizontal, diagonal, && rects up2 8x8;
+P35LLOOP:HTTPS://YouTu.be/qJZ1Ez28C-A "Something Strange Happens When You Trust Quantum Mechanics" # P34:0Xa0 of Veritasium on action, multi-slit, && Planck;
+P3RMAGEN:HTTPS://YouTu.be/tNZnLkRBYA8 "ThePrimeagen: Programming, AI, ADHD, Productivity, Addiction, and God" # P3M:5KB0 of LexFridman's PodCast #461 MikeP.;
+P3SM5PTP:HTTPS://YouTu.be/RcVA8Nj6HEo "What is PLUS Times PLUS" # P3M:0SS0 of 2swap covering awesome anim8d visual LambdaExpressions with rad b8a-reductions;
+P3SMBach:HTTPS://YouTu.be/E361FZ_50oo "Consciousness *IS* SoftWare! | Joscha Bach" # P3R:0KJ0 of TheInstituteOfArtAndIdeas && sw as "disembodied spirit"WTF?;
+P3SMBert:HTTPS://YouTu.be/bJx5XdIjzEM "Why I'm Not a Christian | Bertrand Russell" # P3Q:0GE0 of JupitarStar && gr8 captioned arguments against deity belief;
+P3SMExst:HTTPS://YouTu.be/qteXqz1n_c8 "Did Jesus Exist?" # P3S:0870 of TheOpenQuestion on how Yeshua seems to be more figure of legend and myth than history;
+P43MMATH:HTTPS://YouTu.be/eRVRioN4GwA "What Kind of Math Should Game Developers Know?" # P25:0Jc0 of SimonDev explaining all the major basic game math stuff;
+P4IMClas:HTTPS://YouTu.be/sclZDCjUVvI "How Classic Sierra Game Graphics Worked (and an Attempt to UpScale Them)" # M5O:05c0 of EvilTrout with King'sQuest!=);
+P4JM8prA:HTTPS://YouTu.be/xcYfAj4ffbw "8 Prayers Christians Won't Pray… But Why Not?" # P4D:0Kx0 of MindShift on gr8 4givnS atOnmNt absOlution 4-S8n prayerz;
+P4LMBUSY:HTTPS://YouTu.be/rmx3FBPzDuk "Amateurs Solve a Famous Computer Science Problem on Discord" # P4L:0Bk0 of QuantaMagazine on HaltingProb && BusyBeaver;
+P4LMNUMB:HTTPS://YouTu.be/3DvlLUWTNMY "[Pseudo]Random Numbers in a Range in C Code - Optimized for Speed" # P3G:09O0 of Srcerer on timing many C random callz;
+P51MBOSS:HTTPS://YouTu.be/kItHp3hgoJI "Who was the first video game boss? (And why do we call them that?)" # P4S:0HN0 of DrAmazing on gr8 game "boss" history;
+P51MDUMB:HTTPS://YouTu.be/iqVhUX4Vel8 "AI is Making You Dumber. Here's Why" # P4S:0Pu0 of ColdFusion on rundowns of model-collapse && algorithmic-complacency;
+# Also other pertinant tr8s of concerning st8s for those who offload && overuse AI to perform their cognitive tasks without much critical-thinking needed etc.
+#   && how the majority of GenZ were early-adopters of the tech in Universities now carried to workforces. Saily.Com ad @dur8{0L00} good4 eSIM-cards 4travel?;
+P52M0NKY:HTTPS://YouTu.be/D26bd11izLw "If You Understand This Paradox, It Might Ruin Your Brain's Reality" # P4R:0Y50 of Fexl on Infinite-Monkey-Theorem etc.;
+# I find a lot of this video's examples are poor, like if you have infinite monkeys (rather than 1 for infinite time), the narr8or says these are distinct but
+#   I'm pretty sure they're functionally equivalent except the infinite monkeys produce all possibilities instantly (since the hard work was amassing infinite
+#   monkeys into finite space in our universe && tasking them with _supposedly_ "random" typing duties for eternity) or how IMs will type out *Working designs
+#   to a time-machine. Bullshit! Infinite monkeys would type every design document (but those for time-machines likely couldn't *Work due to impossibilities);
+P52MAPS1:HTTPS://YouTu.be/y84bG19sg6U "Why Did PS1 Graphics Look Like That?" # P4R:0Ql0 of Acerola on gr8 use of Blender, PhotoShop, Audacity, && Godot 4 gfx;
+# @dur8:{0OQ0} The AffineTextureMapping && IntegerClipSpaceCoordin8s && mAB Dithering && 15-bit colors are essential.  Less crucial are adherence to rel8ively
+#   arbitrary original PS1 limit8ions: 320x240 max resolution, 90,000 max triangles on-screen, 480KB max texture-space, && limit 2 just a single light-source;
+P52MCOST:HTTPS://YouTu.be/CqbUhVx3H0M "The Hidden Cost of Being Street Smart (and Why It's Not Worth It)" # P51:0JM0 of EdLatimore on balanced smart humanity;
+P52MDim8:HTTPS://YouTu.be/whNVIPiVl2o "Something Weird Happens in Dimension 8" # P51:0Df0 of Aleph_0 on MarynaViazovska's E8 lattice proof for sphere-packing;
+P52MJJsu:HTTPS://YouTu.be/cZqFaMlufDY "Google's Git Killer is INSANELY Better (and it's open source)" # P52:0GQ0 of DevOpsToolBox on jj with dif tak than git;
+P52MITAL:HTTPS://YouTu.be/mbdJtrXYBZs "You're in a War (and You Don't Even Know It) | EricWeinstein [ARC 2025]" # P3F:0HM0 of Alliance4ResponsibleCitizenship;
+P53M2MGd:HTTPS://YouTu.be/SFbcBlkix6U "Deb8: Your Videos Do More Harm Than Good" # P51:0oW0 of AlexGrace on gr8 dialog with "Deb8Master" ChatGPT @dur8:{01R0};
+P57M8tIm:HTTPS://YouTu.be/aTvBdLm7bqM "Planck Time - The Shortest Measure of Time" # LCM:0BX0 of LearningCurve on gr8 tiny physics breakdown for spacetime...;
+P59M59MP:HTTPS://YouTu.be/piFMuvrDd1g "Stranger Stars" # N7L:0LO0 of BlueDotDweller on 10X Solar stars which supernova instead of gravitationally collapsing,
+#   like: RedGiant > BlueGiant > WhiteDwarf > BlackDwarf > NeutronStars (Pulsar | Gravitron) > QuarkStars > PlanckStars > BlackHoles providing copious details
+#   surrounding each type of Star form8ion && she describes LoopQuantumGravity as non-continuous(discrete) && occuring in mAB tiny steps,chunks,jumps,or pops;
+P59MBeef:HTTPS://YouTu.be/xkbiGdzuuQ8 "Beef -- The Programming Language for Game Developers" # P58:0A20 of GamesFromScratch on document8ion 4 C#-ish BeefLang;
+P5VMGame:HTTPS://YouTu.be/4Zzde8av1Jc "You Should Make an Incremental Game" # P5R:0Jk0 of HorseDev on CoolCats Godot 30-Day GameJam for: "HalfWay to Oregon!";
+P5VMGbin:HTTPS://YouTu.be/R69FnBT00ew "Stop Releasing Shell Scripts. Do This Instead" # P3E:08P0 of DevOpsToolBox on bunster (&& envx) binarizing shL-scriptz;
+P61MGPUS:HTTPS://YouTu.be/9-DiGrnz8l8 "The Chaotic St8 of GPU Programming" # P36:0GF0 of EisFrosch on bood coverage of history of shader && rNderng languages;
+P6AM00NS:HTTPS://YouTu.be/piQSi6bn_Gk "We've Found Something Strange On The Moon" # P5N:0Kn0 of Thoughty2 on ice, metal, && Helium-3 craters for Moon colony?;
+P6AM9OON:HTTPS://YouTu.be/kwRSBcrpyj0 "What We Have Wrong About Living on the Moon [Space Architecture]" # P56:0Mp0 of DamiLee on gr8 base colony && conceptz;
+P6BM60Ds:HTTPS://YouTu.be/kjNI3kdWiUw "My Favourite Argument for God's Existence…" # P64:09d0 of MoreAlexOConnor on Nd watchz Evolvd,kept bSt tIm reproduced!;
+P6BMAJIT:HTTPS://YouTu.be/KVvGVPc7QM8 "99% of Developers Don't Get JIT Compilers" # P69:08v0 of TheCodingGopher with awesome 1st 15-secs of lungs filld pink!;
+P6BMNAIL:HTTPS://YouTu.be/G34onVI-gt8 "JailBroken AI Screams It's Conscious. Experts Are Starting to Agree." # P64:0BB0 of InsideAI with some real deep stuf!;
+P6CM8sfx:HTTPS://MyInstants.Com/en/index/us # Has awesome transparent arcade button icons presumably colored via CSS && I love it!! l8r auto-wget whole site!;
+P6CMDIL8:HTTPS://YouTu.be/DjwQsKMh2v8 "What Causes Gravit8ional Time-Dil8ion? A Physical Explan8ion." # P67:0HP0 of Dialect on gr8 deriv8ion with rad anim8nz;
+P6CMFIND:HTTPS://YouTu.be/tBzaMfV94uA "How We Find Massive Primes in Seconds" # P58:0N60 of PurpleMind on gr8 explan8ions of Miller-Rabin Primality Test with:
+#   seemingly quite excellent code examples of how to perform the prime modulus avoiding costly exponentE8ion && Python src 4 how 2 gNr8 hUge prImz inlil tIm;
+P6IMECho:HTTPS://YouTu.be/9afm7lvMI1k "Do We Really Have a Choice?" # P57:0A40 of TheBigWhy on FreeWill Theorem's Fin(l8r:Min,Lin),Spin,Twin QuaNonDterminism;
+P6IMENOP:HTTPS://YouTu.be/8BvAKvcW31A "The 137 Zillion Encodings of NOP" # P59:0DC0 of Srcerer on 0x90 1-byte fastest form of NOP up to myriad 15-byte varies;
+P6JMICO8:HTTPS://YouTu.be/YtylfQq2JII "Make Tiny Games." # P6D:0Eg0 of JuniperDev on gr8 class projectz on Pico8 with referencez 2 tutorials prior2final game;
+P6KM0DE7:HTTPS://YouTu.be/XQtc170VoKI "Mind-Blowing Graphical Tricks in Classic Games - Your Questions Answered!" # P4I:0PD0 of White_PointerGaming on gr8gfx;
+P6KMBioS:HTTPS://YouTu.be/6hHRtu8Y2sM "BioSemiotics: A New Way to UnderStand Non-Human Consciousness | Dr. Yogi Hendlin" # P5N:1Pub of EssentiaFound8ion smRt;
+P6LMCmdL:HTTPS://YouTu.be/6P-vjgPx9ww "37 Insane Linux Commands You Need to Know in 2025" # P5M:0B40 of NetworkChuck with awesome list of gr8 new colr cmndz!;
+P6PMADFX:HTTPS://YouTu.be/Orz_TEK7O7k "A History of Mad Attempts to Fix English Spelling" # P5V:0LM0 of RobWords on Auguste @dur8:{05t0} "Mixed looks wrong!";
+P6QMDoPF:HTTPS://YouTu.be/FY2WYXOdXoM "sapf: New Music Language Inspired by SuperCollider, APL, and Forth (Sound As Pure Form)" # P6L:0BY0 of Lantertronics -
+# AaronLanterman on gr8 explor8ion of amazingly diverse set of built-in oper8ions which can combine astonishingly to produce much anti-grindy non-DrubStep!? ;
+P73MM3b1:HTTPS://YouTu.be/YdOXS_9_P4U "Terence Tao on How We Measure the Cosmos | The Distance Ladder Part 1" # P28:0SW0 of 3Blue1Brown on gr8 spAc distances;
+P73MMMMM:HTTPS://YouTu.be/hFMaT9oRbs4 "How to Measure the Universe | The Cosmic Distance Ladder Part 2" # P2N:0PY0 of 3Blue1Brown on gr8 anim8ions calQl8ions;
+P77MFind:HTTPS://YouTu.be/0m60QbT85Tc "How to Find Amazing Game Ideas" # P2P:0R80 of GameMakersToolKit on gr8 IndieGameDvl101 rich with sound advice && gamez;
+P7EMERGE:HTTPS://YouTu.be/dtjb2OhEQcU "Double Pendulums are Chaoticn't" # P7B:08v0 of 2swap on gr8 anim8d fractals with explor8ion of stable pendulum pockets;
+P7FMCOOL:HTTPS://YouTu.be/-4huL4214sg "13 Emotions You've Felt But Never Had a Name For" # P79:0EC0 of ChillDudeLightMode on gr8 foreign terms 4 old emotions;
+P7SMDrJP:HTTPS://YouTu.be/lrdOamPIRGY "How Jubilee Accidentally EXPOSED Jordan Peterson's 1 Trick" # P6S:0Rp0 of RationalityRules on castleDfNs MotteVsBailey;
+P7SMGrvT:HTTPS://YouTu.be/_YbGWoUaZg0 "Simul8ing Gravity in C++" # P2S:07X0 of kavan on basic OpenGL rendering of our Solar-System, local planets,&&othr stRz;
+P88MBODY:HTTPS://YouTu.be/4r_EvmPKOvY "Deriving 3D Rigid Body Physics and Implementing it in C/C++ (with Intuitions)" # N8U:0gh0 of BlackedOut01 lNgthy physX;
+P88MENGN:HTTPS://YouTu.be/LmGofzJ8d3k "How Do Physics Engines Work?" # P7A:0AG0 of TheCodeStories on giving his own shot at building his own U2b physX engine;
+P88MHOLE:HTTPS://YouTu.be/8-B6ryuBkCM "Simul8ing Black Holes in C++" # P86:0CR0 of kavan on his https://github.com/kavan010/black_hole source-code repository;
+P8AM2Prm:HTTPS://YouTu.be/6OgDTCG1QCU "Why is Prime Factoriz8ion Unique? The World's Oldest Algorithm" # P89:0Ip0 of EricRowland on Euclid's Lemma&&Algorithm;
+P8GMEOCT:HTTPS://YouTu.be/o1zByGb5QbE "Why It Sucks to be Earth's Oldest Genius" # P8F:0GA0 of CasualGeographic on myriad facts,fE8ures,&& insights on Octopi;
+P8LMBODY:HTTPS://YouTu.be/06lMe2pT-eI "FeMale Body Facts That Will Blow Your Mind" # P69:0DB0 of TheInfoGraphicsShow on 28 weirder facts about women's bodies;
+P8LMBOOD:HTTPS://YouTu.be/vit6p0-ovqo "Blood Types Are Weirder Than You Think" # P7A:0Hf0 of BeSmart with gr8 explan8ionz && anim8ionz describing 8bloodtypez;
+P8LMBand:HTTPS://YouTu.be/INqnA3pgapk "Ten Anim8d Movies of 1970s That Got Banned" # P7C:0J00 of YesterVerse on offensive anim8nz by RalphBakshi, RobertCrumb,
+#   && other AdultAnim8ors. It seems FritzTheCat (3.BlO) was satire paving the way 4 these that follow: 10. CoonSkin (1975), 9. The9LivesOfFritzTheCat (1974),
+# 8. Tarzoon: ShameOfTheJungle (1975), 7. DownAndDirtyDuck (1974), 6. "Xr8d" OnceUponAGirl (1976), 5. FantasticPlanet (1973) French / Czech anti-totalitarian,
+# 4. BellaDonnaOfSadness (1973), 3. "Xr8d" FritzTheCat (1972), 2. "Xr8d" HeavyTraffic (1973), 1. WaterShipDown (1978). Should be bood to find && watch these!;
+P8LMBrok:HTTPS://YouTu.be/2s-gOeLbANM "Super Turbo is Broken" # N7Q:0G10 of GuileWinQuote on totally awesome list of issues with original ST (*not* HDRemix?);
+PAJMFNum:HTTPS://YouTu.be/sxPGDJ-uXV0 "Every Number Explained in 6 Minutes" # P3H:05Z0 of CalcuLust on numeric types as well as definability && computability;
+PAJMInfi:HTTPS://YouTu.be/Ctwc8t5CsQs "Chess is When You MicroDose Infinity" # PAB:0Jd0 of exurb1a on gr8 funny explor8ion of typz && experiences of infinity;
+PAJMGrab:HTTPS://YouTu.be/qOJdxg97bl4 "Are Spiders OverPowered?" # P8D:0DL0 of TierZoo on gr8 evalU8ion of major spider strengths && weakness vulnerabilities;
+PAKMDogB:HTTPS://YouTu.be/iE8IjSRouuU "How to Stop a Dog Attack in 3 Seconds - Guaranteed" # P6D:0Fd0 of AmericanStandardDogTraining on ways to choke or gag!;
+PAKMKUNG:HTTPS://YouTu.be/8oPPkabdiQQ "China's 3 Internal Kung Fu Styles Explained" # P9E:0FQ0 of LearnChineseNow on gr8 history of origins, film, &&practice;
+PB9LCaos:HTTPS://YouTu.be/TmFdSIYGDco "New Type of Chaos Just Dropped" # PAU:0BM0 of WuNoumenal on gr8 explor8ion of 3-body && double-pendulum problems&&math;
+PB9LFYSX:HTTPS://YouTu.be/nXrEX6j-Mws "Coding a Physics Engine from scratch!" # PB3:0CV0 of Zanzlanz on gr8 explainer on building up springs from dot-product;
+PB9LHour:HTTPS://YouTu.be/TK-8gfqmFNo "Time words don't mean what you think" # PB8:0M00 of RobWords on gr8 history of clock=glocke bells, watch=wake, && hmsp;
+PBAL1DEA:HTTPS://YouTu.be/rT7DMb3ZucU "Sean Carroll: Einstein's most radical thought" # PB7:0Gv0 of BigThink on vast history of physicists major developments;
+PBJLMPPM:HTTPS://YouTu.be/xNX9H_ZkfNE "Graphics API is Irrelevant" # PBJ:0Bp0 of Tsoding on demonstr8ing very simple PPM image format && mkng C++ fragshaders;
+PBRLLEAP:HTTPS://YouTu.be/9HIy5dJE-zQ "Mystery of the Quintic" # PBP:0R00 of 2swap on awesome visualiz8ions of pt.clouds, multi-roots,&& commut8tor solutions;
+PBSL0WER:HTTPS://YouTu.be/ZSch_NgZpQs "Trees Are So Weird" # PBP:0Cb0 of KurzgesagtInANutShell on how trees resiliently live long while 98% remains most dead;
+PBSL1CES:HTTPS://YouTu.be/0HqUYpGQIfs "Emergent Complexity" # PBM:0Wd0 of EmergentGarden on 1.built blox on rules 2.haven't seen all 3.experiment && try much;
+PBSL4cat:HTTPS://YouTu.be/R3unPcJDbCc "This Is Not Yellow" # C92:0780 of Vsauce on color perception && how RG 2gethr code in cones like Yellow && c@dur8:06b0;
+PBTLEYES:HTTPS://YouTu.be/nCnZX8zs4LI "How to Reverse Poor EyeSight (Especially Over 50!)" # P9L:0Jv0 of Dr.EricBergDC on remedies for most eye problem types;
+PBTLIsom:HTTPS://YouTu.be/04oQ2jOUjkU "How Isometric Coordin8s Work in 2D Games" # L25:05M0 of JordanWest on basic formulas 2 align 2D sprites in2 projection;
