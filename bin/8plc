@@ -9,12 +9,13 @@
 #   mk sepR8 tabul8ion of 8-words used in l8r document8ion wi not8ion 4thOs not yet included in top lists (thN optn2ignor easy conjug8ions && pre/suffixes),
 #   mk easy optn4 fulc 2use 1colm 4grep,add 4m@d percNtz,stuD wc && mk a8:cnt8/8c wi fulc -f? && 8plc as -l? optnz(rEdo hedrtXt),colr letrz,add f0ntz4 8trm,
 #   try 2 mk a new 240x67 cros 4m@ wich compactz the top && botm rowz wi MpT blak bordr barz on the sIdez so it stil fitz tIght but loox much more cros-lIk,
-# nlp:n8uraLanguageProcSor try2 gNr8 core rel8ional numer to assoC8 all 8 wordz by shortest 1st, then by largest PrecursorLetr, then start incorpor8ing
+# nlp:n8uraLanguageProcSor try2 gNr8 core rel8ional numerology to assoC8 all 8 wordz by shortest 1st, then by largest PrecursorLetr, then start incorpor8ing
 #   all the lower document8ion && account for parts of speech, proximity, context, punctu8ion, progressive upd8ing, see if code can gain some comprehension,
 #   try arranging according to top-list order, add manual guidance of relevance groups, see if queries can yield correct results from interrog8ion, try to
 #   represent values as multi-float vector formats in 3D or n-ary spaces, build sepR8 side caches of results && trials to preserve && learn to grow from;
-use warnings;use strict;use utf8;use v5.22;use Oct::a8;use Oct::b8;
-my $d8VS='O34L012O';my $clrf=1;my $fulf=0;my $argz='';$argz= join(' ',@ARGV) if(@ARGV);my $Stxt='';my $Smap='';my $folf=0; # add 4-Or-Less-Flag
+use warnings;use strict;use utf8;use v5.22;use Oct::a8;use Oct::b8;  use Oct::d8;sub d8{return(Oct::d8->new(@_));} # last d8 just 2du prOfIl sectz2progrS bR;
+my @scd8=([d8(),'Bgin']);o9($scd8[-1][-1]);
+my $d8VS='P3SMGall';my $clrf=1;my $fulf=0;my $argz='';$argz= join(' ',@ARGV) if(@ARGV);my $Stxt='';my $Smap='';my $folf=0; # add 4-Or-Less-Flag
 my $edVS=        '';my $pg1f=0;   $pg1f=1 if($argz=~ /(^|\s)-?-?[^p]*p/i); # find -?p(age) flag2limit some extra long output to first 48-line page
 my $clmz=        80;my $lpsf=0;   $lpsf=1 if($argz=~ /(^|\s)-?-?[^l]*l/i); # find -?LetrPrecursShortsFlag  # if MaXWordSize evr grOz,wil nEd2incrEs|Dtct
 my $linz=        24;my $gm8f=0;   $gm8f=1 if($argz=~ /(^|\s)-?-?[^g]*g/i); # find -?g(m8r) flag2count&&adorn wi math 4mUl8ions stRting wi 2letr
@@ -33,13 +34,14 @@ if($argz=~ /(^|\s)-?-?[^h]*h/i){$Stxt.=" $name - 8.ls Precursor Letter Counter d
   a   - print All extra options below (like calling `$name lwgf`)   (with -p limiting most sections to  160x50 just 1 Page of output for each);
   l   - print Letters of precursors sorted by size with colors     (with -p only printing up to z 110 and cutting off before c 148 as 1 Page);
   w   - print Words sorted by size up to current maximum of 19     (with -p only printing from  2 to  8 for just showing first  $lnmx-line Page);
-  g   - print gM8ria 'Gematria' word valU8ions in aligned sections as preliminary trial of a few short approaches to some numer; # just early explor8ion
+  g   - print gM8ria 'Gematria' word valU8ions in aligned sections as preliminary trial of a few short approaches to some numerology; # just early explor8ion
   f   - print Full character counts (l8r extract to a8:cnt8 && `8c` like `wc`) (-c Clear Center Colors from -g map for Clean Counts); * 1k below is lowercase
 # Note:now matching K,1k*,2K,3K, 6th bsu 20 + 5th largest size (same as total PrecursLetter count) dpv 35 = 4th gm 55 2x = 3rd Etz 110,size count pattern:
 #   odd,Even,ooEEE,ooEEE, && low 6 of 12 counts 1,2,3,7,8,16 all match for some 2**n(-1)? while the big half 20,35,55,110,148,212 all away from 2xxN(-1)?;\n";
   if(20 < $clmz && $clmz < 160){my @htxt=split(/\n/,$Stxt);$Stxt='';my $lsiz;my $tokn;for(@htxt){$lsiz=0;while(s/^(\s*\S+)//){$tokn=$1; # smRt split Help tXt
         if($lsiz + length($tokn) > $clmz){$Stxt.="\n" . (' ' x 8);$lsiz=8;$tokn=~ s/^\s+//;} $Stxt.=$tokn;$lsiz+=length($tokn);} $Stxt.="\n";}}o8($Stxt);exit;}
 my(    $efyl,$ufyl,$lfyl)=('8.txt','8.utf','8.ls' ); # probably soon just abandon old .txt or .utf XtNsion handling sinc .ls shud rEmAn betr 2list 8-wordz dox;
+if(             -e    "$ENV{'HOME'}/dox/2du/8.ls"){$lfyl="$ENV{'HOME'}/dox/2du/8.ls";} # should usually be found in $d2 ~/dox/2du/ path by default 8-list Xist;
 if(             -e $lfyl){$efyl=$ufyl=$lfyl;} # transition to .ls  as better format to migr8 .utf to; # mIt nEd 2 ck this or BlO -existz in ~/dox/2du/ not ./?;
 if(!-e $efyl && -e $ufyl){$efyl=$ufyl;} # setup transition to .utf as better format to migr8 .txt to;
 my @lcnt;$lcnt[$_]=0 for(0..b10('z'));my @acnt;$acnt[$_]=0 for(0..b10('z'));my $donw=0;my $t0tl=0;my $text;my $actx;my $sclc;my $gttl=0;
@@ -76,15 +78,20 @@ while( <$eflh>){my $ldat=$_;$donw=1 if(/^$/); # sets DONe-Words true when 1st bl
       $text .=     $ldat;       if($fulf){my @chrz= split(//,$ldat);for my $char (@chrz ){$fulc{$char}++;}}} # !lc:rcln Etzg mdpv bsuC DLNR UVGf xBhk wIMP OSy
 my    $letz  =join('',keys(%lpsd)); # these PLz won't be in order, but should be good enough for regex char-classes; abov lc() 23 ruinz 12 grupz in2 15 nstd
 close($eflh)               or die "!*EROR*! Couldn't close eight-file after reading! $!";$wc=0;print $out8 $Se;
+push(@scd8,[d8(),'aftreflhnd']);o9($scd8[-1][-1]);
 #if($fulf){%fulc=();for(split(//,'the of and to a in is I that it for you was with on as have but be they')){$fulc{$_}=0 if(!exists($fulc{$_}));$fulc{$_}++;}}
 # temporarily try to hijack fullcharcounts above to just look within top 20 English words to compare; should extract ccnt to be like this && wc wi vary columnz
 # results: Idrv:1, bfuwy:2, ns:3, ei:4, oh:5, a:6, t:8, ' ':19; # "I drive by your freeway and say 'oh a tea Space!'"
-while($text=~ s/(\w)8//){$acnt[b10($1)]++;}   # counts chopping out all PLs && 8s
+my    $lntx=length($text);my $ucnt=0;
+while($text=~ s/(\w)8//){$acnt[b10($1)]++;$ucnt++; # counts chopping out all PLs && 8s; 7,509 was doc tOtal on P1A;
+  if($ucnt && $clmz >= 8){my $prgc=int($ucnt/7509.0*($clmz-2));if(($clmz-2-$prgc) >0){print $out8 $Sc . '[' . ('#' x $prgc) . ('-' x ($clmz-2-$prgc)) . "]";}}}
+print $out8 $Sc . (' ' x $clmz) . $Sc;
 my @scnt = sort { $a <=> $b } (@lcnt);my $pttl=0;my $apcn=0;my $brtc=' ->';
 # $wc=0;$wc++ if($wc < $#scnt); # not sure which part of main compute is slowest && in most need of progress-meter attempt below?;
 # if($wc && $clmz >= 8){my $prgc=int($wc/$#scnt*($clmz-2));print $out8 $Sc . '[' . ('#' x $prgc) . ('-' x ($clmz-2-$prgc)) . "]";}
 for(my $sndx=$#scnt;$sndx >= 0;$sndx--){
   if(($sndx > 0 && $scnt[$sndx] == $scnt[$sndx - 1]) || ($sndx == 0 && $scnt[0] == 0)){splice(@scnt,$sndx,1);}} # below2 sepR8 prnt blox for not color or with
+push(@scd8,[d8(),'B4PLC_tAbl']);o9($scd8[-1][-1]);
 $Stxt.=    $Se                  .     sprintf("${C}8${M}Pre-cursor${Y}Letter${R}Counter$W:$G d8VS$C=%s$G\n",            d8c($d8VS));
 my $efsz = length($efyl);$Stxt  .=    sprintf("$O  efyl$C=%s".(' 'x abs(18-$efsz)).      "$G edVS$C=%s$G\n",c8fn($efyl),d8c($edVS));
 $Stxt.=                                       "${C}8${M}Pc${Y}Ltr$R Ct$C Full${W}Document${R}Counts$Y Sz${p}b10${M}Ct${G}Percent$W%\n";
@@ -183,7 +190,8 @@ $Stxt=sS('--',$Stxt) unless($clrf);o8($Stxt);$Stxt =''; # hEr stRtz A comNtd prE
 # postd8 pren8l pron8l prost8 rL8ive reduz8 regul8 releg8 renov8 repuD8 reraD8 reson8 revoc8 rumin8 salin8 saliv8 sanit8 satur8 sibil8 silic8 simul8
 # sp8ial spect8 spolE8 stagn8 suffl8 supin8 tabul8 templ8 tessL8 titiv8 toler8 trunc8 ulcer8 ultim8 unab8d undul8 vagin8 valid8 veget8 vener8 vesic8 21x9+20
 #     246 abbreV8…"; # sO not split 2 @word-RAz @all yet but upd8d output 2gO by,shud B betr if thEz wordz && sorted colectnz of conceptz l8r prove Useful?;
-if($folf){$Stxt.="\n${Y}Word${R}Sort${C}By${B}Size$G -$K up to current maximum$M $mxws$K or one$p page$K if given$p -p$W:\n";my $maxs=$mxws;$maxs= 8 if($pg1f);
+if($folf){
+  $Stxt.="\n${Y}Word${R}Sort${C}By${B}Size$G -$K up to current maximum$M $mxws$K or one$p page$K if given$p -p$W:\n";my $maxs=$mxws;$maxs= 8 if($pg1f);
   for   my $wsiz (2..$maxs ){my @folk=sort(keys(%{$folc[$wsiz]}));$Stxt.= $B.sprintf("%${wsiz}d ",scalar(@folk));my $rtot=$wsiz+1;
                                                                   $Stxt.="$R $wsiz"        unless(scalar(@folk));my $tltx="$M %1${W}x${R}%2${w}+${p}%3";
     for my $fndx (0..$#folk){my $foln=$folk[$fndx];my $blkw= int($clmz / ($wsiz + 1));#$blkw++ if($wsiz == 8); # adjust off-by-one eror on 16x10+10?;
@@ -236,7 +244,7 @@ if($gm8f){$Stxt.="${W}Gener8 gM8ria Primes for names by$B 3$W segments (${Y}PreL
     for my $sprt (sort(@{$kvs8{$kvct}})){$w2pm{$sprt}=Prim($mxpa++) unless(exists($w2pm{$sprt}));}}                # try to keep reusing earlier segments
   $Stxt=sS('--',$Stxt) unless($clrf);o8($Stxt);$Stxt ='';
   $Stxt  .="${W}gM8ria Primes with$B 3$W sepR8 sections:$Y PL$W,$G suffixes$W,$C prefixes$W but with special case 1st$G suffixes$W:$z _$W &&$B ion$W for ";
-  $Stxt  .="smaller highest nums...\n";
+  $Stxt  .="smaller highest nums...\n";                  push(@scd8,[d8(),'gNr8gM8ria']); # $Stxt .= "$scd8[-1][-1]\n"; # don't really nEd thEz cmNtz REdundnt;
   %pl8s=();%sufs=();%pres=();%w2pm=();%wh2p=();%kvs8=();@wpls=();%allc=();%allp=();$bbct=$colc=0;$mxpa=1;
   for   my $wsiz (2..$mxws ){my @folk=sort(keys(%{$folc[$wsiz]}));
     for my $fndx (0..$#folk){my $curw=$folk[$fndx];
@@ -251,7 +259,7 @@ if($gm8f){$Stxt.="${W}Gener8 gM8ria Primes for names by$B 3$W segments (${Y}PreL
  #for   my $pdig (4..7                         ){                                              $allp{Prim($mxpa++)}="$pdig";} # digz wil nEd2ch if evrin spLng
   for   my $pltr (      @plrl                  ){for my $sprt  (      @{$ppbs{$pltr}}        ){unless(           exists($pres{$sprt})){ # rvrs much worse 270M
                                                                                                $allp{Prim($mxpa)}=$sprt;$pres{$sprt}=Prim($mxpa++);}}}
-  $Stxt=sS('--',$Stxt) unless($clrf);o8($Stxt);$Stxt ='';
+  $Stxt=sS('--',$Stxt) unless($clrf);o8($Stxt);$Stxt ='';push(@scd8,[d8(),'presBySize']); # $Stxt .= "$scd8[-1][-1]\n";
   $Stxt  .="${z}pres${C}By${B}Size$W:$z";my $rtot=11;for my $sprt (sort {length($a) <=> length($b)} sort(keys(%pres))){
     if($rtot + length($sprt) + 1 >= $clmz){ $Stxt.="\n";$rtot=0;}
     $rtot    +=length($sprt) + 1;           $Stxt.= S(substr('YCMGRBop', length($sprt) % 8,1)) . "$sprt ";} # colr sequ by size
@@ -281,7 +289,7 @@ if($gm8f){$Stxt.="${W}Gener8 gM8ria Primes for names by$B 3$W segments (${Y}PreL
                              if(++$colc == 4){$colc=0;$Stxt.="\n";}     }}
   } $eqfz=~ s/, $//;  $Stxt=~ s/\n?$/$W\n/;$colc=0;#Stxt.="eqct:$eqct totl:" . scalar(keys(%wh2p)) . " eqfz:$eqfz"; # rebild Cmz2alreDB fIn4 100% of cur8wrdz
   $Stxt=sS('--',$Stxt) unless($clrf);o8($Stxt);$Stxt ='';
-  mkdir("$ENV{'HOME'}/.log", 0755) unless(-d "$ENV{'HOME'}/.log");
+  mkdir("$ENV{'HOME'}/.log", 0755) unless(-d "$ENV{'HOME'}/.log"); # push(@scd8,[d8(),'log_8pc.ls']);o9($scd8[-1][-1]); # P3SM8plc:cmntd this sinc aded wrdsiz;
   open my $log8,'>',"$ENV{'HOME'}/.log/8pc.ls" or die "Can't open  log 8PrimesComponents.LiSt file handle: $!";binmode $log8,':encoding(UTF-8)';
   print   $log8 "# $d8VS:~/.log/8pc.ls gener8d by 8plc with 8.utf edVS:$edVS to save sepR8 reference to 8-word Prime maps by PipStuart <Pip\@CPAN.Org>;\n";
   for  my $prmk (sort {$a <=> $b} keys(%allp)){print $log8 sprintf(" %3s %-14s",b64($prmk),$allp{$prmk});if(++$colc == 8){$colc=0;print $log8 "\n";}}
@@ -612,8 +620,12 @@ if($gm8f){$Stxt.="${W}Gener8 gM8ria Primes for names by$B 3$W segments (${Y}PreL
   # maybe when working, can lead to varE8ion for encoding most typical syllable pronunC8ion references then visual multiple assoC8ions && explore clustering;
   $mxws=  5 if($pg1f); # then mv 8p.ls 8pc.ls && start new 8ps.ls for Oct8 Prime Components or Side Strings (with _ empty right start 1st as 881 2z again)
   $Stxt=~ s/\n?$/\n/;for my $wsiz (2..$mxws){my @folk=sort(keys(%{$folc[$wsiz]}));my @fola=();$Stxt.=$G; # prEstrip12cutz abov lEvng justnXt Xctly96 2fOcus on
+    if($mxws&& $clmz >= 8){my $prgc=int($wsiz/$mxws*($clmz-2));if(($clmz-2-$prgc) >0){ o8("$z$Sc$G"  . '[' . ('#' x $prgc) . ('-' x ($clmz-2-$prgc))."]$Sc");}}
+    if(!($wsiz % 4)){my $slbl="wordsize_$wsiz";$slbl =~ s/_(\d\d)/$1/ if($wsiz > 9); # just d8-stamp a few of the word-size categories as they get run;
+      push(@scd8,[d8(), $slbl]);}
     my $stcz=int($clmz / 6); # normal initial alignments are 5 characters plus space, which should normally fit original 26 word columns within 160 char colmz
-    if($wsiz == 2){$Stxt.="${W}Only 2z fit with preceding lines of b8 (2 4095), products only also fit 3z, otherz should fit sums && averages (B4nw2ad).\n$B";
+    if($wsiz == 2){
+      $Stxt .= "$Sc${W}Only 2z fit with preceding lines of b8 (2 4095), products only also fit 3z, otherz should fit sums && averages (B4nw2ad).\n$B";
       for my $fndx (0..$#folk){my $b10w=b10($folk[$fndx]);$Stxt.=sprintf(" %5d",$b10w);$Stxt.="\n" unless(($fndx+1) % $stcz || $fndx==$#folk);} $Stxt.="\n$M";
       for my $fndx (0..$#folk){my $prod=1;$prod*=b10($_) for(split(//,$folk[$fndx]));
                                                           $Stxt.=sprintf(" %5d",$prod);$Stxt.="\n" unless(($fndx+1) % $stcz || $fndx==$#folk);} $Stxt.="\n$C";}
@@ -648,7 +660,8 @@ if($gm8f){$Stxt.="${W}Gener8 gM8ria Primes for names by$B 3$W segments (${Y}PreL
 # try2loop avrgz abov nstd but mA nEd special wrapz dn from 26 B4 6 to 6:22, 7:20, 8:17, ... shud B formUla or Dtectabl
 # old notez4wsiz 2: this is probably more useful mean average summariez && think of Prime factorz or othr wayz to represent mostly unique partz
 #                5: try to cut 2 (or 6 if adding 4 N8 varE8ionz bakin) to get 5z dn2 3rd rel8ively clean concise set of 96 to make another sumb page out of
-  } $Stxt.="${C}cuts$W:$Y 2$W:${G}N8 $o(${K}b8 c8 d8 g8 w8$o)$Y  3$W:${G}DN8$Y  4$W:${G}NfN8 SSN8 $o(${K}ckm8 pal8 upd8$o)$Y  5$W:${G}m8rix coll8$Y";
+  } o8(' ' x $clmz . $Sc);
+    $Stxt.="${C}cuts$W:$Y 2$W:${G}N8 $o(${K}b8 c8 d8 g8 w8$o)$Y  3$W:${G}DN8$Y  4$W:${G}NfN8 SSN8 $o(${K}ckm8 pal8 upd8$o)$Y  5$W:${G}m8rix coll8$Y";
     $Stxt.="$Y  6$W:${G}?$Y  7$W:${G}?$Y ...\n"; # hopefully above -g will align a b10 line over b64 lines
   # try new small set of sequential Prime number alloc8ions && then multiply recurring subset Primes then try to refactor && reconstruct from gr8st down
   # I3QMIGHT:now 128 (2=>9,3=>34,4=>85) entries left after above cuts,but may want to splice more drastically down 32 more to top 96ish for next bin sumb page;
@@ -690,11 +703,12 @@ if($fulf){$Stxt=~ s/\n?$/\n/;my %cvlz=reverse(%fulc);my @ccnt= sort { $a <=> $b 
           $w82o    .= ($char eq "\n") ? '\n' : $char;$pcnt++;} # belo was once trying some random colrz with: ,S(substr($cmap{'d8bo'},b64(int(rand(8))),1)));
       } $Stxt.=sprintf((' ' x ( 8-$pcnt))."$C$w82o$B:$M".sprintf("%7s$B: %s$W,\n",cma($coun),b8c(sprintf("%4s",b64($coun)))));
     } } $Stxt.=sprintf("$C  Sum of$B: ${G}0$W..${G}7$W,${G}9$B: $M%s$o      dif$Y:$B%7s$W;$z",cma($sumn),cma($jus8-$sumn));}
-$Stxt=sS('--',$Stxt) unless($clrf);o8(   $Stxt );
+$Stxt=sS('--',$Stxt) unless($clrf);o8(   $Stxt );push(@scd8,[d8(),'Nd']); #o9('Nd'); # stRtd lapsed time 1m:8s Bgin-2-Nd hEr,nEd2chopup from log-fIl2 hEr;
 $Smap=sS('--',$Smap) unless($clrf);o8("\n$Smap") if($gm8f && defined($Smap) && length($Smap) && !$pg1f);
+  o9($_->[0]->full('a') . ' ' . $_->[0]->colr('a') . ' ' . $_->[1]) for(@scd8);
 
 # Smap seems like a magic cross in 3x3 blocks with crux flux keys to sector placements where you start viewing 160x50 then examine the crux B4 240x67 2C cros;
-# Special thanks go out to everyone who has worked on dicts or dictd && HTTPS://TheFreeDictionary.Com for assisting massively in building 8.utf from dFinitnz;
+# Special thanks go out to everyone who has worked on dicts or dictd && HTTPS://TheFreeDictionary.Com for assisting massively in building 8.ls from definitnz;
 # 2du:gener8 all entries below into new d8a-struct && sepR8 ones for *t8(ion)? && *E8 as *iat(e|ion) ends, to then compare against loc8d 8-words 4 diffz 2add;
 #   rel8ively few results just for *z8 end... then maybe all these should load into hashes to match against l8st presently defined 8.txt 8-words 2sync or add;
 my   @dz8_=(sort(qw(Albizz8 Baranz8 Costa_di_Mezz8 Istituto_Europeo_Studi_Tecnologie_Avanz8 Ouarzaz8_Morocco_-_Ouarzaz8 Solemniz8 Valdez8 Alkaliz8 Cadrezz8
