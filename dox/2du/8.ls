@@ -1439,7 +1439,7 @@ trachelobranchE8
  z    federaliz8ion:st8 of being, or act of being put, under federal control
  r    coconspir8or : # (maybe add confeder8 below near feder8)
  r     confeder8   :to unite in a treaty, league, alliance, or confederacy, join in mutual contract or covenant, band together, 11 Southern St8s (AmericanHist)
- r      conspir8or
+ r      conspir8or pejor8ive
  C       consoC8   :assoC8, accomplice (Archaic), to be allied, united, joined, assoC8d, or confeder8d, or bring or come into action
  c     cornific8ion: # hornific8ion;
  c     densific8ion:increase in density of something, compaction, compression, concretion
@@ -1463,6 +1463,7 @@ trachelobranchE8
  g        oblig8ory: # maybe bumping dpv from Z 35 to a 36 && gm t 55 to u 56 && Etz 1k 110 up by 2 to 1m 112,which would increase total 1,391 to nice 1,402;
  g        oblig8ive: # keeping RUV at 8 && CDLN at G 16 && bsu at K 20 should be good to stay aligned with last 2 groups of cln at 2K 148 && final r@ 3K 212;
  g          rog8ion:solemn litany or supplic8ion ceremony prescribed by the church, asking, or begging
+ g        derog8ory
 # pasted && edited output of `~/dox/2du/8plc f` to get currently matched list of candid8s to consider adding or swapping into current top 8-words list above:
  w:7:((und|ov)er|(penn|h(eav|undred))y?)w8 && (live|dead)w8 wi 7 new *[Bhk]8 if posibl2discover && incorpor8 or contempl8 p@rn dmg4reloc8ing w 4suchgoodwords
  U:2:arcU8 devalU8                                                                                                                           with 2 *R8 1 *V8
