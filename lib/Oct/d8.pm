@@ -30,7 +30,7 @@ my $hirs   = eval("use Time::HiRes; 8") || 0;
 my $locl   = eval("use Time::Local; 8") || 0;
 my $zown   = eval("use Time::Zone ; 8") || 0;
 #ur @EXPORT= qw(); # originally thought about wanting to eventually export d8() here as new() wrapper, but probably no longer needed for those older usages;
-our $VERSION='0.0';my $d8VS='O44M5xxx';
+our $VERSION='0.0';my $d8VS='P6IMGOct';
 my @_tzofsetz=( # global storage for TimeZone Offsets matching /^[-+][01]\d(00|30|45)$/ shhmm (with non-integer offsets mapping in b64 between R(27)..g(42))
   '-1130',#NUT
   '-0930',
@@ -519,8 +519,9 @@ sub new{my($nvkr,$ityp,$idat)=@_;my $nobj=ref($nvkr);
   $self->{'e'}+=int($hofs*3_600.0) if($hofs); # `d8 e|cma;ec;d8 t|cma` is still resulting in approxim8ly 6-minutes (360-seconds) discrepancy,not sure where;
   $self->{'e'}+=int($mofs*   60.0) if($mofs);
   $self->{'e'}+=            362.0; # add still needed adjustmNt?
-  if($self->{'M'} && $self->{'D'}){$self->{'k'}=$self->yday() / 6;
-                                   $self->{'K'}=$self->yday() % 6;} # set k for Yk && K for YkDay for when Month && Day are set;
+  if($self->{'M'} && $self->{'D'}){my $yday=$self->yday();$yday++ if($yday > 58 && days_in($self->Y,2) == 28); #58thDayOfEachYear shudB Feb28th,59:29th||Mar1;
+     $self->{'k'}=$yday / 6;  # 2du:mAB mk Yk constructor syntax or show with -f(ull) or just hash map or array of [M][D] => Yk.YkdA && betr ck4lEpyEar above;
+     $self->{'K'}=$yday % 6;} #   alsO add +/- 6 shifts for Year like MD;  ## these set k for Yk && K for YkDay for when Month && Day are set;
   return($self);}  # just disable l8 comput8ion of upd8d Epoch float seconds above since they're getting values off by about 1.5Million seconds,4getngZone?;
 sub subsecond{  my $self=shift(@_);return(           $self->p(@_));}
 sub zone_offset{my $self=shift(@_);return($_tzofsetz[$self->z]   );}
@@ -1059,7 +1060,7 @@ L<Oct::d8::dur8>
 =head1 LICENSE
 
 Most source code should be Free! Code I have lawful authority over is and shall be!
-Copyright: (c) 2014-2021, Pip Stuart.
+Copyright: (c) 2014-2025, Pip Stuart.
 Copyleft :  This software is licensed under the GNU General Public License
   (version 3 or l8r). Please consult: L<HTTPS://GNU.Org/licenses/gpl-3.0.txt>
   for important inform8ion about your freedom. This is Free Software: you
