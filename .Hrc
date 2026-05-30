@@ -1,9 +1,9 @@
-# F1IL2Vhp:~/.Hrc crE8d by PipStuart <Pip@CPAN.Org> as 8sh"H"rEsourcz2configUr core fEld abbreV8ion,type colr8ion,&& aliasing; $VERSION='0.0';$d8VS='N8BM6pal';
+# F1IL2Vhp:~/.Hrc crE8d by PipStuart <Pip@CPAN.Org> as 8sh"H"rEsourcz2configUr core fEld abbreV8ion,type colr8ion,&& aliasing; $VERSION='0.0';$d8VS='Q5TMEXEC';
 c           ->   C        => cOL  =>   cOL8 =>    cOLR =>   cOLM; # core c8 lAyrz;c:* sepR8lAyrzBlODterminprEfixz4allfolOing middle-map columnz th@ R!Dfalt F:;
 c:tFbSGRsgr ->   WGBZOMzom=> tXt  Fgc  bGC  Slc  Gfc  Rnd  sLC  gFC  rND ; # c8 objectz shudBgoverned by thEs lAyrz from hEr proly thru a8:new
 c:tFbSGRsgr               => tEXt Fclr bCLR Slct Grfc Rndt sLCT gRFC rNDT => tEXt, Forecolr, bACKCOLR, Select, Graphic, Rendition, sELECT, gRAPHIC, rENDITION;
-c:DALdalfpN ->   DALdalYRN=> Drk  Avg  Lit  dRK  aVG  lIT  f0N  pAL  Nsx ; # implied c:X is Xplicit:Xpansion XnAmOvrIdz
-c:DALdalfpN               => Dark Avrg Lite dARK aVRG lITE f0NT pAL8 aNsx => Drkcolr, Avgcolr, LitcoLr, dRKCOLR, aVGCOLR, lITCOlR, f0NTfILE,pAL8FILE,aNsiNdex;
+c:DALdalfpN ->   DALdalYRN=> Dul  Avg  Lit  dRK  aVG  lIT  f0N  pAL  Nsx ; # implied c:X is Xplicit:Xpansion XnAmOvrIdz
+c:DALdalfpN               => Dull Avrg Lite dARK aVRG lITE f0NT pAL8 aNsx => Dulcolr, Avgcolr, LitcoLr, dRKCOLR, aVGCOLR, lITCOlR, f0NTfILE,pAL8FILE,aNsiNdex;
 # new c8layr N 4aNsi SGRcOd iNtb64iNdexbut b10 of u&&v shudcorect2actual 64&&65(proly du!nEd YyH=>cmy); also could add 2pal8 layers: Clen NeoN Wash Melo;
 # consider c:tFbs grpf SGRn N(speclKsjust4 cs:) X(prEorpOst flag2apply any othr lAr4wRd2Xpansionz) mAB m(sepR8Mousele nEg8) 2ordr c8 top4Curses1stB4 SDL 8trm;
 ugahMm.x    ->   GMBCMYWR => uSR  gRP  aHT  hST   sdM  DOm  dt.  xTN ; # set autOnAmflagXpansion setzXpnd&&Trp4only3z||Quad4only4z&&also/Max|All|[3489]/
@@ -17,7 +17,7 @@ p:wWst      ->   YROG     => rws  rwt  r-s  r-t; # maybe a8:new should load this
 # might add ftst flag ls meaningz && $_,$?,$@,$|,$\,$/ perl refz && /\\.*/ regex&&string escape meanings from HTTP://PerlDoc.Perl.Org/perlrebackslash.html
 #b:r might make new composite b8 object of couplet for reso like 1280x800 => K0-CW && 3840x2160 => y0-Xm and another for Range span maskz or some better 8-name
 #b:c        ->   ROYGCBMP => RVc; # maybe base b64 map here could propag8 2all else?  # b8 reverse Colr loop        # SGR map below cud pOtNtially  #hadYGTBUDS
-d:YMDzhmsf  ->   RoYGCBMp => Year, Month, Day, zONE,   hOUR, mINUTE, sECOND, fRAME;   # d8 forward colr fieldz      #   DfIn g: && r: 2Ballnew  #YoGoTBUDSNow?;
+d:YMDzhmsp  ->   RoYGCBMp => Year, Month, Day, zONE,   hOUR, mINUTE, sECOND, pHASS;   # d8 forward colr fieldz      #   DfIn g: && r: 2Ballnew  #YoGoTBUDSNow?;
 # contXtAKAnAmspAc: frAmez Ech Xpansion implicitly,thN nAming anXpansion set can furthr IdNtify && can autOrecognIz consistNt&&max lengthz && other Useful tr8z
 _           ->   G        => _tu  =>   _transl8ion_and_utlz; # thEsRglObal col8lAyrtransl8ionz wher8trm 1z shud alwAyzBdone&& x 1z shudB Xtra4 xterm (GnomTerm)
 _:8x        ->   YM       => 8trm, xterm; # these are basically transl8ion type categoriez or profilez for specialized alter8ion within Dtectabl NvIronmNtz
@@ -48,13 +48,13 @@ cf:uvwxyz._ ->   UVWXYZ__ => COMPuTER, MEDIEvAL, wEIRD   , xANxERIF ,  HyLAS   ,
 cp:BbcpdDRF ->   PBCPdDRF => Bepspurp, bLUES   , cOOL    , DARKpRIM ,  dARKZ   , Default , deepRed , Flipped ; # c8:pal8:initial 16  filenamez like cf:
 cp:gnrsfTty ->   GNrSfTtY => gOOFY   , nICE    , r       , sILLY    ,  TIGSfAVS, Tigzfavz, t       , yEL     ; # V8 failz: none yet, shud grow 2 top64
 cp:8PHS     ->   8PHS     => 8bow    , Penguin , Heather , Sweet                                             ; # strtd adding a few more new pal8z
-cS:NBAIULKR ->   KWwGCORY -> N:01234567 => Normal      , Bold        , fAint       , ItalIc      ,  Underline   , bLink       , blinK       , ReveRse     ;
-cS:VC012345 ->   BRROYGCB -> N:89ABCDEF => inVisible   , Crossedout  , 0defaultf0nt, 1altern8f0nt,  2altern8f0nt, 3altern8f0nt, 4altern8f0nt, 5altern8f0nt;
-cS:6789FDbi ->   MPRORWwg -> N:GHIJKLMN => 6altern8f0nt, 7altern8f0nt, 8altern8f0nt, 9altern8f0nt,  Fraktur     , DblunDerline, bOLD        , iTALiC      ;
-cS:ulSrvcXY ->   coByOrGY -> N:OPQRSTcd => uNDERLINE   , BlINK       , reServed    , rEVErSE     ,  vISIBLE     , cROSSEDOUT  , eXtendedcolr, dfltextYcolr;
-cS:xysMEOmo ->   gybMCGmg -> N:mnopqrst => ExTENDEDCOLR, DFLTEXTyCOLR, REsERVED    , fraMed      ,  EncirclEd   , Overlined   , FRAmED      , oVERLINED   ;#u-x
+cS:NBDIULKR ->   KWwGCORY -> N:01234567 => Normal      , Bold        , Dim         , ItalIc      ,  Underline   , bLink       , blinK       , ReveRse     ;
+cS:VS012345 ->   BRROYGCB -> N:89ABCDEF => inVisible   , Strikethru  , 0defaultf0nt, 1altern8f0nt,  2altern8f0nt, 3altern8f0nt, 4altern8f0nt, 5altern8f0nt;
+cS:6789FWbi ->   MPRORWwg -> N:GHIJKLMN => 6altern8f0nt, 7altern8f0nt, 8altern8f0nt, 9altern8f0nt,  Fraktur     , DblWnDerline, bOLD        , iTALiC      ;
+cS:ulArvcXY ->   coByOrGY -> N:OPQRSTcd => uNDERLINE   , BlINK       , reservedA   , rEVErSE     ,  vISIBLE     , sTRIKETHRU  , eXtendedcolr, dfltextYcolr;
+cS:xyaMEOmo ->   gybMCGmg -> N:mnopqrst => ExTENDEDCOLR, DFLTEXTyCOLR, RESERVEDa   , fraMed      ,  EncirclEd   , Overlined   , FRAmED      , oVERLINED   ;#u-x
 cS:HhTtGg   ->   CMRYGg   -> N:yz._uv   => igulorlrigHt, IGDUORLRIGhT, igolorllefT , IGDOORLLEFt ,  iGstress    , IgOFF       ; # IdeoGram(Dbl)?UndROvLnz#rsrvd
-cS:nafdke   -> S:Nbiulm   -> N:0MNOPs   => nORMAL      , FaINT       , fRAKTUR     , dBLUNdERLINE,  BLINk       , eNCIRCLeD   ; # Xtraz2remap2aliasz4now#<=y-11
+cS:ndfwke   -> S:Nbiulm   -> N:0MNOPs   => nORMAL      , dIM         , fRAKTUR     , dBLwNdERLINE,  BLINk       , eNCIRCLeD   ; # Xtraz2remap2aliasz4now#<=y-11
 #cS_:YyH                  => c, m, y; # an altern8map4N: wi b64 ofstandRd SGR cOdz nEd2ovrId DfltdFinition ordrincrMNtng indiCz #   but l8r mAB rEdF aznw funcz
 # SGR col8 layerz are special because the interpret8ionz are not mutually exclusive like colrz && f0ntz, so Ech atribUt has cOXistNt On && oFF formz instead
 L           ->   W        => cLr  =>   coLr;  # colr b64 RGB mapz and namez (put in top-level to avoid col8 layer confusion)    # atMpting sLfrFz of s: above
@@ -79,15 +79,24 @@ e:BuaMm.x                 =>  Trp:eML; # c8em E-mail addrS of main fieldz  # the
 T           ->   B        =>  Trp:TTy; # TTY loop  # a8:f8fm && pm per tty (EvNthO fAke 0 tty just mapz2multiplz of8) shudBcomAbl2gNR8 8sh f80p cnfgUr8ionz
 T:01234567  ->   WCOGBRYM -> f:M0tmrcaq -> p:yfsgnDBb ; # this has Fgcolr cOdez,f0nt filename mapz,&& then pal8 filename mapz
 T:89        ->   Ac       -> f:fd      ; # proly will kEp tty loop just 0..7 as above,but thEse added2alsO complEte dFinition of SGR 10-19 similRly
-A           ->   Y        =>  Trp:Als => Alias; # wh8 aliasez as of F3BMLn6r wi just Ovr half of b64 mapd sOfR;  need2add Xtra map for ~/bin XeQtz4up2autOrun
-A:01234567  ->   01234567 =>   ogg123,     mpg321,     mpg123, ~/bin/3,       x4t,     perl,    perl6,       7z; # these R basicly just cp/pAstd from .zshrc's
-A:89ABCDEF  ->   89ABCDEF =>     viii,        c99,       asci,       b,    cls -x,      dfc,       Et,        f; #   wh8ch() output that calls which on each &&
-A:GHIJKLMN  ->   GHIJKLMN =>       zg,       htop,          i,       j,        k9,  ~/bin/L,        m,     calN; #   wh8() is similar but runs thru many more
-A:OPQRSTUV  ->   OPQRSTUV =>        o,       pal8,       calQ, rd*~/.e,   ~/bin/S,      tee,     U2b8, vim.tiny; #   useful aliasez && set shell functionz;
-A:WXYZabcd  ->   WXYZabcd =>  whereis, /usr/bin/X,          y,      zc, asciiview,    bak(),  ~/bin/c,    dic(); # note that several single-character commands
-A:efghijkl  ->   efghijkl =>   e $TTY,       find,     grep(), history,      info,     jobs,     kill,     lsd8; #   are now defined as shell functions rather
-A:mnopqrst  ->   mnopqrst =>    man(),       ncal,      orpie,     CCC,   ~/bin/q, shLbltin, *srchl(),     tmux; #   than mere aliases (design8d with standard
-A:uvwxyz._  ->   uvwxyz._ =>   upd8(),       v8(), /usr/bin/w,    exit,      yelp,       zp, shLbltin, undFIned; #   curved-bracket parentheses as trailings);
+#A          ->   Y        =>  Trp:Als => Alias; # wh8 aliasez as of OCCL5Als wi almost all of b64 is mapped now;  need2add Xtra map for ~/bin XeQtz4up2autOrun
+#:01234567  ->   01234567 =>   ogg123,     mpg321,     mpg123, ~/bin/3,       x4t,     perl,    perl6,       7z; # these R basicly just cp/pAstd from .zshrc's
+#:89ABCDEF  ->   89ABCDEF =>     viii,        c99,       asci,    btop,       cls,      dfc,     Etrm,    fgrep; #   wh8ch() output that calls which on each &&
+#:GHIJKLMN  ->   GHIJKLMN =>       zg,       htop,   identify, joy2key,        k9,  ~/bin/L,  mplayer,     calN; #   wh8() is similar but runs thru many more
+#:OPQRSTUV  ->   OPQRSTUV =>        o,       pal8,       calQ,   reset,   ~/bin/S,      tee,     U2b8, vim.tiny; #   useful aliasez && set shell functionz;
+#:WXYZabcd  ->   WXYZancd =>  whereis, /usr/bin/X,       yelp,      zc, asciiview,    bak(),  ~/bin/c,    dic(); # note that several single-character commands
+#:efghijkl  ->   efghijkl =>   eM -nw,       find,     grep(), history,      info,     jobs,     kill,     lsd8; #   are now defined as shell functions rather
+#:mnopqrst  ->   mnopqrst =>    man(),       ncal,      orpie,     CCC,   ~/bin/Q, shLbltin, *srchl(),     tmux; #   than mere aliases (design8d with standard
+#:uvwxyz._  ->   uvwxyz._ =>   upd8(),       v8(), /usr/bin/w,    exit,    yt-dlp,       zp, shLbltin,     rens; #   curved-bracket parentheses as trailings);
+A           ->   Y        =>  Trp:Als => Alias; # wh8 aliasez as of OCCL77AL wi above b64-order rearranged to be like wheo() with Evens(lowcase) above odds;
+A:02468abc  ->   02468anc =>   ogg123,  mpg123,      x4t,      perl6,       viii, asciiview,    bak(),  ~/bin/c;
+A:13579ABC  ->   13579ABC =>   mpg321, ~/bin/3,     perl,         7z,        c99,      asci,     btop,      cls;
+A:defghijk  ->   defghijk =>    dic(),  eM -nw,     find,     grep(),    history,      info,     jobs,     kill;
+A:DEFGHIJK  ->   DEFGHIJK =>      dfc,    Etrm,    fgrep,         zg,       htop,  identify,  joy2key,       k9;
+A:lmnopqrs  ->   lmnopqrs =>     lsd8,   man(),     ncal,      orpie,        CCC,   ~/bin/Q, shLbltin, *srchl();
+A:LMNOPQRS  ->   LMNOPQRS =>  ~/bin/L, mplayer,     calN,          o,       pal8,      calQ,    reset,  ~/bin/S;
+A:tuvwxyz.  ->   tuvwxyz. =>     tmux,  upd8(),     v8(), /usr/bin/w,       exit,    yazi(),       zp, shLbltin;
+A:TUVWXYZ_  ->   TUVWXYZ_ =>      tee,    U2b8, vim.tiny,    whereis, /usr/bin/X,    yt-dlp,       zc,     rens;
 S           ->   c        =>  Trp:Shl => Source-highlight; # .shl.style fieldz Fg foregrnd (lEving Octology core d8a dFz abov4Xtrnl prog shl,St8z&&gmz BlO)
 S:bcktusrS  ->   WKBCcMRR => bGCOLOR  , cONTEXT, kEYWORD, tYPE     , uSERTYPE, sTRING  , rEGEXP          , Specialchar; # mAB mk S: Dflt&&have / rEsume root?
 S:CnpyfBvF  ->   CMbGCGbB => Comment  , nUMBER , pREpROC, SyMBOL   , fUNCTION, cBracket, PREDEF_vAR      , predeF_Func; # uc V8 charz hEr but nd2 lc B4.style
@@ -123,10 +132,10 @@ C:501       ->   YKR      => 5ut,   j0Kr , j1kR ; # Use 5 lIk S 4 5uitz,stRt wi 
 C5:sHDc     ->   KRRK     =>        sPADE, Heart, Diamond, cLUB; # maybe reserve 234 789 for some magic new blacK and Red Rook, knIght, and Bishop cardz
 C:.->K=> mycrgobp  luzfa  => aCE  , kING , qUEEN, jACK , tEN  , NiNE , EIGhT, sEVEN,  SIx  ,  FIvE, fOUR , THrEE, TwO  ; # use last 2 b64 charz 2 list rank V8z
 C:_->R=> MYCRGOBP  LUZFA  => acE  , kinG , qUeen, jaCk , teN  , nineB, eighD, seLen,  sixM , Pfive, fOur , threY, Zwo  ; # all abbreV8 Xcept last 8 lc digitz-4
-C:akqjtihs         xvfrw  => As   , Ks   , Qs   , Js   , Ts   , 9s   , 8s   , 7s   ,  6s   , 5s   , 4s   , 3s   , 2s   ; # spadez    #4mor b64pipz!hEr see die8
+C:akqjtihc         xvfrw  => Ac   , Kc   , Qc   , Jc   , Tc   , 9c   , 8c   , 7c   ,  6c   , 5c   , 4c   , 3c   , 2c   ; # spadez    #4mor b64pipz!hEr see die8
 C:AKQJTIHS         XVFRW  => AH   , KH   , QH   , JH   , TH   , 9H   , 8H   , 7H   ,  6H   , 5H   , 4H   , 3H   , 2H   ; # Heartz    #sepR8 rank colr8ion above
-C:EGUCNBDL         MPOYZ  => AD   , KD   , QD   , JD   , TD   , 9D   , 8D   , 7D   ,  6D   , 5D   , 4D   , 3D   , 2D   ; # Diamondz  #  shud   bind .=>sc _=>HD
-C:egucnbdl         mpoyz  => Ac   , Kc   , Qc   , Jc   , Tc   , 9c   , 8c   , 7c   ,  6c   , 5c   , 4c   , 3c   , 2c   ; # clubz     #  nstd ofnAmz .=>sH _=>Dc
+C:EGUCNBDL         MPOYZ  => AD   , KD   , QD   , JD   , TD   , 9D   , 8D   , 7D   ,  6D   , 5D   , 4D   , 3D   , 2D   ; # Diamondz  #  shud   bind .=>sD _=>HD
+C:egucnbdl         mpoyz  => As   , Ks   , Qs   , Js   , Ts   , 9s   , 8s   , 7s   ,  6s   , 5s   , 4s   , 3s   , 2s   ; # clubz     #  nstd ofnAmz .=>sH _=>Dc
 D           ->   O        => Dmn => Dmn8 => Dominoz8; # runb10 0..54 2handle any 0/0..6/6 or ..9/9 tileset within single b64 && 1st 2 setz 0-I map total valz,
 D:0123456789  s           => 0/0, 0/1, 0/2, 0/3, 0/4, 0/5, 0/6, 0/7, 0/8, 0/9,      1/1                    ; #   J-Q 8 of /8 -10 to valz,R-X 7 of /7 -19 2valz,
 D:ABCDEFGHI   qr          => 1/9, 2/9, 3/9, 4/9, 5/9, 6/9, 7/9, 8/9, 9/9,           1/2, 2/2               ; #   Y-d 6 -27,e-i 5 -34,j-m -40,n-p -45,qr-49,s-52
