@@ -1,5 +1,5 @@
 # F1RLLK2K:~/.lrc  by PipStuart <Pip@CPAN.Org> as an altern8 format for .lsrc ideally having new ~/bin/lrc gNR8 either from the other;
-# $VERSION='0.0';$d8VS='O3RM0fee'; 2du:lrc optn2gNr8 altrn8 versN th@purposfuly varEz colrzof comon typz,add *[-_?]* NtrEz frm .zshrc hEr,audit oldz,ck /etc/*,
+# $VERSION='0.0';$d8VS='Q5SM5SM5'; 2du:lrc optn2gNr8 altrn8 versN th@purposfuly varEz colrzof comon typz,add *[-_?]* NtrEz frm .zshrc hEr,audit oldz,ck /etc/*,
 #   add interaction2 lsd8 wN it Dtectz unrecognIzd XtNshNz offerng c@egOrEz with comon colr2autOm@ically insrt chOsN NtrEz,mk lrc gNr8 Xportd LS_COLORS 4 Eval,
 #   confirm all accept f0nt cOdez wi dash accepting Dfalt 4grnd thN redo NORMAL FILE LINK as no fi ln,Dtect cOlIdz OvrIdz&&warn,mAB 8trm aded2 TERM ls sumdA?;
 # 819J2Pip:~/.lsrc by PipStuart <Pip@CPAN.Org> izAheavily modifId`dircolors`cfgfIl(Orig ~/.DIR_COLORS)wich setz $ENV{'LS_COLORS'} 4GNU`ls --color`&&`lsd8`;
@@ -95,6 +95,8 @@ TERM xterm*
 #ERM xterm-88color
 #ERM xterm-color
 #ERM xterm-debian
+TERM xterm-kitty
+TERM xterm-ghostty
 # ColorInitStrings for basic file types have codes: Attribute codes: 00=none    01=bold    08=concealed         04=underscore 05=blink               07=reverse
 #   0 KRGY 3  4 BMCW 7            30+ Text (ForeGround) color codes: 30=black   31=red   32=green   33=yellow   34=blue       35=magenta   36=cyan   37=white
 #        orange  purple           40+       BackGround  color codes: 40=black   41=red   42=green   43=yellow   44=blue       45=magenta   46=cyan   47=white
@@ -137,6 +139,7 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *CHANGELOG                     Y
 *Changes                       o
 *CREDITS                       c
+*CODEOWNERS                    g               # ~/dvl/t8/term/gosty/ghostty-1.2.3/ perhaps Zig fIle
 *Copying                       W
 *coffee                        o               # ~/.raku-pod-render/highlights/
 *cookie                        c               # ~/.w3m/
@@ -351,6 +354,7 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 #oo
 *G-Force                                       # Lib-Vizualiz8ion GForce actor plug-in file that showed up in ~;
 *locale
+*.spec                                         # from lsd-rs Rust proj spec;
 *.conf                                         # config filz,(basic) play-list filz,shell-scripts,bookmarks,&& DOS-style executablz
 *conffiles                                     # /var/lib/dpkg/info/rxvt-unicode.conffiles
 *dconf-defaults                R               # /etc/gdm3 files
@@ -449,6 +453,7 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *gws                                           # NetGearRoutr GateWaySettings
 *sub                                           # configur8ion valid8ion Subroutine script, probably from the Free Software Foundation, Inc.
 *subs                                          # ~/muz/U2ba   Music-Subtitles
+*U2b                                           # oRANG U2b    MusicYouTubeURL
 *lrx                                           # ~/muz/lrx    MusicLyricSings
 *lnx                                           #      LiNX like tabz && linkz && URL'z
 *webloc
@@ -542,6 +547,11 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *cps
 *rej                                           # ~/dvl/c8/trm8/st/  REJected filz from attempted patching of source treez with .diff filz
 *rnd
+*pala                          C               # ~/dvl/f8/pal8/paleta/palettes/ filenames all have one of the nXt 4 dashed extensions (almost all -dark);
+*dark                          r
+*light                         C               # there are only 6 -light palz th@ aren't in base16 c@, && just a single 1 each of -black && -white below;
+*black                         k
+*white                         W
 *_seed                         p
 *_state                        c
 *.token                        c               # ~/.steam/
@@ -585,12 +595,17 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *jsc                           o               # Qt JavaScript?      Cache      filz (from ~/.cache/krita/qmlcache/)
 *jso                           p               #    JavaScript (JohnSatoshi) perhaps converted Over to Other Octology d8 && b64 format for Perl(PipScrpt)purps?
 *json
+*jsonc                         C               #    JavaScriptObjectNot8ion C (schema?) filz like as: ~/.config/fastfetch/config.jsonc ;
 *jsonl                         mkI
 *jshintrc                      C               # Beppu-san's dot-file in MadSciLab/ta && tvaa2/ presumably for some JavaScript SHell integer resource maybe?
 *npmrc                         p
 *gypi
 *gyp
-*tmTheme                       p               # TextMate (editor) color theme XML filz which also work for `bat` CLI syntax-highlighting
+*tmtheme                       pk              # TextMate (editor) color theme XML filz which also work for `yazi`    syntax-highlighting (nOte:lc("Theme"));
+*tmTheme                       pb              # TextMate (editor) color theme XML filz which also work for `bat` CLI syntax-highlighting
+*sublime-color-scheme                          # Sublime  (editor) colorscheme JSONfilz improving old TextMateThemez SubLimeText.Com/docs/color_schemes.html
+*rasi                          p               # RoFi (more than DMenu replacement) .config. && current. theme fIlz from: HTTPS://GitHub.Com/Davatorium/rofi ;
+*yazi                                          # YaZi (vim-bindingz in like MidnightCommander-style terminal file-browser with tons of fE8urez && optnz!);
 *wiki                                          # MarkDown fIlz 4 VimWiki PlugIn
 *xml~                          p
 *xml
@@ -679,6 +694,8 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *pal
 *psf                                           # PC Screen Font
 *psfu                          p               # PC Screen Font Unicode
+*print                         p               # TextDraw td / AsciiDraw ad     filn
+*linz                          Y               # TextDraw td / AsciiDraw ad     filn
 *hlp                                           # HeLP                           filz
 *help
 *desc                                          # /usr/share/tasksel/ or ~/.mplayer/font/
@@ -721,10 +738,11 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *menu
 *.m4
 *.md                                           # MarkDown file like ~/.inst/youtube-dl/README.
-*.mk
+*.mk                           p
 *mak
 *make
 *cmake
+*gradle                        p               # GitHub Ravbug's sdl3-sample Android file: build.gradle
 *textile                                       # Tex-Tile file like ~/dvl/Ppl/bep/mad*/README.
 *makefile
 *Makefile
@@ -812,10 +830,13 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *.rakumod                                      # Rakudo !Perl6 modz
 *.rakudoc                      Y               # Rakudo !Perl6 POD6
 *.rakutest                     M               # Rakudo !Perl6 tstz
+*.rs                                           # from lsd-rs Rust proj spec;
 *.py                                           # PYthon script filz
+*.py3                                          # PYthon3script filz
 *pyc
 *php
 *pas                                           # PAScal source filz
+*pma                                           # ~/.config/chrome/
 *pro                           R               # acording 2 HTTPS://File.Org/extension/pro gNeric cros-plat4m project files (found in Cool-Retro-Term && Qt5)
 *.pt                                           # PipTyme||PerlTst
 *.p
@@ -851,6 +872,8 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *schemas
 *aliases
 *globals
+*symbols
+*triggers                      c               # /var/lib/dpkg/info/*
 *preset                                        # ~/.qmmp/eq .ini style file for storing the Equalizer settings between program invoc8ionz
 *qmmprc                        c               # ~/.qmmp/
 *.build
@@ -890,7 +913,7 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *gpg~                          c
 *pgp
 *sxp
-*.xe                                           # Octology a8.pm X-windows Event (`xte`) autom8ion wrapper script (stRted2dMonstr8 functionaliT of manual cmndz)
+*.XE                                           # Octology a8.pm X-windows Event (`xte`) autom8ion wrapper script (stRted2dMonstr8 functionaliT of manual cmndz)
 *xd2                                           # xdotool command script to gener8 ~/dvl/t8/**/xl8/ d8a files in attempt to autom8 complex transl8ion evalU8ions
 *xinitrc                       g               # ch2drkGrn from brItCyan .x* dflt4xinitz
 *xinitrc-compiz
@@ -995,6 +1018,7 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *obj
 *old
 *orig
+*skip
 *dbug
 *done
 *lnk
@@ -1036,6 +1060,8 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *cache-3                       M               # ~/.cache/fontconfig/[0-9a-f]{32}-le64.
 *cache-4                       R               # ~/.cache/fontconfig/[0-9a-f]{32}-le64.
 *xftcache
+*package-cache                 P
+*package-cache-mutate          m
 *jcache                                        # ~/gmz/Rune/Jagex/RuneScape/  filz (RS crE8d Jagex/ in ~ but wi .zshrc alias I mv 2 gmz 4 less $HOME clutter)
 *.journal                                      # ~/.local/share/tracker/data/ filz (could do .ontology.journal distinctly)
 *dist
@@ -1073,6 +1099,9 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *.d
 *dz
 *deb
+*nix                           O
+*zon
+*zig                           C
 *.gz
 *.lz
 *lz4
@@ -1176,7 +1205,7 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *.gv                           C               # GraphViz fIl
 *dot                           M               # GraphViz fIl
 *mpa                           M               # MPNS-?/Archive?cuntaiheR? pr0 t0mzN 2Bz||!2Bz evN2LEwilfl0z 0+blud lyk0agUl8d WatwilfrtLIz by0lajik wum;
-*mp4                           M               # MPEG-4'Offical'container
+*mp4                                           # MPEG-4'Offical'container
 *mp4v                                          # MPEG-4 Video    only
 *mpeg                                          # MPEG-?''
 *mpg                                           # M    ?
@@ -1256,6 +1285,9 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *fuselock                      p               # /etc
 *.logout                       C               # /etc
 *.colors                       c               # /etc/xdg/colors
+*itermcolors_config_0          p               # /home/pip/dvl/f8/pal8/iTerm2-Color-Schemes/tools/templates/tilda.itermcolors_config_0
+*itermcolors                   p               # /home/pip/dvl/f8/pal8/iTerm2-Color-Schemes/tools/templates/schemes.itermcolors
+*.termcolors                   C               # /home/pip/dvl/f8/pal8/iTerm2-Color-Schemes/tools/templates/royalts.termcolors
 *.icc                          C               # /etc/alternatives/ghostscript-current/iccprofiles
 *.upp                          Y               # /etc/alternatives/ghostscript-current/lib
 *.rpd                          R               # /etc/alternatives/ghostscript-current/lib
@@ -1273,10 +1305,10 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *evince                        R               # /etc/apparmor.d
 *firefox                       o               # /etc/apparmor.d
 *telepathy                     Y               # /etc/apparmor.d
-#                skip                          #    since I don't want to confuse rel8ively normal files with executables
+#                         skip G               #    since I don't want to confuse rel8ively normal files with executables
 *cups-browsed                  c               # /etc/apparmor.d
 *cupsd                         C               # /etc/apparmor.d
-#                skip                          #    since I don't want to confuse rel8ively normal files with directories
+#                         skip B               #    since I don't want to confuse rel8ively normal files with directories
 *ippusbxd                      M               # /etc/apparmor.d
 *ntpd                          p               # /etc/apparmor.d
 *rsyslogd                      R               # /etc/apparmor.d
@@ -1930,6 +1962,8 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *karboncalligraphyrc           R
 *kritadisplayrc                c
 *kritarc                       C               #/etc && ~/.config (abov too)
+*Harunarc                      C
+*genericrc                     c
 *-repository-8_xml             M               #~/.android/cache  # E95M5MJR:done adding Aku
 *-addons_list-2_xml            P               # /etc && ~/.*/* but stil nd2rEcurs furthr l8r
 *-sys-img_xml                  R
