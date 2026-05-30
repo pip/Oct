@@ -1,6 +1,6 @@
 # E7TMAYX4: Oct::c8.pm by PipStuart <Pip@CPAN.Org> to provide a compatibility applic8ion interface to Curses and a powerful new text-mode through SDL;
 package     Oct::c8;
-use warnings;use  strict;use utf8;use v5.22;use open qw[:std :encoding(UTF-8)];
+use warnings;use  strict;use utf8;use v5.22;#use open qw[:std :encoding(UTF-8)];
 require     Exporter;
 use base qw(Exporter);
 use         Oct::a8;
@@ -23,7 +23,7 @@ use SDLx::App;
 #se SDLx::Text; # also learn TTF && Pango, probably don't need SFont
 use SDLx::Sprite;} $sdlf = 0 if(exists($ENV{'TTY'}) && $ENV{'TTY'}=~ /^\/dev\/tty/); # disAbl SDL whN in fullscrn tXt-mOde acordng2 $TTY (or try `tty`?)
 our @EXPORT=  qw(xx); # mvd only orig Xportz sube && e2c8 over2 a8.pm (&& since renamed e to S for SKp consistency)
-our $VERSION='0.0';my $d8VS='NBSL8UTF';our $Auth='PipStuart <Pip@CPAN.Org>';my $name='c8';
+our $VERSION='0.0';my $d8VS='Q13L5osc';our $Auth='PipStuart <Pip@CPAN.Org>';my $name='c8';
 # 2du:tst b256 Fclr && bclr valz,mk a cursor anim8 at least blinking but mAB l8r showing more elabor8 gfx of loc8ion,fix GetK to grab Ctrl-keyz without dropz,
 #   fix 8trm aliasz to Xpand any cmndz at stRt of CLI or aftr pIpe or dbl-amprs&& or semicolon;
 my %GLBL=( # GLOBAL CLASS VARIABLES
@@ -879,7 +879,7 @@ sub Prnt{my $self=shift;my $ptxt=shift;my $pfcl=shift;my $pbcl=shift;my $pf0n=sh
       #   27      Image    :  Positive
       #   28      Image    :   Visible (Reveal,Conceal off)
       #   29      Not crossed out
-      #   30–37   Set     text color       (foreground)    30 + x, where x is from the color table below
+      #   30–37   Set     text color       (foreground)    30 + x, where x is from the color table below    ##   x below can insted of ndx be "#rrggbb" heX;
       #   38      Reserved for extended set foreground color      typical supported next arguments are 5;x where x is color index (0..255) or 2;r;g;b where
       #                                                           r,g,b are red, green and blue color channels (out of 255) e.g., \e[38;5;196m is a bright red
       #   39      Default text color       (foreground)           implementation defined (according to standard)
@@ -893,7 +893,8 @@ sub Prnt{my $self=shift;my $ptxt=shift;my $pfcl=shift;my $pbcl=shift;my $pf0n=sh
       #   53      Overlined: on
       #   54      Framed   : off && Encircled: off
       #   55      Overlined: off
-      #   56–59   Reserved
+      #   56–59   Reserved ; below 58 Ucolor usage described at: HTTPS://RyanTravitz.Com/blog/2023-02-18-pull-of-the-undercurl
+      #   58      Underline/Curl/Dot/Dash color given like \e[58;2;R;G;Bm where RGB are decimal 0..255 (from kitty originally)
       #   60      ideogram        underline or                    right side line                           Hardly ever supported.
       #   61      ideogram double underline or double line on the right side                                Hardly ever supported.
       #   62      ideogram         overline or                    left  side line                           Hardly ever supported.
@@ -933,21 +934,46 @@ sub Prnt{my $self=shift;my $ptxt=shift;my $pfcl=shift;my $pbcl=shift;my $pf0n=sh
       # Just "c" in my probably rel8ively stock XTerm (since I don't have any ~/.Xdefaults on Aku right now) => "^[[?64;1;2;6;9;15;18;21;22c" design8s VT420
       #   with support for 1:132-columns,2:printer,6:selective erase,9:NatnlReplcChr setz,15:technical characters,18:user windows,21:horizontal scrolling,
       #   22:ANSI color maybe like VT525. ">c" => "^[[>41;297;0c" also meaning VT420 with 297 firmware version.
+      # OSC = "\e]"; CSI = "\033[";
       # From: HTTP://Man7.Org/linux/man-pages/man4/console_codes.4.html    ## See also: HTTPS://WWW.SysTutorials.Com/docs/linux/man/4-console_codes
       # OSC  0  ;       txt ST   : set icon name && window title to  txt.  ## In addition to the ECMA-48 StringTermin8or (ST),
       # OSC  1  ;       txt ST   : set icon name                 to  txt.  ##   xterm accepts a BEL to termin8 an OSC string.
       # OSC  2  ;       txt ST   : set              window title to  txt.  ## ASCII BEL is 7 dec or hX, "\a" in Perl, && "\cG" for Ctrl-Alarm;
       # OSC  4  ; num ; txt ST   : set ANSI         color  num   to  txt.  ## Apparently konsole doesn't like my pal8-fIl ST, echoing the backslashez, so
       # OSC  4  ; 1   ; rgb:RRRR/GGGG/BBBB ST : with RGBz in hex; can also `echo -e '\e]4;1;?\e\\'` to get the "rgb:RRRR/GGGG/BBBB" sequence;
+      #   Apparently 4 can be followed by a sequence of num;txt; B4 ST lIk Wez.sh: printf "\033]4;0;#000000;1;#cc5555;2;#55cc55;3;#cdcd55;
+      #     ... 4;#5555cc;5;#cc55cc;6;#7acaca;7;#cccccc;8;#555555;9;#ff5555;10;#55ff55;11;#ffff55;12;#5555ff;13;#ff55ff;14;#55ffff;15;#ffffff\007";
+      # OSC  5  ; num ; txt ST   : set ??           color  num   to  txt.  ## Wez.sh: printf "\033]5;0;#ff6347\007"; just sets zer0 num;
+      # OSC  8  ;;…     `ec "Follow me on \e]8;;http://pip.bavl.org\e;Pip.BavL\e]8;;\e[0m =) "` trunc8z && underCurlz wi mouseover hand-icon-toggle in kitty
+      ## abov8 from: HTTPS://SuperUser.Com/questions/1627871/shell-underlined-with-link-or-info-box wi OSC 8;; delimitrs && \e\\ singl as link/teXt sepR8or;
+      ## PCRLINKS:`printf '\e]8;;http://Xmpl.Com\e\\XmpLnk\e]8;;\e\\\n'` workz4GT&&Kitty HTTPS://Gist.GitHub.Com/EGMontkob/eb114294efbcd5adb1944c9f3cb5feda;
+      # OSC  9  ; 4         ...? : HTTPS://NeoVim.IO/doc/user/vim_diff.html#vim-differences nvim.progress bars or meters displayed wi this somehow?;
       # OSC 10  ;       txt ST   : set dynamic text color        to  txt.  ##   maybe try termin8ing with BEL instead && see how well supported that is?
       # OSC 10  ;       ?   ST   :`echo -e '\e]10;?\e\\'`  yields: "^[]10;rgb:9797/b8b8/7777^[\"; # maybe these end with Ctrl-G ^G BEL;
       # OSC 11  ;       ?   ST   :`echo -e '\e]11;?\e\\'`  yields: "^[]11;rgb:1f1f/0000/1f1f^[\"; # maybe these can go 10..19?
       # OSC 12  ;       rgb:RRRR/GGGG/BBBB ST : should maybe change the cursor color with like: `echo -e '\e]12;rgb:255/0/0\e\\'`
+      #   Apparently 10;11;12 can all follow 10 lIk Wez.sh: printf "\033]10;#b3b3b3;#000000;#53ae71\007";
+      # OSC 17  ;   #RRGGBB ST   : selection background color (Bhind tXt);
+      # OSC 19  ;   #RRGGBB ST   : selection foreground color (of Fg tXt);
       # OSC 4 6 ;      name ST   : change  log file              to name (normally disabled by a compile-time option).
       # OSC 5 0 ;        fn ST   : set font                      to   fn.  ## Well switching to BEL fixd konsole's Xtra bkslshz but pal8 !chngng colrz ther;
+      # OSC 52  ;       ... ?    : some kind of Clipboard integr8ion?;
+      # OSC 66  ;    s=snum ST   : printf "\e]66;s=2;Double sized text\a\n\n"   ## all 4 of these 66 printfz work in Kitty but none in VTE or GnomTerm;
+      #   Double sized text
+      #
+      #                            printf "\e]66;s=3;Triple sized text\a\n\n\n" ## HTTPS://SW.KovidGoyal.Net/kitty/text-sizing-protocol documentz this;
+      #   Triple sized text
+      #
+      #
+      #          n=numer8or:d=Dnom printf "\e]66;n=1:d=2;Half sized text\a\n"
+      #   Half sized text
+      #          w=widthnum        printf "\e]66;n=1:d=2:w=1;Ha\a\e]66;n=1:d=2:w=1;lf\a\n"
+      #   Half
       # OSC R ST;                :reset 16-color palette; # HTTPS://Medium.Com/everything-full-stack/terminal-escape-codes-are-awesome-heres-why-c8eb938b1a1c
       # OSC P $colr16ndxInHex RRinHex GGinHex BBinHex ST; sets 16-color palette to 24-bit RGB value with 7 total HEX chrz; tput init|sgr0|setaf 7 && setab 0;
+      #   MacOS iTerm2 I think added custom "\e]Pg" /\e\]P[g-m][0-9a-f]{6}\e\\/ (wi 'i' special BolDForeGrnd) immeD8ly followed by rrggbb hex then "\e\\" ST;
       # OSC 104 ;(num)?     ST   :reset ndx?colr palette:   HTTPS://AskUbuntu.Com/questions/823548/reset-terminal-256-colour-palette-to-default-values
+      # OSC 133 ; ... ?          :some kind of shell prompt annot8ion allowing [[ && ]] to jump around prompts in :term but works how?;
       # After a `reset` I ran the following:                              # This right column has 0..3 run again just to make sure same, then src chngz pal8;
       # [pip@OniN4AM9QXg~/dvl/t8/raku]en '\e]4;0;?\a'                     # [pip@OniN4AM9W2m~/dvl/t8/raku]en '\e]4;0;?\a' 
       # ^[]4;0;rgb:2e2e/3434/3636^G[pip@OniN4AM9Qu6~/dvl/t8/raku]         # ^[]4;0;rgb:2e2e/3434/3636^G[pip@OniN4AM9W8q~/dvl/t8/raku]
