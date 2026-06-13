@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 use strict;use warnings;use utf8;use v5.22;my $d8VS='O33LL33O';my @bfts=(); #'01234567Testing.GHIJ'); # Big-F0nt-Text-Strings;
-use Oct::a8;use   Oct::f8       ;my @od8a=();my $widt=$ENV{'COLUMNS'}  ;my $ccod='Rb';
+use Oct::a8;use        Oct::f8       ;my @od8a=();my $widt=$ENV{'COLUMNS'}  ;my $ccod='Rb';
 my   $stin; my $dlf8 = Oct::f8->new();my @Sd8a=();my $hite=$ENV{'LINES'  }  ; # mAB mk q8?; 2du:get full lsd8 2 pIp in2 f8 thN mAB bak in2 columnz wiclps;
 if(!-t STDIN){ $stin = join('',<STDIN>); # nEd UTF8 DcOd hEr? hmm hite mismatch between char map height from f8.pm but term LINES here somewhat, shud unify;
   o9($stin) if($stin && 0); # sO it Cmz th@ yS I can get full lsd8 colrz thru stdin thN shOing from print-out9 hEr yet, but how shud it B unstripd rIt 4 in;
