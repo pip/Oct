@@ -518,7 +518,7 @@ L<Oct::d8> and L<Oct::d8::dur8>
 =head1 LICENSE
 
 Most source code should be Free! Code I have lawful authority over is and shall be!
-Copyright: (c) 2003-2014, Pip Stuart.
+Copyright: (c) 2003-2025, Pip Stuart.
 Copyleft : This software is licensed under the GNU General Public License (version 3). Please see the Free Software Foundation (HTTP://FSF.Org)
   for important information about your freedom.
 
