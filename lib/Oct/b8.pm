@@ -54,7 +54,7 @@ use           IO::Handle qw( ); # trying to get dupd (or just orig) STDERR to au
 use Memoize;memoize('Prim');memoize('Fibo');memoize('Fact');memoize('Chus');memoize('Xpn8');memoize('Ttr8'); #moize('Pnt8');memoize('Hex8');
 our @EXPORT= qw(b8 cnv cnv10__ cnv__10 ocT deC dec heX HEX b10 b64 b64sort b110 b128 b210 b256 b910 b93k dig diginit  cma coma  rotW rot1
     @kana $umbc b8b2 b2b8  Prim Prmz  Sum8 Sumz  Fibo Fibz  Fact Fctz  Chus   Xpn8 Xpnz  Ttr8 Ttrz  Pnt8 Pntz  Hex8 Hexz  calQ       txt8);
-our $VERSION='0.0';my  $d8VS='O3RM3cal';my $Auth='PipStuart <Pip@CPAN.Org>';
+our $VERSION='0.0';my  $d8VS='Q6DMElog';my $Auth='PipStuart <Pip@CPAN.Org>';
 our @kana=qw(ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞた
 だちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみ
 むめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖ゗1゛゜ゝゞゟ
@@ -699,7 +699,7 @@ sub calQ{my $ajps='';if(@_){$ajps=join('',@_);}elsif(!-t STDIN){$ajps=join('',<S
    h - print this Help text and exit
        all spaces, underscores, and commas are stripped from input, so feel free to include them for clarity when entering particularly large numbers.
        all altern8s below are case-insensitive except 'x' times and 'X' Xor. two adjacent times characters like 'xx' can be used for exponentE8ion.
-   l - altern8 for Left     ( parenthesis  # note a nice approxim8ion for Pi to demonstr8 is `q 355/113|c8 0-1_` to just trunc8 to show 1 line of precision;
+   l - altern8 for Left     ( parenthesis  # note a nice approxim8ion for Pi to demonstr8 is `Q 355/113|c8 0-1_` to just trunc8 to show 1 line of precision;
    r - altern8 for Right    ) parenthesis
    b - altern8 for Bang     ! exclam8ion  (unary logical  neg8ion not implemented yet!) # might want 2 apply this Bang symbol for factorials or just up-'B';
    n - altern8 for Neg8     ~ tilde       (unary bit-wise neg8ion not implemented yet!)
@@ -716,7 +716,7 @@ sub calQ{my $ajps='';if(@_){$ajps=join('',@_);}elsif(!-t STDIN){$ajps=join('',<S
          HTTPS://PerlDoc.Perl.Org/perlop.html or other typical math utility functions like `bc` and `dc`. Reverse-Polish Not8ion in `orpie` side-steps this.
        calQ is exported from the Oct::b8 Perl Module and comes with a small executable wrapper script which is intended to be suitable for placing in a
          bin/ directory which is in the user's path. you might also find it useful to crE8 a symbolic-link to the script with a command like:
-         `cd ~/bin/; ln -s calQ q` which will enable entering expressions like `q '64-(128/7)+15'` from the shell and ':r!q 4096xx2048-1' from within vim.
+         `cd ~/bin/; ln -s calQ Q` which will enable entering expressions like `Q '64-(128/7)+15'` from the shell and ':r!Q 4096xx2048-1' from within vim.
        2du:rewrite parsing to handle arbitrary expressions in parens, expand sub-expressions in real precedence order, handle unary oper8ors, add ++ and --;
 ";} # clear all other parameters && assign return value BiGFLoat to hold Help text instead
   $ajps=~ s/s/-/gi;$ajps=~ s/p/+/g ;$ajps=~ s/d/\//gi;$ajps=~ s/o/|/gi;$ajps=~ s/a/&/gi;$ajps=~ s/x/*/g;$ajps=~ s/X/^/g;$ajps=~ s/n/~/gi;$ajps=~ s/m/%/gi;
