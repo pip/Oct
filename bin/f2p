@@ -8,6 +8,6 @@ while(  @ARGV){ # might want some better error checking on names && types l8r?;
   if (  @ARGV && $ARGV[0] =~ /\.psfu?$/){$dstf = shift(@ARGV);}
         $dstf =~  s/(\.f0nt)?$/.psf/  if($dstf !~ /\.psfu?$/);
   if(-r $srcf){$|=1; # mAB open STDOUT for UTF-8 dstf filename
-    my  $f8ob = Oct::f8->new(       $srcf);print '.'; # tiny progrS upd8z;
+    my  $f8ob = Oct::f8->new(            $srcf);print '.'; # tiny progrS upd8z;
         $f8ob->savef0nt(                 $dstf);} # loopz thru *.f0nt argUmNtz;
   else{ print "!*EROR*! Source f0nt file:$srcf not found!\n";}}
