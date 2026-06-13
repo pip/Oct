@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+# Q5SMATCH:tmpc crE8d by PipStuart@GMail.Com 2 quikly colr-cOd tmpr8urz 4`aw`;
+use strict;use warnings;use Oct::a8;my($uc,$ul,$st)=(S(':C'),S(':U'),S(':S'));
+my $t8=shift(@ARGV) //<STDIN>//'NA';my($it,$ol,$lk)=(S(':I'),S(':O'),S(':L'));
+if($t8=~ /^(-?)(\d)(\d?)(\d?)/){ # accept up to 3 digits for imperial DgrEz F;
+  my($ns,$d1,$d2,$d3)=($1,$2,$3,$4);my $d8VS='Q5TM8NEG'; # abovR SGR @ributez;
+  if   (defined($ns) && length($ns)){o8("$p$lk$t8$z");}  # neg8ive-sign!!;
+  elsif(defined($d3) && length($d3) && # abov shud handle ultra-freezing!;
+                $d1      eq     '1'){o8("$R$lk$t8$z");}  # hot! over 100!;
+  elsif(defined($d2) && length($d2)){  # should be under 100 for the rest;
+    if         ($d1      eq     '1'){o8("$P$uc$t8$z");}  # cold under 20!;
+    elsif      ($d1      eq     '2'){o8("$m$ul$t8$z");}  # cold under 30!;
+    elsif      ($d1      eq     '3'){o8("$M$ul$t8$z");}  # now @ributez in
+    elsif      ($d1      eq     '4'){o8("$B$st$t8$z");}  #   pairz so Curl
+    elsif      ($d1      eq     '5'){o8("$C$st$t8$z");}  #   4 sngl && ten
+    elsif      ($d1      eq     '6'){o8("$G$it$t8$z");}  #   UndrLn 4 twen
+    elsif      ($d1      eq     '7'){o8("$Y$it$t8$z");}  #   && thirTz thN
+    elsif      ($d1      eq     '8'){o8("$o$ol$t8$z");}  #   StrkThru Ital
+    elsif      ($d1      eq     '9'){o8("$F$ol$t8$z");}  #   last OverLin;
+  } else                            {o8("$p$uc$t8$z");}  # single digitz!;
+}   else {$t8='EROR' if($t8 ne 'NA');o8("$r$lk$t8$z");}  # blink NAorEROR;
