@@ -1,5 +1,10 @@
 #!/usr/bin/perl
 # E7KM8R8R:g8 crE8d by PipStuart <Pip@CPAN.Org> as extra-functional git wrapper and old .bak/* versioned file migr8or when run as `g8 bak2`;
+# OA4MMMMM:HTTPS://YouTu.be/GytsxgB4-HU "Undo a git commit - reset/revert - pushed/not" # O99:03R0 of Philomatics covering ways to undo various commit cmndz;
+# O44MB888:nOt:after my old GitHub WeeklyPerlChallenge access token expired, it seems I had to make a new repository with something like the following cmndz:
+#   `git init;git remote add origin https://GitHub.Com/Pip/Oct.git;git fetch;echo CopyRepoFilesIn;git add .* *;git commit -m 'msg';git push -f -u origin main`
+# HTTPS://StackOverFlow.Com/questions/4181861/message-src-refspec-master-does-not-match-any-when-pushing-commits-in-git?newreg=b82dbeaf533a46b5a6c84d6f0009885e
+#   && StackOverFlow.Com/questions/20467179/git-push-rejected-non-fast-forward;
 # 2du:learn about other git-rel8d packages: git-daemon-run git-daemon-sysvinit git-el git-email git-gui gitweb tig,
 #   fix bak2 commit counts to stay in sync or decrement for orphans&&same hashz,auto-cnv all hex hash names to/from b64,
 #   build global loc8 option into bak2 to ptcnv && search for basefiles to reunite with orphans in prepar8ion for more complete gener8ion of .git/ parallel;
@@ -204,7 +209,7 @@ if(@ARGV){ # do some basic matching && argument expansion for known command abbr
             }#$comm = d8c($comm); # do! need 2 just d8c commit message of lone d8 from original bak filename since c8fn can now work on whole made name
             for my $fyln (@fyll){my $fyld=$fyln;
               my $fyls=`git cat-file -s $chsh:$fyln`;chomp($fyls);$fyls=b64(    $fyls );$fyls=b8c(sprintf("%5s"  ,$fyls));
-             #if($fyld =~ /^(\w*)(\.\w{1,5})$/){$fyld =~ s/^(\w*)(\.)(\w{1,5})$/$G$1$Y-$comm$W$2$G$3/;}else{$fyld="$G$fyld$Y-$comm";} # reinsert d8 stamp
+             #if($fyld =~ /^(\w*)(\.\w{1,5})$/){$fyld =~ s/^(\w*)(\.)(\w{1,5})$/$G$1$Y-$comm$W$2$G$3/;}else{$fyld="$G$fyld$Y-$comm";}      # reinsert d8 stamp
               if($fyld =~ /^(\w*)(\.\w{1,5})$/){$fyld =~ s/^(\w*)(\.)(\w{1,5})$/$1-$comm$2$3/;}else{$fyld.="-$comm";} $fyld = c8fn($fyld); # reinsert d8 stamp
               $glno[$_].= " $fyls $fyld"; # keep appending multiple filesizes with reconstructed names onto original commit line
             }                                                     $chsh=b64(dec($chsh));$chsh=b8c(sprintf("%027s",$chsh));
@@ -228,11 +233,13 @@ if(@ARGV){ # do some basic matching && argument expansion for known command abbr
         # 40 4-bit hex chars are 160 bits and fit in under 27 6-bit b64 chars and around 50 3.25-bit b10 chars, if my calcul8ions are correct
       while($glco =~ /(Author:\s+[^\n]*)\nDate:\s+\w+\s+(\w+\s+\d+\s+\d+:\d+:\d+)\s+(\d+)\s+([-+]?\d+)\n\n\s+(\w+)/){
         my $auth = $1;my $mdtm = $2;my $year = $3;my $zone = $4;my $mesg = $5;my $d8im=Oct::d8->new('expand'=>"$mdtm:00 $zone $year");my $saut = $auth;
+                                                                               # $d8im=Oct::d8->new('expand'=>"$mdtm:00 $zone $year");
+                                                                               #rint(               "expand => $mdtm:00 $zone $year\n");
         my $cd8s = $d8im->colr('a').$G; if($mesg =~ /^[0-9A-Za-z._][1-9A-C][1-9A-V][0-9A-Za-g][0-9A-Za-x]{4}$/){$mesg = d8c($mesg) . $G;}
         $saut=~s/^(Author)(: )/$Y$1$W$2/;$saut=~s/(Pip)/$C$1/g;$saut=~s/(Stuart)/$G$1/;$saut=~s/(CPAN)/$Y$1/;$saut=~s/(Org)/$M$1/;$saut=~s/([<@.>])/$W$1/g;
         if($#ARGV > 0 && $ARGV[1] eq '--name-only' && $glco =~  /$auth\nDate:[^\n]*\n\n\s+\w+\n\n(\S+)/){my $glfn = c8fn($1);
                                                       $glco =~ s/$auth\nDate:[^\n]*\n\n\s+\w+\n\n(\S+)/$saut ${R}d${O}8$W: $cd8s $mesg $glfn/;}
-        else                                         {$glco =~ s/$auth\nDate:[^\n]*\n\n\s+\w+/$saut ${R}d${O}8$W: $cd8s $mesg/;}
+        else                                         {$glco =~ s/$auth\nDate:[^\n]*\n\n\s+\w+/$saut ${R}d${O}8$W: $cd8s $mesg/x;}
       } print $glco; # eventually differing Author lengths above will need widest sprintf padding for realignment of d8s that follow
     }
   }elsif($ARGV[0] =~ /^g82/){ # g82bak file version converter attempts to reconstruct original .bak/ file versions from what bak2g8 already put in git
