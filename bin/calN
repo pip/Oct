@@ -7,7 +7,7 @@
 use warnings;use strict;use utf8;use v5.22;my $VERSION='0.0';my $d8VS='L3PM8Pip'; # whN runing `q2` 240x67 term N (probably btwn _ && 0) getz uninit on lIn 39;
 use      Oct::a8; # mAB Use @Mon  # mABUse just Time::DaysInMonth && DayOfWeek without nEdng d8.pm BlO? (lIkUsng a8:@sb64 nstd of b8.pm:b64())
 use      Oct::d8;use Time::DaysInMonth;my $d8nw;my $d8fY;my $hlpf=0;my $Stxt='';my $optn='';$optn=join(' ',@ARGV) if(@ARGV); # l8r support other formatz
-my $clmz=          80;if(exists($ENV{'COLUMNS'})){$clmz=$ENV{'COLUMNS'};} # obtain terminal columnz-width from the initially surrounding execution ENVironment;
+my $clmz=     80;if(exists($ENV{'COLUMNS'})){$clmz=$ENV{'COLUMNS'};} # obtain terminal columnz-width from the initially surrounding execution ENVironment;
 $d8nw   =Oct::d8->new();my $wndx=1;my $Yrmx=16;if($clmz){$Yrmx=int($clmz / 9) - 1;} # sIz bak Yearz by terminal width (!working 4 Yearz < 2000 yet);
 #y($R,$o,$Y,$G)=(S($cmsp{'d8bo'}[0]),S($cmsp{'d8bo'}[1]),S($cmsp{'d8bo'}[2]),S($cmsp{'d8bo'}[3])); # temp remap base-level 8bow singlez with curNt d8bo;
 #y($C,$B,$M,$p)=(S($cmsp{'d8bo'}[4]),S($cmsp{'d8bo'}[5]),S($cmsp{'d8bo'}[6]),S($cmsp{'d8bo'}[7])); # use d8cl below instead of just old solo cmsp d8bo fldz;
