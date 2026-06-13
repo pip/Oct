@@ -21,7 +21,7 @@
 use warnings;use  strict;use utf8;use v5.22;
 use Time::HiRes qw(time);use Time::Piece;
 use      Oct::a8;use Oct::b8;
-use      Oct::d8;my $VERSION='0.0';my $d8VS='MB9LCRAP';my $Auth='PipStuart <Pip@CPAN.Org>';my $parm=join(' ',@ARGV);my @id8a;
+use      Oct::d8;my $VERSION='0.000001';my $d8VS='MB9LCRAP';my $Auth='PipStuart <Pip@CPAN.Org>';my $parm=join(' ',@ARGV);my @id8a;
 my $d8im=Oct::d8->new();
 open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";binmode $out8,':encoding(UTF-8)'; # crE8 local duplic8 of global
 if(!@ARGV && !-t STDIN){chomp(@id8a=<STDIN>);$parm=join(' ',@id8a);} # should eventually handle piping in d8 d8a while giving optionz too
@@ -34,7 +34,7 @@ if($parm=~ /(^|\s)-+h/i){ # should probably upd8 to use GetOpts or something mor
     say $out8 " d8 - Date && Time utility  Vers:$VERSION  d8VS:$d8VS
     by Auth:$Auth
       Please run `perldoc Oct::d8` for additional inform8ion. First try:
-`d8 _eX` to `d8 _pV` && `d8 _eX0O` to `d8 _pV0l`,  &&  append 'xxx' for last;
+`d8 _eX` to `d8 _pV` && `d8 _ to `d8 _pV0l`,  &&  append 'xxx' for last;
   -h    this Help
  coloring options: (preceded with a dash)   ##  d8 fields (left-right,lo-hi)
   -z    Zsh (SHELL)                         ## Y Year     2000 - 2063
