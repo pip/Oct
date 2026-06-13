@@ -1,10 +1,17 @@
 #!/usr/bin/perl
 # DBILFtqq:pal8 by PipStuart <Pip@CPAN.Org> to centralize color palette configur8ion && change terminal colors in several quick, intuitive, && efficient ways;
-# 2du:IBSLAPal:mAB XprmNt intrlEvd rBg 1.5,1.5,3 bitz 2 sngl b64 colr rep,r3B3 1st b64 char g6 2nd 4 2char rep,Dflt ceil in 255 zOnz abovEqul .5 half||.16 6th?
+# 2du:PAPM1Ord:add -g=\d+,\d+ comma-sepR8d list of pts numz 2 match in glob to selectively apply -global 2pikd subset,add -c=~/.cache/path/to/output-filename;
+#     PAOMEdic:add -m=FbC && FbCB for new custom global Foregrnd,bACKGRND,Cursor,&&BordrBackgrnd -map entries,+bild seq in ordr like paleta,+-glob pts/[0-9]*;
+#     IBSLAPal:mAB XprmNt intrlEvd rBg 1.5,1.5,3 bitz 2 sngl b64 colr rep,r3B3 1st b64 char g6 2nd 4 2char rep,Dflt ceil in 255 zOnz abovEqul .5 half||.16 6th?
 #   Before committing to such a peculiar approach like that, 1st confirm that Green sight range sensitivity deserves gradu8ion dominance fromXpctd RGB222/222;
-use warnings;use strict;use utf8;use v5.22;use Oct::a8;use Oct::b8;my $VERSION='0.0';my $d8VS='N8AMHome';
+# nOt:Thanks to DylanARaps for teaching me how to set -FbCB && -g(lobal) apply, from his very tight && clean C-code at: https://github.com/DylanARaps/paleta ;
+use warnings;use strict;use utf8;use v5.22;use Oct::a8;use Oct::b8;my $VERSION='0.0';my $d8VS='PCNL1kit';
 my $term='';$term = $ENV{'TERM'    } if(exists($ENV{'TERM'    }) && $ENV{'TERM'    }); # Terminal type
+my $home='';$home = $ENV{'HOME'    } if(exists($ENV{'HOME'    }) && $ENV{'HOME'    }); # User's /home/? directory
 my $pqef= 0;$pqef = $ENV{'Pal8Qiet'} if(exists($ENV{'Pal8Qiet'}) && $ENV{'Pal8Qiet'}); # Pal8QietEnvFlag
+my $pglf= 0;$pglf = $ENV{'Pal8Glob'} if(exists($ENV{'Pal8Glob'}) && $ENV{'Pal8Glob'}); # Pal8GlobalpFlag
+my $cacf= 0;my $cacp = '/tmp/cur-pal8.ansi';$cacp = "$home/.cache/cur-pal8.ansi" if($home); # regex ~?; mAB mk .cache subdir of 'pal8' wi pts numz2trak?;
+my %btac=('F' => 10, 'b' => 11, 'C' => 12, 'B' => 708);my %FbCB=(); # Foregrnd,bACKGRND, Cursor,BorderBackground; BasicTextAnsiCodes;
 my $dfpl= "000 g00 gL0 0g0 0gg 00g g0g ggg  LLL _LL __L L_L L__ LL_ _L_ ___"; # DeFault kernel PaL8 colors after booting (in 2pal8 order) but =~ s/P/L/g;
 my $dxpl= "000 W00 WW0 0W0 0WW 00W W0W mmm  WWW _00 __0 0_0 0__ 00_ _0_ ___"; # Default Xterm  PaL8 colors from base 256 (in 2pal8 order)
 my $cmpl= "000 g00 _SI 0g0 0gg DPf g0g CCC  ggg z99 __L L_L L__ Sdp kOr ___"; # CnvGTP28($cmsv); # CheckMate ckm8 PaL8 colors (from GnomTerm) 2pal8 order
@@ -26,45 +33,61 @@ sub CnvGTP28{my $tpsv = shift(@_) || $cmsv;my $crps = ''; # CoNVert GnomeTermina
   for(0..$#bdpe){$bdpe[$_]    = join('',@{$bdpf[$_]});
     $crps     .= $bdpe[$_] . ' '; $crps .= ' ' if($_ == 7); # double-space center like above
   } $crps     =~ s/\s$//;print "cmpl:$cmpl\ncrps:$crps\n";return($crps);
-}  my   $argu = '';my $gtpl = '';my $mapn = '8pal8';my $ccml='F';my $ccmo;my @lcco=();my @laco=();my $rcou=0; # ARGUment,GnomTermPaL,MapName(from a8.pm %cmap),
+}  my   $usaf = 0; # Unaccompanied Single Argument Flag; 2du:trak wich opz shud trip flag mAB?;
+my      $argu = '';my $gtpl = '';my $mapn = '8pal8';my $ccml='F';my $ccmo;my @lcco=();my @laco=();my $rcou=0; # ARGUment,GnomTermPaL,MapName(from a8.pm %cmap),
 while  (@ARGV){$argu = shift(@ARGV);                           # CustomColorMapLayer, CustomColorMapOrder, LayeredColorCodesOrder, LayerAndCodeOrder, RgbCOUnt;
-  if   ($argu =~ /^-+q/          ){$pqef    =        1 ;}
+  if   ($argu =~ /^[8 BDFHPRST bcdfgnprsty]$/ && !$usaf){$argu="-l=$argu"; # prepend -l(oad) pal8 abbreV8ion map from accepted single chars;
+ }elsif($argu eq    'h'                       && !$usaf){$argu="-".$argu ; # prepend -h(elp); 2du:nEd 2 set USAF when non-single (or just dashed?) comes thru?;
+ }   if($argu =~ /^-+q/          ){$pqef    =        1 ;}
+  elsif($argu =~ /^-+g/          ){$pglf    =        1 ;}
+  elsif($argu =~ /^-+c/          ){$cacf    =        1 ;} # -c(ache) Dfalt 2 ~/.cache/cur-pal8.ansi;
+  elsif($argu =~ /^-+k/          ){$fvpl[0] = $cmpl    ;}
   elsif($argu =~ /^-+d/          ){$fvpl[0] = $dfpl    ;}
   elsif($argu =~ /^-+D/          ){$fvpl[0] = $dxpl    ;for(0..255){printf("\e]4;%d;#%s\a",$_,lc($x256[$_])) if($term =~ /^xterm/);}} # reset all 256 2 Dfltz
-  elsif($argu =~ /^-+c/          ){$fvpl[0] = $cmpl    ;}
   elsif($argu =~ /^-+([123])$/   ){$fvpl[0] = $fvpl[$1];}
   elsif($argu =~ /^-+h/ && !$pqef){print "pal8 v$VERSION d8VS:$d8VS Auth:$Auth usage:
  -q  sets Quiet mode to not print  default 2pal8 d8a
+ -g  sets Globalmode to     print2all pts/* pal8 d8a
  -0  loads    primary 2pal8 within default 8pal8 (clen)
  -1  loads  secondary 2pal8 within default 8pal8 (neon)
  -2  loads   tertiary 2pal8 within default 8pal8 (wash)
  -3  loads quaternary 2pal8 within default 8pal8 (melo)
- -c  loads Ckm8 custom pal8
- -a  loads All custom 8pal8 with RgbL default colors
+ -c  enables auto-Cache file CrE8ion (default:~/.cache/cur-pal8.ansi or /tmp)
+ -a  loads All custom 8pal8 with RgbL default colors; -k lOad cKm8 chess pal8
  -d  loads the Default kernel palette after boot (but s/P/L/g;)
  -D  loads the Default xterm  palette from 256 (resets all 256)
- -m=<O:a8-colors-map-name> from Oct::a8, currently:
+ -m=<O:a8-colors-map-name> from Oct::a8, currently:  # map FbCB unimplemented
  VGA =kbgcrPOw KBGCRMYW # also ANSI, 2pal8, pal82 are 1st 16 of below;
 8ANSI=krgObPcw KRGYBMCW ehdospti EHDySmTI .faunlzj _FAUNLZJ 0264xv8q 1375XV9Q
 8pal8=krOgcbPw KRYGCBMW ehodtspi EHyDTSmI .fuaznlj _FUAZNLJ 02468xvq 13579XVQ
 pal88=RoYGCBMp kKrgcbwW HOyDTSmP eEhdtsiI FuUAZNLl ._faznjJ 34579XVv 01268xqQ
 pal8 =RoYGCBMp; # 8bow && d8bo are aliases to pal8;
- -l=<pal8-abrV8n-map-char> from Oct::a8, currently:
-    B=Bepspurp, c=cOOL    , d=dARKZ   , R=deepRed, P=Penguin,
+ -l=<pal8-abrV8n-map-char> from Oct::a8, currently: # Note:lone pRam does -l
+    B=Bepspurp, c=cOOL    , d=dARKZ   , R=deepRed, P=Penguin, # or  -h(elp);
     b=bLUES   , p=DARKpRIM, D=Default , F=Flipped, H=Heather,
     g=gOOFY   , S=Sweet   , f=TIGSfAVS, t=t,  r=r, 8=8bow   ,
-    n=nICE    , s=sILLY   , T=Tigzfavz, y=yEL; # exits after load;
-  FDAL:<b64-chars> just specifying Fore, Dark, Avrg, or Lite then a
-     colon followed by any number of 8pal8 b64 chars sets color map
+    n=nICE    , s=sILLY   , T=Tigzfavz, y=yEL; # exits after -load;
+  FDAL:<b64-chars> just specifying Fore, Dull, Avrg, or Lite then a
+     colon followed by any number of 8pal8 b64 chrz sets color map;
   <3or4-b64-chars> (up to 256 of them in 18-bit RGB or 24-bit h2rl)
      can be given in FDAL x 8pal8 (or the -m color map name) order;
- -h  prints this Help text and exits;\n";exit();}
+ -F=<3or4-b64-chars> for: Foreground;pal8 -F=redF -b=00Bl -C=AynC -B=ITbr -c
+ -b=<3or4-b64-chars> for: bACKGROUND;  mkz like Firebrick on dark-bLUE bKGR
+ -C=<3or4-b64-chars> for: CursorColr;  with Cyan Cursor && BrighterBlue for
+ -B=<3or4-b64-chars> for: BorderBkgr;  BorderBackgrnd sAv cache (4 example);
+ -h  prints this Help text and exits; nOte:equals '=' optional in arguments;\n";exit();}
+  elsif($argu =~ /^-([FbCB])=?([0-9A-Za-z._]*)/){my $btfn='';if(defined($1) && length($1)){$btfn=$1;}
+                                                 my $btrl='';if(defined($2) && length($2)){$btrl=$2;}
+                                                          elsif(@ARGV && $ARGV[0] =~ /^[0-9A-Za-z._]{3,4}$/){$btrl=shift(@ARGV);}
+    else{print "!*Warn*! No valid -FbCB Basic Text of ANSI ColorsRgbL argument was found!\n";}  $FbCB{$btfn}=$btrl;} # FieldName to BasicTextRgbL;
   elsif($argu =~ /^-m=?([0-9A-Za-z._]*)/){my $acmn='';if(defined($1) && length($1)){$acmn=$1;}elsif(@ARGV && exists($cmap{$ARGV[0]})){$acmn=shift(@ARGV);}
-    else{print "!*Warn*! No valid -m Oct::a8 Order of Colors Map Name argument was found!\n";}       if(exists($cmap{$acmn   })){$mapn=      $acmn ;
+    else{print "!*Warn*! No valid -m Oct::a8 Order of Colors Map Name argument was found!\n";}   if(@ARGV >= length($acmn) && $acmn =~ /^[FbCB]+$/){
+      # 2du:implement ForebACKCrsrBrdr new d8a fieldz; mAB split acmn to asign letrz folowing colr valuz, like existing maps or diff somehow, err?;
+    }                                                                                                     if(exists($cmap{$acmn   })){$mapn=      $acmn ;
     my $cmnm=$cmap{$mapn};$cmnm=~ s/\s+//g;$rcou=length($cmnm);}} # hopefully setting map explicitly to 8pal8 (already default) will also run thru all 64 colrz
   elsif($argu =~ /^-l=?([0-9A-Za-z._]?)/){my $p8fa='';if(defined($1) && length($1)){$p8fa=$1;}elsif(@ARGV && exists($f8pm{$ARGV[0]})){$p8fa=shift(@ARGV);}
     else{print "!*Warn*! No valid -l Oct::a8 Pal8 AbbreV8ion Map Char argument was found!\n";} $ENV{'Pal8Qiet'}=$pqef if($pqef);
-    if(length($p8fa) && exists($f8pm{$p8fa})){system("$f8pm{$p8fa}.pal8");exit();}} # XeQt && Xit if valid ~/lib/O*/f8/pal8/ fIlnAm map-char givN
+    if(length($p8fa) && exists($f8pm{$p8fa})){system("Pal8Qiet=$pqef Pal8Glob=$pglf $f8pm{$p8fa}.pal8");exit();}} # XeQt&&Xit if valid ~/lib/O*/f8/pal8/ fIlnAm map-char givN
   elsif($argu =~ /^-a/){print "#!/bin/sh\n";my $p88c=$cmap{'8pal8'};$p88c=~ s/\s+//g;for my $layr (qw(F D A L)){print "pal8 $layr:$p88c ";
       for my $clrc (split(//,$p88c)){print h2rl($x256[$p8k2{$layr}{$clrc}]) . ' ';print ' ' if($clrc =~ /^[WIJQ]$/i);} print "\n";}} # All 256 as huge cmndz
   elsif($argu =~ /^([bFDAL]:)?([0-9A-Z._]{1,2}|[0-9A-Z._]{5,})$/i){if(defined($1) && length($1)){$ccml=$1;$ccml=~ s/:$//;} if(defined($2)){$ccmo=$2;}
@@ -84,30 +107,73 @@ $rcou = 16 unless($rcou);
 unless( @laco){pop(@lcco) while($#lcco >= $rcou);} # go bak 2 limitng Dfalt run 2 just do 2pal8 nstd of whole 8pal8 if no custm layrz:codez were pasd
 for(0..$#lcco){$pmap{$lcco[$_]} = $fpsp[$_];} # this will be popul8ing %pmap with new Layer:Colorcode keyz to provided Pal8s (or from FaVz) SePar8d
 my $jpms=''; # Joined Pal8 Mapd Strngs    # orig below B4 switchd 2 lcco was: for(0..$#{$cmsp{'ANSI'}}){my @rgbd = split(//,$pmap{$cmsp{'ANSI'}[$_]});
-print $G . "pal8 " . join(' ',@laco) if(!$pqef);print ' ' if(!$pqef && @laco);print "$fvpl[0]\n" if(!$pqef);
+my $jpsq=''; # Joined Pal8 SKpz SeQuence;
+my @RGBd=(); # duplic8 Decimal of all lowercase rgbd below for special basic text fields to override within;
+my %btoa=(); # Basic Text Option Arguments
+for my $btfi (split(//,'FbCB')){ # Basic Text Field Icon
+   $btoa{$btfi}=$FbCB{$btfi} if(exists($FbCB{$btfi}) && $FbCB{$btfi});}
+print $G . "pal8 " if(!$pqef);for(sort(keys(%btoa))){if(!$pqef){print "-$_=$btoa{$_} "; # trak cach glob now, stil need map load etc. 2 reflect out;
+}} if(!$pqef){print join(' ',@laco);print ' ' if(@laco);print '-q ' if($pqef);print '-c ' if($cacf);print '-g ' if($pglf);print "$fvpl[0]\n";}
 for(0..$#lcco){my @rgbd = split(//,$pmap{$lcco[$_]});my $curl='F';my $curc=$lcco[$_];if($curc=~ s/^([bFDAL])?://i){$curl=$1 if(defined($1) && length($1));}
   if($#rgbd == 3){my $hxst=rl2h(join('',@rgbd));my @hdgz=split(//,$hxst);for my $cndx (0..$#hdgz){$hdgz[$cndx]=dec($hdgz[$cndx]);}
     @rgbd=($hdgz[0]*16+$hdgz[1], $hdgz[2]*16+$hdgz[3], $hdgz[4]*16+$hdgz[5]);} # should take RgbL 24-bit b64 4m@ && cnv to 0..255 R,G,&& B
   else           {for my $cndx (0..$#rgbd){$rgbd[$cndx]=b10($rgbd[$cndx])*4;}} # should take RGB  18-bit b64 4m@ (which was the original)
+  for                 my $cndx (0..$#rgbd){$RGBd[$cndx]=    $rgbd[$cndx]   ;}  # should take RGB && duplic8 it in Decimal;
   my $p82a=0;if($curl ne 'F' || $curc !~ /^[krOgcbPwKRYGCBMW]$/){$p82a=$p8k2{$curl}{$curc};}else{
     for my $apnx (0..15){if($cmsp{'ANSI'}[$apnx] eq $curc){$p82a=$apnx;last;}}}# search for 8Pal8 2 8Ansi index for Escape below
   $jpms .=                                       $pmap{$lcco[$_]} . ' ';my $rl4c=$pmap{$lcco[$_]};$rl4c.='0' if(length($rl4c) == 3); # set RgbLow 4 Color
   printf("%s"                                      , S($lcco[$_])) if(!$pqef); # Escape foreground color for row
  #print  $SKp8, ($_ < 8) ? '47m' : '40m'; # background w or k color
   printf("%3d %s %s #%2.2X%2.2X%2.2X %3d,%3d,%3d; ",$_,$lcco[$_],$rl4c,@rgbd,@rgbd) if(!$pqef);print "\n" if(!$pqef && !(($_+1) % 4));
-  print  "\n" if(!$pqef && !(($_+3) % 4) && exists($ENV{'COLUMNS'}) && $ENV{'COLUMNS'} < 160); # try to wrap twice as much if proly 80-colmz
- #printf("\e]P%1.1X%2.2X%2.2X%2.2X"                ,$_,                @rgbd) if($term =~ /^xterm/); # GNU/Lin Console? m// 4 -256color also;
-  printf("\e]P%1.1x%2.2x%2.2x%2.2x"                ,$_,                @rgbd) if($term =~ /linux$/ && $_ < 16); # GNU/Lin Console mAB uc(X)?;
-# printf("\e]4;%d;#%2.2x%2.2x%2.2x\e\\"            ,$_,                @rgbd) if($term =~ /^xterm/); # works in GnomTerm AgN (try4screen too?)
-  printf("\e]4;%d;#%2.2x%2.2x%2.2x\a"              ,$p82a,             @rgbd) if($term =~ /^xterm/); # chngd ST to BEL Alarm to fix konsole;
-  # switching from ST to BEL 4 OSC termin8or workz fine for xt, gt, && sak which I've tested so far, but konsole colors aren't changing either way it's ended;
+  printf("\n") if(!$pqef && !(($_+3) % 4) && exists($ENV{'COLUMNS'}) && $ENV{'COLUMNS'} < 160); # try to wrap twice as much if proly 80-colmz
+ #printf("\e]P%1.1X%2.2X%2.2X%2.2X"                              ,$_,                @rgbd) if($term =~ /^xterm/); # GNU/Lin Console? m// 4 -256color also;
+  $jpsq .= sprintf("\e]P%1.1x%2.2x%2.2x%2.2x"                    ,$_,                @rgbd) if($term =~ /linux$/ && $_ < 16); # GNU/Lin Console mAB uc(X)?;
+  # MacOS iTerm2 I think added custom "\e]Pg" /\e\]P[g-m][0-9a-f]{6}\e\\/ (wi 'i' special) immeD8ly followed by rrggbb hex then "\e\\" ST;
+  if($term =~ /^xterm/){
+    if    ($p82a == 0){ # probably shud tSt p82a instd of $_ here with 15 (W) , iz betr than 7 (w);
+     if($term !~ /^(xterm-kitty)$/){
+      if(exists($FbCB{'B'})){ # mAy nEd 2 run RgbL thru pIpelIne to re-obtain decimalz for up RGBd to hold;
+        @RGBd=split(//,$FbCB{'B'});my $lbsd=0;$lbsd=b10(pop(@RGBd)) if($#RGBd == 3);for my $rlbc (0..$#RGBd){$RGBd[$rlbc]=b10($RGBd[$rlbc])*4;} # RgbL B64 Chrz
+        $RGBd[0]+=2 if($lbsd & 32);$RGBd[1]+=2 if($lbsd &  8);$RGBd[2]+=2 if($lbsd &  2);
+        $RGBd[0]++  if($lbsd & 16);$RGBd[1]++  if($lbsd &  4);$RGBd[2]++  if($lbsd &  1); # add stripes in;
+        $jpsq     .= sprintf("\e]708;#%2.2x%2.2x%2.2x\e\\"       ,                   @RGBd); # pop off the low-bit-striped-d8a abov;
+      }else{$jpsq .= sprintf("\e]708;#%2.2x%2.2x%2.2x\e\\"       ,                   @rgbd);} # mkz BorderBkgrnd
+     } # don't do: "PARSE ERROR" 708 at all for kitty;
+      if(exists($FbCB{'C'})){
+        @RGBd=split(//,$FbCB{'C'});my $lbsd=0;$lbsd=b10(pop(@RGBd)) if($#RGBd == 3);for my $rlbc (0..$#RGBd){$RGBd[$rlbc]=b10($RGBd[$rlbc])*4;} # turnd2decimal
+        $RGBd[0]+=2 if($lbsd & 32);$RGBd[1]+=2 if($lbsd &  8);$RGBd[2]+=2 if($lbsd &  2);
+        $RGBd[0]++  if($lbsd & 16);$RGBd[1]++  if($lbsd &  4);$RGBd[2]++  if($lbsd &  1); # add stripes in;
+        $jpsq     .= sprintf("\e]12;#%2.2x%2.2x%2.2x\e\\"        ,                   @RGBd);  # trying to preserve paleta SKpz order sinc mIt B bSt 2 kEp nIce;
+      } #else{$jpsq .= sprintf("\e]12;#%2.2x%2.2x%2.2x\e\\"      ,                   @rgbd);} # comNting out init set of BLACkCursor sinc nEd it2stA brIt plz!;
+    } # paleta duz: 708, 12, 4;0, 11, 4;1..15, 10 -- wi 10&&12 oftN sAm az 4;15 Dflt Foregrnd && 708&&11 oftN sAm az 4;0 Dflt bACKGRND;
+#   printf(                  "\e]4;%d;#%2.2x%2.2x%2.2x\e\\"      ,$_,                @rgbd) if($term =~ /^xterm/); # works in GnomTerm AgN (try4screen too?)
+    $jpsq        .=  sprintf("\e]4;%d;#%2.2x%2.2x%2.2x\a"        ,$p82a,             @rgbd);                       # chngd ST to BEL Alarm to fix konsole;
+    if    ($p82a == 0){
+      if(exists($FbCB{'b'})){
+        @RGBd=split(//,$FbCB{'b'});my $lbsd=0;$lbsd=b10(pop(@RGBd)) if($#RGBd == 3);for my $rlbc (0..$#RGBd){$RGBd[$rlbc]=b10($RGBd[$rlbc])*4;} # RgbL B64 Chrz
+        $RGBd[0]+=2 if($lbsd & 32);$RGBd[1]+=2 if($lbsd &  8);$RGBd[2]+=2 if($lbsd &  2);
+        $RGBd[0]++  if($lbsd & 16);$RGBd[1]++  if($lbsd &  4);$RGBd[2]++  if($lbsd &  1); # add stripes in;
+        $jpsq     .= sprintf("\e]11;#%2.2x%2.2x%2.2x\e\\"        ,                   @RGBd);
+      }else{$jpsq .= sprintf("\e]11;#%2.2x%2.2x%2.2x\e\\"        ,                   @rgbd);}
+    }elsif($p82a ==15){
+      if(exists($FbCB{'F'})){
+        @RGBd=split(//,$FbCB{'F'});my $lbsd=0;$lbsd=b10(pop(@RGBd)) if($#RGBd == 3);for my $rlbc (0..$#RGBd){$RGBd[$rlbc]=b10($RGBd[$rlbc])*4;} # turnd2decimal
+        $RGBd[0]+=2 if($lbsd & 32);$RGBd[1]+=2 if($lbsd &  8);$RGBd[2]+=2 if($lbsd &  2);
+        $RGBd[0]++  if($lbsd & 16);$RGBd[1]++  if($lbsd &  4);$RGBd[2]++  if($lbsd &  1); # add stripes in;
+        $jpsq     .= sprintf("\e]10;#%2.2x%2.2x%2.2x\e\\"        ,                   @RGBd);
+      }else{$jpsq .= sprintf("\e]10;#%2.2x%2.2x%2.2x\e\\"        ,                   @rgbd);}
+    } # paleta duz:708,12, 4;0, 11, 4;1..F, 10 wi 10&&12 oftN sAm az 4;7 Dflt Foregrnd && 708&&11 oftN sAm az 4;0 Dflt bACKGRND?;
+  } # switchng from ST 2 BEL 4 OSC termin8or workz fine for xt, gt, && sak which I've tested so far, but konsole colors aren't changing either way it's ended;
 # $rgbd[0] *= 256;$rgbd[1] *= 256;$rgbd[2] *= 256;    # scale 8-bit RGB d8a up to 16-bit by mult by 256;             # GnomTerm window focus chng did reset B4
 # $gtpl .= sprintf("#%4.4X%4.4X%4.4X:"             ,                   @rgbd);
   $rgbd[0] = sprintf("%2.2X%2.2X",$rgbd[0],$rgbd[0]); # scale 8-bit RGB d8a up to 16-bit by just duping 2 HEX charz to 4;
   $rgbd[1] = sprintf("%2.2X%2.2X",$rgbd[1],$rgbd[1]);
   $rgbd[2] = sprintf("%2.2X%2.2X",$rgbd[2],$rgbd[2]);
   $gtpl .= '#' . join('', @rgbd) . ':'; # already in  HEX 16-bit per RGB channelz so no need to sprintf them;
-} $gtpl =~ s/:$//;my @gtpf=split(/:/,$gtpl);my $bb=S('b:b');for(@gtpf){s/^(#)(..)(..)(..)(..)(..)(..)$/$C$1$R$2$bb$3$z$G$4$bb$5$z$B$6$bb$7$z$W/;}
+} print $jpsq; # print out the upd8 SKp cOdez, even if in Quiet mode;
+if($pglf){for(<"/dev/pts/[0-9]*">){open(my $ptyh,'>>',$_   );print $ptyh $jpsq;close($ptyh);}} # 2du:add optnz 2 tRget Only sLectnz (lIk -g=4,7,11 matching);
+if($cacf){                         open(my $cach,'>' ,$cacp);print $cach $jpsq;close($cach); } # Cache Flag, file-Handle, file-Path;
+  $gtpl =~ s/:$//;my @gtpf=split(/:/,$gtpl);my $bb=S('b:b');for(@gtpf){s/^(#)(..)(..)(..)(..)(..)(..)$/$C$1$R$2$bb$3$z$G$4$bb$5$z$B$6$bb$7$z$W/;}
 for(1..$#gtpf){$gtpf[$_] =~ s/^/\n/ unless($_ % 8);} $gtpl=join(':',@gtpf);
 say "$G$gtpl" if(!$pqef); # maybe above should also set bkgr && frgr 0 && 7 like etfp did?
 #my $wefp=`which etfp`;chomp($wefp);system("etfp $jpms"                      ) if($term eq  'linux' && -x "$wefp"); # only try if in path; N8DMIsA4:~/bin/etfp was wrong IOCTL for device so mvd 2 etfpo then which here failed so probably need 2 recompile old etfp.c src 4 Gen2 here, or find altern8ive Utl 2 set palz;
