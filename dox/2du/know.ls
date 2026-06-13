@@ -1497,7 +1497,7 @@ PBSL1CES:HTTPS://YouTu.be/0HqUYpGQIfs "Emergent Complexity" # PBM:0Wd0 of Emerge
 PBSL4cat:HTTPS://YouTu.be/R3unPcJDbCc "This Is Not Yellow" # C92:0780 of Vsauce on color perception && how RG 2gethr code in cones like Yellow && c@dur8:06b0;
 PBTLEYES:HTTPS://YouTu.be/nCnZX8zs4LI "How to Reverse Poor EyeSight (Especially Over 50!)" # P9L:0Jv0 of Dr.EricBergDC on remedies for most eye problem types;
 PBTLIsom:HTTPS://YouTu.be/04oQ2jOUjkU "How Isometric Coordin8s Work in 2D Games" # L25:05M0 of JordanWest on basic formulas 2 align 2D sprites in2 projection;
-PCOLCats:HTTPS://YouTu.be/aLixE0_-T4k "The Psychology of People Who Love Cats" # PBT:0IF0 of InQuietSoul on incredibly poignant analysis of cats && lovers-of;  
+PCOLCats:HTTPS://YouTu.be/aLixE0_-T4k "The Psychology of People Who Love Cats" # PBT:0IF0 of InQuietSoul on incredibly poignant analysis of cats && lovers-of;
 PCOLLAB3:HTTPS://YouTu.be/XhtTOSbyVpo "When Your Uber Passengers are Pro BeatBoxers #1" # O23:0Fm0 of Improver on totally best ever spontaneous BeatBox Trio!;
 PCOLLIDE:HTTPS://YouTu.be/TIiwSdYafgs "Things Scientists Found That Shouldn't Exist" # PCM:0CU0 of ChillDudeDarkMode on gr8 anim8d narr8ion of super-amazings;
 Q16LAMDA:HTTPS://YouTu.be/VdHR5EOZNKk "The Past, Present, and Future of Programming Languages - KevlinHenney - NDCTechTown 2025" # PCV:19p0 of NDCConferences;
