@@ -18,5 +18,5 @@ if($parm=~ /(^|\s)-+h/i){ # should probably upd8 to use GetOpts or something mor
 }elsif(length($parm)){
   if(@ARGV> 1 || @id8a> 1){$d8im=Oct::d8->new('expand'=>$parm);} # might need to match expand string in $id8a[0] since it likely won't be split
   if(@ARGV==1 || @id8a==1){$d8im=Oct::d8->new('d8'    =>$parm);} # used to auto-expand specified d8 here, but then Dow() won't work on expand string
-} print $out8                           $d8im->Dow();
+} print $out8              $d8im->Dow();
 close   $out8             or die "Can't close duplic8 STDOUT handle: $!";
