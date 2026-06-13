@@ -25,7 +25,7 @@
 #   rEconsidr wethr comNtz shud alwAzOnlyBignOrd bypRsr or if someXtra d8afEldz intherRworthXtractng2,
 # 2duold(from1st atMpt2pRs4m@):fix l: multipl b fieldz cOlId,lAyr progrSive Nd Xpansionz sepR8ly,alow4rEUsed Xpanded nAmz2BAbl2map bak2sepR8 keyz;
 use warnings;use strict;use utf8;use v5.22;
-use Oct::a8;my $d8VS='G7BMLBwU';
+use Oct::a8;my $d8VS='O73MDWcg';
 use Oct::b8;my $ckls='-0-9A-Za-z._'; #-zugahMmtxbdO'; # ContextKeyzLiSt regXspanz2prntoutsetz4tStng
 my   $Hrcd; #  new  Hrc compound "rash" d8a structure object which is fundamentally a hierarchy of arrayz adorned with hashez between layerz && Xpansionz
 sub   lodH{ # LOaD .Hrc file as test on top (then automatically instead) of above exported d8a typez (and autom8 renaming filez to match .Hrc casing)
