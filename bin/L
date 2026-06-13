@@ -47,7 +47,7 @@ if($az=~ /(^|\s)-+(h)(elp)?(\s|$)/i){print $out8 "  $0 - sLightLy manipuL8d" .
       ' ' x (3-$sl);s/^(\S+):/$1$sp:/;} # try2spc-out colon 2 subdrz 3-or-lS;
     if  (/^(\S+\s*:)\s*$/    ){s/\s+$//      ;$pt=1;}
     else{$_ =(' ' x ($ws-  1)) . $_  if(!$pt);$pt=0;}
-    s/\s       (\e?\[?[0-9;]*m?      )+
+    s/\s  (\e?\[?[0-9;]*m?      )+
       (Oct(\e?\[?[0-9;]*m?|\s*)*)+
       \s       (\e?\[?[0-9;]*m?|Pip)+/$1 $2 $4/x;
     print $out8 $_ if /\S/;}}
