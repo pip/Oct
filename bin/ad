@@ -1,0 +1,225 @@
+#!/usr/bin/perl
+# PBALInch:ad crE8d by PipStuart <Pip@CPAN.Org> as UTF-8Draw (like td TextDraw); # 2du:fully revamp to support Fb colorful rendering everywhere;
+use strict;use warnings;use utf8;use v5.22;use Curses::Simp;my $Vers='0.3';my $d8VS='PBULDING';my $name=$0;my $Auth='PipStuart <Pip@CPAN.Org>';$name=~s/.*\///;
+my   $me=0;my @text;my @fclr;my @bclr;my @linz;my @rctz;my @elpz;my @txtz;my $pfil='print';my $ofil='new';my $lc='-';my $ec='*';my $iflg=0;my $tstr='';
+my $lflg=0;my @htxt;my @hsbb;my $dbug=1; # LoadFLaG,Help TeXT,&& SaveBackBufr; Also debugging flag for whether maybe minor warnings should be shown;
+my($by,$bx);my $sl ;my $sctn; # Begin y,x && StringLength then object section;
+my($ey,$ex);my $ke ;my $ssiz; # End   y,x && KEy (short secondary after keey);
+my($sy,$sx);my $keey;my $htgl=0;   # Save-curSor y,x (4 when obtaining new pfil or ofil);
+for(@ARGV){if(/^-+h/i){print "$name (AsciiDraw) by PipStuart <Pip\@CPAN.Org> derived from td (TextDraw) by Dieter Schoppitsch;
+  $name uses Curses::Simp to render a captive interactive interface to allow for drawing simple graphs in terminal text-modes;
+  Any non-flag parameter will be used as your open file and it will be loaded at $name start, if file exists, and is rEadable;
+  The intention is to develop $name to become as closely imit8ive of all td behaviors possible by default, thN dIverg wi -i? ;
+  Note:The main discrepancy so far between ad and td is that $name does not require an Enter after line-char or text-alignmNt;
+ -i    include incompatibilities, introduce innov8ions, ignoring td compatibiliti; Both above have defaults that can Enter;
+ -h    display this help text then exit; $name should come with a save-file called: 'help' which can be given as file to load;";exit();
+    }   elsif(/^-+i/i){$iflg=1 ;
+    }   elsif(-r "$_"){$ofil=$_;open(my $ohnd,'<' ,$_) or die "!*EROR*! Could not open  ofil:$_  for  loading!";$sctn=1;binmode $ohnd,':encoding(UTF-8)';
+      chomp($ssiz=<$ohnd>);my $olin='';
+      while(defined($olin=<$ohnd>)){chomp($olin); #say "sctn:$sctn ssiz:$ssiz olin:$olin"; # this say was just for debugging file loading B4 Simp stRted;
+        if (   $sctn==     1 ){if($ssiz){
+            if($olin=~ /^\d+\s+\d+\s+\d+\s+\d+\s.+$/    ){push(@linz,$olin);}elsif($olin=~ /^\d+$/){$ssiz=$olin;$sctn++;}}else{$ssiz=$olin;$sctn++;}
+        }elsif($sctn==     2 ){if($ssiz){
+            if($olin=~ /^\d+\s+\d+\s+\d+\s+\d+$/        ){push(@rctz,$olin);}elsif($olin=~ /^\d+$/){$ssiz=$olin;$sctn++;}}else{$ssiz=$olin;$sctn++;}
+        }elsif($sctn==     3 ){if($ssiz){
+            if($olin=~ /^\d+\s+\d+\s+\d+\s+\d+$/        ){push(@elpz,$olin);}elsif($olin=~ /^\d+$/){$ssiz=$olin;$sctn++;}}else{$ssiz=$olin;$sctn++;}
+        }elsif($sctn==     4 ){if($ssiz){
+            if($olin=~ /^\d+\s+\d+\s+[hvud]\s+\d+\s.*$/ ){push(@txtz,$olin);}else                  {$ssiz=$olin;$sctn++;}}}
+      } $lflg=1 ; # loaded-file flag set because here I should load existing rEadable file into arrayz && call indexed Draw() subz on thM;
+                                close(  $ohnd        ) or die "!*EROR*! Could not close ofil:$_ after loading!";
+    }   else          {$ofil=$_;}} # non-help or include param doesn't exist or isn't rEadable in filesys but use as destin8ion sAvfIl anywAy (hOp wrItabl);
+my  $simp=tie(@text,'Curses::Simp'            );
+          tie(@fclr,'Curses::Simp::FClr',$simp);$simp->CVis(1);my($cy,$cx)=(0,0);my $ht=$simp->Hite(); # y,x for Begin,Cursor,End;
+          tie(@bclr,'Curses::Simp::BClr',$simp);$simp->Move(      $cy,$cx);      my $wd=$simp->Widt();$simp->AuDr(0);
+for(0..$ht-1){push(@text,' ' x $wd); # abov toggle off AutoDrawFlag to dodge flicker of push redrawing at each empty line (2turnbakon aftr);
+              push(@fclr,'W' x $wd);} $simp->AuDr(1); # init blank solid screen of spaces all with bright White color aw8ing text;
+if   ($lflg){ # only if already loaded input d8a file above (hopefully successfully), then try to Draw all  ;
+  for(@linz){if(/^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s(.+)$/    ){$bx=$1;$by=$2;$ex=$3;$ey=$4;$lc  =$5;DrawLine();}} # mAB LineChar shud always just B sngl char?;
+  for(@rctz){if(/^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)$/          ){$bx=$1;$by=$2;$ex=$3;$ey=$4;         DrawRect();}}
+  for(@elpz){if(/^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)$/          ){$bx=$1;$by=$2;$ex=$3;$ey=$4;         DrawElps();}}
+  for(@txtz){if(/^(\d+)\s+(\d+)\s+([hvud])\s+(\d+)\s(.*)$/ ){$bx=$1;$by=$2;$ke=$3;$sl=$4;$tstr=$5;DrawText();}}} # && tXt strng mA nEd 2 B some length?;
+sub DrawLine {my($ow,$oh)=(abs($ex-$bx),abs($ey-$by)); # Object Width&&Height both abs-val 4 positive; These linz work as intended && seem 2 match td now;
+  my $ld=0;$ld=1 if($oh > $ow); # LongerDirection = zer0 h0riz0ntal, 1 for vert1cal;
+  if($ld){my $subc=0;$subc=$ow / $oh if($oh);my $step=0;for(0..$oh){  # 1 vert1c__al
+      if($by < $ey){if($bx < $ex){substr($text[$by+$_],$bx+int($step+0.5),1,$lc);}else{substr($text[$by+$_],$bx-int($step+0.5),1,$lc);}}
+      else         {if($bx < $ex){substr($text[$by-$_],$bx+int($step+0.5),1,$lc);}else{substr($text[$by-$_],$bx-int($step+0.5),1,$lc);}} $step+=$subc;}}
+  else   {my $subc=0;$subc=$oh / $ow if($ow);my $step=0;for(0..$ow){  # 0 h0riz0ntal
+      if($bx < $ex){if($by < $ey){substr($text[$by+int($step+0.5)],$bx+$_,1,$lc);}else{substr($text[$by-int($step+0.5)],$bx+$_,1,$lc);}}
+      else         {if($by < $ey){substr($text[$by+int($step+0.5)],$bx-$_,1,$lc);}else{substr($text[$by-int($step+0.5)],$bx-$_,1,$lc);}} $step+=$subc;}}}
+sub DrawRect {my($ow,$oh)=(abs($ex-$bx),abs($ey-$by));($bx,$ex)=($ex,$bx) if($bx > $ex);($by,$ey)=($ey,$by) if($by > $ey); # Object Width&&Height; swap B < E;
+  substr($text[$by],$bx+1,$ow-1,'_'x ($ow-1));substr($text[$ey],$bx+1,$ow-1,'_'x ($ow-1)); # very basic rect probably doesn't need swap of B && E above;
+  for(1..$oh){substr($text[$by+$_],$bx,1,'|');substr($text[$by+$_],$ex,1,'|');}}
+sub DrawElps {my($ow,$oh)=(abs($ex-$bx),abs($ey-$by));my($rx,$ry,$xc,$yc)=(1,1,1,1); # Object Width&&Height; init Radius XY && XY Centerz;
+  ($bx,$ex)=($ex,$bx) if($bx > $ex);($by,$ey)=($ey,$by) if($by > $ey); # sepR8 swap bounding box (rect) dimensionz so lessers are Begin, gr8rz are End;
+  my $ld=0;$ld=1      if($oh > $ow);($rx,$ry)=(   ((($ow-0.0)/2.0)+0.0),   ((($oh+0.0)/2.0)+0.0));($xc,$yc)=(   ($bx+$rx+0.0),   ($by+$ry+0.0));
+# HTTPS://TutorialsPoint.Com/computer_graphics/computer_graphics_ellipse_generation_algorithm.htm has very similar to:
+# HTTPS://GeeksForGeeks.Org/dsa/midpoint-ellipse-drawing-algorithm describes: PHP code contributed by Ryuga which was adapted slightly into Perl by Pip;
+  my($px,$py)=(0,$ry); # Plot XY for normal (what was bare) XY
+  my $d1 =    ($ry * $ry) - ($ry * $rx * $rx) + (0.25 * $rx * $rx);my $d2; # initial decision parameter, first for region 1
+  my $dx = 2 * $ry * $ry * $px;
+  my $dy = 2 * $rx * $rx * $py;
+  while($dx < $dy){ # for region 1, print points based on 4-way symmetry
+    substr            ($text[int( $py+$yc)],int( $px+$xc    ),1,$ec);substr($text[int(-$py+$yc)],int( $px+$xc    ),1,$ec);
+    if($ow % 2){substr($text[int( $py+$yc)],int(-$px+$xc+1.0),1,$ec);substr($text[int(-$py+$yc)],int(-$px+$xc+1.0),1,$ec);} # bump left quarts of evenz over 1;
+    else       {substr($text[int( $py+$yc)],int(-$px+$xc    ),1,$ec);substr($text[int(-$py+$yc)],int(-$px+$xc    ),1,$ec);}
+    $px++;      $dx       = $dx + (2  *  $ry * $ry); # checking and updating value of decision parameter based on algorithm
+    if($d1 < 0){$d1       = $d1 + $dx + ($ry * $ry);}
+    else       {$py--;$dy = $dy - (2  *  $rx * $rx);
+                $d1       = $d1 + $dx + ($ry * $ry) - $dy;}}
+  $d2 = (($ry * $ry) * (($px + 0.5) * ($px + 0.5))) + # decision parameter of region 2
+        (($rx * $rx) * (($py - 1  ) * ($py - 1  ))) - ($rx * $rx * $ry * $ry);
+  while($py >= 0){ # plotting points of region 2, printing points based on 4-way symmetry
+    substr            ($text[int( $py+$yc)],int( $px+$xc    ),1,$ec);substr($text[int(-$py+$yc)],int( $px+$xc    ),1,$ec);
+    if($ow % 2){substr($text[int( $py+$yc)],int(-$px+$xc+1.0),1,$ec);substr($text[int(-$py+$yc)],int(-$px+$xc+1.0),1,$ec);}
+    else       {substr($text[int( $py+$yc)],int(-$px+$xc    ),1,$ec);substr($text[int(-$py+$yc)],int(-$px+$xc    ),1,$ec);}
+    $py--;      $dy       = $dy - (2   * $rx * $rx); # checking and updating parameter value based on algorithm
+    if($d2 > 0){$d2       = $d2 + (      $rx * $rx) - $dy;}
+    else       {$px++;$dx = $dx + (2   * $ry * $ry);
+                $d2       = $d2 + (      $rx * $rx) - $dy + $dx;}}}
+sub DrawText {my $lt=length($tstr);
+  if    ($ke eq 'h'){              substr($text[$by   ],$bx   ,$lt     ,$tstr); # tSt ke 4 alInmNt optnz
+  }elsif($ke eq 'v'){for(0..$lt-1){substr($text[$by+$_],$bx   ,1,substr($tstr,$_,1)) if($by+$_ < $ht && $bx    < $wd);}
+  }elsif($ke eq 'd'){for(0..$lt-1){substr($text[$by+$_],$bx+$_,1,substr($tstr,$_,1)) if($by+$_ < $ht && $bx+$_ < $wd);}
+  }elsif($ke eq 'u'){for(0..$lt-1){substr($text[$by-$_],$bx+$_,1,substr($tstr,$_,1)) if($by-$_ >=  0 && $bx+$_ < $wd);}}}
+sub FindHndl {$sctn=$ssiz=0;for(0..$#linz){if($linz[$_]=~ /^(\d+)\s+(\d+)/){my($dx,$dy)=($1,$2);if($dx==$cx && $dy==$cy){$sctn=1;$ssiz=$_;return;}}}
+  if(!$sctn ){              for(0..$#rctz){if($rctz[$_]=~ /^(\d+)\s+(\d+)/){my($dx,$dy)=($1,$2);if($dx==$cx && $dy==$cy){$sctn=2;$ssiz=$_;return;}}}}
+  if(!$sctn ){              for(0..$#elpz){if($elpz[$_]=~ /^(\d+)\s+(\d+)/){my($dx,$dy)=($1,$2);if($dx==$cx && $dy==$cy){$sctn=3;$ssiz=$_;return;}}}}
+  if(!$sctn ){              for(0..$#txtz){if($txtz[$_]=~ /^(\d+)\s+(\d+)/){my($dx,$dy)=($1,$2);if($dx==$cx && $dy==$cy){$sctn=4;$ssiz=$_;return;}}}}}
+sub DrawFull {for my $tndx (0..$ht-1){$text[$tndx]=' ' x $wd;}
+  for(@linz){if(/^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s(.)$/     ){$bx=$1;$by=$2;$ex=$3;$ey=$4;$lc  =$5;DrawLine();}}
+  for(@rctz){if(/^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)$/          ){$bx=$1;$by=$2;$ex=$3;$ey=$4;         DrawRect();}}
+  for(@elpz){if(/^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)$/          ){$bx=$1;$by=$2;$ex=$3;$ey=$4;         DrawElps();}}
+  for(@txtz){if(/^(\d+)\s+(\d+)\s+([hvud])\s+(\d+)\s(.+)$/ ){$bx=$1;$by=$2;$ke=$3;$sl=$4;$tstr=$5;DrawText();}} $simp->Draw();}
+sub GrabChar {$sx=$cx;$sy=$cy;my $cval=shift(@_) // '*';$text[-1]="please press char: $cval";$simp->Move($ht-1,19);$ke=$simp->GetK(-1);$simp->Move($sy,$sx);
+  if(defined($ke) && length($ke) && $ke ne "\e" && ord($ke) != 13){return($ke);}else{return('');}} # hopefully can detect empty-str retnd?;
+sub GrabFile {$sx=$cx;$sy=$cy;my $fflg=1;my $ftyp=shift(@_) // 'unknown';my $fnms=shift(@_) // 'unknown';my $fnbs=$fnms; #$pfil=GrabFile('print',$pfil);
+  $text[  -1]="please Enter $ftyp file: $fnms";$simp->Move($ht-1,20+length("$ftyp$fnms"));$ke=''; # above FileNameBackupString;
+  while(ord($ke) != 13 && $ke ne "\e"){$ke=  $simp->GetK(-1);
+    if(length($ke)     && $ke ne "\e" && ord($ke) != 13 && $ke ne "KEY_BACKSPACE"){ # try2mk Esc exit leaving bkup str unchngd&&returnd as it was passed in;
+      if($fflg){$fflg=0;$fnms=$ke;}else{$fnms.=$ke;}}elsif(length($ke) && $ke eq "KEY_BACKSPACE"){$fflg=0;chop($fnms) if(length($fnms)); #bkspc editflnm!Fresh;
+                                                    }elsif(length($ke) && $ke eq "\e"){     $simp->Move($sy,$sx);return($fnbs);} # restore saved cursor pos;
+    $text[-1]="please Enter $ftyp file: $fnms";$simp->Move($ht-1,20+length("$ftyp$fnms"));} $simp->Move($sy,$sx);return($fnms);} # mAB l8r hndl ArowKyz&&Insrt;
+my($cs,$cz)=(0,0); # CopySection && Copy-siZe (ie,index offset of copied object within the section);
+sub PastCopy {if($cs){ # if cpd sctn LRET 1..4, push dup obj wi upd8d coordz && sAm dimNsionz
+    if    ($cs == 1){push(@linz,$linz[$cz]);if($linz[-1]=~ /^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s(.)/    ){my($Bx,$By,$Ex,$Ey,$Lc)=($1,$2,$3,$4,$5);
+        $Ex-=($Bx-$cx);$Ey-=($By-$cy);         $linz[-1]="$cx $cy $Ex $Ey $Lc"; # parse out coordz then adjust new End rel8ive 2 cursor x,y && adjust str;
+        ($bx,$by)=($cx,$cy);($ex,$ey)=($Ex,$Ey);DrawLine();$simp->Draw();} # just draw new l8St lIn
+    }elsif($cs == 2){push(@rctz,$rctz[$cz]);if($rctz[-1]=~ /^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/         ){my($Bx,$By,$Ex,$Ey    )=($1,$2,$3,$4   );
+        $Ex-=($Bx-$cx);$Ey-=($By-$cy);         $rctz[-1]="$cx $cy $Ex $Ey"; # parse out coordz then adjust new End rel8ive 2 cursor x,y && adjust str;
+        ($bx,$by)=($cx,$cy);($ex,$ey)=($Ex,$Ey);DrawRect();$simp->Draw();} # just draw new l8St Rct
+    }elsif($cs == 3){push(@elpz,$elpz[$cz]);if($elpz[-1]=~ /^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/         ){my($Bx,$By,$Ex,$Ey    )=($1,$2,$3,$4   );
+        $Ex-=($Bx-$cx);$Ey-=($By-$cy);         $elpz[-1]="$cx $cy $Ex $Ey"; # parse out coordz then adjust new End rel8ive 2 cursor x,y && adjust str;
+        ($bx,$by)=($cx,$cy);($ex,$ey)=($Ex,$Ey);DrawElps();$simp->Draw();} # just draw new l8St Elp
+    }elsif($cs == 4){push(@txtz,$txtz[$cz]);if($txtz[-1]=~ /^(\d+)\s+(\d+)\s+([hvud])\s+(\d+)\s(.+)/){my($Bx,$By,$Al,$Sl,$Ts)=($1,$2,$3,$4,$5);
+        ($ke,$tstr)=($Al,$Ts);                 $txtz[-1]="$cx $cy $Al $Sl $Ts"; # parse out all elementz then just upd8 2 cursor
+        ($bx,$by)=($cx,$cy);                    DrawText();$simp->Draw();} # just draw new l8St tXt
+    }}}
+$text[-1]="file '$ofil' opened - to open existing file: <$name filename>".' ' x ($wd-74-length($ofil)) . "lc:$lc ec:$ec x=$cx y=$cy"; # nEd wd-? nstdof hRdcOd;
+$text[-1]="file '$ofil' loaded"                                          .' ' x ($wd-35-length($ofil)) . "lc:$lc ec:$ec x=$cx y=$cy" if($lflg);
+$text[-1].=' 'x ($wd-length($text[-1])) if(length($text[-1]) < $wd);
+#text[-1].=' 'x ($wd-length($text[-1])) if(length($text[-1]) < $wd);substr($text[-1],($wd-12),5+length("$cx$cy"),"x=$cx y=$cy");
+$keey   =$simp->GetK(-1);
+while   ($keey && $keey !~ /[qx]/i && $keey ne "\e"){$simp->Draw(); # I think back here: ne "\e" could instead be: ord($keey) != 127?;
+  if    ($keey eq 'KEY_UP'   ){$cy-- if($cy        );$simp->Move($cy,$cx);
+  }elsif($keey eq 'KEY_DOWN' ){$cy++ if($cy < $ht-2);$simp->Move($cy,$cx);
+  }elsif($keey eq 'KEY_LEFT' ){$cx-- if($cx        );$simp->Move($cy,$cx);
+  }elsif($keey eq 'KEY_RIGHT'){$cx++ if($cx < $wd-1);$simp->Move($cy,$cx);
+  }elsif($keey eq 'KEY_PPAGE'){$cy=0                ;$simp->Move($cy,$cx);
+  }elsif($keey eq 'KEY_NPAGE'){$cy=           $ht-2 ;$simp->Move($cy,$cx);
+  }elsif($keey eq 'KEY_HOME' ){$cx=0                ;$simp->Move($cy,$cx);
+  }elsif($keey eq 'KEY_END'  ){$cx=           $wd-1 ;$simp->Move($cy,$cx);
+  }elsif($keey eq 'L'        ){$lc=GrabChar($lc);$lc='-' unless(defined($lc) && length($lc));
+  }elsif($keey eq 'E'        ){$ec=GrabChar($ec);$ec='*' unless(defined($ec) && length($ec)); # HandleToggle below should fully redraw nstd of sub spacez ovr;
+  }elsif($keey eq 'H'        ){$htgl^=1;if($htgl){for(@linz,@rctz,@elpz,@txtz){if(/^(\d+)\s+(\d+)/){substr($text[$2],$1,1,'+');}}}else{DrawFull();}
+  }elsif($keey eq 'R'        ){$lc='+';for(0..3){($bx,$ex)=(int(rand($wd  )),int(rand($wd  )));
+                                                 ($by,$ey)=(int(rand($ht-1)),int(rand($ht-1)));
+    push                     (@linz,"$bx $by $ex $ey $lc");DrawLine();} # up-L key draws pseudo-random Linez
+  }elsif(ord($keey) == 13 && $me){$ey=$cy;$ex=$cx;if($me == 1){$text[-1]="line draw character: $lc";$ke=$simp->GetK(-1); # MatchEnter MakeEnd,finish line;
+      if($ke   =~ /^.$/ && ord($ke) != 13){$lc=$ke;} # this might be screwing up Curses pretty badly spewing SKpz when Enter on already lc='-' sometimez! =( ;
+      $text[-1]=' 'x $wd;push(@linz,"$bx $by $ex $ey $lc");DrawLine();$simp->Draw();
+    }elsif($me == 2){    push(@rctz,"$bx $by $ex $ey"    );DrawRect();$simp->Draw();
+    }elsif($me == 3){    push(@elpz,"$bx $by $ex $ey"    );DrawElps();$simp->Draw();
+    }elsif($me == 5){ # special mv tRget aftr last 4 @txtz; # folO thru wi grabng x,y B && E 2 rEplAce rL8ive 2 cx,cy curNt cursor where Enter target pressed;
+      if    ($sctn ==  1){if($linz[$ssiz]=~ /^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s(.)/     ){my($Bx,$By,$Ex,$Ey,$Lc)=($1,$2,$3,$4,$5);
+                             $linz[$ssiz]=  "$cx $cy " . ($Ex-$Bx + $cx) . ' ' . ($Ey-$By + $cy) .  " $Lc";} # shud be upd8d (ie,moved) to new position here;
+      }elsif($sctn ==  2){if($rctz[$ssiz]=~ /^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/          ){my($Bx,$By,$Ex,$Ey    )=($1,$2,$3,$4   );
+                             $rctz[$ssiz]=  "$cx $cy " . ($Ex-$Bx + $cx) . ' ' . ($Ey-$By + $cy)          ;}
+      }elsif($sctn ==  3){if($elpz[$ssiz]=~ /^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/          ){my($Bx,$By,$Ex,$Ey    )=($1,$2,$3,$4   );
+                             $elpz[$ssiz]=  "$cx $cy " . ($Ex-$Bx + $cx) . ' ' . ($Ey-$By + $cy)          ;}
+      }elsif($sctn ==  4){if($txtz[$ssiz]=~ /^(\d+)\s+(\d+)\s+([hvud])\s+(\d+)\s+(.+)/){my($Bx,$By,$Al,$Sl,$Ts)=($1,$2,$3,$4,$5);
+                             $txtz[$ssiz]=  "$cx $cy $Al $Sl $Ts";} # easiest str8forward just upd8 coordz of text object to cursor (could s/// nstd,eh?);
+      } DrawFull(); # may need 2 load regular bx,by ex,ey && call proper Draw()s abov or just redraw everything here since orig needs to delete also;
+    } $text[-1]=' 'x $wd;                   $me=0; # mIt nEd Return? or \n B4 complEting 2nd point of lre;
+  }elsif($keey eq 'l'        ){$by=$cy;$bx=$cx;$me=1;$text[-1]="mark end of line"           ;$simp->Draw(); # ... "line draw character: " GetK;
+  }elsif($keey eq 'r'        ){$by=$cy;$bx=$cx;$me=2;$text[-1]="mark 2nd point of rectangle";$simp->Draw();
+  }elsif($keey eq 'e'        ){$by=$cy;$bx=$cx;$me=3;$text[-1]="mark 2nd point of ellipse"  ;$simp->Draw();
+  }elsif($keey eq 't'        ){$by=$cy;$bx=$cx;$me=4;$text[-1]="enter text: ";$simp->Move($ht-1,12);$simp->Draw(); # save cursor y,x B4 mv dn 2 statuslIn -1
+    $tstr=$ke='';my $zx=12;while(!length($ke) || ord($ke) != 13){$tstr.=$ke if(length($ke) && $ke !~ /\n/);$simp->Prnt($ke);$ke=$simp->GetK(-1);}
+    $simp->Move($ht-1,61); # it's a little confusing that I've used 'Al' for alias in Zsh but have used $Al around hEr abov 4 Alignment of text objects nstd;
+    $text[-1]="alignment - Horizontal/Vertical/Upward/Downward (h/v/u/d): h";$ke=$simp->GetK(-1);$ke='h' unless($ke=~ /^[vud]$/i);$ke=lc($ke);
+    $simp->Move($by,$bx);   push(@txtz,"$bx $by $ke " . length($tstr) . " $tstr");DrawText();$simp->Draw();
+  }elsif($keey eq 'd'        ){FindHndl();if($sctn){ # if on handle (ie,"hot-spot"), delete only top-most (ie,1st-found) object (since handles can overlap);
+      if   ($sctn ==  1){splice(@linz,$ssiz,1);}elsif($sctn ==  2){splice(@rctz,$ssiz,1);} # splice out objects from respective arrays to delete proper one;
+      elsif($sctn ==  3){splice(@elpz,$ssiz,1);}elsif($sctn ==  4){splice(@txtz,$ssiz,1);} DrawFull();} # try full redraw 2 rid deleted obj, aftr blanking;
+  }elsif($keey eq 'm'        ){FindHndl();if($sctn){$text[-1]= "please Enter destin8ion for move";$ke='';$me=5;$simp->Draw();} # obtAn mv dSt thN upd8 coordz;
+  }elsif($keey eq 'c'        ){FindHndl();if($sctn){$cs=$sctn;$cz=$ssiz;$text[-1]="copied cz:$cz object in section:$cs";$simp->Draw();}else{$cs=$cz=0;}
+  }elsif($keey eq 'v'        ){PastCopy() if($sctn); # like Ctrl-V for typical paste hotkey;
+  }elsif($keey eq 'p'        ){my $phnd;open($phnd,'>' ,$pfil) or die "!*EROR*! Could not open  pfil:$pfil  for  writing!";binmode $phnd,':encoding(UTF-8)';
+    for(0..$ht-2){my $plin=$text[$_];$plin=~ s/\s+$//;print $phnd "$plin\n";}
+    close($phnd) or die "!*EROR*! Could not close pfil:$pfil after writing!";$text[-1]="file '$pfil' printed to";$simp->Draw();
+  }elsif($keey eq 'P'        ){$pfil=GrabFile('print',$pfil);
+  }elsif($keey eq 'S'        ){$ofil=GrabFile('save ',$ofil);
+  }elsif($keey eq 's'        ){my $ohnd;open($ohnd,'>' ,$ofil) or die "!*EROR*! Could not open  ofil:$ofil  for  writing!";binmode $ohnd,':encoding(UTF-8)';
+    print $ohnd scalar(@linz)."\n";print $ohnd "$_\n" for(@linz); print $ohnd scalar(@rctz)."\n";print $ohnd "$_\n" for(@rctz);
+    print $ohnd scalar(@elpz)."\n";print $ohnd "$_\n" for(@elpz); print $ohnd scalar(@txtz)."\n";print $ohnd "$_\n" for(@txtz);
+    close($ohnd) or die "!*EROR*! Could not close ofil:$ofil after writing!";$text[-1]="file '$ofil'   saved to";$simp->Draw();
+  }elsif($keey eq 'i'        ){ # add classic info page; # this unfortun8ly crashes out after any key dismisses Mesg box. Whoops. Fix Simp or Curses?!;
+    if($simp->Widt() >= 53 && $simp->Hite() >= 12){ # only if the whole dialog with borders will fit in the terminal...
+       $simp->Mesg('type' => 'info', # display an Info dialog window
+" $name v$Vers $d8VS - by $Auth 
+ 
+ $name was written to first duplic8 all functions
+   from Dieter Schoppitsch's TextDraw td program.
+ 
+ I hope you find $name both worthwhile and useful.
+ 
+ Please support the HTTPS://FSF.Org and
+                the HTTPS://EFF.Org when possible.
+ 
+ Thank you for running my code. L8r. =)    -Pip
+
+ P.S. Sorry Curses may segfault and crash after.\n " );}else{$simp->Move(0,0);$simp->Prnt("$name v$Vers $d8VS - by PipStuart");$simp->GetK(4);}
+  }elsif(lc($keey) eq 'h' || $keey eq '?' || $keey eq 'KEY_F1'){
+    @htxt=split(/\n/,"AsciiDraw v$Vers $d8VS by $Auth orig. based on:
+ TextDraw v0.2          by Dieter Schoppitsch
+
+                    Global Keys:                   
+    h        help       -  this help page; 'H' show HandleHotspots;
+    d        delete     -  delete marked object
+    m        move       -  move   marked object
+    c        copy       -  copy   marked object to buffer
+    v        paste      -  paste preViously copied buffer
+    p        print      -  print to UTF-8-file: '$pfil'; 'P' set;
+    s        save       -  save  to specs file: '$ofil'; 'S' set;
+    l        line       -  draw      line-object;   'L' LineChar;
+    r        rectangle  -  draw rectangle-object;
+    e        ellipse    -  draw   ellipse-object;   'E' ElpsChar;
+    t        text       -  draw      text-object;
+    x,q,ESC  exit       -  exit (without saving!);
+
+      position cursor with cursor keys
+      mark object at 'hot-spot' (i.e., 'handle')
+      to load existing file: <$name filename> from CLI
+      try also: home, end, pgdn, pgup for full moves;");
+    for(0..$#htxt){$hsbb[$_]=$text[$_];$text[$_]=$htxt[$_];} $simp->GetK(-1); # save text 1st to overlay help mesg then GetK
+    for(0..$#htxt){$text[$_]=$hsbb[$_];} # not just re-blank since now saved for reload; # commented these 2 try orig help window nstd;
+    if(0){if($simp->Widt() >= 53 && $simp->Hite() >= 24){ # only if the whole dialog with borders will fit in the terminal...
+       $simp->Mesg('type' => 'help', # display a  Help dialog window
+"      $name v$Vers $d8VS - by $Auth 
+" . join("\n",@htxt) . "
+                   System Stuff:
+   ?/h/F1 - Help  :  i - Info  :  x/q/Esc - eXit   ");}else{$simp->Move(0,0);$simp->Prnt("$name - press 'x' to eXit,dmcvpslret");$simp->GetK(4);}}
+  }else {$text[-2]="!*Warn*! Unexpected or unknown keey=$keey;" if($dbug);
+  } $text[-1].=' 'x ($wd-length($text[-1])) if(length($text[-1]) < $wd);substr($text[-1],($wd-21),15+length("$cx$cy"),"lc:$lc ec:$ec x=$cx y=$cy    ");
+  $keey =$simp->GetK(-1);} $simp->CScr(); #$simp->endwin();
+  print "$0 exiting...  ;"; # show full path so not just $name here @Nd;
