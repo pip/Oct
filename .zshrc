@@ -40,7 +40,7 @@ unsetopt                \
 # re_____match_____pcre \# mA want2set for Z-SHell scripting RegularExpressions to utilize PerlCompatibility styles && mA insert 'zmodload zsh/(pc)?re(gex)?';
 # extended_glob is Zsh option wich causes the caret '^' circumflex 2B interpol8d / Xpanded && it's used in a regex ^prev^next 2 substitute stRt of last cmnd;
 alias Al=alias Xp=export xprt=Xp Bk=bindkey bk=Bk; # dot_glob option includes dot-files && extended_glob matches ~ # ^ nOtd from HTTPS://YouTu.be/g5BoVPhewWM ;
-Xp Vers='0.000001';Xp d8VS='Q5TM8neg';Xp Auth='PipStuart <PipStuart@GMail.Com>'; # 'Xp','Al','Bk' => export,alias,bindkey  'sl','cl' => SymLink,CountLines,… ;
+Xp Vers='0.000001';Xp d8VS='Q6DM7OWM';Xp Auth='PipStuart <PipStuart@GMail.Com>'; # 'Xp','Al','Bk' => export,alias,bindkey  'sl','cl' => SymLink,CountLines,… ;
 if     [[       "$SHELL"    == "" ]] ||
        [[       "$SHELL" =~ bash  ]]; then       Xp SHELL=$(which   zsh);Xp HShl="$SHELL";fi; # H Xport mAB shud B HshL 4 prOnunC8ion nstd?;
 if     [[       "$HOSTNAME" == "" ]]; then       Xp HOSTNAME=$(hostname);fi;  #`hostname`retnz fsckd nwlInz\n4CygWinzRxvt... ||smthng els lame  =(
@@ -767,7 +767,7 @@ Al      Wf='d8wf';FL() {  figlet -w $COLUMNS -f $@; # just Wrap   Flet in d8z;al
 }; Al lsfl="ls /usr/share/figlet/*|gv -|pe 's{/usr/share/figlet/}{};s/\\.[ft]lf\\n/ /g;s/ \[0-9a-z_\]+ / /g;'" fff='FL fraktur `d8`|lolcat' fd8=fff lfl=lsfl;
 Al ffp='FL flowerpower `d8`|lolcat' ffb='FL Obanner132 `d8`|lolcat' ffu='FL univers `d8`|lolcat'; # flowerpower almost as awesome && wide as fraktur,gr8!;
 Al ffz='ec "${R}fff$w:${R}fraktur$p p$w:${p}flowerpower$Y u$w:${Y}univers$B b$w:${B}Obanner132$z;";fff;ffp;ffu'; # Q1KL4FPU:appended three wide ffz together;
-# Q14LAFFZ:abov print Figlet -f function FL wi fontz && colrz; # Q4AMHOME:BlO AnsiWeather may rEquir -k 12ce9c908d1a7c032523ea559363f6b0 OpenWeatherMapAPIkey;
+# Q14LAFFZ:abov print Figlet -f function FL wi fontz && colrz; # Q4AMHOME:BlO AnsiWeather may rEquir -k $(b10 IpfoGZHfy0oKZwbMJO_Qm|heX) OpenWeatherMapAPIkey;
 Al AW='ansiweather'                     AWo='AWi -l     Oshkosh' AWr='AWi -l Reading' AWc='AWi -l Columbia'; # Dfalt -u (system) is metric (not imperial);
 Al AWi='AW -u imperial -H true -d true' AWl='AWi -l Long\ Beach' AWs='AWi -l San\ Luis\ Obispo' AWa='AWo;AWr;AWc;AWl;AWs'; # enable FeelsLike && daylight d8a;
 Al AWn='AW -u imperial -a false -s false -i false -w false -h false -H false -p false -d false'; # AnsiWeather None of the xtra optnz 4 just pulling tmper8rz;
@@ -785,8 +785,8 @@ Al aWU='AWO|c8 4,3  |pe "s/://;s/\t/ /; s/hkosh/Wi 54902/"  >/tmp/awU;AWR|c8 4,3
         AWC|c8 4,3  |pe "s/://;s/\t/ /;s/lumbia/Mo 65201/" >>/tmp/awU;AWL|c8 5,3,4|pe "s/://;s/\t/ /;s/\t//;s/ongBeach/BCa 90814/" >>/tmp/awU;
         AWS|c8 6,3-5|pe "s/://;s/\t/ /;s/\t//g;s/anLuisObispo/LCa 93401/" >>/tmp/awU;AWK|c8 5,3,4|pe "s/://;s/\t/ /;s/\t//;s/ansasCity/CMo 64114/" >>/tmp/awU';
 # Q4EM8Geo:rsltz from cmnd BlO were: [{"name":"Oshkosh","local_names":{"en":"Oshkosh"},"lat":44.0206919,"lon":-88.5408574,"country":"US","state":"Wisconsin"}];
-# curl -X GET "http://api.openweathermap.org/geo/1.0/direct?q=Oshkosh,WI,US&limit=5&appid=12ce9c908d1a7c032523ea559363f6b0" -H "Content-Type: application/json"
-# curl -X GET "http://api.openweathermap.org/geo/1.0/zip?zip=54902,US&appid=12ce9c908d1a7c032523ea559363f6b0" -H "Content-Type: application/json" instead gets:
+# curl -X GET "http://api.openweathermap.org/geo/1.0/direct?q=Oshkosh,WI,US&limit=5&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json"
+# curl -X GET "http://api.openweathermap.org/geo/1.0/zip?zip=54902,US&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" instead gets:
 #   {"zip":"54902","name":"Winnebago County","lat":43.9946,"lon":-88.526,"country":"US"} so the Latitude && Longitude of those are slightly off from each othr;
 #   Further rsltz: [{"name":"Reading","local_names":{"en":"Reading","ru":"Рединг"},"lat":40.335345,"lon":-75.9279495,"country":"US","state":"Pennsylvania"}]
 #     [{"name":"Columbia","local_names":{"en":"Columbia"},"lat":38.951883,"lon":-92.3337366,"country":"US","state":"Missouri"}]  ## && use units=imperial BlO!;
@@ -794,33 +794,33 @@ Al aWU='AWO|c8 4,3  |pe "s/://;s/\t/ /; s/hkosh/Wi 54902/"  >/tmp/awU;AWR|c8 4,3
 #     [{"name":"Long Beach","local_names":{"ar":"لونغ بيتش","ru":"Лонг-Бич","vi":"Long Beach","fa":"لانگ بیچ، کالیفرنیا","hi":"लंबे समुद्र तट","he":"חוף ארוך","zh":"长滩","ja":"ロングビーチ","ko":"롱비치","en":"Long Beach"},"lat":33.7690164,"lon":-118.191604,"country":"US","state":"California"}]; # curl -silent -failsilNt;
 #     [{"name":"San Luis Obispo","local_names":{"sr":"Сан Луис Обиспо","ur":"سان لوئیس اوبسپو","en":"San Luis Obispo","ru":"Сан-Луис-Обиспо","de":"San Luis Obispo","es":"San Luis Obispo"},"lat":35.2827525,"lon":-120.659615,"country":"US","state":"California"}];  ## Note:Need to use plus '+' as spaces in GeoCoded City;
 #   Then "https://api.openweathermap.org/data/3.0/onecall?lat=44.0206919&lon=-88.5408574&exclude=minutely,hourly,daily,alerts&appid={APIKey:12ce…}" 2 get rest;
-Al cO3='curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=44.0206919&lon=-88.5408574&exclude=minutely,hourly,daily,alerts&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0" -H "Content-Type: application/json" > ~/.tmp/cowo-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=40.3353450&lon=-75.9279495&exclude=minutely,hourly,daily,alerts&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0" -H "Content-Type: application/json" > ~/.tmp/cowr-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=38.9518830&lon=-92.3337366&exclude=minutely,hourly,daily,alerts&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0" -H "Content-Type: application/json" > ~/.tmp/cowc-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=39.1001050&lon=-94.5781416&exclude=minutely,hourly,daily,alerts&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0" -H "Content-Type: application/json" > ~/.tmp/cowk-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=33.7690164&lon=-118.191604&exclude=minutely,hourly,daily,alerts&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0" -H "Content-Type: application/json" > ~/.tmp/cowl-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=35.2827525&lon=-120.659615&exclude=minutely,hourly,daily,alerts&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0" -H "Content-Type: application/json" > ~/.tmp/cows-`d8`.json;ec "Then maybe just jq to pull weather, descriptions from JSON?"';
+Al cO3='curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=44.0206919&lon=-88.5408574&exclude=minutely,hourly,daily,alerts&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" > ~/.tmp/cowo-`d8`.json;
+        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=40.3353450&lon=-75.9279495&exclude=minutely,hourly,daily,alerts&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" > ~/.tmp/cowr-`d8`.json;
+        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=38.9518830&lon=-92.3337366&exclude=minutely,hourly,daily,alerts&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" > ~/.tmp/cowc-`d8`.json;
+        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=39.1001050&lon=-94.5781416&exclude=minutely,hourly,daily,alerts&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" > ~/.tmp/cowk-`d8`.json;
+        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=33.7690164&lon=-118.191604&exclude=minutely,hourly,daily,alerts&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" > ~/.tmp/cowl-`d8`.json;
+        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=35.2827525&lon=-120.659615&exclude=minutely,hourly,daily,alerts&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" > ~/.tmp/cows-`d8`.json;ec "Then maybe just jq to pull weather, descriptions from JSON?"';
 # 3.0 requires a sepR8 subscription so it looks like I didn't need to GeoCode for the Lat && Lon anyway since free 2.5 works directly with City+Name in URLz;
-Al cOw='curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0&q=Oshkosh,WI,US"         -sf -H "Content-Type: application/json" > ~/.tmp/cowo-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0&q=Reading,PA,US"         -sf -H "Content-Type: application/json" > ~/.tmp/cowr-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0&q=Columbia,MO,US"        -sf -H "Content-Type: application/json" > ~/.tmp/cowc-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0&q=Kansas+City,MO,US"     -sf -H "Content-Type: application/json" > ~/.tmp/cowk-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0&q=Long+Beach,CA,US"      -sf -H "Content-Type: application/json" > ~/.tmp/cowl-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0&q=San+Luis+Obispo,CA,US" -sf -H "Content-Type: application/json" > ~/.tmp/cows-`d8`.json; ec "Now try to use jq to extract weather, main, && description ... && temper8ure together?"';
+Al cOw='curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Oshkosh,WI,US"         -sf -H "Content-Type: application/json" > ~/.tmp/cowo-`d8`.json;
+        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Reading,PA,US"         -sf -H "Content-Type: application/json" > ~/.tmp/cowr-`d8`.json;
+        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Columbia,MO,US"        -sf -H "Content-Type: application/json" > ~/.tmp/cowc-`d8`.json;
+        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Kansas+City,MO,US"     -sf -H "Content-Type: application/json" > ~/.tmp/cowk-`d8`.json;
+        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Long+Beach,CA,US"      -sf -H "Content-Type: application/json" > ~/.tmp/cowl-`d8`.json;
+        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=San+Luis+Obispo,CA,US" -sf -H "Content-Type: application/json" > ~/.tmp/cows-`d8`.json; ec "Now try to use jq to extract weather, main, && description ... && temper8ure together?"';
 # ^…,"main":"Clouds","description":"overcast clouds","icon":"04d"}],"base":"stations","main":{"temp":62.35,…$  ## instead of learning jq, just regexing wi pe;
-Al cOW='curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0&q=Oshkosh,WI,US"         -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
+Al cOW='curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Oshkosh,WI,US"         -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
           printf(\"%-6s OsWi 54902 lat=44.0206919 lon=-88.5408574 %-10s(%18s);\n\",\$3,\$1,\$2)" > ~/.tmp/cOW.ls;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0&q=Reading,PA,US"         -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
+        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Reading,PA,US"         -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
           printf(\"%-6s RePa 19602 lat=40.3353450 lon=-75.9279495 %-10s(%18s);\n\",\$3,\$1,\$2)" >>~/.tmp/cOW.ls;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0&q=Columbia,MO,US"        -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
+        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Columbia,MO,US"        -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
           printf(\"%-6s CoMo 65201 lat=38.9518830 lon=-92.3337366 %-10s(%18s);\n\",\$3,\$1,\$2)" >>~/.tmp/cOW.ls;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0&q=Kansas+City,MO,US"     -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
+        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Kansas+City,MO,US"     -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
           printf(\"%-6s KCMo 64114 lat=39.1001050 lon=-94.5781416 %-10s(%18s);\n\",\$3,\$1,\$2)" >>~/.tmp/cOW.ls;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0&q=Long+Beach,CA,US"      -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
+        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Long+Beach,CA,US"      -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
           printf(\"%-6s LBCa 90814 lat=33.7690164 lon=-118.191604 %-10s(%18s);\n\",\$3,\$1,\$2)" >>~/.tmp/cOW.ls;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0&q=San+Luis+Obispo,CA,US" -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
+        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=San+Luis+Obispo,CA,US" -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
           printf(\"%-6s SLCa 93401 lat=35.2827525 lon=-120.659615 %-10s(%18s);\n\",\$3,\$1,\$2)" >>~/.tmp/cOW.ls;c8 ~/.tmp/cOW.ls|s8n';
-Al cow='d8=`d8`;ur="https://api.openweathermap.org/data/2.5/weather";op="lang=en&units=imperial&appid=12ce9c908d1a7c032523ea559363f6b0";
+Al cow='d8=`d8`;ur="https://api.openweathermap.org/data/2.5/weather";op="lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)";
         ct="Content-Type:";aj="application/json";bp="$HOME/dvl/k8/bash/.bak/cow";cmNt=" # Date8, URl, OPtions, ContentType, Applic8ionJson, BashbackupPath;";
   curl -sf -X GET "$ur?$op&q=Oshkosh,WI,US"         -H "$ct $aj" -o $bp-o-$d8.json;c8 $bp-o-$d8.json|pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":
     \"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//x;printf(\"%-6s OsWi 54902 %-12s(%31s);\n\",\$3,\$1,\$2)" > ~/.tmp/cow.ls;
