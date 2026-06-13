@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 # D94MHThP:lsd8 crE8d by PipStuart <Pip@CPAN.Org> 2XtNsively manipUl8 typical `ls -l` output2convey octal permz,Base64 sizez,d8 stampz,&& many colrz&&f0ntz!
-# 2du:fix `l ~/.steam` 2 work for '.pipe|' Orange lIk ls,fix `l /dev` 2handl "crw-rw-rw-  1 root root      1,   5 2018-09-20 13:14:16.717590724 -0500 zero",
+# 2du:fix spAced-filenAmez with tnam single or double-quoted to still extract out the filetype extension to color more similarly to regular `ls`,
+#   fix `l ~/.steam` 2 work for '.pipe|' Orange lIk ls,fix `l /dev` 2handl "crw-rw-rw-  1 root root      1,   5 2018-09-20 13:14:16.717590724 -0500 zero",
 #   fix sym-link color8ion to flash when the target does not exist like ls already does for file-system entries such as /etc/printcap with $lspt{'or'},
 #   full-screen console on Chun after bkgrnd owner colr && after directory classiFic8ion slashes in `l ~` so Dtect && fix,
 #   would be cool to detect && accept piping in && use that to temporarily re-map all a8 export colors && map `S` uses to then `lsd8|subS|lsd8` 2 revamp,
@@ -27,7 +28,7 @@
 use warnings;use strict;use utf8;use v5.22; # mAB tSt if just regUlR -t STDIN && -t STDOUT R Dtectng intractiviT corectly 1st,B4 fallng bak on IO::Interactive
 #se IO::Interactive qw(is_interactive); # employ if(is_interactive()){} around all colring to attempt to behave like `ls --color=auto` when piped away
 use Encode;use Oct::a8;#se Oct::c8;
-           use Oct::b8;use Oct::d8;use Time::PT;my $VERSION='0.0';my $d8VS='O3GM3non';my $sllw=0; # SymLink LargestWidth to track for alignment
+           use Oct::b8;use Oct::d8;use Time::PT;my $VERSION='0.0';my $d8VS='P1AL5678';my $sllw=0; # SymLink LargestWidth to track for alignment
 open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!"; binmode $out8,':encoding(UTF-8)';my $cauf=1;my $cnvf=0; # crE8 local duplic8 of globl
 my $S=S('S');my $U=S('U');my $N=S('N');my $cnof=0;my $cnef=0; # had2ad SUN bak in local here since just removed from a8.pm (wanting to see where used anyway);
 my $vsrt='-v'; my @b64d;my $t;my $sbdr;my $b64c;my($pwnw,$grpw,$grpx);$pwnw=$grpw=$grpx=0; # default -v Version SoRT,reversed b8 Colr List matchz Dfalt d8 ordr
@@ -77,8 +78,9 @@ for(@ldat){if(($prmz,$blsz,$pwnr,$grup,$fsiz,$d8tz,$fnam)= /^(\S{10})(\s+\d+)(\s
  elsif($pwnw > length($pwnr)){my $pwnx=$pwnw-length($pwnr);$pwnr.=' 'x $pwnx if($grup=~ s/^(\s{$pwnx})//        );} # &&shft spAcz from ^grup 2 pwnr$ 2realign
     if($grpw < length($grup)){$grpx+=(length($grup)-$grpw) if($grpw);$grpw=length($grup);$fsiz=~ s/^/ / if($grpx);} # trak grup wid&&Xpansion amt4columnz
  elsif($grpw > length($grup)){my $tgrx=$grpw-length($grup);$grup.=' 'x $tgrx;            $fsiz=~ s/^\s{$tgrx}//  ;} # pad  grup 2widest width so far
-    $b6bs=b8c(   ' 'x(b6wd(length($blsz)  )-length($b6bs)).$b6bs);my $tnam=$fnam;#tnam=decode('UTF-8',$tnam) if length($fnam) != length(decode('UTF-8',$tnam));
+    $b6bs=b8c(   ' 'x(b6wd(length($blsz)  )-length($b6bs)).$b6bs);my $tnam=$fnam;$tnam=decode('UTF-8',$tnam);#f length($fnam) != length(decode('UTF-8',$tnam));
     $b6fs=b8c(   ' 'x(b6wd(length($fsiz),1)-length($b6fs)).$b6fs);my($n,$s); # renAmd $k $kolumn_x 2 $n 4 Named colr 2!collide with a8's eScapd dark blacK colr
+   if ($tnam =~ /\s/){if($tnam=~ /'/){$tnam='"'.$tnam.'"';}else{$tnam="'$tnam'";}} # try2wrap sngl-quOtz around tnamez (from filez) wi spAcz (nstd of SKpng \);
   # $cmpr=$prmz;$cmpr=~s/^(d)/$B$1/;my $d8im=Oct::d8->new('lsft'=>$d8tz);my $ttim=$d8im->colr('a').$k;
   # $cmpr=~s/^(-)/$W$1/; $ttim.='0'x(8-int((length($ttim)-7)/8)) if(length($ttim)<(8*8 +7));
   # $cmpr=~s/rwx/${S}7/g;$cmpr=~s/-wx/${Sb}3/g;$cmpr=~s/rws/${Y}7/g;$cmpr=~s/rwt/${m}7/g;
@@ -238,7 +240,7 @@ for(@ldat){if(($prmz,$blsz,$pwnr,$grup,$fsiz,$d8tz,$fnam)= /^(\S{10})(\s+\d+)(\s
                                   else                  {s/$sqrk/$sqra{$sqrk}$1$B/g;}}  #   but EvN2ly proly betr2sNd all Uni4mly thru a8:c8fn aftr upd8d
     $cqrk= qr/(-+)([^>])/        ;                       s/$cqrk/$Y$1$B$2/g;  chomp;    # this new Dflt chomp shud join lInz sO that t0tlz dIrectly folO $sbdr:
     $cqrk= qr/(^|[^\e])([\[\]]+)/;                       s/$cqrk/$1$P$2$B/g;} # BlO Only prnt fInl lInz if they contAin non-whItspAce            # M@chzDCodFlg
-  if(/\S/){my $mdcf=0; my $dcul=decode('UTF-8',$_);#rintf $out8 "'%-32s decoded:'%-32s","$_'","$dcul'";print $out8 ' -d' if -d "$_";say $out8 '';# DeCodUtf8Lin
+  if(/\S/){my $mdcf=0; my $dcul=               $_ ;#rintf $out8 "'%-32s decoded:'%-32s","$_'","$dcul'";print $out8 ' -d' if -d "$_";say $out8 '';# DeCodUtf8Lin
 #   for my $achr(split(//,$dcul)){if(192 <= ord($achr) && ord($achr) <= 385){$mdcf=1;last;}} # 192-385 +120 312-505  `l ~/muz/mp3/Fa* ~/muz/mp3/Pe*`
 #   if($mdcf){print $out8 $dcul;} # don't re-encode output (just print to normal STDOUT) if DecOded lIne alreaD contAins lIkely UTF-8 chrz (but thNruinz ordr?)
 #   else     {print $out8 $_;}
