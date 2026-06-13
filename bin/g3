@@ -22,7 +22,7 @@
 #   but had to add them to both the project's main root Makefile as well as the very similar one which was within the src/ sub-directory before `mk` worked!;
 # N52M9fix:when volume changes occur fix it to not print multipe lines of it while it persists;
 # NBMLATER:HTTPS://PExpect.ReadTheDocs.IO/en/stable might be a good Python altern8ive to original Expect or TCL or C-bindings style PTY controls;
-use warnings;use strict;use utf8;use v5.22;use Oct::a8;my $VERSION='0.0';my $d8VS='NC9LKTRL'; # cnsidr Dtectng&&addng custm Xtra --help basic tXt output2;
+use warnings;use strict;use utf8;use v5.22;use Oct::a8;my $VERSION='0.000001';my $d8VS='O45MLsAv'; # cnsidr Dtectng&&adng custmXtra --help tXt output 2;
 use Term::ReadKey;     # note that you can pass in as many -d=\d+ DelayDur8ionInSeconds (like MPlayer -endpos) for as many file-name params follow 2 B plAyd;
 END{      ReadMode 0;} # good practice to auto-restore orig TTY read settingz at END
           ReadMode 3;  # setup 4 raw mode or 3 cbreak mode where Ctrl-C workz since signalz are enabled
@@ -202,7 +202,8 @@ sub cb{my $cx=shift;$si=''; # CallBack for non-stream Time A of B
                $si     =''  unless(defined($si));mp($cx); my $zi= $si; $zi=~ s/\e/SKp/g; # should also send Ctrl-C break SIGINT thru
   if($nnxt){$nnxt=0;$cx->send('n');} # initE8 Quit out key passd as input if sKip SStrtTm+Dur8nSeCz was surpassed so nXt-NeXT was flagd
   # 2du:mAB don't just say blank LINES BlO && nstd use \e[0K 1K or whatever to blank screen && reset cursor to top-left (!botm) && don't ReadKey 4 Entr Ethr?;
-  if   (length($si) &&($si=~ /^C$/ || $si eq $CL)){say $out8 '' for(0..($ENV{'LINES'}-1));ReadKey(-1);} # shud grabEntr\nRetn aftr pP xe auto-C\n in muz term;
+  my $linz=50;$linz=$ENV{'LINES'} if(exists($ENV{'LINES'}));
+  if   (length($si) &&($si=~ /^C$/ || $si eq $CL)){say $out8 '' for(0..($linz-1));ReadKey(-1);} # shud grabEntr\nRetn aftr pP xe auto-C\n in muz term;
   elsif(length($si) && $si=~ /^([-+q m?f1n]|\e\[[ABCDFH56]~?)$/i ){        #rint $G."Dflt$K"."Keyz$W:$Y$zi$W;\n" if($zi=~  /SKp/);
                                               $cx->send(    $si );} # regUlRpassthru keyz
   elsif(length($si) &&  exists($kr{$si})){my $zr=$kr{$si};$zr=~ s/\e/SKp/g;#rint $o."Remp$C"."Keyz$W:$Y$zi$W:$R$zr$W;\n";
