@@ -10,7 +10,7 @@
 #     'x|q|Esc' eXitz.    -f -B -b -d -c -s -p -r -h (with the same meaningz as above) can be given on the command-line.
 use warnings;use strict;use utf8;use    v5.22;use Oct::a8;use Oct::b8;
 use Encode;use open qw(:std :encoding(UTF-8));use Oct::d8;use Curses::Simp;
-my $VERSION='0.0';my $d8VS='O1PL0TIN';my $Auth='PipStuart <Pip@CPAN.Org>';my $name=$0;$name=~s/.*\///;my $d8im;my @fldz;my @lasf;my @text;my @fclr;my $okey='';
+my $VERSION='0.0';my $d8VS='Q6DMEANS';my $Auth='PipStuart <Pip@CPAN.Org>';my $name=$0;$name=~s/.*\///;my $d8im;my @fldz;my @lasf;my @text;my @fclr;my $okey='';
 my $sepr=' YeKKeo ';my $d8bo=$cmap{'d8bo'};my $prof=$d8bo;my @limz=(63,12,31,42,23); # 'YGTBUDSN'&&'Fo57ZNVp'; # tryng2set sepr BlO 2lOd pP prOfIlz in2 Y&&o;
 # now all default base colrz @bclz below start Bold being above index 7, downside being that custom .pal8 filez won't be able to change o or p like RYGCBM
 my $bilt=0;       my @bclz= split( //,$d8bo);my $fulc=' ';my $parm='';my $barz=0;my $bold=0;my $sbld=1;my $sped= 0.975;my @spdz=(0, 0.015, 0.151, 0.475,$sped);
