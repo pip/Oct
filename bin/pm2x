@@ -8,7 +8,7 @@
 #   add optn to prnt out raD8ing blox of closest matchez going Up 1st clockwise R D L then UL UR DR DL && beyond top8 maybe further ringz start UL str8 around,
 #   consider renaming to better reflect purpose && capabilitiez,add new list sorting RGB channel dominance to complement distance listz,
 #   figure out why -size keeps shrinking for multiple -cH;
-use warnings;use strict;use utf8;use v5.22;use Oct::a8;use Color::Similarity::RGB qw(distance);my $VERSION='0.0';my $d8VS='L13L8XSR';
+use warnings;use strict;use utf8;use v5.22;use Oct::a8;use Color::Similarity::RGB qw(distance);my $VERSION='0.000_001';my $d8VS='O73MBxU8';
 my $tmsz=1;my $cndx= undef;my %pb10;my %pcdm;my %mb10;my @brit;my %rcdm; # Pal8Base10 && Pal8ColrDistMap && MapdBase10 && colrBRIghTness && ResultColrDistMapz
 my $pkyz=$cmap{'8pal8'};$pkyz=~ s/\s+//g;for my $pkey  (split(//,$pkyz)){my $pb6r=$pmap{$pkey};
   my($pred,$pgrn,$pblu)= map { $sb10{$_} * 4 } split(//,$pb6r)  ;$pb10{"o$pkey"}=[$pred,$pgrn,$pblu];} # rEmMbr thEs Orig b64 RGBz wer handmade from clrz.txt
