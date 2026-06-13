@@ -21,7 +21,7 @@
 # Currently, the only special pRameter that `dic` swallows 4 itself is lone '-w' which design8s any dFinitions should be formatted as *NOT* default Wide mode.
 # O3IMLUTD: d lifo limn lige limu limy lind lith lich ling; ## these were manually selected out for hmsp around now in many pagez of $( d li\t ) Tab-complEtn…
 # O?I!List: d lido lion lief lill lilt lily lima lixt liza; ##   && serchng 4 evry unfamiliR 4-letr m@ch (or just mAB Dscriptiv of topic clOse 2 curNt tIm)?;
-use warnings;use strict;use utf8;use v5.22;use Encode;my $VERSION='0.000001';my $d8VS='O3SMNbat'; # origfrom TeST Substitute Input,nowXtNded d8 util,l8r c8 IF?
+use warnings;use strict;use utf8;use v5.22;use Encode;my $VERSION='0.000001';my $d8VS='O9PM0Owl'; # origfrom TeST Substitute Input,nowXtNded d8 util,l8r c8 IF?
 use Oct::a8;my $word='';my $wclr=S('Wr');my $logd="$ENV{'HOME'}/.log";my %dlog; # setup global word colr SKp && LogDirectory && DicLog hash
 use Oct::d8;my $Stxt   ;my $eclr=S('Yf');my $widf=1  ; # BlO hopefully strips -w param 2flag disabling dflt wide-mode or load $word 4l8r colr8ion if!flag
 my $cw=160;$cw=$ENV{'COLUMNS'} if(exists($ENV{'COLUMNS'})); # try to setup potentially wider ColumnWidth for when attempting to join shorter linez
@@ -120,6 +120,7 @@ if(   $Stxt=~  /(\n\ +?)(\d+)(\sMoby\sThesaurus\swords)/){my $MTct=$2;my $MTin=$
       $Stxt=~ s/\ (\()(2006)(\))                                                        / $c$1$R$2$c$3$g/x;
       $Stxt=~ s/(\[)(w)(n)(\])                                                           /$B$1$O$2$M$3$B$4$G/x;
       $Stxt=~ s/(Free)(\ On)(-)(line)(\ Dictionary)(\ of)(\ Computing)                   /$Y$1$B$2$C$3$M$4$W$5$w$6$O$7/gx;
+      $Stxt=~ s/\(\s*(\d\d?)\s+(Jan|Febr?|Marc?h?|Apri?l?|May|June?|July?|Aug(ust)?|Sept?|Oct(ober)?|Nov|Dec)(uary|ust|ember)?\s+(\d{4})\s*\)/$w($Y$1$o $2$R $6$w)/gx; # hopefully this is a reasonably place to insert the new calendar date of release for FOLDOC or other dictionary d8abase release dates, now colored? ;
       $Stxt=~ s/\ (\()(\d+)(\ January|\ March)(\ 20\d+)(\))                             / $c$1$Y$2$o$3$R$4$c$5/gx; # may want to join all Month names here l8r
       $Stxt=~ s/(\[)(f)(o)(l)(d)(o)(c)(\])                                               /$B$1$Y$2$B$3$M$4$W$5$w$6$O$7$B$8$G/gx; # broke FOLDoC apart lIk abov
       $Stxt=~ s/(Jargon)(\ File\ )(\()(version)(\ \d+)(\.)(\d+)(\.)(\d+)                 /$C$1$R$2$G$3$P$4$B$5$W$6$M$7$W$8$Y$9/gx;
