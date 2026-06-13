@@ -36,7 +36,18 @@ if($sdlf){ #SDL::init_sub_system(SDL_INIT_JOYSTICK); # below w(idth) h(eight) d(
    $sxap  = SDLx::App->new(w => $widt*8*$xscl,h => $hite*16*$yscl,d => 32,t => $name,f => SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_HWACCEL | SDL_RESIZABLE,eoq =>1);
    $sfss  = SDL::Surface->new(SDL_HWSURFACE | SDL_ASYNCBLIT, $widt*8, $hite*16, 32, 0, 0, 0, 0); # above spelling diff SDL_RESIZABLE && resizeable 
    $evnt  = SDL::Event  ->new( );my $tmpt;
-   $tmpt  = SDLx::Text  ->new( font => '/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf', color => [255,255,255,255], size => 13, bold=>0);
+   $tmpt  = SDLx::Text  ->new(#font => '/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf', color => [255,255,255,255], size => 13, bold=>0);
+                              #font => '/home/pip/dvl/f8/f0nt/psf/tek.ttf'                              , color => [255,255,255,255], size => 13, bold=>0);
+                              # abov test of psftools psf2bdf in2 FontForge gNr8 MS, got TTF rendering error && crashed right out because 0-width text?;
+                              #font => '/home/pip/dvl/f8/bin/tep.ttf' ... gener8d from mkttf.py but lacked ImageMagick py3 lib so got sAm 0-width eror!;
+                              # abov worked for mkttf aftr changing potrace-wrapper.sh to omit new v7 `magick` && just use old v6 `identify` && `convert`;
+                              #font => '/home/pip/dvl/f8/bin/tek.ttf'                                   , color => [255,255,255,255], size => 13, bold=>0);
+                              # abov worked for super-basic: import fontforge; bdf_font = fontforge.open("tek.bdf"); new = fontforge.font();
+                              #   new.importBitmaps(bdf_font.path, 1); new.selection.all(); new.autoTrace(); new.generate(bdf_font.path + ".ttf");
+                              #font =>                      'teb.ttf'                                   , color => [255,255,255,255], size => 13, bold=>0);
+                              # abov gener8d from bitmapfont2ttf aftr including aftr STARTPROPERTIES PIXEL_SIZE RESOLUTION_X&&Y as 16 8 16 but warnd && 2wId!
+                              #   tried again after changing bdf.py to load properties along with regular SIZE && removing the PROPERTIES just aded 2 bdf;
+                               font =>                      'mED.ttf'                                   , color => [255,255,255,255], size => 13, bold=>0);
   #size=>13,bold=>0 fitz widt;  #size => 16, x => 0, y => 0, h_align => 'left', shadow => 1, bold => 1, text => 'Test',  # other Text->new atrbutz
    $sttf{'LibM-W13'} = $tmpt;
    $sxap->draw_rect([ 0,  0,$widt*8*$xscl,$hite*16*$yscl],[0,0,0,0]); # start blank full app bkgr (wish alpha'd bg thru2dsktp like GnomTerm)
