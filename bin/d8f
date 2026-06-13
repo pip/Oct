@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+# Q1PL8d0f:d8f crE8d by PipStuart <Pip@CPAN.Org> to pull now's d8 apart into separate FigLet callz padding to 20-columns wide (&& capping) to fit 160wd termz;
+# 2du:add .f0nt support wi 2 prEpNded \s\s columnz,substr '' f0|FL rvrs colmz anon-ArAz,get ENV COLUMNS 2 calQ betr than hRd-cOded 20z && scAle .f0nt support;
+use strict;use warnings;use utf8;use v5.22;use Oct::a8;use Oct::d8;use Oct::f8;my $d8VS='Q34LJ0BS';
+my  $d8nw=Oct::d8->new();my $d8st="$d8nw";my @d8fz=split(//,$d8st);my $clmz=$ENV{'COLUMNS'} // 160;my $widt=int($clmz / 8);
+my  @mxwd=();my @flcz=();my $mxht=0;my $flf0= shift(@ARGV) // 'fraktur'; # ck ARGV 4 -f0 or -FL pRamz 2 design8 .f0nt or .flf path;
+for(@d8fz){push(@flcz,[]);push(   @{$flcz[-1]},`figlet -f $flf0    $_`);}
+for(0..$#flcz){$mxwd[$_]=0;$mxht=$#{$flcz[$_]} if($mxht < $#{$flcz[$_]});
+  for my $spln(0..$#{$flcz[$_]}){chomp($flcz[$_][$spln]);$mxwd[$_]=length($flcz[$_][$spln]) if($mxwd[$_] < length($flcz[$_][$spln]));}}
+for(0..$#flcz){
+  for my $spln(0..$#{$flcz[$_]}){
+    $flcz[$_][$spln] = (' ' x int(($widt - $mxwd[$_])/2)) . $flcz[$_][$spln] if($mxwd[$_] < $widt);
+    $flcz[$_][$spln].=  ' ' x      $widt;
+    $flcz[$_][$spln] = substr($flcz[$_][$spln],0,$widt);}}
+for my $spln(0..$mxht){
+  for(0..$#flcz){
+    print $d8cS[$_];
+    print $flcz[$_][$spln];} say '';}
