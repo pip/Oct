@@ -1,0 +1,200 @@
+#!/bin/sh
+# Q4FM6xAW:aw orig. AW copied by PipStuart <Pip@CPAN.Org> from Frederic Cambus' GitHub page for the AnsiWeather project,in order 2 tIdy&&rEwrIte in Perl?;
+# (Pip-modified) AnsiWeather 1.19.0 - Copyright (c) 2013-2023, Frederic Cambus - https://github.com/fcambus/ansiweather
+#      Created: 2013-08-29;
+# Last Updated: 2023-01-09; # AnsiWeather is released under the BSD 2-Clause license. See LICENSE file for details. SPDX-License-Identifier: BSD-2-Clause;
+# 2du:mk option for hourly forecasts instead of just daily,add order sequence option which auto-sets (&& unsetz any UPPERCASE flagz included2) show flagz,
+#     add support for imperial, metric, standard true/false values in config_file in addition to old units value (which should behave like -IiMmNn flagz);
+d8VS="Q6DM7b64"; # this d8 is close to the last upd8 date&&time by Pip; # aw may be released (soon?) under the GNU GPL version 3+. See GNU.Org && FSF.Org;
+LC_NUMERIC=C; export LC_NUMERIC
+if   [ -n "$AWRC"                      ]; then config_file="$AWRC"
+elif [ -s "$XDG_CONFIG_HOME"/aw/config ]; then config_file="$XDG_CONFIG_HOME"/aw/config
+elif [ -s    "$HOME"/.config/aw/config ]; then config_file="$HOME"/.config/aw/config
+else                                           config_file=~/.awrc; fi
+get_config() { ret=""
+  if [ -f             "$config_file"   ]; then ret=$(grep "^$1:" "$config_file" | cut -d: -f2-); fi
+  if [       "$ret" = ""               ]; then return        1
+  else echo  "$ret"; fi; } # note:if there really are only imperial (Dfalt) or metric units, maybe specify them with -U && -u instead of spelling OPTARG?;
+fetch_cmd=$(get_config "fetch_cmd" || echo "curl -sf"); # mAB this should be made an option also, && not just in the config?;
+PrntHelp() { env printf "aw (AbbreV8dWeather) v0.0.$d8VS by: PipStuart to get weather d8a (originally based on Frederic Cambus' AnsiWeather v1.19.0 available on: FCambus GitHub);
+  -h          print this help text message and then exit normally.  help   text output is designed to be viewed best on terminals of 160+ or 80  chars-wide;
+  -v          print  version  text message and then exit normally. version text output is designed to be viewed fine on terminals of         80+ chars-wide;
+  -k apikey   provide OpenWeatherMap.Org API key: apikey. default behavior is to use author's key without needing to specify separate one (or FC's 4 4cast);
+  -l loc8n    specify location: loc8n for where to query weather. default location is: Oshkosh,WI,US when this option is not specified. num id doesn't work;
+  -c 4castz   specify weather forecasts obtained for day count: 4castz (which can probably be 0..7). default behavior is to 4cast 0 days (i.e.,do no 4cast);
+  -4          specifies that a forecast is desired for all 4 days ahead automatically. this is just a cute mnemonic shortcut 4 4casting. (my key duz!work!);
+  -8          specifies that all 8 show flags and display options should be selected as true (or automatically turn on all 8 field output options with -8!);
+   Units Note:original AnsiWeather used -u followed by either 'imperial' or 'metric' to specify units and the aw config file still works with: units option;
+  -i  or -I   imperial  units flag options which set either: true (lowercase) or false (UPPERCASE). show imperial units? default:  true, -i; -I same as: -m;
+  -m  or -M    metric   units flag options which set either: true (lowercase) or false (UPPERCASE). show  metric  units? default:*unset, **; -M same as: -n;
+  -n  or -N   standard  units flag options which set either: true (lowercase) or false (UPPERCASE). show standard units? default: false, -N; -N same as: -i;
+  -a  or -A   ansi            flag options which set either: true (lowercase) or false (UPPERCASE). display ANSI colors? default:  true, -a; -8 nonUnit hEr;
+  -s  or -S   symbols         flag options which set either: true (lowercase) or false (UPPERCASE). display     symbols? default:  true, -s; needs: UniCode;
+  -u  or -U   show_uvi        flag options which set either: true (lowercase) or false (UPPERCASE). show    UVI        ? default: false, -U;
+  -w  or -W   show_wind       flag options which set either: true (lowercase) or false (UPPERCASE). show   wind        ? default: false, -W;
+  -p  or -P   show_pressure   flag options which set either: true (lowercase) or false (UPPERCASE). show pressure      ? default: false, -P;
+  -d  or -D   show_daylight   flag options which set either: true (lowercase) or false (UPPERCASE). show daylight-times? default: false, -D;
+  -t  or -T   show_humidity   flag options which set either: true (lowercase) or false (UPPERCASE). show humidity      ? default:  true, -t; 4 all:aw -uwpd;
+  -f  or -F   show_feels_like flag options which set either: true (lowercase) or false (UPPERCASE). show    feels-like ? default:  true, -f; all 8:aw -8   ;
+" && exit 0; } # when called, hopefully just print above help message (which *can* contain Unicode for env printf usually in /usr/bin), then exit normally;
+#     getopt  --longoptions help,location,units,forecast,Forecast,showfeelslike,ansi,symbols,apikey,showuvi,showwind,showhumidity,showpressure,showdaylight …;
+while getopts hvk:l:c:48iImMnNaAsSuUwWpPdDtTfF option # no getopts cmnd,no --help,no man page;man getopt(no's') DscrIbz util-linux v2.37.2 2021-06-02 version;
+do case "${option}" in # not sure if maybe sh (bash compat. mode?) getopts here can handle -l longoptz somehow. atMpt gave: "aw: 20: getopts: … bad var name";
+    h)        PrntHelp           ;;
+    v)    env printf "aw (AbbreV8dWeather) v0.0.$d8VS (originally based on AnsiWeather v1.19.0);" && exit 0;;
+    k)         api_key=${OPTARG} ;;
+    l)        location=${OPTARG} ;;
+    c)        forecast=${OPTARG} ;;
+    4)        forecast="4"       ;;
+    8)        show_uvi="true"    ;  # maybe -8 should explicitly set -ansi -symbols humidi-ty && -feels_like also, but since they're true by default omitting;
+             show_wind="true"    ;
+         show_pressure="true"    ;
+         show_daylight="true"    ;;
+    i)           units="imperial";; # for these 6 options orig. AW required -u for units followed by 'imperial' or 'metric' (or 'standard'). I've madeM flagz;
+    I)           units="metric"  ;; # false    -Imperial is    -metric
+    m)           units="metric"  ;;
+    M)           units="standard";; # false    -Metric   is sta-ndard
+    n)           units="standard";;
+    N)           units="imperial";; # false sta-Ndard    is    -imperial (back to default)... a little wonky that there's 3 options. flags aren't best 2 set!;
+    a)            ansi="true"    ;; # for these 8 options orig. AW required 'true' or 'false' OPTARG but this insted uses all UpCase flags true,lowcase false;
+    A)            ansi="false"   ;;
+    s)         symbols="true"    ;;
+    S)         symbols="false"   ;;
+    u)        show_uvi="true"    ;;
+    U)        show_uvi="false"   ;;
+    w)       show_wind="true"    ;;
+    W)       show_wind="false"   ;;
+    p)   show_pressure="true"    ;;
+    P)   show_pressure="false"   ;;
+    d)   show_daylight="true"    ;;
+    D)   show_daylight="false"   ;;
+    t)   show_humidity="true"    ;;
+    T)   show_humidity="false"   ;;
+    f) show_feels_like="true"    ;;
+    F) show_feels_like="false"   ;;
+    \?) exit 64;; # EX_USAGE
+  esac; done
+jqpath=$(command -v jq); if [ "$jqpath" = "" ]; then echo "ERROR: Cannot find jq binary"; exit 69; fi # EX_UNAVAILABLE
+bcpath=$(command -v bc); if [ "$bcpath" = "" ]; then echo "ERROR: Cannot find bc binary"; exit 69; fi # EX_UNAVAILABLE
+[ -z "$api_key"         ] &&         api_key=$(get_config "api_key"         || echo "$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)") # OpenWeatherMap API key (Pip's,!FC's);
+# What Location?     :                 example "Rzeszow,PL", or ...                 "Columbia,MO,US"  # (Pip's old default, && hopefully eventual home!);
+[ -z "$location"        ] &&        location=$(get_config "location"        || echo "Oshkosh,WI,US" ) # (Pip's new default, && hopefully  4-year  home!);
+[ -z "$units"           ] &&           units=$(get_config "units"           || echo "imperial"      ) # System of Units    : "metric" or "imperial"or"standard"
+# Show forecast      : How many days?, example "7". "0" is default; 2du:Dtect config_file imperial, metric, standard set as:   "true" or "false" too;
+[ -z "$forecast"        ] &&        forecast=$(get_config "forecast"        || echo 0               )
+[ -z "$ansi"            ] &&            ansi=$(get_config "ansi"            || echo  true           ) # Display ANSI colors:   "true" or "false"
+[ -z "$symbols"         ] &&         symbols=$(get_config "symbols"         || echo  true           ) # Display symbols    : t||f (nEdz Unicode Kpabl displA);
+[ -z "$show_uvi"        ] &&        show_uvi=$(get_config "show_uvi"        || echo false           ) # Show    UVI        :   "true" or "false"
+[ -z "$show_wind"       ] &&       show_wind=$(get_config "show_wind"       || echo false           ) # Show   wind        :   "true" or "false"
+[ -z "$show_pressure"   ] &&   show_pressure=$(get_config "show_pressure"   || echo false           ) # Show pressure      :   "true" or "false"
+[ -z "$show_daylight"   ] &&   show_daylight=$(get_config "show_daylight"   || echo false           ) # Show daylight      :   "true" or "false"
+[ -z "$show_humidity"   ] &&   show_humidity=$(get_config "show_humidity"   || echo  true           ) # Show humidity      :   "true" or "false"
+[ -z "$show_feels_like" ] && show_feels_like=$(get_config "show_feels_like" || echo  true           ) # Show feels-like    :   "true" or "false"
+#    dateformat=$(get_config "dateformat"      || echo "%Y %b %e %a %Z %z"        ) # had %N 4 9 zer0z of Nanosecondz but OpenWeatherMap retnz no sub-secz!;
+     dateformat=$(get_config "dateformat"      || echo "%a %b %e 00:00:00 %z %Y"  ) # needed 2 exclude %zone 2 get d8 CLI 2 recognize the date 4m@ properly;
+#    timeformat=$(get_config "timeformat"      || echo "%Y %b %e %a %Z %z %R:%S%p") # preT clOse2 d8 ordr Xpanded,shOwing:Dow&&Zonez&&AM/PM+Nano,no phassez;
+     timeformat=$(get_config "timeformat"      || echo "%a %b %e %R:%S:00 %z %Y"  ) # shud B Xact d8 ordr Xpanded,shOwing:Thu May 28 09:11:16:52 -0500 2026;
+     background=$(get_config "background"      || echo "\e[01;44m" )
+           text=$(get_config            "text" || echo "\e[01;36m" )
+           data=$(get_config "data"            || echo "\e[01;33m" )
+           dlim=$(get_config "dlim"            || echo "\e[01;35m:")
+           dash=$(get_config "dash"            || echo "\e[01;34m-")
+      termin8or=$(get_config "termin8or"       || echo "\e[01;37m;")
+  greeting_text=$(get_config   "greeting_text" || echo "Weathr4"   )
+      wind_text=$(get_config       "wind_text" || echo "Wind"      )
+feels_like_text=$(get_config "feels_like_text" || echo "fElzlIk"   )
+  humidity_text=$(get_config   "humidity_text" || echo "hUmidiT"   )
+  pressure_text=$(get_config   "pressure_text" || echo "prSure"    )
+   sunrise_text=$(get_config    "sunrise_text" || echo "SunrIz"    )
+    sunset_text=$(get_config     "sunset_text" || echo "Sunset"    )
+  forecast_text=$(get_config   "forecast_text" || echo "4cast"     )
+            sun=$(get_config "sun"             || echo "\e[01;33m\xe2\x98\x80")
+           moon=$(get_config "moon"            || echo "\e[01;36m\xe2\x98\xbd")
+         clouds=$(get_config "clouds"          || echo "\e[01;37m\xe2\x98\x81")
+           rain=$(get_config "rain"            || echo "\e[01;34m\xe2\x98\x94")
+            fog=$(get_config "fog"             || echo "\e[22;37m\xe2\x96\x92")
+           mist=$(get_config "mist"            || echo "\e[01;34m\xe2\x96\x91")
+           haze=$(get_config "haze"            || echo "\e[22;33m\xe2\x96\x91")
+           snow=$(get_config "snow"            || echo "\e[01;37m\xe2\x9d\x84")
+   thunderstorm=$(get_config "thunderstorm"    || echo "\e[01;31m\xe2\x9a\xa1");[ "$forecast" != 0 ] && api_key="$(b10 25fEF5MtEGdqB6eZx3Mt57|heX)"; #swp keyz;
+api_cmd=$([ "$forecast" != 0 ] && echo "forecast/daily" || echo "weather"); # my API key can't 4cast so above tries to use FC's original key (which does work);
+if [ "$location" -gt 0 ] 2> /dev/null; then                                                             api_key="$(b10 25fEF5MtEGdqB6eZx3Mt57|heX)"; #b64-Ized;
+  weather=$($fetch_cmd "https://api.openweathermap.org/data/2.5/$api_cmd?id=$location&units=$units&appid=$api_key"); # needFC's key for weather?id calls too?!;
+else # Location is all numeric (but what about all numeric zip-code, which could && should be accepted in addition to integer id numbers?);
+  location=$(echo "$location" | sed "s/ /%20/g"); # Location is a string; should be able to substitute in plus '+' chars instead of %20 for each space in name;
+  weather=$($fetch_cmd "https://api.openweathermap.org/data/2.5/$api_cmd?q=$location&units=$units&appid=$api_key");fi
+if [ -z            "$weather" ]; then echo "ERROR: Cannot fetch weather data"                       ; exit 75; fi # EX_TEMPFAIL
+status_code=$(echo "$weather" | jq -r '.cod' 2>/dev/null)
+if [ "$status_code" != 200    ]; then echo "ERROR: Cannot fetch weather data for the given location"; exit 69; fi # EX_UNAVAILABLE
+if [ "$show_uvi" = true ] && [ "$forecast" = 0 ]; then
+  lat=$(echo "$weather" | jq -r '.coord.lat')
+  lon=$(echo "$weather" | jq -r '.coord.lon'); uvdata=$($fetch_cmd "https://api.openweathermap.org/data/2.5/uvi?lat=$lat&lon=$lon&appid=$api_key")
+  uvi=$(echo "$uvdata"  | jq -r '.value'    ); fi
+epoch_to_date() {
+  if date -j -r "$1" +"%a %b %d" > /dev/null 2>&1; then ret=$(date -j -r "$1" +"$dateformat");                    # BSD
+  else                                                  ret=$(date -d   "@$1" +"$dateformat"); fi; echo "$ret"; } # GNU
+if [ "$forecast" != 0 ]; then
+         city=$(echo "$weather" | jq -r '.city.name')
+      flength=$(echo "$weather" | jq    '.list | length')
+     forecast=$([ "$forecast" -gt "$flength" ] && echo "$flength" || echo "$forecast")
+else     city=$(echo "$weather" | jq -r '.name')
+  temperature=$(echo "$weather" | jq    '.main.temp'       | xargs printf "%.0f")
+     humidity=$(echo "$weather" | jq    '.main.humidity')
+   feels_like=$(echo "$weather" | jq    '.main.feels_like' | xargs printf "%.0f")
+     pressure=$(echo "$weather" | jq    '.main.pressure')
+          sky=$(echo "$weather" | jq -r '.weather[0].main')
+      sunrise=$(echo "$weather" | jq    '.sys.sunrise')
+       sunset=$(echo "$weather" | jq    '.sys.sunset')
+         wind=$(echo "$weather" | jq    '.wind.speed')
+      azimuth=$(echo "$weather" | jq    '.wind.deg'); fi
+set -- $(get_config "wind_directions" || echo "N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW")
+if [ "$forecast" = 0 ]; then shift "$(echo "scale=0; ($azimuth + 11.25)/22.5 % 16" | bc)"; direction=$1; fi
+epoch_to_time() {
+  if date -j -r "$1" +"%r" > /dev/null 2>&1; then ret=$(date -j -r "$1" +"$timeformat")                     # BSD
+  else                                            ret=$(date -d   "@$1" +"$timeformat"); fi; echo "$ret"; } # GNU
+if   [ "$forecast"  = 0 ]; then
+  if [ -n "$sunrise"    ]; then sunrise_time=$(d8c $(d8 $(epoch_to_time "$sunrise"))); fi
+  if [ -n "$sunset"     ]; then  sunset_time=$(d8c $(d8 $(epoch_to_time "$sunset" ))); fi; fi
+now=$(date +%s)
+if   [ "$forecast" != 0 ]; then period="none"
+else if        [ -z "$sunset" ] || [ -z         "$sunrise" ]; then period="day"
+  elif [ "$now" -ge "$sunset" ] || [ "$now" -le "$sunrise" ]; then period="night"
+  else                                                             period="day"; fi; fi
+case $units in
+  metric  ) scale="°C"; speed_unit="m/s"; pressure_unit="hPa"
+    pressure=$(echo "$pressure" | xargs printf "%.0f");;
+  imperial) scale="°F"; speed_unit="mph"; pressure_unit="inHg"
+    if [ "$forecast" = 0 ]; then pressure=$(echo "$pressure*0.0295" | bc | xargs printf "%.2f"); fi ;; esac
+get_icon() { case $1 in
+    Clear       ) if [ $period = "night" ]; then echo "$moon "
+                  else                           echo "$sun "; fi      ;;
+    Clouds      ) echo                                "$clouds "       ;;
+    Rain        ) echo                                "$rain "         ;;
+    Fog         ) echo                                "$fog "          ;;
+    Mist        ) echo                                "$mist "         ;;
+    Haze        ) echo                                "$haze "         ;;
+    Snow        ) echo                                "$snow "         ;;
+    Thunderstorm) echo                                "$thunderstorm " ;; esac; }
+if [ "$forecast" != 0 ]; then output="$background$text$city $forecast_text$text$dlim "; i=0
+  while [ $i -lt "$forecast" ]; do
+     day=$(                              echo "$weather" | jq    ".list[$i]")
+    date=$(d8c $(d8 $(epoch_to_date   "$(echo "$day"     | jq -r '.dt')") | c8 -c0-3))
+     low=$(                              echo "$day"     | jq -r '.temp.min' | xargs printf "%.0f")
+    high=$(                              echo "$day"     | jq -r '.temp.max' | xargs printf "%.0f")
+    icon=""
+    if [ "$symbols" = true ]; then sky=$(echo "$day"     | jq -r '.weather[0].main'); icon=$(get_icon "$sky"); fi
+                                         output="$output$text$date$dlim $(tmpc $high)$data$text/$(tmpc $low)$data $scale $icon"
+    if [ $i -lt $((forecast-1)) ]; then  output="$output$dash "; fi
+    i=$(( i + 1)); done;                 output="$output$termin8or";
+else
+  if [ "$symbols"         = true ]; then icon="$(get_icon "$sky")"; fi
+                                         output="$background$text$greeting_text $city$dlim $(tmpc $temperature)$data $scale $icon"
+  if [ "$show_feels_like" = true ]; then output="$output$dash$text $feels_like_text$dlim $(tmpc $feels_like)$data $scale "; fi
+  if [ "$show_uvi"        = true ]; then output="$output$dash$text UVI$dlim$data $uvi "; fi
+  if [ "$show_wind"       = true ]; then output="$output$dash$text $wind_text$dlim$data $wind $speed_unit $direction "; fi
+  if [ "$show_humidity"   = true ]; then output="$output$dash$text $humidity_text$dlim$data $humidity%% "; fi
+  if [ "$show_pressure"   = true ]; then output="$output$dash$text $pressure_text$dlim$data $pressure $pressure_unit "; fi
+  if [ "$show_daylight"   = true ]; then output="$output$dash$text $sunrise_text$dlim$data $sunrise_time $dash$text $sunset_text$dlim$data $sunset_time "; fi
+                                         output="$output$termin8or"; fi # by default, conclude all output with a BrightWhite semi-colon as output termin8or;
+if [ "$ansi" = true ] && [ "$NO_COLOR" = "" ]; then env printf "$output\e[0m\n" # now handlz No-Color.Org recommend8ion 2 Dtect NO_COLOR NvIronmNt variable;
+else                                                env printf "$output\n" | sed "s/$(printf '\e')\[[0-9;]*m//g"; fi
