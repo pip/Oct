@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-use strict;use warnings;use utf8;use v5.22;use Oct::a8;use Oct::d8;my $nwd8=new Oct::d8;my $d8VS='NBSL4hLp';my $dbug=0; 
+use strict;use warnings;use utf8;use v5.22;use Oct::a8;use Oct::d8;my $nwd8=Oct::d8->new();my $d8VS='NBSL4hLp';my $dbug=0; 
 my $edsp=$ENV{'DISPLAY'};my $xrgo=`xrandr`;my @ifcs; # was xrg aliased to xrandr|grep '^[DH][^ ]*'  # 2du:obtain VirtDsktp 4WxH2 dimNsionz from Utl2;
 my @ifca=([],[]);my @lrge=(0,0,0,0);my %if2n;my $wmow=0;my $wmoh=0;my $wmcd=`wmctrl -d`;if($wmcd =~ /(\d+)x(\d+)/){$wmow=int($1/4);$wmoh=int($2/2);}
 sub chvp{my $vprm=shift || 0;my $vwid=0;my $vhit=0;if($vprm >= 4){$vhit=$wmoh;$vprm -= 4;} $vwid=$vprm*$wmow;system("wmctrl -o $vwid,$vhit");}
