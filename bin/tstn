@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-use strict;use warnings;use utf8;use v5.10; # this simple test should accept most expected arguments in any order to change w8, map, or path loops to search
+use strict;use warnings;use utf8;use v5.22; # this simple test should accept most expected arguments in any order to change w8, map, or path loops to search
 use      Oct::d8::dur8; # set d8::dur8ion to w8 for some base-64 number of frames (like b10('U') == 30 to w8 half-of-a-second or '3F' for 3.25 seconds)
 use      Oct::p8::nvg8;  my $durs       =   '88';for(0..$#ARGV){if($ARGV[$_]=~ /^\d?[A-Z]\d?$/i){$durs= $ARGV[$_]; splice(@ARGV,$_,1); last();}} # char
 my $nvg8=Oct::p8::nvg8->new();     my $s='8W8N8';for(0..$#ARGV){if($ARGV[$_]=~ /^[018][WE]\d+/i){$s   = $ARGV[$_]; splice(@ARGV,$_,1); last();}} # room
