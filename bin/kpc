@@ -38,7 +38,7 @@ use Sort::Naturally;          # non-core, libsort-naturally-perl on Ubuntu
 use Term::ReadKey  ;          # non-core, libterm-readkey-perl   on Ubuntu
 use Term::ShellUI  ;          # non-core, libterm-shellui-perl   on Ubuntu
 use File::KeePass       0.03; # non-core, libfile-keepass-perl   on Ubuntu >=v0.03 needed due to critical bug fixes
-use Oct::a8;             # non-core, altern8 coloring
+use Oct::a8;                  # non-core, altern8 coloring
 our $FORCED_READLINE = undef; # Auto-select
 #ur $FORCED_READLINE = 'Term::ReadLine::Gnu'  ; # These are a developer convenience to force using a particular Term::ReadLine module
 #ur $FORCED_READLINE = 'Term::ReadLine::Perl' ;
@@ -4191,4 +4191,3 @@ Microsoft Windows
 =pod SCRIPT CATEGORIES
 
 C<UNIX/System_administration>, C<Win32/Utilities>
-
