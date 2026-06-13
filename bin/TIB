@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 use strict;use warnings;use utf8;use v5.22;use Oct::a8;my $disp=shift(@ARGV) // 'HA0';my $d8VS='O32L00lo';
-                                                            my $dvid=shift(@ARGV) //   18 ;my $rslt;
+                                                       my $dvid=shift(@ARGV) // 'XP-Pen Pen Pen (0)'; # 18 was just id B4 but chngz!
+                                                       my $rslt;
 if   ($disp =~ /^-?-?r$/i  ){$rslt = system(qq(xinput --set-prop $dvid 157  1 0 0  0 1 0  0 0 1));} # special just -r (eset)
 elsif($disp =~ /^\d$/  ){$disp =~   s/^/DisplayPort-/;} # Xpand just digitz to DP, letrz 2 whatevr...
 elsif($disp =~ /^([a-c])$/i){$disp=~s/^($1)$/HDMI-$1-0/;} # \U UprKs the cap2r?
@@ -11,7 +12,7 @@ elsif($disp =~ /^DD\d$/){$disp =~ s/^DD/DVI-D-/ ;} #  DP2 1920 1080 1920    0   
 elsif($disp =~ /^HA\d$/){$disp =~ s/^HA/HDMI-A-/;} #  HA0 1920 1080    0 1080    0    3 
 elsif($disp =~ /^HB\d$/){$disp =~ s/^HB/HDMI-B-/;} #  DP1 1920 1080 1920 1080    0    1 # Disconnected: DD0;
 if(defined($disp) && $disp && $disp =~ /^H?D?M?V?I?(isplayPort)?-([A-I]-)?\d$/){
-  $rslt = system(qq(xinput map-to-output $dvid $disp));} # else mAB autO-varE on -r (eset) 2 B othr wA?; 'UGTABLET 13.3 inch PenDisplay', not 10 or 14 but 18?;
+  $rslt = system(qq(xinput map-to-output '$dvid' $disp));} # else mAB autO-varE on -r (eset) 2B othr wA?; 'UGTABLET 13.3 inch PenDisplay',not 10 or 14 but 18?;
 # O31LIGHT:Before reboot was below name, but since: 'XP-Pen 13.3 inch PenDisplay';
 #HPTPadDv='UGTABLET 13.3 inch PenDisplay'; # O2ILIxOr:sO `xinput` is probably one of:
 #HPTPadDv='UGTABLET 13.3 inch PenDisplay Pen (0)' ;
