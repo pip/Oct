@@ -50,6 +50,7 @@
 # O44MKing:HTTPS://YouTu.be/RytNZ2btZxE "Magic Chess Tours (with Knights and Kings)" # O41:0Bv0 of NumberPhile DscrIbing pretty cool routez all about the bord;
 # old:could fixSimp wi wantarray2alow $simp->Text('non-ary'),mk bullet blastz,mk game srvr,plyr matchr,abiliT2anOt8 or plA ahed on both sIdz whil w8ng4oppo2mv;
 #   Octo is 8base d8a applic8ions:V8 abbreV8ions,b8 nums,d8 stamps,f8 RU(Red)E4||2lern8bow?pal8NtrE RGB && f0nt -##-,c8 col8 scrn,r8 valU8,m8 rel8,l8 skedul8r?
+# Q8NM5chS:HTTPS://GitHub.Com/Spinojara/nchess is a Curses-based UCI-compatible Chess TUI ("GUI") which maybe should be studied 2 @least learn 2 UCI StockFish;
 use warnings;use strict;use utf8;use v5.22;use Encode;
 use Oct::a8;#se Oct::c8;
 use Oct::b8;use Oct::d8;my $VERSION='0.1';my $d8VS='P76M8v01';my $name=$0;$name =~ s/^.*\///;my $Dbug=0; # version,program name
