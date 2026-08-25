@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 # F3HMAJvw:lodH crE8d by PipStuart <Pip@CPAN.Org> 2XperimNt withpRsing mycustom .Hrc d8afIl format in2my new hybrid array/hash "rash" d8a structure(&&objX?);
-# 2du:considr $Hrcd shudBDfInd rEcursivly of a8->new objX insted of hashrF2 mAn ArAz(&&objXwudsimplify lOdng multi4m@fIlz),
+# 2du:go thru && replace all calls to print to use a8.pm o8 insted since it will respect the $ENV{NO_COLOR} flag to strip colorz wi sS B4 outputting UTF8,
+#   considr $Hrcd shudBDfInd rEcursivly of a8->new objX insted of hashrF2 mAn ArAz(&&objXwudsimplify lOdng multi4m@fIlz),
 #   hash wrapper interface shudBAbl2ndX orig mDL && X listz sepR8ly,hash shud alsO LUT Ech kEyz contXt ndX4rEassoC8ion onrEPtedUsez,
 #   shud lookup Ech new contXt4consistNtcolr inBgn && apply to Defaultz of whole line colr 4 u: uSER && h: hOST,
 #   shadow $ajvk 2hav VkEyz wi orig spAcng && 4mDLmAPZ2 or just special cAse spAcz in Ust8z, Dmn8, && aliasez,
