@@ -16,7 +16,7 @@
 " nOt:O36LEOVI:HTTPS://ReddIt.Com/r/vim/comments/1b7lm0k/convince_me_to_stick_with_vim_over_nvim talked th@ nv :! disalowz interaction (just no term input?),
 "    :term letz some or most interaction thru, && :make || :%!filter each apparently have their own sepR8 issues (th@ should prove inform8ive to research);
 "    :%s/\n\n\+/\r\r/ shud substitute many (>2) consecutive NewLinez in2!not new \null now WTF? but carriage\return then will supplant back in line-endings?;
-" O3QMFibo: k"xywj"yywA ^R(propr)=^Rx+^Ry0@f clevr macrO2gNr8 Fiboz:HTTPS://ReddIt.Com/r/vim/comments/1bkvzeo/macro_to_generate_the_fibonacci_sequence 
+" O3QMFibo: k"xywj"yywA^M ^R(propr)=^Rx+^Ry^M0@f clevr macrO2gNr8 Fiboz:HTTPS://ReddIt.Com/r/vim/comments/1bkvzeo/macro_to_generate_the_fibonacci_sequence 
 " Yank the macro to the f-register (unless you modify it to your liking) and create two lines, the first one with a 0 and the second with a 1. Start the
 "   macro from the latter by typing `@f` in normal mode. The macro yanks the two values into registers x and y and an arithmetic expression returns their sum.
 " At the end the macro is called recursively. # posted by dfwtjms OP, thN:
@@ -25,8 +25,12 @@
 "   ReddItor: dhruvasagar aded improvmNt: k"xywj"yywo^R=^Rx+^Ry^M^[0@f && ReddItor: sedm0784 wrOt similR wiot Uzng XprSion registr by typing folOing kEyz:
 "     qqqqfqqqyiwo<Esc>pA<Space>0<Space>1<Esc>2b@fIRedacted:<Space><Esc>qqfOcc0^V<Esc><Esc>Od2w<Esc>O^V^Xg_yiwA<Space>^V<Esc>p2ge^V^AdawO^V^R-^V<Esc>xa^V^V^V…
 "     … ^A^V<Esc>0y$ddg_@0^V^X0@f<Esc>3+^AyiwOO^V<Esc>^R0a3^V<Esc><Esc>0y$dd@02|r2^r1+yiw-O^R0|vydd<Esc>0y$dd@0^XO^R0-y$^R0+<Esc>^y$dd@03k3dd@0q;  ## duzlotz!;
-"   ReddItor: Band-Stunning wrOt shortr: j"iYj"jYo^R=^Ri+^Rj^M^C2k \n 0 \n 1;
+"   ReddItor: Band-Stunning wrOt shortr: j"iYj"jYo^R=^Ri+^Rj^M^C2k \n 0 \n 1; # Note:macrOz nEd insted of '^M' literal <C-m> by 1st prSing <C-v> in insrtmOd;
 " O3QMDelS:rEmMbr th@ cmndmOd: d/Word  deletes everything from cursor to m@ch;
+" O44MCPRE:HTTPS://YouTu.be/ys7yUyyQA-Y "The Insanity of Linux's Regular Expressions" # O3I:06N0 of RobertElderSoftware covering BRE,ERE,PCRE,… gud4 Vim9 too?
+"   V isual select lInz thN :…norm IbginStuf<CR>  or  AendStuf<CR> is handy, but Ctrl-v colm-sLect thN Istuf<Esc> or A aplIz 2 all lInz,O ther Ndof Vis,gC-a x:
+" O44MFVim:HTTPS://YouTu.be/5BU2gBOe9RU "Vim Tips I Wish I Knew Earlier" # O3K:0Mx0 of SebastianDaschner covering abov && gr8 tipz lIk snippitz, NetRW, etc.
+"   && also :!toilet -w 256 -f standard<CR> FigLetz curNt lIn && can work4 Beppu-san's uri or SD's capitalIztItl etc. whIl snipz R probly i-mOde ShrtCut<Tab>?;
 " stuD:  :range!  :w_c  motion.txt  sub-replace-special  quickfix  :cdo  :cfdo;   stuD: HTTPS://Gist.GitHub.Com/nifl/1178878 core vi && ex && alsO KeyBase.IO;
 " rEmMbr th@:  :x  sAm az  :wq  or normOd:  ZZ;
 ""set? || setl(ocal)? || let  " wN setting, trailing variable wi bang (!) || prepending 'inv' wil togl boolean flag's value; trail ? 2 query;  BlO so(urce)?
@@ -34,15 +38,17 @@ se   nocp                     " nocompatible    - add  Vim NhancmNtz without str
 se    enc=utf-8               "     encoding    - was already loading utf-8 from current $LANG locale, && might need termencoding also if they diverge
 ""se fenc=utf-8               " fileencoding    - might needed this if ever trying LightLine + ALE with special chars from HTTPS://StaticO.GitHub.IO/vim3.html
 let  g:VERSION='0.000001'     " was just 0.0 B4, but now trying to extend sOfR MpT vers wi millionthz, not milli- but micro-? 4 majr.minr.rles spliting l8r;
-let     g:d8VS='O3RM6dig'     " d8VersionString - l8st significant upd8 to whole file was then
+let     g:d8VS='Q8PMCTRL'     " d8VersionString - l8st significant upd8 to whole file was then; nOte:whN Using ampersand B4 var nAm,it rEferz 2 nAmd optn nstd;
 let     g:vid8=system('d8')   " VimInit d8      - save d8 when this Vim session first stRtz up to use as dRk pRt at Nd of STatusLine just before bright upd8 d8
 let     g:cucf=1              " CUrsorColumFlag - flag to toggle whether :se cuc should be used (since dflt of it on gets slow whN lots of syntx hili on scrn)
 let     g:culb=1              " CUrsorLineBold  - flag to toggle whether :se cul below should use highlight with bold across whole line (dbl-mapd2Ctrl-L&&hls)
+let     &t_Cs = "\e[4:3m"
+let     &t_Ce = "\e[4:0m"
 let     g:raku_unicode_abbrevs= 1 " hopefully add more than Ctrl-k insert-mode digraphs for raku ones; g Ctrl-g countz columnz, lInz, wordz, && bytz usefuly;
 let     g:netrw_banner        = 1 " will prEfer Zr0 banner aftr Uzd Enuf l8r 2 rEmMbr all the kE mapz; alsO rEmMbr th@ nrml mOd gv rEsLectz prEv visual blok;
-let     g:netrw_liststyle     = 3
-"let    g:netrw_browse_split  = 4
-let     g:netrw_winsize       =16
+let     g:netrw_liststyle     = 3 " alsOrEmMbr th@ * sLectz cursor word (wi boundariez /\<Word\> ) whIle Dflt # sLectz bkwrdz wi ? nstdof / but rEmapd2cmNtlIn
+"let    g:netrw_browse_split  = 4 ""  wi g* && g# sLecting sAme but no word-boundariez get included so can match partial wordz instead of Dfalt bounded onez;
+let     g:netrw_winsize       =16 " thN gI insertz @ 0 (column 1) vs. I inserting @ ^ (1st non-spAce char on lIne) && gi insertz @ most recent buffer change;
 let     g:vimwiki_list        = [ {'path'     : '~/.vimwiki/', 'name': 'PipsVimWiki', 'auto_export': 0, 'auto_toc': 0, 'links_space_char': '_',
                                 \  'path_html': '~/dox/web/pht/'} ]
 "  Xampl 2ndWiki nEdz comma B4  \ {'path'     : '~/dox/', 'ext': '.mdox'}]  Use :h vimwiki_list 2get hLp on wAyz 2 put list in2 dict of varz && othr optnz;
@@ -61,6 +67,8 @@ if !has('nvim')
   Plug 'pangloss/vim-javascript'
   Plug 'mxw/vim-jsx'
   Plug 'vimwiki/vimwiki'
+" Plug 'lifepillar/devel'
+  Plug 'fladson/vim-kitty', {'tag': '*'}
   call  plug#end()
 en " mAB gNr8ng cOd snapshotz wi michaelrommel/nvim-silicon (!carbonow) plugin cud wrk wL && B nIcly configUrd 4 wutevr prImary Usez I fInd 2 apply img src 2?;
 se   list                     " l?              - show Tab(\t <Tab>) && NewLine(\n \<CR>) charactrz(&&my Ctrl-l mapng BlO toglz this option) (bkslshB4CRjust2..
@@ -87,6 +95,7 @@ se   nobk                     " nobackup
 se   backspace=indent,eol,start
 se   ml                       " modeline        - allow parsing of modeline commentz (such as '! vim:syntax=xdefaults' at the end of my ~/.Xrc)
 se   mls=8                    " modelines       - how many lines are checked for set commandz (default is 5)
+se   mco=8                    " maxcombine      - show all composing utf8 chrz;
 se   sc                       " showcmd         - shO (partial) command in status line
 se   sm                       " showmatch       - shO matching bracketz
 se   ic                       " ignorecase      - du case-insensitive matching
@@ -110,6 +119,7 @@ if !has('nvim')
 " BlO viminfo='50,<1000,s100,:0,n~/vim/viminfo - this stops my Win32 vim from creating extraneous _viminfo files under 4NT
   se vi='4095,n~/.viminfo
 en
+""se tgc                      " termguicolors: on 2 hopefuly use highlight-guifg && bg attribz in term for 24bit colorz (mA nEd 2 rEad xterm-true-color?);
 ""se gcr=a:block-Cursor       " guicursor: turn blinking off
 ""se background=dark          " set background 2 dark mkz syntax hIlIting colrz work more consistNtly wi betr contrast (without dRkblu cmNtz)
 " HTTPS://Vi.StackExchange.Com/questions/29129/how-do-i-make-the-cursor-blink suggested the following could set my cursor blink (but probably not wutIwantyet);
@@ -127,10 +137,11 @@ augroup cursor_behavior
    \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
    \,sm:block-blinkwait175-blinkoff150-blinkon175
   " NCNLBlnk:not sure wut I did but block cursor now seemz 2B blinking fIne in both term Vim && term NeoVim sO hOpefully they can rEmAin th@ wAy;
-  " cursor blinking bar on insert mode
- "let &t_SI = "\e[5 q"
-  " cursor steady block on command mode
- "let &t_EI = "\e[2 q"
+  " PCOL0VED:may need to 1st enter Insert mode then Escape return to Normal mode before block cursor correctly starts blinking, for some odd reason;
+  let &t_SI = "\e[5 q" " cursor blinking bar 'beam'  in insert  mode; term_StartInsert; mAB '\e[4 q' wud du half-block or what?;
+ "let &t_SR = "\e[3 q""" cursor steady? 'underscore' in what?   mode; term_StartR?
+ "let &t_EI = "\e[2 q""" cursor steady solid 'block' in command mode; term_EnnndInsert
+  let &t_EI = "\e[1 q" " cursor blinking?1v2 'block' in command mode; term_EnnndInsert
   "  HTTPS://Vi.StackExchange.Com/questions/37659/how-do-you-set-the-cursor-style-in-vim-terminal-windows suggestz  :h terminal-cursor-style  &&:
   "  thEz 3 shud mk cursor always blinking underscore? wut about always blinking block?
  "let &t_SI .= "\<Esc>[3 q"
@@ -148,7 +159,9 @@ se    clipboard=unnamed
 " O3IM7dux: noremap x "_x <CR> cutz normal x to void register instead of saving xtractn 2 default (probably 'unnamed' which in :dis should be labelled '"' );
 "   nOt:calling  set all& <CR> may clear-out hellish busted distro defaultz2;
 " BlO mkz Visual && modeless selections auto-cp 2 global GPM clipboard (wich they usually sEm 2 du NEwA),see :help guioptions
-se    go+=aA
+if !has('nvim')
+  se  go+=aA
+en
 "" it shud B posibl 2 apNd 2 curNt clipboard bufr wi smthng lIk: :let @q=@*<CR>"Qy:let @*=@q<CR>
 " HTTPS://StackOverFlow.Com/questions/11489428/how-to-make-vim-paste-from-and-copy-to-systems-clipboard says :h registers && :h x11-selection have details on
 "   2 registrz:DblQuote* && DblQuote+ (*=X11's _PRIMARY_ && +=X11's _CLIPBOARD_ sLectnz rEspectivly) wi * 4mouse-drag && midl-butn-pAste, + 4clipboard propr;
@@ -178,8 +191,13 @@ if   &term ==# "screen" || &term ==# "xterm"
 " BlO since Taki's old CygWin Vim bkspc mkz ^? thru xterm ssh connection, fixdel switches t_kb && t_kD from ^? && ^H to <Del> but I want <BS> =(
 " fix
 en
-" if literal <C-m> at the end below gets filtered out, might need to `v .bak/.vimrc-D8JMEEjh .vimrc` to yank line 45 there && restore here   orApNd C-v <CR>;
-" BlO setz the cursor to be included in visual selections even if it can't be invis && here's a \n <CR> <C-m> char for when literal needed: 
+if   &term ==# "xterm-kitty"
+" HTTPS://Wiki.ArchLinux.Org/title/Kitty#Terminal_issues_with_SSH also had a 5.2 section on 'Disappearing background color in vim' which says: When using a
+"   color scheme with background color in vim, the background may disappear or flicker while scrolling. To fix this, ensure TERM still set to xterm-kitty thN:
+  let &t_ut=''
+en
+" if literal <C-m> at the end below gets filtered out, might need to `v .bak/.vimrc-D8JMEEjh .vimrc` to yank line 45 there && restore here  ^M orApNd C-v <CR>;
+" BlO setz the cursor to be included in visual selections even if it can't be invis && here's a \n <CR> <C-m> char for when literal needed: ^M
 se   t_cv=
 se   t_ci=
 " BlO set these variables to empty to stop vim from restoring the screen after exit to the way it was before invok8ion (but usually I do want rEstor at Xit)
@@ -195,7 +213,9 @@ se   t_ci=
 if   has('spell')
   setl    spell spelllang=en
   setl  nospell
+ "hi      SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=red
 en
+" I can :se spell!<CR>  then:hi SpellBad gui=undercurl guisp=red term=undercurl cterm=undercurl<CR>  should show them hilighted && undercurled as of P1I;
 "(([clisnoxv](un)?|un)m|map) cmdln,[ci],insrt-only,sele,norm,oper-pendng,visual,[sv] modes wi <(C|S|[AM])- for Ctrl,Shft,&&(Alt==Meta)    map  == all([nov])map
 " preceding mapped key wi <silent> tells Vim not to print msg when running cmd    exception sm==smagic (substitution) so use smap         map! == all( [ci])map
 " 2du:fix C-f 24m@ AgN BlO && stuD wich othr Ctrl cmdz(||regUlRz lIk'E')mItBcurNtly lEstUzd,nXt bSt 1z 2 rEmap wNnEded,try<Alt-*>kEz,add $ENV{'COLUMNS'}2<C-f>,
@@ -323,13 +343,15 @@ nmap   <C-f> !G perl -MText::Autoformat -E'$c=$ENV{q(COLUMNS)}//160;$c-=2;$t=joi
 "  :if getbufinfo('%')[0].changed<CR>ec 'Modified'<CR>el<CR>ec 'NotMod'<CR>en<CR>  ... see :h getbufinfo wich alwayz retnz list of dictz && wuz suggestd on:
 "    HTTPS://Vi.StackExchange.Com/questions/25746/vimscript-how-to-check-if-a-buffer-is-modified aftr getbufvar(bufndxnr, '&mod') wich mA nEd <amatch> !'%' ?;
 "" Normal-mode Noremap C-b ('Back' PgUp) to original B Back word (as opposite of W)   " HTTP://Vim.Wikia.Com/wiki/Mapping_fast_keycodes_in_terminal_Vim 4C-S-b?
-"nn    <C-b> B
+" PC4L6Bak:nOte th@ it mIght bE betr 2 rElern <C-b> nstd of Shft-B for bak? I really don't use Dflt C-f C-b full PgDn PgUp sO bOth rEmapd. C-d C-u R betr half;
+"nn          <C-b> B  # would go back 1 punctu8d word wi Ctrl-b lIk Dflt B;
+ nn <silent> <C-b> :sil if getbufinfo('%')[0].changed<CR>call SetStatusLineStyle()<CR>w!<CR>!bak '%'<CR>en<CR>
 ""        B sAvz && Bakzup curNt EditFile    " above mapz fmt over Ctrl-Forward FullPageDown since I use C-d && C-u HalfPage mainly && want F to find backward
- nn       B  :sil if getbufinfo('%')[0].changed<CR>call SetStatusLineStyle()<CR>w!<CR>!bak '%'<CR>en<CR>B
-""        U bakz && Upd8s  curNt EditFile in2 local ~/(lib|bin)/       " map ovrIdz Undo all changez to line since cursor moved into it (wich I don't use much)
- nn       U  :sil if getbufinfo('%')[0].changed<CR>call SetStatusLineStyle()<CR>w!<CR>!bak '%'<CR>en<CR>:!upd8 '%'<CR>
-"nn       U  :call SetStatusLineStyle()<CR>:w!<CR>:!bak '%'<CR><CR>:!upd8 '%'<CR>   # set shellcmdflag to '-ic' 4 interactive shell using aliasez;
-" mA try :sil(ent)[!] !bak '%' 2!nEd dbl<CR> but mA nEd Ctrl-L or :redraw! 2B upd8d aftr output from silent command;
+"nn             B  :sil if getbufinfo('%')[0].changed<CR>call SetStatusLineStyle()<CR>w!<CR>!bak '%'<CR>echo 'PlEase stRt Using Ctrl-b, not Shft-B!'<CR>en<CR>B
+""              U bakz && Upd8z curNt EditFile in2 local ~/(lib|bin)/ " map ovrIdz Undo all changez to line since cursor moved into it (wich I don't use much);
+ nn             U  :sil if getbufinfo('%')[0].changed<CR>call SetStatusLineStyle()<CR>w!<CR>!bak '%'<CR>en<CR>:!upd8 '%'<CR>
+"nn             U  :call SetStatusLineStyle()<CR>:w!<CR>:!bak '%'<CR><CR>:!upd8 '%'<CR>   # set shellcmdflag to '-ic' for interactive shell using aliasez;
+" mA try :sil(ent)[!] !bak '%' 2!nEd dbl<CR> but mA nEd Ctrl-L or :redraw! 2B upd8d aftr output from silent command. rEmMber th@ <silent> can also prECd kEy;
 " NCBLENDS:rEplAcd abov old just 'map' 4 B && U wi 'nn' 4 just NormNoremap sinc I want 'vU' 2 Visualmode Uppercase, !upd8... && mAB 'vB' can VselectBackword2?;
 " AmiChai_MantinBand's 'Vim ShortCuts Keep Getting Crazier' on U2b V-selectd sevral lInz,thN did ':norm fhvU<CR>' 2fInd lOwrKse h on Ech lIn&&vU(prKs) thM all;
 " 2du:rErEd all :h map AgN Bcuz therz gud infO on getng Alt/Meta kEyz 2@lEst !sNd justSKp in XTerm&&RXVT (but mABcan't hLpGnomTerm)sO mor cOdz canBDtectd&&Uzd;
@@ -340,8 +362,10 @@ nmap   <C-f> !G perl -MText::Autoformat -E'$c=$ENV{q(COLUMNS)}//160;$c-=2;$t=joi
 " Ctrl-i Indent <Tab> && hopefully Shft-Tab 2 cycle my color schemez, but would probably make a gr8 <Leader> key for all sortz of othr stuf I mIt want2add l8r;
 "nmap     <C-I>    :call Rot8ColorScBkWd()<CR>  # I can't get Shift-Tab or Ctrl-Shft-I to work yet, but mAB regUlR Tab Ctrl-i alreD cyclz fIl jumpz wi Ctrl-o?;
 "nmap     <C-i>    :call Rot8ColorScheme()<CR>  # Yeah, Tab is 4wRd in jump-list && Ctrl-o gOez Older; BlO dbl-mapd Shift-E && Ctrl-e 2du normal oper8nz&&cycl;
- nn       <C-e>    :call Rot8ColorScBkWd()<CR><C-e>
- nn       E        :call Rot8ColorScheme()<CR>E
+"nn       <C-e>    :call Rot8ColorScBkWd()<CR><C-e> # rEmMbr:Dflt Ctrl-y && Ctrl-e scroll view Up && Dn lEaving cursor on sAme lIne;# rEmMbr:o Opposite v sLct;
+"nn       E        :call Rot8ColorScheme()<CR>E # I used to rot8 colors wi C-i or C-e but have decided High&&Low cursor mvmNtz R betr && HL or LH rot8z bak2B4;
+ nn       H        :call Rot8ColorScBkWd()<CR>H
+ nn       L        :call Rot8ColorScheme()<CR>L
 ""map     E  JJj   " old map to quickly single-space dbl-spcd linez    ; If you f<char> then ; && , will repeat the find (or Til) fwd && bak on the currentline
 ""map     E  A:<Esc>JJj                                                " was briefly used to join up many distinct transl8ion descriptions with their quot8ions
 ""        t insertz  `d8`  curNt date-time stamp (used 2 B PipTime)    " T below was orig like f<char> (find4wrd on curline) but srchng T<char> (unTil bakwrdz)
@@ -368,7 +392,7 @@ nmap   <C-p> :call SetStatusLineStyle()<CR>:bp       <CR>
  nn    <C-l> :call ToglCursorLineBold()<CR>:se  list!<CR><C-l>
 ""imap <C-k>                         <Esc>u:se spell!<CR> " origmapd insrtmOd Ctrl-k was autOundo4unintNded nrml insrt&&togl spLck butbetr consistNt now
 ""imap <C-k>  " hopefully unmap to gain access to vim digraphs for Unicode composition; 4 BlO shud B Abl 2 <C-r><C-p>+ or * from Insrt mOd if dblquOt duz!work;
-nmap   <C-k> :r!d8<CR>A:HTTPS://YouTu.be/ "" # O3P:0Fs0 of ;<Esc>19<Left>"+pf"a
+nmap   <C-k> :r!d8<CR>A:HTTPS://YouTu.be/ "" # P2P:0Fs0 of ;<Esc>19<Left>"+pf"a
 " I71M6Ck8:just realized need Ctrl-w to jump Windows when doing vimdiff, so reapproprE8d C-k for spell-checKer toggle above && remapped to U2b with loop here;
 " I72M7Ck8:add Insert-mode map of 2nd Ctrl-k to undo back out (16<L>31x) of an unpopul8d Normal-mode inserting of U2b templ8, also toggling spell-checK flag;
 ""let g:U2bL='HTTPS://YouTu.be/ \"" # d8:18m;' " hopefully try to just insert U2b URL templ8 variable string below instead of leaving literal, not sure how2?
@@ -385,7 +409,9 @@ nmap   <C-k> :r!d8<CR>A:HTTPS://YouTu.be/ "" # O3P:0Fs0 of ;<Esc>19<Left>"+pf"a
 ""mapng MiddleMouse only works if mouse=a so that vim's mapping is applied instead of wichever of XOrg,FluxBox,or GPM; can just C-S-v in nrml mOd 4 "+p
 ""map  <MiddleMouse>                       :se paste <CR>"*p:se nopaste<CR>
 " nOt: mA stil want 2 map other mouse=a butnz 2 BhAv more similRly 2 mouse= ; BlO pt == pastetoggle;
+if !has('nvim')
  se pt=<F12>
+en
 "map   <F12> :call InvertPasteAndMouse()<CR>
 "(snor(emap)?|[cio]?no(remap)?|[lnxv]n(oremap)?|no(remap)?!) $LftHndSide $RitHndSide disallows mapping of $RHS to avoid nested && recursive maps or redef a cmd
 " Visual mode p to replace selected text with unnamed "" register containing text of l8st yank or delete. gv reselects previous Visual area, d deletes it,
@@ -397,7 +423,9 @@ cab fw !fmt -w159
 ""  '" jumps to last open position in file  ... This was in my .zshrc e() before moving into Pip::Utl::e().
 "   '. jumps to last edit position in file
 " BlO add detection of my custom .Xresources file extension (instd of appending modeline '! vim:syntax=xdefaults')
-au   BufNewFile,BufRead *.Xrc setf xdefaults
+au      BufNewFile,BufRead *.Xrc setf xdefaults
+au      BufNewFile,BufRead *.dkt setf  desktop
+autocmd BufNewFile,BufRead *.tst setfiletype perl
 "sy(n(tax)?)? (on|off|sync fromstart)
 if !has('nvim')
 " BlO automatically turns basic `filet on` for type detection (N7KMNVts:but wanting to use tree-sitter 4 nvim instead of regular);
@@ -415,20 +443,63 @@ se   bg=dark            " commented out setting of background above so this one 
 "   41     slate.vim;   34      blue.vim;   33     delek.vim;   31   morning.vim;   13   elflord.vim;   10  industry.vim;
 "   37  darkblue.vim;   34 peachpuff.vim;   32   koehler.vim;   25    murphy.vim;   13   zellner.vim;    2       ron.vim;
 "   36    desert.vim;   34     shine.vim;   31   evening.vim;   14     torte.vim;   12     pablo.vim;    0   default.vim;
-"":so /usr/share/vim/vim81/syntax/hitest.vim " opened the following colored by group:
-" Highlighting groups for various occasions:
-"   SpecialKey        ModeMsg           Title             DiffChange        SpellRare         TabLineSel
-"   NonText           LineNr            Visual            DiffDelete        SpellLocal        TabLineFill
-"   Directory         CursorLineNr      WarningMsg        DiffText          Pmenu             CursorColumn
-"   ErrorMsg          Question          WildMenu          SignColumn        PmenuSel          CursorLine
-"   IncSearch         StatusLine        Folded            Conceal           PmenuSbar         ColorColumn
-"   Search            StatusLineNC      FoldColumn        SpellBad          PmenuThumb        StatusLineTerm
-"   MoreMsg           VertSplit         DiffAdd           SpellCap          TabLine           StatusLineTermNC
-" Syntax highlighting groups:
+"`g -c 'cterm[^=]*=[^N]' /usr/share/vim/vim90/colors/*.vim` again sorted by count output where !not! matching cterm([fb]g)?=NONE (OMG! wA morBtwEn 8.1&&9.0!):
+" 438  lunaperche.vim;  206     elflord.vim;  200       shine.vim;  197     zellner.vim;  193     koehler.vim;  190         ron.vim;  182        blue.vim;
+" 310       quiet.vim;  204    industry.vim;  199   peachpuff.vim;  196       delek.vim;  191     morning.vim;  189      murphy.vim;  172    darkblue.vim;
+" 227     habamax.vim;  201       slate.vim;  199       pablo.vim;  193       torte.vim;  191      desert.vim;  182     evening.vim;  0       default.vim;
+" `ls /usr/share/vim-scripts/color_sampler_pack/colors/`: (4 wAy more [176 extra] GVim.gtk3 colorschemes in big pack collection)
+"   adaryn.vim           calmbreeze.vim       dw_cyan.vim     impact.vim           mizore.vim        peaksea.vim            tango.vim      # most of these jack
+"   adrian.vim           camo.vim             dw_green.vim    imperial.vim         molokai.vim       print_bw.vim           taqua.vim      #   up my StatusLine
+"   aiseered.vim         candycode.vim        dw_orange.vim   inkpot.vim           montz.vim         psclone.vim            tcsoft.vim     #   User1..9 colors!
+"   anokha.vim           candy.vim            dw_purple.vim   intellij.vim         moria.vim         pyte.vim               tesla.vim      # Ctrl-b setz again;
+"   anotherdark.vim      chela_light.vim      dw_red.vim      ironman.vim          moss.vim          railscasts2.vim        tir_black.vim  # lotz of these seem
+"   aqua.vim             chocolateliquor.vim  dw_yellow.vim   jammy.vim            motus.vim         railscasts.vim         tolerable.vim  #   2only workwiGUI;
+"   astroboy.vim         clarity.vim          earendel.vim    jellybeans.vim       mustang.vim       rdark.vim              torte.vim
+"   astronaut.vim        cleanphp.vim         eclipse.vim     kellys.vim           navajo-night.vim  relaxedgreen.vim       twilight.vim
+"   asu1dark.vim         colorer.vim          ekvoli.vim      leo.vim              navajo.vim        robinhood.vim          two2tango.vim
+"   autumn2.vim          dante.vim            fine_blue2.vim  lettuce.vim          neon.vim          rootwater.vim          vc.vim
+"   autumnleaf.vim       darkblue2.vim        fine_blue.vim   liquidcarbon.vim     neverness.vim     satori.vim             vibrantink.vim
+"   autumn.vim           darkbone.vim         fnaqevan.vim    lucius.vim           newspaper.vim     scame.vim              vimhut.vim
+"   baycomb.vim          darkburn.vim         fog.vim         luinnar.vim          nightshimmer.vim  sea.vim                vividchalk.vim
+"   bclear.vim           darkslategray.vim    freya.vim       manuscript.vim       night.vim         settlemyer.vim         vylight.vim
+"   bigbang.vim          darkspectrum.vim     fruit.vim       manxome.vim          night_vision.vim  sienna.vim             winter.vim
+"   biogoo.vim           darkZ.vim            fruity.vim      marklar.vim          no_quarter.vim    silent.vim             wombat256mod.vim
+"   blackbeauty.vim      dawn.vim             fu.vim          maroloccio.vim       northland.vim     simpleandfriendly.vim  wombat256.vim
+"   blacksea.vim         deepblue.vim         gaea.vim        martin_krischik.vim  nuvola.vim        softblue.vim           wombat.vim
+"   bluegreen.vim        dejavu.vim           gentooish.vim   masmed.vim           oceanblack.vim    sorcerer.vim           wood.vim
+"   borland.vim          denim.vim            github.vim      matrix.vim           oceandeep.vim     soso.vim               wuye.vim
+"   breeze.vim           desert256.vim        golden.vim      mayansmoke.vim       oceanlight.vim    spring.vim             xemacs.vim
+"   brookstream.vim      desertEx.vim         greyhouse.vim   metacosm.vim         olive.vim         summerfruit256.vim     xoria256.vim
+"   buttercream.vim      desert.vim           guardian.vim    mickeysoft.vim       omen.vim          synic.vim              zenburn.vim
+"   calmar256-dark.vim   dusk.vim             habilight.vim   midnight2.vim        papayawhip.vim    tabula.vim             zendnb.vim
+"   calmar256-light.vim  dw_blue.vim          herald.vim      midnight.vim         paradox.vim       tango2.vim             zenesque.vim      zmrok.vim;
+"":so /usr/share/vim/vim90/syntax/hitest.vim " opened the following colored by group:
+"   SpecialKey        ModeMsg           Title             DiffAdd           SpellCap          TabLine
+"   NonText           LineNr            Visual            DiffChange        SpellRare         TabLineSel
+"   Directory         CursorLineNr      VisualNOS         DiffDelete        SpellLocal        TabLineFill
+"   ErrorMsg          Question          WarningMsg        DiffText          Pmenu             CursorColumn       Cursor
+"   IncSearch         StatusLine        WildMenu          SignColumn        PmenuSel          CursorLine
+"   Search            StatusLineNC      Folded            Conceal           PmenuSbar         ColorColumn
+"   MoreMsg           VertSplit         FoldColumn        SpellBad          PmenuThumb        StatusLineTerm     StatusLineTermNC
+" Syntax highlighting groups: (44 above, 28 below, 72 total, so User1..9 would need 2-char maps while the rest can fit a single b64 reference key char)
+"   lCursor           Comment           Statement         Ignore            User2             User6              GTF_CANCELLED
 "   MatchParen        Constant          PreProc           Error             User3             User7              GTF_LOOKAHEAD
 "   ToolbarLine       Special           Type              Todo              User4             User8              GTF_NEW
 "   ToolbarButton     Identifier        Underlined        User1             User5             User9              GTF_CURSOR
-"   Comment           Statement         Ignore            User2             User6             GTF_CANCELLED
+" To customize a colorscheme use another name, e.g. '~/.vim/colors/mine.vim', and use ':runtime' to load the original colorscheme (like 'evening'):
+"   runtime colors/evening.vim
+" then change the color of statements with a highlight override command like:
+"   hi Statement ctermfg=Blue guifg=Blue
+" From: HTTPS://SubLimeText.Com/docs/scope_naming.html following is recommended minimal set of 24 tmTheme? scopes (dotted syntax elements) to highlight:
+"   entity.name                         variable                  constant                         keyword                    storage.type
+"   entity.other.inherited-class        variable.language         constant.numeric                 keyword.control            storage.modifier
+"   entity.name.section                 variable.parameter        constant.language                keyword.operator           support
+"   entity.name.tag                     variable.function         constant.character.escape        keyword.declaration        string
+"   entity.other.attribute-name                                   comment                          invalid                    invalid.deprecated
+" entity.name. Colors - Historically, many color schemes have provided one color for entity.name.function and entity.name.type, and often a different color
+"   for entity.name.tag. This leaves new entity.name.* scopes un-highlighted. Color schemes should instead specify a color for entity.name that will be
+"   applied to classes, types, structs, interfaces and many other data structures. This color can be overridden for the two scopes entity.name.tag and
+"   entity.name.section (or .function && .type above?), that are used for different types of constructs. HTTPS://GitHub.Com/SubLimeHQ/ has Perl.sublime-syntax;
 fu!        Rot8ColorScheme()
   if exists("g:colors_name")
     if       g:colors_name ==# 'df'  " my default (hRdly anythng set ByondDflt)
@@ -474,7 +545,7 @@ fu!        Rot8ColorScheme()
 "     colo                      blue
 "   elsei    g:colors_name ==# 'blue'     # blue bkgrnd is too brIte (but duzn't break);  shine && zellner break lIk delek && othr lIt thEmz gatherd @botm;
 "     colo                      default
-"                               default.vim unlets g:colors_name to no longer exist so I just let it to default so I can rely on testing it
+"                            ## default.vim unlets g:colors_name to no longer exist so I just let it to default so I can rely on testing it
 "     se       bg=dark
 "     let    g:colors_name =   'default'
 "   elsei    g:colors_name ==# 'default'
@@ -499,6 +570,32 @@ endf
 fu!        Rot8ColorScBkWd() " mAB wud B betr 2 put all colr skEmz I want 2 rOt8 thru in2 an @array-list && index thM wi pRamz 4wRdz||bakwRdz nstdof by nAm?
   if exists("g:colors_name") " Bcuz thEz funcz nEd 2 B kept in sync 4 wutevr rOt8ionz I DcId 2 kEp in, wich iz hassle;
     if       g:colors_name ==# 'df'
+      colo                      torte
+    elsei    g:colors_name ==# 'torte'
+      colo                      slate
+    elsei    g:colors_name ==# 'slate'
+      colo                      ron
+    elsei    g:colors_name ==# 'ron'
+      colo                      quiet
+    elsei    g:colors_name ==# 'quiet'
+      colo                      pablo
+    elsei    g:colors_name ==# 'pablo'
+      colo                      murphy
+    elsei    g:colors_name ==# 'murphy'
+      colo                      lunaperche
+    elsei    g:colors_name ==# 'lunaperche'
+      colo                      koehler
+    elsei    g:colors_name ==# 'koehler'
+      colo                      industry
+    elsei    g:colors_name ==# 'industry'
+      colo                      habamax
+    elsei    g:colors_name ==# 'habamax'
+      colo                      evening
+    elsei    g:colors_name ==# 'evening'
+      colo                      elflord
+    elsei    g:colors_name ==# 'elflord'
+      colo                      desert
+    elsei    g:colors_name ==# 'desert'
       colo                      darkblue
     elsei    g:colors_name ==# 'darkblue'
       colo                      solarized
@@ -511,9 +608,7 @@ fu!        Rot8ColorScBkWd() " mAB wud B betr 2 put all colr skEmz I want 2 rOt8
       colo                      dc
     elsei    g:colors_name ==# 'dc'
       colo                      dk
-    elsei    g:colors_name ==# 'dk'
-"     colo                      zellner
-"   el
+    el
       colo                      df
     en
   el
@@ -651,9 +746,10 @@ if   has('autocmd')
 en
 se cul  " cursorline          " setz hIlIting on the whole cursor line(row) && column BlO but I vaguely recall having 2 ck lIk if has('color') smthng B4?
 se cuc  " cursorcolumn        " mAB thEz optz used to slO editing down too much, but they no longer seem so bad && just the bg blue is generally gentle
-hi        CursorLine             cterm=bold        ctermbg=DarkBlue
-hi        CursorColumn           cterm=bold,italic ctermbg=Black
-hi        MatchParen             cterm=bold        ctermbg=DarkCyan ctermfg=White
+hi        CursorLine             cterm=bold                                ctermbg=DarkBlue
+"i        CursorColumn           cterm=bold,undercurl,strikethrough        ctermbg=Black    " strikethru erord on BavL.Org along with nocombine below
+hi        CursorColumn           cterm=bold,undercurl                      ctermbg=Black
+hi        MatchParen             cterm=bold                                ctermbg=DarkCyan ctermfg=White
 if    has('statusline')       " custom statusline display detail: (tweakd colrz 2 look betr without rEverse); 2du:stuD vim 256colr spex for hopfuly boldng all
 " if !has('nvim')
     se    fcs=stlnc:~  ",vert:\|,diff:-,eob:~,lastline:@
@@ -675,11 +771,12 @@ if    has('statusline')       " custom statusline display detail: (tweakd colrz 
   " #%n (/ %?)                                         buffer number (over total buffers open)
   " %l/%L,%c%V                                         line number, total number of lines, and column number
   fu!  SetStatusLineStyle() " should this not want fu! to silently force overwrite any existing for this too, 4 some reason? whN wil that EvN pOtNtially occur?
-    hi    StatusLine             cterm=NONE          ctermbg=DarkBlue ctermfg=White
-    hi    StatusLineNC           cterm=NONE          ctermbg=Black    ctermfg=DarkGrey
-    hi    CursorLine             cterm=bold          ctermbg=DarkBlue
-    hi    CursorColumn           cterm=bold,italic   ctermbg=DarkBlue
-    hi    MatchParen             cterm=reverse       ctermbg=DarkRed  ctermfg=White
+    hi    StatusLine             cterm=NONE                                ctermbg=DarkBlue ctermfg=White
+    hi    StatusLineNC           cterm=NONE                                ctermbg=Black    ctermfg=DarkGrey
+    hi    CursorLine             cterm=bold                                ctermbg=DarkBlue
+   "hi    CursorLine             cterm=bold,nocombine                      ctermbg=DarkBlue
+    hi    CursorColumn           cterm=bold,undercurl,italic               ctermbg=DarkBlue
+    hi    MatchParen             cterm=reverse,italic                      ctermbg=DarkRed  ctermfg=White
     if &t_Co > 16 " .zshrc:pacz()
       " BlO setz the terminal SKp cOdz 4 Assigning Foreground && Background colrz from: HTTPS://GitHub.Com/CiaranM/inkpot/issues/11 wich mA fix Bold on dRkz?
       se   t_AF=[38;5;%dm
@@ -690,7 +787,7 @@ if    has('statusline')       " custom statusline display detail: (tweakd colrz 
       hi  User1                  cterm=bold          ctermbg=DarkBlue ctermfg=9
       hi  User2                  cterm=bold          ctermbg=DarkBlue ctermfg=172
       hi  User3                  cterm=bold          ctermbg=DarkBlue ctermfg=11
-      hi  User4                  cterm=italic                         ctermfg=10
+      hi  User4                  cterm=undercurl                      ctermfg=10
       hi  User5                  cterm=bold          ctermbg=Black    ctermfg=14
       hi  User6                  cterm=bold          ctermbg=Black    ctermfg=12
       hi  User7                  cterm=bold          ctermbg=DarkBlue ctermfg=13
@@ -1039,8 +1136,8 @@ vmap <silent> # :call ToggleBlock()  <CR>
 se foldlevelstart=99
 " Highlight folds
 hi Folded ctermbg=Black ctermfg=Cyan
-" Toggle on and off...
-nmap                                 <silent> <expr>  zz  FS_ToggleFoldAroundSearch(             {'context':1})
+" Toggle folding on and off, but I'd rathr lEave zz 2 mv crsrlIn 2 Midscrn4now; zt mvz curlIn 2 Topp && zb 2 Botm; mAB betr zH && zL lIk H && L (wi colrOt8z)?;
+"nmap                                <silent> <expr>  zz  FS_ToggleFoldAroundSearch(             {'context':1})
 " Show only sub defns (and maybe comments)...
 let perl_sub_pat = '^\s*\%(sub\|func\|method\|package\)\s\+\k\+'
 let  vim_sub_pat = '^\s*fu\%[nction!]\s\+\k\+'
