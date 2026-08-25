@@ -1,4 +1,4 @@
-# E86MAxFB: Oct::a8.pm crE8d by PipStuart <Pip@CPAN.Org> to automatically alloc8 common applic8ion d8a like ANSI SKpz and assoC8d attributes or arguments;
+# E86MAxFB: Oct::a8.pm crE8d by PipStuart <PipStuart@GMail.Com> 2 automatically alloc8 common applic8ion d8a like ANSI SKpz && assoC8d attributes or arguments;
 # 2du:rEgNr8 all 6-HEX RGB thru h2rl && upd8 all usagez,
 #   stuD term codes from: HTTP://Vim.Wikia.Com/wiki/Xterm256_color_names_for_console_Vim for any diffz for a8 main mapz here && l8r f8:pal8 d8a layrd namz,
 #   cmus Curses colr themez uses intz in -1..255. wi namez -1=>'default' for whatever terminal default,
@@ -77,7 +77,7 @@ our %EXPORT_TAGS = ('all'  => [ qw($d $e $f $h $i $j $l $n $q $s $t $u $v $x $A 
                    #'b64'  => [ qw(CardB64   B64Card HandB64  B64Hand       ) ],
                    #'pd8a' => [ qw(                %pd8a   %zdnh %zplf %zloh) ],
                    ); # just load all singles (skipping sort $a && $b [&& $z] );
-our $VERSION='0.000_001';our $d8VS='PCLLHome';our $Auth='PipStuart <Pip@CPAN.Org>'; # abov!Xporting $b since collidez with sort{$a  <=> $b};unalloc'd sOlOz^;
+our $VERSION='0.000_001';our $d8VS='Q74M7474';our $Auth='PipS <PipStuart@GMail.Com>'; # abov!Xporting $b sinc cOlIdz with sort{$a<=>$b};unalloc'd sOlOz^;
 our $ucdf= eval('use Color::Similarity::RGB qw(distance);1') || 0; # try2set UseColorDistanceFlag if optional module is available; /defhijlnqstuvx/i + /AZ/^;
 our @sb64 =('0'..'9','A'..'Z','a'..'z','.','_'); # SingleBase64 array && Base10 hash (since it's probably best not to use b8.pm here in a8)
 our %sb10 =();$sb10{$sb64[$_]}=$_ for(0..$#sb64);our %crgb;our %cbrt;our @snls;our @mrls;our %cdrd;our %cdrn; # DclAr ColrDist d8a:BRiTness,Srch iNdex LiSt,
@@ -348,14 +348,15 @@ sub cn{if(!@_ && !-t STDIN){ (@_=decode('UTF-8',join(''  ,<STDIN>)));}
 sub co{if(!@_ && !-t STDIN){ (@_=decode('UTF-8',join(''  ,<STDIN>)));}
   for    ( @_){chop ;} return(@_);}; sub chip{return(co(@_));} # above && mappings could be like Chimps chomp chopping chips can code cn co;)
 sub o9{o8( @_,"\n");} # 2du:considr mkng new sub:en() mABjust alias2 o8(wich iz lIk print or`echo -n`)&&ec()||o9(outf8 wi9NewlIn)2BlIk say||Dflt shL`echo`;
-sub o8{my $Uflg=1;my $Stxt='';return unless(@_);
+sub o8{my $Uflg=1;my $Stxt='';return unless(@_);my $ncfl=0;$ncfl=1 if(exists($ENV{'NO_COLOR'}) && $ENV{'NO_COLOR'});
   if(defined($_[0]) && $_[0]=~  /^-?-([uh])(elp|tf8|flg)?$/i){if($1 eq 'u'){$Uflg=0;}else{
       $Stxt=" o8 Help text - autom8 printing out UTF-8 encoded texts which may also include ANSI escape codes for colors or SGR attributes (out8 utf8 and o9);
  This is basically an example of a manipul8ion parameter, but may not make standalone CLI wi ARGV (i.e., for now o8 is just a Perl sub that must have these...
  -h - show this Help text;  ... options given as only the very first function parameter and almost anything else is output, where o9 just appends newline too);
- -u - disable default Utf-8 encoding;";};shift(@_);};$Stxt.=join('',@_);
+ -u - disable default Utf-8 encoding;";};shift(@_);};$Stxt.=join('',@_);$Stxt=sS($Stxt) if($ncfl); # 2du:mk sS call hEr Only strip colrz, !othr SGR atribUtz 2;
   if(defined($Stxt) && length($Stxt)){ # mA want2ck Dflt $_ or STDIN if!givN pRam2prnt ANSI SKpd colors on UTF-8 STDOUT or flag 4 ERR insted?;
-    open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";if($Uflg){binmode $out8,':encoding(UTF-8)';}print $out8 $Stxt; # crE8 locl duplic8
+    # BlO select && dollar-pipe=1 mAkz $out8 unbufrd 4 progrS without nwlInz;
+    open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";if($Uflg){binmode $out8,':encoding(UTF-8)';} select($out8);$|=1;print $out8 $Stxt;
     close   $out8             or die "Can't close duplic8 STDOUT handle: $!";}} # this can allow intermeD8 prints when not needing to manipul8 aggreg8
 sub aw8{my $b64w=0;my $b10p=0;$b64w=shift(@_) if(@_);my @b64d=split(//,$b64w);my $digt=0;while(@b64d){$b10p+=$sb10{pop(@b64d)}*(60**$digt++);} # count phasses;
   $b10p/=60.0;sleep($b10p);} # much like d8::dur8.pm w8() which takes a b64 (actually b60) dur8ion specific8ion 4 how many phasses 2 wait; usleep didn't work!;
@@ -1384,6 +1385,7 @@ sub h2rl{ # convert any typical HEX RRGGBB into RGBL b64 with Last Low bits Laye
       $valu  = hex($rgbd[0]);$valu+=16 if(hex($rgbd[1]) &  1);$valu+=32 if(hex($rgbd[1]) &  2);$rgbr.=$sb64[$valu];
       $valu  = hex($rgbd[2]);$valu+=16 if(hex($rgbd[1]) &  4);$valu+=32 if(hex($rgbd[1]) &  8);$rgbr.=$sb64[$valu]; # shud add -twelvebit 2rvrs
       $rgbp      =~ s/(^|\s)\#?([0-9A-F]{3})(\s|$)/$1$rgbr$3/ix;}} $rgbs.="$rgbp ";} $rgbs=~ s/ $//;return($rgbs);}
+# Q8NM4Ahl:HTTPS://YouTu.be/gwQH-db60WU @dur8:07G0 showz hl hIlIte as alias 2 'rg --passthru' 4 RipGrep 2du quik EZ hIlItng nstd of smashing head&&tail 2gethr;
 sub hl{my $head=48;my $tail=48;my $bndx=0;if(@_){if($_[0] =~ /^-+h(elp)?$/i){ # only very basic -h or --help message to start;
   o8(" hl by PipStuart to successively call head then tail on b64 line counts; e.g., lodH|hl 1Z 9;");shift(@_);}else{
                                                  $head=$bndx=0;for(reverse(split(//,shift(@_)))){$head+=(64**$bndx++)*$sb10{$_};}}
@@ -1594,7 +1596,7 @@ sub sS{      my $Stxt=shift;my $sefz=shift; # eScape TeXT, SubstituteEscapeFlagZ
     elsif(                !-t STDIN                     ){ $sefz=$Stxt;  $Stxt= undef;}}
   if  (!defined($Stxt) && !-t STDIN                     ){               $Stxt= join('',<STDIN>);}
  #if  ( defined($Stxt) &&  length($Stxt)                ){decode('UTF-8',$Stxt);} # shudn't nEd wi new OpN hedr sO comNt-out?;
-  if( (!defined($sefz) && defined($Stxt) && $Stxt=~  /^-?-?h(elp)?/i) || (defined($sefz) && $sefz=~  /h/i)){my $htxt=
+  if( (!defined($sefz) && defined($Stxt) && $Stxt=~  /^-?-h(elp)?/) || (defined($sefz) && $sefz=~ /-.*h/)){my $htxt= # shudB Enuf limitd -help optnzUcant prnt;
 "  sS   - Substitute eScape codes (or commas)   Vers:$VERSION  d8VS:$d8VS
    Auth: $Auth  Xmpl:`ls --color=always -A ~| sS`; should add -S SGR Selection
   ...Strip 4 combined attributes like -SIiUu 4 any Italic/Underline on/off out;
@@ -2053,36 +2055,31 @@ sub sumb{  my $widt=0; # suport norml or doubl wId outpt (wi just widthOK flag4n
         if($fdsc=~ /^(\S+)/ && exists($bgml{$1})){push(@{$bgml{ $1  }},$_);}else{push(@{$bgml{'none'}},$_);}}}}
   if($gbym){@bfls=();for(@bgls){for my $flnm (@{$bgml{$_}}){push(@bfls,$flnm);}}} # reorder main BinFileLiSt according to detected groups from above
   if($shuf){shfl(\@bfls);} # maybe option to random shuffle order
-  open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";binmode $out8,':encoding(UTF-8)'; # crE8 local duplic8 of global
   $h= S($bftc{'file'}{ 'cf' }); # load CommandFile codez 1st
   $f= S($bftc{'file'}{ '\/' }); # load dir sepR8or Forward slash
   $d= S($bftc{'grup'}{'dirz'}); # load Dircolr
-  if   ($htxt){print  $out8 $htxt;}
+# open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";binmode $out8,':encoding(UTF-8)'; # crE8 locl duplic8 of globl; Q74M74MQ:Uz o8 nstd;
+  if   ($htxt){o8($htxt);}
   elsif($widt){my $dirn; # I really don't understand this section of code well enough to yet figure out how to dir-colr for widt like the working linear below
     if(@bfls % 2){ # tried altern8ing dark blue bkgr, but too stripey && $O was resetting but should be as hard now
       for (0 ..         $blih  ){ # after [bd]([fu]r)?8colr shrunk to just .*8c, replaced 8 orig '9s' values with '6s' instead
         if(-d "$ENV{'HOME'}/bin/$bfls[$_]"){$dirn= sprintf("%-6s",$bfls[$_].'/');$dirn=~ s/(\/)/$f$1$d/g; # 4m@ && colr dir key
-                                   printf($out8 "$d%s"  ,$dirn            );print $out8 $bfst{$bfls[$_        ]} if(exists($bfst{$bfls[$_        ]}));
-        }else{                     printf($out8 "$h%-6s",$bfls[$_        ]);print $out8 $bfst{$bfls[$_        ]} if(exists($bfst{$bfls[$_        ]}));}
+                                   o8(sprintf("$d%s"  ,$dirn            ));o8($bfst{$bfls[$_        ]}) if(exists($bfst{$bfls[$_        ]}));
+        }else{                     o8(sprintf("$h%-6s",$bfls[$_        ]));o8($bfst{$bfls[$_        ]}) if(exists($bfst{$bfls[$_        ]}));}
         if(-d "$ENV{'HOME'}/bin/$bfls[$_]"){$dirn= sprintf("%-6s",$bfls[$_].'/');$dirn=~ s/(\/)/$f$1$d/g; # 4m@ && colr dir key
-          if(@bfls > $_+$blih+1){  printf($out8 "$d%s"  ,$dirn            );print $out8 $bfst{$bfls[$_+$blih+1]} if(exists($bfst{$bfls[$_+$blih+1]}));
-                                   say    $out8  $z;}
+          if(@bfls > $_+$blih+1){  o8(sprintf("$d%s"  ,$dirn            ));o8($bfst{$bfls[$_+$blih+1]}) if(exists($bfst{$bfls[$_+$blih+1]})); o9($z);}
         }else{
-          if(@bfls > $_+$blih+1){  printf($out8 "$h%-6s",$bfls[$_+$blih+1]);print $out8 $bfst{$bfls[$_+$blih+1]} if(exists($bfst{$bfls[$_+$blih+1]}));
-                                   say    $out8  $z;}}}
+          if(@bfls > $_+$blih+1){  o8(sprintf("$h%-6s",$bfls[$_+$blih+1]));o8($bfst{$bfls[$_+$blih+1]}) if(exists($bfst{$bfls[$_+$blih+1]})); o9($z);}}}
     }else{ # HB1MFcat:presumably just 48 even no modulo is ordering lower right corner double rot8d only when `sumb u` trying to append undescribeds;
-      for (0 ..         $blih-1){  printf($out8 "$h%-6s",$bfls[$_        ]);print $out8 $bfst{$bfls[$_        ]} if(exists($bfst{$bfls[$_        ]}));
-        if  (@bfls > $_+$blih  ){  printf($out8 "$h%-6s",$bfls[$_+$blih  ]);print $out8 $bfst{$bfls[$_+$blih  ]} if(exists($bfst{$bfls[$_+$blih  ]}));
-                                   say    $out8  $z;}}}
+      for (0 ..         $blih-1){  o8(sprintf("$h%-6s",$bfls[$_        ]));o8($bfst{$bfls[$_        ]}) if(exists($bfst{$bfls[$_        ]}));
+        if  (@bfls > $_+$blih  ){  o8(sprintf("$h%-6s",$bfls[$_+$blih  ]));o8($bfst{$bfls[$_+$blih  ]}) if(exists($bfst{$bfls[$_+$blih  ]})); o9($z);}}}
   }else{
     for  (0 ..         $#bfls  ){ # setting dirn only seemz to work when not in widt mode so far
       if (-d "$ENV{'HOME'}/bin/$bfls[$_]"){my $dirn= sprintf("%-6s",$bfls[$_].'/');$dirn=~ s/(\/)/$f$1$d/g; # 4m@ && colr dir key
-                                   printf($out8 "$d%s"  ,$dirn            );print $out8 $bfst{$bfls[$_        ]} if(exists($bfst{$bfls[$_        ]}));
+                                   o8(sprintf("$d%s"  ,$dirn            ));o8($bfst{$bfls[$_        ]}) if(exists($bfst{$bfls[$_        ]}));
       }else{
-                                   printf($out8 "$h%-6s",$bfls[$_        ]);print $out8 $bfst{$bfls[$_        ]} if(exists($bfst{$bfls[$_        ]}));}
-                                   say    $out8  $z;}}
-  if($sunf){                       print  $out8  $z,join(' ',reverse(@ufls));} # Show UNdescribed File LiSt at end (mAB reorg into 2nd bkgr desc sumb page?)
-  close   $out8             or die "Can't close duplic8 STDOUT handle: $!";return();}
+                                   o8(sprintf("$h%-6s",$bfls[$_        ]));o8($bfst{$bfls[$_        ]}) if(exists($bfst{$bfls[$_        ]}));}o9($z);}}
+  if($sunf){                       o8($z,join(' ',reverse(@ufls)));} return();} # Show UNdescribed File LiSt at end (mAB reorg into 2nd bkgr desc sumb page?)
 our %f8fm=( # defining default F8F0ntMap top64 with unique b64 keys && favorites mapping to first letter of names, others map to any letter of name
             #   or are arranged otherwise logically like BinC are ._, foreign cyrillic, greek, hebrew, && thai are all uppercase of their first letters
             #   bigserif and sanserif are Xx, roman-1 is 1, futura-2 is 2, lat4 are 34, gr.f16 is 6, etc.; '.' was temporarily 'dmn8' to test dominoez f0nt;
@@ -2308,7 +2305,6 @@ sub comma{my $strn=shift;my $comc=shift||',';my $blok=shift||3; # ECKLNcb3:`cma`
   # HB1MAhmX:if this ever needs it? but b8:cma should accept something like -cCOLUMN_MASK like `df|cma -c1-3` which will delay && stretch all cols by max cmas;
       $strn =  join("\n",@strz);return($strn);} # orig!enuf cuz must insrt coma,then recalc pos&&from:
 sub ftst{ # 37MK06SK:ftst Utl2run thruPerlzFileTeSTz on its parameter Filename
-  open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";binmode $out8,':encoding(UTF-8)'; # crE8 local duplic8 of global
   my $file=shift(@_)||$_||'';my $hlpf=0; # E89M7xUl:upd8d list below slightly to reflect: HTTP://JohnBokma.Com/perl/perl-quick-reference-card.pdf
   my @oper=('r','  readable by effective UID|GID. ','R','  Readable by     real  UID|GID. ',
             'w','  writable by effective UID|GID. ','W','  Writable by     real  UID|GID. ',
@@ -2345,24 +2341,24 @@ sub ftst{ # 37MK06SK:ftst Utl2run thruPerlzFileTeSTz on its parameter Filename
   if($file =~  /^-?-?h(elp)?$/ && !-e $file){$hlpf=1;$file='';}  # v5.30 regXz hav variabl-width (up2 max 255) positive lookbehind assertion: (?<=\s{1,255}) ;
   unless(length($file)){$file='.';
     $file="$ENV{'HOME'}" if(exists($ENV{'HOME'}));$file.="/.Hrc";}
-  if($hlpf){say $out8 " ftst  - loop through Perl dash-Flag File TeSTs on parameter Filename  Vers:$VERSION  d8VS:$d8VS by Auth:$Auth
+  if($hlpf){o9(" ftst  - loop through Perl dash-Flag File TeSTs on parameter Filename  Vers:$VERSION  d8VS:$d8VS by Auth:$Auth
          Note that -T in Perl 5.24 is a heuristic guess whether it is an ASCII or UTF-8 Text file, which is useful beyond MicroSoft Windows environments;
   -h   - print this Help text; If no filename parameter is given, \$_ then the default Oct Home \$HOME/.Hrc d8a file is tested;
          Also prints Perl regex && string backslash eScape codes in one 160x48 page to keep similar reference maps together.
-         Added measured default ~/.Hrc to fit regular-expression flag descriptors up beside the default File TeSTs now too;";exit;}
+         Added measured default ~/.Hrc to fit regular-expression flag descriptors up beside the default File TeSTs now too;");exit;}
   my $A=S('A');my $F=S('F');my $V=S('N');my $X=S('X');
   for(my $i=0;$i<@oper;$i+=2){my $oprS=S(uc($oper[$i]));my $flgS=$F;my $sizl= 28;my $etrv=0; # sizl was = 32 - 4;
     if($oper[$i] =~ /^[RWXO]$/ && exists($ENV{'COLUMNS'}) && $ENV{'COLUMNS'} <= 80){
-      print      $out8 "$G($Y-$oprS$oper[$i]$G)$W==$G($C";
-    }else{print  $out8 "$G($Y-$oprS$oper[$i] $file$G)$W==$G($C";}
+      o8("$G($Y-$oprS$oper[$i]$G)$W==$G($C");
+    }else{o8("$G($Y-$oprS$oper[$i] $file$G)$W==$G($C");}
     if(0&& $oper[$i] =~ /[TB]/ && $^O !~ /^MSWin/){ # or $^O or $ENV{'OSTYPE'} used to test for what were MicroSoft only flags prior to Perl 5.24
-                              print  $out8 "Can't test, except in MSWindows!";}
-    else                     {$etrv=eval(    "(-" .            "$oper[$i] \'$file\')"); $etrv=0 unless(defined($etrv) && $etrv);
-                              print  $out8            $etrv  if($oper[$i] !~ /^[MACs]$/); # originally only checked if eval succeeded but did!retn actual value
-      if                                                       ($oper[$i] eq      's'  ){
-        $sizl-=                          length(comma($etrv));                          }
-                              print  $out8      comma($etrv) if($oper[$i] eq      's'  );
-                              printf $out8 "%23.18f", $etrv  if($oper[$i] =~ /^[MAC]$/ ); # align age floats
+                              o8("Can't test, except in MSWindows!");}
+    else                     {$etrv=eval(    "(-" .           "$oper[$i] \'$file\')"); $etrv=0 unless(defined($etrv) && $etrv);
+                              o8(                   $etrv ) if($oper[$i] !~ /^[MACs]$/); # originally only checked if eval succeeded but did!retn actual value
+      if                                                      ($oper[$i] eq      's'  ){
+        $sizl-=                        length(comma($etrv));                          }
+                              o8(             comma($etrv)) if($oper[$i] eq      's'  );
+                              o8(sprintf("%23.18f", $etrv)) if($oper[$i] =~ /^[MAC]$/ ); # align age floats
                              }my     $dscs=$oper[$i+1];$dscs=~ s/(UID)/$C$1/gi;$dscs=~ s/(GID )/$G$1/gi;$dscs=~ s/( by )/$g$1/gi;$dscs=~ s/(size)/$o$1/gi;
     $dscs  =~ s/(bit  )/$W$1/gix;$dscs=~ s/(partial )(Days )(\()(\@)(staRtup)(\))( since)/$o$1$Y$2$B$3$R$4$z$5$B$6$c$7$p$oprS/gi;
     if  (exists($ENV{'COLUMNS'}) && $ENV{'COLUMNS'}  <=  80){
@@ -2378,7 +2374,7 @@ sub ftst{ # 37MK06SK:ftst Utl2run thruPerlzFileTeSTz on its parameter Filename
     if(length($file) < 14){$sfsp= ' ' x (14 - length($file));$sizl += (14 - length($file));} # default /home/pip/.Hrc shud B 14 long,so upd8 pad && size length
     $dscs  =~ s/(.*)(\.)/$1$w$sfsp$2$C #$A/; # try to sneak in the ShortFileSpacesPadding to hopefully preserve some of the intended alignment for non-defaults
     if   (exists($ENV{'COLUMNS'}) && $ENV{'COLUMNS'}  <=  80 && $oper[$i] =~ /^[MAC]$/){$dscs=~ s/(#\S*)\s+/$1/g;} # elsif($oper[$i] ne 's'){$dscs.=' ';}
-                              print  $out8 "$G)$W:$oprS$dscs";print $out8 ((' ' x $sizl) . "$w.$C # ") if($oper[$i] eq 's');
+                              o8("$G)$W:$oprS$dscs");o8((' ' x $sizl) . "$w.$C # ") if($oper[$i] eq 's');
     # 2du:when file leng more than 14, like for ~/.lsrc or ~/.zshrc, either use more aggressive substitutions to preserve alignment, or just omit flag section;
     if                       (length($file) <= 15 &&   ($i % 4 || $i > ($#oper-6) || ($i > 15 && exists($ENV{COLUMNS}) && $ENV{COLUMNS} < 160)
                               )){
@@ -2395,10 +2391,10 @@ sub ftst{ # 37MK06SK:ftst Utl2run thruPerlzFileTeSTz on its parameter Filename
       $dscs=~ s/(G)(obbling)(G)(rabber)/$flgS$1$Y$2$flgS$3$Y$4/gi;$dscs=~ s/(M)(any )/$flgS$1$Y$2/gi;$dscs=~ s/(xx )/$X$1$Y/i;
       $dscs=~ s/(\()([^\)]*)(\))/$M$1$Y$2$M$3/g;$dscs=~ s/(spa?ce?s?)/$V$1$A/gi;
       if                     ($i > 15 && $i < 45 ||  (  exists($ENV{'COLUMNS'}) &&  $ENV{'COLUMNS'} >= 160)){
-                              print  $out8 "$dscs";}}
+                              o8("$dscs");}}
     if(!exists($ENV{'COLUMNS'}) || $ENV{'COLUMNS'} <= 108 || $i % 4 || $i > ($#oper-8)){ # might have needed an xor in here, but just made sepR8 clauses nstd?
-                              print  $out8    "\n" if(!exists($ENV{'COLUMNS'}) || ($ENV{'COLUMNS'} <= 80 && $oper[$i] !~ /^[rwxo]$/)
-                                                          ||  $ENV{'COLUMNS'} >= 160);}}
+                              o9 if(!exists($ENV{'COLUMNS'}) || ($ENV{'COLUMNS'} <= 80 && $oper[$i] !~ /^[rwxo]$/)
+                                                             ||  $ENV{'COLUMNS'} >= 160);}}
   my $bScs=" compact list of Perl backslash eScape codes for both regular-expressions and character-strings: (was AllAquA, now with option flag d8a above too)
   \\000              escape                             Octal sequence.    \\o{};(See also)  # /!in\\[\\];\$/ mEnz!usable in bracket char class (like [\\dA-Z])
   \\1, \\2, ..past 9?        absolute (can \${d+} in s///) backreference.   !in[];  # Character Escapes - Fixed characters: 7 chars have a dedicated escape.
@@ -2449,15 +2445,14 @@ sub ftst{ # 37MK06SK:ftst Utl2run thruPerlzFileTeSTz on its parameter Filename
   $bScs=~ s/(heXadecimal)/$X$1$z/gix;$bScs=~ s/(slash      )/$H$1$A/gix;$bScs=~ s/(\()([^)]+)(\))/$C$1$R$2$C$3$A/gix;my $t=S('tk');my $U=S('5');
   $bScs=~ s/(tab)/$t$1$W/gix;$bScs=~ s/(next)/$U$1$z/gix;$bScs=~ s/(\/)(aa )/$Y$1$A$2$W/i;
   $bScs=~ s/(non)/$R$1$A/gix;$bScs=~ s/(class)( 4)/$c$1$M$2$A/g;$bScs=~ s/(in)(\[\])(;)/$z$1$o$2$W$3$z/g;$bScs=~ s/(;)(  \S|$)/$W$1$z$2/g;
-  print $out8 $A,$bScs;
-  say   $out8 '' if(defined($bScs) && length($bScs)); # just say on $out8 here was giving just the STDERR GLOB(x55564654645) kinda bug until isol8d to empty;
+  o8($A,$bScs);o9 if(defined($bScs) && length($bScs)); # just say on $out8 here was giving just the STDERR GLOB(x55564654645) kinda bug until isol8d to empty;
   # functions that use $_ as a default argument: abs, alarm, chomp, chop, chr, chroot, cos, defined, eval, evalbytes, exp, fc, glob, hex, int, lc, lcfirst,
   #   length, log, lstat, mkdir, oct, ord, pos, print, printf, quotemeta, readlink, readpipe, ref, require, reverse (in scalar context only), rmdir, say, sin,
   #   split (for its second argument), sqrt, stat, study, uc, ucfirst, unlink, && unpack.  all solo file tests use $_ except for -t , which defaults to STDIN.
   # pattern matching oper8ions m//, s///, && tr/// (AKA y///) when used without an =~ oper8or.    default iter8or variable in for(each) loop if none supplied.
   # implicit iter8or variable in grep() and map() functions.  implicit variable of given().   the default place to put the next value or input record when a
   #   <FH> , readline, readdir, or each oper8ion's result is tSted by itself as the sole criterion of a while tSt. outside a while tSt, this will not happen;
-  close   $out8             or die "Can't close duplic8 STDOUT handle: $!";return();} # shud lern all abov functns && eventually print somehow as colrd rFrNc;
+  return();} # shud lern all abov functns && eventually print somehow as colrd rFrNc;
 # favorite resoz:320x200,640x400(2x2),1280x800(4x4*320x200),1920x1200(6x6),2560x1600(8x8*320x200) then 1920x1080p of my AsusHDMI monitors&&SamsungGalXS4Phone;
 sub reso{my $optz=join(' ',@_)||''; # 598KBvas:reso crE8d by PipStuart <Pip@CPAN.Org> 2rank display resolutions by totl pixlz&&aspect r8ioz.  # ^4x4=10240x6400
   my($R,$o,$Y,$G, $C,$B,$M,$p)=($d8cS[0],$d8cS[1],$d8cS[2],$d8cS[3], $d8cS[4],$d8cS[5],$d8cS[6],$d8cS[7]); # hopefully tmp lOd prOfIl?;
