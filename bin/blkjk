@@ -1,43 +1,119 @@
 #!/usr/bin/perl
-use strict;use warnings;use utf8;use v5.10;use Games::Cards::Poker qw(:blak);
-my $d8VS      = 'L8MMJack'; # Deal players hands && score them against dealer
-my $rounds    = shift(@ARGV) || 3; # number of rounds to run through
-my $players   = shift(@ARGV) || 4; # number of players (including dealer)
-my $shoe_size =  4; # number of decks to load into shoe
+# 2du:add betting roundz for playerz 2B able 2 sPlit, Doubledown, suRrender?;
+#   mk Player1 adhere to G:C:Poker bjat ActionTable perfectly,othrz dIverge?;
+#   enable some playerz 2 count cardz 4 how many dex in shoe 2buy insurance?;
+#   alow 4 multi-sPlitz whN sPlit pairz pair-up AgN with their new Hit cardz;
+#   if 2nd card dealt to a sPlit Ace is T U don't get the 1.5 BJ bonus but it
+#     will win against an ordinary (i.e., not-n8ural) 21 made of gt 2 cardz!;
+#   same may go (i.e., no-1.5-BJ-bonus) for when an Ace is dealt to sPlit T!;
+# HTTPS://OfficialGameRules.Org/game-rules/scat/ or Kitty or 31 limlIk Red10;
+use strict;use warnings;use utf8;use v5.22;use Games::Cards::Poker qw(:blak);
+use Oct::a8; # 2 colorize && attribute all output through S() 4 hIghlIghting;
+my $d8VS='Q72MIsuR';my @pdat; # Deal plrs hands && score them against Dealer;
+my $rounds    = shift(@ARGV) ||  8; # number of rounds to run through
+my $plrs      = shift(@ARGV) ||  8; # number of players (including Dealer)
+if($rounds    =~ /^-?-?h/i   ||     # detect -h in either param 2 print help;
+   $plrs      =~ /^-?-?h/i){o9("bj v$d8VS BlackJack code Help text by: $Auth;
+  -h  just prints this Help text message and then exits out normally;
+bj accepts just 2 integer parameters: (defaults 2 8Rounds && 8Plyrs):
+  NumRounds (4096 takes about 15 seconds 2 run on author's computer);
+  NumPlayrs (number of total players [including Dealer] from: 2..64);");
+  my @fclm;
+  for   my $phnx(0..$#{$pd8a{'bjph'}}){my $pads=sprintf("%-3s",
+    $pd8a{'bjph'}[$phnx]); @{$fclm[$phnx]}= split(//,$pads);}
+  for(0..2){
+    for my $phnx(0..$#{$pd8a{'bjph'}}){
+      o8("$fclm[$phnx][$_] ") if(defined($fclm[$phnx][$_]));} o9;} o9('Tabl:');
+  for           (0..$#{$pd8a{'bjds'}}){
+    for my $phnx(0..$#{$pd8a{'bjph'}}){
+      my $phtd=$pd8a{'bjat'}[$_][$phnx];my $aclr=$S; # Stand/Stay
+      if   ($phtd eq 'H'){$aclr=$o;}
+      elsif($phtd eq 'D'){$aclr=$B;}
+      elsif($phtd eq 'P'){$aclr=$Y;}
+      elsif($phtd eq 'R'){$aclr=$R;}
+      o8("$aclr$phtd ");
+    } o9("$z =>  $W$pd8a{'bjds'}[$_]$w;$z");} o9("${G}Chrt:");
+  for           (0..$#{$pd8a{'bjds'}}){
+    for my $phnx(0..$#{$pd8a{'bjph'}}){
+      my $phcd=$pd8a{'bjac'}[$_][$phnx];my $aclr=$S; # Stand/Stay
+      if   ($phcd eq 'H'){$aclr=$o;}
+      elsif($phcd eq 'D'){$aclr=$B;}
+      elsif($phcd eq 'P'){$aclr=$Y;}
+      elsif($phcd eq 'R'){$aclr=$R;}
+      o8("$aclr$phcd ");
+    } o9("$z =>  $W$pd8a{'bjds'}[$_]$w;$z");} exit;}
+my $shoe_size =  8; # number of decks to load into shoe
 my @shoe      = (); # dealer's shoe holding multiple full decks shuffled
 my $hand_size =  2; # number of cards to deal to each player
 my @hands     = (); # player hand card  data
 my $deal_min  = 17; # threshold dealer  will hit when below
-my $play_min  = 12; # threshold players will hit when below
-my @scores    = (); # player hand score data && purse bank-roll data below
-my @purses    = (1000.0);for(my $pn=($players-1);$pn>=0;$pn--) { if($pn) {
-    $purses[$pn]=  10.0 ;print 'Play';}else{print 'Deal';} # add funding
-  printf("er$pn Purse:\$%7.2f\n",$purses[$pn]);} say '';
-for my $round (0..($rounds-1)) { # detect -h in $rounds to just print Help
-  while($players--) {
-    if(scalar(@shoe) <= ($players       * ($hand_size + 5)) &&
+my $play_min  = 17; # threshold players will hit when below (was 16)
+my @scores    = (); # player hand score data && purse bank-roll d8a below
+my @purses    = (10000.0);for(my $pn=($plrs-1);$pn>=0;$pn--){my $sb=$pn;
+    $sb=$sb64[$pn] if($pn < 64); if($pn){
+    $purses[$pn]=  100.0 ;o8("${P}Play");}else{o8("${D}Deal");} # add fundz
+  printf("er$C$sb$Y Purse$w:$B\$$G%8.2f$z\n",$purses[$pn]);} o9;my $px;
+for my $round (0..($rounds-1)){$px=$plrs;
+  while($px--){my $pf=0;my $sb=$px;$sb=$sb64[$px] if($px < 64);
+    if(scalar(@shoe) <= ($px            * ($hand_size + 5)) &&
        scalar(@shoe) <  (scalar(Deck()) *  $shoe_size     )) {
-    push(@shoe, Deck())  for(1..$shoe_size); Shuffle(\@shoe);} # fill shoe
-    push(    @{$hands[$players]},   pop(@shoe))  for(1..$hand_size);
-              $scores[$players] = BJHandScore(@{$hands[$players]});
-    if(               $players) { print 'Play';
-      while(  $scores[$players] < $play_min) { # Players hit?
-        push(@{$hands[$players]}, pop(@shoe));
-              $scores[$players] = BJHandScore(@{$hands[$players]}); } }
-    else                        { print 'Deal';
-      while(  $scores[      0 ] < $deal_min) { # Dealer hits normally < 17?
-        push(@{$hands[      0 ]}, pop(@shoe));
-              $scores[      0 ] = BJHandScore(@{$hands[      0 ]}); } }
-    printf(    "er$players Score:%2d hand:@{$hands[$players]}",
-                                           $scores[$players]);     # color?
-    print  ' Busted!Jk!'            if(    $scores[$players] >21); # align?
-    print  ' BlackJack!'            if(BJ(@{$hands[$players]})  );say '';
-  }       $players = scalar(@scores); # reload player count from score list
-  while(--$players) { my $amount        = 0.0 ;
-    $amount = (BJ(@{$hands[$players]})) ? 1.5 :
-               BJCmp($scores[0], $scores[$players]); # CoMPare each to Dealer
-    printf("Player$players cmp2D: %7.2f\n", $amount); $purses[0] -= $amount;
-                                               $purses[$players] += $amount;
-  } $players= scalar(@scores);@hands=(); } say ''; # reset data @ end of round
-for(my $pn=($players-1);$pn>=0;$pn--) {print(($pn) ? 'Play' : 'Deal');
-  printf("er$pn Purse:\$%7.2f\n", $purses[$pn]); } # show end-game purses
+      push(@shoe, Deck()) for(1..$shoe_size); Shuffle(\@shoe);} # fill shoe
+    push(    @{$hands[$px]},   pop(@shoe))  for(1..$hand_size);
+    # if hand is pair, initially auto-sPlit to $hands[$plrs+$pndx] (pdat2);
+    if(substr( $hands[$px][0],0,1) eq substr($hands[$px][1],0,1) && $px &&
+       substr( $hands[$px][0],0,1) !~ /^[5TJQK]$/){ # don't sPlit 5z or Tz;
+      push(  @{$hands[$px+$plrs]}, pop(@{$hands[$px]})); # sPlit nonDlr pairz;
+      push(  @{$hands[$px+$plrs]}, pop(@shoe));$pf=1; # tSt sPlitFlag l8r?;
+      push(  @{$hands[$px      ]}, pop(@shoe));
+              $scores[$px+$plrs] = BJHandScore(@{$hands[$px+$plrs]});}
+              $scores[$px] = BJHandScore(@{$hands[$px]});
+    if(               $px) { $pdat[$px]="${P}Play"; # also ck2 suRrender?;
+      while(  $scores[$px] < $play_min) { # players hit?    also < 17?
+        push(@{$hands[$px]}, pop(@shoe)); # Dtermine if to Dbldn !Hit?
+              $scores[$px] = BJHandScore(@{$hands[$px]});}}
+    else                   { $pdat[  0]="${D}Deal";
+      while(  $scores[  0] < $deal_min) { # Dealer hits normally < 17?
+        push(@{$hands[  0]}, pop(@shoe));
+              $scores[  0] = BJHandScore(@{$hands[  0]});}}
+    $pdat[$px].=sprintf("er$C$sb ${S}Score$w:$o%2d$m hand$w:$B",$scores[$px]);
+    for my $card(@{$hands[$px]}){my $cc=$R;$cc=$K if($card =~ /[sc]$/);
+      $pdat[$px].="$cc$card "; } for my $cs (scalar(@{$hands[$px]})..8){
+      $pdat[$px].='   '; } # CardSpacez loops up 2 8 blank cards 2 align BlO;
+      $pdat[$px].="$k P$k D$k R"; # apNd dRk-blacK plAcholdr sPlit,Dbldn,suR;
+    $pdat[$px].=S(':S')."$R Busted$w!${r}Jk$W!$z" if(    $scores[$px] >21);
+    $pdat[$px].=S(':C')."$K Black${J}Jack$W!$z"   if(BJ(@{$hands[$px]})  );
+    $pdat[$px].="\n";
+    if($scores[$px+$plrs]){$pdat[$px].="-sPlit- ";$pdat[$px]=~s/( P\e\[)/$M$1/;
+      while(  $scores[$px+$plrs] < $play_min) { # players hit?    also < 17?
+        push(@{$hands[$px+$plrs]}, pop(@shoe)); # Dtermine if to Dbldn !Hit?
+              $scores[$px+$plrs] = BJHandScore(@{$hands[$px+$plrs]});}
+      $pdat[$px].=sprintf("${S}Score$w:$o%2d$m hand$w:$B",$scores[$px+$plrs]);
+      for my $card(@{$hands[$px+$plrs]}){my $cc=$R;$cc=$K if($card =~ /[sc]$/);
+        $pdat[$px].="$cc$card ";} for my $cs (scalar(@{$hands[$px+$plrs]})..8){
+        $pdat[$px].='   ';}} # CardSpacez loops up 2 8 blank cards 2 align BlO;
+  } $px=$plrs; # rElOd pndx !from score ls but from plrs;
+  while(--$px){my $amount                  = 0.0 ;my  $ac=$r;
+    $amount   = (BJ(@{$hands[$px      ]})) ? 1.5 :
+                 BJCmp($scores[0], $scores[$px]); # CoMPare each scor 2 Dealer;
+                       $purses[  0] -= $amount;
+                       $purses[$px] += $amount;
+    if($amount == 0.0){$ac=$y;}elsif(  $amount > 0.0){$ac=$g;}
+    my $cd=sprintf("$c cmp2D$w:$ac %5.2f",$amount); # CoMPare 2 Dealer adjust;
+    if($scores[$px+$plrs]){$amount         = 0.0 ;    $ac=$r;
+      $amount = (BJ(@{$hands[$px+$plrs]})) ? 1.5 :  # do it all over for sPlit;
+                 BJCmp($scores[0], $scores[$px+$plrs]); # CoMPare each 2 Dealer
+                       $purses[  0] -= $amount;
+                       $purses[$px] += $amount;
+      if($amount == 0.0){$ac=$y;}elsif($amount > 0.0){$ac=$g;}
+      my $cp=sprintf("$c cmp2D$w:$ac %5.2f", $amount); # Compare2Dealer
+      $pdat[$px]=~ s/(-sPlit-)(\s)/$p$1$cp$2/; # regX sPlit 2nd lIne 4 plyr;
+      $pdat[$px].="$P P$k D$k R"; # apNd dRk-blacK plAcholdr sPlit,Dbldn,suR;
+      $pdat[$px].=S(':S')."$R Busted$w!${r}Jk$W!$z" if($scores[$px+$plrs] >21);
+      $pdat[$px].=S(':C')."$K Black${J}Jack$W!$z" if(BJ(@{$hands[$px+$plrs]}));
+      $pdat[$px].="\n";}
+    $pdat[$px]=~ s/(\s)/$cd$1/         ;o8($pdat[$px]);
+  } $pdat[  0]=~ s/(\s)/              /;o8($pdat[0]);$px=$plrs;
+  @hands=@pdat=@scores=();} o9; # reset hand && players d8a at end of round;
+for(my $pn=($plrs-1);$pn>=0;$pn--){my $sb=$pn;$sb=$sb64[$pn] if($pn < 64);
+  print(($pn) ? "${P}Play" : "${D}Deal");
+  printf("er$C$sb$Y Purse$w:$B\$$G%8.2f$z\n",$purses[$pn]); } # end-game fundz;
