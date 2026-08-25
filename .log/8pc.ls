@@ -1,4 +1,4 @@
-# O34L012O:~/.log/8pc.ls gener8d by 8plc with 8.utf edVS:L88M8888 to save sepR8 reference to 8-word Prime maps by PipStuart <Pip@CPAN.Org>;
+# P3SMGall:~/.log/8pc.ls gener8d by 8plc with 8.utf edVS:L88M8888 to save sepR8 reference to 8-word Prime maps by PipStuart <Pip@CPAN.Org>;
    2 _                3 ion              5 r                7 c                B l                D n                H E                J t             
    N z                T g                V m                b d                f p                h v                l b                r s             
    x u                z C               13 D               17 L               19 N               1F R               1J U               1P V             
@@ -164,4 +164,4 @@
  2c7 conglome       2cF contritu       2cR decla          2cX defenest       2cd disinteg       2ch explo          2c_ inspi          2d3 intermig      
  2dL protecto       2dN respi          2dZ resto          2df resve          2dj transmig       2dp unadulte       2e1 unregene       2eJ chancello     
  2eT flutte         2eb overelabo      2el perspi         2fF punctu         2fL translite      2fV unexagge       2fb incommensu     2fh sequest       
- 2fj maladminist   
+ 2fj maladminist  
