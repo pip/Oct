@@ -39,8 +39,8 @@ unsetopt                \
 # ksh_arrays            \# rEmMbr wNwrItng scrptz[or funcz]2include'setopt [localoptions] ksharrays'sO arAzR 0-bAsed(but!glOblBcuzmOst scrptzRstndrdly 1-bAsed)
 # re_____match_____pcre \# mA want2set for Z-SHell scripting RegularExpressions to utilize PerlCompatibility styles && mA insert 'zmodload zsh/(pc)?re(gex)?';
 # extended_glob is Zsh option wich causes the caret '^' circumflex 2B interpol8d / Xpanded && it's used in a regex ^prev^next 2 substitute stRt of last cmnd;
-alias Al=alias Xp=export xprt=Xp Bk=bindkey bk=Bk; # dot_glob option includes dot-files && extended_glob matches ~ # ^ nOtd from HTTPS://YouTu.be/g5BoVPhewWM ;
-Xp Vers='0.000001';Xp d8VS='Q6DM7OWM';Xp Auth='PipStuart <PipStuart@GMail.Com>'; # 'Xp','Al','Bk' => export,alias,bindkey  'sl','cl' => SymLink,CountLines,… ;
+alias Al=alias Xp=export xprt=Xp Bk=bindkey bk=Bk UA=unalias; # dot_glob optn includz .files && XtNded_glob m@chz ~ # ^ nOtd in HTTPS://YouTu.be/g5BoVPhewWM ;
+Xp Vers='0.000001';Xp d8VS='Q8PM8Qwn';Xp Auth='PipStuart <PipStuart@GMail.Com>'; # 'Xp','Al','Bk' => export,alias,bindkey  'sl','cl' => SymLink,CountLines,… ;
 if     [[       "$SHELL"    == "" ]] ||
        [[       "$SHELL" =~ bash  ]]; then       Xp SHELL=$(which   zsh);Xp HShl="$SHELL";fi; # H Xport mAB shud B HshL 4 prOnunC8ion nstd?;
 if     [[       "$HOSTNAME" == "" ]]; then       Xp HOSTNAME=$(hostname);fi;  #`hostname`retnz fsckd nwlInz\n4CygWinzRxvt... ||smthng els lame  =(
@@ -80,10 +80,10 @@ Xp PYENV_ROOT="$HOME/.pyenv"; # PCRL4env:HTTPS://GitHub.Com/PyEnv/pyenv?tab=read
 # load pyenv-virtualenv automatically by adng folOing 2 ~/.bashrc (or .zshrc?):
 #eval "$(pyenv virtualenv-init -)"; # may need 2 install or setup virtualenv sepR8ly 1st? couldn't eval pyenv init - bash because completionz are diff wi zsh?;
 # HTTPS://YouTu.be/3T2Al3jdY38&t=492  "Weaponizing ANSI Escapes" N9F:0eU0 Bash(&& Zsh?) prefers Octal, Python Hex, Java/JavaScript Unicode, PowerShell Decimal;
-alias  ec='echo ';alias  eE='ec -E';alias enE='en -E';alias eEn='enE'; # if -E (supposedly Dfault?), back-slash (bkslsh) escape-codes interpret8ion: disabled ;
-alias  en='ec -n';alias  ee='ec -e';alias ene='en -e';alias een='ene'; # if -e escape interprt8ion enabled 4: \\ bkslsh,\a alert(BEL),\b bkspc,\c no-mor-outpt,
-alias pf='printf';alias P=' printf';alias ece='ec -e';alias eec='ece'; # Db8d mkng BlO F -> ftst,file,firefox,fortune, thN fInaly DcIded 2 stik wi fgrep 4 now;
-alias  F='  fgrep'; # OCBLNXFt:upd8d old F->P did just point 2 my file-test Utl; why B4 wantd spAcd-some str-print-4m@d 4 F just in Pi8.pm or ec en chomp o89?;
+Al  ec='echo ' eE='ec -E' enE='en -E' eEn=enE; # if -E (supposedly Dfault?), back-slash (bkslsh) escape-codes interpret8ion is: disabled ;
+Al  en='ec -n' ee='ec -e' ene='en -e' een=ene; # if -e escape interprt8ion enabled 4: \\ bkslsh,\a alert(BEL),\b bkspAc,\c no-more-output,
+Al pf='printf' P='printf' ece='ec -e' eec=ece; #   && I Db8d mkng BlO F -> ftst,file,firefox,fortune, thN fInaly DcIded 2 stik wi fgrep 4now && kEp P 4 printf;
+Al  F=fgrep o8=en o9=ec; # OCBLNXFt:upd8d old F->P did just point 2 my fIltSt Utl; Y B4 wantd spAcd-some str-print-4m@d 4 F just in Oct.pm || e[cn] chomp o89?;
 # \e escape, \f form-feed, \n new-line, \r carriage-return, \t horizontal-tab, \v vertical-tab, \0NNN byte-wi-octal-val-NNN(1to3digits), \xHH byte-Hexa-val-HH;
 # Note:Your shell may have its own version of echo, which usually supercedes version described in `m echo`. Please refer 2 shL dox 4 DtAlz about suportd optnz;
 #xport bk="\e[40m"   ;Xp br="\e[41m"   ;Xp bo="\e[43m"   ;Xp by="\e[43m"   ;Xp bg="\e[42m"   ; # L13LCuts: bkslsh SKpz here had2go literal BlO;
@@ -591,11 +591,11 @@ alias     plb="   pl          -M$HOb8 -M$HTHi -CS    -E"; # `m perlrun` describe
 alias     pld="   pl                  -M$HOd8 -CS    -E"; # mAB shud mk plc 4 c8.pm && plf 4 f8.pm && plk 4 k8.pm etc.?; 2du:figUrout Y `d8 e` iz ~13K > epoc;
 alias     pab="   pl  -M$HOa8 -M$HOb8 -M$HTHi -CS    -E"; # `pab "binmode STDOUT,':utf8';print b256(calQ('15xx63'))"` gets rid of ...
 alias     pad="   pl  -M$HOa8         -M$HOd8 -CS    -E";alias pa='pabd'; # pb was already taken by pingb && pa can be all of a8,b8,d8;
-alias    pabd="   pl  -M$HOa8 -M$HOb8 -M$HOd8 -CS    -E"; #   ... the warning about "Wide character in print at -e line 1."
+alias    pabd="   pl  -M$HOa8 -M$HOb8 -M$HOd8 -MTime::Local -CS    -E  "; #   ... the warning about "Wide character in print at -e line 1."
 alias     pea="   pl  -M$HOa8                 -CS   -pE"; # tried to add -Mutf8 to aliases but may need some more specific flag?
 alias     peb="   pl  -M$HOa8 -M$HOb8         -CS   -pE"; # -CSDL is the same as just -C && gets all the STDz && i/o && @ARGV
 alias     ped="   pl  -M$HOa8         -M$HOd8 -CS   -pE";alias pe='pead'; # mAnly just want 2 Uz pa 4 1lInr cOd && pe 4 pIpngin&&filtrng;
-alias    pead="   pl  -M$HOa8 -M$HOb8 -M$HOd8 -CS   -pE";alias pep='pea';alias t2='t1 2';Al 2z=t2 t3='t1 3';alias t4='t1 4';alias qc8='qc'; # 3 && 4 R!yet;
+alias    pead="   pl  -M$HOa8 -M$HOb8 -M$HOd8 -CS   -pE";alias pep='pea';alias t2='t1 2';Al 2z=t2 t3='t1 3';alias t4='t1 4';Al qc8=Qc Qc8=Qc; # 3 && 4 R!yet;
 Al 1z=t1   t1='   pla "o8(t1(@ARGV))"';alias pat1='t1'  ; # shO rEslts from a8 tStng wich 1-letr sKlRz it DfInd&&Xportz thN wich varz R frE(undF)2BUzd sepR8ly;
 # original t1 abov shOwd: /defhijlnqstuvx/i +AZ azfrE4golfUse but a8 nowXpzall;
 alias    Qc="pe 's/0+\$// if s/(\\.\\d{64}).+/\$1/'"    ;alias b8cz='b2cz'; # alias b8ls='b2ls;ec'; # O1JLFUc8:shud trunc8+strip trAlng Zr0z lIk c8:`Q 1/3|Qc`;
@@ -859,7 +859,7 @@ Al jsc='pe "s/(\")((\\\"|[^\"]*)*)(\")(: )/\$o\$1\$Y\$2\$o\$4\$W\$5\$G/;s/(: \\e
             s/(HTTPS?)(:)(\\/\\/)([^\\/]*)(\\/)?([-0-9A-Z._~:\\/?=#[\\]\\@!\&()*+,;%\\\$\$quot]*)/\$c\$1\$W\$2\$Y\$3\$g\$4\$o\$5\$B\$6\$M/ix;
             s/(T)([0-9]{2})(:)([0-9]{2})(:)([0-9]{2})(\\.)?([0-9]*)(Z)/\$W\$1\$C\$2\$r\$3\$B\$4\$r\$5\$M\$6\$W\$7\$p\$8\$W\$9\$G/g;
             s/(\\\\u)([0-9A-F]{4})/\$w\$1\$C\$2\$B/gi;s/(\[\$|\])/\$G\$1/g;s/(\{|\})/\$C\$1/g"'; # simple JSon Colorizer in Vim's Dflt syntax-highlight style;
-Al ttc='pla "for(-10..110){o8(\`tmpc \$_\`.q( ));}"'; # Test Temper8ureColoriz8ion by looping thru all degreez Fahrenheit in neg8ive ten thru one hundred ten;
+Al ttc='pla "o8(\`tmpc \$_\`.q( )) for(-10..110)"'; # Test-Temper8ureColoriz8ion by looping thru all degreez Fahrenheit from neg8ive ten thru one hundred ten;
 Al ucs='ucs-detect' ucS='ucs --save-yaml=/home/pip/.var/log/MyTerm-`d8`.yaml --limit-codepoints=4096 --limit-words=4096 --limit-errors=512'; # Kit:11m,GT:26m;
 Al s2s='sha256sum'  s5s='sha512sum' wds='en $PWD|s2s -|c8 -c0-5'; # Q14LKsha:set WorkingDirectorySha2Sum echo in2 256 stdin thN cut chrz0-5 2 shO 3bytz inheX;
 Al      S8='   shl8'; # my primitive c8:SourceHighLight8 Utl to hopefully eventually approach functional parity with source-highlight before surpassing it
@@ -884,9 +884,11 @@ Al      A1='ec;pu ~;ec;g ^A .Hrc;ec;a8|hl 1Z 9;ec;lodH|hl 1Z 9;ec;wheo;ec;a8g8;e
                                                                                                  rm /tmp/S.H-$d8.ansi; }
            SC()  { d8=`d8`;shlc $d2/cred.u8  >/tmp/SCu-$d8.ansi;sloc -b   1146 /tmp/SCu-$d8.ansi;rm /tmp/SCu-$d8.ansi; }
            GG()  { pu $d2/.bak/.g6./.GG.;if [[ $# -gt 0 ]]; then ./GG $@; else ./GG -a; fi; po; } # GuyGooway's: GoodGames GoneGrooving GropingGirlies;
+Al sloc8='  pv -l -L    8 -q'; # pv -L 1200Bytz/sec wudBlIkDflt9600bps;
+Al slowcat='pv    -L 1200 -q'; # Uz PipeViewer nstdof orig. slowcat.pl;
 Al    g3BRO="cd ~/muz/U2b/nxt;ec 'g3 -vi -Z BtieBoys RammRage Obsidia8';g3 -vi -Z \$(ls ~/muz/flac/Rage*/*/*.flac ~/muz/flac/B*Boys/**/*.flac ~/muz/mp3/BadR*/*/*.mp3 ~/muz/mp3/RonD*/*/*.mp3 ~/muz/mp3/Rammstein/[12][90][90][5714]*/*.mp3 A* Bee* E*-[NRT][eaoh]* G* O* O* Ra* S[eh]* V* ../O* ../O* ../obs/*Nig* ../obs/*Nig* ../obs/*Meta* ../obs/*Dead* ../obs/*Dead* ../obs/*Die* | gv jpg | grp '.mp3$\\|.ogg$\\|.flac\\|.m4a$\\|.opus$' | gv 'Meister\\|Riechst\\|Sehnsucht\\|Tier\\|Spiel\\|Klavier\\|Alter\\|Eifersucht\\|English\\|Spieluhr\\|Zwitter\\|Rein_Raus\\|Adios\|Nebel\\|Morgenstern\\|Amour\\|Modell\\|Unit\\|80-85')";
 Al    g3f='g3 11 -k 363 ~/muz/flac/Boo*/Boo*/14*Hell*'; # BBoyz-FknMthaFka!
-Al     bj='blkjk|pe "s/Player\\d+\\s+cmp2D:\\s+\\S+\\n//g;s/(Player)(\\d+)/\$p\$1\$W\$2\$z/;s/(Dealer)(\\d+)/\$M\$1\$w\$2\$z/;s/(Purse)/\$C\$1\$z/;s/(\\s*\\d+\\s+)(hand)/\$W\$1\$r\$2\$z/;s/(Black)(Jack)(!)/\$K\$1\$R\$2\$W\$3\$z/;s/(Busted)(!)(Jk)(!)/\$Y\$1\$W\$2\$r\$3\$W\$4\$z/;s/( S)(c)(o\\w+)/\$C\$1\$c\$2\$C\$3\$y/;s/([: ])(\\w[hd])/\$W\$1\$R\$2\$z/g;s/([: ])(\\w[sc])/\$w\$1\$K\$2\$z/g;s/(:)(\\$)(\\s*\\d+)(\\.)(\\d\\d)/\$Y\$1\$B\$2\$G\$3\$O\$4\$P\$5\$z/g"';
+Al   bjpe='pl ~/dvl/p8/pokr/ex/blakjack.pl|pe "s/Player\\d+\\s+cmp2D:\\s+\\S+\\n//g;s/(Player)(\\d+)/\$p\$1\$W\$2\$z/;s/(Dealer)(\\d+)/\$M\$1\$w\$2\$z/;s/(Purse)/\$C\$1\$z/;s/(\\s*\\d+\\s+)(hand)/\$W\$1\$r\$2\$z/;s/(Black)(Jack)(\!)/\$K\$1\$R\$2\$W\$3\$z/;s/(Busted)(\!)(Jk)(\!)/\$Y\$1\$W\$2\$r\$3\$W\$4\$z/;s/( S)(c)(o\\w+)/\$C\$1\$c\$2\$C\$3\$y/;s/([: ])(\\w[hd])/\$W\$1\$R\$2\$z/g;s/([: ])(\\w[sc])/\$w\$1\$K\$2\$z/g;s/(:)(\\$)(\\s*\\d+)(\\.)(\\d\\d)/\$Y\$1\$B\$2\$G\$3\$O\$4\$P\$5\$z/g"';
 # HTTPS://YouTu.be/J0TWTnYZBdM LimpBizkit-FuckinSong
 # HTTPS://YouTu.be/UrgpZ0fUixs DenisLeary-AssHole
 # Many of these Oct aliases should become special V8 via c8 coloriz8ion command wrappers or otherwise enhanced (&& simplified?) && unified funcs or cmdz:
@@ -927,6 +929,7 @@ Xp FZF_DEFAULT_COMMAND='fd --type file -L -H --exclude .git --color=auto';Xp FZF
 #lias       F='   f   '; #  O3GM0SPF:thinking of f stayz find 4 fundamental but F->sprintf && P->pf->printf instead of pal8 wich is already fine wiot P? hmm…;
 alias       f='   find'; #  f    :           find; ## HTTPS://GitHub.Com/SharkDP/fd is Ubu pkg fd-find, instlz bin/fdfind, sym-linkd 2 ~/.local/bin/fd per dox;
 #lias       g='   grp '; #  g    :          sarep|(e|f)?grep (sed|awk too?); ## nOte that: rg= ripgrep which is probably way faster or better somehow than g;
+Al hilite='rg --passthru' hili=hilite hil=hili hIl=hil; # my hl alreD headtail;
             g() { grP   $@; }    # unalias    g   (redefining as simple function wrapper resolves parameter alias expansion problem [but still will glob ok])
 alias      ga='   g -a'; #                              grep -a to   binary-As-text   (rEsolvz `g Brail ~/dvl/*/*.pm` "grep: k8/k8.pm: binary file matches");
 alias      gi='   g -i'; #                              grep -i to      Ignore_case ## whN Uzng ga abov, B careful on just XtNsionz 4 UTF8 2 trEt az tXt ...
@@ -977,16 +980,20 @@ alias       K='k9     ';
 alias       M='mplayer';
 #lias       m='   mn  '; #  m    :            man (mn() already zsh function below, but may soon extract to preserve parameter history like d8:dic)
 alias m='mn'; # m() { mn   $@; }     # unalias   m && redefining as simple function wrapper resolves manpage param alias expansion problM (but still will glob)
-alias      mm=' mikmod';alias ol='ollama'; # prolly scream 3 times if you can read hahahaha !!! :)  # test local DeepSeek-R1 ("DpCk") LargeLanguageModel $optn;
-alias     oll='ol list';alias olp='ol pull';alias ols='oll';alias qs='qemu-system-x86_64';alias qs64='qs';alias gw='g3 ~/muz/mp3/gw/Genius_Wave-P1S*.mp3';
-                                                                                                          alias gW='g3 ~/muz/mp3/gw/Genius_Wave*_no*.mp3';
-                                                                                                          alias GW='g3 ~/muz/mp3/gw/Genius_Wave*P1S*.mp3';
+alias      mm=' mikmod'; # prolly scream 3 times if you can read hahahaha !!! :)  # test local DeepSeek-R1 ("DpCk") LargeLanguageModel $optn;
+Al ol=ollama ols='ol list' olp='ol pull' olr='ol run' oll='ol launch' olsrv='ol serve';
+Al olr7='olr deepseek-r1:7b' o7='olr7'; # could ~/.dl/ OLLaMa.Com srch for othr than my initial 7b reasoning model;
+Al olrp='olr phi4:latest   ' op='olrp'; # Q8NM6Phi:just ran `olp phi4` && got 9.1GB of much more recent Phi4 model;
+Al olrq='olr qwen3.6:27b   ' oq='olrq'; # Q8PM8Q36:last nIt `olp qwen3.6:27b` && got 17GB of likely EvN betr model;
+Al   qs='qemu-system-x86_64' qs64='qs';
 # P1RLINUX:HTTPS://YouTu.be/u2Juz5sQyYQ "Making Smallest Possible Linux Distro" # P1I:0Rg0 of NirLichtman detailing minimum config for 1.3MB ISO wo Lua;
-alias     olr='ol run ';alias olr7='olr deepseek-r1:7b';alias o7='olr7'; # could ~/.dl/ OLLaMa.Com srch for othr than my initial 7b reasoning model;
+Al gw='g3 ~/muz/mp3/gw/Genius_Wave-P1S*.mp3';
+Al gW='g3 ~/muz/mp3/gw/Genius_Wave*_no*.mp3';
+Al GW='g3 ~/muz/mp3/gw/Genius_Wave*P1S*.mp3';
 Al fz=ftz  cf=' cpufetch';Al ftz='en "${C}cf=cpufetch$B nf=neofetch$R ff=fastfetch$W;"'; # PCNL9CPU:just wanted similar cousin to nf && ff belO&& echo FeTchZ;
 Al         nf=' neofetch';Al p8w='~/dvl/p8/pico8/pico-8/;pico8 -windowed 1  '; # P1QL9Sht:shooting for learning pico8 && HumbleBundles before migr8ing 2 Godot;
 Al         ff='fastfetch'; # PCNL8fff:had2`sudo add-apt-repository ppa:zhangsongcui3371/fastfetch` && nuu && ni ff 2 get but just saw on ReddIt && seemd cool;
-Al nb=newsboat ei=eilmeldung; # PCRLDUNG:HTTPS://GitHub.Com/Christo-Auer/eilmeldung cloned into my ~/dvl/k8/tui/ as pretty lerning-Rust proj compete newsboat;
+Al nb=newsboat ei=eilmeldung tw=tui-wave; # PCRLDUNG:HTTPS://GitHub.Com/Christo-Auer/eilmeldung cloned in2 ~/dvl/k8/tui/ preT lerningRust proj cmpEt newsboat;
 Al saar='sudo add-apt-repository' sad=saar Sa=sad; # I know I pretty rarely even have to add apt repo ppaz but thot it could still deserve a few quick aliasz;
 # P1RLINUZ:HTTPS://YouTu.be/T8nRI-Mn6PM "My EndGame Terminal Setup" # P1I:0Ef0 of NickSkriabin demoing Cmingly gr8 Kitty, Zsh, NeoVim, Tmux, Star*, etc. setup;
 Al Cc=seec seec='see -fullcolor'; # PCMLCeec:instld HTTPS://GitHub.Com/SVanichkin/see 2 /usr/local/bin&&mvd symlnk /usr/bin/see -> run-mailcap* 2 sl see-rmc;
@@ -1037,7 +1044,7 @@ alias lk='LK'; # [pip@OniLC9L8jKm~]lk; en bAsic-f0numz; [pip@OniLC9L8jLw~]en '(9
 alias     ppp='pu;p;po'; #  ppp  :       prepriv8 (same as single p for CCC cd,clear,cut scrollback but wrapped with pushd && popd aliases to undo the cd ~)
 alias       T='   tee '; #  tee  :            tee (maybe can wrap into c8 with cut,cat,colored columns?); rEmMbr standRd `tr -d ...` is transl8 DlEt like subS
 alias       t='   tmux'; #  tmux :           tmux|screen ... any other altern8ive multiplexers forked out there? (orig:  `tsgr b` shO xtrm256colr pal8 Blox)
-alias       x='   exit'; #  x    :           exit
+alias       x='   exit'; #  x    :           exit;   ## Q89M89MQ:ckot HTTPS://Herdr.Dev 4 new AI agentic-friendly multiplexer as mAB betr than tmux|screen?;
 alias     lSX='   lS       -X'; # lSX:       lS-X (sAm azBlO Fitz,Kill(Ktrl-c2Kwit),RawRendition(ofSKpz),&&SizedScreenwrap with no init(just Xit) no rEstorng)
 alias     lS='    less -F -RS'; # lS :       less (with Force auto-Xit if Fitz lS than1 Full scrn,Kill on Ctrl-c,Raw outpt4ANSI SKpz,Scrnwidth-wrap long lInz)
 export PAGER="`which less` -FRS "; # O3QM1AUB:m mo man most must give way to lS less with way better vim && SKp stuf; aparNtly -FK can't retn2cmd prmpt4CtrlC!;
@@ -1173,6 +1180,7 @@ alias     Uni='   uniq';alias Un='Uni';alias Unc='Un -c'; # just count?;
 alias       D='   dfc '; #                            ("D" Used2alsOBshort4 pronunC8ion of "define" too, before realloc8ion to administr8ion DiskFreeColor)
 alias       Y=' yt-dlp'; # OCBLNEWS:shifted Gnome Help yelp to UpCase Y && mapd low-y to YouTube-DownLoadProject (like U2b alias already,U8 stil nEdz upd8);
 #lias       y='   yelp'; # J54MClip:Oni 2day had2 `sz;auu;ai dfc xclip irssi`;
+#l spf=superfile; # Q8AMDspf:ckot HTTPS://SuperFile.Dev 4 nice altern8ive2yazi;
 y() { # PC2LHUNT:just lernd of yazi as gr8 vim-lIke term fIle-brwsr from TypeCraft on U2b so swapped old y && Y yt-dlp && yelp && cmNtd y 4 func hEre 2 map;
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"               cwd
 	yazi "$@"                  --cwd-file="$tmp"
@@ -1415,12 +1423,12 @@ alias s8lc='pu ~/dox/2du;scrn -S 8lc -t 8lc vim   8plc  ;po';alias s8l='s8lc'; #
 alias satl='pu ~/dox/2du;scrn -S atl -t atl vim   at.ls ;po';alias SA='satl';alias soa='pu ~/dvl/a8;scrn -S oa8 -t oa8 e a8.pm;po'; # OpenOct *8.PlModulez
 alias sb8a='pu ~/dox/2du;scrn -S b8a -t b8a vim  b8a.ls ;po';alias sb='sb8a';alias sob='pu ~/dvl/b8;scrn -S ob8 -t ob8 e b8.pm;po'; # Screen_lib/Oct/\w.pm
 alias sbxl='pu ~/dox/2du;scrn -S bxl -t bxl vim boox.ls ;po';alias sB='sbxl';alias scS='            scrn -S';alias sat=' sa      '; # kinda similR2old e fIl.ls
-alias scm8='pu ~/dox/2du;scrn -S cm8 -t cm8 vim ckm8.utf;po';alias sc='scm8';alias soc='pu ~/dvl/c8;scrn -S oc8 -t oc8 e c8.pm;po'; #   ..2Elabor8Uni4m abrEV8z
+alias scm8='pu ~/dox/2du;scrn -S cm8 -t cm8 vim ckm8.utf;po';alias sC='scm8';alias soc='pu ~/dvl/c8;scrn -S oc8 -t oc8 e c8.pm;po'; #   ..2Elabor8Uni4m abrEV8z
 alias skno='pu ~/dox/2du;scrn -S kno -t kno vim know.ls ;po';alias sk='skno';alias sod='pu ~/dvl/d8/lib/Oct     ;scS od8 -t od8 vim d8.pm d8/[df]??[8z].pm;po';
 alias smul='pu ~/dox/2du;scrn -S mul -t mul vim  muz.ls ;po';alias Sm='smul';alias som='pu ~/dvl/m8/xml         ;scS om8 -t om8 vim [MT][ei][rd]*[ey]/*.pm;po';
 alias smvl='pu ~/dox/2du;scrn -S mvl -t mvl vim  mvz.ls ;po';alias SM='smvl';alias sop='pu ~/dvl/p8;scS op8 -t op8 vim [tmnp]??[hx8s]/[tmnp]??[hx8s].pm   ;po';
 alias sput='pu ~/dox/2du;scrn -S put -t put vim putr.ls ;po';alias sP='sput';alias sot='pu ~/dvl/t8/Octl/Oct    ;scS ot8 -t ot8 vim *.md;po;en oupd,gac,gpom';
-alias scvi='pu ~/dox/2du;scrn -S cvi -t cvi vim scvi.ls ;po';alias sC='scvi';  # switching main fighting game emphasis from StreetFighterV to SoulCaliburVI;
+alias scvi='pu ~/dox/2du;scrn -S cvi -t cvi vim scvi.ls ;po';alias sC6='scvi'; # switching main fighting game emphasis from StreetFighterV to SoulCaliburVI;
 alias ssfv='pu ~/dox/2du;scrn -S sfv -t sfv vim sfv.utf8;po';alias sf='ssfv';alias sof='pu ~/dvl/f8;scrn -S of8 -t of8 e f8.pm;po'; # mABl8r vary4asOC8d binz2
 alias stab='pu ~/dox/2du;scrn -S tab -t tab vim tabz.ls ;po';alias sT='stab';alias sog='pu ~/dvl/g8;scrn -S og8 -t og8 e g8   ;po'; # not A sepR8 PlModule yet
 alias stip='pu ~/dox/2du;scrn -S tip -t tip vim tipz.ls ;po';alias sI='stip';alias soU='pu ~/dvl/U8;scrn -S ou8 -t ou8 e U8.pm;po';alias sou='soU'; # bOthKsez
@@ -1574,8 +1582,8 @@ alias echoe='echo -e'; #  enable interpret8ion of backslashed escapes (default i
 alias echon='echo -n';alias cppa='c8 ~/.log/PPA.ansi'; # disable trailing NewliNe
 alias echos='echon  ';alias ewh="ene '${C}$COLUMNS${w}x$O$LINES'"; # echo (with -NoNewliNe) colrd curNt term NvIronmNt varz 4 Width x Height (like `wdht`);
 alias eqx='/home/pip/dvl/m8/clda/eqx/eqx-0.9.4.26/equinox3d-0.9.4.26-Linux64bit/eqx &'; # Gabor Nagy's awesome EQuinoX3D
-Al tml='ec "timelocal_posix( s0, m0, h0, D1, M0, Y1900 );";pa -MTime::Local "say timelocal(30,20,10,6,5,125)"';
-Al tm=' ec " MonthDay(1-bAsd),Month(0-b),Yr(+1900),WkDay(0-b),YrDay(0-b);Sun0!";ec "timelocal(\$s, \$m, \$h,  \$mday,\$mon, \$year, \$wday,  \$yday,  \$isdst):";pa "@l=localtime;print join(qq(\\t),@l)";ec ";"';
+Al tml='o8 "timelocal_posix(s,m,h, D1,M0,Y1900): ";pa "o8(timelocal(30,20,10,10,7,126).q(;))"'; # Q8AMAKUM:upd8d pabd (&&pa) 2 -MTime::Local 4 tml 2 work AgN;
+Al tm=' ec " MonthDay(1-bAsd),Month(0-b),Yr(+1900),WkDay(0-b),YrDay(0-b);Sun0!";ec "timelocal(\$s,\$m,\$h,     \$mday,  \$mon,   \$year,\$wday,\$yday,\$isdst):";pa "@l=localtime;print join(qq(\\t),@l)";ec ";"'; # simple echo && perl command to display TiMe(local) d8a nicely 4m@d wi header hints about fields' bases;
 alias fstat='  pl -MTime::PT -E "@s=split(/ /,scalar(localtime((stat(shift))[9])));print   \"@s\"      ;"';
 #lias fstatpt='pl -MTime::PT -E "@s=split(/ /,scalar(localtime((stat(shift))[9])));print `pt @s`,\"\n\";"'; #pt(@s) not exported,so try shell,leav Nwln?
 alias fstd8='  pl -M$HOd8    -E "@s=split(/ /,scalar(localtime((stat(shift))[9])));print $HOd8->new(\"full\"=>\"@s\");"'; 
