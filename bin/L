@@ -11,18 +11,17 @@
 # NCCL8LSL:`ls --color=always *(D)|pe 's/^(.*):\n$/\0$B$d$Y\/$W:  $z/ if(/^(.*):\n$/ && ($d=sprintf("%16s",$1)));s/\n/  /g;s/^\0/\b\b\n/'` Cmz preT similR;
 # O3JM2duL:@lz=split \s\s+ shud B upd8d 2 hndl skip of "\\  " && fix `L *\(*`;
 use warnings;use strict;use utf8;use v5.22; # DfltParm,T0tl,Lz,LineTxt,TxtLeng
+use Oct::a8; # Q74M8out:orig. L didn't use a8 but want it for o8 && $NO_COLOR;
 use Oct::b8;my $dp=' --color=always ';my $t0;my @lz;my $lt;my $tl;
 use Oct::d8;my $cw=160;$cw=$ENV{'COLUMNS'} if exists($ENV{'COLUMNS'});
-my $VERSION='0.0';my $d8VS='O3JM7d8a';my $Auth='PipStuart <Pip@CPAN.Org>';
-open my   $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";
-binmode   $out8,':encoding(UTF-8)'; # crE8 local duplic8 of global handle
+my $VERSION='0.0';my $d8VS='Q74M8USE';my $Auth='PipStuart <Pip@CPAN.Org>';
 my $az="@ARGV";my $pt=0;my $ws=5;my $Cv='-Cv';my @ldat; # ArgZ,PrevT0tl,WidSiz
    $az=~s/(^|\s)--\s.*$//; # don't process CLI optionz after double-dash seen;
-if($az=~ /(^|\s)-+(h)(elp)?(\s|$)/i){print $out8 "  $0 - sLightLy manipuL8d" .
+if($az=~ /(^|\s)-+(h)(elp)?(\s|$)/i){o8("  $0 - sLightLy manipuL8d" .
   " Ls coLumnar Listing Vers:$VERSION d8VS:$d8VS Auth:$Auth
  -Wnum - set chars per column minWidth to num (dflt 5)
  -V - togl dflt -v version sorting(inversionV from ls)
- -h - help text only -h(elp) && -a(djust?nsi?ll?4gotN);";}else{
+ -h - help text only -h(elp) && -a(djust?nsi?ll?4gotN);");}else{
   if  ($az=~ /(^|\s)(-+W)\s*([0-9A-Za-z._]+)(\s|$)/){$ws=$3;my $Ws=$2;
     $ws=b10($ws) if($ws=~ /[A-Za-z._]/);my $prva=''; # assume b10 if !wi letrz
     for(0..$#ARGV){if($ARGV[$_]=~s/^$Ws$ws$//){last;}elsif($_ && length($prva)
@@ -50,5 +49,4 @@ if($az=~ /(^|\s)-+(h)(elp)?(\s|$)/i){print $out8 "  $0 - sLightLy manipuL8d" .
     s/\s  (\e?\[?[0-9;]*m?      )+
       (Oct(\e?\[?[0-9;]*m?|\s*)*)+
       \s       (\e?\[?[0-9;]*m?|Pip)+/$1 $2 $4/x;
-    print $out8 $_ if /\S/;}}
-close     $out8             or die "Can't close duplic8 STDOUT handle: $!";
+    o8($_) if /\S/;}}
