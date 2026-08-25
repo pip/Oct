@@ -4,6 +4,9 @@ exec ${PERL-perl} -wSx $0 ${1+"$@"}
 
 # slowcat --- write output slowly, emulating physical serial terminal
 
+# Q8NM3SlO:nOte also possible to just mk slowcat an alias to:  `pv -l -L 8 -q`
+#   4 line-mode, r8-Limit (8-linez)/second, && quiet-mode. mAB `pv -L 1200 -q`
+#  wo line-mode 2r8-Limit 9600bitz /sec (1200Bytez) 2 BhAv lIk `sloc` here;
 # Author: Noah Friedman <friedman@splode.com>
 # Created: 2003-01-01
 # Public domain
