@@ -21,7 +21,7 @@
 # Currently, the only special pRameter that `dic` swallows 4 itself is lone '-w' which design8s any dFinitions should be formatted as *NOT* default Wide mode.
 # O3IMLUTD: d lifo limn lige limu limy lind lith lich ling; ## these were manually selected out for hmsp around now in many pagez of $( d li\t ) Tab-complEtn…
 # O?I!List: d lido lion lief lill lilt lily lima lixt liza; ##   && serchng 4 evry unfamiliR 4-letr m@ch (or just mAB Dscriptiv of topic clOse 2 curNt tIm)?;
-use warnings;use strict;use utf8;use v5.22;use Encode;my $VERSION='0.000001';my $d8VS='O9PM0Owl'; # origfrom TeST Substitute Input,nowXtNded d8 util,l8r c8 IF?
+use warnings;use strict;use utf8;use v5.22;use Encode;my $VERSION='0.000001';my $d8VS='Q74M74MQ'; # origfrom TeST Substitute Input,nowXtNded d8 util,l8r c8 IF?
 use Oct::a8;my $word='';my $wclr=S('Wr');my $logd="$ENV{'HOME'}/.log";my %dlog; # setup global word colr SKp && LogDirectory && DicLog hash
 use Oct::d8;my $Stxt   ;my $eclr=S('Yf');my $widf=1  ; # BlO hopefully strips -w param 2flag disabling dflt wide-mode or load $word 4l8r colr8ion if!flag
 my $cw=160;$cw=$ENV{'COLUMNS'} if(exists($ENV{'COLUMNS'})); # try to setup potentially wider ColumnWidth for when attempting to join shorter linez
@@ -180,5 +180,6 @@ for(0..$#St-1){my $bp;if($aw){ # alIgnmNt atMpt intrOducz trailng newlInz && som
       $Stxt=~ s/(=)                                                                      /$M$1$G/gx;
       $Stxt=~ s/(")                                                                      /$Y$1$G/gx;
       $Stxt=~ s/(')                                                                      /$W$1$G/gx;
-      $Stxt=~ s/(&)                                                                      /$C$1$G/gx;print $out8 $Stxt;
+      $Stxt=~ s/(&)                                                                      /$C$1$G/gx;
+      $Stxt=sS($Stxt) if(exists($ENV{'NO_COLOR'}) && $ENV{'NO_COLOR'});print $out8 $Stxt; # Q74M7474:upd8d 2 rEspect No-Color.Org DsIr 4 colrz 2 B optional;
 close   $out8             or die "Can't close duplic8 STDOUT handle: $!";
