@@ -1,0 +1,85 @@
+#!/usr/bin/perl
+# Q72MKODE:bj crE8d by <PipStuart@GMail.Com> as 160-column rEwrIte of older blkjk Utl which simUl8d sMI-smRt BlackJack playing;
+# 2du:NAbl some playerz 2 count cardz 4 how many dex in shoe 2buy insurance?;
+#   if 2nd card dealt to a sPlit Ace is T U don't get the 1.5 BJ bonus but it
+#     will win against an ordinary (i.e., not-n8ural) 21 made of gt 2 cardz!;
+#   same may go (i.e., no-1.5-BJ-bonus) for when an Ace is dealt to sPlit T!;
+# HTTPS://OfficialGameRules.Org/game-rules/scat/ or Kitty or 31 limlIk Red10;
+use strict;use warnings;use utf8;use v5.22;use Oct::a8;use Games::Cards::Poker qw(:blak);my $d8VS='Q74M4HOT';my @fclm;my %phlu;
+my $rndz=shift(@ARGV) || 8; # number of roundz to run through (l8r 8);
+my $plrz=shift(@ARGV) || 8; # number of playrz (NOT!including Dealer);
+if($rndz=~ /^-?-?h/i  ||    # detect -h in either param to print help;
+   $plrz=~ /^-?-?h/i){o9("bj v$d8VS BlackJack code Help text by: $Auth;
+  -h  just prints this Help text message and then exits out normally;
+bj accepts just 2 integer parameters: (defaults 2 8Rounds && 8Plyrs):
+  NumRounds (4096 takes under 4 minutes to run on author's computer);
+  NumPlayrs (number total players [NOT!including Dealer] from 1..64);");
+  for   my $phnx(0..$#{$pd8a{'bjph'}}){my $pads=sprintf("%2s",
+    $pd8a{'bjph'}[$phnx]); @{$fclm[$phnx]}= split(//,$pads);}
+  for(0..1){ # all 3 of bjat,bjac,bjam->Table,Chart,Mappp are extremely similar;
+    for my $phnx(0..$#{$pd8a{'bjph'}}){
+      o8("$fclm[$phnx][$_] ") if(defined($fclm[$phnx][$_]));} o9;} o9('Table:');
+  for           (0..$#{$pd8a{'bjds'}}){
+    for my $phnx(0..$#{$pd8a{'bjph'}}){
+      my $phtd=$pd8a{'bjat'}[$_][$phnx];my $aclr=$S; # Stand/Stay
+      if   ($phtd eq 'H'){$aclr=$o;}elsif($phtd eq 'D'){$aclr=$B;}
+      elsif($phtd eq 'P'){$aclr=$Y;}elsif($phtd eq 'R'){$aclr=$R;}
+      o8("$aclr$phtd ");
+    } o9("$z =>  $W$pd8a{'bjds'}[$_]$w;$z");} o9("${G}Mappp:");
+  for           (0..$#{$pd8a{'bjds'}}){
+    for my $phnx(0..$#{$pd8a{'bjph'}}){
+      my $phcd=$pd8a{'bjam'}[$_][$phnx];my $aclr=$S; # Stand/Stay
+      if   ($phcd eq 'H'){$aclr=$o;}elsif($phcd eq 'D'){$aclr=$B;}
+      elsif($phcd eq 'P'){$aclr=$Y;}elsif($phcd eq 'R'){$aclr=$R;}
+      o8("$aclr$phcd ");
+    } o9("$z =>  $W$pd8a{'bjds'}[$_]$w;$z");} exit;}
+my $shsz= 8; # number of decks to load into shoe
+my @shoe=(); # dealer's shoe holding multiple full decks shuffled
+my @dhnd=(); # dealer hand card d8a
+my @hndz=(); # player hand card d8a
+my @scrz=(); # player hand scor d8a
+my @tacz=(); # player hand-termin8ing actionz && pursez bank-roll d8a below
+my @prsz=();my $dprs=1_000_000.0;push(@prsz,1_000.0) for(1..$plrz);o9($D."DelrPurs$w:$G$dprs");for(0..27){$phlu{$pd8a{'bjph'}[$_]}=$_;} # hashLkUp PlyrHndz;
+sub Deal{unless(scalar(@shoe)){push(@shoe,Deck) for(1..$shsz);Shuffle(\@shoe);} return(pop(@shoe));} # mk sure shoe holdz shufld cRdz thN retn one;
+sub Spfs{return(sprintf("%2d",$scrz[$_[0]][$_[1]]=BJHandScore(@{$hndz[$_[0]][$_[1]]})));}
+sub Hand{my $pndx=shift(@_);my $phnd=shift(@_);my  $rnk0=substr($hndz[$pndx][$phnd][0],0,1);my $rnk1='';my $jors='';my $jsnd=0;
+                                                   $rnk1=substr($hndz[$pndx][$phnd][1],0,1) if(scalar(@{$hndz[$pndx][$phnd]}) > 1);
+  $rnk0='T' if($rnk0=~ /^[JQK]$/);       my $hscr=BJHandScore(@{$hndz[$pndx][$phnd]});
+  $rnk1='T' if($rnk1=~ /^[JQK]$/);                              $scrz[$pndx][$phnd]=$hscr;
+  if   (                  $hscr >  16 ){$jors=  'gG';}
+  elsif($rnk0 eq $rnk1 || $rnk0 eq 'A'){$jors="$rnk0$rnk1";} # Joined(without colon anymore) or Score B4 finding JoinedorScore iNDex;
+  elsif(                  $rnk1 eq 'A'){$jors="$rnk1$rnk0";}
+  elsif($hscr <= 8                    ){$jors=  'l9';} # substituted lame jsnd looping BlO wi hopefully worthwhile as enough faster hash-lookup instead;
+  elsif($hscr >  8     && $hscr <= 16 ){$jors= $hscr;} return($phlu{$jors});} #$jsnd++ while($pd8a{'bjph'}[$jsnd] ne $jors && $jsnd < 27);return($jsnd);}
+for(0..$plrz-1){  my $bp=$_;$bp=$sb64[$_] if($_ < 64);o9($p.$bp."PlrPurs$w:$G".$prsz[$_]);}
+for my $rndn(0..$rndz-1){@dhnd=@hndz=@scrz=@tacz=(); # push(@shoe,qw(As Ah Ad Ac)) for(0..3);push(@shoe,qw(5s 5c)); # tSt stakng quad Acez B4 Deal && 5:5 4Dlr;
+  push(@dhnd,Deal,Deal);for(0..$plrz-1){push(@hndz,[]);push(@{$hndz[-1]},[Deal,Deal]);}
+  o9($D."dscr$w:$Y".BJHandScore(@dhnd)."$o dhnd$w:$R@dhnd$W;$z");my $drnk=substr($dhnd[0],0,1);$drnk='T' if($drnk=~ /^[JQK]$/);
+  my $drnd=0;$drnd++ while($pd8a{'bjds'}[$drnd] ne $drnk); # Dealer's first face-up card's RaNK abov && Dealer Rank iNDex here;
+  for(0..$plrz-1){my $bp=$_;$bp=$sb64[$_] if($_ < 64);my $phnx=0;my $actn='';
+    while($phnx < scalar(@{$hndz[$_]})){
+      while(!defined($tacz[$_][$phnx])){my $hndx=Hand($_,$phnx);$scrz[$_][$phnx]=BJHandScore(@{$hndz[$_][$phnx]});$actn=$pd8a{'bjam'}[$drnd][$hndx];
+        o8(  "$A$bp$C$phnx${p}p${s}s$w:$O".Spfs($_,$phnx)."$G a$w:$M$actn$B phnd$w:$R@{$hndz[$_][$phnx]} $o");for my $pd(@{$hndz[$_][$phnx]}..8){o8('   ');}
+        if   ($actn eq 'R'){o9("${Y}sRndr$W;$z");$tacz[$_][$phnx]='R';$actn='-';} # forfeit half of $1 bet && set termin8ing action;
+        elsif($actn eq 'P'){o9("${M}sPlit$W;$z");push(@{$hndz[$_]},[pop(@{$hndz[$_][$phnx]}),Deal]);push(@{$hndz[$_][$phnx]},Deal);$actn='-';}
+        elsif($actn eq 'D'){o9("${B}Dbldn$W;$z");push(@{$hndz[$_][$phnx]},Deal);$tacz[$_][$phnx]='D';
+          o8("$A$bp$C$phnx${p} ${s} $w:$y".Spfs($_,$phnx)."$G a$w:$M$actn$B phnd$w:$R@{$hndz[$_][$phnx]} $o");for my $pd(@{$hndz[$_][$phnx]}..8){o8('   ');}
+          if($scrz[$_][$phnx] > 21){$tacz[$_][$phnx]='B';o9('dBust;');}else{o9;}} # Dbldn && dBlBusted as termin8ing actionz;
+        elsif($actn eq 'H'){o9("${G}Hitme$W;$z");push(@{$hndz[$_][$phnx]},Deal);$actn='-';
+          o8("$A$bp$C$phnx${p} ${s} $w:$Y".Spfs($_,$phnx)."$G a$w:$M$actn$B phnd$w:$R@{$hndz[$_][$phnx]} $o");for my $pd(@{$hndz[$_][$phnx]}..8){o8('   ');}
+#orig!clr#o8($bp."   :".Spfs($_,$phnx)." actn:$actn phnx:$phnx phnd:@{$hndz[$_][$phnx]} ");for my $padx(scalar(@{$hndz[$_][$phnx]})..8){o8('   ');}
+          if($scrz[$_][$phnx] > 21){$tacz[$_][$phnx]='H';o9('Hbust;');}else{o9;}} # track Hit2bust     as termin8ing action;
+        elsif($actn eq 'S'){o9("${S}Stand$W;$z");$tacz[$_][$phnx]='S';}} $phnx++;}}       # store Stand        as termin8ing action;
+  push(@dhnd,Deal) while(BJHandScore(@dhnd) <= 16);my $dscr=BJHandScore(@dhnd);o9($C."dscr$w:$Y$dscr$o dhnd$w:$M@dhnd$W;");
+  for(0..$plrz-1){my $bp=$_;$bp=$sb64[$_] if($_ < 64);my   $amnt;my $phnx=0;
+    while($phnx < scalar(@{$hndz[$_]})){$amnt = 1.0;
+      if   ($tacz[$_][$phnx]    eq 'R'){$amnt = 0.5;} # shud B neg8ive?
+      elsif($tacz[$_][$phnx]    eq 'H'){$amnt = 1.0;} # Hbust && …
+      elsif($tacz[$_][$phnx]    eq 'B'){$amnt = 2.0;} # dBust both Bcome neg8ive aftr Cmp BlO;
+      elsif($tacz[$_][$phnx]    eq 'D'){$amnt = 2.0;}
+      elsif($tacz[$_][$phnx]    eq 'S'){$amnt = 1.5 if(BJ(@{$hndz[$_][$phnx]}));} # n8ural BlkJk bonus!;
+      my           $dcmp=BJCmp(         $dscr,              $scrz[$_][$phnx]  );  # CoMPare scorez;
+      $dprs     -= $dcmp              * $amnt; # adjust respective purse totalz;
+      $prsz[$_] += $dcmp              * $amnt;$phnx++; }}}
+for(0..$plrz-1){  my $bp=$_;$bp=$sb64[$_] if($_ < 64);o9($p.$bp."PlrPurs$w:$B\$$G".sprintf("%10.2f",$prsz[$_])."$W;");}
+                o9($D.       "DelrPurs$w:$B\$$G".sprintf("%10.2f",$dprs    )."$W;");
