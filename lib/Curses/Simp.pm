@@ -6,7 +6,7 @@ my $curs=8; # used to set this to 0 for old 4NT rendering so now should remove a
 my $ptim=0;#eval('use Time::PT   ;8') || 0; # N1OLFDcR:I built an ncurses-snapshots from ThomasDickey on GitHub with: ./configure --disable-overwrite
 #   --with-shared --with-gpm --with-pcre2 --enable-widec --enable-sp-funcs --enable-ext-colors --enable-ext-mouse --enable-warnings
 my $fram=0;#eval('use Time::Frame;8') || 0;
-my $VERSION  =  '1.6';my $d8VS='N2CL9Dqe'; # remember that 1.2 is really that float and not automatically 1.002 without 'v1.2' or '1.2.0'
+my $VERSION  =  '1.6';my $d8VS='Q8QM8jak'; # remember that 1.2 is really that float and not automatically 1.002 without 'v1.2' or '1.2.0'
 BEGIN{ # VERBOSE METHOD NAME ALIASES  ## https://stackoverflow.com/questions/17543925/getting-used-only-once-possible-typo-warning-when-aliasing-subroutines
 # no strict 'subs'; # could also inside block braces { no warnings 'once'; for each alias }
   *AttributeNames        = \&AttrNamz;#*AttributeNames       if 0; # prevent spurious warning about "name used only once, possible typo"
@@ -1028,8 +1028,9 @@ sub Prnt{ # Simp object PrintString method
   ($yold, $xold)=($self->{'_ycrs'}, $self->{'_xcrs'});
   $parm{'ycrs'} = $parm{'ytmp'} if(exists($parm{'ytmp'}));
   $parm{'xcrs'} = $parm{'xtmp'} if(exists($parm{'xtmp'})); # below had Malformed UTF-8 character (unexpected continU8ion byt 0x9b && 9c,wi no prECdng stRt byt)
-  $parm{'text'} =~ s/[^@^A^B^C^D^E^F^G^H ^K^L^M^N^O^P^Q^R^S^T^U^V^W^X^Y^Z^[^\^]^^^_^?]/ /g;  # Prnt does not support escaped printf chars like Draw
-    unless($curs){ system("attrib /q /e -rsh C:\\SimpDraw.bat") if(-e 'C:/SimpDraw.bat' && !-w 'C:/SimpDraw.bat');
+ #$parm{'text'} =~ s/[^@^A^B^C^D^E^F^G^H ^K^L^M^N^O^P^Q^R^S^T^U^V^W^X^Y^Z^[^\^]^^^_^?]/ /g; # Prnt does not support escaped printf chars like Draw
+ # Q8QM8d8C:abov were originally all actual literal Ctrl chars but now pasted in as Vim's textual represent8ion of them instead, to avoid upload errors;
+  unless($curs){ system("attrib /q /e -rsh C:\\SimpDraw.bat") if(-e 'C:/SimpDraw.bat' && !-w 'C:/SimpDraw.bat');
                  system("del    /q /e      C:\\SimpDraw.bat") if(-e 'C:/SimpDraw.bat' && !-w 'C:/SimpDraw.bat'); open(SCRP,'>>','C:\SimpDraw.bat'); }
   if($parm{'prin'}){ if($self->{'_btyp'}){ if($parm{'ycrs'}){ $parm{'ycrs'}--; }else{ $parm{'zery'} = 1; }
                                            if($parm{'xcrs'}){ $parm{'xcrs'}--; }else{ $parm{'zerx'} = 1; } }
@@ -1154,9 +1155,11 @@ sub Draw{ # Simp object self Drawing method
     }elsif(length($ltxt) >  $self->{'_widt'}                         ){
       $ltxt = substr($ltxt, 0,  $self->{'_widt'}     );
     }
-    if((exists($self->{'_fclr'}) && $self->{'_fclr'} && @{$self->{'_fclr'}}) || # BlO had Malformed UTF-8 char (unexpected continuation byte 0x9b && 9c,
-       $ltxt =~ /[^@^A^B^C^D^E^F^G^H\t^K^L^M^N^O^P^Q^R^S^T^U^V^W^X^Y^Z^[^\^]^^^_^?]/){ # with no preceding start byte); N1NLAE86:I assumed ^I ndent canB \t ab;
-             if($self->{'_fclr'} && defined($self->{'_fclr'}->[$lnum])){ # ^J might be missing
+    if((exists($self->{'_fclr'}) && $self->{'_fclr'} && @{$self->{'_fclr'}}) # BlO had Malformed UTF-8 char (unexpected continuation byte 0x9b && 9c,
+  # || $ltxt =~ /[^@^A^B^C^D^E^F^G^H\t^K^L^M^N^O^P^Q^R^S^T^U^V^W^X^Y^Z^[^\^]^^^_^?]/
+       ){ # with no preceding start byte); N1NLAE86:I assumed ^I ndent canB \t ab;
+  # Q8QM8d8C:abov were originally all actual literal Ctrl chars but now pasted in as Vim's textual represent8ion of them instead, to avoid upload errors;
+      if($self->{'_fclr'} && defined($self->{'_fclr'}->[$lnum])){ # ^J might be missing
         $clin = $self->{'_fclr'}->[$lnum];
       }
       if(exists($self->{'_bclr'}) && $self->{'_bclr'} && defined($self->{'_bclr'}->[$lnum])){
