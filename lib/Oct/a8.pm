@@ -68,7 +68,7 @@ our @EXPORT= qw(bfr8c    b8c    d8c   dur8c @d8cl @d8cS  a8c   chti  c8fn o8 o9 
   PrfM   $bk   $br   $bo   $by   $bg    $bc   $bb   $bm   $bp   $bw %plds   $hK   $hR   $hO   $hY   $hG   $hC   $hB   $hM   $hP   $hW DmC h2rl  rl2h   drkh
   xrtr %xrth XE    sf   pf  $pP pP t1          cn  chmp  chip  co   %pldS   $HK   $HR   $HO   $HY   $HG   $HC   $HB   $HM   $HP   $HW %pldh hl $pfil
  $tnhf $ucdf spff spfd spfX spfs shfl  reso $Auth %cmsp %p8k2 @p82k  chp8 aw8 S2f4 c2f4 dm2u cdst %crgb %cbrt @snls @mrls %cdrd %cdrn    %nrgb $lfil   gnp8
-            $Sz  $Sa  $d $e $f  $h $i $j  $l  $n  $q  $s $t $u $v $x  $A  $D $E $F  $H $I $J  $L  $N  $Q  $S $T $U $V  $X  $Z); # scoop up abov as Dflt clrz;
+ $dbug      $Sz  $Sa  $d $e $f  $h $i $j  $l  $n  $q  $s $t $u $v $x  $A  $D $E $F  $H $I $J  $L  $N  $Q  $S $T $U $V  $X  $Z); # scoop up abov as Dflt clrz;
  # of 52 posibl sngl-letr var nmz,a8 Xportz 20,$b && $a unavail,sOshudB thEs 30 lFt4quik shortSt nAmz: 'def hij l n  q stuv x', 'A  DEF HIJ L N  Q STUV X Z';
  # of 52 ygTbUDSN was aded sO now 30 Xportz,see `pa 'print t1'`,sOshudB thEs 20 lFt4quik shortSt nAmz: ' ef hij l    q    v x', 'A   EF HIJ L    Q    V X Z';
 #ur @EXPORT_OK   = qw($d $e $f  $h $i $j  $l  $n  $q  $s $t $u $v $x  $A  $D $E $F  $H $I $J  $L  $N  $Q  $S $T $U $V  $X  $Z); # scoop up abov as Dflt clrz;
@@ -77,8 +77,8 @@ our %EXPORT_TAGS = ('all'  => [ qw($d $e $f $h $i $j $l $n $q $s $t $u $v $x $A 
                    #'b64'  => [ qw(CardB64   B64Card HandB64  B64Hand       ) ],
                    #'pd8a' => [ qw(                %pd8a   %zdnh %zplf %zloh) ],
                    ); # just load all singles (skipping sort $a && $b [&& $z] );
-our $VERSION='0.000_001';our $d8VS='Q74M7474';our $Auth='PipS <PipStuart@GMail.Com>'; # abov!Xporting $b sinc cOlIdz with sort{$a<=>$b};unalloc'd sOlOz^;
-our $ucdf= eval('use Color::Similarity::RGB qw(distance);1') || 0; # try2set UseColorDistanceFlag if optional module is available; /defhijlnqstuvx/i + /AZ/^;
+our $VERSION='0.000_001';our $d8VS='Q9SMEsSs';our $Auth='PipS <PipStuart@GMail.Com>'; # abov not!Xporting $b sinc cOlIdz with sort{$a<=>$b}; unalloc'd sOlOz^;
+our $dbug=0;our $ucdf= eval('use Color::Similarity::RGB qw(distance);1') || 0; # try2set UseColorDistncFlag if optnl module is avail; /defhijlnqstuvx/i+/AZ/^;
 our @sb64 =('0'..'9','A'..'Z','a'..'z','.','_'); # SingleBase64 array && Base10 hash (since it's probably best not to use b8.pm here in a8)
 our %sb10 =();$sb10{$sb64[$_]}=$_ for(0..$#sb64);our %crgb;our %cbrt;our @snls;our @mrls;our %cdrd;our %cdrn; # DclAr ColrDist d8a:BRiTness,Srch iNdex LiSt,
 our @sb256=('0'..'9', 'A'..'Z', 'a'..'z', '.', '_',  # Base256 but starting with b64 characters (blacK chS pibrq before White, then cRdz sHDc, then k && K)
@@ -348,7 +348,7 @@ sub cn{if(!@_ && !-t STDIN){ (@_=decode('UTF-8',join(''  ,<STDIN>)));}
 sub co{if(!@_ && !-t STDIN){ (@_=decode('UTF-8',join(''  ,<STDIN>)));}
   for    ( @_){chop ;} return(@_);}; sub chip{return(co(@_));} # above && mappings could be like Chimps chomp chopping chips can code cn co;)
 sub o9{o8( @_,"\n");} # 2du:considr mkng new sub:en() mABjust alias2 o8(wich iz lIk print or`echo -n`)&&ec()||o9(outf8 wi9NewlIn)2BlIk say||Dflt shL`echo`;
-sub o8{my $Uflg=1;my $Stxt='';return unless(@_);my $ncfl=0;$ncfl=1 if(exists($ENV{'NO_COLOR'}) && $ENV{'NO_COLOR'});
+sub o8{my $Uflg=1;my $Stxt='';return unless(@_);my $ncfl=0;$ncfl=1 if((exists($ENV{'NO_COLOR'}) && $ENV{'NO_COLOR'}) || !-t STDOUT); # do NoColr if pIpng2;
   if(defined($_[0]) && $_[0]=~  /^-?-([uh])(elp|tf8|flg)?$/i){if($1 eq 'u'){$Uflg=0;}else{
       $Stxt=" o8 Help text - autom8 printing out UTF-8 encoded texts which may also include ANSI escape codes for colors or SGR attributes (out8 utf8 and o9);
  This is basically an example of a manipul8ion parameter, but may not make standalone CLI wi ARGV (i.e., for now o8 is just a Perl sub that must have these...
@@ -1391,8 +1391,8 @@ sub hl{my $head=48;my $tail=48;my $bndx=0;if(@_){if($_[0] =~ /^-+h(elp)?$/i){ # 
                                                  $head=$bndx=0;for(reverse(split(//,shift(@_)))){$head+=(64**$bndx++)*$sb10{$_};}}
                                           if(@_){$tail=$bndx=0;for(reverse(split(//,shift(@_)))){$tail+=(64**$bndx++)*$sb10{$_};}}else{$tail=$head;}}
   if(!-t STDIN){my @id8a=<STDIN>;my @hd8a;my @td8a; # this subroutine is a very basic combin8ion of head && tail taking b64 sizes as params to oper8 on STDIN;
-    for(0..$head-1){   push(@hd8a,decode('UTF-8',$id8a[$_]));}
-    for(0..$tail-1){unshift(@td8a,pop(@hd8a));}return(@td8a);}}
+    for(0..$head-1){   push(@hd8a,decode('UTF-8',$id8a[$_])) if($_ < @id8a);} # hopefully if test fixes uninit warningz when head count gr8r than input size;
+    for(0..$tail-1){unshift(@td8a,   pop(@hd8a)) if(@hd8a);}  return(@td8a);}}
 # 2du:add -help to S2 && c2,mk new Dflt minimum output,mAB optn 2gNr8 Xpanded hedr&&SGR sectnz,DsIning IDeal wAyz2consistNtly Xchng d8a btwn fUtureS2&&c2Bgood,
 #   l8r mk new hedr section for qr// to list of layr stringz to apply as stRt of syntax-hilitng nstd of fully line-oriented alignment,add flgz 4 b64 && b256,
 #   add flag 4 all sectionz && layrz to be delimited somehow instead of pre-sized in maybe lengthy header,pigybak flgz or cfg Dtailz or cmNtz in hidN SKpzB4 0;
@@ -1616,19 +1616,19 @@ sub sS{      my $Stxt=shift;my $sefz=shift; # eScape TeXT, SubstituteEscapeFlagZ
     $Stxt=~ s/^-?-?h(elp)?\s*/$htxt/i;}
   elsif(defined($Stxt) && length($Stxt)){my $Sein=0;$Sein=1 if($Stxt=~ /\n$/);$sefz=undef if(defined($sefz) && $sefz eq '--'); # Dtect dbl-dash param
     $sefz='Cfp' unless(defined($sefz));$sefz=~ s/[^hCFbsXxfpEedzc]//g; #SEndzInNwln?
-    if($sefz=~  /C/  ){$Stxt=~ s/ \e \[ [\d;]*         [A-MPSTXZm]//gx  ;} # CSI codes should all fit this pattern && get stripped
+    if($sefz=~  /C/  ){$Stxt=~ s/ \e \[ [\d;:]*        [A-MPSTXZm]//gx  ;} # CSI codes should all fit this pattern && get stripped
     if($sefz=~ /[FbsXx]/){my @Sttd= split(/\n/,$Stxt);for my $lndx(0..$#Sttd){my $tlin=$Sttd[$lndx];my $blin='';
-        while($tlin=~ s/^(.*?)\e\[([\d;]+)m//){$blin.=$1 if(defined($1));my $digz=$2;
+        while($tlin=~ s/^(.*?)\e\[([\d;:]+)m//){$blin.=$1 if(defined($1));my $digz=$2;
           if($sefz=~  /F/){$digz=~ s/(^|;)(0?[01]|22)(;3[0-7])+(;|$)/$1$4/g ;$digz=~ s/;;+/;/g;}
           if($sefz=~  /b/){$digz=~ s/(^|;)( 4[0-7]  )(;4[0-7])+(;|$)/$1$4/gx;$digz=~ s/;;+/;/g;}
           if($sefz=~  /X/){$digz=~ s/(^|;)(38; 5    )(; \d+  ) (;|$)/$1$4/gx;$digz=~ s/;;+/;/g;}
           if($sefz=~  /x/){$digz=~ s/(^|;)(48; 5    )(; \d+  ) (;|$)/$1$4/gx;$digz=~ s/;;+/;/g;}
           if($sefz=~  /s/){my @dsep= split(/;/,$digz);my $pdig='';my $ppdg='';if(@dsep){ # split rEmAning digz on semiz && lookBhInd for Xtended colrz
-              for my $dndx(0..$#dsep){                                                   #   && also don't strip any normal or bold on or off
+              for my $dndx(0..$#dsep){o9("dsep:$dsep[$dndx];") if($dbug);                #   && also don't strip any normal or bold on or off
                 if(exists($sgrn{$dsep[$dndx]}) && ($ppdg !~ /^[34]8$/ || $pdig ne '5') && $dsep[$dndx] !~ /^(0?0|0?1|5|22|[34]8)$/){$dsep[$dndx]='';}
-                $ppdg=$pdig;$pdig=$dsep[$dndx];}
-              $digz='';$digz= join(';',@dsep) if(@dsep);
-          }}  $digz=~ s/(^;+|;;+|;+$)//g;$blin.=$SKp8 . $digz . 'm' if(length($digz));}
+                $ppdg=$pdig;$pdig=$dsep[$dndx];} # [01;38;5;014;48;5;000;4:3;25m is getting thru lsd8|sS Bcuz abov while regex didn't allow colonz;
+              $digz='';$digz= join(';',@dsep) if(@dsep); # want 2 rejoin remaining dsepz wi semicolonz thN strip any head or tail onez && single multiplez BlO;
+          }}  $digz=~ s/(^;+|;+$)//g;$digz=~ s/(;;+)/;/g;$blin.=$SKp8 . $digz . 'm' if(length($digz));}
         $blin.=$tlin if(length($tlin));$Sttd[$lndx]=$blin if(length($blin));
       } $Stxt= join("\n",@Sttd);$Stxt.= "\n"  if($Sein);} # trying to do some tricky slicing up of codez to isol8 Fbs layerz
     if($sefz=~  /d/  ){$Stxt=~ s/ \e \[([\d;]+)        [A-MPSTXZm]/$1/gx;} # just leave any digitz && semicolon sepR8orz (likely useful for `lsrc`)
@@ -3611,22 +3611,48 @@ They were all named closely too as in '"       ;for(        16..63   ){$retn.= S
     $retn    =~ s/m([FDALOH]):    /m$blyr:/x;} # post-process F2b flip-flop Foreground uc default 8pal8 layer prefixes into usage as bkgrnd lc versions
   $retn      =~ s/^\s+//; # not sure why blank newline snuck in top
   return($retn);}
-sub acs{ # apt-cache Search wrapper which coll8z dpkg -l resultz in together to help show install8ion st8us of described packages of searched interest;
-  my $gflg=0;my $gstr='';my $ksig=0; # added g flag to auto-grep on resultz so only actual present m@chz shO;
-  if(@_){for(my $pndx=0;$pndx<$#_;$pndx++){if($_[$pndx]=~ /^-?-?g(rep)?(i)?$/i){$gflg=1;$gstr=$_[$pndx+1];$_[$pndx]=$_[$pndx+1]='';
-        $ksig=1 if(defined($2));last;}}} # case-IGnore turned true
+sub acs{ # `apt-cache search` wrapper which coll8z `dpkg -l` resultz in together to help show install8ion st8us of described packages (of searched4 interest);
+# 2du:mk`acs libfaad-dev libtag1-dev libfftw3-dev libopus-dev libopusfile-dev libvorbis-dev libogg-dev libchafa-dev libglib2.0-dev libgdk-pixbuf-2.0-dev`work,
+#   alsO considr upd8ng o8 2 ck 4 STDOUT -t TTY && autO-sS strip/substitute-out SKpz 2 Dfalt uncolr when whatever o8 is outputting a command in2a pipe etc.,
+#   fix grepz 2 allow any sequence of g gv gi giv 2 aggreg8 rather than rEquIring g gi 2 come 1st B4 any gv giv inVertz 2 filter what gets included 4output;
+# nOt:can give g gi gv giv && -V(erbose) flagz where gz accept any number of following pRam RgUmNtz wich will procS g gi B4 gv giv cmndz but shud work lIkth@;
+#   whN srchng 4 Els-Software.Org Enhanced ls,Ihad2run: `acs els g els|sS|gv odels|gv evels|gv Welsh|gv abels|gv anels|gv ernels|gv hannels|gv ixels | g els`;
+#   now srchng 4 els can run: `acs els g els giv models levels Welsh labels panels kernels channels pixels angels sentinels golang-github ifelse`4very similR;
+  my $Vflg=0;my $gflg=0;my @gstr=(); # added g flag to include any number of auto-grepz on resultz so only actual present m@chz shO;
+  if(@_){for(my $pndx=0;$pndx<$#_;$pndx++){if($_[$pndx]=~ /^-?-?V(erbose)?$/i){$Vflg=1;$_[$pndx]='';} # -Verbose flag must come B4 any grep optnz;
+      elsif  (             $_[$pndx  ] =~ /^-?-?g(rep)?(i)?(v)?$/){$gflg=1;push(@gstr,['','']);$gstr[-1][0]=$2 if(defined($2));$gstr[-1][1]=$3 if(defined($3));
+        $_[$pndx]=''; # has2B:giv ordr,can't B gvi but just gv OK; mAB g or gi with argz nEd 2 come B4 any gv or giv with argz? Cmz lIkit,but workz OK if th@;
+        while($pndx<$#_ && $_[$pndx+1] !~ /^-?-?g(rep)?(i)?(v)?$/){$pndx++;push(@{$gstr[-1]},$_[$pndx]);$_[$pndx]='';}}}} # include any number of grep argz;
   my  @pkgz=split(/\n/,`apt-cache search @_`);my $rslt='';my $mxnl=1;my $mxvl=1;my $mxal=1;my %fd8a;my $drow=0;my $Wr=S('Wr'); # MaXNm|Vers|ArchLeng && Fieldz
-  for(@pkgz){if((!$gflg || /$gstr/) && /^(\S+)\s+-\s+(.+)$/){my($pkgn,$pkgd)=($1,$2); $mxnl=length($pkgn) if(length($pkgn) > $mxnl); # track max-length sOfR
+  for(@pkgz){if($gflg){my $incf=0;for my $gcnd(0..$#gstr){my $iflg=$gstr[$gcnd][0] || 0;my $vflg=$gstr[$gcnd][1] || 0; # init INCludeFlag wich grepz mAy togl;
+        for my $gand(2..$#{$gstr[$gcnd]}){if($Vflg){o9("gcnd:$gcnd $iflg $vflg gand:$gand garg:$gstr[$gcnd][$gand]");} # try2 Verbosely show grep cmndz&&argz;
+          if   ($vflg && (/$gstr[$gcnd][$gand]/ || ($iflg && /$gstr[$gcnd][$gand]/i))){$incf=0;} # next below should skip past any packagz th@ don't m@ch gi?;
+          elsif(          /$gstr[$gcnd][$gand]/ || ($iflg && /$gstr[$gcnd][$gand]/i) ){$incf=1;}}} if($Vflg){o9("pkag:$_ incf:$incf");} next unless($incf);}
+    if(/^(\S+)\s+-\s+(.+)$/){my($pkgn,$pkgd)=($1,$2); $mxnl=length($pkgn) if(length($pkgn) > $mxnl); # track max-length sOfR
       my $dprs=`dpkg --simulate -l $pkgn 2>/dev/null`;$dprs=~ s/^Desired=Unkn.+\n\| Status=Not.+\n\|\/ Err.+\n\|\|\/ Name.+\n\+{3}-={3}.+\n//; # strip header
       my @dptz=split(/\s+/,$dprs); # hopefully just get dpkg status, pkg-name (again), mAB version installed, && mAB architecture (omitting 2nd description)
-      if($gflg){$pkgd=~ s/($gstr)/$Wr$1$z$C/g;} # if gflg shud alsO hIlIt gstr Xplicit m@chz (but assuming folO wi Cyan in desc, && wi Green in pkg name BlO)
+      if($gflg){my $incf=0;for my $gcnd(0..$#gstr){my $iflg=$gstr[$gcnd][0] || 0;my $vflg=$gstr[$gcnd][1] || 0; # init INCludeFlag wich grepz mAy togl;
+        for my $gand(2..$#{$gstr[$gcnd]}){ # no -Verbose output for just embedded gstr color8ionz (in order, in case overlapping);
+          if   ($vflg && (/$gstr[$gcnd][$gand]/ || ($iflg && /$gstr[$gcnd][$gand]/i))){$incf=0;} # next below should skip past any packagz th@ don't m@ch gi?;
+          elsif(                                    $iflg && /$gstr[$gcnd][$gand]/i  ){$pkgd=~ s/($gstr[$gcnd][$gand])/$Wr$1$z$C/gi;}
+          elsif(          /$gstr[$gcnd][$gand]/                                      ){$pkgd=~ s/($gstr[$gcnd][$gand])/$Wr$1$z$C/g ;}}}}
+          # if gflg shud alsO hIlIt @gstr Xplicit m@chz (but assuming folO wi Cyan in desc, && wi Green in pkg name BlO);
       $mxvl=length($dptz[2]) if(defined($dptz[2]) && length($dptz[2]) > $mxvl);$fd8a{$pkgn}[0]=$dptz[0];$fd8a{$pkgn}[1]=$dptz[2];
       $mxal=length($dptz[3]) if(defined($dptz[3]) && length($dptz[3]) > $mxal);$fd8a{$pkgn}[2]=$dptz[3];$fd8a{$pkgn}[3]=$pkgd   ;}}
-  for(@pkgz){if((!$gflg || /$gstr/ || (/$gstr/i && $ksig)) && /^(\S+)/){my $pkgn=$1; # loop again after all max-lengthz are known && Field-d8a storez resultz
+  for(@pkgz){if($gflg){my $incf=0;for my $gcnd(0..$#gstr){my $iflg=$gstr[$gcnd][0] || 0;my $vflg=$gstr[$gcnd][1] || 0; # init INCludeFlag wich grepz mAy togl;
+        for my $gand(2..$#{$gstr[$gcnd]}){if($Vflg){o9("gcnd:$gcnd $iflg $vflg gand:$gand garg:$gstr[$gcnd][$gand]");} # try2 Verbosely show grep cmndz&&argz;
+          if   ($vflg && (/$gstr[$gcnd][$gand]/ || ($iflg && /$gstr[$gcnd][$gand]/i))){$incf=0;} # next below should skip past any packagz th@ don't m@ch gi?;
+          elsif(          /$gstr[$gcnd][$gand]/ || ($iflg && /$gstr[$gcnd][$gand]/i) ){$incf=1;}}} if($Vflg){o9("pkag:$_ incf:$incf");} next unless($incf);}
+    if(/^(\S+)/){my $pkgn=$1; # loop again after all max-lengthz are known && Field-d8a storez resultz ## wuzB4:(!$gflg || /$gstr/ || (/$gstr/i && $ksig)) &&;
       for my $fndx(0..3){$fd8a{$pkgn}[$fndx]='' unless(defined($fd8a{$pkgn}[$fndx]));} # not sure why some fieldz were coming off uninitialized
-      my $cpkn=$pkgn;unless(++$drow % 3){while(length($cpkn) < ($mxnl-1)){$cpkn.=' -';}} $cpkn=sprintf("$G%-${mxnl}s",$cpkn); # l8r mAB du -s st8us nstd of -l?
-      if($gflg){$cpkn=~ s/($gstr)/$Wr$1$z$G/g;} my $rwdl=sprintf("$cpkn  $M%2s  $Y%-${mxvl}s  $R%-${mxal}s  $C%s$z\n",@{$fd8a{$pkgn}}); # mIt B much fastr ...
-      unless($drow % 3){$rwdl=~ s/(   )/ - /g;} $rslt.=$rwdl;}} return($rslt);}             # ... 2du dpkg -l in bulk rathr than sO many baktix && hedr stripz;
+      my $cpkn=$pkgn;unless(++$drow % 3){while(length($cpkn) < ($mxnl-1)){$cpkn.=' -';}} $cpkn=sprintf("$G%-${mxnl}s",$cpkn); # l8rmABdu -s st8us nstd of -l?;
+      if($gflg){my $incf=0;for my $gcnd(0..$#gstr){my $iflg=$gstr[$gcnd][0] || 0;my $vflg=$gstr[$gcnd][1] || 0; # init INCludeFlag wich grepz mAy togl;
+        for my $gand(2..$#{$gstr[$gcnd]}){ # no -Verbose output for just embedded gstr color8ionz (in order, in case overlapping);
+          if   ($vflg && (/$gstr[$gcnd][$gand]/ || ($iflg && /$gstr[$gcnd][$gand]/i))){$incf=0;} # next below should skip past any packagz th@ don't m@ch gi?;
+          elsif(                                    $iflg && /$gstr[$gcnd][$gand]/i  ){$cpkn=~ s/($gstr[$gcnd][$gand])/$Wr$1$z$G/gi;}
+          elsif(          /$gstr[$gcnd][$gand]/                                      ){$cpkn=~ s/($gstr[$gcnd][$gand])/$Wr$1$z$G/g ;}}}}
+      my $rwdl=sprintf("$cpkn  $M%2s  $Y%-${mxvl}s  $R%-${mxal}s  $C%s$z\n",@{$fd8a{$pkgn}}); # mIt B much fastr 2du dpkg -l in bulk rathr than sO many bktix;
+      unless($drow % 3){$rwdl=~ s/(   )/ - /g;} $rslt.=$rwdl;}} return($rslt);} # stil mA nEd2pIpe thru sS B4 pIping2Xtrnal giv etc.;bulk dpkg nEdz STDERR4!i;
 sub olde{my($d8vs,$name)=('E4IM2Qjq','olde'); # considering whether 8 alias && e shud B distinct for now to offer different options?
   # 398GX2X: e crE8d by Pip@CPAN.Org to manage file Editing  # can't create merely sub 8{} in Perl here, but alias should wrap eventual vim clone
   # 2du:refactor ~/.erc/ searching code from e,bak,updt,cfdd with ~/.erc/* into ~/.e/ instead (/rc$/ being ResourceConfig text files rather than subdir names)
@@ -3704,7 +3730,7 @@ sub olde{my($d8vs,$name)=('E4IM2Qjq','olde'); # considering whether 8 alias && e
 #    GNU GPL version 2.
 #  =cut
   my $verb = 1; # verbose  flag
-  my $dbug = 0; # debug    flag
+  my $Dbug = 0; # debug    flag
   my $skip = 0; # skip     flag
   my $mkfl = 1; # makefile flag
   my $bdfl = 1; # Build.PL flag
@@ -4148,7 +4174,7 @@ my \$mbld = Module::Build->new(
                       print "  format of \$MAJOR.\$MINOR.\$PIPTIME! (eg. 1.0.37SLNGN)\n"}}}}
     if($pkgd{'fail'}){print "!*ER0R*! \`e pkg\` couldn't locate a suitable MANIFEST file!\n";
                       print "  Please run it again as \`e pkg /path/to/pkg/MANIFEST\`.\n";
-      if($dbug      ){print "\nPackage Hash:\n"; print "$_:$pkgd{$_}\n" for(keys(%pkgd))}}
+      if($Dbug      ){print "\nPackage Hash:\n"; print "$_:$pkgd{$_}\n" for(keys(%pkgd))}}
   }elsif($file eq'ul'){ # special 'ul' file case for completed pkgs; # first ck if cwd is 2..4 deep from a /lib/
     if   (-d       '../../lib' && -d       '../../.bak' && !-d       '../../../../home'){chdir(         '../..')}
     elsif(-d    '../../../lib' && -d    '../../../.bak' && !-d    '../../../../../home'){chdir(      '../../..')}
