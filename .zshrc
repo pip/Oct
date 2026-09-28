@@ -40,7 +40,7 @@ unsetopt                \
 # re_____match_____pcre \# mA want2set for Z-SHell scripting RegularExpressions to utilize PerlCompatibility styles && mA insert 'zmodload zsh/(pc)?re(gex)?';
 # extended_glob is Zsh option wich causes the caret '^' circumflex 2B interpol8d / Xpanded && it's used in a regex ^prev^next 2 substitute stRt of last cmnd;
 alias Al=alias Xp=export xprt=Xp Bk=bindkey bk=Bk UA=unalias; # dot_glob optn includz .files && XtNded_glob m@chz ~ # ^ nOtd in HTTPS://YouTu.be/g5BoVPhewWM ;
-Xp Vers='0.000001';Xp d8VS='Q8PM8Qwn';Xp Auth='PipStuart <PipStuart@GMail.Com>'; # 'Xp','Al','Bk' => export,alias,bindkey  'sl','cl' => SymLink,CountLines,… ;
+Xp Vers='0.000001';Xp d8VS='Q9SMDa2c';Xp Auth='PipStuart <PipStuart@GMail.Com>'; # 'Xp','Al','Bk' => export,alias,bindkey  'sl','cl' => SymLink,CountLines,… ;
 if     [[       "$SHELL"    == "" ]] ||
        [[       "$SHELL" =~ bash  ]]; then       Xp SHELL=$(which   zsh);Xp HShl="$SHELL";fi; # H Xport mAB shud B HshL 4 prOnunC8ion nstd?;
 if     [[       "$HOSTNAME" == "" ]]; then       Xp HOSTNAME=$(hostname);fi;  #`hostname`retnz fsckd nwlInz\n4CygWinzRxvt... ||smthng els lame  =(
@@ -243,22 +243,22 @@ Al kr=krita bl=blender;Xp PYTHONPATH='/usr/lib/x86_64-linux-gnu/krita-python-lib
 Al ki=kitty kn=kitten kt=ki kit=ki; # PCMLDkit:just upd8d from old /usr/bin/kitty-v0.21.2 (mAB instald via snap?) to new ~/.local/kitty.app/bin/kitty-v0.44.0;
 Al kc='pal8 -q -C_8C'; # quickly && quietly Color kitty Cursor Red;
 #       `which vim`; #dflt(&&preferred)way2load my *.pm (butTaki shud nstd get i386 path)  ## above tried exporting otherwise unused but krita still warnd;
-export QT_LINUX_ACCESSIBILITY_ALWAYS_ON='1';export QT_ACCESSIBILITY='1'; # not yet sure what these impact, but making a note intending to find out more l8r;
-#xport      QT_QPA_PLATFORM_PLUGIN_PATH='/opt/Qt5.13.1-pnp/plugins'; #/usr/lib/x86_64-linux-gnu/qt5/plugins'; # JC9LIke9:fix libqxcb.so to 0x50D01 somehow;
-alias krav='QT_QPA_PLATFORM=xcb   QT_QPA_VERBOSE=1 QT_SCALE_FACTOR=1.25 krita &'; # /usr/bin/platforms/ -> /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/;
+Xp QT_LINUX_ACCESSIBILITY_ALWAYS_ON='1';Xp QT_ACCESSIBILITY='1'; # not yet sure what these impact, but making a note intending to find out more l8r;
+#Xp QT_QPA_PLATFORM_PLUGIN_PATH='/opt/Qt5.13.1-pnp/plugins'; #/usr/lib/x86_64-linux-gnu/qt5/plugins'; # JC9LIke9:fix libqxcb.so to 0x50D01 somehow;
+Al krav='QT_QPA_PLATFORM=xcb   QT_QPA_VERBOSE=1 QT_SCALE_FACTOR=1.25 krita &'; # /usr/bin/platforms/ -> /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/;
 # wayland-org.kde.kwin.qpa , dxcb,eglfs,linuxfb, minimal,minimalegl,offscreen,vnc, wayland,wayland-egl,wayland-xcomposite-egl,wayland-xcomposite-glx,xcb
-alias kraw='QT_QPA_PLATFORM=wayland-xcomposite-glx QT_SCALE_FACTOR=1.25 krita &'; # test wayland; Below from HTTPS://Forum.KDE.Org/viewtopic.php?t=151602 ;
-alias krit='QT_QPA_PLATFORM=xcb   QT_QPA_VERBOSE=1 QT_SCALE_FACTOR=1.2  krita &'; # scales whole Krita interface down a bit to fit my display much more nicely;
-alias lddk='ldd -r =krita|cut -d " " -f 1'; # try `QT_DEBUG_PLUGINS=1   krita &` if plugins mAB core-dumping. Also QML_IMPORT_TRACE && QT_QML_DEBUG_NO_WARNING;
-#xport GTK_IM_MODULE='uim'; #2uze uim-skk:`em skk-jisyo`;4DfltInptMethd add2~/.uim:(define default-im-name 'skk|anthy|*'); #2fyndIMz:`uim-im-switcher-[gq]tk?`;
-#xport  QT_IM_MODULE='uim';export XMODIFIERS=@im=uim ; #export CD_ROOT="$HOME/gmz"; #Xportng CD_ROOT=~/gmz was tmp needed2`em quake3`(ioq3);mayb s/uim/scim/g;
-export HCAl='--color=always';alias lscr='ls $HCAl|pa "\$y=\$Y;\$y=~s/\\[/\\\\[/;@lsop=<STDIN>;for(@lsop){s/\$y/\$B/g;print}"'; # P6BM7Blu:tk from->to remapz!;
-export HCAu='--color=auto'  ;alias gica='gca -i'; # above: "ls ColoR Remap" could become function taking ls pRamz && from->to mapz to streamline auto recolor;
-export LS_OPTIONS="$HCAu"; # LsOptz: --color=always|yes|force|never|no|none|auto|tty|if-tty
-export CVS_RSH=`which ssh`;export CVSROOT='/var/cvs';
-dircolors=`which dircolors`||dircolors=`which gdircolors`;export dircolors;alias drc='dircolors';export COLORFGBG='default;default'; # abov Dfalt CVSRootPath..
-if   [[ "${(L)HOTy}" == *bsd ]]; then alias    ls='gls $LS_OPTIONS'     ;              # .. does not exist && is pretty obsOlEt now
-else                                  alias    ls=' ls $LS_OPTIONS'     ; fi # load ls/dir color resources...
+Al kraw='QT_QPA_PLATFORM=wayland-xcomposite-glx QT_SCALE_FACTOR=1.25 krita &'; # test wayland; Below from HTTPS://Forum.KDE.Org/viewtopic.php?t=151602 ;
+Al krit='QT_QPA_PLATFORM=xcb   QT_QPA_VERBOSE=1 QT_SCALE_FACTOR=1.2  krita &'; # scales whole Krita interface down a bit to fit my display much more nicely;
+Al lddk='ldd -r =krita|cut -d " " -f 1'; # try `QT_DEBUG_PLUGINS=1   krita &` if plugins mAB core-dumping. Also QML_IMPORT_TRACE && QT_QML_DEBUG_NO_WARNING;
+#Xp GTK_IM_MODULE='uim'; #2uze uim-skk:`em skk-jisyo`;4DfltInptMethd add2~/.uim:(define default-im-name 'skk|anthy|*'); #2fyndIMz:`uim-im-switcher-[gq]tk?`;
+#Xp  QT_IM_MODULE='uim';export XMODIFIERS=@im=uim ; #export CD_ROOT="$HOME/gmz"; #Xportng CD_ROOT=~/gmz was tmp needed2`em quake3`(ioq3);mayb s/uim/scim/g;
+Xp HCAl='--color=always';Al lscr='ls $HCAl|pa "\$y=\$Y;\$y=~s/\\[/\\\\[/;@lsop=<STDIN>;for(@lsop){s/\$y/\$B/g;print}"'; # P6BM7Blu:tk from->to remapz!;
+Xp HCAu='--color=auto'  ;Al gica='gca -i'; # above: "ls ColoR Remap" could become function taking ls pRamz && from->to mapz to streamline auto recolor;
+Xp LS_OPTIONS="$HCAu"; # LsOptz: --color=always|yes|force|never|no|none|auto|tty|if-tty, mIght alsO want -w(idth) `tput cols` to set to term column-width?;
+Xp CVS_RSH=`which ssh`;Xp CVSROOT='/var/cvs';Al dir='dir $LS_OPTIONS' vdir='vdir $LS_OPTIONS'; # dir Cmz 2 B sAm az ls && vdir just lIk ls -l or my ll;
+dircolors=`which dircolors`||dircolors=`which gdircolors`;Xp dircolors;Al drc='dircolors';Xp COLORFGBG='default;default'; # abov Dfalt CVSRootPath..
+if   [[ "${(L)HOTy}" == *bsd ]]; then Al         ls='gls $LS_OPTIONS'   ;              # .. does not exist && is pretty obsOlEt now
+else                                  Al         ls=' ls $LS_OPTIONS'   ; fi # load ls/dir color resources...
 if   [[ -r   "$HOME/.lsrc"   ]]; then  eval $($dircolors -b $HOME/.lsrc);    # orig also ck'd 4 m/^~\/\.(ls|dir)_colors$/i beyond .lsrc but I don't think
 else                                   eval $($dircolors -b            ); fi #   I'll need to further support any of those; just init sysdefaults if!.lsrc
 # K R 0oO Y G C B M W  # a8,c8,f8::pal8 `S` colrz mapd to ANSI SGR wi CSI then 1; then 30+$BlOn;
@@ -285,18 +285,17 @@ else                                   eval $($dircolors -b            ); fi #  
          LS_COLORS="$LS_COLORS*.G.=22;44:*.GG.=22;34:*.G9.=22;30;40:*.9.=22;34:*.=22;34:*..=22;30:*...=22;30;44:"; #endotnGXtraz  # gN9Gz # .?bbkbkk prv? +nw g
          LS_COLORS="$LS_COLORS*.png.=22;35;45:*.Hrc.=22;30:*.ls.=22;34;44:*.log.=22;32:*.kdb.=22;30;40:*.txt.=22;36:"; #smAnXtraz # gNrl  # .?mkbgkc prvz m b k
          LS_COLORS="$LS_COLORS*.g.=22;35:*.gg.=22;30:*.g6.=22;34;44:*.6.=22;32:*.H.=22;30;40:*.8.=22;36:*.prv8.=22;34:"; #mormAnXtrz#gNg8z# .?mkbgkc prvz +nw b
-export   LS_COLORS="$LS_COLORS*.serverauth.???=22;32:*.serverauth.????=22;31:*.serverauth.?????=22;35:*.goutputstream-??????=22;31:"; #*.gout*-? duz!wrk4 `ls`;
+Xp       LS_COLORS="$LS_COLORS*.serverauth.???=22;32:*.serverauth.????=22;31:*.serverauth.?????=22;35:*.goutputstream-??????=22;31:"; #*.gout*-? duz!wrk4 `ls`;
 #xport GREP_COLORS="mt=01;34"; bindkey -v; #`bindkey -e`setzEmacs-stylCmdLynEdtng; -v hazBn betRsofR4mE,butdu!4getEmaxAtaxBax; #rEmMbr"^foo^bar"subst prEv cmd;
-export GREP_COLORS="ms=01;04;94:mc=01;02;33:sl=:cx=:fn=01;03;95:ln=01;92:bn=22;33:se=01;96";bindkey -v; #RoYG CBMp=>1o32 645p;RGY BMC;`gis -Hnb`shOFlNmLNumBytN
-alias  grP="grep -P $HCAl"; # want grep --color=always wi Perl PCRE 2 pIp 2 lS 4 shOing colrz; 4 4mz R: -F(ixdstrz) -G(basicgrep) -E(xtndedp@rnz) -P(erlp@rnz)
-alias  grp="grep    $HCAu"; # want grep --color=auto all za tym2(&&mayB`dircolrz ~/.gprc`?)&&2hv -nubTHZ?fulnSwi:Hedrfylnmz,lyNumZeroUnixTabalyndBytofstz
-alias fgrep="fgrep  $HCAu"; #   ...also fgrep Fixedstr nEdz auto2; it wud B cool 2 mk perl grep from grepp&&sarep 2 auto colr multiple m@chz difrNtly;
-alias egrep="egrep  $HCAu"; #   ...also egrep  # UbuTip:"Edit the command line with cut and paste: ctrl-k for cut, and ctrl-y for paste." prolyOnly4Emacs
-alias rgrep="rgrep  $HCAu"; #   ...also rgrep Recursive && above is Extended Expressionz but I'm lIkly 2 prEfer -P Perl PCRE as mOst familiR syntax && BhAvior;
+Xp     GREP_COLORS="ms=01;04;94:mc=01;02;33:sl=:cx=:fn=01;03;95:ln=01;92:bn=22;33:se=01;96";bindkey -v; #RoYG CBMp=>1o32 645p;RGY BMC;`gis -Hnb`shOFlNmLNumBytN
+Al  grP="grep -P $HCAl"; # want grep --color=always wi Perl PCRE 2 pIp 2 lS 4 shOing colrz; 4 4mz R: -F(ixdstrz) -G(basicgrep) -E(xtndedp@rnz) -P(erlp@rnz)
+Al  grp="grep    $HCAu"; # want grep --color=auto all za tym2(&&mayB`dircolrz ~/.gprc`?)&&2hv -nubTHZ?fulnSwi:Hedrfylnmz,lyNumZeroUnixTabalyndBytofstz
+Al fgrep="fgrep  $HCAu"; #   ...also fgrep Fixedstr nEdz auto2; it wud B cool 2 mk perl grep from grepp&&sarep 2 auto colr multiple m@chz difrNtly;
+Al egrep="egrep  $HCAu"; #   ...also egrep  # UbuTip:"Edit the command line with cut and paste: ctrl-k for cut, and ctrl-y for paste." prolyOnly4Emacs
+Al rgrep="rgrep  $HCAu"; #   ...also rgrep Recursive && above is Extended Expressionz but I'm lIkly 2 prEfer -P Perl PCRE as mOst familiR syntax && BhAvior;
 # nOt:pgrep iz a difrNt Utl th@ srchz runing procSz && fIndz IDz bAsd on p@rn pRamz && iz rEl8d 2 pkill && pidwait, sO try not 2 confUz it wi Perl grep -P;
-alias  gpnt=' grp  -nubTH';alias gpnz='gpnt -Z';alias gca="grep $HCAl";alias xa='xargs'; # nd2tSt4nmspc cOlIdz of`gpn?`&&stuD`(perl|xargs) -0`,`(sort|grep)-z`;
-alias  xapf='xa printf'; # O3GM0vPF;
-export KEYTIMEOUT=8; # P6CMDotF:GitHub.Com/IbhaGwan/dots .zshrc:set 8ms timeout for Esc press so we can switch between vi "normal" and "command" modes fast!;
+Al gpnt=' grp -nubTH' gpnz='gpnt -Z' gca="grep $HCAl" xa=xargs xapf='xa printf'; # nd2tSt4nmspc cOlIdz4`gpn?`&&stuD`(perl|xargs) -0`,`(sort|grep)-z`; O3GM0vPF;
+Xp KEYTIMEOUT=8; # P6CMDotF:GitHub.Com/IbhaGwan/dots .zshrc:set 8ms timeout for Esc press so we can switch between vi "normal" and "command" modes fast!;
 #bindkey -M menuselect 'h' vi-backward-char        # Use vim keys in tab complete menu (2nd tab press);
 #bindkey -M menuselect 'j' vi-down-line-or-history
 #bindkey -M menuselect 'k' vi-up-line-or-history   # Below, by default backspace (^?) is bound to `vi-backward-delete-char`.
@@ -408,36 +407,36 @@ if       [[ "$HUsr"     !=  "root"  ]];                                  then #e
       #   5/17 ZanZurf    8/20 rOMAN3      11/23 bROADWAY
 fi; # ls.*? -1:OnlE1FyLynz($_\n);clasiFy(dir/,symlnk@,exefyl*,etc);QuotRsltnzFylNmz(2sealSpcz&&othrDynabiliTBhynd lit txt);Long(shoXact byte fylsizes);
 if [[ "$TERM" == "xterm-kitty" ]]; then kc;fi; # originally trIed 2 set KittyCursorColor B4 .pal8-per-term was calld,but nEdz 2B down hEr aftrwardz 2 tk Fect;
-alias lsQ=' ls -Q ';alias l1=' ls -1';alias  lQ1=' lQ -1 ';alias l1Q='  lQ1 ';alias lF1='lF -1';alias l1F='lF1';alias ls1='l1'; #Human readable approx fylsyz;
-alias  lsF='ls -vF';alias lL=' ls -l';alias   lFl=' lF -l';alias  llF='  lFl';alias lQl='lQ -l';alias llQ='lQl';alias ll='lFl'; #!?"proly adng 1A|StekSauc"?!;
-alias  lQF='  lsQF';alias  lFQ=' lQF';alias lsQF=' lQ  -F';alias lsFQ='lsQF ';alias lsgdf='ls --group-directories-first';alias lsv='ls -v'; #ias lv='lsv -l';
-alias   lF='   lsF';alias lh=' ll -h';alias   lFh=' lh -F';alias lhF='   lFh';alias lfh='lFh';alias lhf='lhF'; #-v in base lsF natural sort of Version numbers
-alias  lQ='   lsQ ';alias lr=' ls -r';alias  lQh=' lh -Q ';alias  lhQ=' lQh ';alias lqh='lQh';alias lhq='lhQ'; # rm lsrc BlO&&mk lsrc Utl2gN .lsrc from nw.lrc
+Al lsQ=' ls -Q ' l1=' ls -1'  lQ1=' lQ -1 ' l1Q='  lQ1 ' lF1='lF -1' l1F='lF1' ls1='l1'; #Human readable approx fylsyz;
+Al  lsF='ls -vF' lL=' ls -l'   lFl=' lF -l'  llF='  lFl' lQl='lQ -l' llQ='lQl' ll='lFl'; #!?"proly adng 1A|StekSauc"?!;
+Al  lQF='  lsQF'  lFQ=' lQF' lsQF=' lQ  -F' lsFQ='lsQF ' lsgdf='ls --group-directories-first' lsv='ls -v'; #ias lv='lsv -l';
+Al   lF='   lsF' lh=' ll -h'   lFh=' lh -F' lhF='   lFh' lfh='lFh' lhf='lhF'; #-v in base lsF natural sort of Version numbers
+Al  lQ='   lsQ ' lr=' ls -r'  lQh=' lh -Q '  lhQ=' lQh ' lqh='lQh' lhq='lhQ'; # rm lsrc BlO&&mk lsrc Utl2gN .lsrc from nw.lrc
 Al ll='ls -lF' lh='ll -h' l='lsd8' lst='lft' lshl='ls --hyperlink'; #clasiFy,Long(shoFylBytSyz),Human(rEdablSyz); l was =lh; lshl=HyperLink wi `S :.` unDrDotD;
-  alias lsd='echo "trail globz wi *(/) 4just dirz";lf-d  '; #ias L='ls  -F'; # -CF -w $HWid'; # prepare to make L basic c8fn wrapper of normal ls
-alias lca=' l --color=always';alias lC=' lca'; # call lsd8, used 2 call wi -ca thinking was wi special singl flag ther wich toglz color=auto && basically setz
-alias lf0=' lca ~/muz/U2b|f8 fR test pad9 fb Wk next fN Rb word pad8 bco=11 fF Gp last'; # it bak 2 color=alwayz lIk it wuzB4; # tSt l wi f0nt && f8 bg undrlA;
-alias lf8=' lca ~/muz/U2b|f8 Br test pad9 fm Wk next fr Rb word pad8 bco=12 fc Gp last';alias lF0='lca ~/dvl|f8 tst R sts fm Y ipi Fb:GbBKCUDI pip';
-alias lF8=' lca ~/dvl/f8 |f8 pad9 test fm Yb dice fc Pg card Ob pies'; # bcco BigCharColmOfset=-\d+ Fb:GbBUICDO padc=\d+ 2 draw bigchrz @ othr than 8*cndx;
-alias LFA=' L  -FA      ';alias LAV=' LA -v       ';alias LA=' L -A       ';alias Lfa=' LFA ';alias Lav=' LAV '; # special wrappers 4 non-long curt wide L;
-alias lFR=' lF -R       ';alias llR=' ll -R       ';alias lR=' l -R       ';alias lfR=' lFR ';alias lsR=' lfR '; #Recurs subdirz;Rmembr:zsh`**`auto-recursz
-alias lFa=' lF -A       ';alias lla=' ll -A       ';alias la=' l -A       ';alias lfa=' lFa ';alias lsa=' lfa ';alias lsax='lsa -X'; #Almostall (.*;!./||../)
-alias lFb=' lF -B       ';alias llb=' ll -B       ';alias lb=' l -B       ';alias lfb=' lFb ';alias lsb=' lfb ';alias lxr='Lrx'; #omitBakupz(!*~); altrvrsortz
-alias lFrs='lF  -rS     ';alias llrs='ll -rS      ';alias lrs='l -rS      ';alias lfrs='lFrs';alias lsrs='lfrs';alias lsr='lrs'; #sortbyReversdSize
-alias lFrx='lF  -rX     ';alias llrx='ll -rX      ';alias Lrx='l -rX      ';alias lfrx='lFrx';alias lsrx='lfrx'; #sortbyReversdXtension #D92MCBuZ:`md lrx`prob
-alias lFrc='lF  -rct    ';alias llrc='ll -rct     ';alias Lrc='l -rct     ';alias lfrc='lFrc';alias Lsrc='lfrc'; #sortbyReversdChngdTime(frstmodtym)
-alias lFc=' lF   -ct    ';alias llc=' ll  -ct     ';alias lct='l  -ct     ';alias lfc=' lFc ';alias lsc=' lfc '; #sortby       ChngdTime(lastmodtym)
-alias lFx=' lF   -X     ';alias llx=' ll  -X      ';alias lx=' l  -X      ';alias lfx=' lFx ';alias lsx=' lfx '; #sortby       Xtension
-alias lX='lx';alias llX='llx';alias LX='L -X';alias Lx='LX';                alias lax='la -X'; # not yet lexer?;
-alias lFs=' lF   -S     ';alias lls=' ll  -S      ';alias l-s='l  -S      ';alias lfs=' lFs ';alias lss=' lfs '; #sortby       Size
-alias lF-d='lF  -d      ';alias ll-d='ll  -d      ';alias l-d='l  -d      ';alias lf-d='lF-d';alias ls-d='lf-d'; #Dirz; belo shud prolyBfuncz2tst4$1 B4pikng*
-alias lFd=' lF-d    *(/)';alias lld=' ll-d    *(/)';alias lD=' l-d    *(/)';alias lfd=' lFd ';alias lsD=' lfd '; #       Dirz*(/) Beppu sez:"Do*NOT*alias
-alias lFid='lF-d -I=*(/)';alias llid='ll-d -I=*(/)';alias lid='l-d -I=*(/)';alias lfid='lFid';alias lsid='lfid'; #Ignore Dirz(!/)   importnt linker`ld`!"
-alias lFf=' lF      *(.)';alias llf=' ll      *(.)';alias lf=' l      *(.)';alias lff=' lFf ';alias lsf=' lff '; #normal fylz*(.) Note:symlynx(@)
-alias lFif='lF   -I=*(.)';alias llif='ll   -I=*(.)';alias lif='l   -I=*(.)';alias lfif='lFif';alias lsif='lfif'; #Ignore fylz(!.)
-      FTym=' --full-time';alias llft="ll $FTym    ";alias lft="l $FTym    ";alias ltym='lft ';alias lftym='lft';alias ltime='lft'; #shoFulTym stampz4LongLstz
-alias lass='la       |sS';alias las='lass'; # lsd8 list all filez stripped of SKp codez; ## maybe *.* quells warning when including sepR8 '*' with no match?
-alias lads='la -d  .*|sS';alias lad='lads';alias ls8='ec "Stuv, rXU.: Size time - uaxt vrsn,  rvrs Xtns - U!s8 .??.;";lsd8'; # LiSt top7 mMorabl Sort8 optnz;
+Al lsd='echo "trail globz wi *(/) 4just dirz";lf-d '; # ls -CF -w $HWid';
+Al lca=' l --color=always' lC=' lca'; # call lsd8, used 2 call wi -ca thinking was wi special singl flag ther wich toglz color=auto && basically setz
+Al lf0=' lca ~/muz/U2b|f8 fR test pad9 fb Wk next fN Rb word pad8 bco=11 fF Gp last'; # it bak 2 color=alwayz lIk it wuzB4; # tSt l wi f0nt && f8 bg undrlA;
+Al lf8=' lca ~/muz/U2b|f8 Br test pad9 fm Wk next fr Rb word pad8 bco=12 fc Gp last';Al lF0='lca ~/dvl|f8 tst R sts fm Y ipi Fb:GbBKCUDI pip';
+Al lF8=' lca ~/dvl/f8 |f8 pad9 test fm Yb dice fc Pg card Ob pies'; # bcco BigCharColmOfset=-\d+ Fb:GbBUICDO padc=\d+ 2 draw bigchrz @ othr than 8*cndx;
+Al LFA=' L  -FA      ' LAV=' LA -v       ' LA=' L -A       ' Lfa=' LFA ' Lav=' LAV '; # special wrappers 4 non-long curt wide L;
+Al lFR=' lF -R       ' llR=' ll -R       ' lR=' l -R       ' lfR=' lFR ' lsR=' lfR '; #Recurs subdirz;Rmembr:zsh`**`auto-recursz
+Al lFa=' lF -A       ' lla=' ll -A       ' la=' l -A       ' lfa=' lFa ' lsa=' lfa ' lsax='lsa -X'; #Almostall (.*;!./||../)
+Al lFb=' lF -B       ' llb=' ll -B       ' lb=' l -B       ' lfb=' lFb ' lsb=' lfb ' lxr='Lrx'; #omitBakupz(!*~); altrvrsortz
+Al lFrs='lF  -rS     ' llrs='ll -rS      ' lrs='l -rS      ' lfrs='lFrs' lsrs='lfrs' lsr='lrs'; #sortbyReversdSize
+Al lFrx='lF  -rX     ' llrx='ll -rX      ' Lrx='l -rX      ' lfrx='lFrx' lsrx='lfrx'; #sortbyReversdXtension #D92MCBuZ:`md lrx`prob
+Al lFrc='lF  -rct    ' llrc='ll -rct     ' Lrc='l -rct     ' lfrc='lFrc' Lsrc='lfrc'; #sortbyReversdChngdTime(frstmodtym)
+Al lFc=' lF   -ct    ' llc=' ll  -ct     ' lct='l  -ct     ' lfc=' lFc ' lsc=' lfc '; #sortby       ChngdTime(lastmodtym)
+Al lFx=' lF   -X     ' llx=' ll  -X      ' lx=' l  -X      ' lfx=' lFx ' lsx=' lfx '; #sortby       Xtension; BlO is not yet lexer; 
+Al lX='lx'   llX='llx' LX='L -X' Lx='LX  ' lax='la -X' ell='els -lFp $et';Xp et="+T^NY-M-DTZ"; # Xp Els-Time(Numrc dashd-Date Time Zone) nO sub-secz&&nEdz -l!;
+Al lFs=' lF   -S     ' lls=' ll  -S      ' l-s='l  -S      ' lfs=' lFs ' lss=' lfs' le='l -e'; #s8bySize
+Al lF-d='lF  -d      ' ll-d='ll  -d      ' l-d='l  -d      ' lf-d='lF-d' ls-d='lf-d'; #Dirz; belo shud prolyBfuncz2tst4$1 B4pikng*
+Al lFd=' lF-d    *(/)' lld=' ll-d    *(/)' lD=' l-d    *(/)' lfd=' lFd ' lsD=' lfd '; #       Dirz*(/) Beppu sez:"Do*NOT*alias
+Al lFid='lF-d -I=*(/)' llid='ll-d -I=*(/)' lid='l-d -I=*(/)' lfid='lFid' lsid='lfid'; #Ignore Dirz(!/)   importnt linker`ld`!"
+Al lFf=' lF      *(.)' llf=' ll      *(.)' lf=' l      *(.)' lff=' lFf ' lsf=' lff '; #normal fylz*(.) Note:symlynx(@)
+Al lFif='lF   -I=*(.)' llif='ll   -I=*(.)' lif='l   -I=*(.)' lfif='lFif' lsif='lfif'; #Ignore fylz(!.)
+Xp FTym='--full-time';Al lft='ls $FTym  ' llft='ll $FTym   ' ltym='lft ' lftym='lft' ltime=lft lsft=lft; #shoFulTym stampz4LongLstz
+Al lass='la       |sS' las='lass'; # lsd8 list all filez stripped of SKp codez; ## maybe *.* quells warning when including sepR8 '*' with no match?
+Al lads='la -d  .*|sS' lad='lads' ls8='ec "Stuv, rXU.: Size time - uaxt vrsn,  rvrs Xtns - U!s8 .??.;";lsd8'; # LiSt top7 mMorabl Sort8 optnz;
 # Note: While it may fit nicely for now to setup ls8 as a Sort-set echo print before calling my standard: lsd8, might prefer l8r to make ls8 normal widezetc.;
 # for some reason, old ea='e a' could shell out2`bak` from ~/dvl/Utl/.bak/ but can't create .bak/ EROR from ~/.arc/Aku_-arc-full-Ubu10.04-D1KD1KD/var/log/apt/
 # mAB stRting ./ as root owned  (even if not that restrictive 755 permissions) can't find way to ~/ from there? Wrap p[uo] makes sense 2rElEtRgetfromNEwher
@@ -462,23 +461,23 @@ Al rrkp='    rrk          -p';Al rrp='rdrb -p';Al rrkv='  rrk -v ';Al rrvkp='rrk
 Al rrrr='env SEARCH_DIRS="/ -*" SEARCH_DIRS_MASK="/mnt /home" revdep-rebuild -vv -i';Al rrr='rrrr -p'; # RevdepRebuildRoot(3pretend,4Real);
 Al upd8i='update-initramfs -u -k all'; # Tryng oibaf drvrz HTTPS://AskUbuntu.Com/questions/1266616/how-can-i-use-amdgpu-instead-of-radeon-drivers-on-20-04 ;
 # might want to install HTTPS://GitHub.Com/ggreer/the_silver_searcher with ag awk-grep replacement instead of relying on old familiar apt-get aliases here?
-alias am='apt-mark ';alias amh='am   hold ';alias amu='am unhold';alias amuh='amu';alias amsh='am showhold ';alias amsi='am showinstall'; # Debian && Ubuntu...
-alias amp='am purge';alias ami='am install';alias amr='am remove';alias amrm='amr';alias amsp='am showpurge';alias amsr='am showremove '; #   apt Utl shortcutz
-alias ak='apt-key  ';alias aka='ak     add';alias akd='aka -    ';alias akad='akd';alias amsa='am showauto ';alias amsm='am showmanual '; # adding Brv && Sig
-alias ag='apt-get  ';alias agi='ag install';alias agu='ag update';alias aguu='agu;ag upgrade';alias agdu='ag dist-upgrade'; # agdu probably nEdz 2 1st vim edit
-alias ac='apt-cache';alias acS='acs       ';alias agr='ag remove';alias agrm='agr';alias agar='ag autoremove';              #   sources.list, thN aguu B4hand;
-alias ai='apt install';alias acsrch='ac search';alias au='apt update';alias auu='au;apt upgrade';alias acsp='ac showpkg';alias agri='ag reinstall'; #shOpkgDtlz
-alias apts='apt search';alias asrch='apts';alias aar='apt autoremove';alias ari='apt reinstall '; # alreD /usr/bin/as GNU ASsembler,shud stuD apt over ag 2add;
-alias   AS='apts   ';alias  aS='acS      ';alias nar=' na autoremove';alias nhi='na  history   ';alias  ncl='na clean';alias nrm='na remove'; # NBMLNala:nstd
-alias   na='nala   ';alias  nS='nas      ';alias nap=' na autopurge ';alias nau='na     upgrade';alias  nfe='na fetch';alias np=' na purge '; #   of apt(-get);
-alias ni=' na install';alias nasrch='na search';alias nu=' na update';alias nuu='na     upgrade';alias  nsh='na show ';alias nls='na list';alias nas='nasrch';
-alias nhe='na  --help               ';alias nhiu='nhi undo';alias nh='nhi';alias nr='nrm'; # 2du:add more nala sub-optn aliasez l8r; rEplAcd -(halt|reboot)Now;
-alias nlu='nls --upgradable         ';alias goe='g -o export ~/.zshrc|wc -l '; # UbuntuPro 4 up 2 5machines: `sudo pro attach C143gkd7g12gV8R9JkH2WCgcbJoZ8v`;
-alias d6='en " 666+T=gc6 L8AMNION  "';alias 666='g    alias  ~/.zshrc|wc -l ';alias gc6='g -c alias ~/.zshrc'; # -Count; 666 lInzHaz:28 2ManyNow; 1384vs.1391;
-alias da='en "1333+r=goa L8AM1333/2"';alias goa='g -o alias  ~/.zshrc|wc -l '; # -Onlym@ch;gca is alreD --color=auto sO abov nEded z but!goa; clOse2 8.utf^8wc;
-alias AX='en "Al:";Acl;en "Xp: ";Xcl';Al Acl='Al|cl';Al Xcl='Xp|cl';Al a2=AX ae=a2 ea=a2 ax=AX acl=Acl ecl=Xcl xcl=Xcl; # P5VMIPi8:a6 was old B4 new Acl|Xcl;
-alias acm='acl|cma'; # P7MM7MMM:adding comma;
-alias A6='en "goe: ";goe;en "goa:";goa;en "da :";da;ec ";";en "d6 :";d6;ec ";";en "666: ";666;en "gc6: ";gc6'; # L8AMLIAS:a6 countz exportz&&aliasz4 .zsh* hEr;
+Al am='apt-mark ' amh='am   hold ' amu='am unhold' amuh='amu' amsh='am showhold ' amsi='am showinstall'; # Debian && Ubuntu...
+Al amp='am purge' ami='am install' amr='am remove' amrm='amr' amsp='am showpurge' amsr='am showremove '; #   apt Utl shortcutz
+Al ak='apt-key  ' aka='ak     add' akd='aka -    ' akad='akd' amsa='am showauto ' amsm='am showmanual '; # adding Brv && Sig
+Al ag='apt-get  ' agi='ag install' agu='ag update' aguu='agu;ag upgrade' agdu='ag dist-upgrade'; # agdu probably nEdz 2 1st vim edit
+Al ac='apt-cache' acS='acs       ' agr='ag remove' agrm='agr' agar='ag autoremove';              #   sources.list, thN aguu B4hand;
+Al ai='apt install' acsrch='ac search' au='apt update' auu='au;apt upgrade' acsp='ac showpkg' agri='ag reinstall'; #shOpkgDtlz
+Al apts='apt search' asrch='apts' aar='apt autoremove' ari='apt reinstall '; # alreD /usr/bin/as GNU ASsembler,shud stuD apt over ag 2add;
+Al   AS='apts   '  aS='acS      ' nar=' na autoremove' nhi='na  history   '  ncl='na clean' nrm='na remove'; # NBMLNala:nstd
+Al   na='nala   '  nS='nas      ' nap=' na autopurge ' nau='na     upgrade'  nfe='na fetch' np=' na purge '; #   of apt(-get);
+Al ni=' na install' nasrch='na search' nu=' na update' nuu='na     upgrade'  nsh='na show ' nls='na list' nas='nasrch';
+Al nhe='na  --help               ' nhiu='nhi undo' nh='nhi' nr='nrm'; # 2du:add more nala sub-optn aliasez l8r; rEplAcd -(halt|reboot)Now;
+Al nlu='nls --upgradable         ' goe='g -o export ~/.zshrc|wc -l '; # UbuntuPro 4 up 2 5machines: `sudo pro attach C143gkd7g12gV8R9JkH2WCgcbJoZ8v`;
+Al d6='en " 666+T=gc6 L8AMNION  "' 666='g    alias  ~/.zshrc|wc -l ' gc6='g -c alias ~/.zshrc'; # -Count; 666 lInzHaz:28 2ManyNow; 1384vs.1391;
+Al da='en "1333+r=goa L8AM1333/2"' goa='g -o alias  ~/.zshrc|wc -l '; # -Onlym@ch;gca is alreD --color=auto sO abov nEded z but!goa; clOse2 8.utf^8wc;
+Al AX='en "Al:";Acl;en "Xp: ";Xcl' Acl='Al|cl' Xcl='Xp|cl' ax=AX ea=ax ae=ax acl=Acl ecl=Xcl xcl=Xcl; # P5VMIPi8:a6 was old B4 new Acl|Xcl;
+Al acm='acl|cma' a2c=aria2c a2=a2c tux=tuxedo; # P7MM7MMM:adding comma; Q9SMDa2c:adding Aliasez 2 aria2c downloading tool && tuxedo todo.txt TUI Utl;
+Al A6='en "goe: ";goe;en "goa:";goa;en "da :";da;ec ";";en "d6 :";d6;ec ";";en "666: ";666;en "gc6: ";gc6'; # L8AMLIAS:a6 countz exportz&&aliasz4 .zsh* hEr;
 Al a6='en "g     alias ~/.zshrc pIp cl; 666 : "; 666 ;
        en "g -c  alias ~/.zshrc       ; gc6 : "; gc6 ;
        en "g -o  alias ~/.zshrc pIp cl; goa :" ; goa ;
@@ -547,35 +546,35 @@ Al vimuse='vim /usr/portage/profiles/use.desc /etc/make.conf /usr/portage/profil
 Al vimUz=' vimuse                                                                                 /etc/portage/package.*mask /etc/portage/color.map';
 Al cpa='cp -a';
 #alias scp='noglob scp'; # still want 2 glob locally so just intentionally escape remote globs wi \* etc; #Rot13perLyn:`vim $fyl`Vg?; # hn=hostname; hn != hH ;
-alias              ..='cd ..                 ';alias cdup='..';alias cd..='..                      ';alias SSH='sH';alias SSR='sR'; #ias nh='hN';alias nr='rN';
-alias             ...='cd ../..                              ';alias cd...='...                    '; # mItBAbl2Uz -c wi && aftr sz zsh 2run rmSS as sngl cmd?;
-alias            ....='cd ../../..                           ';alias cd....='....                  '; # 4 `sz` BlO fIl is Only rEmovd aftr `x` logz mE out thO;
-alias           .....='cd ../../../..                        ';alias cd.....='.....                '; # so ReMove.SudoSuccessful fIl aftr most callz2 sudo BlO;
-alias          ......='cd ../../../../..                     ';alias cd......='......              '; # aftr tryng2cmpIl new ~/dvl/m8/sudo tryng this now nstd:
-alias         .......='cd ../../../../../..                  ';alias cd.......='.......            ';alias rmSS="rm -f  $HOME/.sudo_as_admin_successful";
-alias        ........='cd ../../../../../../..               ';alias cd........='........          '; # folOng R my mAn supr-ters aliasz 4 per4mng almOst ...
-alias       .........='cd ../../../../../../../..            ';alias cd.........='.........        '; #   ... evry core GNU/Linux sys Utl (&& some clasic DOS)
-alias      ..........='cd ../../../../../../../../..         ';alias cd..........='..........      ';         alias mktst='   mtst';alias mkj=' mkjG   ';
-alias     ...........='cd ../../../../../../../../../..      ';alias cd...........='...........    ';         alias mtst='mk  test';alias mkjg='mkjG   ';
-alias    ............='cd ../../../../../../../../../../..   ';alias cd............='............  ';         alias mkck='mk check';alias mkjG='mk -j16';
-alias   .............='cd ../../../../../../../../../../../..';alias cd.............='.............';         alias mkcl='mk clean';alias mkj8='mk -j8 ';
-alias      mk='   make';alias mki='mk install';alias mi='mkin';alias smi='sudo make install;rmSS';alias smki='smi';alias mkin='mki';alias mkj4='mk -j4 ';
-alias    ccmk=' ccmake';Al ccm=ccmk;Al cmb='cmake --build build'; # SDL3 instl taught me cmake has captive Curses config utility which can path && gNer8;
+Al              ..='cd ..                 ';Al    cdup='..';Al cd..='..                      ';Al SSH='sH' SSR='sR'; #ias nh='hN';alias nr='rN';
+Al             ...='cd ../..                              ';Al cd...='...                    '; # mItBAbl2Uz -c wi && aftr sz zsh 2run rmSS as sngl cmd?;
+Al            ....='cd ../../..                           ';Al cd....='....                  '; # 4 `sz` BlO fIl is Only rEmovd aftr `x` logz mE out thO;
+Al           .....='cd ../../../..                        ';Al cd.....='.....                '; # so ReMove.SudoSuccessful fIl aftr most callz2 sudo BlO;
+Al          ......='cd ../../../../..                     ';Al cd......='......              '; # aftr tryng2cmpIl new ~/dvl/m8/sudo tryng this now nstd:
+Al         .......='cd ../../../../../..                  ';Al cd.......='.......            ';Al rmSS="rm -f  $HOME/.sudo_as_admin_successful";
+Al        ........='cd ../../../../../../..               ';Al cd........='........          '; # folOng R my mAn supr-ters aliasz 4 per4mng almOst ...
+Al       .........='cd ../../../../../../../..            ';Al cd.........='.........        '; #   ... evry core GNU/Linux sys Utl (&& some clasic DOS)
+Al      ..........='cd ../../../../../../../../..         ';Al cd..........='..........      ';Al mktst='   mtst' mkj=' mkjG   ';
+Al     ...........='cd ../../../../../../../../../..      ';Al cd...........='...........    ';Al mtst='mk  test' mkjg='mkjG   ';
+Al    ............='cd ../../../../../../../../../../..   ';Al cd............='............  ';Al mkck='mk check' mkjG='mk -j16';
+Al   .............='cd ../../../../../../../../../../../..';Al cd.............='.............';Al mkcl='mk clean' mkj8='mk -j8 ';
+Al      mk='   make' mki='mk install' mi='mkin' smi='sudo make install;rmSS' smki='smi' mkin='mki' mkj4='mk -j4 ' mkc='mk clean';
+Al    ccmk=' ccmake' ccm=ccmk cmb='cmake --build build'; # SDL3 instl taught me cmake has captive Curses config utility which can path && gNer8;
 Al cb=cmb cms=cmsb cmsb='cmake -S . -B build'; # P77MHigh:these other available CMake aliases should also prove useful for bood default buildz 4mor than SDL3!;
           cmk () { CMLT=0; if [[ -e cml ]]; then mv cml CMakeLists.txt; CMLT=1; fi;     # MB9LMkCM:setup cmake function to auto-compile SDL2_Tutorial projects;
                    if   [[ -e CMakeLists.txt && $# -eq 0 ]]; then cmake CMakeLists.txt; #  This also works on a 'cml' file which might need Link_Directories();
                      if [[ -e Makefile ]]; then make; fi;    else cmake $@; fi; if [[ "$CMLT" == "1" ]]; then mv CMakeLists.txt cml; CMLT=0; fi; }
-export sd='sudo   ';export SD='shutdown';export Sh="$SD -h ";export SH="$Sh";export sH="$sd$SH";export Hn="$SH$NR";export HN="$Hn";export hN="$sH$NR";
-export sD="$sd$SD ";export NR='now;rmSS';export Sr="$SD -r ";export SR="$Sr";export sR="$sd$SR";export Rn="$SR$NR";export RN="$Rn";export rN="$sR$NR";
-export hH="$hN";export nh="$hN";alias Sd="$sd";alias SD="$SD";alias Sh="$Sh";alias SH='Sh';alias sH="$sH";alias Hn="$Hn";alias HN='Hn';alias hN="$hN";
-export rn="$rN";export nr="$rN";alias sD="$sD";alias SS="$hN";alias Sr="$Sr";alias SR='Sr';alias sR="$sR";alias Rn="$Rn";alias RN='Rn';alias rN="$rN";
-alias  sz="$sd -E zsh;rmSS";alias rn='rN ';alias SSHN='hN';alias SN='RN'; # EmergNC!!! Sudo Shutdown or Reboot *now*!!!  # N52MLiSZ:/usr/bin/[rs]z use ZModem 2
-alias      pu='  pushd';alias  ua='un    ';alias SSRN='rN';alias sN='rN'; # aliasz4aftr`sz`whNIcanw8 1min4shutdn||rEbt;  #   du fIl transfrz && mAB nEd !my sz;
-alias      po='   popd';alias una='un -a ';alias sus='sudo -E -s zsh'; # -c "rm $HOME/.sudo_as_admin_successful"'; # abrEV8nz 4 sys-info which call un();
-                        alias unr='un -r '; # this shud probably B just curNtly runing krnl version number (eg, 5.15.0-91-generic) && my MpT un|ua callz -a;
-alias     epc='  ep|b8clr'; #d8 e|cma!=epoc # rEgRdng sudo abov cannot run both -Intractiv && -Shell optz; # d8 e>epoc by~3.56528hourz 13Ksecz sOmABclOs2UTC?;
-alias    epoc="   pab   'o8(cma($HTHi::time))'"; # alias 2 output non-colrd epoch float secz from Perl Time::HiRes wi cma int KMGT sepR8orz; epoc==`date +%s`;
-alias      ep="   pab '\$t6=b64($HTHi::time);\$t6=~s/(%....).+\$/\$1/;o8(coma(\$t6))'"; # alias 2 gNr8 b64 trunc8d coma'd epoch float secondz && abov colrz;
+Xp sd='sudo   ';Xp SD='shutdown';Xp Sh="$SD -h ";Xp SH="$Sh";Xp sH="$sd$SH";Xp Hn="$SH$NR";Xp HN="$Hn";Xp hN="$sH$NR";
+Xp sD="$sd$SD ";Xp NR='now;rmSS';Xp Sr="$SD -r ";Xp SR="$Sr";Xp sR="$sd$SR";Xp Rn="$SR$NR";Xp RN="$Rn";Xp rN="$sR$NR";
+Xp hH="$hN";Xp nh="$hN";Al Sd="$sd" SD="$SD" Sh="$Sh" SH='Sh' sH="$sH" Hn="$Hn" HN='Hn' hN="$hN";
+Xp rn="$rN";Xp nr="$rN";Al sD="$sD" SS="$hN" Sr="$Sr" SR='Sr' sR="$sR" Rn="$Rn" RN='Rn' rN="$rN";
+Al sz="$sd -E zsh;rmSS" rn='rN ' SSHN='hN' SN='RN'; # EmergNC!!! Sudo Shutdown or Reboot *now*!!!  # N52MLiSZ:/usr/bin/[rs]z use ZModem 2
+Al      pu='  pushd'  ua='un    ' SSRN='rN'sN='rN'; # aliasz4aftr`sz`whNIcanw8 1min4shutdn||rEbt;  #   du fIl transfrz && mAB nEd !my sz;
+Al      po='   popd' una='un -a ' sus='sudo -E -s zsh'; # -c "rm $HOME/.sudo_as_admin_successful"'; # abrEV8nz 4 sys-info which call un();
+Al                   unr='un -r '; # this shud probably B just curNtly runing krnl version number (eg, 5.15.0-91-generic) && my MpT un|ua callz -a;
+Al     epc='  ep|b8clr'; #d8 e|cma!=epoc # rEgRdng sudo abov cannot run both -Intractiv && -Shell optz; # d8 e>epoc by~3.56528hourz 13Ksecz sOmABclOs2UTC?;
+Al    epoc="   pab   'o8(cma($HTHi::time))'"; # alias 2 output non-colrd epoch float secz from Perl Time::HiRes wi cma int KMGT sepR8orz; epoc==`date +%s`;
+Al      ep="   pab '\$t6=b64($HTHi::time);\$t6=~s/(%....).+\$/\$1/;o8(coma(\$t6))'"; # alias 2 gNr8 b64 trunc8d coma'd epoch float secondz && abov colrz;
 # PerlMaven DscrIbz how -e executez cmd-lIn strng but -E Enablez all l8st fE8urez (lIk say && betr UniCode), -n wrapz -E strng in while(<>){ && } with -p just
 #   -n looped with print $_ aftr Each iter8ion, && -i modifiez a supplId fIl in-place, so: `perl -ipE 's/badcode/foobarz/' file.txt` would rEplAc on evry lIn;
 # `pdoc perlrun` suggests I mIt not want -CS on all thEs BlO (as perhaps othr optnz R betr, but mOst worried it will inhibit handling bInary d8a lIk f8 .psf?):
@@ -1105,7 +1104,7 @@ alias     cht=' chti  '; #  cht  :          chti  (changes terminal window title
 #lias      ct='   cht '; #                        (mAB consider `mv chti ct` && alias chti instead or add like noglob so Zsh stops Xpandng alias pRamz?)
            ct() { chti $@; }     # unalias  ct && redefining as simple function wrapper resolves title parameter alias expansion problem (but still will glob)
 #          mc() already zsh function below
-#lias      mc='  md;cd'; #  mc   :          md+cd (make sure to override MidnightCommander if found)
+#lias      mc='  md;cd'; #  mc   :          md+cd (make sure to override MidnightCommander && GH.Com/RWMitchell/els Multi-Column utl if found)
 #          c8   already ~/bin/
 #lias      c8='cut|cat'; #  c8   :        cut|cat (with columnar alignment, coloring, && command matching..)
 alias      zc='   zcat';
@@ -2187,14 +2186,17 @@ xrc() {    [[ $# -lt 1 ]] && {                  xrdb  -merge ~/.Xrc  ; return 0;
 if         [[ "$DISPLAY" != ""  ]];                                    then xrc; fi; # since Ubu14.10UUX11!srcing   .xinit,just rElOd .Xrc 4evry nonconsol zsh
 mcp() { if [[ $# -gt 2 ]] && [[ ! -d ${$#} ]];  then   /bin/cp $@ .  ; return 0; fi; # adds a basic many-argument form of `cp` where all parameters are remote
                                                        /bin/cp $@    ; }             #   files to be copied into the current directory
-mc()  { # used to be mcd for Mk&&ChDir on $1 but just MakeChng, MkCh is nicer, && now also does MvFil $1 into && ChDir $2
+mc()  { # used to be mcd for Mk&&ChDir on $1 but just MakeChng, MkCh is nicer, && now also does MvFil $1 into && ChDir $2;
   if       [[ $#        -eq  2  ]] && [[   -f "$1" ]] && [[ -d "$2" ]]; then
     if     [[           -d "$2" ]];                                     then mv $1 $2; cd $2;
+      if   [[ "$VERBOSE" ==  1  ]] && [[      "$?" != "0"           ]]; then echo "!*EROR*! Cudnot               ChDir $2!";                fi
     elif   [[ "$VERBOSE" ==  1  ]];                                     then echo "!*EROR*! Cannot MvFil $1 into ChDir $2!";                fi
   elif     [[ $#        -eq  1  ]] && [[ ! -f "$1" ]];                  then
     if     [[ !         -d "$1" ]];                                     then md $1;
+      if   [[ "$VERBOSE" ==  1  ]] && [[      "$?" != "0"           ]]; then echo "!*EROR*! Cudnot MkDir $1!";                              fi
     elif   [[ "$VERBOSE" ==  1  ]];                                     then echo "!*EROR*! Cannot MkDir $1!";                              fi
     if     [[           -d "$1" ]];                                     then           cd $1;
+      if   [[ "$VERBOSE" ==  1  ]] && [[      "$?" != "0"           ]]; then echo "!*EROR*! Cudnot ChDir $1!";                              fi
     elif   [[ "$VERBOSE" ==  1  ]];                                     then echo "!*EROR*! Cannot ChDir $1!";                              fi
   elif     [[ "$VERBOSE" ==  1  ]];                                     then
     echo   "!*EROR*! Invalid arguments to either Mk&&ChDir $$1 (DrNm) or Mv $$1 (FlNm) to existing Dir $$2 (DrNm) before ChDir into DrNm!"; fi}
@@ -2262,8 +2264,9 @@ pmei()     { if     [[ "$HUsr"      != "root" ]]; then sudo perl -MCPAN -e      
 pmfi()     { if     [[ "$HUsr"      != "root" ]]; then sudo perl -MCPAN -e "force('install','$@')";rmSS; # pronounced:"Perl"  .  "MFfFi"
              else                                           perl -MCPAN -e "force('install','$@')"; fi } #   lyk"Pai"."MeFsckngForcei"
 pmverck()  { cpan -D $1; } # used to check with perl -MExtUtils::MakeMaker -le 'print MM->parse_version(shift)' $1; but that old method no longer seems to work
-alias    pD='perldoc'; # used to have problem with most needing -t for text-only version (not pod2man | nroff -man | $PAGER) or to just pipe thru less instead
-alias prsyn='rsyncmd'; # PRint RSYN; K1VLIVES:upd8d rsyncmd below to now default to Full.ls since Chun && Taki are both dead, so Core is no longer significant
+Al    pD='perldoc'; # used to have problem with most needing -t for text-only version (not pod2man | nroff -man | $PAGER) or to just pipe thru less instead;
+Al lrsyn='lazyrsync' lrsy=lrsyn lAZr=lrsyn; # Q9SM8rsn:just HTTPS://LazyRSync.WestPoint.IO/docs/install to `cargo install lazyrsync` && wanted 2 Alias it 2;
+Al prsyn='rsyncmd'; # PRint RSYN; K1VLIVES:upd8d rsyncmd below to now default to Full.ls since Chun && Taki are both dead, so Core is no longer significant;
 rsyncmd()  {                                                echo      "rsync -avr  --files-from=dox/putr/RsynFull.ls  . DstH:"; # common rsyn cmd
                                                             echo      "  add    -n 4dryruN2tSt, add --delete usualy whN SrcH is Oni 2propag8,"; # just2Ryu now
                                                             echo      "  s/Full/Core/ btwn Oni && laptop, && might want SrcH: not just s/^/cd ;/ thN . ;";
