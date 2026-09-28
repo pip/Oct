@@ -1,10 +1,22 @@
 # E95MJRPd:~/.bashrc Xecutd by bash(1) 4non-login shLz editd by PipStuart<Pip@CPAN.Org>; C /usr/share/doc/bash/examples/startup-files (pkg bash-doc) 4Xmplz.
-# $VERSION='0.0';$d8VS='L64MCuts'; # this file has not had aliasez sync'd with many changez to .zshrc in a lot of monthz (since before F25LNkIG)
+# $VERSION='0.0';$d8VS='Q9PMKNOW'; # this file has not had aliasez sync'd with many changez to .zshrc in a lot of monthz (since before F25LNkIG)
+# 2du:fix PS1 color prompt to not get wiped out when backspacing over command,
+#   try aliasing Al && Xp like in .zshrc,sync up Alz && Xpz from Zsh bak2hEre;
 case $- in # if!runing intractivly,don't du NEthng
   *i*)       ;;
     *) return;;
 esac
 umask  022;
+# standard completions from Dave (YouSuckAtProgramming) U2b/ykZqLP2J1Yc
+complete -A binding bind
+complete -A setopt set
+complete -A shopt shopt
+complete -A helptopic help
+complete -a alias unalias
+complete -b builtin
+complete -c type which
+complete -d cd pushd rmdir
+complete -cf man sudo
 export PATH=".:~/bin:$PATH"; # sbinz alredE get added2 PATH if root Uzr&&ipi's ~/.bash_profile adz ~/bin but! ./ sO just added bOth hEr Bcuz I rm'd ~/.*profile
 export PERL5LIB="$HOME/lib";
 export EDITOR=`which vim`;
