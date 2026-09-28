@@ -1,6 +1,9 @@
 #!/usr/bin/perl
 # D94MHThP:lsd8 crE8d by PipStuart <Pip@CPAN.Org> 2XtNsively manipUl8 typical `ls -l` output2convey octal permz,Base64 sizez,d8 stampz,&& many colrz&&f0ntz!
-# 2du:fix spAced-filenAmez with tnam single or double-quoted to still extract out the filetype extension to color more similarly to regular `ls`,
+# 2du:upd8 lsd8 2 accept `els -l $et|lsd8` pIping in nstd of calling `ls --full-time` nSted && Dtect Zone namez nstd of UTC offsetz 2 mk d8z without phasses,
+#   stuD HTTPS://GitHub.Com/Keram88/els HTTP://els-Software.Org (Enhanced ls) && HTTPS://GitHub.Com/RWMitchell/els (forkdfrom els-1.54a1.tgz as Extended ls),
+#   orig. Keram88/els is currently @ v1.55f2 && RWMitchell/els uses 9YearOld HTTPS://GitHub.Com/MNurzia/even-better-ls ls_colors_generator.py && mc multi-colm,
+#   fix spAced-filenAmez with tnam single or double-quoted to still extract out the filetype extension to color more similarly to regular `ls`,
 #   fix `l ~/.steam` 2 work for '.pipe|' Orange lIk ls,fix `l /dev` 2handl "crw-rw-rw-  1 root root      1,   5 2018-09-20 13:14:16.717590724 -0500 zero",
 #   fix sym-link color8ion to flash when the target does not exist like ls already does for file-system entries such as /etc/printcap with $lspt{'or'},
 #   full-screen console on Chun after bkgrnd owner colr && after directory classiFic8ion slashes in `l ~` so Dtect && fix,
@@ -28,15 +31,17 @@
 use warnings;use strict;use utf8;use v5.22; # mAB tSt if just regUlR -t STDIN && -t STDOUT R Dtectng intractiviT corectly 1st,B4 fallng bak on IO::Interactive
 #se IO::Interactive qw(is_interactive); # employ if(is_interactive()){} around all colring to attempt to behave like `ls --color=auto` when piped away
 use Encode;use Oct::a8;#se Oct::c8;
-           use Oct::b8;use Oct::d8;use Time::PT;my $VERSION='0.0';my $d8VS='Q74M8out';my $sllw=0;my $cauf=1;my $cnvf=0; # SymLnk lRgStWidt2 track 4 alignment;
+           use Oct::b8;use Oct::d8;use Time::PT;use Time::Zone;my $VERSION='0.0';my $d8VS='Q9SMAels';
+my $sllw=0;my $cauf=1;my $cnvf=0; # SymLnk lRgStWidt2 track 4 alignment;
 my $S=S('S');my $U=S('U');my $N=S('N');my $cnof=0;my $cnef=0; # had2ad SUN bak in local here since just removed from a8.pm (wanting to see where used anyway);
 my $vsrt='-v'; my @b64d;my $t;my $sbdr;my $b64c;my($pwnw,$grpw,$grpx);$pwnw=$grpw=$grpx=0; # default -v Version SoRT,reversed b8 Colr List matchz Dfalt d8 ordr
 my $jfdz=join('|',@Day);my $jfmz=join('|',@Mon); # Joined Fieldz for DayZ and MonthZ to regex with  # BlO mAB some ARGVz shud!B sNt thru -d tSt so Dtect 1st?
 my $tpwd= 4;# set just the b64 T0talPaddingWiDth (3 of the subdirz in my ~/muz/ reach a width of 4, but the vast majority of dirz are only 1or2 b64 charz wId)
 my $hwid=64;#$hwid=$ENV{'HWid'} if(exists($ENV{'HWid'}) && length($ENV{'HWid'})); # lOd terminal 8sh"H"WIDth2rIt-justify dir t0tlz AgNst (if uncomNtd aftrDflt)
-my $rjnf= 0;# RightJustifyNamedFileFlag for -X ls sort .XtNsionz sOfR or?;
+my $rjnf= 0;my $elsf=0;my $elst='+T^NY-M-DTZ';$elst=$ENV{'et'} if(exists($ENV{'et'})); # RightJustifyNamedFileFlag for -X ls sort .XtNsionz sOfR or?; &&elsflg;
 for(@ARGV){if   (-d  "$_"  ){s/([()&!'])/\\$1/g;}  # atMpt2alow`l *`2work bySKpng pRNz&&othr spcl chrz in dir||fIlnAm pRamz&&DcOd4wId
   elsif         (-e  "$_"  ){s/^(.+   )$/"$1"/x;}  # need 2 save existing dir && file paramz 2 test sym-linkz existence against l8r without failing to find all
+  elsif         (/^-?-e$/i ){    $vsrt =  $_='';$elsf^=1;}  # try2quik   Uz -e 2 flag 4 els nstd of Dfalt lsft backtix cmndz BlO;
 # elsif         (/^-?-V$/  ){    $vsrt =   '-X';$rjnf^=1;}  # Q71M54Vs:old -V tried2quik rEUz -V 2 sort XtNsionz && try2RiteJustifyNameFieldz but nEded2trunc8;
   elsif         (/^-?-V$/  ){    $vsrt =  $_='';$rjnf^=1;}  # try2quik rEUz -V 2 no longer Dfalt -v sort (!XtNsionz) && try2RiteJustifyNameFieldz;
 # elsif         (/^-?-?V$/ ){    $vsrt =  $_='';}  # !raw 'V';try2alow invalid -V to actually not do Dflt -v passed on to ls,shud Dtect -help like this also;
@@ -47,7 +52,9 @@ for(@ARGV){if   (-d  "$_"  ){s/([()&!'])/\\$1/g;}  # atMpt2alow`l *`2work bySKpn
   elsif( /^--color=none/i  ){    $cnvf =$cnef=1;}  # togl Color______noNE_Flag so that ANSI SKpd output wil certainly B stripped B4 printing is done at end;
   elsif( /^--color=no/i    ){    $cnvf =$cnof=1;}} # togl Color______NO___Flag so that ANSI SKpd output wil certainly B stripped B4 printing is done at end;
 # K2LLAIgn:had added "-Isnap " to ls command below before just now installing a new l8st signal-desktop && removing ~/snap/ (aftr mvng sig 2 .local/.snap/);
-my @ldat=`ls -lF $vsrt --full-time --color=never @ARGV`;my $t0tl='0';my $subd='.';my($list,$prmz,$blsz,$pwnr,$grup,$fsiz,$d8tz,$fnam,$cmpr,$b6bs,$b6fs);
+my @ldat=();my $t0tl='0';my $subd='.';my($list,$prmz,$blsz,$pwnr,$grup,$fsiz,$d8tz,$fnam,$cmpr,$b6bs,$b6fs);
+if(!-t STDIN){@ldat=<STDIN>;$elsf=1;}elsif($elsf){@ldat=`els -lFp $vsrt $elst @ARGV`;}else{ # try2flag4 els nstdof lsft butwil nEd2hndl ZoneNmz nstdof UTCofst;
+   @ldat=`ls -lF $vsrt --full-time --color=never @ARGV`;}
 my %lsp8;my %sqrm;my %sqra;my $cqrk;my $psdl=0; # Separ8or QuotedRegex Main&&Altern8 mapz, Current QuotedRegex Key, Previous SubDirectory Length
 # if($cnef){ } # mAB none is anothr bAsic lsd8xt?
 # if($cnof){ } #  && no   is just not b8 && d8 or smthng?;
@@ -75,6 +82,9 @@ if   (exists(    $ENV{'LS_COLORS'}) && length($ENV{'LS_COLORS'})){ # does the Nv
       $lspt{         $g2re  }=$fx2e;}}} # regX @ bottom uses NOrmal at end but after `eval $(dircolors)` resets $LS_COLORS to defaults,'no' duz!Xist&&warnz
 for(@ldat){if(($prmz,$blsz,$pwnr,$grup,$fsiz,$d8tz,$fnam)= /^(\S{10})(\s+\d+)(\s+\S+)(\s+\S+)(\s+\d+)\s+(\S{10}\s+\S+\s+\S+)\s+(.*)$/){$b6bs=b64($blsz);
     if($prmz=~ /^[-d][267]/ && $pwnr=~ /guy/i){my $pwng='gg';my $grug='gp';print '';}                                       my $hflg=0;$b6fs=b64($fsiz);
+    if($elsf && $d8tz=~  /^(\S{10})\s+(\S+)\s+(\S+)$/){my $dol3=$3;my $ftzo=Time::Zone::tz_offset($3)/36;$ftzo=~ s/^([-+])/${1}0/ if(length($ftzo) == 4);
+                $d8tz=~ s/^(\S{10})\s+(\S+)\s+(\S+)$/$1 $2.000000000 $ftzo/; # apNd Zer0z 4 phassez && Uz LookUpTable for Zonenamez;
+      $pwnr=~ s/\s+/ /g;$grup=~ s/\s+/ /g;$fsiz=~ s/\s{6}//;} # also strip whatever XtranEous spAcez R coming in2 pwnr && grup && fsiz fldz;
     if($pwnw < length($pwnr)){$grpw-=(length($pwnr)-$pwnw) if($grpw);$pwnw=length($pwnr);} # trak pwnr width first, since lt && rt justifyz sepR8
  elsif($pwnw > length($pwnr)){my $pwnx=$pwnw-length($pwnr);$pwnr.=' 'x $pwnx if($grup=~ s/^(\s{$pwnx})//        );} # &&shft spAcz from ^grup 2 pwnr$ 2realign
     if($grpw < length($grup)){$grpx+=(length($grup)-$grpw) if($grpw);$grpw=length($grup);$fsiz=~ s/^/ / if($grpx);} # trak grup wid&&Xpansion amt4columnz
@@ -90,8 +100,9 @@ for(@ldat){if(($prmz,$blsz,$pwnr,$grup,$fsiz,$d8tz,$fnam)= /^(\S{10})(\s+\d+)(\s
   # $cmpr=~s/r--/${B}4/g;$cmpr=~s/---/${G}0/g; #?prmzRblszYpwnrCgrupPfsiz?dayt?tymeGtz0n?fnam..
     my %op2n=('d'   =>  'F:orC'  ,  # orig permz 2 new,can I Ezily add just bkgrndz or SGRz 4 Ech alOne,but mA want 2 Uz @d8cS AgN 2 colr-pik thEz 4 Profilez;
    'Y'=>':IC','W'   =>  'b:bB'   , 'S'   =>    ':AkE' , 'C'   =>  'CkCk'   , 'M'   =>    ':Iced', 'B'   =>  'b:kI'   , # thEz proly wil look fR worse 4 a bit;
-              'm'   =>  'b:mAC'  , 'Sb'  =>  'L:bBlk' , 'O'   =>  'OkAD'   , 'g'   =>    ':NICE', 'G'   =>  'F:GC'   );my $u=S($op2n{'d' }); # cud alsO lOd $v…
-    $cmpr=$prmz;$cmpr=~s/^(d)/$u$1/;my $d8im=Oct::d8->new('lsft'=>$d8tz);my $ttim=$d8im->colr('a').$k;            my $v=S($op2n{'W' }); #   …4 colr.$k 2!;
+              'm'   =>  'b:mAC'  , 'Sb'  =>  'L:bBlk' , 'O'   =>  'OkAD'   , 'g'   =>    ':NICE', 'G'   =>  'F:GC'   );my $u=S($op2n{'d'});
+    $cmpr=$prmz;$cmpr=~s/^(d)/$u$1/;my $d8im=Oct::d8->new('lsft'=>$d8tz);
+    my $ttim=$d8im->colr('a').$k;my $v=S($op2n{'W'}); # cud alsO lOd $v 4 colr.$k 2!;
     $cmpr=~s/^(-)/$v$1/; $ttim.='0'x(8-int((length($ttim)-7)/8)) if(length($ttim)<(8*8 +7));$u=S($op2n{'S' });$v=S($op2n{'Sb'}); # nIc fpermisn colr chngz now?
     $cmpr=~s/rwx/${u}7/g;$cmpr=~s/-wx/${v}3/g;$u=S($op2n{'Y' });$v=S($op2n{'m' });
     $cmpr=~s/rws/${u}7/g;$cmpr=~s/rwt/${v}7/g;$u=S($op2n{'C' });$v=S($op2n{'O' });
