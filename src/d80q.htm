@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><!-- d8VS='Q8NM8fca'; 2du:mAB mk -f full format match?; -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pip's web d80q (d8-cl0cQ):</title>
+    <style> /* base */
+      body { font-family:    monospace;
+             font-size  :         64px;
+             text-align :       center;
+             forced-color-adjust: none;
+             background-color: #000011;
+             color      :      #22ccaa;
+             transition : opacity 0.2s ease-in; }
+      body[unresolved] {  opacity 0           ; }
+      /* d8-cl0cQ colrz (full 6-digit heX lowrcase) */
+      #sY, #dY { color  :      #ff1100; } /*  Year  */
+      #sM, #dM { color  :      #dd8800; } /*  Month */
+      #sD, #dD { color  :      #aacc00; } /*  Day   */
+      #sz, #dz { color  :      #11ff33; } /* zONE   */
+      #sh, #dh { color  :      #11ffdd; } /* hOUR   */
+      #sm, #dm { color  :      #1122ff; } /* mINUTE */
+      #ss, #ds { color  :      #ee11ff; } /* sECOND */
+      #sp, #dp { color  :      #8844ff; } /* pHASS  */
+      #Yk      { color  :      #ccaa00; } /* Yk     */
+      #Yd      { color  :      #44aa22; } /* Yk-day */
+/* HTTPS://PolyPane.App/blog/forced-colors-explained-a-practical-guide DscrIbz:
+      @media (forced-colors: active) and (prefers-color-scheme: dark) { } */
+        /* High Contrast #1, #2 or Black is active (or custom theme) */
+        /* I tried to add forced-color-adjust: none to the body element above,
+             instead of just .my-specific-element as recommended. Will test! */
+    </style>
+  </head>
+  <body><table><tr>
+          <td><div id="sY"></div></td>
+          <td><div id="sM"></div></td>
+          <td><div id="sD"></div></td>
+          <td><div id="sz"></div></td>
+          <td><div id="sh"></div></td>
+          <td><div id="sm"></div></td>
+          <td><div id="ss"></div></td>
+          <td><div id="sp"></div></td>
+          <td>&nbsp;</td>
+          <td><div id="Yk"></div></td>
+          <td><div id="Yd"></div></td>
+        </tr></table><table><tr>
+          <td><div id="dh"></div></td> <td>:</td>
+          <td><div id="dm"></div></td> <td>:</td>
+          <td><div id="ds"></div></td> <td>:</td>
+          <td><div id="dp"></div></td>
+        </tr></table><table><tr>
+          <td><div id="dY"></div></td> <td>-</td>
+          <td><div id="dM"></div></td> <td>-</td>
+          <td><div id="dD"></div></td> <td>&nbsp;</td>
+          <td><div id="dz"></div></td>
+        </tr></table>
+    <script>const sb256= ['0','1','2','3','4','5','6','7', '8','9','A','B','C','D','E','F', 'G','H','I','J','K','L','M','N', 'O','P','Q','R','S','T','U','V',
+                          'W','X','Y','Z','a','b','c','d', 'e','f','g','h','i','j','k','l', 'm','n','o','p','q','r','s','t', 'u','v','w','x','y','z','.','_',
+                           '♟', '♙', '♞', '♘', '♝', '♗', '♜', '♖', '♛', '♕',                  '🃁', '🃂', '🃃', '🃄', '🃅', '🃆', '🃇', '🃈', '🃉', '🃊', '🃋', '🃍', '🃎',
+                          '🂱', '🂲', '🂳', '🂴', '🂵', '🂶', '🂷', '🂸', '🂹', '🂺', '🂻', '🂽', '🂾',   '🃑', '🃒', '🃓', '🃔', '🃕', '🃖', '🃗', '🃘', '🃙', '🃚', '🃛', '🃝', '🃞',
+                          '🂡', '🂢', '🂣', '🂤', '🂥', '🂦', '🂧', '🂨', '🂩', '🂪', '🂫', '🂭', '🂮',   '♚', '♔',
+                          '⓪', '①', '②', '③', '④',
+                          '⑤', '⑥', '⑦', '⑧', '⑨',
+                          'Ⓐ', 'Ⓑ', 'Ⓒ', 'Ⓓ', 'Ⓔ', 'Ⓕ', 'Ⓖ', 'Ⓗ',
+                          'Ⓘ', 'Ⓙ', 'Ⓚ', 'Ⓛ', 'Ⓜ ', 'Ⓝ', 'Ⓞ', 'Ⓟ',
+                          'Ⓠ', 'Ⓡ', 'Ⓢ', 'Ⓣ', 'Ⓤ', 'Ⓥ', 'Ⓦ', 'Ⓧ', 'Ⓨ', 'Ⓩ',
+                          'ⓐ', 'ⓑ', 'ⓒ', 'ⓓ', 'ⓔ', 'ⓕ', 'ⓖ', 'ⓗ',
+                          'ⓘ', 'ⓙ', 'ⓚ', 'ⓛ', 'ⓜ', 'ⓝ', 'ⓞ', 'ⓟ',
+                          'ⓠ', 'ⓡ', 'ⓢ', 'ⓣ', 'ⓤ', 'ⓥ', 'ⓦ', 'ⓧ', 'ⓨ', 'ⓩ', 'Ø', 'Ī',
+                          '⠀', '⠁', '⠂', '⠃', '⠄', '⠅', '⠆', '⠇',  '⠈', '⠉', '⠊', '⠋', '⠌', '⠍', '⠎', '⠏',
+                          '⠐', '⠑', '⠒', '⠓', '⠔', '⠕', '⠖', '⠗',  '⠘', '⠙', '⠚', '⠛', '⠜', '⠝', '⠞', '⠟',
+                          '⠠', '⠡', '⠢', '⠣', '⠤', '⠥', '⠦', '⠧',  '⠨', '⠩', '⠪', '⠫', '⠬', '⠭', '⠮', '⠯',
+                          '⠰', '⠱', '⠲', '⠳', '⠴', '⠵', '⠶', '⠷',  '⠸', '⠹', '⠺', '⠻', '⠼', '⠽', '⠾', '⠿' ];
+      function showTime() {
+        const d8 = new Date();const MDyz= [31,29,31,30, 31,30,31,31, 30,31,30,31]; // Month's Dayz countz LUT;
+        const dY = d8.getYear(     ) -  100;let sY = dY + ''; // was plus 1900
+        const dM = d8.getMonth(    ) +    1;let sM = dM + '';if(sM.length <= 1){ sM = '0' + sM; }
+        const dD = d8.getDate(     )       ;let sD = dD + '';if(sD.length <= 1){ sD = '0' + sD; } //.padStart(2, ' ');
+        var   dz = d8.getTimezoneOffset() / -60; // was =22; //const sz = 'L'; // hard-coded my CST zone 2 stRt,4mE chngz to 22 'M' with DST / CDT?;
+        // P39M8USE:switchd 2 22 'M' from initial   =21; old L; P7PM66us:tryng TzOffset && mA nEd 2 / by -60 2 get from offset minutes 2 int hours ;
+                                            var Dz = dz     ;if(dz        <  0){ Dz =  27 + dz; } // adjust neg8ive int hour offsetz by d8 weird 27;
+                                            let sz = dz + '';if(sz.length <= 1){ sz = '-' + sz; } // not sure where neg8ive is going but pad here? ;
+        const dh = d8.getHours(    )       ;let sh = dh + '';if(sh.length <= 1){ sh = '0' + sh; }
+        const dm = d8.getMinutes(  )       ;let sm = dm + '';if(sm.length <= 1){ sm = '0' + sm; }
+        const ds = d8.getSeconds(  )       ;let ss = ds + '';if(ss.length <= 1){ ss = '0' + ss; }
+        const nm = performance.now()       ;let sn = nm + '';let nl = sn.length; // the + '' idiom is like calling nm.toString() on number obj
+        if(nl > 3){ sn = sn.substring((nl - 3), nl); } // s.substring(bNdx,eNdx); 4 last 3 of msecs
+        const sf = sn / 1000;const s6 = sf * 60;let si = Math.trunc(s6);let sI = si + '';if(sI.length <= 1){ sI = '0' + sI; } // float fraction
+        var   Yx = -1; // was orig. 0 but 1st Day will increment to zerozusday now (starting at neg8ive one);
+      //if                    (dM >  1){Yx += MDyz[ 0]; // below ck 4 non-leap-Yearz (&& ckz 4 !100 && again on 400 IIRC?);
+      //  if                  (dM >  2){Yx += MDyz[ 1];if(dY % 4 || (!(dY % 100) && dY % 400)){Yx++;} //... if(dM > 3..11);
+        var   Mn =  1;   while(dM > Mn){Yx += MDyz[Mn++ - 1];} Yx += dD; // this MonthNumber shud loop instd of nEdng old nSted ifz && tStng 4 non-leap-Yearz;
+        let   Yk = Math.trunc(Yx / 6);let Yd = Yx % 6; // modulo division syntax?
+        document.getElementById("dY").innerHTML = sY;document.getElementById("sY").innerHTML = sb256[ dY ];
+        document.getElementById("dM").innerHTML = sM;document.getElementById("sM").innerHTML = sb256[ dM ];
+        document.getElementById("dD").innerHTML = sD;document.getElementById("sD").innerHTML = sb256[ dD ];
+        document.getElementById("dz").innerHTML = sz;document.getElementById("sz").innerHTML = sb256[ Dz ];
+        document.getElementById("dh").innerHTML = sh;document.getElementById("sh").innerHTML = sb256[ dh ];
+        document.getElementById("dm").innerHTML = sm;document.getElementById("sm").innerHTML = sb256[ dm ];
+        document.getElementById("ds").innerHTML = ss;document.getElementById("ss").innerHTML = sb256[ ds ];
+        document.getElementById("dp").innerHTML = sI;document.getElementById("sp").innerHTML = sb256[ si ];
+        document.getElementById("Yd").innerHTML = Yd;document.getElementById("Yk").innerHTML = sb256[ Yk ];
+      } setInterval(showTime,  498);
+    </script></body></html>
