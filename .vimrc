@@ -38,7 +38,7 @@ se   nocp                     " nocompatible    - add  Vim NhancmNtz without str
 se    enc=utf-8               "     encoding    - was already loading utf-8 from current $LANG locale, && might need termencoding also if they diverge
 ""se fenc=utf-8               " fileencoding    - might needed this if ever trying LightLine + ALE with special chars from HTTPS://StaticO.GitHub.IO/vim3.html
 let  g:VERSION='0.000001'     " was just 0.0 B4, but now trying to extend sOfR MpT vers wi millionthz, not milli- but micro-? 4 majr.minr.rles spliting l8r;
-let     g:d8VS='Q8PMCTRL'     " d8VersionString - l8st significant upd8 to whole file was then; nOte:whN Using ampersand B4 var nAm,it rEferz 2 nAmd optn nstd;
+let     g:d8VS='QAHM9Vim'     " d8VersionString - l8st significant upd8 to whole file was then; nOte:whN Using ampersand B4 var nAm,it rEferz 2 nAmd optn nstd;
 let     g:vid8=system('d8')   " VimInit d8      - save d8 when this Vim session first stRtz up to use as dRk pRt at Nd of STatusLine just before bright upd8 d8
 let     g:cucf=1              " CUrsorColumFlag - flag to toggle whether :se cuc should be used (since dflt of it on gets slow whN lots of syntx hili on scrn)
 let     g:culb=1              " CUrsorLineBold  - flag to toggle whether :se cul below should use highlight with bold across whole line (dbl-mapd2Ctrl-L&&hls)
@@ -349,8 +349,9 @@ nmap   <C-f> !G perl -MText::Autoformat -E'$c=$ENV{q(COLUMNS)}//160;$c-=2;$t=joi
 ""        B sAvz && Bakzup curNt EditFile    " above mapz fmt over Ctrl-Forward FullPageDown since I use C-d && C-u HalfPage mainly && want F to find backward
 "nn             B  :sil if getbufinfo('%')[0].changed<CR>call SetStatusLineStyle()<CR>w!<CR>!bak '%'<CR>echo 'PlEase stRt Using Ctrl-b, not Shft-B!'<CR>en<CR>B
 ""              U bakz && Upd8z curNt EditFile in2 local ~/(lib|bin)/ " map ovrIdz Undo all changez to line since cursor moved into it (wich I don't use much);
- nn             U  :sil if getbufinfo('%')[0].changed<CR>call SetStatusLineStyle()<CR>w!<CR>!bak '%'<CR>en<CR>:!upd8 '%'<CR>
+ nn             U  :sil if getbufinfo('%')[0].changed<CR>call SetStatusLineStyle()<CR>w!<CR>!bak '%'<CR>en<CR><BS><BS><BS>:!upd8 '%'<CR>
 "nn             U  :call SetStatusLineStyle()<CR>:w!<CR>:!bak '%'<CR><CR>:!upd8 '%'<CR>   # set shellcmdflag to '-ic' for interactive shell using aliasez;
+" QAHM9Vim:trying 2 call w8 4 a half-second (31 phassez) B4 the conditional if en(dif) && CR 2 C if th@ stopz Vim from outputting ^[[I B4 :!upd8 called 2;
 " mA try :sil(ent)[!] !bak '%' 2!nEd dbl<CR> but mA nEd Ctrl-L or :redraw! 2B upd8d aftr output from silent command. rEmMber th@ <silent> can also prECd kEy;
 " NCBLENDS:rEplAcd abov old just 'map' 4 B && U wi 'nn' 4 just NormNoremap sinc I want 'vU' 2 Visualmode Uppercase, !upd8... && mAB 'vB' can VselectBackword2?;
 " AmiChai_MantinBand's 'Vim ShortCuts Keep Getting Crazier' on U2b V-selectd sevral lInz,thN did ':norm fhvU<CR>' 2fInd lOwrKse h on Ech lIn&&vU(prKs) thM all;
