@@ -62,14 +62,14 @@ package     Oct::a8;  # HTTPS://Sheet.Shiar.NL/perl DscrIbz Perl v5.38 l8St mOst
 use warnings;use  strict;use utf8;use v5.22;use open qw[:std :encoding(UTF-8)];use Encode;use Path::Tiny;use Time::HiRes qw(sleep gettimeofday);
 require         Exporter;  # add new colr systM; NC6LDSNT:rmvd old ygTbUDSN single-variables: $t $T $u $U $d $D $s $S $n $N  2 see if they're used anywhere?;
 use base     qw(Exporter); # mainly exporting global utility functions && variables originally inherited from c8.pm as well as a few f8.pm d8a structures
-our @EXPORT= qw(bfr8c    b8c    d8c   dur8c @d8cl @d8cS  a8c   chti  c8fn o8 o9 S2 c2 S c sS olde lodl @Monz @Mon    %mc2F %mc2b %mF2c %mb2c @Kana %sb10 %sb210
+our @EXPORT= qw(bfr8c    b8c    d8c   dur8c @d8cl @d8cS  a8c   chti  c8fn gnp8  S2 c2 S c sS olde lodl @Monz @Mon    %mc2F %mc2b %mF2c %mb2c @Kana %sb10 %sb210
  $SKp8 $SKp0 $SKp1 $SKp2 b8clr  $SKpf $SKpt %pmap %cmap %pldl %pl8n  ftst acs  %f8fm %f8pm %sgrm %sgrn @Dayz @Day lrc d8cs comma  curs  sumb @x256 @sb64 @sb256
-    $z    $k    $r    $o    $y    $g     $c   $Sb    $m    $p    $w  tstc    $K    $R    $O    $Y    $G    $C    $B    $M    $P    $W    %p622 %p222   upd8
+    $z    $k    $r    $o    $y    $g     $c   $Sb $q $m    $p    $w  tstc    $K    $R    $O    $Y    $G    $C    $B    $M    $P    $W    %p622 %p222   upd8
   PrfM   $bk   $br   $bo   $by   $bg    $bc   $bb   $bm   $bp   $bw %plds   $hK   $hR   $hO   $hY   $hG   $hC   $hB   $hM   $hP   $hW DmC h2rl  rl2h   drkh
-  xrtr %xrth XE    sf   pf  $pP pP t1          cn  chmp  chip  co   %pldS   $HK   $HR   $HO   $HY   $HG   $HC   $HB   $HM   $HP   $HW %pldh hl $pfil
- $tnhf $ucdf spff spfd spfX spfs shfl  reso $Auth %cmsp %p8k2 @p82k  chp8 aw8 S2f4 c2f4 dm2u cdst %crgb %cbrt @snls @mrls %cdrd %cdrn    %nrgb $lfil   gnp8
- $dbug      $Sz  $Sa  $d $e $f  $h $i $j  $l  $n  $q  $s $t $u $v $x  $A  $D $E $F  $H $I $J  $L  $N  $Q  $S $T $U $V  $X  $Z); # scoop up abov as Dflt clrz;
- # of 52 posibl sngl-letr var nmz,a8 Xportz 20,$b && $a unavail,sOshudB thEs 30 lFt4quik shortSt nAmz: 'def hij l n  q stuv x', 'A  DEF HIJ L N  Q STUV X Z';
+  xrtr %xrth XE sf pf eN  $pP pP t1             cn chmp  chip  co   %pldS   $HK   $HR   $HO   $HY   $HG   $HC   $HB   $HM   $HP   $HW %pldh hl $pfil  o4 o5
+ $tnhf $ucdf spff spfd spfX spfs shfl  reso $Auth %cmsp %p8k2 @p82k  chp8 aw8 S2f4 c2f4 dm2u cdst %crgb %cbrt @snls @mrls %cdrd %cdrn    %nrgb $lfil  o8 o9
+ $dbug      $Sz  $Sa  $d $e $f  $h $i $j  $l  $n  $qq $s $t $u $v $x  $A  $D $E $F  $H $I $J  $L  $N  $Q  $S $T $U $V  $X $Z s4 s5 O P E N F e4 e5 n9 e8 e9);
+ # of 52 posibl sngl-letr var nmz,a8 Xportz 20,$b && $a unavail,sOshudB thEs 30 lFt4quik shortSt nAmz: 'def hij l n    stuv x', 'A  DEF HIJ L N  Q STUV X Z';
  # of 52 ygTbUDSN was aded sO now 30 Xportz,see `pa 'print t1'`,sOshudB thEs 20 lFt4quik shortSt nAmz: ' ef hij l    q    v x', 'A   EF HIJ L    Q    V X Z';
 #ur @EXPORT_OK   = qw($d $e $f  $h $i $j  $l  $n  $q  $s $t $u $v $x  $A  $D $E $F  $H $I $J  $L  $N  $Q  $S $T $U $V  $X  $Z); # scoop up abov as Dflt clrz;
 our %EXPORT_TAGS = ('all'  => [ qw($d $e $f $h $i $j $l $n $q $s $t $u $v $x $A $D $E $F $H $I $J $L $N $Q $S $T $U $V $X  $Z $Sz $Sa) ],
@@ -77,8 +77,11 @@ our %EXPORT_TAGS = ('all'  => [ qw($d $e $f $h $i $j $l $n $q $s $t $u $v $x $A 
                    #'b64'  => [ qw(CardB64   B64Card HandB64  B64Hand       ) ],
                    #'pd8a' => [ qw(                %pd8a   %zdnh %zplf %zloh) ],
                    ); # just load all singles (skipping sort $a && $b [&& $z] );
-our $VERSION='0.000_001';our $d8VS='Q9SMEsSs';our $Auth='PipS <PipStuart@GMail.Com>'; # abov not!Xporting $b sinc cOlIdz with sort{$a<=>$b}; unalloc'd sOlOz^;
+our $VERSION='0.000_001';our $d8VS='QAIM0axe';our $Auth='PipS <PipStuart@GMail.Com>'; # abov not!Xporting $b sinc cOlIdz with sort{$a<=>$b}; unalloc'd sOlOz^;
 our $dbug=0;our $ucdf= eval('use Color::Similarity::RGB qw(distance);1') || 0; # try2set UseColorDistncFlag if optnl module is avail; /defhijlnqstuvx/i+/AZ/^;
+BEGIN{ # METHOD NAME ALIASES  # HTTPS://StackOverFlow.Com/questions/17543925/getting-used-only-once-possible-typo-warning-when-aliasing-subroutines
+  *sf = \&F; *s4 = \&F; *O = \&o8; *N = \&n9;
+  *pf = \&P; *o4 = \&P; *E = \&e8; }
 our @sb64 =('0'..'9','A'..'Z','a'..'z','.','_'); # SingleBase64 array && Base10 hash (since it's probably best not to use b8.pm here in a8)
 our %sb10 =();$sb10{$sb64[$_]}=$_ for(0..$#sb64);our %crgb;our %cbrt;our @snls;our @mrls;our %cdrd;our %cdrn; # DclAr ColrDist d8a:BRiTness,Srch iNdex LiSt,
 our @sb256=('0'..'9', 'A'..'Z', 'a'..'z', '.', '_',  # Base256 but starting with b64 characters (blacK chS pibrq before White, then cRdz sHDc, then k && K)
@@ -166,40 +169,52 @@ our %sgrm=('N' =>  0 ,  'A' => 26     , # 0 'N Normal / reset; # SelectGrphcRndi
            'I' =>  3 ,  's' => 29     , # 3 'I Italic   : on                                  '    # T 's not Strike-thru                                '
            'U' =>  4 ,  'C' =>'4:3'   , #' ' => 30–37  , # 4 'U Underline: single             '    #U-b'  set     text color       (foreground)          '
            '.' =>'4:4', '_' =>'4:5'   , #    should be under-dotted && under-dashed, but support?;
-           'L' =>  5 ,  'X' => 38     , # 5 'L bLink    : sLow    Less than 150/min           '    # c 'X reserved for eXtended set foreground color     '
+           'L' =>  5 ,  'X' =>'38;2'  , # 5 'L bLink    : sLow    Less than 150/min           '    # c 'X reserved for eXtended set foreground color     '
            'K' =>  6 ,  'Y' => 39     , # 6 'K blinK    : quicK   more than 150/min           '    # d 'Y default text colorY      (foreground)          '
            'R' =>  7 , #' ' => 40–47  , # 7 'R image    :  negative        (Reverse: on )     '    #e-l'  set     text color       (background)          '
-           'V' =>  8 ,  'x' => 48     , # 8 'V image    : inVisible   (Vail,conceal: on )     '    # m 'x reserved for eXtended set background color     '
+           'V' =>  8 ,  'x' =>'48;2'  , # 8 'V image    : inVisible   (Vail,conceal: on )     '    # m 'x reserved for eXtended set background color     '
            'S' =>  9 ,  'y' => 49     , # 9 'S     Strike-thru                                '    # n 'x default text colorY      (background)          '
            '0' => 10 ,  'a' => 50     , # A '0 primary (default) f0nt in a new topA map?      '    # o 'a reserved : remap?        (was s,now 256ndx)    '
            '1' => 11 ,  'M' => 51     , # B '1st        altern8  f0nt                         '    # p 'M fraMed   : on                                  '
            '2' => 12 ,  'E' => 52     , # C '2nd        altern8  f0nt                         '    # q 'E Encircled: on                                  '
-           '3' => 13 ,  'O' => 53     , # D '3rd        altern8  f0nt                         '    # r 'O Overlined: on                                  '
-           '4' => 14 , #'d' =>  ?     , # E '4th        altern8  f0nt                         '    #  ? d mAB remap2 DblOvrlIn+anothr cOd&&comNtBlO d=>24?
-           '5' => 15 ,  'm' => 54     , # F '5th        altern8  f0nt                         '    # s 'm fraMed   : off, Encircled: off                 '
-           '6' => 16 ,  'o' => 55,'Z'=>56, #'6th G      altern8  f0nt                         '    # t 'o Overlined: off                                 '
+           ' ' => 13 ,  'O' => 53     , # D '3rd        altern8  f0nt                         '    # r 'O Overlined: on                                  '
+           ' ' => 14 , #'d' =>  ?     , # E '4th        altern8  f0nt                         '    #  ? d mAB remap2 DblOvrlIn+anothr cOd&&comNtBlO d=>24?
+           ' ' => 15 ,  'm' => 54     , # F '5th        altern8  f0nt                         '    # s 'm fraMed   : off, Encircled: off                 '
+           '6' => 16 ,  'o' => 55     , # G '6th        altern8  f0nt                         '    # t 'o Overlined: off                                 '
            '7' => 17 , #' ' => 56–59  , # H '7th        altern8  f0nt                         '    #u-x'  reserved   (re-mapped Z to 56 reZerved in tsgr)'
            '8' => 18 ,  'H' => 60     , # I '8th        altern8  f0nt                         '    # y 'H ideogram        underline or        line rigHt '
            '9' => 19 ,  'h' => 61     , # J '9th        altern8  f0nt                         '    # z 'h ideogram double underline or double line rigHt '
            'F' => 20 ,  'T' => 62     , # K 'F Fraktur  : on                                  '    # . 'T ideogram         overline or        line lefT  '
            'W' => 21 ,  't' => 63     , # L 'D bold     : off or underline: Double            '    # _ 't ideogram double  overline or double line lefT  '
-           'b' => 22 ,  'G' => 64     , # M 'b Bold     : off, fAint  : off or Nrml colr/ntNsT'    #10 'G ideoGram stress marking                        '
+           'b' => 22 ,  'G' => 64     , # M 'b Bold     : off, fAint  : off or Nrml colr/ntNsT'    #10 'G ideoGram stress marking', abov W dblU alsO 4:2 ;
            'i' => 23 ,  'g' => 65     , # N 'i Italic   : off, Fraktur: off                   '    #11 'g ideoGram attributes off                        '
            'u' => 24 , #' ' => 90–97  , # O 'u Underline: none                                '    #1Q-1X'set foreground text color, High intensity      '
            'l' => 25 , #' ' =>100–107 , # P 'l bLink    : off                                 '    #1a-1h'set background      color, High intensity      '
-          #' ' => 73 ,  ' ' => 73     , # 73'  SuperScript only in mintty'                    ,    # re-mapped S 26 && s 50 reServed to . && _ since S && c
-          #' ' => 74 ,  ' ' => 74     , # 74'    SubScript only in mintty'                    ,    #   now use S && s for X;5;256ndx         && [0-3] . b64
-          #' ' => 75 ,  ' ' => 75     , # 75' neither Su*Script in mintty'                    ,    #   leaving X && x for  ;2;256r;256g;256b && h2rl  (4b64);
+           '3' => 73 ,                  # 73'  SuperScript only in mintty'                    ,    # re-mapped S 26 && s 50 reServed to . && _ since S && c
+           '4' => 74 ,                  # 74'    SubScript only in mintty'                    ,    #   now use S && s for X;5;256ndx         && [0-3] . b64
+           '5' => 75 ,                  # 75' neither Su*Script in mintty'                    ,    #   leaving X && x for  ;2;256r;256g;256b && h2rl  (4b64);
+           'J' =>'38;5','j' =>'48;5'  , #c,m'  Jj du Fb 2 b64 charz for 256 ndx [34]8;5;??? whIle Xx du Fb 4 b64 RGBl for [34]8;2;?R?;?G?;?B? 4 24-bit colrz;
+          #'P' => 58 ,                  # 58'  Color Underlines in  Kitty', 59 reset ColorUlnz,    # HTTPS://SW.KovidGoyal.Net/kitty/underlines `pasm`:MpTnow;
+          #'Q' => 58 ,                  # 58'P Pal8 256 2 b64 chrz && Q is 4 24-bit RGBl colrz'    # P does 58;5;0-255 && Q does 58;2;R?;G?;B? ;
+           'Z' => 58 ,  'z' => 59     , #u,v'rEmapd Z && z from reZerved&&REzERVED to Kitty [FDAL]b64; 58 && 59 R now Q && q BlO at the botm of this hash';
+          # got2 see if up S() && c() Uz Zz 56 or 57 4 somethng, but alreD Uzez Jj 4 Fgrnd bGRND 2 b64 char 256 ndx (not 2 HEX charz,supported elsewhere);
           # definitely need more than 1 b64 char to represent dec ndx of all codez past t 63 but [34][0-7] shud probly just control Fb layerz leaving sgr alone
           );our %sgrn=reverse(%sgrm); # also map main iNdices back to keyz (needing differentE8ion 4 each alias below that doesn't get remapd2unique code yet)
           # no Jj Pp Qq Ww Zz ._ above, but remember that new c8 H h layerz for High intensity are not same as ideogram rigHt mapping, so maybe push T t up
-          #   to righT && use ._ index matching mapping for future ideogram lefts;
+          #   to righT && use ._ index matching mapping for future ideogram lefts?; QAGMJots:now just Pp unmapped && wil nEd2 rEaloc ideoGramz or Uz2chrz2grO;
      $sgrm{'n'}=   0 ; #  n => N or remap or maybe altern8 way to toggle Bold back on? nah, just another Normal for now
      $sgrm{'d'}=  22 ; #  a => b or remap to fAint background color or ultra fAint Foreground?
      $sgrm{'f'}=  23 ; #  f => i or remap to other F0nt like a=>futura-1 better than F=>fat? mAB EvNtually f can just disable Fraktur, leaving Italic alone
+     $sgrm{'c'}=  24 ; #  c => u so lc() uCurl&&DblUnderline both map 2 turn underlinez off;
      $sgrm{'w'}=  24 ; #  d => u or remap to Double overline or just Double underline off but leave potential single Underline (or from B4) intact?
      $sgrm{'k'}=  25 ; #  k => l or remap to some new special custom blinK pulsing color pattern?
      $sgrm{'e'}=  54 ; #  e => m or remap to double fraMEd with some other code, or just turn Encircled off to leave fraMed maybe still on l8r?
+     $sgrm{'J'}=  38 ; #  J =>38 as 256ndx wich I will try 2 mk with 4-digit 0-padded ndxz 2 distinguish && disambigU8 from FDAL:8pal8 Dfalt 3-digit 0-padded;
+     $sgrm{'j'}=  48 ; #  j =>48 as 256ndx;
+     $sgrm{'P'}=  58 ; #  P =>58 as 256ndx;
+     $sgrm{'Q'}=  58 ; #  Q =>58 as 24-bit RGBl 4-b64-charz;
+     $sgrm{'p'}=  59 ; #  p =>59 as z reset Underline color;
+     $sgrm{'q'}=  59 ; #  q =>59 as z reset Underline color;
 our %cmsp;for(keys %cmap){my $mstr=$cmap{$_};$mstr=~ s/\s+//g;$cmsp{$_}= [split(//,$mstr)];} # should load all Color Mapz already SPlit apart
 our %pl8n=('K'=>'blacK'     ,'R'=>'Red'      ,'Y'=>'Yellow','G'=>    'Green'  ,  'C'=>'Cyan'        ,'B'=>     'Blue','M'=>'Magenta' ,'W'=>       'White',
            'E'=>'dimgrEy'   ,'H'=>'Hotpink'  ,'O'=>'Orange','D'=>  'oliveDrab',  'T'=>'Turquoise'   ,'S'=>  'Skyblue','P'=>'PurPle'  ,'I'=>       'Ivory',
@@ -212,20 +227,20 @@ our %p222=(); # this used 2 explicitly remap basic 16 by ANSI order; # 2Pal8    
 our %p622=(); #  Pal8 64 to 256 (just 4 xtnded 48 past 16 standard     2pal8)  ... but now these both just get loaded from master valuez in %p8k2 'F' below;
 our %p8k2=( # 1st good Pal8 maps gener8d for full Keyz 2 256 from `gnp8 p` (but using FDAL instead of bdal to favor just F default now)
   'F' => {'k'=>  0,'r'=>  1,'O'=>  3,'g'=>  2,'c'=>  6,'b'=>  4,'P'=>  5,'w'=>  7, 'K'=>  8,'R'=>  9,'Y'=> 11,'G'=> 10,'C'=> 14,'B'=> 12,'M'=> 13,'W'=> 15,
-          'e'=>237,'h'=>125,'o'=>172,'d'=> 22,'t'=> 23,'s'=> 54,'p'=> 92,'i'=>244, 'E'=>242,'H'=>205,'y'=>184,'D'=> 64,'T'=> 80,'S'=>116,'m'=>164,'I'=>254,
-          '.'=>239,'f'=> 52,'u'=> 58,'a'=> 65,'z'=> 30,'n'=> 17,'l'=>103,'j'=> 95, '_'=>247,'F'=>160,'U'=>229,'A'=> 85,'Z'=> 44,'N'=> 19,'L'=>225,'J'=>223,
-          '0'=>235,'2'=> 89,'4'=> 94,'6'=> 28,'8'=> 31,'x'=> 24,'v'=> 96,'q'=>243, '1'=> 18,'3'=>132,'5'=>220,'7'=> 77,'9'=> 81,'X'=> 27,'V'=>213,'Q'=>224,},
+          'e'=>237,'h'=>125,'o'=>172,'d'=> 22,'t'=> 23,'s'=> 54,'p'=> 92,'i'=>244, 'E'=>242,'H'=>205,'y'=>184,'D'=> 64,'T'=> 80,'S'=> 25,'m'=>164,'I'=>254,
+          '.'=>239,'f'=> 52,'u'=> 58,'a'=> 65,'z'=> 30,'n'=> 17,'l'=>103,'j'=>152, '_'=>243,'F'=>160,'U'=>229,'A'=> 85,'Z'=> 44,'N'=> 19,'L'=>225,'J'=>223,
+          '0'=>235,'2'=> 89,'4'=> 94,'6'=> 28,'8'=> 31,'x'=> 24,'v'=> 96,'q'=>247, '1'=>236,'3'=>132,'5'=>220,'7'=> 77,'9'=> 81,'X'=> 27,'V'=>213,'Q'=>224,},
   'D' => {'k'=> 16,'r'=> 88,'O'=>136,'g'=> 29,'c'=> 66,'b'=>233,'P'=> 90,'w'=>250, 'K'=>102,'R'=>162,'Y'=>190,'G'=> 41,'C'=> 45,'B'=> 56,'M'=>165,'W'=>193,
-          'e'=>241,'h'=>161,'o'=>130,'d'=>101,'t'=> 25,'s'=> 60,'p'=> 53,'i'=>106, 'E'=> 72,'H'=>169,'y'=>179,'D'=> 46,'T'=> 74,'S'=>110,'m'=>127,'I'=>148,
+          'e'=>241,'h'=>161,'o'=>130,'d'=>101,'t'=>116,'s'=> 60,'p'=> 53,'i'=>106, 'E'=> 72,'H'=>169,'y'=>179,'D'=> 46,'T'=> 74,'S'=>110,'m'=>127,'I'=>148,
           '.'=>138,'f'=>166,'u'=>100,'a'=> 76,'z'=> 43,'n'=> 98,'l'=>133,'j'=>144, '_'=>248,'F'=>168,'U'=>192,'A'=> 48,'Z'=> 50,'N'=> 21,'L'=>146,'J'=>187,
           '0'=>137,'2'=>175,'4'=>173,'6'=> 83,'8'=> 73,'x'=> 20,'v'=>176,'q'=> 70, '1'=> 93,'3'=>200,'5'=>180,'7'=>155,'9'=>153,'X'=> 55,'V'=>212,'Q'=>151,},
-  'A' => {'k'=>232,'r'=>124,'O'=>178,'g'=> 34,'c'=> 36,'b'=>236,'P'=> 97,'w'=>251, 'K'=>245,'R'=>196,'Y'=>226,'G'=> 82,'C'=> 51,'B'=> 26,'M'=>201,'W'=>194,
+  'A' => {'k'=>232,'r'=>124,'O'=>178,'g'=> 34,'c'=> 36,'b'=> 18,'P'=> 97,'w'=>251, 'K'=>245,'R'=>196,'Y'=>226,'G'=> 82,'C'=> 51,'B'=> 26,'M'=>201,'W'=>194,
           'e'=> 59,'h'=>163,'o'=>202,'d'=> 35,'t'=> 32,'s'=> 61,'p'=> 91,'i'=>113, 'E'=>108,'H'=>170,'y'=>185,'D'=>112,'T'=> 86,'S'=>111,'m'=>128,'I'=>154,
           '.'=>181,'f'=>131,'u'=>142,'a'=> 42,'z'=> 79,'n'=> 68,'l'=>135,'j'=>139, '_'=>145,'F'=>203,'U'=>228,'A'=> 49,'Z'=>123,'N'=> 99,'L'=>182,'J'=>188,
           '0'=>107,'2'=>204,'4'=>209,'6'=>119,'8'=> 39,'x'=>105,'v'=>140,'q'=>149, '1'=>104,'3'=>211,'5'=>221,'7'=>120,'9'=>158,'X'=> 33,'V'=>218,'Q'=>157,},
   'L' => {'k'=>234,'r'=>126,'O'=>215,'g'=> 40,'c'=> 38,'b'=>238,'P'=>171,'w'=>252, 'K'=>249,'R'=>197,'Y'=>227,'G'=> 47,'C'=> 87,'B'=> 57,'M'=>207,'W'=>255,
-          'e'=>240,'h'=>198,'o'=>208,'d'=> 71,'t'=> 37,'s'=> 67,'p'=>134,'i'=>114, 'E'=>109,'H'=>206,'y'=>186,'D'=>118,'T'=>122,'S'=>117,'m'=>129,'I'=>191,
-          '.'=>217,'f'=>167,'u'=>143,'a'=> 78,'z'=>115,'n'=> 62,'l'=>177,'j'=>246, '_'=>152,'F'=>210,'U'=>230,'A'=>121,'Z'=>159,'N'=> 69,'L'=>189,'J'=>253,
+          'e'=>240,'h'=>198,'o'=>208,'d'=> 71,'t'=> 37,'s'=> 67,'p'=>134,'i'=>114, 'E'=>109,'H'=>206,'y'=>186,'D'=>118,'T'=>122,'S'=>117,'m'=>129,'I'=>230,
+          '.'=>217,'f'=>167,'u'=>143,'a'=> 78,'z'=>115,'n'=> 62,'l'=>177,'j'=>246, '_'=> 95,'F'=>210,'U'=>191,'A'=>121,'Z'=>159,'N'=> 69,'L'=>189,'J'=>253,
           '0'=>174,'2'=>199,'4'=>214,'6'=> 84,'8'=> 75,'x'=>147,'v'=>183,'q'=>150, '1'=>141,'3'=>216,'5'=>222,'7'=>156,'9'=>195,'X'=> 63,'V'=>219,'Q'=>231,},);
 our @p82k;for(keys %p8k2){for my $p8ky (keys %{$p8k2{$_}}){$p82k[$p8k2{$_}{$p8ky}]="$_$p8ky";if($_ eq 'F'){my $c2p8=$cmap{'2pal8'};$c2p8=~ s/\s+//g;
       if($p8ky=~ /^[$c2p8]$/){$p222{$p8ky}=$p8k2{$_}{$p8ky};}else{$p622{$p8ky}=$p8k2{$_}{$p8ky};}}}} # popul8 Pal8 256 2 Keyz reverse-lookup && p222 && p622
@@ -268,8 +283,8 @@ if(0&& exists($ENV{'TERM'}) && $ENV{'TERM'} =~ /linux$/){
 our %mc2F;our %mc2b;our %mF2c;our %mb2c; # MapC8Col8ColrCodz2ForeBackgrnd && rEverse  # also adding 8trm below restored main lsd8 colors
 if(exists($ENV{'TERM'}) && $ENV{'TERM'} !~ /^(([Ex]|st)(term)?|screen|rxvt|linux|8trm|alacritty|foot)/){$tnhf=1;} # TermNoHandleFlag
 #our $t ;our $u ;our $d ;our $s ;our $n ; # (nEd linux hEr too 4 console colrz);
-#our $T ;our $U ;our $D ;our $S ;our $N ;
-our $Sa;our $d ;our $e ;our $f ;our $h ;our $i ;our $j ;our $l ;our $n ;our $q ;our $s ;our $t ;our $u ;our $v ;our $x ;our $Sz;
+#our $T ;our $U ;our $D ;our $S ;our $N ; # QA3MDAsq:nOte th@ the below our $q getz l8r mapped to single-quote instead of color;
+our $Sa;our $d ;our $e ;our $f ;our $h ;our $i ;our $j ;our $l ;our $n ;our $q ;our $s ;our $t ;our $u ;our $v ;our $x ;our $Sz;  our $qq='"'; # DoubleQuote!;
 our  $A;our $D ;our $E ;our $F ;our $H ;our $I ;our $J ;our $L ;our $N ;our $Q ;our $S ;our $T ;our $U ;our $V ;our $X ;our  $Z;
 our $k ;our $r ;our $o ;our $y ;our $g ;our $c ;our $Sb;our $m ;our $p ;our $w ; # avoid sort's global $b variable with a special $Sb 4 4grnd dRk-blue instead
 our $K ;our $R ;our $O ;our $Y ;our $G ;our $C ;our  $B;our $M ;our $P ;our $W ; # Fclr shrtcutz to get set,reset,shifted,or randomized in CHangePal8 function
@@ -303,11 +318,11 @@ sub chp8{ # should do similar stuff but all may need to use joined layer keyz wi
         else{$bd21='01';$mc2F{$p82k[$_]}="$bd21;" . 22+$ndxk;$mF2c{$mc2F{$p82k[$_]}}=$p82k[$_];}}
       my $p8ky=$p82k[$_]; $p8ky=~ s/^([FDAL])//;if($1 eq 'F'){$p8ky= 'b'.$p8ky;}else{$p8ky= lc($1).$p8ky;} # should learn how to use \l in regex to lc() too
                    $mc2b{$p8ky    }=   '48;5;' . spfd($_);$mb2c{$mc2b{$p8ky    }}=$p8ky    ;}}
-# $t=S('t');$u=S('u');$d=S('d');$s=S('s');$n=S('n'); # these are old, from just YGTBUDSN...;
-# $T=S('T');$U=S('U');$D=S('D');$S=S('S');$N=S('N'); # t1() shows all but off-limits $a && $b (for sort) get Xportd now;
-  $k=S('k');$r=S('r');$o=S('o');$y=S('y');$g=S('g'); $c=S('c');$Sb=S('b');$m=S('m');$p=S('p');$w=S('w');$Sa=S('a'); # avoid sort $b && $a
+  $t=S('t');$u=S('u');$d=S('d');$s=S('s');$n=S('n'); # these are old, from just YGTBUDSN...;
+  $T=S('T');$U=S('U');$D=S('D');$S=S('S');$N=S('N'); # t1() shows all but off-limits $a && $b (4 sort) get Xportd now; nOte that $q is just SingleQuote BlO;
+  $k=S('k');$r=S('r');$o=S('o');$y=S('y');$g=S('g'); $c=S('c');$Sb=S('b');$m=S('m');$p=S('p');$w=S('w');$Sa=S('a'); # avoid sort $b && $a as well as $q BlO;
   $K=S('K');$R=S('R');$O=S('O');$Y=S('Y');$G=S('G'); $C=S('C'); $B=S('B');$M=S('M');$P=S('P');$W=S('W');$Sz=S('z'); # Fclr shrtcutz && lEave $z 4 Zr0 :N ;
-  $A=S('A');$d=S('d');$e=S('e');$f=S('f');$h=S('h'); $i=S('i'); $j=S('j');$l=S('l');$n=S('n');$q=S('q');$s=S('s');$t=S('t');$u=S('u');$v=S('v');$x=S('x');
+  $A=S('A');$d=S('d');$e=S('e');$f=S('f');$h=S('h'); $i=S('i'); $j=S('j');$l=S('l');$n=S('n');$q=  "'" ;$s=S('s');$t=S('t');$u=S('u');$v=S('v');$x=S('x');
   $Z=S('Z');$D=S('D');$E=S('E');$F=S('F');$H=S('H'); $I=S('I'); $J=S('J');$L=S('L');$N=S('N');$Q=S('Q');$S=S('S');$T=S('T');$U=S('U');$V=S('V');$X=S('X');
   $bk=$SKp8.$Sdsr{'bk'}.'m';$br=$SKp8.$Sdsr{'br'}.'m';$bo=$SKp8.$Sdsr{'bo'}.'m';$by=$SKp8.$Sdsr{'by'}.'m';$bg=$SKp8.$Sdsr{'bg'}.'m';
   $bc=$SKp8.$Sdsr{'bc'}.'m';$bb=$SKp8.$Sdsr{'bb'}.'m';$bm=$SKp8.$Sdsr{'bm'}.'m';$bp=$SKp8.$Sdsr{'bp'}.'m';$bw=$SKp8.$Sdsr{'bw'}.'m';
@@ -344,20 +359,216 @@ sub t1{my $mxsz=shift||0;my $rslt="\n";no warnings;no strict;# tSt wich 1-char s
         else                                       {$rold[3].=$chz1[$c1nd] . $chz2[$c2nd] . ' ';$rold[2].='   ';}}}}
   $rslt=join("\n",@rold);$rslt=~ s/\s+(\n|$)/$1/g;$rslt=~ s/\ndFd2:(.|\n)*$// unless($mxsz > 1);return($rslt);} # mAB alsO mk tSt 4 subz DfInd by Ech nAm2?;
 sub cn{if(!@_ && !-t STDIN){ (@_=decode('UTF-8',join(''  ,<STDIN>)));}
-  for    ( @_){chomp;} return(@_);}; sub chmp{return(cn(@_));} # just try 2 XpOz bAsic UTF8 ChompNewline && ChopOff 2 shL (chip 4 chop BlO);
+  for    ( @_){chomp;} return(@_);} sub chmp{return(cn(@_));} # just try 2 XpOz bAsic UTF8 ChompNewline && ChopOff 2 shL (chip 4 chop BlO);
 sub co{if(!@_ && !-t STDIN){ (@_=decode('UTF-8',join(''  ,<STDIN>)));}
-  for    ( @_){chop ;} return(@_);}; sub chip{return(co(@_));} # above && mappings could be like Chimps chomp chopping chips can code cn co;)
-sub o9{o8( @_,"\n");} # 2du:considr mkng new sub:en() mABjust alias2 o8(wich iz lIk print or`echo -n`)&&ec()||o9(outf8 wi9NewlIn)2BlIk say||Dflt shL`echo`;
-sub o8{my $Uflg=1;my $Stxt='';return unless(@_);my $ncfl=0;$ncfl=1 if((exists($ENV{'NO_COLOR'}) && $ENV{'NO_COLOR'}) || !-t STDOUT); # do NoColr if pIpng2;
-  if(defined($_[0]) && $_[0]=~  /^-?-([uh])(elp|tf8|flg)?$/i){if($1 eq 'u'){$Uflg=0;}else{
+  for    ( @_){chop ;} return(@_);} sub chip{return(co(@_));} # above && mappings could be like Chimps chomp chopping chips can code cn co;)
+sub n9{return(say STDOUT @_);} # not sure if sayz nEd '' nstd of lIkely MpT @_ ?!;
+sub eN{return(say STDERR @_);} # 4 some rEason,without shifting 4m@ string off @_ 1st BlO,this was tkng @_ in scalR contXt&&just rEtrning 2as argcnt,why?!;
+sub F {my $f4mt='';$f4mt=shift(@_) if(@_);return(sprintf($f4mt,@_));}
+sub P {return(o8(F(@_)));}   #[pip@OniQAIM3tbj~]pa 'P("dec:%4d; str:%8s;\n",63,sixthrE,4095,fournIne);'; # lookz lIk Perl duz not loop 2 consume Xtra RgUmNtz!;
+                             # Redundant argument in sprintf at /home/pip/lib/Oct/a8.pm line 367. # dec:  63; str: sixthrE; # my Zsh printf duz loop 2 consume;
+sub s5{my $retn=F(@_);N();return($retn);} # these cannot just append newline 2 arglist 2 output Bcuz Perl pf duz not consume...
+sub o5{my $retn=P(@_);N();return($retn);} #   && cannot modify ReadOnly value Either, sO rEwrIting 2 just call N @ Nd;
+sub e9{return(e8(@_,"\n"));} sub e4{return(e8(F(@_)));} sub e5{return(e8(F(@_),"\n"));}
+sub o9{return(o8(@_,"\n"));} # 2du:cnsidr mkng new sub:en() mABjust alias2 o8(wich iz lIk prnt or`en`)&&ec()||o9(outf8 wi9NewlIn)2BlIk say||Dflt shL`echo`;
+sub o8{my $Uflg=1;my $cflg=0;my $Stxt='';return unless(@_);my $ncfl=0;$ncfl=1 if((exists($ENV{'NO_COLOR'}) && $ENV{'NO_COLOR'})); # || !-t STDOUT); #!autO !-t;
+  my $sofh; # StdOutOldOrigFileHandle; # only accepts single RgUmNt among -h -u -c az 1st pRam BlO,nO looping 4 combIning -cu yet whIl -h can proly stA IsOl8d;
+  if(defined($_[0]) && $_[0]=~  /^-?-([uhc])(elp|tf8|flg|olo?r)?(\s?|$)/ ){ # mAB nEd 2 tSt if BlO s/// is trying 2 modify ReadOnly $_[0]?;
+                       $_[0]=~ s/^-?-([uhc])(elp|tf8|flg|olo?r)?(\s?|$)//; if($1 eq 'u'){$Uflg=0;}elsif($1 eq 'c'){$cflg=1;}else{
       $Stxt=" o8 Help text - autom8 printing out UTF-8 encoded texts which may also include ANSI escape codes for colors or SGR attributes (out8 utf8 and o9);
  This is basically an example of a manipul8ion parameter, but may not make standalone CLI wi ARGV (i.e., for now o8 is just a Perl sub that must have these...
  -h - show this Help text;  ... options given as only the very first function parameter and almost anything else is output, where o9 just appends newline too);
- -u - disable default Utf-8 encoding;";};shift(@_);};$Stxt.=join('',@_);$Stxt=sS($Stxt) if($ncfl); # 2du:mk sS call hEr Only strip colrz, !othr SGR atribUtz 2;
+ -u - disable default Utf-8 encoding;";};shift(@_);};$Stxt.=join('',@_);$Stxt=sS($Stxt) if(!$cflg && $ncfl); # 2du:mk sS call hEr Only strip colrz,!othrSGR@z;
   if(defined($Stxt) && length($Stxt)){ # mA want2ck Dflt $_ or STDIN if!givN pRam2prnt ANSI SKpd colors on UTF-8 STDOUT or flag 4 ERR insted?;
-    # BlO select && dollar-pipe=1 mAkz $out8 unbufrd 4 progrS without nwlInz;
-    open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";if($Uflg){binmode $out8,':encoding(UTF-8)';} select($out8);$|=1;print $out8 $Stxt;
-    close   $out8             or die "Can't close duplic8 STDOUT handle: $!";}} # this can allow intermeD8 prints when not needing to manipul8 aggreg8
+    # BlO select && dollar-pipe=1 mAkz $out8 unbufrd 4 progrS without nwlInz; probably shud figure out how 2 restore buffering again after done printing also!;
+    open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";if($Uflg){binmode $out8,':encoding(UTF-8)';};$sofh=select($out8);$|=1;print $Stxt;
+    close   $out8             or die "Can't close duplic8 STDOUT handle: $!";};select($sofh);} # allowz intermeD8 printz when not needing to manipul8 aggreg8!;
+sub e8{my $Uflg=1;my $cflg=0;my $Stxt='';return unless(@_);my $ncfl=0;$ncfl=1 if((exists($ENV{'NO_COLOR'}) && $ENV{'NO_COLOR'}));my $sofh; # || !-t STDOUT);
+  if(defined($_[0])){$Stxt.=join('',@_);$Stxt=sS($Stxt) if(!$cflg && $ncfl); # 2du:mk sS call hEr Only strip colrz,!othrSGR@z;
+  if(defined($Stxt) && length($Stxt)){ # mA want2ck Dflt $_ or STDIN if!givN pRam2prnt ANSI SKpd colors on UTF-8 STDERR or flag 4 OUT insted?;
+    open my $err8,'>&',STDERR or die "Can't open  duplic8 STDERR handle: $!";if($Uflg){binmode $err8,':encoding(UTF-8)';};$sofh=select($err8);$|=1;print $Stxt;
+    close   $err8             or die "Can't close duplic8 STDERR handle: $!";}}select($sofh);} # e8 does not test for -h --help or -c or -u flagz,see o8 4 hLp;
+sub spff{my $frmt='%12.12f';if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_){return( sprintf("%16s",F("$frmt",@_)));}} # SPFfloat,dec,HX,Ss;
+sub spfd{my $frmt='%03d'   ;if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_&& defined($_[0])&& $_[0]=~/^\d+$/){return(F("$frmt",@_));}}
+sub spfX{my $frmt='%02X'   ;if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_&& defined($_[0])&& $_[0]=~/^\d+$/){return(F("$frmt",@_));}}
+sub spfs{my $frmt='%1d%1s' ;if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_&& defined($_[0])&& $_[0]=~/^\d+$/){return(F("$frmt",int($_[0]/64),
+    $sb64[shift(@_) % 64]) );}} # SPrintF Ss 256ndx in [0-3] . b64;
+# QA3MDOPE:the following several comment lines are pasted in from my ~/.zshrc file to show Zshell definitions of OPENF o[4589] e[4589] s[45] n9 && eN 4 17addz;
+#Al O='P %s  '  P='printf' ece='ec -e' eec=ece; #   && I Db8d mkng BlO F -> ftst,file,firefox,fortune, thN DcIded 2du fgrep 4abit B4 sprintf && kEp P 4 printf;
+#Al F='P -v F'  E='>&2 P' pf=P; # OCBLNXFt:upd8d old F->P did point 2my fIltStUtl B4 I wantd spAcd-some str-print-4m@d 4 F just in  a8.pm || e[cn] chomp o89?;
+#Al N=ec n9=N s4=F o4=P o8=O e4=E e8='E %s'; e5() {e4 "$@";>&2 N;}; e9() {e8 "$@";>&2 N;}; o5() {o4 "$@";N;}; o9() {o8 "$@";N;}; s5() {s4 "$@";F="$F\n";}; #16;
+#Al OF="pewh O P E N F n9 o4 o8 e4 e8 s4 o5 o9 e5 e9 s5|pe 's/^\\e\\[01;38;5;010m(\\w+\\s+)(\\(\\)\\s+)(\\{)/\$G\$1\$O\$2\$W\$3/;s/(\\\\n)/\$z\$1\$R/g;
+# s/^\\e\\[01;38;5;010m(\\})$/\$W\$1\$z/;s/(\\s+)(%\\w+)/\$1\$B\$2/g;s/(\")/\$F\$1\$R/g;s/(\\\$\\@)/\$M\$1/g;s/(\\>&\\d+)/\$C\$1\$y/g; # the 16 added+eN R 17!;
+# s/^\\e\\[01;38;5;010m(\\s+)(\\w+\\s+)/\$1\$A\$2\$C/;'" eN='>&2 N'; # QA3MCueN:emrgN BcAm ErrNwln; # thru $(pe) shO all OF OpenF's $(which) dFz in nIce colrz;
+# abov OPENF are 1st 5 of 16 cmndz I'm adding to en && ec (4 18 wraprz tOtal), N && n9 just alias ec but shud B Uzd without pRameterz just 4 prOducing NewliNz;
+# rEmAining 10 (aftr 6 of OPENF+n9) are o4+o5 for 4m@d Output+NewliNe,o8+o9 un4m@d OutUTF8+NewliNe, e4+e5 && e8+e9 just like o[45 89] but 2 stdErr not stdOut!;
+# last s4+s5 are for sprintf-like assigning 4m@d RgUmNtz to $ENV{'F'}+NewliNe 4 s5,with e5+e9,of+o9,&& s5 all Bing functionz whIl rSt R aliasez 2 printf || ec;
+#  F now duz assign $F wi formatted str output && E also seemz 2 pf 2 stderr 2; E cud try: `cat <<< "$@" 1>&2` or `printf "%s" "$*" >&2` 2 get out 2 err;
+# alsOcud: `ec foo >>/dev/stderr` or /proc/self/fd/2 nstd az more obvious && apparently zsh or bash probably emul8z it fine if not already found in fIlesysteM;
+# further: `read -t 0.1 -p "This is sent 2 stderr."` Uzez timeout disabling var storage func (wh I mIt want 4 F spf) && not sure what -p does yet so shud rEad;
+# mAB o9 shud Bcome a wrapr function calling O='P %s' && passing all argz thN a fInal `ec` 2 NewLine @Nd nstd of print which joinz spAcz BtwEn RgUmNtz.du!want;
+# \e escape, \f form-feed, \n new-line, \r carriage-return, \t horizontal-tab, \v vertical-tab, \0NNN byte-wi-octal-val-NNN(1to3digits), \xHH byte-Hexa-val-HH;
+# O3FMFMTP:so `m printf` showz GNU coreutils 8.32 from January 2024 basic manual: SYNOPSIS  printf OPTION  or  printf FORMAT [ARGUMENT]...
+#   DESCRIPTION - Print ARGUMENT(s) according to FORMAT, or execute according to OPTION:  --(help|version)  display help or version in4m8ion && exit
+#     FORMAT     controls the output as in C printf.  Interpreted sequences are:
+#       \"       double quote      \e escape  \f       form feed              \NNN        byte                      with octal       value NNN (1 to 3 digits)
+#       \\       backslash                    \n       new line               \xHH        byte                      with hexadecimal value  HH (1 to 2 digits)
+#       \a       alert (BEL)                  \r       carriage return        \uHHHH      Unicode (ISO/IEC 10646) character with hex value     HHHH (4 digits)
+#       \b       backspace                    \t       horizontal tab         \UHHHHHHHH  Unicode                 character with hex value HHHHHHHH (8 digits)
+#       \c       produce no further output    \v       vertical tab           %%          a single %  ## 2du:mk subz sf pf or f F to string 4m@d print 4 Pi8;
+#       %b       ARGUMENT as a string with '\' escapes interpreted, except that octal escapes are of the form \0 or \0NNN
+#       %q       ARGUMENT is printed in a format that can be reused as shell input, escaping non-printable characters with the proposed POSIX $'' syntax.
+#         and all C format specifications ending with one of diouxXfeEgGcs, with ARGUMENTs converted to proper type first.  Variable widths are handled.
+#     NOTE: your shell may have its own version of printf, which usually supersedes this version.  Please refer to your shell's documentation for details.
+# REPORTING BUGS - GNU coreutils online help: <https://www.gnu.org/software/coreutils/> Report any translation bugs to <https://translationproject.org/team/>
+# COPYRIGHT - Copyright © 2020 Free Software Foundation, Inc.  License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+# AUTHOR - Written by David MacKenzie. This is free software: you are free to change && redistribute it. There is NO WARRANTY, to the extent permitted by law.
+# SEE ALSO - printf(3)  Full documentation <https://www.gnu.org/software/coreutils/printf> or available locally via: info '(coreutils) printf invocation'
+# GNU coreutils 8.32 January 2024; `m zshbuiltins` has echo print && printf to consider. `m 3 printf` has details on diouxXfeEgGcs C-4m@ spec Ndingz:
+#   page part of release 5.10 of Linux man-pages project. HTTPS://Kernel.Org/doc/man-pages        DESCRIPTION
+#   The  functions  in the printf() family produce output according to a format as described below.  The functions printf() and vprintf() write output to
+#     stdout, the stdout stream; fprintf() and vfprintf() write output to given output stream; sprintf,snprintf,vsprintf,vsnprintf write to char string str.
+#   The function dprintf() is the same as fprintf() except that it outputs to a file descriptor, fd, instead of to a stdio stream.
+#   The functions snprintf() and vsnprintf() write at most size bytes (including the terminating null byte ('\0')) to str.
+#   The  functions  vprintf(), vfprintf(), vdprintf(), vsprintf(), vsnprintf() are equivalent to the functions printf(), fprintf(), dprintf(), sprintf(),
+#     snprintf(), respectively, except that they are called with a va_list instead of a variable number of arguments.  These  functions  do  not  call  the
+#     va_end macro.  Because they invoke the va_arg macro, the value of ap is undefined after the call.  See stdarg(3).
+#   All these funcz write the output under the control of a format string that specifies how subsequent arguments (or arguments accessed via the
+#     variable-length argument facilities of stdarg(3)) are converted for output.
+#   C99 and POSIX.1-2001 specify that the results are undefined if a call to sprintf(), snprintf(), vsprintf(), or vsnprintf()  would  cause  copying  to
+#     take place between objects that overlap (e.g., if the target string array and one of the supplied input arguments refer to the same buffer). See NOTES.
+#   Format of the format string
+#     The format string is a character string, beginning and ending in its initial shift state, if any.  The format string is composed of zero or more  di‐
+#     rectives:  ordinary  characters  (not  %),  which  are copied unchanged to the output stream; and conversion specifications, each of which results in
+#     fetching zero or more subsequent arguments.  Each conversion specification is introduced by the character %, and ends with  a  conversion  specifier.
+#     In between there may be (in this order) zero or more flags, an optional minimum field width, an optional precision and an optional length modifier.
+#   The  arguments must correspond properly (after type promotion) with the conversion specifier.  By default, the arguments are used in the order given,
+#     where each '*' (see Field width and Precision below) and each conversion specifier asks for the next argument (and it is an error  if  insufficiently
+#     many  arguments  are  given).  One can also specify explicitly which argument is taken, at each place where an argument is required, by writing "%m$"
+#     instead of '%' and "*m$" instead of '*', where the decimal integer m denotes the position in the argument  list  of  the  desired  argument,  indexed
+#     starting from 1.  Thus,        printf(    "%*d", width, num);    and
+#                                    printf("%2$*1$d", width, num);
+#     are  equivalent.   The  second  style  allows repeated references to the same argument.  The C99 standard does not include the style using '$', which
+#     comes from the Single UNIX Specification.  If the style using '$' is used, it must be used throughout for all conversions taking an argument and  all
+#     width and precision arguments, but it may be mixed with "%%" formats, which do not consume an argument.  There may be no gaps in the numbers of argu‐
+#     ments specified using '$'; for example, if arguments 1 and 3 are specified, argument 2 must also be specified somewhere in the format string.
+#   For some numeric conversions a radix character ("decimal point") or thousands' grouping character is used.  The actual character used depends on  the
+#     LC_NUMERIC part of the locale.  (See setlocale(3).)  The POSIX locale uses '.' as radix character, and does not have a grouping character.  Thus,
+#       printf("%'.2f", 1234567.89);  results in "1234567.89" in POSIX locale, in "1234567,89" in the nl_NL locale, && in "1.234.567,89" in the da_DK locale.
+#   Flag characters - the character % is followed by zero or more of the following flags:
+#     #    The  value should be converted to an "alternate form".  For o conversions, the first character of the output string is made zero (by prefixing
+#            a 0 if it was not zero already).  For x and X conversions, a nonzero result has the string "0x" (or "0X" for X conversions) prepended  to  it.
+#            For  a,  A, e, E, f, F, g, and G conversions, the result will always contain a decimal point, even if no digits follow it (normally, a decimal
+#            point appears in the results of those conversions only if a digit follows).  For g and G conversions, trailing zeros are not removed from  the
+#            result as they would otherwise be.  For other conversions, the result is undefined.
+#     0    The value should be zero padded.  For d, i, o, u, x, X, a, A, e, E, f, F, g, and G conversions, the converted value is padded on the left with
+#            zeros rather than blanks.  If the 0 and - flags both appear, the 0 flag is ignored.  If a precision is given with a numeric conversion (d,  i,
+#            o, u, x, and X), the 0 flag is ignored.  For other conversions, the behavior is undefined.
+#     -    The converted value is to be left adjusted on the field boundary.  (The default is right justification.)  The converted value is padded on the
+#            right with blanks, rather than on the left with blanks or zeros.                                          A - overrides a   0   if both are given.
+#     ' '  (a space) A blank should be left before a positive number (or empty string) produced by a signed conversion.  + overrides a space if both are used.
+#     +    A sign (+ or -) should always be placed before a number produced by a signed conversion. default, sign used only  for  negative  numbers.
+#   The five flag characters above are defined in the C99 standard.  The Single UNIX Specification specifies one further flag character.
+#     '    For  decimal  conversion (i, d, u, f, F, g, G) the output is to be grouped with thousands' grouping characters if the locale in4m8n indic8z any.
+#            (See setlocale(3).) Note many versions of gcc(1) cannot parse this option and will issue a warning. (SUSv2 did not include %'F, but SUSv3 did.)
+#     I    For  decimal integer conversion (i, d, u) the output uses the locale's altern8ive output digits, if any. Since glibc 2.2.3 this will give
+#            Arabic-Indic digits in the Persian ("fa_IR") locale.    ## glibc 2.2 adds this I as one further flag character.
+#   Field width - optional decimal digit string (with nonzero first digit) specifying minimum field width. If converted value has fewer characters than the
+#     field width, it will be padded with spaces on the left (or right, if the left-adjustment flag has been given).  Instead of a decimal digit string one
+#     may write "*" or "*m$" (for some decimal integer m) to specify that the field width is given in the next argument, or in the m-th  argument,  respec‐
+#     tively,  which must be of type int.  A negative field width is taken as a '-' flag followed by a positive field width.  In no case does a nonexistent
+#     or small field width cause truncation of a field; if result of a conversion is wider than the field width,field expanded 2 contain conversion result.
+#   Precision - An  optional precision, in the form of a period ('.')  followed by an optional decimal digit string.  Instead of a decimal digit string one
+#     may write "*" or "*m$" (for some decimal integer m) to specify that the precision is given in the next argument, or in the m-th argument,respectively,
+#     which must be of type int. If the precision is given as just '.', the precision is taken to be zero. A negative precision is taken as if the precision
+#     were omitted. This gives minimum num of digits to appear for d,i,o,u,x,and X conversions, num of digits 2 appear aftr radix char for a,A,e,E,f,and F
+#     conversions, max num of significant digits for g and G conversions, or max num of charz to be printed from a string for s and S conversions.
+#   Length modifier - here, "integer conversion" stands for d, i, o, u, x, or X conversion.
+#     hh   A following integer conversion corresponds to a signed char or unsigned char argument,or a folOing n cnv corresponds 2 pointer 2 signed char arg.
+#     h    A following integer conversion corresponds to a short or unsigned short argument,or a folOing n cnv corresponds 2 a pointer 2 a short argument.
+#     l    (ell) A following integer conversion corresponds to a long or unsigned long argument, or a following n conversion corresponds to a pointer  to
+#            a long argument, or a following c conversion corresponds to a wint_t argument, or a following s conversion corresponds 2 pointer 2 wchar_t arg.
+#     ll   (ell-ell). A folOing integer conversion corresponds 2 long long or unsigned long long arg,or a folOing n cnv corresponds 2 pointer 2 long long arg.
+#     q    A synonym for ll.  This is a nonstandard extension, derived from BSD; avoid its use in new code.
+#     L    A following a, A, e, E, f, F, g, or G conversion corresponds to a long double argument.  (C99 allows %LF, but SUSv2 does not.)
+#     j    A following  integer  conversion corresponds to an intmax_t or uintmax_t argument, or a following n conversion corresponds 2 ptr 2 intmax_t arg.
+#     z    A following integer conversion corresponds to a size_t or ssize_t argument, or a following n conversion corresponds to a pointer to  a  size_t arg.
+#     Z    A nonstandard synonym for z that predates the appearance of z.  Do not use in new code.
+#     t    A following integer conversion corresponds to a ptrdiff_t argument, or a following n conversion corresponds to a pointer to a ptrdiff_t argument.
+#     SUSv3 specifies all of the above, except for those modifiers explicitly noted as being nonstandard extensions.  SUSv2 specified only the length modi‐
+#       fiers h (in hd, hi, ho, hx, hX, hn) and l (in ld, li, lo, lx, lX, ln, lc, ls) and L (in Le, LE, Lf, Lg, LG).
+#     As  a nonstandard extension, the GNU implementations treats ll and L as synonyms, so that one can, for example, write llg (as a synonym for the stan‐
+#       dards-compliant Lg) and Ld (as a synonym for the standards compliant lld).  Such usage is nonportable.
+#   Conversion specifiers - a character that specifies the type of conversion to be applied.  The conversion specifiers and their meanings are:
+#     d, i   The int argument is converted to signed decimal notation.  The precision, if any, gives the minimum number of digits that must appear; if  the
+#            converted  value  requires fewer digits, padded on left with zeros. default precision 1. When 0 printed with explicit precision 0, output empty.
+#     o, u, x, X   The unsigned int argument is converted to unsigned octal (o), unsigned decimal (u), or unsigned hexadecimal (x and X) notation. The letters
+#            abcdef  are  used for x conversions; the letters ABCDEF are used for X conversions.  The precision, if any, gives the minimum number of digits
+#            that must appear; if converted value requires fewer digits, zer0-padded on left. default precision 1. 0 printed with explicit precision 0,outMpT.
+#     e, E   The  double argument is rounded and converted in the style [-]d.ddde±dd where there is one digit (which is nonzero if the argument is nonzero)
+#            before the decimal-point character and the number of digits after it is equal to the precision; if the precision is missing, it is taken as 6;
+#            if  the  precision  is zero, no decimal-point character appears.  An E conversion uses the letter E (rather than e) to introduce the exponent.
+#            The exponent always contains at least two digits; if the value is zero, the exponent is 00.
+#     f, F   The double argument is rounded and converted to decimal notation in the style [-]ddd.ddd, where the number of digits after  the  decimal-point
+#            character  is  equal  to  the precision specification.  If the precision is missing, it is taken as 6; if the precision is explicitly zero, no
+#            decimal-point character appears.  If a decimal point appears, at least one digit appears before it.
+#          (SUSv2 does not know about F and says that character string representations for infinity and NaN may be made available.  SUSv3 adds a specifi‐
+#            cation  for  F.  The C99 standard specifies "[-]inf" or "[-]infinity" for infinity, and a string starting with "nan" for NaN, in the case of f
+#            conversion, and "[-]INF" or "[-]INFINITY" or "NAN" in the case of F conversion.)
+#     g, G   The double argument is converted in style f or e (or F or E for G conversions).  The precision specifies the number of significant digits.  If
+#            the  precision is missing, 6 digits are given; if the precision is zero, it is treated as 1.  Style e is used if the exponent from its conver‐
+#            sion is less than -4 or greater than or equal to the precision.  Trailing zeros are removed from the fractional part of the result; a  decimal
+#            point appears only if it is followed by at least one digit.
+#     a, A   (C99;  not in SUSv2, but added in SUSv3) For a conversion, the double argument is converted to hexadecimal notation (using the letters abcdef)
+#            in the style [-]0xh.hhhhp±d; for A conversion the prefix 0X, the letters ABCDEF, and the exponent separator P is used.  There is one hexadeci‐
+#            mal  digit before the decimal point, and the number of digits after it is equal to the precision.  The default precision suffices for an exact
+#            representation of the value if an exact representation in base 2 exists and otherwise is sufficiently large to distinguish values of type dou‐
+#            ble.   The  digit before the decimal point is unspecified for nonnormalized numbers, and nonzero but otherwise unspecified for normalized num‐
+#            bers.  The exponent always contains at least one digit; if the value is zero, the exponent is 0.
+#     c      If no l modifier is present, the int argument is converted to an unsigned char, and the resulting character is written.  If an l  modifier  is
+#            present,  the  wint_t  (wide  character) argument is converted to a multibyte sequence by a call to the wcrtomb(3) function, with a conversion
+#            state starting in the initial state, and the resulting multibyte string is written.
+#     s      If no l modifier is present: the const char * argument is expected to be a pointer to an array of character type (pointer to a string).  Char‐
+#            acters from the array are written up to (but not including) a terminating null byte ('\0'); if a precision is specified, no more than the num‐
+#            ber specified are written.  If a precision is given, no null byte need be present; if the precision is not specified, or is greater  than  the
+#            size of the array, the array must contain a terminating null byte.
+#          If  an  l  modifier is present: the const wchar_t * argument is expected to be a pointer to an array of wide characters.  Wide characters from
+#            the array are converted to multibyte characters (each by a call to the wcrtomb(3) function, with a conversion state starting  in  the  initial
+#            state before the first wide character), up to and including a terminating null wide character.  The resulting multibyte characters are written
+#            up to (but not including) the terminating null byte.  If a precision is specified, no more bytes than the number specified are written, but no
+#            partial  multibyte  characters are written.  Note that the precision determines the number of bytes written, not the number of wide characters
+#            or screen positions.  The array must contain a terminating null wide character, unless a precision is given and it is so small that the number
+#            of bytes written exceeds it before the end of the array is reached.
+#     C      (Not in C99 or C11, but in SUSv2, SUSv3, and SUSv4.)  Synonym for lc.  Don't use.
+#     S      (Not in C99 or C11, but in SUSv2, SUSv3, and SUSv4.)  Synonym for ls.  Don't use.  ## this `m 3 printf` same as `m sprintf` && wprintf 4 wide;
+#     p      The void * pointer argument is printed in hexadecimal (as if by %#x or %#lx).  ## HTTPS://PerlDoc.Perl.Org/functions/sprintf has FORMAT spec;
+#     n      The number of characters written so far is stored into the integer pointed to by the corresponding argument.  That argument shall be an int *,
+#            or variant whose size matches the (optionally) supplied integer length modifier.  No argument is converted.  (This specifier is not  supported
+#            by the bionic C library.)  The behavior is undefined if the conversion specification includes any flags, a field width, or a precision.
+#     m      (Glibc extension; supported by uClibc and musl.)  Print output of strerror(errno).  No argument is required.
+#     %      A '%' is written.  No argument is converted.  The complete conversion specification is '%%'.
+#   RETURN VALUE  Upon successful return, these functions return the number of characters printed (excluding the null byte used to end output to strings).
+#     The functions snprintf() and vsnprintf() do not write more than size bytes (including the terminating null byte ('\0')).  If the output was truncated
+#       due to this limit, then the return value is the number of characters (excluding the terminating null byte) which would have been written to the final
+#       string if enough space had been available.  Thus, a return value of size or more means that the output was truncated.  (See also below under NOTES.)
+#     If an output error is encountered, a negative value is returned.  manual shud conform to POSIX.1-2001 && *.1-2008 C89 C99 glibc 2.2 printf standards;
+# for more like `fmt` fitting long text into blox see Perl6::Form module like better Perl5 format(): use Form { layout=>"down", locale=>1, interleave=>1 };
+# which are like mainly for printing justified, numeric, currency, or verb8im stringz wi Dflt max sIz trunc8ion (unlike printf just min sIz) wi fill-logic;
+#   print form { page => { length =>  $page_len      , header => \&make_header   , feed   => \&make_pagefeed , # Dflt: 60 lines, no (head|foot)er,pagefeed,or…
+#     number=>$first_pg_nm, width =>  $page_width    , footer => \&make_footer   , body   => \&adjust_body   ,}},$fmt,\@d8a; # Dflt: Pg. 1, 78 columns; #chiro;
+#   {field => { '^' => '{<I{1}I}',   # 1-char-wide,    top-justified block (all 3 had II{1}II in dFz but I s/II//g them as clutter?); ## nEd2think aboutUseKsz;
+#               '=' => '{<={1}=}',   # 1-char-wide, middle-justified block;    ## bullet also potentially handy opt. Perl6::Form is DConway 2003 or d8: J18?;
+#               '_' => '{<_{1}_}',}} # crE8z user-defined single-char-wide fieldz at top, middle, or bottom like: single => ['^', '=', '_'] also would;
+# Perl5: sprintf - vector flag tells Perl to interpret supplied string as a vector of integers, one for each character in string. Perl applies the format to
+#   each integer in turn, then joins resulting strings with separator (a dot . by default). Useful 4 displaying ordinal values of charz in arbitrary strings:
+# :r!ifconfig  enp42s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500 inet 192.168.9.18  netmask 255.255.255.0  broadcast 192.168.9.255
+#if(0){printf "%vd", "AB\x{100}";my @addr=qw( 2603:6000:cd02:4b30:4f2c:a6df:79c8:c167  2603:6000:cd02:4b30:315d:7c95:12a2:d5da  fe80::9ad0:e08f:8f99:be62
+#   2603:6000:cd02:4b30:289c:baf9:c974:17ff  2603:6000:cd02:4b30:bd01:b0a8:95f7:29a2  2603:6000:cd02:4b30:e6c6:8e97:6400:645b
+#   2603:6000:cd02:4b30:342c:f8c:690c:3cd0   2603:6000:cd02:4b30:525c:1a4d:6afd:813   2603:6000:cd02:4b30:f0a4:86a7:f9ed:6f0c);my $adi6=$addr[0];
+#     printf "version is v%vd\n",      $^V  ; # above prints "65.66.256" && this line prints Perl's version. Put asterisk * B4 v 2 override sepR8or string:
+#     printf "address is %*vX\n", ":", $adi6;my $bits="Pi\x{100}"; # IPv6 address here && pseudo-random bitstring below;  ## rEmMbr th@ just "%.8s" trunc8z!;
+#     printf "bits are %0*v8b\n", " ", $bits; # can also explicitly specify argument number to use for the join string using something like *2$v; for example:
+#     printf '%*4$vX %*4$vX %*4$vX'  , @addr[1..3], ":";} # 3 IPv6 addresses? I'm not quite sure what these d8a value examples are supposed 2 originally hold;
 sub aw8{my $b64w=0;my $b10p=0;$b64w=shift(@_) if(@_);my @b64d=split(//,$b64w);my $digt=0;while(@b64d){$b10p+=$sb10{pop(@b64d)}*(60**$digt++);} # count phasses;
   $b10p/=60.0;sleep($b10p);} # much like d8::dur8.pm w8() which takes a b64 (actually b60) dur8ion specific8ion 4 how many phasses 2 wait; usleep didn't work!;
 our @x256=(qw[000000 800000  008000 808000   000080 800080  008080 C0C0C0    808080 FF0000  00FF00 FFFF00   0000FF FF00FF  00FFFF FFFFFF
@@ -780,7 +991,9 @@ for my $p2rn (0..$#x256){my $p2rv= $x256[$p2rn];my($pred,$pgrn,$pblu)=(hex(subst
 for my $pndx (0.. 15     ){$crgb{$cmsp{'8ANSI'}[$pndx]}=$crgb{spfd(      $pndx )};} # also load up %crgb (was $pb10{ plain b64 8pal8 colr keyz })
 for my $p8ck (keys(%p622)){$crgb{               $p8ck }=$crgb{spfd($p622{$p8ck})};} #   from %p622 && mv 2pal8 to 0..15 in ANSI ordr
 for my $cnam (sort(keys %nrgb)){my $p2rv= $nrgb{$cnam};my($pred,$pgrn,$pblu)=(hex(substr($p2rv,0,2)),hex(substr($p2rv,2,2)),hex(substr($p2rv,4,2)));
-                                   $cbrt{$cnam}=          $pred+$pgrn+$pblu;$crgb{$cnam}=[$pred,$pgrn,$pblu];} # load 684 namd colrs from various rgb.txt files
+                                   $cbrt{$cnam}=          $pred+$pgrn+$pblu;$crgb{$cnam}=[$pred,$pgrn,$pblu];} # lOad 684 nAmd colrs from various rgb.txt fIlz;
+# 2du:rEwrIt Jj Pp && digit leading zer0 stripping 2 prEserv a 4-digit b10 256 ndx always with 1..3 leading zer0z indic8ing ndx versions, not FDAL:8pal8 mOdez;
+#   alsO NcOd rvrs-LookUp of aliased mapz 2 lIk turn 20 Fraktur on twice B4 i (iTALiCS&&FRAKTUR off) 2 indic8 low-f 4 round-tripping nstd of low-i && du4 pqz2;
 sub S{my @mSsz=();my $Sstr='';my $codz='';if(@_ && defined($_[0])){$codz= join('',@_);} # mIt want l8r flag optnz as sepR8d by spAcz for these joinz though
 if((!defined($codz) || !length($codz)) && !-t STDIN){chomp($codz= join('',<STDIN>));}
   if(defined($codz) &&  length($codz)){ # problM mAB doing !-t ck twice from bin/S to S()?
@@ -823,14 +1036,33 @@ if((!defined($codz) || !length($codz)) && !-t STDIN){chomp($codz= join('',<STDIN
             elsif(/[f]/      && $sepc[0]=~ /^[0-9A-Z._]$/i  ){$Sl8f = $SKpf . $sepc[0] . $SKpt;} # hopefuly don't nEd 2 add a -f flag just 2 design8 f0nt lAyr
             shift(@sepc);}} # should only be 1 or 2 of these since not checking f0nt for now  # might want 2 save dash skip above 4 bg -1 versus real 0 blacK?
       } # rEset Xpected Default lAyerz 2 hopefully allow for taking fresh Fb:Gk aftr comma now;
-      elsif  ($sepc[$sndx] eq 'J'){ # rEwrOt S && s cOdz 2 tk 1 2-bit int 0..3 && 1 b64 chr 4 256 ndx of 38;5; wich FDAL:8pal8 also alreD map2;
-        if   ($#sepc >= $sndx+2 && $sepc[$sndx+1] =~ /^[0-3]$/       && $sepc[$sndx+2] =~ /^[0-9A-Z._]$/i){$Sstr.= ';' if(length($Sstr));$Sstr.='38;5;';
+      if     ($sndx <= $#sepc && $sepc[$sndx] eq 'Z'){ # specify FDAL layer && b64 color key for Kitty Underline Color; just look them up in Pal8Keyz2-256ndx;
+        if   ($#sepc >= $sndx+2 && $sepc[$sndx+1] =~ /^[FDALfdal]$/  && $sepc[$sndx+2] =~ /^[0-9A-Z._]$/i){$Sstr.= ';' if(length($Sstr));$Sstr.='58;5;';
+              $Sstr.=spfd($p8k2{uc($sepc[$sndx+1])}{$sepc[$sndx+2]});$sndx+=3;}else{$sndx++;}} # just skipping Z      if not followed by a[FDAL] && 1 b64 chr;
+      if     ($sndx <= $#sepc && $sepc[$sndx] eq 'P'){ # adopting Kitty P for J-like 2-b64 char 256 ndx Underline color (with 24-bit Ucolorz 4 now on Q);
+        if   ($#sepc >= $sndx+2 && $sepc[$sndx+1] =~ /^[0-3]$/       && $sepc[$sndx+2] =~ /^[0-9A-Z._]$/i){$Sstr.= ';' if(length($Sstr));$Sstr.='58;5;0';
+              $Sstr.=spfd(($sepc[$sndx+1]*64)+$sb10{$sepc[$sndx+2]});$sndx+=3;}else{$sndx++;}} # just skipping P      if not followed by a [0-3] && 1 b64 chr;
+      # mAB shud NcOd both 5 256ndx && 2 RGBl in P or Q nstd of needing another b64 char like Jj vs. Xx? trying 2 sepR8 wi Zer0-pading dif UndrlIne colrEsetz;
+      if     ($sndx <= $#sepc && $sepc[$sndx] eq 'p'){                              $sndx++;               $Sstr.= ';' if(length($Sstr));$Sstr.= '0059';}
+      if     ($sndx <= $#sepc && $sepc[$sndx] eq 'q'){                              $sndx++;               $Sstr.= ';' if(length($Sstr));$Sstr.='00059';}
+      if     ($sndx <= $#sepc && $sepc[$sndx] eq 'z'){                              $sndx++;               $Sstr.= ';' if(length($Sstr));$Sstr.=   '59';}
+      if     ($sndx <= $#sepc && $sepc[$sndx] eq 'Q'){ # 24bit colr Undrln in 3b64 "RGB;"semicoln or RGBl but must B 4b64 chrz or semicolon 4 low-bitz aftr Q;
+        if   ($#sepc >= $sndx+4 && $sepc[$sndx+1] =~ /^[0-9A-Z._]$/i && $sepc[$sndx+2] =~ /^[0-9A-Z._]$/i && $sepc[$sndx+3] =~ /^[0-9A-Z._]$/i &&
+              $sepc[$sndx+4] =~/^[;0-9A-Z._]$/i){$Sstr.= ';' if(length($Sstr));$Sstr.='58;2;';
+              $sepc[$sndx+1]=$sb10{$sepc[$sndx+1]}*4;   $sepc[$sndx+2]=$sb10{$sepc[$sndx+2]}*4; $sepc[$sndx+3]=$sb10{$sepc[$sndx+3]}*4;
+          if ($sepc[$sndx+4] =~ /^[0-9A-Z._]$/i){       $sepc[$sndx+4]=$sb10{$sepc[$sndx+4]}  ;
+              $sepc[$sndx+1]+=2 if($sepc[$sndx+4] & 32);$sepc[$sndx+1]+=1 if($sepc[$sndx+4] & 16);
+              $sepc[$sndx+2]+=2 if($sepc[$sndx+4] &  8);$sepc[$sndx+2]+=1 if($sepc[$sndx+4] &  4);
+              $sepc[$sndx+3]+=2 if($sepc[$sndx+4] &  2);$sepc[$sndx+3]+=1 if($sepc[$sndx+4] &  1);}
+          $Sstr.=$sepc[$sndx+1] . ';' . $sepc[$sndx+2] . ';' . $sepc[$sndx+3];$sndx+=5;}else{$sndx++;}}
+      if     ($sndx <= $#sepc && $sepc[$sndx] eq 'J'){ # rEwrOt Jj cOdz 2 tk 1 2bit int0..3 && 1b64chr4 256ndx of 38;5; wich FDAL:8pal8 also alreD map2;
+        if   ($#sepc >= $sndx+2 && $sepc[$sndx+1] =~ /^[0-3]$/       && $sepc[$sndx+2] =~ /^[0-9A-Z._]$/i){$Sstr.= ';' if(length($Sstr));$Sstr.='38;5;0';
         # du these need matching bold prefixes to match properly or something?;
-              $Sstr.=spfd(($sepc[$sndx+1]*64)+$sb10{$sepc[$sndx+2]});$sndx+=3;}else{$sndx++;}} # just skipping S or s if not followed by a [0-3] && 1 b64 chr;
-      elsif  ($sepc[$sndx] eq 'j'){ # mAB shud NcOd both 5 256ndx && 2 rl in X && x nstd of S && s?
-        if   ($#sepc >= $sndx+2 && $sepc[$sndx+1] =~ /^[0-3]$/       && $sepc[$sndx+2] =~ /^[0-9A-Z._]$/i){$Sstr.= ';' if(length($Sstr));$Sstr.='48;5;';
+              $Sstr.=spfd(($sepc[$sndx+1]*64)+$sb10{$sepc[$sndx+2]});$sndx+=3;}else{$sndx++;}} # just skipping J or j if not followed by a [0-3] && 1 b64 chr;
+      if     ($sndx <= $#sepc && $sepc[$sndx] eq 'j'){ # mAB shud NcOd both 5 256ndx && 2 rl in X && x nstd of J && j?
+        if   ($#sepc >= $sndx+2 && $sepc[$sndx+1] =~ /^[0-3]$/       && $sepc[$sndx+2] =~ /^[0-9A-Z._]$/i){$Sstr.= ';' if(length($Sstr));$Sstr.='48;5;0';
               $Sstr.=spfd(($sepc[$sndx+1]*64)+$sb10{$sepc[$sndx+2]});$sndx+=3;}else{$sndx++;}}
-      elsif  ($sepc[$sndx] eq 'X'){ # rEwrOt X && x cOdz 2 tk 4 b64 chrz in rl 4m@ 38;2; nstd of 1or2 HEX chrz 4 256 ndx of 38;5; wich FDAL:8pal8 alreD map2;
+      if     ($sndx <= $#sepc && $sepc[$sndx] eq 'X'){ # rEwrOt Xx cOdz2tk4b64chrz in rl 4m@ 38;2; nstdof1or2HEXchrz4 256ndx of 38;5; wich FDAL:b64 alreDmap2;
         # might want to use S && s for reServed or SuperScript, Z for ZubZcript, && s for Super && Zub Scripts off, so reloc8 abov to X && x belo wi 1st char
         #   [0-3] for 256ndx of [0-3]*64 + b64 of 2nd char, or 1st char is R or r for following 3 being RGB && 1st char is L or l for following 4 being RGBl;
         # then mv gnp8 to ogp8 && mk new gnp8 that has rl && loopz cleaner thru 256 for dflt, q, && Q (&& implement l && L to also see layerz);
@@ -843,7 +1075,7 @@ if((!defined($codz) || !length($codz)) && !-t STDIN){chomp($codz= join('',<STDIN
               $sepc[$sndx+2]+=2 if($sepc[$sndx+4] &  8);$sepc[$sndx+2]+=1 if($sepc[$sndx+4] &  4);
               $sepc[$sndx+3]+=2 if($sepc[$sndx+4] &  2);$sepc[$sndx+3]+=1 if($sepc[$sndx+4] &  1);}
           $Sstr.=$sepc[$sndx+1] . ';' . $sepc[$sndx+2] . ';' . $sepc[$sndx+3];$sndx+=5;}else{$sndx++;}} # just skipping X or x if not followed by 4 b64 chrz;
-      elsif  ($sepc[$sndx] eq 'x'){
+      if     ($sndx <= $#sepc && $sepc[$sndx] eq 'x'){
         if   ($#sepc >= $sndx+4 && $sepc[$sndx+1] =~ /^[0-9A-Z._]$/i && $sepc[$sndx+2] =~ /^[0-9A-Z._]$/i && $sepc[$sndx+3] =~ /^[0-9A-Z._]$/i &&
               $sepc[$sndx+4] =~/^[;0-9A-Z._]$/i){$Sstr.= ';' if(length($Sstr));$Sstr.='48;2;';
               $sepc[$sndx+1]=$sb10{$sepc[$sndx+1]}*4;   $sepc[$sndx+2]=$sb10{$sepc[$sndx+2]}*4; $sepc[$sndx+3]=$sb10{$sepc[$sndx+3]}*4;
@@ -852,14 +1084,16 @@ if((!defined($codz) || !length($codz)) && !-t STDIN){chomp($codz= join('',<STDIN
               $sepc[$sndx+2]+=2 if($sepc[$sndx+4] &  8);$sepc[$sndx+2]+=1 if($sepc[$sndx+4] &  4);
               $sepc[$sndx+3]+=2 if($sepc[$sndx+4] &  2);$sepc[$sndx+3]+=1 if($sepc[$sndx+4] &  1);}
           $Sstr.=$sepc[$sndx+1] . ';' . $sepc[$sndx+2] . ';' . $sepc[$sndx+3];$sndx+=5;}else{$sndx++;}}
-      elsif  (exists(        $sgrm{$sepc[   $sndx]})){ # mk Bold codez overide Xisting st8 of Fclr,or prepend new,&& append all othrz (until grup ordrz)
+      if     ($sndx <= $#sepc && exists($sgrm{$sepc[$sndx]})){ # mk Bold cOdz OvrId Xisting st8 of Fclr,or prepend new,&& append all othrz (until grup ordrz)
         if   ($sepc[$sndx] eq 'b'){if($Sstr=~ /(^|;) 0? 1  (;|$)/x){$Sstr=~ s/(^|;) 0? 1  (;|$)/${1}22$2/x;}else{$Sstr=~ s/^/22/;}} # had \d ;$1 but no m@ch
         elsif($sepc[$sndx] eq 'B'){if($Sstr=~ /(^|;)(0*|22)(;|$)/ ){$Sstr=~ s/(^|;)(0*|22)(;|$)/${1}01$3/ ;}else{$Sstr=~ s/^(\d)/01;$1/;}} # uprcase Bold on
         else                                                   {$Sstr.= ';' if(length($Sstr));$Sstr.= $sgrm{$sepc[$sndx]};}} $sndx++;}
+      # nOt:since now abov ifz aren't Xclusiv,prEVous sndx increment might skip over next sepc marker if match already incremented to one detected earlier?;
     if    (length($Sstr)                                      ){$Sstr = $SKp8 . $Sstr    .   'm';  # wrap all digitz && semicolonz as single escape code
       if  (length($Sl8f)                                      ){$Sstr.= $Sl8f                   ;} #  append f0nt code already stored above by f layer
     }elsif(length($Sl8f)                                      ){$Sstr = $Sl8f                   ;} # assign  f0nt code alone
     if    (length($Sstr)                                      ){   push(@mSsz , $Sstr);$Sstr= '';}} $Sstr=join('',@mSsz);return($Sstr);}
+# 2du:Dtect multi-joined SKpz 2 concatN8 wi commaz 2;
 sub c{my $Sstr=shift;if(!defined($Sstr) && !-t STDIN){chomp($Sstr= join('',<STDIN>));} my $codz='';my $codF='';my $codb='';my $lyrz='';
   if(defined($Sstr) && $Sstr=~  /^--?h/i){print # need to bild SGR grupz so that Dflt retn is ordrd consistently with max 1 (last) field per grup 4both S&&c
 "   c  - produce c8 Fbs codes from escapes    Vers:$VERSION  d8VS:$d8VS  Auth:$Auth
@@ -867,36 +1101,46 @@ sub c{my $Sstr=shift;if(!defined($Sstr) && !-t STDIN){chomp($Sstr= join('',<STDI
         `S` should be the inverse function. Please see `S -h` for details on the few special case c8 characters ':' colon && '^' carat.
   -h  - print this Help text and exit;";return('');}
             $Sstr='' unless  ( defined($Sstr));
-  while    ($Sstr=~ s/\e\[([\d;]+)m //x){my $numz=$1;
-    while  ($numz=~ s/^ ;?( \d+  );?//x){my $digz=$1; # could a semicolon precede digitz? might want to substitute out of numz below after confirmed existz
-      if   ($digz=~/^(0*?[01]|22)$/x && $numz=~ s/^(3[0-7]  );?//x && exists($mF2c{"$digz;$1"})){$codF = $mF2c{ "$digz;$1"};} # Dtect stndRd singl colrz
-      elsif($digz=~  /^ 3[0-7]   $/x &&                               exists($mF2c{ $digz    })){$codF = $mF2c{  $digz    };} # with O or o layers
-      elsif($digz=~  /^ 4[0-7]   $/x &&                               exists($mb2c{ $digz    })){$codb = $mb2c{  $digz    };}
-      elsif($digz=~  /^ 9[0-7]   $/x &&                               exists($mF2c{ $digz    })){$codF = $mF2c{  $digz    };} #   && H or h layers now too
-      elsif($digz=~  /^10[0-7]   $/x &&                               exists($mb2c{ $digz    })){$codb = $mb2c{  $digz    };}
-      elsif($digz=~  /^ 38       $/x && $numz=~  /^(   2;\d+;\d+;\d+);? /x){my @rgb2=split(/;/,$1);shift(@rgb2) ;
-                                        $numz=~ s/^(   2;\d+;\d+;\d+);?//x;    $codz .= 'X' . h2rl(sprintf("%2.2X%2.2X%2.2X",@rgb2));}
-      elsif($digz=~  /^ 48       $/x && $numz=~  /^(   2;\d+;\d+;\d+);? /x){my @rgb2=split(/;/,$1);shift(@rgb2) ;
-                                        $numz=~ s/^(   2;\d+;\d+;\d+);?//x;    $codz .= 'x' . h2rl(sprintf("%2.2X%2.2X%2.2X",@rgb2));}
-                                                              # below exists($mF2c probably shud B just on numz, not digz;$1 since NormBoldbOLD betr2sepR8?
-      elsif($digz=~  /^(0[01]|22)$/x && $numz=~  /^(38;5;\d+);? /x && exists($mF2c{"$digz;$1"})){$codF = $mF2c{ "$digz;$1"};  # catch new Bold XtNdedz
-                                        $numz=~ s/^(38;5;\d+);?//x;         my $ndx2=$1;$ndx2=~ s/^.*;//;$ndx2=~ s/^00+/0/;my $ndx1=int($ndx2/64);
-                                                                               $codz .= "S$ndx1" . $sb64[$ndx2 % 64];}
-      elsif($digz=~  /^ 38       $/x && $numz=~  /^(   5;\d+);? /x && exists($mF2c{"$digz;$1"})){$codF = $mF2c{ "$digz;$1"};
-                                        $numz=~ s/^(   5;\d+);?//x;         my $ndx2=$1;$ndx2=~ s/^.*;//;$ndx2=~ s/^00+/0/;my $ndx1=int($ndx2/64);
-                                                                               $codz .= "S$ndx1" . $sb64[$ndx2 % 64];}
-      elsif($digz=~  /^ 48       $/x && $numz=~  /^(   5;\d+);? /x && exists($mb2c{"$digz;$1"})){$codb = $mb2c{ "$digz;$1"};  # nEd2!strip hi numzB4ckng4 8pal8
-                                        $numz=~ s/^(   5;\d+);?//x;         my $ndx2=$1;$ndx2=~ s/^.*;//;$ndx2=~ s/^00+/0/;my $ndx1=int($ndx2/64); # ...XistNce
-                                                                               $codz .= "s$ndx1" . $sb64[$ndx2 % 64];}
-      elsif(exists($sgrn{$digz})){                                                               $codz.= $sgrn{  $digz    };  # no longer do 5 BlO in %02X heX
-        if ($sgrn{$digz}=~ /^[Jj]$/  && $numz=~ s/^ 5;0*(\d+);?//x                             ){$codz.=int($1/64) . $sb64[$1 % 64];} # but [0-3]b64 && BlO rl;
-        if ($sgrn{$digz}=~ /^[Xx]$/  && $numz=~ s/^ 2;0*(\d+);0*(\d+);0*(\d+);?//x             ){$codz.=h2rl(sprintf("%2.2X%2.2X%2.2X",$1,$2,$3));}}
-      elsif($digz=~  /^(0+      )$/x &&                               exists($mF2c{'00'      })){$codF = $mF2c{  '00'     }; }}} # special check 4 ^ caret 00
-  #hile    ($Sstr=~ s/\e\]50;([^\a\e]+)(\a|\e\\)//                                             ){$codf = $1;$codf=':' if($codf !~ /^[0-9A-Z._]$/i);}
+  while    ($Sstr=~ s/\e\[([\d:;]+)m//x){my $numz=$1; # could a semicolon precede digitz BlO? mIt want 2 substitute out of numz BlO aftr confirmd Xistz;
+    while  ($numz=~ s/^ ;?([34]8;[5]|[\d:]+);?//x){my $digz=$1; # trying 2 capture 38;2 or 5 2gethr 4 rEconstruction of Jj vs. Xx vs. FDAL:8pal8;
+      if   ($digz=~/^(0*?[01]|22)$/x && $numz=~ s/^(3[0-7]  )(;|$)/$2/x){my $bndx=$1;if(exists($mF2c{"$digz;$1"})){$codF = $mF2c{ "$digz;$bndx"};}}
+      if   ($digz=~  /^ 38;5     $/x && $numz=~  /^(0*(\d+))(;|$) /x && exists($mc2F{$p82k[$2]})){my $fuld=$1;my $jndx=$2; # try2rEbild Fb:b64||Jj 4 4chrndxz;
+        if(length($fuld) == 4){$codz.='J' . int($jndx/64) . $sb64[$jndx % 64];}else{$codF = join(':',split(/:/,$p82k[$jndx]));}
+                                        $numz=~ s/^(0*(\d+))(;|$)//x;}
+      if   ($digz=~  /^ 48;5     $/x && $numz=~  /^(0*(\d+))(;|$) /x && exists($mc2b{$p82k[$2]})){my $fuld=$1;my $jndx=$2;
+        if(length($fuld) == 4){$codz.='j' . int($jndx/64) . $sb64[$jndx % 64];}else{$codb = join(':',split(/:/,$p82k[$jndx]));}
+                                        $numz=~ s/^(0*(\d+))(;|$)//x;}
+      if   ($digz=~  /^ 38       $/x && $numz=~  /^(2;\d+;\d+;\d+)(;|$) /x){my @rgb2=split(/;/,$1);shift(@rgb2) ;
+                                        $numz=~ s/^(2;\d+;\d+;\d+)(;|$)//x;    $codz .= 'X' . h2rl(sprintf("%2.2X%2.2X%2.2X",@rgb2));}
+      if   ($digz=~  /^ 48       $/x && $numz=~  /^(2;\d+;\d+;\d+)(;|$) /x){my @rgb2=split(/;/,$1);shift(@rgb2) ;
+                                        $numz=~ s/^(2;\d+;\d+;\d+)(;|$)//x;    $codz .= 'x' . h2rl(sprintf("%2.2X%2.2X%2.2X",@rgb2));}
+      if   ($digz=~  /^ 58       $/x && $numz=~  /^(2;\d+;\d+;\d+)(;|$) /x){my @rgb2=split(/;/,$1);shift(@rgb2) ;
+                                        $numz=~ s/^(2;\d+;\d+;\d+)(;|$)//x;    $codz .= 'Q' . h2rl(sprintf("%2.2X%2.2X%2.2X",@rgb2));}
+      if   ($digz=~  /^ 58       $/x && $numz=~  /^(5;\d+)(;|$) /x){ # nEd2ck BlO4 ndx2 lenB4strip lEdng 0z 2Dtrmn wethr P[0..3]b64(4digz)or Z[FDAL]b64(3);
+                                        $numz=~ s/^(5;\d+)(;|$)//x;         my $ndx2=$1;$ndx2=~ s/^.*?;//;
+                                        if(length($ndx2) == 4){$ndx2=~ s/^0+(\d+)$/$1/;my $ndx1=int($ndx2/64);$codz .= "P$ndx1" . $sb64[$ndx2 % 64];}
+                                        else                  {$ndx2=~ s/^0+(\d+)$/$1/;my $ndx1=$p82k[$ndx2 ];$codz .= "Z$ndx1"                    ;}}
+      if   ($digz=~  /^   0*?1   $/x                            ){$codz =~ s/B*$/B/         ;$digz='';} # Dtect stndRd Nrml&&Boldz
+      if   ($digz=~  /^ 3[0-7]   $/x && exists($mF2c{$digz    })){$codF = $mF2c{  $digz    };$digz='';} # with O or o layerz
+      if   ($digz=~  /^ 4[0-7]   $/x && exists($mb2c{$digz    })){$codb = $mb2c{  $digz    };$digz='';}
+      if   ($digz=~  /^ 9[0-7]   $/x && exists($mF2c{$digz    })){$codF = $mF2c{  $digz    };$digz='';} #   && H or h layerz now too;
+      if   ($digz=~  /^10[0-7]   $/x && exists($mb2c{$digz    })){$codb = $mb2c{  $digz    };$digz='';} # cmNtd low-h Bcuz mSezup tStz;
+      if   ($digz eq   '0059'                                   ){$codz.= 'p';$digz='';} # try 2 pad wi Xtra Zer0z 2 indic8 wich rEset?;
+      elsif($digz eq  '00059'                                   ){$codz.= 'q';$digz='';} # just '059' brOk tStsO tryng '00059' 4 q nstd;
+      elsif($digz eq     '59'                                   ){$codz.= 'z';$digz='';} # no longer du ;5; BlO in %02X HEX
+      elsif(exists($sgrn{$digz})){                                $codz.= $sgrn{  $digz    } if($digz !~ /^([35]8|59)(;5|$)/);
+        if   ($sgrn{$digz}=~ /^ [j]$/x && $numz=~ s/^(0*(\d+))(;|$)//x           ){my $fuld=$1;my $jndx=$2;
+          if (length($fuld) == 4){$codz.= int($jndx/64) . $sb64[$jndx % 64];$digz='';} # hopefully Dtect low-j 3-digit 4m && cast in2 bdal:;
+          else                   {$codb = join(':',split(/:/,$p82k[$jndx]));$digz='';$codz=~ s/j*$//;my %U2lo=('F'=>'b','D'=>'d','A'=>'a','L'=>'l');
+            if($codb=~ /^([FDAL])/){my $lylt=$U2lo{$1};$codb=~ s/^[FDAL]/$lylt/;} #o9 "codF:$codF; codb:$codb; codz:$codz; ";
+          }}
+        elsif($sgrn{$digz}=~ /^[Xx]$/  && $numz=~ s/^0*(\d+);0*(\d+);0*(\d+);?//x){$codz.=h2rl(sprintf("%2.2X%2.2X%2.2X",$1,$2,$3));$digz='';}}
+      if   ($digz=~  /^(0+      )$/x && exists($mF2c{'00'     })){$codF = $mF2c{  '00'     };$digz='';}}} # special check 4 ^ caret 00
+  #hile    ($Sstr=~ s/\e\]50;([^\a\e]+)(\a|\e\\)//                                          ){$codf = $1;$codf=':' if($codf !~ /^[0-9A-Z._]$/i);}
   # maybe adding or finding 3 or more 0's before Xx codez can preserve them instead of transl8ing into FDAL layerz as general default
   if(length($codF)){$codF=~ s/^(.)//;$lyrz.=$1 if($1 ne 'F');} #$codb='+';} # make plus or minus bkgr placeholder below, or just prefix F: better?
   if(length($codb)){$codb=~ s/^(.)//;$lyrz.=$1 if($1 ne 'b');}elsif(length($codF) && length($codz) && !length($lyrz)){$lyrz='F';}
-  if(length($lyrz) || (!length($codF) && !length($codb))){$lyrz.=':';} # 2du:fix `S ^|c` wich retnz ':' nstd of getng orig '^' back,alsO `S :C|sS E` brOke!;
+  if(length($lyrz) && $lyrz !~ /:$/ || (!length($codF) && !length($codb))){$lyrz.=':';} # 2du:fix `S ^|c` retnz ':' nstdof getng orig '^' bak;
   $codz="$lyrz$codF$codb$codz";return($codz);} # tidy up codez before returning
 sub shfl{ # takes an arrayref or list of items to shuffle, or pipe thru by lines unless either @data size just 1 then try to split scalar string, shfl, join
   my $htxt=" shfl - SHuFfLe lines or string crE8d by $Auth to provide my own code to behave like standard 'shuf' cmnd does (but on single scalar too);
@@ -1097,21 +1341,21 @@ sub lodl{if(exists $ENV{'LS_COLORS'}){for(split(':',$ENV{'LS_COLORS'})){my($g2re
       elsif(               /^([^=]+)=(.+)$/){($g2re,$fx2e)=($1,"$SKp8$2m");                                                      $lspt{      $g2re  }=$fx2e;}}}
   # regX @botm uses NOrmal @Nd but aftr `eval $(dircolors)` rEsets $LS_COLORS 2 Dfaltz,'no' does!Xist giving: "Use of uninit'd val in conc@N8n (.) or str..."
   $lspt{'no'}="${SKp8}00m" unless(exists($lspt{'no'}));} #   ... so making sure exists, EvN if nuthin Ls duz;
-sub spcs{my($ssfn,$q)=@_; # subroutine handling SPeCial separ8or character Substitutions, those being Special Substs on FileNames && identified Qolor params
-  if(       $ssfn=~/\s->\s.+\*$/                              ){$q=$lspt{'ex'};
-            $ssfn=~s/^(.+?)(\s->\s)([^*]+)(\*)$/$lspt{'ln'}$1$Y$2$q$3$W$4/x; #         executable symlink handling
+sub spcs{my($ssfn,$CP)=@_; # subroutine handling SPeCial separ8or character Substitutions, those being Special Substs on FileNames && identified ColorParamz;
+  if(       $ssfn=~/\s->\s.+\*$/                              ){$CP=$lspt{'ex'};
+            $ssfn=~s/^(.+?)(\s->\s)([^*]+)(\*)$/$lspt{'ln'}$1$Y$2$CP$3$W$4/x; #         executable symlink handling
   }else{ if($ssfn=~/\s->\s(\e\[([\d;]*)m)*(.+)$/){my $ltfn=$3;$ltfn=~s/(\e\[([\d;]*)m)+//g; # srch below 4 subdir arg which should replace '.'
-           if(!-e "$ltfn")                                     {$q=$lspt{'mi'};$ltfn=~s/(\[)/\\$1/g; # try escaping brackets to not become char class?
-            $ssfn=~s/^(.*)($ltfn)              /$1$q$2/x;}}                  # end broken         symlink handling
-            $ssfn=~s/^(.+?)(\s->\s)            /$lspt{'ln'}$1$o$2$q/x;       # end non-executable symlink handling
-  }         $ssfn=~s/(\.+)                     /$W$1$q/xg   if($q ne $W);
-            $ssfn=~s/(\.+)                     /$C$1$q/xg   if($q eq $W);
-            $ssfn=~s/(-+)([^>])                /$Y$1$q$2/xg if($q ne $Y);
-            $ssfn=~s/(-+)([^>])                /$W$1$q$2/xg if($q eq $Y);
-            $ssfn=~s/(_+)                      /$C$1$q/xg   if($q ne $C);
-            $ssfn=~s/(_+)                      /$G$1$q/xg   if($q eq $C);
-            $ssfn=~s/(\++)                     /$R$1$q/xg   if($q ne $R);
-            $ssfn=~s/(\++)                     /$B$1$q/xg   if($q eq $R);
+           if(!-e "$ltfn")                                     {$CP=$lspt{'mi'};$ltfn=~s/(\[)/\\$1/g; # try escaping brackets to not become char class?
+            $ssfn=~s/^(.*)($ltfn)              /$1$CP$2/x;}}                  # end broken         symlink handling
+            $ssfn=~s/^(.+?)(\s->\s)            /$lspt{'ln'}$1$o$2$CP/x;       # end non-executable symlink handling
+  }         $ssfn=~s/(\.+)                     /$W$1$CP/xg   if($CP ne $W);
+            $ssfn=~s/(\.+)                     /$C$1$CP/xg   if($CP eq $W);
+            $ssfn=~s/(-+)([^>])                /$Y$1$CP$2/xg if($CP ne $Y);
+            $ssfn=~s/(-+)([^>])                /$W$1$CP$2/xg if($CP eq $Y);
+            $ssfn=~s/(_+)                      /$C$1$CP/xg   if($CP ne $C);
+            $ssfn=~s/(_+)                      /$G$1$CP/xg   if($CP eq $C);
+            $ssfn=~s/(\++)                     /$R$1$CP/xg   if($CP ne $R);
+            $ssfn=~s/(\++)                     /$B$1$CP/xg   if($CP eq $R);
   return   ($ssfn);} # 2du:fix c8fn UTF8 decoding to try to only do where needed like lsd8,sync all highlightz,
 sub c8fn{  my $fnam;my $aflg=0;$aflg=1 if(@_);my $zflg=0;if($aflg && $_[0] =~ /^-*z$/){$zflg=1; shift(@_);$aflg=0 unless(@_);}my $sflg=0;my $rtxt='';
   open my $sin8,'<&','STDIN'  or die "Can't open  duplic8 STDIN  handle: $!";binmode $sin8,':encoding(UTF-8)'; # crE8 local duplic8 of global
@@ -1631,34 +1875,39 @@ sub sS{      my $Stxt=shift;my $sefz=shift; # eScape TeXT, SubstituteEscapeFlagZ
           }}  $digz=~ s/(^;+|;+$)//g;$digz=~ s/(;;+)/;/g;$blin.=$SKp8 . $digz . 'm' if(length($digz));}
         $blin.=$tlin if(length($tlin));$Sttd[$lndx]=$blin if(length($blin));
       } $Stxt= join("\n",@Sttd);$Stxt.= "\n"  if($Sein);} # trying to do some tricky slicing up of codez to isol8 Fbs layerz
-    if($sefz=~  /d/  ){$Stxt=~ s/ \e \[([\d;]+)        [A-MPSTXZm]/$1/gx;} # just leave any digitz && semicolon sepR8orz (likely useful for `lsrc`)
+    if($sefz=~  /d/  ){$Stxt=~ s/ \e \[([\d;:]+)       [A-MPSTXZm]/$1/gx;} # just leave any digitz && semicolon sepR8orz (likely useful for `lsrc`)
     if($sefz=~  /f/  ){$Stxt=~ s/ \e \]50;[^\a\e]*       (\a|\e\\)//gx  ;} # OSC set font.IfBginz wi'#'ndx abs in font mNU or rel8ive if nXt chr '+'or'-'.
     if($sefz=~  /p/  ){$Stxt=~ s/ \e \]4;\d+;#[0-9A-F]{6}(\a|\e\\)//gi  ;} # OSC set pal8 colr.Byond ST StrTrmn8or'Esc\',altern8 BEL 'Ctrl-G' chr(7).
-    if($sefz=~  /z/  ){$Stxt=~ s/(\e\[[\d;]*[A-MPSTXZm]|\e\](50;[^\a\e]*|4;\d+;#[0-9A-Fa-f]{6})(\a|\e\\))/%{$1%}/g;} # Zshell ProMpT wrapper
-    if($sefz=~  /E/  ){$Stxt=~ s/(\e(\[ [\d;]*         [A-MPSTXZm] ))/$1$2/gx ;  # keep escapez but duplic8 contentz for debugging
+    if($sefz=~  /z/  ){$Stxt=~ s/(\e\[[\d;:]*[A-MPSTXZm]|\e\](50;[^\a\e]*|4;\d+;#[0-9A-Fa-f]{6})(\a|\e\\))/%{$1%}/g;} # Zshell ProMpT wrapper
+    if($sefz=~  /E/  ){$Stxt=~ s/(\e(\[ [\d;:]*        [A-MPSTXZm] ))/$1$2/gx ;  # keep escapez but duplic8 contentz for debugging
        $Stxt=~ s/(\e(\]50;[^\a\e]*|\]4;\d+;#[0-9A-Fa-f]{6})(\a|\e\\))/$1$2\\/g;} #  duplic8 font && pal8 (this warnz 2nd '(' unmatched when /x flag on?)
     if($sefz=~  /e/  ){$Stxt=~ s/ \e//gx;} # strip just escape characters && leave behind any trailing code contentz
     if($sefz=~  /c/  ){$Stxt=~ s/  ,//gx;} # also strip commas for convenience (even though they have basically nothing to do with escapez)
   }else{     $Stxt='';} return($Stxt);}
-sub   d8c    {my $rtns = ''; # maybe these should eventually accept flags to select among most useful coloring options
+sub   d8c    {my $rtns = '';my $cflg=''; # maybe these should eventually accept flags to select among most useful coloring options
   if(!@_ && !-t STDIN){     (@_=decode('UTF-8',join(''  ,<STDIN>)));}  if(@_ && !defined($_[0])){shift(@_);} # fix undef d8st warn next below?
+  if( @_ &&  defined($_[0]) && $_[0]=~ /^-?-c(olo?r)?$/i){$cflg='-c';shift(@_);}
   for my $d8st (@_){my @d8di = split(//,        $d8st );my $d8dc = '';for(0..$#d8di){$d8dc .= $d8cS[          $_%@d8cS ] . $d8di[$_]        ;} $rtns.="$d8dc ";
-  }      $rtns =~ s/\s$/$z/;return($rtns);}
-sub dur8c    {my $rtns = ''; # should build     dur8ion colors right-to-left like b8c but reversing the d8bo color order
+  }      $rtns =~ s/\s$/$z/;return($cflg,$rtns);} # try returning color-flag (which mIt B MpT) B4 return-string,sO hOpefully o8 wrapr can get it && flag -colr;
+sub dur8c    {my $rtns = '';my $cflg=''; # should build     dur8ion colors right-to-left like b8c but reversing the d8bo color order
   if(!@_ && !-t STDIN){     (@_=decode('UTF-8',join(''  ,<STDIN>)));}
+  if( @_ &&  defined($_[0]) && $_[0]=~ /^-?-c(olo?r)?$/i){$cflg='-c';shift(@_);}
   for my $d8st (@_){my @d8di = split(//,reverse($d8st));my $d8dc = '';for(0..$#d8di){$d8dc  = $d8cS[$#d8cS - ($_%@d8cS)] . $d8di[$_] . $d8dc;} $rtns.="$d8dc ";
-  }      $rtns =~ s/\s$/$z/;return($rtns);}
-sub bfr8c    {my $rtns = ''; # should build b8 fraction colors left-to-right like d8c but reversing the d8bo color order
+  }      $rtns =~ s/\s$/$z/;return($cflg,$rtns);}
+sub bfr8c    {my $rtns = '';my $cflg=''; # should build b8 fraction colors left-to-right like d8c but reversing the d8bo color order
   if(!@_ && !-t STDIN){     (@_=decode('UTF-8',join(''  ,<STDIN>)));} # turnOnly pIpngthruin2chompd pRamz sinc skipng Ovr \n (&&what Ls?)wNrot8ng colrz is hRdr
+  if( @_ &&  defined($_[0]) && $_[0]=~ /^-?-c(olo?r)?$/i){$cflg='-c';shift(@_);}
   for my $b8st (@_){my @b64d = split(//,        $b8st );my $b64c = '';for(0..$#b64d){$b64c .= $d8cS[$#d8cS - ($_%@d8cS)] . $b64d[$_]        ;} $rtns.="$b64c ";
-  }      $rtns =~ s/\s$/$z/;return($rtns);}
-sub   b8c    {my $rtns = ''; # just do coloring stringwise for when sprintf zero-padding a specific width is needed   # mk b8clr 2Dtect commaz && % B4 coloring
+  }      $rtns =~ s/\s$/$z/;return($cflg,$rtns);}
+sub   b8c    {my $rtns = '';my $cflg=''; # du colrng stringwIz 4 whN sprintf Zr0padng a specific width is needed   # mk b8clr 2Dtect commaz && % B4 coloring;
   if(!@_ && !-t STDIN){     (@_=decode('UTF-8',join(''  ,<STDIN>)));}
+  if( @_ &&  defined($_[0]) && $_[0]=~ /^-?-c(olo?r)?$/i){$cflg='-c';shift(@_);}
   for my $b8st (@_){my @b64d = split(//,reverse($b8st));my $b64c = '';for(0..$#b64d){$b64c  = $d8cS[          $_%@d8cS ] . $b64d[$_] . $b64c;} $rtns.="$b64c ";
-  }      $rtns =~ s/\s$/$z/;return($rtns);}
-sub   b8clr  {my $rtns = ''; # Dtect commaz && % B4 coloring  # mAB base4 [bd][fu]?r?8c colrngz shud stA similar with simple uniform applic8ion
+  }      $rtns =~ s/\s$/$z/;return($cflg,$rtns);}
+sub   b8clr  {my $rtns = '';my $cflg=''; # Dtect commaz && % B4 coloring  # mAB base4 [bd][fu]?r?8c colrngz shud stA similar with simple uniform applic8ion
   if(!@_ && !-t STDIN){while(my $inln=<STDIN>){#$inln=~ s/\n?$/\n/; # ensure input ends wi newline, may reapNd if chomped, mIt nEd2Bdone aftr decode?
     push(@_,split(/ /,decode('UTF-8',$inln)));}} # for some reason backtickz like "b8clr `Prmz 47 1`" aren't including the typical nwlInz,mAB tix get noColmz?
+  elsif( @_ &&  defined($_[0]) && $_[0]=~ /^-?-c(olo?r)?$/i){$cflg='-c';shift(@_);}
   for my $b8st (@_){my $tdst;my $iprt=0;my $fprt=0;my $comw=0;my $nwlf=0; # shud also tune b8clr 2 hndl b256 as well as b64
     if  ($b8st=~ /^(.+?)[%](.+)$/){$iprt=$1;$fprt=$2;}else{$iprt=$b8st;}
     if  ($iprt=~ /,([^,]+)$/){$comw= length($1);} d8cs(substr($cmap{'d8bo'},0,4).'W'.substr($cmap{'d8bo'},4,4).'W') if($comw); # assume coma 4 b64 char blox
@@ -1667,7 +1916,7 @@ sub   b8clr  {my $rtns = ''; # Dtect commaz && % B4 coloring  # mAB base4 [bd][f
     if  ($fprt){$comw=0; # used to $rtns =~ s/\s$//; before d8cs('d8bo'); was restored, but seems to join d8a lines unnecessarily so match just tail real space
       if($fprt=~ /^([^,]+),/){$comw= length($1);} d8cs('W'.substr($cmap{'d8bo'},0,4).'W'.substr($cmap{'d8bo'},4,4)) if($comw); # assum coma4 b64 chr blox rvrsd
       $tdst.= "$W\%" . bfr8c($fprt) . $z;} $rtns.= "$tdst ";$rtns=~ s/ $/\n/ if($nwlf);}
-  $rtns=~ s/ $/$z/;d8cs('d8bo');return($rtns);} # try2rEstOr Dflt ColrSequ B4 rEturning
+  $rtns=~ s/ $/$z/;d8cs('d8bo');return($cflg,$rtns);} # try2rEstOr Dflt ColrSequ B4 rEturning
 sub   d8cs   {my $dccs='';my $dcbl='';my $dcbs=''; # d8 ColrSet (or ColrSequence), d8 ColrCodeString, d8 Colr B? Layer, d8 Colr B? Select_graphic_rendition;
   if(!@_ && !-t STDIN){chomp(@_=<STDIN>);} # turn only piping thru into paramz
   if(!@_){           unshift(@_,'d8bo' );} # should loop through all @_ paramz below appending to dccs,accepting XtNded colr cOdez && use S() nstd of eval $c
@@ -1935,6 +2184,7 @@ sub sumb{  my $widt=0; # suport norml or doubl wId outpt (wi just widthOK flag4n
   my $i;my $j="$z$SKp1".'m';my $d; # Jump_bak2zero_bold; also declare local $d for l8r Directory color (no longer dark-oliveDrab from ygTbUDSN);
   my $t;my $e;my $f;my $h; # additional SKp code holder variablez; $i reInit && $j Jumpbak are the locl onez 2 prEserv
   my $l;my $v;my $q;my $x; # have 'defh lnqs' 8 2Uz4 b64r especially, but then can be used for plenty else, forgot $a is for sort, none still available!
+  # QA3MDEsq:nOt $q above is normally our SingleQuote variable && not a typical color-code like the rest,but makes sense to override with my version here4now;
   for (0..$bfle){my $grup='';#$grup='dirz' if(-d "$ENV{'HOME'}/bin/$bfls[$bfle - $_]"); # commenting out subdirectory check, because trying to hide priv8 tst/
     if( exists($bfst{$bfls[$bfle - $_]})){
       if($bfst{$bfls[$bfle - $_]}=~  /^\s*(\S+)/){$grup=$1 unless($grup eq 'dirz');$i=$j; # look for group to match Xpected as always 1st non-space string
@@ -2636,177 +2886,7 @@ sub upd8{my($upfl,$ubfl,$upxt)=('','',''); $upfl=shift(@_) if @_;$upfl=$ENV{'Hv8
       else                                                      {die "!*ErOr*! upd8 cud not 'cp $upfl $udfl',no perl -c sntx ck:$updc:udif:$udif:\n";}
       if(    $Hsub eq 'bin' || -x $upfl){      chmod(0755,"$udfl");}print $out8 `$udfl` if(-x $udfl &&0);} # mOst bin cOd nEdz pRamz2tSt sO autOcall proly!good
     close $out8 or die "Can't close out8 duplic8d STDOUT handle: $!";}return();} # better to call known t/*.t to valid8 expected behavior more thoroughly
-  # maybe .Hrc can whitelist bin code filez && desired parameterz that should get auto-called at the end of upd8 to autom8 some basic testing also
-# O3FMFMTP:so `m printf` showz GNU coreutils 8.32 from January 2024 basic manual: SYNOPSIS  printf OPTION  or  printf FORMAT [ARGUMENT]...
-#   DESCRIPTION - Print ARGUMENT(s) according to FORMAT, or execute according to OPTION:  --(help|version)  display help or version in4m8ion && exit
-#     FORMAT     controls the output as in C printf.  Interpreted sequences are:
-#       \"       double quote      \e escape  \f       form feed              \NNN        byte                      with octal       value NNN (1 to 3 digits)
-#       \\       backslash                    \n       new line               \xHH        byte                      with hexadecimal value  HH (1 to 2 digits)
-#       \a       alert (BEL)                  \r       carriage return        \uHHHH      Unicode (ISO/IEC 10646) character with hex value     HHHH (4 digits)
-#       \b       backspace                    \t       horizontal tab         \UHHHHHHHH  Unicode                 character with hex value HHHHHHHH (8 digits)
-#       \c       produce no further output    \v       vertical tab           %%          a single %  ## 2du:mk subz sf pf or f F to string 4m@d print 4 Pi8;
-#       %b       ARGUMENT as a string with '\' escapes interpreted, except that octal escapes are of the form \0 or \0NNN
-#       %q       ARGUMENT is printed in a format that can be reused as shell input, escaping non-printable characters with the proposed POSIX $'' syntax.
-#         and all C format specifications ending with one of diouxXfeEgGcs, with ARGUMENTs converted to proper type first.  Variable widths are handled.
-#     NOTE: your shell may have its own version of printf, which usually supersedes this version.  Please refer to your shell's documentation for details.
-# REPORTING BUGS - GNU coreutils online help: <https://www.gnu.org/software/coreutils/> Report any translation bugs to <https://translationproject.org/team/>
-# COPYRIGHT - Copyright © 2020 Free Software Foundation, Inc.  License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
-# AUTHOR - Written by David MacKenzie. This is free software: you are free to change && redistribute it. There is NO WARRANTY, to the extent permitted by law.
-# SEE ALSO - printf(3)  Full documentation <https://www.gnu.org/software/coreutils/printf> or available locally via: info '(coreutils) printf invocation'
-# GNU coreutils 8.32 January 2024; `m zshbuiltins` has echo print && printf to consider. `m 3 printf` has details on diouxXfeEgGcs C-4m@ spec Ndingz:
-#   page part of release 5.10 of Linux man-pages project. HTTPS://Kernel.Org/doc/man-pages        DESCRIPTION
-#   The  functions  in the printf() family produce output according to a format as described below.  The functions printf() and vprintf() write output to
-#     stdout, the stdout stream; fprintf() and vfprintf() write output to given output stream; sprintf,snprintf,vsprintf,vsnprintf write to char string str.
-#   The function dprintf() is the same as fprintf() except that it outputs to a file descriptor, fd, instead of to a stdio stream.
-#   The functions snprintf() and vsnprintf() write at most size bytes (including the terminating null byte ('\0')) to str.
-#   The  functions  vprintf(), vfprintf(), vdprintf(), vsprintf(), vsnprintf() are equivalent to the functions printf(), fprintf(), dprintf(), sprintf(),
-#     snprintf(), respectively, except that they are called with a va_list instead of a variable number of arguments.  These  functions  do  not  call  the
-#     va_end macro.  Because they invoke the va_arg macro, the value of ap is undefined after the call.  See stdarg(3).
-#   All these funcz write the output under the control of a format string that specifies how subsequent arguments (or arguments accessed via the
-#     variable-length argument facilities of stdarg(3)) are converted for output.
-#   C99 and POSIX.1-2001 specify that the results are undefined if a call to sprintf(), snprintf(), vsprintf(), or vsnprintf()  would  cause  copying  to
-#     take place between objects that overlap (e.g., if the target string array and one of the supplied input arguments refer to the same buffer). See NOTES.
-#   Format of the format string
-#     The format string is a character string, beginning and ending in its initial shift state, if any.  The format string is composed of zero or more  di‐
-#     rectives:  ordinary  characters  (not  %),  which  are copied unchanged to the output stream; and conversion specifications, each of which results in
-#     fetching zero or more subsequent arguments.  Each conversion specification is introduced by the character %, and ends with  a  conversion  specifier.
-#     In between there may be (in this order) zero or more flags, an optional minimum field width, an optional precision and an optional length modifier.
-#   The  arguments must correspond properly (after type promotion) with the conversion specifier.  By default, the arguments are used in the order given,
-#     where each '*' (see Field width and Precision below) and each conversion specifier asks for the next argument (and it is an error  if  insufficiently
-#     many  arguments  are  given).  One can also specify explicitly which argument is taken, at each place where an argument is required, by writing "%m$"
-#     instead of '%' and "*m$" instead of '*', where the decimal integer m denotes the position in the argument  list  of  the  desired  argument,  indexed
-#     starting from 1.  Thus,        printf(    "%*d", width, num);    and
-#                                    printf("%2$*1$d", width, num);
-#     are  equivalent.   The  second  style  allows repeated references to the same argument.  The C99 standard does not include the style using '$', which
-#     comes from the Single UNIX Specification.  If the style using '$' is used, it must be used throughout for all conversions taking an argument and  all
-#     width and precision arguments, but it may be mixed with "%%" formats, which do not consume an argument.  There may be no gaps in the numbers of argu‐
-#     ments specified using '$'; for example, if arguments 1 and 3 are specified, argument 2 must also be specified somewhere in the format string.
-#   For some numeric conversions a radix character ("decimal point") or thousands' grouping character is used.  The actual character used depends on  the
-#     LC_NUMERIC part of the locale.  (See setlocale(3).)  The POSIX locale uses '.' as radix character, and does not have a grouping character.  Thus,
-#       printf("%'.2f", 1234567.89);  results in "1234567.89" in POSIX locale, in "1234567,89" in the nl_NL locale, && in "1.234.567,89" in the da_DK locale.
-#   Flag characters - the character % is followed by zero or more of the following flags:
-#     #    The  value should be converted to an "alternate form".  For o conversions, the first character of the output string is made zero (by prefixing
-#            a 0 if it was not zero already).  For x and X conversions, a nonzero result has the string "0x" (or "0X" for X conversions) prepended  to  it.
-#            For  a,  A, e, E, f, F, g, and G conversions, the result will always contain a decimal point, even if no digits follow it (normally, a decimal
-#            point appears in the results of those conversions only if a digit follows).  For g and G conversions, trailing zeros are not removed from  the
-#            result as they would otherwise be.  For other conversions, the result is undefined.
-#     0    The value should be zero padded.  For d, i, o, u, x, X, a, A, e, E, f, F, g, and G conversions, the converted value is padded on the left with
-#            zeros rather than blanks.  If the 0 and - flags both appear, the 0 flag is ignored.  If a precision is given with a numeric conversion (d,  i,
-#            o, u, x, and X), the 0 flag is ignored.  For other conversions, the behavior is undefined.
-#     -    The converted value is to be left adjusted on the field boundary.  (The default is right justification.)  The converted value is padded on the
-#            right with blanks, rather than on the left with blanks or zeros.                                          A - overrides a   0   if both are given.
-#     ' '  (a space) A blank should be left before a positive number (or empty string) produced by a signed conversion.  + overrides a space if both are used.
-#     +    A sign (+ or -) should always be placed before a number produced by a signed conversion. default, sign used only  for  negative  numbers.
-#   The five flag characters above are defined in the C99 standard.  The Single UNIX Specification specifies one further flag character.
-#     '    For  decimal  conversion (i, d, u, f, F, g, G) the output is to be grouped with thousands' grouping characters if the locale in4m8n indic8z any.
-#            (See setlocale(3).) Note many versions of gcc(1) cannot parse this option and will issue a warning. (SUSv2 did not include %'F, but SUSv3 did.)
-#     I    For  decimal integer conversion (i, d, u) the output uses the locale's altern8ive output digits, if any. Since glibc 2.2.3 this will give
-#            Arabic-Indic digits in the Persian ("fa_IR") locale.    ## glibc 2.2 adds this I as one further flag character.
-#   Field width - optional decimal digit string (with nonzero first digit) specifying minimum field width. If converted value has fewer characters than the
-#     field width, it will be padded with spaces on the left (or right, if the left-adjustment flag has been given).  Instead of a decimal digit string one
-#     may write "*" or "*m$" (for some decimal integer m) to specify that the field width is given in the next argument, or in the m-th  argument,  respec‐
-#     tively,  which must be of type int.  A negative field width is taken as a '-' flag followed by a positive field width.  In no case does a nonexistent
-#     or small field width cause truncation of a field; if result of a conversion is wider than the field width,field expanded 2 contain conversion result.
-#   Precision - An  optional precision, in the form of a period ('.')  followed by an optional decimal digit string.  Instead of a decimal digit string one
-#     may write "*" or "*m$" (for some decimal integer m) to specify that the precision is given in the next argument, or in the m-th argument,respectively,
-#     which must be of type int. If the precision is given as just '.', the precision is taken to be zero. A negative precision is taken as if the precision
-#     were omitted. This gives minimum num of digits to appear for d,i,o,u,x,and X conversions, num of digits 2 appear aftr radix char for a,A,e,E,f,and F
-#     conversions, max num of significant digits for g and G conversions, or max num of charz to be printed from a string for s and S conversions.
-#   Length modifier - here, "integer conversion" stands for d, i, o, u, x, or X conversion.
-#     hh   A following integer conversion corresponds to a signed char or unsigned char argument,or a folOing n cnv corresponds 2 pointer 2 signed char arg.
-#     h    A following integer conversion corresponds to a short or unsigned short argument,or a folOing n cnv corresponds 2 a pointer 2 a short argument.
-#     l    (ell) A following integer conversion corresponds to a long or unsigned long argument, or a following n conversion corresponds to a pointer  to
-#            a long argument, or a following c conversion corresponds to a wint_t argument, or a following s conversion corresponds 2 pointer 2 wchar_t arg.
-#     ll   (ell-ell). A folOing integer conversion corresponds 2 long long or unsigned long long arg,or a folOing n cnv corresponds 2 pointer 2 long long arg.
-#     q    A synonym for ll.  This is a nonstandard extension, derived from BSD; avoid its use in new code.
-#     L    A following a, A, e, E, f, F, g, or G conversion corresponds to a long double argument.  (C99 allows %LF, but SUSv2 does not.)
-#     j    A following  integer  conversion corresponds to an intmax_t or uintmax_t argument, or a following n conversion corresponds 2 ptr 2 intmax_t arg.
-#     z    A following integer conversion corresponds to a size_t or ssize_t argument, or a following n conversion corresponds to a pointer to  a  size_t arg.
-#     Z    A nonstandard synonym for z that predates the appearance of z.  Do not use in new code.
-#     t    A following integer conversion corresponds to a ptrdiff_t argument, or a following n conversion corresponds to a pointer to a ptrdiff_t argument.
-#     SUSv3 specifies all of the above, except for those modifiers explicitly noted as being nonstandard extensions.  SUSv2 specified only the length modi‐
-#       fiers h (in hd, hi, ho, hx, hX, hn) and l (in ld, li, lo, lx, lX, ln, lc, ls) and L (in Le, LE, Lf, Lg, LG).
-#     As  a nonstandard extension, the GNU implementations treats ll and L as synonyms, so that one can, for example, write llg (as a synonym for the stan‐
-#       dards-compliant Lg) and Ld (as a synonym for the standards compliant lld).  Such usage is nonportable.
-#   Conversion specifiers - a character that specifies the type of conversion to be applied.  The conversion specifiers and their meanings are:
-#     d, i   The int argument is converted to signed decimal notation.  The precision, if any, gives the minimum number of digits that must appear; if  the
-#            converted  value  requires fewer digits, padded on left with zeros. default precision 1. When 0 printed with explicit precision 0, output empty.
-#     o, u, x, X   The unsigned int argument is converted to unsigned octal (o), unsigned decimal (u), or unsigned hexadecimal (x and X) notation. The letters
-#            abcdef  are  used for x conversions; the letters ABCDEF are used for X conversions.  The precision, if any, gives the minimum number of digits
-#            that must appear; if converted value requires fewer digits, zer0-padded on left. default precision 1. 0 printed with explicit precision 0,outMpT.
-#     e, E   The  double argument is rounded and converted in the style [-]d.ddde±dd where there is one digit (which is nonzero if the argument is nonzero)
-#            before the decimal-point character and the number of digits after it is equal to the precision; if the precision is missing, it is taken as 6;
-#            if  the  precision  is zero, no decimal-point character appears.  An E conversion uses the letter E (rather than e) to introduce the exponent.
-#            The exponent always contains at least two digits; if the value is zero, the exponent is 00.
-#     f, F   The double argument is rounded and converted to decimal notation in the style [-]ddd.ddd, where the number of digits after  the  decimal-point
-#            character  is  equal  to  the precision specification.  If the precision is missing, it is taken as 6; if the precision is explicitly zero, no
-#            decimal-point character appears.  If a decimal point appears, at least one digit appears before it.
-#          (SUSv2 does not know about F and says that character string representations for infinity and NaN may be made available.  SUSv3 adds a specifi‐
-#            cation  for  F.  The C99 standard specifies "[-]inf" or "[-]infinity" for infinity, and a string starting with "nan" for NaN, in the case of f
-#            conversion, and "[-]INF" or "[-]INFINITY" or "NAN" in the case of F conversion.)
-#     g, G   The double argument is converted in style f or e (or F or E for G conversions).  The precision specifies the number of significant digits.  If
-#            the  precision is missing, 6 digits are given; if the precision is zero, it is treated as 1.  Style e is used if the exponent from its conver‐
-#            sion is less than -4 or greater than or equal to the precision.  Trailing zeros are removed from the fractional part of the result; a  decimal
-#            point appears only if it is followed by at least one digit.
-#     a, A   (C99;  not in SUSv2, but added in SUSv3) For a conversion, the double argument is converted to hexadecimal notation (using the letters abcdef)
-#            in the style [-]0xh.hhhhp±d; for A conversion the prefix 0X, the letters ABCDEF, and the exponent separator P is used.  There is one hexadeci‐
-#            mal  digit before the decimal point, and the number of digits after it is equal to the precision.  The default precision suffices for an exact
-#            representation of the value if an exact representation in base 2 exists and otherwise is sufficiently large to distinguish values of type dou‐
-#            ble.   The  digit before the decimal point is unspecified for nonnormalized numbers, and nonzero but otherwise unspecified for normalized num‐
-#            bers.  The exponent always contains at least one digit; if the value is zero, the exponent is 0.
-#     c      If no l modifier is present, the int argument is converted to an unsigned char, and the resulting character is written.  If an l  modifier  is
-#            present,  the  wint_t  (wide  character) argument is converted to a multibyte sequence by a call to the wcrtomb(3) function, with a conversion
-#            state starting in the initial state, and the resulting multibyte string is written.
-#     s      If no l modifier is present: the const char * argument is expected to be a pointer to an array of character type (pointer to a string).  Char‐
-#            acters from the array are written up to (but not including) a terminating null byte ('\0'); if a precision is specified, no more than the num‐
-#            ber specified are written.  If a precision is given, no null byte need be present; if the precision is not specified, or is greater  than  the
-#            size of the array, the array must contain a terminating null byte.
-#          If  an  l  modifier is present: the const wchar_t * argument is expected to be a pointer to an array of wide characters.  Wide characters from
-#            the array are converted to multibyte characters (each by a call to the wcrtomb(3) function, with a conversion state starting  in  the  initial
-#            state before the first wide character), up to and including a terminating null wide character.  The resulting multibyte characters are written
-#            up to (but not including) the terminating null byte.  If a precision is specified, no more bytes than the number specified are written, but no
-#            partial  multibyte  characters are written.  Note that the precision determines the number of bytes written, not the number of wide characters
-#            or screen positions.  The array must contain a terminating null wide character, unless a precision is given and it is so small that the number
-#            of bytes written exceeds it before the end of the array is reached.
-#     C      (Not in C99 or C11, but in SUSv2, SUSv3, and SUSv4.)  Synonym for lc.  Don't use.
-#     S      (Not in C99 or C11, but in SUSv2, SUSv3, and SUSv4.)  Synonym for ls.  Don't use.  ## this `m 3 printf` same as `m sprintf` && wprintf 4 wide;
-#     p      The void * pointer argument is printed in hexadecimal (as if by %#x or %#lx).  ## HTTPS://PerlDoc.Perl.Org/functions/sprintf has FORMAT spec;
-#     n      The number of characters written so far is stored into the integer pointed to by the corresponding argument.  That argument shall be an int *,
-#            or variant whose size matches the (optionally) supplied integer length modifier.  No argument is converted.  (This specifier is not  supported
-#            by the bionic C library.)  The behavior is undefined if the conversion specification includes any flags, a field width, or a precision.
-#     m      (Glibc extension; supported by uClibc and musl.)  Print output of strerror(errno).  No argument is required.
-#     %      A '%' is written.  No argument is converted.  The complete conversion specification is '%%'.
-#   RETURN VALUE  Upon successful return, these functions return the number of characters printed (excluding the null byte used to end output to strings).
-#     The functions snprintf() and vsnprintf() do not write more than size bytes (including the terminating null byte ('\0')).  If the output was truncated
-#       due to this limit, then the return value is the number of characters (excluding the terminating null byte) which would have been written to the final
-#       string if enough space had been available.  Thus, a return value of size or more means that the output was truncated.  (See also below under NOTES.)
-#     If an output error is encountered, a negative value is returned.  manual shud conform to POSIX.1-2001 && *.1-2008 C89 C99 glibc 2.2 printf standards;
-# for more like `fmt` fitting long text into blox see Perl6::Form module like better Perl5 format(): use Form { layout=>"down", locale=>1, interleave=>1 };
-# which are like mainly for printing justified, numeric, currency, or verb8im stringz wi Dflt max sIz trunc8ion (unlike printf just min sIz) wi fill-logic;
-#   print form { page => { length =>  $page_len      , header => \&make_header   , feed   => \&make_pagefeed , # Dflt: 60 lines, no (head|foot)er,pagefeed,or…
-#     number=>$first_pg_nm, width =>  $page_width    , footer => \&make_footer   , body   => \&adjust_body   ,}},$fmt,\@d8a; # Dflt: Pg. 1, 78 columns; #chiro;
-#   {field => { '^' => '{<I{1}I}',   # 1-char-wide,    top-justified block (all 3 had II{1}II in dFz but I s/II//g them as clutter?); ## nEd2think aboutUseKsz;
-#               '=' => '{<={1}=}',   # 1-char-wide, middle-justified block;    ## bullet also potentially handy opt. Perl6::Form is DConway 2003 or d8: J18?;
-#               '_' => '{<_{1}_}',}} # crE8z user-defined single-char-wide fieldz at top, middle, or bottom like: single => ['^', '=', '_'] also would;
-# Perl5: sprintf - vector flag tells Perl to interpret supplied string as a vector of integers, one for each character in string. Perl applies the format to
-#   each integer in turn, then joins resulting strings with separator (a dot . by default). Useful 4 displaying ordinal values of charz in arbitrary strings:
-# :r!ifconfig  enp42s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500 inet 192.168.9.18  netmask 255.255.255.0  broadcast 192.168.9.255
-#if(0){printf "%vd", "AB\x{100}";my @addr=qw( 2603:6000:cd02:4b30:4f2c:a6df:79c8:c167  2603:6000:cd02:4b30:315d:7c95:12a2:d5da  fe80::9ad0:e08f:8f99:be62
-#   2603:6000:cd02:4b30:289c:baf9:c974:17ff  2603:6000:cd02:4b30:bd01:b0a8:95f7:29a2  2603:6000:cd02:4b30:e6c6:8e97:6400:645b
-#   2603:6000:cd02:4b30:342c:f8c:690c:3cd0   2603:6000:cd02:4b30:525c:1a4d:6afd:813   2603:6000:cd02:4b30:f0a4:86a7:f9ed:6f0c);my $adi6=$addr[0];
-#     printf "version is v%vd\n",      $^V  ; # above prints "65.66.256" && this line prints Perl's version. Put asterisk * B4 v 2 override sepR8or string:
-#     printf "address is %*vX\n", ":", $adi6;my $bits="Pi\x{100}"; # IPv6 address here && pseudo-random bitstring below;  ## rEmMbr th@ just "%.8s" trunc8z!;
-#     printf "bits are %0*v8b\n", " ", $bits; # can also explicitly specify argument number to use for the join string using something like *2$v; for example:
-#     printf '%*4$vX %*4$vX %*4$vX'  , @addr[1..3], ":";} # 3 IPv6 addresses? I'm not quite sure what these d8a value examples are supposed 2 originally hold;
-sub sf  {return(F(@_)); }; sub F  {                                                    if(@_){return( sprintf(                             @_  ));}} # bAsic
-sub  pf {return(P(@_)); }; sub P  {                                                    if(@_){return(  printf(                             @_  ));}} #   spfz;
-sub spff{my $frmt='%12.12f';if(@_ && defined($_[0]) && $_[0]=~ /%/){$frmt= shift(@_);} if(@_){return( sprintf("%16s",sprintf("$frmt",shift(@_))));}} # SPFfloat
-sub spfd{my $frmt='%03d'   ;if(@_ && defined($_[0]) && $_[0]=~ /%/){$frmt= shift(@_);} if(@_ && defined($_[0]) && $_[0]=~ /^\d+$/){
-  return(sprintf("$frmt",shift(@_)) );}} # SPrintF dec
-sub spfX{my $frmt='%02X'   ;if(@_ && defined($_[0]) && $_[0]=~ /%/){$frmt= shift(@_);} if(@_ && defined($_[0]) && $_[0]=~ /^\d+$/){
-  return(sprintf("$frmt",shift(@_)) );}} # SPrintF HX
-sub spfs{my $frmt='%1d%1s' ;if(@_ && defined($_[0]) && $_[0]=~ /%/){$frmt= shift(@_);} if(@_ && defined($_[0]) && $_[0]=~ /^\d+$/){
-  return(sprintf("$frmt",  int($_[0]/64),$sb64[shift(@_) % 64]) );}} # SPrintF Ss 256ndx in [0-3] . b64
+  # maybe .Hrc can whitelist bin code filez && desired parameterz that should get auto-called at the end of upd8 to autom8 some basic testing also;
 sub cdst{ # Color DiSTance (derived from pm2x);pre-init what's necSary as new Xportz,but thN try2only load up nEded structurez that wil really B used in here
   my $nonr=0;my $frmf=0;my $hexf=0;my $nocf=0;my $nodf=0;my $snrf=0;my $xhri=0; # hndl flgz lIk specify rsltz -sIz or -colors.txt name2add2 %crgb && %cbrt 1st
   while  (@_ && $_[0]=~ /^--?(\S+)$/){my $flag=$1;if($flag=~ /^h(elp)?$/i){return( # run through some basic directions on parameters && expected behavior
