@@ -1,4 +1,4 @@
-# F1IL2Vhp:~/.Hrc crE8d by PipStuart <Pip@CPAN.Org> as 8sh"H"rEsourcz2configUr core fEld abbreV8ion,type colr8ion,&& aliasing; $VERSION='0.0';$d8VS='Q5TMEXEC';
+# F1IL2Vhp:~/.Hrc crE8d by PipStuart <Pip@CPAN.Org> as 8sh"H"rEsourcz2configUr core fEld abbreV8ion,type colr8ion,&& aliasing; $VERSION='0.0';$d8VS='QA1MJAPF';
 c           ->   C        => cOL  =>   cOL8 =>    cOLR =>   cOLM; # core c8 lAyrz;c:* sepR8lAyrzBlODterminprEfixz4allfolOing middle-map columnz th@ R!Dfalt F:;
 c:tFbSGRsgr ->   WGBZOMzom=> tXt  Fgc  bGC  Slc  Gfc  Rnd  sLC  gFC  rND ; # c8 objectz shudBgoverned by thEs lAyrz from hEr proly thru a8:new
 c:tFbSGRsgr               => tEXt Fclr bCLR Slct Grfc Rndt sLCT gRFC rNDT => tEXt, Forecolr, bACKCOLR, Select, Graphic, Rendition, sELECT, gRAPHIC, rENDITION;
@@ -92,9 +92,9 @@ A           ->   Y        =>  Trp:Als => Alias; # wh8 aliasez as of OCCL77AL wi 
 A:02468abc  ->   02468anc =>   ogg123,  mpg123,      x4t,      perl6,       viii, asciiview,    bak(),  ~/bin/c;
 A:13579ABC  ->   13579ABC =>   mpg321, ~/bin/3,     perl,         7z,        c99,      asci,     btop,      cls;
 A:defghijk  ->   defghijk =>    dic(),  eM -nw,     find,     grep(),    history,      info,     jobs,     kill;
-A:DEFGHIJK  ->   DEFGHIJK =>      dfc,    Etrm,    fgrep,         zg,       htop,  identify,  joy2key,       k9;
+A:DEFGHIJK  ->   DEFGHIJK =>      dfc,  P -err,  sprintf,         zg,       htop,  identify,  joy2key,       k9;
 A:lmnopqrs  ->   lmnopqrs =>     lsd8,   man(),     ncal,      orpie,        CCC,   ~/bin/Q, shLbltin, *srchl();
-A:LMNOPQRS  ->   LMNOPQRS =>  ~/bin/L, mplayer,     calN,          o,       pal8,      calQ,    reset,  ~/bin/S;
+A:LMNOPQRS  ->   LMNOPQRS =>  ~/bin/L, mplayer,     calN,     P -out,     printf,      calQ,    reset,  ~/bin/S;
 A:tuvwxyz.  ->   tuvwxyz. =>     tmux,  upd8(),     v8(), /usr/bin/w,       exit,    yazi(),       zp, shLbltin;
 A:TUVWXYZ_  ->   TUVWXYZ_ =>      tee,    U2b8, vim.tiny,    whereis, /usr/bin/X,    yt-dlp,       zc,     rens;
 S           ->   c        =>  Trp:Shl => Source-highlight; # .shl.style fieldz Fg foregrnd (lEving Octology core d8a dFz abov4Xtrnl prog shl,St8z&&gmz BlO)
