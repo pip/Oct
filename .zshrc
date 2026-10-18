@@ -40,7 +40,7 @@ unsetopt                \
 # re_____match_____pcre \# mA want2set for Z-SHell scripting RegularExpressions to utilize PerlCompatibility styles && mA insert 'zmodload zsh/(pc)?re(gex)?';
 # extended_glob is Zsh option wich causes the caret '^' circumflex 2B interpol8d / Xpanded && it's used in a regex ^prev^next 2 substitute stRt of last cmnd;
 alias Al=alias Xp=export Bk=bindkey UA=unalias Wh=which; # dot_glob optn includz .files && XtNded_glob m@chz ~ # ^ nOtd in HTTPS://YouTu.be/g5BoVPhewWM ;
-Xp Vers='0.000001';Xp d8VS='Q9UMAPgo';Xp Auth='PipStuart <PipStuart@GMail.Com>'; # 'Xp','Al','Bk' => export,alias,bindkey  'sl','cl' => SymLink,CountLines,… ;
+Xp Vers='0.000001';Xp d8VS='QAHMNOPE';Xp Auth='PipStuart <PipStuart@GMail.Com>'; # 'Xp','Al','Bk' => export,alias,bindkey  'sl','cl' => SymLink,CountLines,… ;
 if     [[       "$SHELL"    == "" ]] ||
        [[       "$SHELL" =~ bash  ]]; then       Xp SHELL=$(which   zsh);Xp HShl="$SHELL";fi; # H Xport mAB shud B HshL 4 prOnunC8ion nstd?;
 if     [[       "$HOSTNAME" == "" ]]; then       Xp HOSTNAME=$(hostname);fi;  #`hostname`retnz fsckd nwlInz\n4CygWinzRxvt... ||smthng els lame  =(
@@ -49,12 +49,12 @@ if     [[       "$HOST"     != "" ]] &&  # hOpfuly stop cloberng Docker contAner
        [[       "$HHst"     == "" ]]; then       Xp HHst="$HOST";fi;Xp HPgr="$(which less) -FR"; # prEfer lS (less) wi SKp colrng AbiliTz||mkOwnl8r?; -FRS?;
 Xp     HHom="$HOME";Al lc="tr 'A-Z' 'a-z'";Al uc="tr 'a-z' 'A-Z'" hdc='head -c'; # || mAB atMpt2dup $var thru:$(ec $var|tr 'A-Z' 'a-z') || "[:(upp|low)er:]";
 Xp dr='/dev/random' du='/dev/urandom';Al trnd='tr -cd 0-9A-Za-z <$du|hdc'; # TRansl8-pseudoRaNDom takes just num of base62 chars to shift off as sole pRam;
-Xp     HUsr="$USER";Xp HAEd=$(which nvim);Xp HWid="$COLUMNS";Xp HOSy="$OS"; # zsh's lc() for variablez to m//i: "${(L)HOSTNAME}" according to:
+Xp     HUsr="$USER";Xp HAEd=$(which nvim);Xp HWid="$COLUMNS";Xp HOSy="$OS";Xp LESS='-FR'; # zsh's lc() for variablez to m//i: "${(L)HOSTNAME}" according to:
 Xp     HShl="$SHELL";Xp HEdt=$(which vim);Xp HHit="$LINES";  Xp HOTy="$OSTYPE";Xp H3WF="0"; # HTTP://CS.Elte.Hu/zsh-manual/zsh_6.html # nEdz WWW.?;
 Xp  COLUMNS="$COLUMNS";Xp  LINES="$LINES";Xp ROWS="$LINES";  Al  hn='hostname'; # zsh setz thEse lOcally but must Xport thM 4 Perl scriptz 2 access
 # Used2 if [[ "${(L)HHst}" == ax9*]]; then Xp HHst='Ax9'; elif ... 2abbreV8&&capitalIz myhOst&&UzrnAmz fromold dvl&&work machinz especially4CygWindoze;
 # XDG (Xorg baseDirzGuide)4:GTK2,Compiz,Uzbl,Arora,Audacious,TrollTech,etc. from: HTTP://Standards.FreeDesktop.Org/basedir-spec/basedir-spec-latest.html
-Xp XConfHom="$HOME/.config";     Xp XConfDrz="/etc/xdg";alias mkt='mktemp';Xp XDG_CONFIG_HOME="$XConfHom";Xp XDG_CONFIG_DIRS="$XConfDrz";
+Xp XConfHom="$HOME/.config";     Xp XConfDrz="/etc/xdg";Al    mkt='mktemp';Xp XDG_CONFIG_HOME="$XConfHom";Xp XDG_CONFIG_DIRS="$XConfDrz";
 Xp XDataHom="$HOME/.local/share";Xp XDataDrz="/usr/local/share:/usr/share";Xp   XDG_DATA_HOME="$XDataHom";
 Xp XCachHom="$HOME/.cache";      Xp XSESSION='Gnome'   ;                   Xp  XDG_CACHE_HOME="$XCachHom";Xp XDG_MENU_PREFIX='gnome-';
 Xp XDataDrz="$XDataDrz:/var/lib/flatpak/Xps/share:$XDataHom/flatpak/Xps/share"                           ;Xp   XDG_DATA_DIRS="$XDataDrz";
@@ -69,10 +69,46 @@ Xp TMP="${TMP:-$(dirname $(mkt  -u))}/"; # OvrIdDflt /tmp wi ~/.tmp if the latte
 if     [[  -d   "$HOME/.tmp"        ]]; then  Xp      TMP="$HOME/.tmp/";fi;Xp TEMP="$TMP";Xp TMPDIR="$TMP";Xp TMPPREFIX="$TMP";
 Xp   EDITOR="$HEdt";Xp PERL5LIB="$HOME/lib:$HOME/lib/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:$HOME/lib/perl5/lib/perl5:./lib";
 Xp    PAGER="$HPgr";Xp PERL_TEST_POD='1'   ;Xp PERLDOC="-w width:$COLUMNS"; #pdoc;`which most`||PAGER=`which less`||PAGER=`which more`;Xp PAGER;
-Xp MANPAGER="$HPgr";Xp PERL_TEST_CRITIC='1';Xp PMARSHOME='/usr/share/games/pmars/macros'; #fyn,letz get crit! ;) && pmars-sdl needz its macroz;
-                    Xp SDL_VIDEO_CENTERED='center'; #xport SDL_VIDEO_WINDOW_POS='x,y'; try2cNtrSDLapzfrom: HTTP://SDL.Beuc.Net/sdl.wiki/SDL_SetVideoMode
-#                   Xp SDL_WINDOWPOS_CENTERED='1' ; #                   try 2 center SDL applic8ionz from:
-#                        HTTP://Wiki.LibSDL.Org/moin.cgi/SDL_SetWindowPosition?highlight=%28\bCategoryVideo\b%29|%28CategoryEnum%29|%28CategoryStruct%29
+Xp MANPAGER="$HPgr";Xp PERL_TEST_CRITIC='1';Xp PMARSHOME='/usr/share/games/pmars/macros'; #fyn,letz get crit! ;) && pmars-sdl needz its macroz; nOt:pm PerlMan;
+Al blm='bat -l man' bm=blm;Xp SDL_VIDEO_CENTERED='center'; #Xp SDL_VIDEO_WINDOW_POS='x,y'; try2cNtrSDLapzfrom: HTTP://SDL.Beuc.Net/sdl.wiki/SDL_SetVideoMode
+#                          Xp SDL_WINDOWPOS_CENTERED='1' ; # try 2 center SDL applic8ionz from:
+#                              HTTP://Wiki.LibSDL.Org/moin.cgi/SDL_SetWindowPosition?highlight=%28\bCategoryVideo\b%29|%28CategoryEnum%29|%28CategoryStruct%29
+# PerlMaven DscrIbz how -e executez cmd-lIn strng but -E Enablez all l8st fE8urez (lIk say && betr UniCode), -n wrapz -E strng in while(<>){ && } with -p just
+#   -n looped with print $_ aftr Each iter8ion, && -i modifiez a supplId fIl in-place, so: `perl -ipE 's/badcode/foobarz/' file.txt` would rEplAc on evry lIn;
+# `pdoc perlrun` suggests I mIt not want -CS on all thEs BlO (as perhaps othr optnz R betr, but mOst worried it will inhibit handling bInary d8a lIk f8 .psf?):
+# As of Perl v5.8.1, -C can B folOd Ether by number or list of optn letrz. Letrz, numeric valUz, && Efects R as folOz; listng letrz is Equal2 summing numberz.
+#   I    1  STDIN is assumed to be in UTF-8;     #   i    8  UTF-8 is the default PerlIO layer for  input streams          ;     # all Perlz Km up nEr fIl top;
+#   O    2  STDOUT         will be in UTF-8;     #   o   16  UTF-8 is the default PerlIO layer for output streams          ;
+#   E    4  STDERR         will be in UTF-8;     #   A   32  the @ARGV elements are expected to be strings encoded in UTF-8;     #  SDL  95  ?;tSt wi bIn d8a;
+#   S    7  I + O + E                      ;     #   D   24  i + o; # 2du:mAB Iwant -CSDL nstd?(but mAstil nEd2disAbl somtImz4 bInary-d8a,if UTF8 conflictz?);
+#   L   64  normaly "IOEioA" R unconditional,but L mkz thM conditional on lOcale NvIronmNt variablz: LC_ALL, LC_CTYPE, && LANG (in ordr of DcrEsing precedNc)…
+#   a  256  Set ${^UTF8CACHE} to -1,to run UTF-8 caching code in Dbuging mOde;…(morDtailz4 L abov: -- if variablz indic8 UTF-8,thN sLectd "IOEioA" R in Efect;
+Al      pl='   perl'; #  pl   :           perl (with the most common file-extension for typical Perl code as a way to invoke the interpreter itself also)
+Al      pL='pl -MpL'; # hopefully just call Perl with pL Filter::Simple oper8ing on following: "-e 'code'" or just running on whatever else Perl src is;
+Al      pR='pl -MpR'; # P7EM7EM7:duping pL as new pR with all keywords starting with an UpperCase letter thN trying 2 alsO map single Up letrz 2 bSt src;
+Al     pla="   pl  -M$HOa8         -M$HTHi -CS    -E"; #   ... but may need function to include "binmode STDOUT,':utf8'" somehow?; had2mv Alias dF up B4 Xprtz;
+Al     plb="   pl          -M$HOb8 -M$HTHi -CS    -E"; # `m perlrun` described -CS as indic8ing UTF-8 for all 3 of STD(IN|OUT|ERR)
+Al     pld="   pl                  -M$HOd8 -CS    -E"; # mAB shud mk plc 4 c8.pm && plf 4 f8.pm && plk 4 k8.pm etc.?; 2du:figUrout Y `d8 e` iz ~13K > epoc;
+Al     pab="   pl  -M$HOa8 -M$HOb8 -M$HTHi -CS    -E"; # `pab "binmode STDOUT,':utf8';print b256(calQ('15xx63'))"` gets rid of ...
+Al     pad="   pl  -M$HOa8         -M$HOd8 -CS    -E" pa='pabd'; # pb was already taken by pingb && pa can be all of a8,b8,d8;
+Al    pabd="   pl  -M$HOa8 -M$HOb8 -M$HOd8 -M$HTHi -MTime::Local -CS    -E  "; #   ... the warning about "Wide character in print at -e line 1."
+Al     pea="   pl  -M$HOa8                 -CS   -pE"; # tried to add -Mutf8 to aliases but may need some more specific flag?
+Al     peb="   pl  -M$HOa8 -M$HOb8         -CS   -pE"; # -CSDL is the same as just -C && gets all the STDz && i/o && @ARGV
+Al     ped="   pl  -M$HOa8         -M$HOd8 -CS   -pE" pe='pead'; # mAnly just want 2 Uz pa 4 1lInr cOd && pe 4 pIpngin&&filtrng;
+Al    pead="   pl  -M$HOa8 -M$HOb8 -M$HOd8 -CS   -pE" pep='pea' t2='t1 2' 2z=t2 t3='t1 3' t4='t1 4' qc8=Qc Qc8=Qc; # 3 && 4 R!yet;
+Al    pasm="   pa 'for(sort {b10(\$a) <=> b10(\$b)} keys %sb10){if(exists(\$sgrm{\$_})){o8(\$_);}else{o8(q( ));}}'"; # Perl -Allmodulez SgrMap (allalOc8dnow);
+Al 1z=t1   t1='   pla "o8(t1(@ARGV))"' pat1='t1'  ; # shO rEslts from a8 tStng wich 1-letr sKlRz it DfInd&&Xportz thN wich varz R frE(undF)2BUzd sepR8ly;
+# original t1 abov shOwd: /defhijlnqstuvx/i +AZ azfrE4golfUse but a8 nowXpzall;
+Al    Qc="pe 's/0+\$// if s/(\\.\\d{64}).+/\$1/'" # O1JLFUc8:shud trunc8+strip trAlng Zr0z lIk c8:`Q 1/3|Qc`;
+Al Qs=Qc qc='Qc'; # O7JMAqcQ:since q() is already single-quote function in Perl, I've decided I want my shortest for calQ to just be UperCase-Q && upd8 old qz;
+Al q='Q';Xp q="'";Xp qq='"'; # OCBLLETS:until q() && qq() get remapd from Perl 2 Zshl/Bash,thN lEv just lO q pointng 2 Q UperCase,&& qq couldBlIk printf mAB?;
+Al     epc='  ep|b8clr'; #d8 e|cma!=epoc # rEgRdng sudo abov cannot run both -Intractiv && -Shell optz; # d8 e>epoc by~3.56528hourz 13Ksecz sOmABclOs2UTC?;
+Al    epoc="   pab   'o8 cma $HTHi::time'"; # alias 2 output non-colrd epoch float secz from Perl Time::HiRes wi cma int KMGT sepR8orz; epoc==`date +%s`;
+Al      ep="   pab '\$t6=b64($HTHi::time);\$t6=~s/(%....).+\$/\$1/;o8 coma(\$t6)'"; # alias 2 gNr8 b64 trunc8d coma'd epoch float secondz && abov colrz;
+# PerlDoc PipeExec PipeLess was orig called pelS, thN pdel B4 tAkng Ovr pdoc 4 colrng perldoc output thru less (2 hopefully look nIce lIk man pAgz in most);
+Al pad8="pa '\$ts=time;sub Od8n{return($HOd8->new(@_));};\$ds=Od8n();o8(qq(\${G}stRt:).\$ds->colr(q(a)).qq(\$G:\$ts:\$^T;\\n));aw8(q(D8));\$tm=time;
+  \$dm=Od8n();o8(q(midl:).\$dm->colr(q(a)).qq(\$G:\$tm:\${M}D\${p}8\$Y:aw8dur8\$G;\\n));\$dw=$HOd8::dur8->new(q(8D));\$dw->w8();\$te=time;\$de=Od8n();
+  o8(q(Nd8e:).\$de->colr(q(a)).qq(\$W:\$te:).\$dw->colr(q(a)).qq(\$C: w8dur8\$G;\\n));'"; # shud tAk about ~22secs 2 run; cudB betr az shL func&&!nEdblquOtz?;
 # BlO _mb Bgin bLinKing tXt mOd just set to Bold Magenta, _md Bgin Bold tXt mOd set to Bold Red, _me Ennd all 4m@ing stRtd by mb/md/mr/mh probably;
 #     _so Bgin StandOut tXt mOd Uzez Bold Yellow on Blue, _se Ennd StandOut mOd, _mr Bgin ReveRse-video tXt mOd, _ZN && _ZO 74 subscript && 73 superscript;
 #     _us Strt Underlin tXt mOd Uzez Bold Green Undrlind, _ue Ennd Underlin mOd, _mh Bgin Halfbrite(Dim)tXt mOd, _ZV && _ZW 75 neither sub nor superscript;
@@ -97,13 +133,26 @@ Xp GOPATH="$HOME/dvl/n8/.go"; # ROOT shud B /usr/local/ && PATH shud B in home;
 Xp GOROOT="/usr/local/go"; # Q9UMATgo:ran `uz go1.27*.tgz /usr/local/`add2path;
 [[ -d     $GOROOT/bin ]] && Xp PATH="$PATH:$GOROOT/bin"; # HTTPS://Go.Dev/doc/install describez getting release, unzipping in2 /usr/local/ thN setting up path;
 # HTTPS://YouTu.be/3T2Al3jdY38&t=492  "Weaponizing ANSI Escapes" N9F:0eU0 Bash(&& Zsh?) prefers Octal, Python Hex, Java/JavaScript Unicode, PowerShell Decimal;
-Al  ec='echo ' eE='ec -E' enE='en -E' eEn=enE; # if -E (supposedly Dfault?), back-slash (bkslsh) escape-codes interpret8ion is: disabled ;
-Al  en='ec -n' ee='ec -e' ene='en -e' een=ene; # if -e escape interprt8ion enabled 4: \\ bkslsh,\a alert(BEL),\b bkspAc,\c no-more-output,
-Al pf='printf' P='printf' ece='ec -e' eec=ece; #   && I Db8d mkng BlO F -> ftst,file,firefox,fortune, thN fInaly DcIded 2 stik wi fgrep 4now && kEp P 4 printf;
-Al  F=fgrep o8=en o9=ec; # OCBLNXFt:upd8d old F->P did just point 2 my fIltSt Utl; Y B4 wantd spAcd-some str-print-4m@d 4 F just in Oct.pm || e[cn] chomp o89?;
+pewh() { wh "$@"| pe 's/;/$W;$y/g;s/-/$C-$y/g;s/:/\t$R/;s/:/$B:$Y/g;s/^/$G/;s/  +/ /;s/ to /$o to$Y /;s/\|/$M|$O/g;s/=/$B=$C/'; } # xmpl pRamz2 pe colr;
+# abov loox bood in 80x25 term with cmnd to show xpandng many aliasz like this: `pewh ag agu aguu au auu agr agar aar ai ac acs h H D T Q N n grp psag pl pe` ;
+Al ec='echo ' eE='ec -E'  enE='en -E' eEn=enE; # if -E (supposedly Dfault?), back-slash (bkslsh) escape-codes interpret8ion is: disabled ;
+Al en='ec -n' ee='ec -e'  ene='en -e' een=ene; # if -e escape interprt8ion enabled 4: \\ bkslsh,\a alert(BEL),\b bkspAc,\c no-more-output,
+Al O='P %s  '  P='printf' ece='ec -e' eec=ece; #   && I Db8d mkng BlO F -> ftst,file,firefox,fortune, thN DcIded 2du fgrep 4abit B4 sprintf && kEp P 4 printf;
+Al F='P -v F'  E='P %s >&2 ' pf=P; # OCBLNXFt:upd8d old F->P did point 2my fIltStUtlB4I wantd spAcd-some str-print-4m@d 4 F just in  a8.pm || e[cn] chomp o89?;
+Al N=ec n9=N s4=F o4=P o8=O eN='N >&2' e4='P >&2' e8=E; e5(){e4 "$@";>&2 N;};e9(){e8 "$@";>&2 N;};o5(){o4 "$@";N;};o9(){o8 "$@";N;};s5(){s4 "$@";F="$F\n";};
+Al OF="pewh O P E N F o8 e4 e8 eN n9 s4 o4 o5 o9 e5 e9 s5|pe 's/^\\e\\[01;38;5;010m(\\w+\\s+)(\\(\\)\\s+)(\\{)/\$G\$1\$O\$2\$W\$3/;s/(\\\\n)/\$z\$1\$R/g;
+  s/^\\e\\[01;38;5;010m(\\})$/\$W\$1\$z/;s/(\\s+)(%\\w+)/\$1\$B\$2/g;s/(\")/\$F\$1\$R/g;s/(\\\$\\@)/\$M\$1/g;s/(\\>&\\d+)/\$C\$1\$y/g;
+  s/^\\e\\[01;38;5;010m(\\s+)(\\w+\\s+)/\$1\$A\$2\$C/;'"; # QA3MCueN:emrgN BcAm ErrNwln; # thru $(pe) shO all OF OpenF's $(which) dFz in nIce colrz;
+# abov OPENF are 1st 5 of 16 cmndz I'm adding to en && ec (4 18 wraprz tOtal), N && n9 just alias ec but shud B Uzd without pRameterz just 4 prOducing NewliNz;
+# rEmAining 10 (aftr 6 of OPENF+n9) are o4+o5 for 4m@d Output+NewliNe,o8+o9 un4m@d OutUTF8+NewliNe, e4+e5 && e8+e9 just like o[45 89] but 2 stdErr not stdOut!;
+# last s4+s5 are for sprintf-like assigning 4m@d RgUmNtz to $ENV{'F'}+NewliNe 4 s5,with e5+e9,of+o9,&& s5 all Bing functionz whIl rSt R aliasez 2 printf || ec;
+#  F now duz assign $F wi formatted str output && E also seemz 2 pf 2 stderr 2; E cud try: `cat <<< "$@" 1>&2` or `printf "%s" "$*" >&2` 2 get out 2 err;
+# alsOcud: `ec foo >>/dev/stderr` or /proc/self/fd/2 nstd az more obvious && apparently zsh or bash probably emul8z it fine if not already found in fIlesysteM;
+# further: `read -t 0.1 -p "This is sent 2 stderr."` Uzez timeout disabling var storage func (wh I mIt want 4 F spf) && not sure what -p does yet so shud rEad;
+# mAB o9 shud Bcome a wrapr function calling O='P %s' && passing all argz thN a fInal `ec` 2 NewLine @Nd nstd of print which joinz spAcz BtwEn RgUmNtz.du!want;
 # \e escape, \f form-feed, \n new-line, \r carriage-return, \t horizontal-tab, \v vertical-tab, \0NNN byte-wi-octal-val-NNN(1to3digits), \xHH byte-Hexa-val-HH;
 # Note:Your shell may have its own version of echo, which usually supercedes version described in `m echo`. Please refer 2 shL dox 4 DtAlz about suportd optnz;
-#xport bk="\e[40m"   ;Xp br="\e[41m"   ;Xp bo="\e[43m"   ;Xp by="\e[43m"   ;Xp bg="\e[42m"   ; # L13LCuts: bkslsh SKpz here had2go literal BlO;
+#Xp bk="\e[40m"   ;Xp br="\e[41m"   ;Xp bo="\e[43m"   ;Xp by="\e[43m"   ;Xp bg="\e[42m"   ; # L13LCuts: bkslsh SKpz here had2go literal BlO;
 Xp bk="[40m"   ;Xp br="[41m"   ;Xp bo="[43m"   ;Xp by="[43m"   ;Xp bg="[42m"   ; # set isol8d bkgrnd codez;
 Xp bc="[46m"   ;Xp bb="[44m"   ;Xp bm="[45m"   ;Xp bp="[45m"   ;Xp bw="[47m"   ;
 Xp Ok="[22;30m";Xp Or="[22;31m";Xp Oo="[22;33m";Xp Oy="[22;33m";Xp Og="[22;32m";Xp z="[00m"; #XLBJ Xport d8:L (2021)BlkJk;
@@ -118,7 +167,6 @@ Xp hK="[100m"  ;Xp hR="[101m"  ;Xp hO="[103m"  ;Xp hY="[103m"  ;Xp hG="[102
 Xp hC="[106m"  ;Xp hB="[104m"  ;Xp hM="[105m"  ;Xp hP="[105m"  ;Xp hW="[107m"  ; # set high-intensity (bg);
 Xp HK="[90m"   ;Xp HR="[91m"   ;Xp HO="[93m"   ;Xp HY="[93m"   ;Xp HG="[92m"   ; # set HIGH-INTENSITY (FG);
 Xp HC="[96m"   ;Xp HB="[94m"   ;Xp HM="[95m"   ;Xp HP="[95m"   ;Xp HW="[97m"   ; # d8bo BlO just scalar or hash-key? Look-it-up!;
-alias     pla=" perl  -M$HOa8         -M$HTHi -CS    -E"; #   ... but may need function to include "binmode STDOUT,':utf8'" somehow? # nEdz dF 1st?!;
 Xp D0=$(pla 'o8 $d8cS[0]');Xp D4=$(pla 'o8 $d8cS[4]');Xp D2=$(pla 'o8 $d8cS[2]');Xp D6=$(pla 'o8 $d8cS[6]'); # d8cS 0..7     &&  d8bo  ;
 Xp D1=$(pla 'o8 $d8cS[1]');Xp D5=$(pla 'o8 $d8cS[5]');Xp D3=$(pla 'o8 $d8cS[3]');Xp D7=$(pla 'o8 $d8cS[7]'); #port D8=$(pla 'o8 $d8bo'); # 2du;
 Xp HpPF='0'; # set 8sh "H" profilePicker Flag to 1 to popul8 base single-char color variablez with l8st d8bo entries as desired override of standard Dfltz;
@@ -160,13 +208,13 @@ Xp  NVM_DIR="$HOME/.config/nvm"; # L6TMEXIC:strtd setngup GitHub nvm to run Bepp
 Xp JAVA_HOME='/usr/lib/jvm/default-java';Xp LLVM_INSTALL_DIR='/usr/include/llvm';     # D7PM1TjA:upd8d4Ubu13.04&&ant4Android dvl 2add2pathBlO
 #Xp NODE_VERSION='v10.16.0'; # J5BMGHVf:NodeJS installed into /usr/local/lib/nodejs/node-v10.15.3-linux-x64/ according to:  J6KM5W16:upd8d to LTS version;
 #Xp NODE_VERSION='v18.17.0'; # N7KMNODE:used `~/dvl/t8/node/nodebrew install v18.17.0` after `md ~/.nodebrew/src` so it could download the src pkg;
-Xp NODE_DISTRO='linux-x64';Al  erd='expo r d80k';Al epd='expo p d80k'; #   HTTPS://GitHub.Com/nodejs/help/wiki/installation instructionz; r=start
-                               Al xord='erd';  Al xopd='epd';Al xo='expo';  # used to prefer xo => expo, but 4-char is already short enuf; p=publish
-Al vb='vbox';Al vbox='apulse virtualbox';Al kb='keybase'; # apulse quells PA init warning but still no audio plays from the guest yet; ## Super-KB!;
-alias EMx='/snap/emacs/current/usr/bin/emacs'; # --version 28.2 2022 … not sure how to install Doom with the snap, so have to ^X^C to eXit;
-alias EM='                             emacs'; # --version 26.3 2019
-alias eM="EM -g '${COLUMNS}x${ROWS}'"; # runs DoomEmacs hopefully;
-alias e=' eM -nw';alias  wm='wikiman'; # using -nw for NoNewWindow to run in calling terminal instead of spawning own new graphical window like above just EM;
+Xp NODE_DISTRO='linux-x64';Al  erd='expo r d80k' epd='expo p d80k'; #   HTTPS://GitHub.Com/nodejs/help/wiki/installation instructionz; r=start
+                           Al xord='erd' xopd=epd xo='expo';  # used to prefer xo => expo, but 4-char is already short enuf; p=publish
+Al vb='vbox' vbox='apulse virtualbox' kb='keybase'; # apulse quells PA init warning but still no audio plays from the guest yet; ## Super-KB!;
+Al EMx='/snap/emacs/current/usr/bin/emacs'; # --version 28.2 2022 … not sure how to install Doom with the snap, so have to ^X^C to eXit;
+Al EM='                             emacs'; # --version 26.3 2019
+Al eM="EM -g '${COLUMNS}x${ROWS}'"; # runs DoomEmacs hopefully;
+Al e=' eM -nw' wm='wikiman'; # using -nw for NoNewWindow to run in calling terminal instead of spawning own new graphical window like above just EM;
 ulimit  -c 65536; # 33,553,920-bytes # setz coredump size limit2 32MB (4Dbugng) wher #-param is *512-byte blox or 'unlimited' canBUsed  # /opt/Qt5.13.1-pnp/bin
 typeset -U path ;path=($HOME/bin $HOME/.local/bin /usr/local/sbin /usr/sbin /sbin   .  $HOME/dvl/t8/raku/rakudo-moar-2022.12-01-linux-x86_64-gcc/bin
   $HOME/dvl/t8/raku/rakudo-moar-2022.12-01-linux-x86_64-gcc/share/perl6/site/bin       $HOME/.cargo/bin $HOME/.emacs.d/bin $HOME/.nodebrew/current/bin
@@ -202,7 +250,7 @@ Al pet=" pe '"'$h=$r;$h=~s/(\[)/\\$1/g;$f=S(q(fbBL));s/$h/$f/g;s/(\.{4,})/$B$1$z
   s/\b(\d\d?\d?)\.(\d\d?\d?)\.(\d\d?\d?)\.(\d\d?\d?)(\/)?(\d?\d?)\b/$Z$d8cS[5]$1$O.$d8cS[2]$2$O.$d8cS[3]$3$O.$d8cS[0]$4$Y$5$u$6$z/g;s/(ipv4)/$s$1$z/gi;
                     $d=$g;$d=~ s/(\[)/\\$1/g;s/$d/S(A)/ge;s/(\d+)(\.)(\d\d)(\d{0}\s?s(econds)?)/$d8cS[7]$1$W$2$d8cS[7]$3$p$4$c/gi;$T=S(q(X));$S=S(q(S));
   s/(usr)(:?)/$U$1$o$2$B/g;s/(sys)(:?)/$S$1$P$2$S/g ;     s/(\d+)(\.)(\d\d)(\d{3})?(s?(ecs)?  )/$d8cS[1]$1$R$2$d8cS[7]$3$P$4$M$5$c/gx;       $F=S(q(F));
-  s/([=()+<>|#]+)/$Y$1$B/g;s/(PASSED    )/$G$1$g/gix;     s/(\d+)(\.)(\d{2,5})(     s         )/$d8cS[6]$1$Y$2$d8cS[6]$3$w$4$o/gx;$t=S(q(t));$U=S(q(5));
+  s/([=()+<>+#]+)/$Y$1$B/g;s/(PASSED    )/$G$1$g/gix;     s/(\d+)(\.)(\d{2,5})(     s         )/$d8cS[6]$1$Y$2$d8cS[6]$3$w$4$o/gx;$t=S(q(t));$U=S(q(5));
     $s=S(q(:BUILDOK));     s/(Fail\S*   )/$F$s$1$z$T/gix; $u=S(q(mkI));$E=S(q(E));$e=S(q(rKI));$L=S(q(LkUA));$v=S(q(vbBC));$l=S(q(Ld:PbBID));$A=S(q(A));
   s/\s(Wall|CPU)\s(Time:)/$1  $2/g;s/(-{12})/$G----$C----$B----/g;s/(-{8,11})/$U$1/g;s/([^-])(--)([^-])/$1$z$R$2$B$3/g;s/([^-])(-^)([^-])/$1$u$T$2$u$3/;
   s/([.,*%\^]+\s)/$O$1$K/g;s/(C[OP]UN?T?)/$C$1$o/gix;s/(Time )/$T$1$y/gix;s{([^\s/;]*\D[^m])(/)}{$d8cS[5]$1$d8cS[2]$2}g;s{(/)([^\s\e/;]+)}{$1$u$2$z}g;
@@ -228,13 +276,14 @@ Al pet=" pe '"'$h=$r;$h=~s/(\[)/\\$1/g;$f=S(q(fbBL));s/$h/$f/g;s/(\.{4,})/$B$1$z
 Al yatt='y8h  times .last.jsonl' y8H='y8h help';Xp Hyep="--exclude-pattern='/\\.|\\.bak' -T";
 Al yatx="yath $Hyep   " y8x='fpt;prv;yatx' yA='y8x'; # mAB yatx is lIk running: `Hpef= y8h $Hyep` (-L ?) to not filter out thru pet;
 Al yats='y8h  --durations=.dur8.json  --generate-durations-file=.dur8.json  --pretty speedtag .last.jsonl'  prv='prove'; # BlO y8h $Hyep was orig yatx
-Al yatl="y8h  $Hyep -L;d8=\$(d8);cp .dur8.json  .log/$d8.json ;yatt;tmp='had yata yatbcdfgklmnpqrst sepR8d per-?8.pm B4 but just loop letrz nstd Cmz betr;';
- mv lastlog.jsonl .last.jsonl;cp .last.jsonl .log/$d8.jsonl;yats;"; # mAB just   abcdfp iz gud stRt && wil probably B long tIm B4 tStz get in2 n8 && t8 modulz;
-      y8a(){   for Hmpl in  a b c d                    ; do pu "$HOME/dvl/$Hmpl"8 >/dev/null;yatl;  prv|pet; # '$h=$r;$h=~s/(\[)/\\$1/g;$f=S(q(fb));s/$h/$f/';
+Al yatl="y8h  $Hyep -L;d8=\$(d8);cp .dur8.json  .log/$d8.json ;mv lastlog.jsonl .last.jsonl;cp .last.jsonl .log/$d8.jsonl;
+   yatt; yats;tmp='had yata yatbcdfgklmnpqrst sepR8d per-?8.pm B4 but just loop letrz nstd Cmz betr;';";
+      # 2du:add c8.pm tStz && add c BlO; # mAB just   abcdfp iz gud stRt && wil probably B long tIm B4 tStz get in2 n8 && t8 modulz;
+      y8a(){   for Hmpl in  a b   d                    ; do pu "$HOME/dvl/$Hmpl"8 >/dev/null;yatl;  prv|pet; # '$h=$r;$h=~s/(\[)/\\$1/g;$f=S(q(fb));s/$h/$f/';
                  for Hptf in `ls t/*.t`; do if [[ "$Hpef" != "" ]]; then pl $Hptf|pet; else pl $Hptf; fi; done; # O42MHTAY:C ~/dvl/a8/t/.bak/bats-O42.u8 4shL;
         #if    [[  -d    t         ]]; then cd   t; # mAd bAsic raw pl test runz colr filtr thru almOst sAm pe as y8h() abov sO Xtract comon pe 4 bOth thN…;
         #  if  [[ "`ls *.t`" != "" ]]; then pl *.t|pet; fi; fi; #H8shLoModulPrecursorLetr loop && 3wAz2run sAm tStz but mAB justYATH iz betr than prvpl *.t ?;
-         po >/dev/null;done; }; # 2du:figUrout wher all dRk BLk bLU rED gRN R mAd brIt viz betr 4 all prv && yath rEsultz; nOt:prove or just exec pl *.t ?;
+         po >/dev/null 2>&1;done; }; # 2du:figUrout wher all dRk BLk bLU rED gRN R mAd brIt viz betr4all prv && yath rEsultz; nOt:prove or just exec pl *.t ?;
 Al   at='y8' y8='y8a'; # All A8 And AutoAttributez Triple-TesTed TogeTher; # 2du:mk some clEnr 4 .log fIlz of mOstly duplic8 tSt run d8a Only new tIm;
 Al sdab='sda  blame' sda='systemd-analyze' slsa='syc list-units --type service --all   ' jcf='jc -f'; # not SCSI-Disk-A (like in /dev/);
 Al sctl='syc' pctl='pavucontrol' jctl='journalctl' actl='alsactl' cctl='cdc' jcb='jc -b' jcp1='jc _PID=1'; #!JesusChrist
@@ -258,7 +307,9 @@ Xp NCURSES_NO_UTF8_ACS='0'; # N1ML8CUR: set ncurses to not use Alternate CharSet
 Xp COLORTERM='truecolor'; # according 2 HTTPS://GitHub.Com/TermStandard/colors mAB 'truecolor' is more widely detected than '24bit', sO I'm preferring tc nstd;
 Al kr=krita bl=blender;Xp PYTHONPATH='/usr/lib/x86_64-linux-gnu/krita-python-libs/krita'; # nothing set this B4 && krita wantd it,but Xprt here is!enuf;
 Al ki=kitty kn=kitten kt=ki kit=ki; # PCMLDkit:just upd8d from old /usr/bin/kitty-v0.21.2 (mAB instald via snap?) to new ~/.local/kitty.app/bin/kitty-v0.44.0;
-Al kc='pal8 -q -C_8C'; # quickly && quietly Color kitty Cursor Red;
+Al kc='pal8 -q -C_8C' ysap='curl YSaP.sh/theme' hotd='curl -L HotDogStand.LoL'; # quietly Color Kitty Cursor Red; set thEme2 Dave's YouSuk@Programng or HotDog;
+# QAHMGEEK:just lernd th@ in kitty Ctrl-Shft-h opNz all scrollback in less,thN g (go2top), | (wrIt2pIpe), $ (go2Nd), thN Enter 'dd of=~/.tmp/kityscrl.u8' 2sAv;
+#   cud alsO just Nter: '|$xsel -ib' or EvN: '|$cat >~/.tmp/kityscrl.u8' thN xsel -o shud pAste it bak && this method Cmz 2 include all SKp cOdez by Dfalt;
 #       `which vim`; #dflt(&&preferred)way2load my *.pm (butTaki shud nstd get i386 path)  ## above tried exporting otherwise unused but krita still warnd;
 Xp QT_LINUX_ACCESSIBILITY_ALWAYS_ON='1';Xp QT_ACCESSIBILITY='1'; # not yet sure what these impact, but making a note intending to find out more l8r;
 #Xp QT_QPA_PLATFORM_PLUGIN_PATH='/opt/Qt5.13.1-pnp/plugins'; #/usr/lib/x86_64-linux-gnu/qt5/plugins'; # JC9LIke9:fix libqxcb.so to 0x50D01 somehow;
@@ -365,8 +416,8 @@ Xp           PS1='%{$W%}%(!.<.[)%{$G%}%n%{$z$B%}@%{$C%}$HHst`d8 -z`%{$z$B%}`c8fn
 # see if sakura can accept colr varz in prmpt
 # it seems that sakura won't bright bold 01;30..37 like other termz but setting prompt with xterm-256color SKp cOdz will work 4 her like it does elsewhere;
 #Xp          PS1='%{[1;37m%}%(!.<.[)%{[1;32m%}%n%{[1;34m%}@%{[1;36m%}$HHst` d8 -z `%{[1;34m%}` c8fn -z $PWD `%{[1;37m%}%(!.>.])%{[1;32m%}';
-alias xp="Xp PS1='%{[1;33m%}%(!.<.[)%{[1;36m%}%n%{[1;37m%}@%{[1;36m%}$HHst\`d8 -f|sS z\`%{[1;34m%}%~%{[01;01;01;1;33m%}%(!.>.])%{[1;32m%}'";
-alias dp="Xp PS1='%{[1;37m%}%(!.<.[)%{[1;32m%}%n%{[1;34m%}@%{[1;36m%}$HHst\`d8 -z\`%{[1;34m%}\`c8fn -z \$(pwd)\`%{[1;37m%}%(!.>.])%{[1;32m%}'";
+Al xp="Xp PS1='%{[1;33m%}%(!.<.[)%{[1;36m%}%n%{[1;37m%}@%{[1;36m%}$HHst\`d8 -f|sS z\`%{[1;34m%}%~%{[01;01;01;1;33m%}%(!.>.])%{[1;32m%}'";
+Al dp="Xp PS1='%{[1;37m%}%(!.<.[)%{[1;32m%}%n%{[1;34m%}@%{[1;36m%}$HHst\`d8 -z\`%{[1;34m%}\`c8fn -z \$(pwd)\`%{[1;37m%}%(!.>.])%{[1;32m%}'";
 # J5IMApwd:Above DefaultPrompt $PWD was not getting upd8d properly like it would for just str8 PS1 assignment, so had to wrap in sub \$(pwd) command 2 work;
 #case "$TERM" in xterm*|rxvt*) # if this is an xterm set the title to user@host:dir; J5AMBPS1:shudBcool2mk ps1() set PS1 func wich tAkez dif d8,c8fn,4m@z,etc.;
 #      PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1";; # also setz windO tItl2 Uzr@hOst:dir; abov R4 Xpanded (-full) && Default Ps1 PromPtz;
@@ -375,7 +426,7 @@ alias dp="Xp PS1='%{[1;37m%}%(!.<.[)%{[1;32m%}%n%{[1;34m%}@%{[1;36m%}$HHst\`
 #parent=$(ps --pid $(ps --pid $$ --no-headers --format ppid) --no-headers --format cmd); # might need2 s/cmd/comm/ 2ch 4m@ prOfIl for result to =~ /^login/
 #if [[ $parent == login* ]]; then ... else ... fi to detect a full-screen console login rather than cking for graphical $TERM, although $TTY might be easier?
 # I71M8PS1:2du mAB rewrite sp,np,dp 2B ps1 varE8ionz && basicz wi no Perl DpNdNCz to calm warnz,mAB try2zsh regX colr pwd&&gNr8 aprox colrd d8stampz2 4comp@;
-Al pala='cd ~/lib/Oct/f8/pal8/paleta-palz;ls;paleta > ~/.cache/cur-pala < '; # PALMEXIC:alias to just give paleta filename to send on STDIN;
+Al pala='cd ~/lib/Oct/f8/pal8/paleta-palz;ls;paleta > ~/.cache/cur-pala < '; # PALMEXIC:Al to just give paleta filename to send on STDIN;
 Al pals='ls ~/lib/Oct/f8/pal8/paleta-palz' palc8='cat ~/.cache/cur-pala' palc=palc8 pale=palc palz=pals; # palc rEsetz pal2l8St curfrom paleta inew locl trmz?;
 Xp HISTFILE=~/.zsh_history;Al sp="Xp PS1='%(!.<.[)%n@$HHst:\`d8\`:%~%(!.>.])'";  #Prmptz:SimplPrmt||NormlPrmt Uzd2hvBigPrmt2but ch eq2Norm soIrmd;
 Xp HISTSIZE=65536;Xp BdOn="tput smso";Xp Bond='BdOn';Al setfp='etfp -s'; #from`man tput`:BoldOn&&Off TermSeQNcz4:`echo "${BdOn}NtrNm:${BdOf}\c"`
@@ -401,7 +452,7 @@ if       [[ "$HUsr"     !=  "root"  ]];                                  then #X
   # 8 unUsed pal8 fIlz aftr abov: cOOL DARKpRIM dARKZ deepRed Flipped r Tigzfavz t ;   ## !sure how2alias just call? note Dflt GnomTerm 0 orig got none;
   # K2FL7WHY:only konsole was spewing 16 backslashes when `src` ran to XeQt $Hpal (the f8.pm pal8 file on nXt lIn below) Bcuz it sepR8d charz of OSC ST;
   if     [[  $TTY  =~ ^/dev/(tty|pts/) ]] && [[ -x "$Hpl8" ]]; then Xp Hpal="$Hpl8";Al src8="$Hpal";Pal8Qiet='1' $Hpal; fi; # goodEnuf wo SKpd bktx?
-  # J12LEAP8:trying to Xtract pal8 call so mAB new `$Hpal` or alias src8 could just reset proper 8-category term pal8 without src full .zshrc?
+  # J12LEAP8:trying to Xtract pal8 call so mAB new `$Hpal` or Al src8 could just reset proper 8-category term pal8 without src full .zshrc?
   if     [[ "$DISPLAY" ==           "" ]] && [[ "$TERM" == "linux" ]]; then # orig had PipzGlobalf8Flag 2!redo but!DISPLAY also4ssh so $TERM"linux"4console
     # no more old Gen /dev/vc/\d+ && curNtly only /dev/tty[1-24] (orig1-6) active anyway && old pts/ which was left in to align with above could match
     #   && fail the IO call when sshing from Chun console to Aku, so replaced it with "tty/", which is now aligned altern8ion which should never match
@@ -447,8 +498,8 @@ Al lFx=' lF   -X     ' llx=' ll  -X      ' lx=' l  -X      ' lfx=' lFx ' lsx=' l
 Al lX='lx'   llX='llx' LX='L -X' Lx='LX  ' lax='la -X' ell='els -lFp $et';Xp et="+T^NY-M-DTZ"; # Xp Els-Time(Numrc dashd-Date Time Zone) nO sub-secz&&nEdz -l!;
 Al lFs=' lF   -S     ' lls=' ll  -S      ' l-s='l  -S      ' lfs=' lFs ' lss=' lfs' le='l -e'; #s8bySize
 Al lF-d='lF  -d      ' ll-d='ll  -d      ' l-d='l  -d      ' lf-d='lF-d' ls-d='lf-d'; #Dirz; belo shud prolyBfuncz2tst4$1 B4pikng*
-Al lFd=' lF-d    *(/)' lld=' ll-d    *(/)' lD=' l-d    *(/)' lfd=' lFd ' lsD=' lfd '; #       Dirz*(/) Beppu sez:"Do*NOT*alias
-Al lFid='lF-d -I=*(/)' llid='ll-d -I=*(/)' lid='l-d -I=*(/)' lfid='lFid' lsid='lfid'; #Ignore Dirz(!/)   importnt linker`ld`!"
+Al lFd=' lF-d    *(/)' lld=' ll-d    *(/)' lD=' l-d    *(/)' lfd=' lFd ' lsD=' lfd '; #       Dirz*(/) Beppu sez:"Do *NOT* alias important linker: `ld`!";
+Al lFid='lF-d -I=*(/)' llid='ll-d -I=*(/)' lid='l-d -I=*(/)' lfid='lFid' lsid='lfid'; #Ignore Dirz(!/)
 Al lFf=' lF      *(.)' llf=' ll      *(.)' lf=' l      *(.)' lff=' lFf ' lsf=' lff '; #normal fylz*(.) Note:symlynx(@)
 Al lFif='lF   -I=*(.)' llif='ll   -I=*(.)' lif='l   -I=*(.)' lfif='lFif' lsif='lfif'; #Ignore fylz(!.)
 Xp FTym='--full-time';Al lft='ls $FTym  ' llft='ll $FTym   ' ltym='lft ' lftym='lft' ltime=lft lsft=lft; #shoFulTym stampz4LongLstz
@@ -458,9 +509,9 @@ Al lads='la -d  .*|sS' lad='lads' ls8='ec "Stuv, rXU.: Size time - uaxt vrsn,  r
 # for some reason, old ea='e a' could shell out2`bak` from ~/dvl/Utl/.bak/ but can't create .bak/ EROR from ~/.arc/Aku_-arc-full-Ubu10.04-D1KD1KD/var/log/apt/
 # mAB stRting ./ as root owned  (even if not that restrictive 755 permissions) can't find way to ~/ from there? Wrap p[uo] makes sense 2rElEtRgetfromNEwher
 #ea(){ if [[ `dirs` != '~' ]]; then pushd ~; fi;olde a; # try2quell warning "popd: directory stack empty" && not found pu or po;  # loc8r BlO calls wi --Regex
-#      if [[ `dirs` != '~' ]]; then popd   ; fi}        # Orig: alias ea='pu ~;e a;po'; # loc8r is in findutils-default 4m@ th@ is lIk emacs but . m@chz nwlIn
+#      if [[ `dirs` != '~' ]]; then popd   ; fi}        # Orig: Al ea='pu ~;e a;po'; # loc8r is in findutils-default 4m@ th@ is lIk emacs but . m@chz nwlIn
 Al oldE='olde    $TTY';Al up='        upd8  ';Al e2='pu ~/dox/2du;e 2;po';Al e3='e 3     ';Al upd8-mime-d8bs='md8';Al larv='laff; ripv';
-Al e4='     e    4   ';Al e5='     e 5      ';Al e6='             e 6   ';Al e7='e 7     ';Al   e8='pu ~/dox/2du;e 8;po';Al e9='e 9'; #ud=updb; # thotof U8Draw
+#l e4='     e    4   ';Al e5='     e 5      ';Al e6='             e 6   ';Al e7='e 7     ';Al   e8='pu ~/dox/2du;e 8;po';Al e9='e 9'; #ud=updb; # thotof U8Draw
 Al oldb='oldb    $TTY';Al loc8r='loc8 -r    ';Al upd8-mdb=' md8       ';Al upd8-md8b='md8';Al update-mime-db='md8';Al lar8='larv; updb';Al trunc8='truncate';
 Al sud='sudo updatedb';Al loc8='      locate';Al mdb-upd8=' md8       ';Al md8b-upd8='md8';Al mime-db-update='md8';Al mdb8='  mdb-upd8';
 Al updb='   upd8db   ';Al upd8d8ab='  upd8db';Al   updtdb='updb       ';Al md8b='mdb-upd8';Al md8='update-mime-database -V';Al xi='xinput';
@@ -489,25 +540,25 @@ Al   AS='apts   '  aS='acS      ' nar=' na autoremove' nhi='na  history   '  ncl
 Al   na='nala   '  nS='nas      ' nap=' na autopurge ' nau='na     upgrade'  nfe='na fetch' np=' na purge '; #   of apt(-get);
 Al ni=' na install' nasrch='na search' nu=' na update' nuu='na     upgrade'  nsh='na show ' nls='na list' nas='nasrch';
 Al nhe='na  --help               ' nhiu='nhi undo' nh='nhi' nr='nrm'; # 2du:add more nala sub-optn aliasez l8r; rEplAcd -(halt|reboot)Now;
-Al nlu='nls --upgradable         ' goe='g -o export ~/.zshrc|wc -l '; # UbuntuPro 4 up 2 5machines: `sudo pro attach C143gkd7g12gV8R9JkH2WCgcbJoZ8v`;
-Al d6='en " 666+T=gc6 L8AMNION  "' 666='g    alias  ~/.zshrc|wc -l ' gc6='g -c alias ~/.zshrc'; # -Count; 666 lInzHaz:28 2ManyNow; 1384vs.1391;
-Al da='en "1333+r=goa L8AM1333/2"' goa='g -o alias  ~/.zshrc|wc -l '; # -Onlym@ch;gca is alreD --color=auto sO abov nEded z but!goa; clOse2 8.utf^8wc;
+Al nlu='nls --upgradable         ' goe='g -o export ~/.zshrc|cl'; # UbuntuPro 4 up 2 5machines: `sudo pro attach C143gkd7g12gV8R9JkH2WCgcbJoZ8v`;
+Al d6='en " 666+T=gc6 L8AMNION  "' 666='g    alias  ~/.zshrc|cl' gc6='g -c alias ~/.zshrc'; # -Count; 666 lInzHaz:28 2ManyNow; 1384vs.1391;
+Al da='en "1333+r=goa L8AM1333/2"' goa='g -o alias  ~/.zshrc|cl'; # -Onlym@ch;gca is alreD --color=auto sO abov nEded z but!goa; clOse2 8.utf^8wc;
 Al AX='en "Al:";Acl;en "Xp: ";Xcl' Acl='Al|cl' Xcl='Xp|cl' ax=AX ea=ax ae=ax acl=Acl ecl=Xcl xcl=Xcl; # P5VMIPi8:a6 was old B4 new Acl|Xcl;
 Al acm='acl|cma' a2c=aria2c a2=a2c tux=tuxedo; # P7MM7MMM:adding comma; Q9SMDa2c:adding Aliasez 2 aria2c downloading tool && tuxedo todo.txt TUI Utl;
-Al A6='en "goe: ";goe;en "goa:";goa;en "da :";da;ec ";";en "d6 :";d6;ec ";";en "666: ";666;en "gc6: ";gc6'; # L8AMLIAS:a6 countz exportz&&aliasz4 .zsh* hEr;
+Al A6='en "goe: ";goe;en "goa: ";goa;en "da :";da;ec ";";en "d6 :";d6;ec ";";en "666: ";666;en "gc6: ";gc6'; # L8AMLIAS:a6 countz exportz&&aliasz4 .zsh* hEr;
 Al a6='en "g     alias ~/.zshrc pIp cl; 666 : "; 666 ;
        en "g -c  alias ~/.zshrc       ; gc6 : "; gc6 ;
-       en "g -o  alias ~/.zshrc pIp cl; goa :" ; goa ;
+       en "g -o  alias ~/.zshrc pIp cl; goa : "; goa ;
        en "      alias          pIp cl;Al|cl:" ;Al|cl;
        en "g -o export ~/.zshrc pIp cl; goe : "; goe ;
-       en "     export          pIp cl;Xp|cl: ";Xp|cl;';
+       en "     export          pIp cl;Xp|cl: ";Xp|cl;'; # barely have any lFt;
 # [pip@OniP4IMGoa8~]a6       ### !*Don't*! use: set BlO,but 'export|cl' insted;
 # goe: 356 # grep orig expz; ### P4JM8Exp:Zsh: `set|wc -l` just now gave:  416;
 # goa:1794 # veryclOs2 1800; ### P4JM816D:from Zsh: `alias|wc -l`just got 1613;
 # da :1333+r=goa L8AM1333/2; # 2du:tID all this old a6 stuf in2:"$lSonz_lernd",
 # d6 : 666+T=gc6 L8AMNION  ; #   mAB alsO s/goa-acl:alias/al/ 2get numbz sAme?,
 # 666: 888 # Xactly 888 2dA; #   lern what +r && +T were B4||proly lil cncern?;
-# gc6: 888 # grep linecount; ### rEmMbr:cudUz 'al'&&'Xp' 4 "alias" && "export";
+# gc6: 888 # grep linecount; ### rEmMbr:cudUz 'Al'&&'Xp' 4 "alias" && "export";
 Al tdu='pu ~/.local/share/tldr/tldr;git pull origin main;po'; # tldr -u(pdate) cmnd fails2pull origin to master, but setup main nstd. td alredy ASCIItXtdrw;
 Al ali=' apt list             --installed' dli='dpkg -l'; # super basic commandz to use Apt or Dpkg(-query)? to List Installed packagez on Ubuntu or
 Al alim="aptitude search      '~i!~M' " agiy='agi -y'; # shud just List pkgz wich were Instld Manually (!as DpNdNCz); /var/lib/apt/extended_states 2?
@@ -531,20 +582,20 @@ Al gsgL='          gsg com.canonical.Unity.Launcher  favorites '; # from HTTPS:/
 #   'application://firefox.desktop', 'application://krita.desktop', 'application://gimp.desktop', 'application://inkscape.desktop',
 #   'application://fontforge.desktop', 'application://audacity.desktop', 'application://update-manager.desktop', 'application://ccsm.desktop',
 #            'unity://expo-icon', 'unity://devices', 'application://org.gnome.Nautilus.desktop']; # where .desktop files could be in (/usr|~/.local)/share/ap*;
-Al emrg='emerge' em='emrga' es='ems'; #alias em='emu'; # fav emrg dfaltz:--colmz -va --kp-go -Du (+-N 4sys|wrld)
+Al emrg='emerge' em='emrga' es='ems'; # em='emu'; # fav emrg dfaltz:--colmz -va --kp-go -Du (+-N 4sys|wrld)
 Al emcol='emerge --columns -v'; #ias eM='em     -v'; # --columns vert-alinz pkg-name,vers,use-flagz       (-v == --verbose      )
 Al emrga='    emcol  -a' emrge='   emrga  -e'; # --ask                                              (-e == --emptytree    ) (eg,wrld4UsrModeLnux)
-Al emrgk='emrga  --keep-going' eN='emrgd  -N'; # --ask --keep-going was my preferred emrg dflt optz (-i == --info         )
+Al emrgk='emrga --keep-going' eNN='emrgd  -N'; # --ask --keep-going was my preferred emrg dflt optz (-i == --info         )
 Al emrgd='    emrgD    ' emrgD='   emrgk  -D'; # --ask --keep-going --Deep          => -aD  --kp-go (-d == --debug        )
 Al emrgu='    emrgD  -u' emrg1='   emrga  -1'; # --ask --keep-going --Deep --update => -auD --kp-go (-1 == --oneshot [+-a])
-Al emrgsys=' eN @system' emrgwrld='eN @world'; # --ask --keep-going --Deep --update => -auD--k-g--Newuse sys && wrld
+Al emrgsys='eNN @system' emrgwrld='eNN @world'; #--ask --keep-going --Deep --update => -auD--k-g--Newuse sys && wrld
 Al emrgn='    emrga  -n' emrgN='   emrga  -N'; # --ask --noreplace                                  (-N == --Newuse  [+-a])
 Al emrgo='    emrga  -o' emrgO='   emrga  -O'; # --ask --onlydeps                                   (-O == --nOdeps  [+-a])
 Al emrgs='    emcol  -s' emrgS='   emcol  -S'; # --search                                           (-S == --Searchdesc   )
 Al emrgp='    emcol  -p' emrgP='   emrga  -P'; # --pretend                                          (-P == --Prune   [+-a])
 Al emrgc='    emcol  -c' emrgC='   emrga  -C'; # --depclean (strongly prefr -c,don't use risky -C ) (-C == --unmerge [+-a])
 Al eU='emrgd -U' eUsys='eU @system' eUwrld='eU @world'; # --changed-use (similar to -N Newuse but only whether use flagz changed by user)
-Al eD='emrgd   ' eNsys='eN @system' eNwrld='eN @world'; # --newuse in similar form to eU above, remember 2 'eD --depclean' aftr sys|wrld;
+Al eD='emrgd ' eNsys='eNN @system' eNwrld='eNN @world'; # --newuse in similar form to eU above, remember 2 'eD --depclean' aftr sys|wrld;
 Al edc='eD --depclean' eds='em --deselect' eUbdcg='eU --with-bdeps=y --complete-graph' eUbcw='eUbdcg @world'; # revdep-rebuild too;
 Al emrgsync=' emerge --sync'; #... && othr useful utlz:glsa-ck -[pf] (new|all);revdep-rebld -ipv;perl-clnr (libperl|all) ask;python-upd8r -pv (-dm)?;
 Al emrgupd8=' emrgsync; glsa-check -f new;    emrgsys; upd8db' # maybe this should be a nightly||weekly upd8 task scheduled b4 upd8db via cron(&&wo -ask)
@@ -562,8 +613,8 @@ Al MkNwKrnl='echo "em gen2-srcz;/usr/src/linux;mkMnuCfg;mk;mkModIns;bak.cfg;cp a
 Al vimuse='vim /usr/portage/profiles/use.desc /etc/make.conf /usr/portage/profiles/use.local.desc /etc/portage/package.use   /etc/portage/package.keywords';
 Al vimUz=' vimuse                                                                                 /etc/portage/package.*mask /etc/portage/color.map';
 Al cpa='cp -a';
-#alias scp='noglob scp'; # still want 2 glob locally so just intentionally escape remote globs wi \* etc; #Rot13perLyn:`vim $fyl`Vg?; # hn=hostname; hn != hH ;
-Al              ..='cd ..                 ';Al    cdup='..';Al cd..='..                      ';Al SSH='sH' SSR='sR'; #ias nh='hN';alias nr='rN';
+#Al scp='noglob scp'; # still want 2 glob locally so just intentionally escape remote globs wi \* etc; #Rot13perLyn:`vim $fyl`Vg?; # hn=hostname; hn != hH ;
+Al              ..='cd ..                 ';Al    cdup='..';Al cd..='..                      ';Al SSH='sH' SSR='sR'; #Al nh='hN' nr='rN';
 Al             ...='cd ../..                              ';Al cd...='...                    '; # mItBAbl2Uz -c wi && aftr sz zsh 2run rmSS as sngl cmd?;
 Al            ....='cd ../../..                           ';Al cd....='....                  '; # 4 `sz` BlO fIl is Only rEmovd aftr `x` logz mE out thO;
 Al           .....='cd ../../../..                        ';Al cd.....='.....                '; # so ReMove.SudoSuccessful fIl aftr most callz2 sudo BlO;
@@ -589,96 +640,106 @@ Al sz="$sd -E zsh;rmSS" rn='rN ' SSHN='hN' SN='RN'; # EmergNC!!! Sudo Shutdown o
 Al      pu='  pushd'  ua='un    ' SSRN='rN'sN='rN'; # aliasz4aftr`sz`whNIcanw8 1min4shutdn||rEbt;  #   du fIl transfrz && mAB nEd !my sz;
 Al      po='   popd' una='un -a ' sus='sudo -E -s zsh'; # -c "rm $HOME/.sudo_as_admin_successful"'; # abrEV8nz 4 sys-info which call un();
 Al                   unr='un -r '; # this shud probably B just curNtly runing krnl version number (eg, 5.15.0-91-generic) && my MpT un|ua callz -a;
-Al     epc='  ep|b8clr'; #d8 e|cma!=epoc # rEgRdng sudo abov cannot run both -Intractiv && -Shell optz; # d8 e>epoc by~3.56528hourz 13Ksecz sOmABclOs2UTC?;
-Al    epoc="   pab   'o8(cma($HTHi::time))'"; # alias 2 output non-colrd epoch float secz from Perl Time::HiRes wi cma int KMGT sepR8orz; epoc==`date +%s`;
-Al      ep="   pab '\$t6=b64($HTHi::time);\$t6=~s/(%....).+\$/\$1/;o8(coma(\$t6))'"; # alias 2 gNr8 b64 trunc8d coma'd epoch float secondz && abov colrz;
-# PerlMaven DscrIbz how -e executez cmd-lIn strng but -E Enablez all l8st fE8urez (lIk say && betr UniCode), -n wrapz -E strng in while(<>){ && } with -p just
-#   -n looped with print $_ aftr Each iter8ion, && -i modifiez a supplId fIl in-place, so: `perl -ipE 's/badcode/foobarz/' file.txt` would rEplAc on evry lIn;
-# `pdoc perlrun` suggests I mIt not want -CS on all thEs BlO (as perhaps othr optnz R betr, but mOst worried it will inhibit handling bInary d8a lIk f8 .psf?):
-# As of Perl v5.8.1, -C can B folOd Ether by number or list of optn letrz. Letrz, numeric valUz, && Efects R as folOz; listng letrz is Equal2 summing numberz.
-#   I    1  STDIN is assumed to be in UTF-8;     #   i    8  UTF-8 is the default PerlIO layer for  input streams          ;
-#   O    2  STDOUT         will be in UTF-8;     #   o   16  UTF-8 is the default PerlIO layer for output streams          ;
-#   E    4  STDERR         will be in UTF-8;     #   A   32  the @ARGV elements are expected to be strings encoded in UTF-8;     #  SDL  95  ?;tSt wi bIn d8a;
-#   S    7  I + O + E                      ;     #   D   24  i + o; # 2du:mAB Iwant -CSDL nstd?(but mAstil nEd2disAbl somtImz4 bInary-d8a,if UTF8 conflictz?);
-#   L   64  normaly "IOEioA" R unconditional,but L mkz thM conditional on lOcale NvIronmNt variablz: LC_ALL, LC_CTYPE, && LANG (in ordr of DcrEsing precedNc)…
-#   a  256  Set ${^UTF8CACHE} to -1,to run UTF-8 caching code in Dbuging mOde;…(morDtailz4 L abov: -- if variablz indic8 UTF-8,thN sLectd "IOEioA" R in Efect;
-#l     pla="   pl  -M$HOa8         -M$HTHi -CS    -E"; #   ... but may need function to include "binmode STDOUT,':utf8'" somehow?
-Al     plb="   pl          -M$HOb8 -M$HTHi -CS    -E"; # `m perlrun` described -CS as indic8ing UTF-8 for all 3 of STD(IN|OUT|ERR)
-Al     pld="   pl                  -M$HOd8 -CS    -E"; # mAB shud mk plc 4 c8.pm && plf 4 f8.pm && plk 4 k8.pm etc.?; 2du:figUrout Y `d8 e` iz ~13K > epoc;
-Al     pab="   pl  -M$HOa8 -M$HOb8 -M$HTHi -CS    -E"; # `pab "binmode STDOUT,':utf8';print b256(calQ('15xx63'))"` gets rid of ...
-Al     pad="   pl  -M$HOa8         -M$HOd8 -CS    -E" pa='pabd'; # pb was already taken by pingb && pa can be all of a8,b8,d8;
-Al    pabd="   pl  -M$HOa8 -M$HOb8 -M$HOd8 -MTime::Local -CS    -E  "; #   ... the warning about "Wide character in print at -e line 1."
-Al     pea="   pl  -M$HOa8                 -CS   -pE"; # tried to add -Mutf8 to aliases but may need some more specific flag?
-Al     peb="   pl  -M$HOa8 -M$HOb8         -CS   -pE"; # -CSDL is the same as just -C && gets all the STDz && i/o && @ARGV
-Al     ped="   pl  -M$HOa8         -M$HOd8 -CS   -pE" pe='pead'; # mAnly just want 2 Uz pa 4 1lInr cOd && pe 4 pIpngin&&filtrng;
-Al    pead="   pl  -M$HOa8 -M$HOb8 -M$HOd8 -CS   -pE" pep='pea' t2='t1 2' 2z=t2 t3='t1 3' t4='t1 4' qc8=Qc Qc8=Qc; # 3 && 4 R!yet;
-Al 1z=t1   t1='   pla "o8(t1(@ARGV))"' pat1='t1'  ; # shO rEslts from a8 tStng wich 1-letr sKlRz it DfInd&&Xportz thN wich varz R frE(undF)2BUzd sepR8ly;
-# original t1 abov shOwd: /defhijlnqstuvx/i +AZ azfrE4golfUse but a8 nowXpzall;
-Al    Qc="pe 's/0+\$// if s/(\\.\\d{64}).+/\$1/'"    b8cz='b2cz'; # alias b8ls='b2ls;ec'; # O1JLFUc8:shud trunc8+strip trAlng Zr0z lIk c8:`Q 1/3|Qc`;
-Al Qs=Qc qc='Qc'; # O7JMAqcQ:since q() is already single-quote function in Perl, I've decided I want my shortest for calQ to just be UperCase-Q && upd8 old qz;
-Al q='Q'; # OCBLLETS: until q() && qq() get remapd from Perl 2 ZShell/BASh,then leave just low q as pointing to Q UperCase,&& qq couldBlIk printf mAB?;
-Al b8ls="pla 'o8(d8c(join(qq( ),@sb256[0..63])). qq(\\n). d8c(join(qq( ),@sb256[64..127])). qq(\\n). d8c(join(qq( ),@sb256[128..191])). qq(\\n). d8c(join(qq( ),@sb256[192..255])))'"; # print 4 strIpd-spAcd d8-colrd lInez of 64 charz!;
-Al b2ls="pla 'o8(d8c(join(qq(),@sb256[0..127])). qq(\\n). d8c(join(qq(),@sb256[128..255])))'"; # print 2 d8-colrd lInez of128 base256 charz (just a8.pm?);
-Al b2cz="pa 'for(0..3){for my \$bn(0..63){\$ln.=b256(\$_ *64+\$bn)} o9(d8c(\$ln));\$ln=q()}'"; # print 4 d8-colrd lInez of 64 base256 charz 2 C thM alInd;
-# abov tStng pa (pl all [abd]8) mAnly wi d8 dur8(ionz),but try -MTime::HiRes time too,to get fractnz2,alsO fix dur8 colr in d8c ordr but shud B dur8c nstd,
-#   && alsO try Uzng just a8.pm && just join('',@sb256) && tSt $ENV{COLUMNS};
-pewh() { wh  $@ | pe 's/;/$W;$y/g;s/-/$C-$y/g;s/:/\t$R/;s/:/$B:$Y/g;s/^/$G/;s/  +/ /;s/ to /$o to$Y /;s/\|/$M|$O/g;s/=/$B=$C/'; } # xmpl pRamz2 pe colr;
-Al pad8="pa '\$ts=time;sub Od8n{return($HOd8->new(@_));};\$ds=Od8n();o8(qq(\${G}stRt:).\$ds->colr(q(a)).qq(\$G:\$ts:\$^T;\\n));aw8(q(D8));\$tm=time;
-  \$dm=Od8n();o8(q(midl:).\$dm->colr(q(a)).qq(\$G:\$tm:\${M}D\${p}8\$Y:aw8dur8\$G;\\n));\$dw=$HOd8::dur8->new(q(8D));\$dw->w8();\$te=time;\$de=Od8n();
-  o8(q(Nd8e:).\$de->colr(q(a)).qq(\$W:\$te:).\$dw->colr(q(a)).qq(\$C: w8dur8\$G;\\n));'"; # shud tAk about ~22secs 2 run; cudB betr az shL func&&!nEdblquOtz?;
-# PerlDoc PipeExec PipeLess was orig called pelS, thN pdel B4 tAkng Ovr pdoc 4 colrng perldoc output thru less (2 hopefully look nIce lIk man pAgz in most);
 # NAJMGYTB:running t1 just now said a8 (after d8bo RoYGCBMp && YGTBUDSN) leaves 20 undef for single use:ef hij l    q    v x  A   EF HIJ L    Q    V X Z;
 #   abs, alarm, chomp, chop, chr, chroot, cos, defined, eval, evalbytes, exp, fc, glob, hex, int, lc, lcfirst, length, log, lstat, mkdir, oct, ord,
 #   pos, print, printf, quotemeta, readlink, readpipe, ref, require, reverse, rmdir, say, sin, split, sqrt, stat, study, uc, ucfirst, unlink, unpack... ;
 # 2du:stor sepR8 list of Perl keywordz && othr comon syntax LMNtz 4 Use hEr && simLR nEdz Lswher,loop thru $@ && skip -flagkeyz && valUz 2 get topic in $DT,
 #   lern wut $/ iz && does 4 how 2 Uz OSC 6n getcursoryx mAB,export $DT mAB as HPDT 8shel "H" PerlDocTopic 2 rElOd if nO pRam givN (lIk v vim && m man du);
 pdoc() { if [[ $# -gt 0 ]]; then DT="$1"; else DT='perldoc'; fi; # DocTopic; 4 longSt tIm I didn't rEalIz th@ `pe` runs cOde on evry lIn pIped thru! woops;
-  pD     -T  $@ | pe "\$pR=$DT;"'$LG=S("La:GbBID");$LP=S("L:PBIO");$F=S("FbI");s/(^|\s)/$1$R/g if(/^[A-Z]+/);
-    s/\b(\w+)(::)/$c$1$T$2$c/g; # had 2 B put B4 nXt pR(am) module name 4 Text::Diff::Config that stripped SKpz leaving overlapping long colr code d8a;
+  pD     -T  $@ | pe "\$pR=$DT;"'$LG=S("La:GbBID");$LP=S("L:PBIO");$F=S("FbI");s/(^|\s+)/$1$R/g if(/^[A-Z]+/);
+   #s/\b(\w+)(::)/$c$1$T$2/g; # had2B put B4 nXt pR(am) module name 4 Text::Diff::Config that stripped SKpz leaving overlapping long colr code d8a;
     s/(\s+)/$1$C/g if(s/^(\s{4})($pR\s+)(-)(\s+)/$1$LG$W$2$o$3$z$4/i);s/($pR)([^:])/$LG$1$z$2/gi;s/(\D[^m])(Perl)\b/$1$LP$2$z/gi;
-    s/\b(if|elsif|else|die|new|use|my|not|while|defined|length|unless)\b/$Y$1$z/g; # sub-hedrz wi Only 2spAcz,mAin paragraphz wi 4spAcz,indNtz 8 && 9 BlO;
-    $Hb=S("HbbI");s/(\s+)/$1$Hb/g if(/^  \S/       );s/(\|)(\w+)(\s|$)/$1$F$w$2$z$3/;s/(\w+)(\|)/$F$w$1$W$2$w/g;
-    $Gb=S("A:Gb");s/(\s+)/$1$Gb/g if(/^    \S/     );s/(\s|\[)(-[A-Z])(\s[-A-Z0-9:_]+)?(\])?(\s|$)/$c$1$B$2$Gb$3$c$4$t$5/gi;
+    s/\b(if|elsif|else|die|new|use|my|our|not|for|while|defined|undef|length|exists|sort|unless)\b/$Y$1$z/g;$Yb=S("Ad:YbB"); # setup Avrg:Yelo on Dark:bLUE;
+    s/\b(abs|alarm|chomp|chop|chr|chroot|cos|defined|eval|evalbytes|exp|fc|glob|hex|int|lc|lcfirst|length|log|lstat|mkdir|oct|ord     )\b/$Yb$1$z/gx;
+    s/\b(pos|print|printf|quotemeta|readlink|readpipe|ref|require|reverse|rmdir|say|sin|split|sqrt|stat|study|uc|ucfirst|unlink|unpack)\b/$Yb$1$z/g;
+    # sub-hedrz wi Only 2spAcz,mAin paragraphz wi 4spAcz,indNtz 8 && 9 BlO;
+    $Hb=S("HbbI");s/(\s+)/$1$Hb/g if(/^  \S/       ); #s/(\|)(\w+)(\s|$)/$1$F$2$z$3/; #s/(\w+)(\|)/$F$1$W$2$w/g;
+    $Gb=S("A:Gb");s/(\s+)/$1$Gb/g if(/^    \S/     );s/(\s|\[)(-[A-Z])(\s[-A-Z0-9_]+)?(\])?(\s|$)/$c$1$B$2$Gb$3$c$4$t$5/gi;
     $cB=S("A:cB");s/(\s+)/$cB$1/g if(/^        \S/ );
     $ti=S("D:ti");s/(\s+)/$ti$1/g if(/^         \S/);
     s/(\s|[^-\d])([A-Z_][A-Z0-9]*_[A-Z_0-9]+)\b/$1$o$2$z/g;
     s/(\s|[^-\d])([a-z_][a-z0-9]*_[a-z_0-9]+)\b/$1$Y$2$z/g;s/(" )([^" ]+? \s?[^" ]*?)( "   )/$p$1$M$2$p$3$z/gx; # intrlEvd sngl&&dbl-quOtzBlO2get singlz4regX;
-    s/([*])([^*]{1,32})(\1)/$r$1$C$2$r$3$z/g;           s/(['"'])([^' ]+?\\s?[^' ]*?)(['"'])/$p$1$m$2$p$3$z/gx;s/([^m])(\{|\})/$1$W$2$z/g;
+    s/([*])([^*]{1,32})(\1)/$r$1$C$2$r$3$z/g;           s/([$q])([^$q ]+?\\s?[^$q ]*?)([$q])/$p$1$m$2$p$3$z/gx;s/([^m])(\{|\})/$1$W$2$z/g;
     s/(\()([^\)]{1,32})(\))/$O$1$B$2$O$3$z/g; # s/\b([a-z_]+)(\()([^\)]{0,32})(\))/$G$1$O$2$M$3$O$4$z/g;
     s/\b(\$)([A-Z][0-9A-Z_]+)\b/$S$1$C$2$z/gi;$Ab=S("AbBI");s/(\s)([0-9A-Z_]+)(;)/$1$Ab$2$z$w$3$z/gi;s/(-[A-Z])(\s|\.)/$o$1$z$2/gi;
     s/(\b|\d+m)(Yes)\b/$1$G$2$z/gi ;s/([-]{3,})/$c$1$z/g;my $U=S("A:U");s/^(    )(\*)(  \s+)(\S)/$1$U$z$3$w$4/g;
     s/(\b|\d+m)(No )\b/$1$F$2$z/gix;s/([.]{3,})/$W$1$z/g;s/([^\e])(\[|\])([^-\e])/$1$T$2$z$3/g;' | lS; } # lookz quIte nIce sO finished 4 now;
 Al pdf8='pdoc Font::TTF::Manual'; # to hopefully learn how to gNr8 .f0x f8 fIlz into .tf0x into .ttf (but there's many 4-letr tAblz 2 lern how 2 manipul8);
-pman() { if [[ $# -gt 0 ]]; then MT="$1"; else MT='man'; fi; # ManTopic; trying to run plain man pages through a colorizer similar to pdoc above but 4 man;
-  man $@ | pe "\$pR=$MT;"'$LG=S("La:GbBID");$LP=S("L:PBIO");$F=S("FbI");s/(^|\s)/$1$R/g if(/^[A-Z]+/);
-    s/\b(\w+)(::)/$c$1$T$2$c/g; # had 2 B put B4 nXt pR(am) module name 4 Text::Diff::Config that stripped SKpz leaving overlapping long colr code d8a;
-    s/(\s+)/$1$C/g if(s/^(\s{4})($pR\s+)(-)(\s+)/$1$LG$W$2$o$3$z$4/i);s/($pR)([^:])/$LG$1$z$2/gi;s/(\D[^m])(Perl)\b/$1$LP$2$z/gi;
-    s/\b(if|elsif|else|die|new|use|my|not|while|defined|length|unless)\b/$Y$1$z/g; # sub-hedrz wi Only 2spAcz,mAin paragraphz wi 4spAcz,indNtz 8 && 9 BlO;
-    $Hb=S("HbbI");s/(\s+)/$1$Hb/g if(/^  \S/       );s/(\|)(\w+)(\s|$)/$1$F$w$2$z$3/;s/(\w+)(\|)/$F$w$1$W$2$w/g;
-    $Gb=S("A:Gb");s/(\s+)/$1$Gb/g if(/^    \S/     );s/(\s|\[)(-[A-Z])(,?\s[-A-Z0-9:_]+)?(\])?(\s|$)/$c$1$B$2$Gb$3$c$4$t$5/gi;
-    $cB=S("A:cB");s/(\s+)/$cB$1/g if(/^        \S/ );s/(\s|\[)(--[-A-Z]+)(\=|\[)?(,?\s?[-A-Z0-9:_]+)?(\])?(\s|$)/$c$1$B$2$3$Gb$4$c$5$t$6/gi;
-    $ti=S("D:ti");s/(\s+)/$ti$1/g if(/^         \S/);
-    s/(\s|[^-\d])([A-Z_][A-Z0-9]*_[A-Z_0-9]+)\b/$1$o$2$z/g;
-    s/(\s|[^-\d])([a-z_][a-z0-9]*_[a-z_0-9]+)\b/$1$Y$2$z/g;s/(" )([^" ]+? \s?[^" ]*?)( "   )/$p$1$M$2$p$3$z/gx; # intrlEvd sngl&&dbl-quOtzBlO2get singlz4regX;
-    s/([*])([^*]{1,32})(\1)/$r$1$C$2$r$3$z/g;           s/(['"'])([^' ]+?\\s?[^' ]*?)(['"'])/$p$1$m$2$p$3$z/gx;s/([^m])(\{|\})/$1$W$2$z/g;
-    s/(\()([^\)]{1,32})(\))/$O$1$B$2$O$3$z/g; # s/\b([a-z_]+)(\()([^\)]{0,32})(\))/$G$1$O$2$M$3$O$4$z/g;
-    s/\b(\$)([A-Z][0-9A-Z_]+)\b/$S$1$C$2$z/gi;$Ab=S("AbBI");s/(\s)([0-9A-Z_]+)(;)/$1$Ab$2$z$w$3$z/gi;s/(-[A-Z])(,?\s|\.)/$o$1$z$2/gi;
+pman() {if   [[ $# -gt 0 ]]; then MT="$1"; # ManTopic; trying to run plain man pages through a colorizer similar to pdoc above but 4 man;
+          if [[ $# -gt 1 ]]; then MT="$2";MG="$1"; else MG='1'; fi; # ManTopic; tryng2run plain man pages through a colorizer similar to pdoc above but 4 man;
+        else MT='man'; fi; #ec "DA:$@, MG:$MG, MT:$MT;"; # 2du:accept `pm 3 printf` && set MG ManGroup or whatever 1st then MT as $2;
+  man "$@"|pe "\$MT=qq($MT);"'$LG=S("La:GbBID");$LP=S("L:PBIO");$Fb=S("FbI");s/(^|\s+)([A-Z]+[a-z$q]*)/$1$Fb$2$z/g if(/^[A-Z]+/);s/\b(\w+)(::)/$C$1$T$2/g;
+    s/\b(\d{4})(-)(\d\d)(-)(\d\d)\b/$1$W$2$o$3$W$4$Y$5$z/g;s/(\(\))/$W$1$z/g; #s/([:,])/$w$1$z/g;s/(\D)(;)/$1$W$2$z/g; # try 2 colrIze bAsic punctu8ion early;
+    s/(\s+!)/$1$C/g if(s/^(\s{4})($MT\s+)(-)(\s+)/$1$LG$W$2$o$3$z$4/i);s/(\D[^m])(Perl)\b/$1$LP$2$z/gi;s|(//[^\n]*)|$c$1$z|g;s/\b($MT)([^:])/$LG$1$z$G$2/gi;
+    s/(\*)([a-z_][0-9a-z_]*)/$M$1$A$2$z/gi;s|(/\*[^*]+)(\*)(/)|$c$1$c$2$c$3$z|g;s/(NULL)/$p$1$z/g;s/(HTTPS?)/$C$1$z/gi;
+    s/\b(if|elsif|else|die|new|use|my|not|for|while|defined|length|unless)\b/$Y$1$z/g; # sub-hedrz wi Only 2spAcz,mAin paragraphz wi 4spAcz,indNtz 8 && 9 BlO;
+    s/\b(volatile|struct|unsigned|static|const|char|int|float|double|void)\b/$C$1$z/g; # abov does mainly Perl keywords in Yel && this lIne does C typez Cyan;
+    s/\b(next|last|continue|break)\b/$y$1$z/g;s/\b(long|union|typedef)\b/$c$1$z/g;s/\b(C)([89]9|1[17]|23)\b/$C$1$R$2$z/g;s/(19|20)(\d\d)\b/$R$1$2$z/g; # RYrz;
+    s/(#)(define\s+)(\S+)/$g$1$B$2$F$3$z/g;s/(<)([^>]+\.h)(>)/$o$1$P$2$o$3$z/g;s/(#)(include|ifdef|ifndef|endif)/$W$1$B$2/g; # PreProcSor dirctvz&&hedr incldz;
+    #s/([^\[0-9m])([a-z_]?[0-9a-z_]*)(\()([^\)\e]{1,32})(\))/$1$c$2$O$3$B$4$O$5$z/gi; # s/\b([a-z_]+)(\()([^\)]{0,32})(\))/$G$1$O$2$M$3$O$4$z/g;
+    s/\b([a-z]+[a-ln-z])(\()/$C$1$z$2/g;s/(\()([^\)\e]{1,32})(\))/$O$1$B$2$O$3$z/gi;
+    $Hb=S("HbbI");s/(\s+)/$1$Hb/g if(/^  \S/       ); #s/(\|)(\w+)(\s|$)/$1$Fb$2$z$3/; #s/(\w+)(\|)/$Fb$1$W$2$w/g;
+    $Gb=S("A:Gb");s/(\s+)/$1$Gb/g if(/^    \S/     );s/(\s|[^\e]\[)(-?[-a-z]+)(,?\s[-a-z0-9:_ ]+)?(\])?(\s|$)/$c$1$B$2$Gb$3$c$4$C$5/gi;
+    $cB=S("A:cB");s/(\s+)/$cB$1/g if(/^        \S/ );s/(\s|[^\e]\[)(--[-a-z]+)(\=|[^\e]\[)?(,?\s?[-a-z0-9:_]+)?(\])?(\s|$)/$c$1$B$2$3$Gb$4$T$5$C$6/gi;
+    $ti=S("D:ti");s/(\s+)/$ti$1/g if(/^         \S/);s/([^mA-Z_])([A-Z]{2,})/$1$o$2$A/g;
+    s/(\s|[^-\d])([A-Z_][A-Z0-9]*_[A-Z_0-9]+)\b/$1$o$2$z/g;s/([a-ln-z])(\s)/$1$z$2/g if(s|(\s\|[a-z_"])(/)([a-z_])|$1$Y$2$B$3|gi);
+    s/(\s|[^-\d])([a-z_][a-z0-9]*_[a-z_0-9]+)\b/$1$Y$2$z/g;s/( ")([^"\s]+?\s?[^"\s]*?)( ")/$p$1$M$2$p$3$z/gx; # intrlEvd sngl&&dbl-quOtzBlO2get singlz4regX;
+    s/([*])([^*]{1,64})(\1)/$r$1$C$2$r$3$z/g;              s/($q)([^$q ]+?\s?[^$q ]*?)($q)/$p$1$m$2$p$3$z/g ;s/([^m])(\{|\})/$1$W$2$z/g; # cudUz $qq 4 " abov;
+    s/\b(\$)([a-z][0-9a-z_]+)\b/$S$1$C$2$z/gi;$Ab=S("AbBI");s/(\s)([0-9A-Z_]+)(;)/$1$Ab$2$z$w$3$z/gi;s/(-[a-z])(,?\s|\.)/$C$1$2/gi;
     s/(\b|\d+m)(Yes)\b/$1$G$2$z/gi ;s/([-]{3,})/$c$1$z/g;my $U=S("A:U");s/^(    )(\*)(  \s+)(\S)/$1$U$z$3$w$4/g;
-    s/(\b|\d+m)(No )\b/$1$F$2$z/gix;s/([.]{3,})/$W$1$z/g;s/([^\e])(\[|\])([^-\e])/$1$T$2$z$3/g;' | lS; } # 2du:customize all the keywords for typical man!pdoc;
+    s/(\b|\d+m)(No )\b/$1$F$2$z/gix;s/([.]{3,})/$W$1$z/g;s/([^\e])(\[)([^-\e]?)(\])/$1$T$2$c$3$T$4$G/g;' | lS; } # 2du:custOmIz all kywrdz 4 typical man!pdoc;
 Al       pm='   pman' pmn=' pm' om='oman' oman='pm'; # perl coloring man pages before less 2 page;
 Al       ra='   raku' rk='raku' ru='raku'; # should probably give each of these some good default flag options to make short && easy to use;
-# abov loox bood in 80x25 term with cmnd to show xpandng many aliasz like this: `pewh ag agu aguu au auu agr agar aar ai ac acs h H D T Q N n grp psag pl pe` ;
+mn()  { if     [[  $#       -ge  1  ]]; then export Hmpt="$1"   ;      man         $@   ;  # try2 lOd pRam in2 %ENV 4 ManPageTopic 2BrEvisitd on subCquNt callz
+        elif   [[ "$Hmpt"    != ""  ]]; then                           man  $Hmpt;    fi;} # shud alsO add $Hv8l && $Hmtl 4Last(||Prev?)valUz4 !-e 'l' 2jmpbak2
+# O44MBman:HTTPS://YouTu.be/cnmtKv2kUXs "Stop Using 'man' Pages Incorrectly!" # O3Q:06r0 of RobertElderSoftware explaining man history && sub-sectionz;
+#l fMs='                 man  -k .                         |sed '"'"'s/.* (\([^)]\+\)).*- .*/\1/g'"'"'   |s8|Unc|s8rn'; # from dur8:{04S0}; findMansectn…
+#l fMS='f /usr/share/man/man* -type f -exec basename {}  \;|sed '"'"'s/.*\.\([^.]\+\)\.[^.]\+$/\1/g'"'"' |s8|Unc|s8rn'; # from dur8:{04A0};   …runz slO!;
+# QA3MDufM:just added $q && $qq ENV varz 2 hopefully fix '"'"' sequences with just those but trying 2 cnv abov 2 BlO Cmz 2 nEd just Xtra bakslsh SKpz nstd?;
+Al fMs="                 man  -k .                         |sed    's/.* (\\([^)]\\+\\)).*- .*/\\1/g'    |s8|Unc|s8rn"; # from dur8:{04S0}; findManSectn…
+Al fMS="f /usr/share/man/man* -type f -exec basename {} \\;|sed   's/.*\\.\\([^.]\\+\\)\\.[^.]\\+$/\\1/g'|s8|Unc|s8rn"; # from dur8:{04A0};   …runz slO!;
+#   See also:HTTPS://YouTu.be/v9DmtvMwv4c "I Was Wrong About 'man' Pages && 'info' Pages" # O3U:04u0 of RES 4Days l8r on built-in help,man,info,--help,etc.;
+# [pip@OniQA3MEfMs~/muz/U2b]fMs;en seems 2 prnt Xactly 40 lInz:                 ;# [pip@OniQA3MEfMS~/muz/U2b]fMS;en seems 2 prnt Xactly 42 lInz:              ;
+# 8444 3            #  345 3o           #   88 3menu        #    5 1x           ;# 5119 1            #  270 2            #   43 3bsd     # 3 1x   # 1 3curses ;
+# 5910 1            #  329 7            #   75 3pcap        #    4 1nas         ;# 4546 3pm          #  130 3nas         #   35 3t       # 3 1nas # 1 1sr     ;
+# 5041 3pm          #  236 3bsd         #   59 4            #    3 7gcc         ;# 3957 3            #  123 7ssl         #   27 8postfix # 2 3readline        ;
+# 1198 8            #  160 7ssl         #   44 3tiff        #    3 5ssl         ;# 1013 8            #   99 1p           #   24 3form    # 1 pv.1             ;
+#  671 3ncurses     #  130 3nas         #   35 3t           #    2 3readline    ;#  627 3perl        #   86 6            #   23 3menu    # 1 fastfetch.1      ;
+#  627 3perl        #  124 6            #   30 8postfix     #    1 8p           ;#  546 5            #   72 3ncurses     #   13 9        # 1 8p               ;
+#  585 5            #  110 1ssl         #   18 3curses      #    1 7edit        ;#  463 3tcl         #   60 1ssl         #   11 3am      # 1 7edit            ;
+#  494 2            #  108 1sr          #   13 9            #    1 5nas         ;#  346 3caca        #   58 3pcap        #    6 3tk      # 1 5nas             ;
+#  463 3tcl         #  106 3form        #   11 3am          #    1 5edit        ;#  345 3o           #   50 4            #    3 7gcc     # 1 5edit            ;
+#  346 3caca        #  106 1p           #    6 3tk          #    1 3tcllib      ;#  290 7            #   44 3tiff        #    3 5ssl     # 1 3tcllib          ;
+# [pip@OniQA3MEsSc~/muz/U2b]ec "$(fMs;fMS)"|s8nr;en now comparing discrepancies BtwEn fMs && fMS rEsultz whIle rEmvng lone entries that m@chd both (kEp othrz):
+# 8444 3         << # 1198 8         << #  494 2         << #  160 7ssl      <<  #  108 1sr       << #   88 3menu     << #   30 8postfix<< #  4 1nas      << ;
+# 3957 3          >># 1013 8          >>#  270 2          >>#  123 7ssl       >> #    1 1sr        >>#   23 3menu      >>#   27 8postfix >>#  3 1nas       >>;
+# 5910 1         << #  671 3ncurses  << #  329 7         << #  124 6         <<  #  106 3form     << #   75 3pcap     << #   18 3curses << #  1 pv.1       >>;
+# 5119 1          >>#   72 3ncurses   >>#  290 7          >>#   86 6          >> #   24 3form      >>#   58 3pcap      >>#    1 3curses  >>#  1 fastfetch.1>>;
+# 5041 3pm       << #  585 5         << #  236 3bsd      << #  110 1ssl      <<  #  106 1p        << #   59 4         << #    5 1x      << ; # pv.1 && ff.1 R…
+# 4546 3pm        >>#  546 5          >>#   43 3bsd       >>#   60 1ssl       >> #   99 1p         >>#   50 4          >>#    3 1x       >>; #  …Only 2 added;
+Al Sc='pa "\$S=S @ARGV;o8(\$S,c(\$S),\$z)"'; # quikly&&Ezily rndtripANSISKp cOdz thru a8.pm up-S&&lo-c Utlz 2tSt wut werkz (&&wrIt ~/dvl/a8/t/*.t 4 chalNgez);
+Al b8al="pla 'o8(d8c(join(qq( ),@sb256[0..63])). qq(\\n). d8c(join(qq( ),@sb256[64..127])). qq(\\n). d8c(join(qq( ),@sb256[128..191])). qq(\\n).
+  d8c(join(qq( ),@sb256[192..255])))'"; # print 4 strIpd-spAcd d8-colrd lInez of 64 charz!; orignaly nAmd b8ls but rEnAmd sinc adding bA alIk 2 b8.pm nAmd sAm;
+Al b2al="pla 'o8(d8c(join(qq(),@sb256[0..127])). qq(\\n). d8c(join(qq(),@sb256[128..255])))'"; # print 2 d8-colrd lInez of128 base256 charz (just a8.pm?);
+Al b2cz="pa 'for(0..3){for my \$bn(0..63){\$ln.=b256(\$_ *64+\$bn)} o9(d8c(\$ln));\$ln=q()}'"; # print 4 d8-colrd lInez of 64 base256 charz 2 C thM alInd;
+# abov tStng pa (pl all [abd]8) mAnly wi d8 dur8(ionz),but try -MTime::HiRes time too,to get fractnz2,alsO fix dur8 colr in d8c ordr but shud B dur8c nstd,
+Al b8cz=b2cz b2ls=b2al; # now b8ls in b8.pm is just like bA below;           #   && alsO try Uzng just a8.pm && just join('',@sb256) && tSt $ENV{COLUMNS};
 Al     b102='en " 0 000";b8  0 10 2;ec;en " 1 000";b8  1 10 2;ec;en " 2 00" ;b8  2 10 2;ec;en " 3 00" ;b8  3 10 2;ec;
              en " 4 0"  ;b8  4 10 2;ec;en " 5 0"  ;b8  5 10 2;ec;en " 6 0"  ;b8  6 10 2;ec;en " 7 0"  ;b8  7 10 2;ec;
              en " 8 "   ;b8  8 10 2;ec;en " 9 "   ;b8  9 10 2;ec;en "10 "   ;b8 10 10 2;ec;en "11 "   ;b8 11 10 2;ec;
              en "12 "   ;b8 12 10 2;ec;en "13 "   ;b8 13 10 2;ec;en "14 "   ;b8 14 10 2;ec;en "15 "   ;b8 15 10 2;'; # echo alignd b8z; 2du:l8r 4loop nstd;
-Al     ba='  bA'; bA() { if [[ "$1" == "" ]]; then unset MX; fi; # 2du:add 93k;
-  MX="$1" pa '$wd=$ENV{"COLUMNS"} // 160;$mx = 255;$mx=$ENV{"MX"} if(exists($ENV{"MX"}) && length($ENV{"MX"}));$ml=length("$mx");$ls=0;
-  @tz=(2,16,64,128,256);
-  $cs=$ml+2;for(@tz){$cs+=length(cnv10__($mx,$_))+1;}
-  for(0..$mx){o8(sprintf("%${ml}d:",$_));for $tb(@tz){
-      $b8=cnv10__($_,$tb);$bl=length(cnv10__($mx,$tb));o8(sprintf("%${bl}s ",$b8)); # figure out why b8 2 b64 just does nothing
-    } o8(" ");$ls+=$cs;if(($ls+$cs) >= $wd){o8("\n");$ls=0;}}'; } # simpl quik&&dirT runthru4prntng BinaryBits of AllAway-from-A(deci)&&othr fAvorit numbAsz;
+Al     ba='  bA'; bA() { if [[ "$1" == ""   ]]; then unset MX;unset TL; fi;
+                         if [[ "$1" == "-h" ]]; then
+  ec 'ba b8 BaseAccumul8 loopz from 0..$1 (as MaX) && outputz every value in many number-basez all nicely 4m@d in2 columnz && wrapz 2 fit TERM $COLUMNS width.
+  Default MaX is 255. TargetList can be provided as $2 which can be a compact joined string of exponent powerz of 2 (Xcept 9) lIk "1346789" for Targetz of:
+    (2,8,16,64,128,256,93100) or you can give a comma-sepR8d TList with no spacez to specify arbitrary number-basez that do not have to fall on powerz of 2.
+  Default TzL is "1468". bA is A simpl quick && dirT run thru 4 printing BinaryBits of AllAwAy-from-A(decimAl) && othr fAvorite number-bAsez counted up2 MaX;';
+                       else MX="$1" TL="$2" pa '$wd=$ENV{"COLUMNS"} // 160;$mx=255;$mx=$ENV{"MX"} if(exists($ENV{"MX"}) && length($ENV{"MX"}));$ml=length($mx);
+  $ls=0;$tl='1468';$tl=$ENV{"TL"} if(exists($ENV{"TL"}));@tz=(2,16,64,    256);if($tl=~ /,/){@tz=split(/,/,$tl);}elsif($tl=~ /[1-9]+/){$tl=~ s/[^1-9]+//g;
+    @lz=split(//,$tl);@tz=();for(@lz){(/^9$/) ? push(@tz,93100) : push(@tz,2**$_);}} # shud have expanded optional TargetzListz in2 DsIred tRgetz 4 gNer8ion;
+  $cs=$ml+3;for(@tz){$cs+=length(cnv10__($mx,$_))+1;} # pretty cool 2 have added b93k 2 Nd of targetz list successfully; Dflt XponNtz R: "1468" 2lInz abov;
+  for(0..$mx){P("%${ml}d:",$_);for $tb(@tz){$b8=cnv10__($_,$tb);$bl=length(cnv10__($mx,$tb));P("%${bl}s ",$b8);} # figUr out why b8 2 b64 mAB duz nothing!;
+    o8(" ");$ls+=$cs;if(($ls+$cs) >= $wd){o9;$ls=0;}}'; fi; } # simpl quik&&dirT runthru4prntng BinaryBits of AllAway-from-A(deci)&&othr fAvorit numbAsz;
 #l       gg='   perl ~/dvl/d8/bin/gg   '; # basic perl call to priv8 non-executable development utility to Gener8 G-mail stamps for Gerry (my Dad)
 Al     drkh='   pa  "print drkh(@ARGV)"'; # HEX to RgbL with 8th intensities  # abov gg was alias but changed to shell function so 'p' pRam doesn't Xpand;
 #l     h2rl='   pa  "print h2rl(@ARGV)"'; # HEX to RgbLowbitz    # actually trying to reform these alias wrappers to standalone usable new ~/bin page2 utlz
@@ -697,7 +758,7 @@ Al      del='     rm';
 Al     copy='     cp';
 Al     move='     mv';
 Al   attrib='     en "Forget MicroSoft-DOS. Please use \`man chmod\` instead! ;) "'; # just print advice for this, since calling semantics are so different
-#l     mutt='   mutt; ~/lib/Oct/f8/pal8/TIGSfAVS.pal8'; # mutt clears pal8 colors so at least restore favor8s afterward
+#l     mutt='   mutt; pal8 f;' #~/lib/Oct/f8/pal8/TIGSfAVS.pal8 # mutt clears pal8 colors so at least restore favor8s afterward;
 # [pip@AkuJ28LIPsh~]en `source-highlight --lang-list`|pe 's/(\S+) = \1\.lang */$G$1$w;/g;s/(\S+) = ([^.]+)\.lang */$C$1$o=$g$2$W;$z/g'|sS; # old B4 BlO...
 # asm,awk,bash,bib,c,changelog,conf,csh,css,d,dmd,errors,feature,fixed-fortran,free-fortran,glsl,go,groovy,islisp,java,javalog,json,  ## slItlyrE4m@d; ##;
 #  ksh,log,lsm,lua,opa,outlang,oz,properties,r,s,scala,spec,sql,style,syslog,tcsh,tml,upc,vala,xorg,zsh;   ## shls=48;solz:88; B4 solz:64; B4 cut dn2: ##;
@@ -775,6 +836,7 @@ Al ts='tree-sitter'; # N7KMNVTS:~/dvl/t8/node/tree-sitr/ has faild atmptz 2 nstl
 bathm() { for BThm in 1337 DarkNeon GitHub OneHalfDark OneHalfLight TwoDark ansi-dark ansi-light base16 zenburn;do bat --theme=$BThm $@;ec $BThm;
   W8Ky=`w8k 88`;if [[ ${(L)W8Ky} =~ x ]]; then return 0;fi;done; }; Al bpl='bat -lpl'; # like shl && SynCat spl,nEd 2 mk VimDefault.tmTheme 4 bat 2;
 bplc () { bpl -f "$@"|bsc; }; # force bat coloriz8ion && Substitute the Colors to be closer to a shl or vim or spl (stil proly nEd2mk .tmT 4 mor colr c@z);
+Al    d8ps='date +%s' d8ds='date -d'; # QA2MA8d8:mk date for now time with PlusPercentSecondz && -d(ecode)Secondz which nEdz pRam "@$epoch_secondz";
 Al    d8pe='d8 e|pe "s/\\..*//"|b64'; # NCELEBR8:print epoch d8 now && pipe-eval stripping sub-second fractional part post-decimal; BlO addz pHASS;
 Al    d8ep='d8 e|pe "\$f=q();if(s/(\\..+)//){\$d=q(0).\$1;\$f=q(%).b64(int(64*\$d)%64);};\$_=b64(\$_).\$f;"'; # try2apNdjust singl b64 pHASS char4fractnpRt;
 Al    d8wf='d8=`d8`;en "d8:$d8;"|flet                     ;ec;ec "d8B4:$d8;";ec "d8af:`d8`;"'; # d8-timer Wraps Fusion of d8 thru Figlet Font Filez;
@@ -883,7 +945,7 @@ Xp      d2="$HOME/dox/2du"; # K6LMLhot: `ai libgtkhotkey-dev libgtkhotkey1 sxhkd
 Xp      gs="$HOME/gfx/sho"; # K6MMGFix: actually adding XE() to a8.pm to wrap `xte` for Octl dMO autom8ion seems better than above hotkey options (so far);
 Xp      mv="$HOME/mvz/U2b"; # KA1MGAmv: add my main MoohVz directory as another shortcut ENV variable;
 Xp      mu="$HOME/muz/U2b"; # K6NMD3AF: add my main MUzicz directory as another shortcut ENV variable;
-Xp      mU="$HOME/muz/U2b";Al R='  reset'; # Up-U! ;) # R Uzd2 rd ~/.el*;
+Xp      mU="$HOME/muz/U2b";Al R=reset sane='stty sane'; # Up-U! ;) # R Uzd2 rd ~/.el* but now Resetz wh iz lIk calling: `stty sane;clear;` (lIk C without -x);
 Al      LS="$HOME/mvz/U2b/vid/;mp -fs L*To* L*Sh* L*He*"; # LindseyStirling whom I dearly love && adore, doing SleepWalking(WayToo),Shadow,&&Heist(fItgAm);
 #l      ML="mplyr -nosound -ss 11 -endpos 299 -fs -geometry 1920x1080+0+0 $HOME/mvz/dvl/rec/PS-Octology-PerlConfer*-Take0-K6G*.mp4"; #run audio-less video;
 Al      ML="mplyr          -ss  4 -endpos 310 ~/mvz/dvL/rec/PipStuart-Octology-PerlConferenceInTheCloud-LightningTalk-June24-26th_2020-Take2-K6OM84Me.mp4";
@@ -910,7 +972,7 @@ Al   bjpe='pl ~/dvl/p8/pokr/ex/blakjack.pl|pe "s/Player\\d+\\s+cmp2D:\\s+\\S+\\n
 # Many of these Oct aliases should become special V8 via c8 coloriz8ion command wrappers or otherwise enhanced (&& simplified?) && unified funcs or cmdz:
 Al       0=' ogg123'; # o 123 : zer0 lIke lc o audio-player # maybe l8r try to figure out better aliases 4 numbers here since they could be good shortcutz;
 Al       1=' mpg321'; # m 321 :                audio-player # simple && light-w8 command-line MP3 player based on mad decoding library (drop-in 4: mpg123);
-Al       2=' mpg123'; # m 123 :                audio-player which plays audio MPEG 1.0/2.0/2.5 streams (layrz 1, 2, && 3),was non-free unlike abov`mpg321`;
+#l       2=' mpg123'; # m 123 :                audio-player which plays audio MPEG 1.0/2.0/2.5 streams (layrz 1, 2, && 3),was non-free unlike abov`mpg321`;
 #l       3='   g3  '; #  g3   :         gst123 audio-player wrapped with Expect manipul8ion layer (J29:3 now 3rd sepR8 varE8ion off g3 2get abit trickier);
 Al       4='   x4t '; #  4    : xfce4-terminal xf4tm terminal emul8or where `x4t` is defined more elabor8ly to start with my preferred defaults elsewhere;
 Al       5='perl   '; #  5    :          perl  (5.28.1 l8st perl5 in /usr/bin/ on Pip's $HOST Oni as of`d8 K2MLAUGH`=>"Sat Feb 22 10:30:16:17 -0600 2020")
@@ -928,12 +990,13 @@ Al      p6='perl6  ';
 Al      bk='   b   '; #  bk   :            b   (originally Pip::Utl file BAcKup command) # this str8forwardly crE8z a .bak/ subdir&&copiez d8d fIlez in2it
          b() { bak  "$@"; }   # unalias    b   (redefining as simple function wrapper resolves parameter Al expansion problem [but still will glob ok])
 #l       B='   b   ';         #                (above function probably needs dbl-quotes around parameter list to keep spaces in filenames from splitting)
-Al      cm='cmatrix';
-Al     clm='column ';Al colm='clm';Al clmn='clmm';Al colum='clm'; #P1ALCOLM:HTTPS://YouTu.be/uL7KvRskeog 'Ever used the "column" command in Linux?'
+Al      cm='cmatrix';Al cm8rx='cm';Al cm8b='cm -b'; # QAGMIRED:cmb is already cmake build so can't use that for cmatrix -b(old) && just DcIded 2 Uz cm8b nstd;
+Al     clm='column ';Al colm='clm';Al clmn='clm';Al colum='clm'; # P1ALCOLM:HTTPS://YouTu.be/uL7KvRskeog 'Ever used the "column" command in Linux?';
 Al     cls='clear -x'; # cls  :          clear (like DOS command for CLearScreen)  # -x optnflag trIez 2 prEserv scrollbak && just blank $TERM in newlinez
 Al       C='cls    '; #  C    :B4 clear was wc (Count charz,words,&&lines&&eventually bits,bytes,[KMGTPEZY]i?bits|Bytes,code points,paragraphs,subs,etc.)
 Al      CC='cd;C   '; #       :                (combines Change directory back2 home ~ && then Clear screen,pretty easy2type 1-handed but Enter is a reach)
 Al     CCC='CC;een "\e[3J"'   ; # special super Clear of scrollback too (goodaftr `kp` along wi xx 2clear paste buffers);CSI n J - ED(Erase in Display)
+Al     dfh=' df -h '; #  df   :                df -h(uman-readable) DskFree;
 Al    dusb=' du -sb'; #  du   :             du|df|dfc     (Disk usage, free, etc.) with -sb to Summarize (only total4each arg) with block-size Bytes
 Al     dus=' dusb  '; #                        it's often pretty useful to pipe the raw decimal size Summary in Bytes in2 `cma` 4isol8ing Thou,Mill,Bill...z
 Al      ds=' dus   '; #                        might be nice to l8r offer parameter options to `b64` && `b256` to only oper8 on 1st decimal field(lIk `cma`)
@@ -950,24 +1013,24 @@ Al hilite='rg --passthru' hili=hilite hil=hili hIl=hil; # my hl alreD headtail;
 Al      ga='   g -a'; #                              grep -a to   binary-As-text   (rEsolvz `g Brail ~/dvl/*/*.pm` "grep: k8/k8.pm: binary file matches");
 Al      gi='   g -i'; #                              grep -i to      Ignore_case ## whN Uzng ga abov, B careful on just XtNsionz 4 UTF8 2 trEt az tXt ...
 Al      gO='   g -o'; #                              grep -o to      Only_matchz ##   not lIk:`gas Brail ~/dvl/*/*/*` Bcuz th@ trIz 2 prnt rEl bInaryz! =( ;
-Al      gv='   g -v';alias gvg='gv grep';  #         grep -v to                     inVert_match_results (gs is already GhostScript so not aliased to g -s)
-Al      gS='   g -s';alias grs='gS';alias gms='gS'; #grep -s to SupreSS warningS        ## -s also like gns a bit below;
+Al      gv='   g -v' gvg='gv grep';  #         grep -v to                     inVert_match_results (gs is already GhostScript so not aliased to g -s)
+Al      gS='   g -s' grs='gS' gms='gS'; #grep -s to SupreSS warningS        ## -s also like gns a bit below;
 Al      gH='   g -H'; #                              grep -H to sHow Header_file_name
 Al      gT='   g -T'; #                              grep -T to make sure -n liNeNumber && -b Byteoffset && matchingtextline start on initial-Tab stopz2alIn
 Al      gn='   g -n'; #                              grep -n to show liNe_Number
 Al      gb='   g -b'; #                              grep -b to show Byte_offset && also want -u to Use-Unix-byte-offsets for MS-DOS or MS-Windows OpSystMz
-Al     gai=' ga  -i';alias gia='gai';alias gas='ga -s';alias gan='ga -n';alias gain='gai -n';alias gaiv='gai -v';alias gainv='gain -v';alias gavin='gainv';
-Al     gio=' gi  -o';alias goi='gio';alias gbu='gb -u';alias gnv='gn -v';alias gvn='gnv';alias ginv='gin -v';alias givn='ginv';alias gns='g -s'; #-no-mSgz;
+Al     gai=' ga  -i' gia='gai' gas='ga -s' gan='ga -n' gain='gai -n' gaiv='gai -v' gainv='gain -v' gavin='gainv';
+Al     gio=' gi  -o' goi='gio' gbu='gb -u' gnv='gn -v' gvn='gnv' ginv='gin -v' givn='ginv' gns='g -s'; #-no-mSgz;
 Al     gin=' gi  -n'; #                              grep    to both Ignore_case && Only___match_include (but alreD was /usr/bin/gio 4 mAB GLib InptOutpt?)
 Al     giv=' gi  -v'; #                              grep    to both Ignore_case && inVert_match_results
 Al     gis=' gi  -s'; #                              grep -s to both Ignore_case && --no-messages suppress messages like glob * getting directories
 Al     gvs=' gv  -s'; #                              grep -s to both                inVert_match_results && --no-messages  # gs already taken by GhostScript
 Al    givs=' giv -s'; #                              grep -s to      Ignore_case && inVert_match_results && --no-messages  #   which is proly like evince
-Al    gais=' gai -s';alias gains='gain -s';alias gaio='gai -o';alias gaios='gaio -s';alias gaso='gas -o';alias gaos='gaso';alias ganos='gaso -n';
-Al   gaino='gain -o';alias gainos='gaino -s';alias gainosv='gainos -v';alias gainsov='gainosv';          alias gano='gan -o';alias gasno='ganos';
+Al    gais=' gai -s' gains='gain -s' gaio='gai -o' gaios='gaio -s' gaso='gas -o' gaos='gaso' ganos='gaso -n';
+Al   gaino='gain -o' gainos='gaino -s' gainosv='gainos -v' gainsov='gainosv'           gano='gan -o' gasno='ganos';
 Al     gvH='  gv -H'; #                              grep -H permut8ionz... but all these should probably be re-grouped tightly near `ls` permut8ionz above
-Al     gHs='  gH -s';alias    givH=' giv -H';alias    gvsH='  gvs -H';
-Al     gsH='  gH -s';alias    gisH=' gis -H';alias   givsH=' givs -H';
+Al     gHs='  gH -s'    givH=' giv -H'    gvsH='  gvs -H';
+Al     gsH='  gH -s'    gisH=' gis -H'   givsH=' givs -H';
 Al    gcwd=" gnv '[ ?]?' ~/dox/Ppl/Dad/ChatWithDad-K43MJ000.utf|g '([KL][0-9A-C].[ML]|\\?)'"; # grep d8z && non-spAcd lone quStion-mRkz in Ch@WiDad;
 Al    gadd='  gi "^ *[a-z8]*8[a-z8]* *[:#].* add.*8" ~/dox/2du/8.utf'; # early varE8ion wich didn't rEquIre pound after colon,lIk BlOw expecting both l8r
 Al    gad8='  gi "^ *[a-z8]*8[a-z8]* *:.*#.* add.*8" ~/dox/2du/8.utf'; # utility alias 2 grep 8.utf 4 all comments describing potential words to add l8r
@@ -1001,14 +1064,15 @@ Al ol=ollama ols='ol list' olp='ol pull' olr='ol run' oll='ol launch' olsrv='ol 
 Al olr7='olr deepseek-r1:7b' o7='olr7'; # could ~/.dl/ OLLaMa.Com srch for othr than my initial 7b reasoning model;
 Al olrp='olr phi4:latest   ' op='olrp'; # Q8NM6Phi:just ran `olp phi4` && got 9.1GB of much more recent Phi4 model;
 Al olrq='olr qwen3.6:27b   ' oq='olrq'; # Q8PM8Q36:last nIt `olp qwen3.6:27b` && got 17GB of likely EvN betr model;
-Al   qs='qemu-system-x86_64' qs64='qs';
+Al   qs='qemu-system-x86_64' qs64='qs' shck='shuck check' sh4='shuck format' shs='shuck server' shcl='shuck clean'; # QA2M8shc:installed Zsh linter shuck!;
 # P1RLINUX:HTTPS://YouTu.be/u2Juz5sQyYQ "Making Smallest Possible Linux Distro" # P1I:0Rg0 of NirLichtman detailing minimum config for 1.3MB ISO wo Lua;
 Al gw='g3 ~/muz/mp3/gw/Genius_Wave-P1S*.mp3';
 Al gW='g3 ~/muz/mp3/gw/Genius_Wave*_no*.mp3';
-Al GW='g3 ~/muz/mp3/gw/Genius_Wave*P1S*.mp3';
+Al GW='g3 ~/muz/mp3/gw/Genius_Wave*P1S*.mp3'; # HTTPS://GitHub.Com/Beucismis/awesome-fetch has gr8 long list of myriad fetch projectz 2 l8r gathr mor 4 fz BlO;
 Al fz=ftz  cf=' cpufetch';Al ftz='en "${C}cf=cpufetch$B nf=neofetch$R ff=fastfetch$W;"'; # PCNL9CPU:just wanted similar cousin to nf && ff belO&& echo FeTchZ;
 Al         nf=' neofetch';Al p8w='~/dvl/p8/pico8/pico-8/;pico8 -windowed 1  '; # P1QL9Sht:shooting for learning pico8 && HumbleBundles before migr8ing 2 Godot;
-Al         ff='fastfetch'; # PCNL8fff:had2`sudo add-apt-repository ppa:zhangsongcui3371/fastfetch` && nuu && ni ff 2 get but just saw on ReddIt && seemd cool;
+Al         ff='fastfetch' fflt='ff --logo-type' ffln='fflt none' fflk='fflt kitty'; # QA2M6off:installed v2.69.0 over old v2.66.0 Bcuz of Chafa Error && setup;
+# PCNL8fff:had 2 `sudo add-apt-repository ppa:zhangsongcui3371/fastfetch` && nuu && ni ff 2 get but just saw on ReddIt && seemd cool; now hav .deb from GitHub;
 Al nb=newsboat ei=eilmeldung tw=tui-wave; # PCRLDUNG:HTTPS://GitHub.Com/Christo-Auer/eilmeldung cloned in2 ~/dvl/k8/tui/ preT lerningRust proj cmpEt newsboat;
 Al saar='sudo add-apt-repository' sad=saar Sa=sad; # I know I pretty rarely even have to add apt repo ppaz but thot it could still deserve a few quick aliasz;
 # P1RLINUZ:HTTPS://YouTu.be/T8nRI-Mn6PM "My EndGame Terminal Setup" # P1I:0Ef0 of NickSkriabin demoing Cmingly gr8 Kitty, Zsh, NeoVim, Tmux, Star*, etc. setup;
@@ -1024,12 +1088,9 @@ Al      Pu='pP u' Pv='pP v' Pw='pP w' Px='pP x' Py='pP y' Pz='pP z' P.='pP .' P_
 #l       P='   pal8'; #  P    :2prntf?O3G pal8 terminal color setting utility from my Oct::f8 module ("f8ful 0per8ion" for handling f0nt && pal8 d8a)
 Al       p='   CCC '; #  p    :            CCC (p used to be just 'ps' "Process Snapshot" but remapped to super Clear from above for easy one-hand entry)
 Al     PPP='   ppp '; #  PPP  :  pull pushd, purge previous back to just a plain prompt, then popd so that past scrlbak wipez with working dir preserved;
-Al      pl='   perl'; #  pl   :           perl (with the most common file-extension for typical Perl code as a way to invoke the interpreter itself also)
-#l      pL='pP L   '; #  pL   :           pP L (aidyLaicyLiteral LuciousLadyLumps LovelyLivelyLoudy LastLiasLpro); pPA triez 2 loop in Perl nstd of ZshL;
 Al      pp='Pp';      #  pp   :pP p # pA() BlO is: profileAll 2 thrO out P PipStu d falt, pp, cc8, gg, jj8, ii, RR, BB, LL, OO, WW,   kk, &&        vv;
+#l      pL='pP L   '; #  pL   :           pP L (aidyLaicyLiteral LuciousLadyLumps LovelyLivelyLoudy LastLiasLpro); pPA triez 2 loop in Perl nstd of ZshL;
 Al      pc='Pc' pg='Pg' pj='Pj' pi='Pi' pB='PB' pO='PO' pW='PW' pk='Pk'; # rmvd pL && pR both hEr 4 nw FS Perl;
-Al      pL='pl -MpL'; # hopefully just call Perl with pL Filter::Simple oper8ing on following: "-e 'code'" or just running on whatever else Perl src is;
-Al      pR='pl -MpR'; # P7EM7EM7:duping pL as new pR with all keywords starting with an UpperCase letter thN trying 2 alsO map single Up letrz 2 bSt src;
 #Al!pv='Pv'; don't alias this anymore since /usr/bin/pv is probably good PipeViewer Utl th@ cud B Useful && lernd from 4 my Own terminal appz l8r 2;
 mX() { cd $HOME/dvl/Ppl/bep/mad-scientists-lab/ta;for Mrkt in BTC ETH EOS XRP;do bin/mexico -x bybit -m $Mrkt/USD -t 1m -s last -l 160 -v;done;};alias mx='mX';
 # pA(){for HPrF in d p c g j i R   B L O W k v; do   echo -en "$W$HPrF ";pP "$HPrF";     d8 -a;echo -en "$z;"; # why did en && een aliasez hav probz?
@@ -1065,10 +1126,10 @@ Al     lSX='   lS       -X'; # lSX:       lS-X (sAm azBlO Fitz,Kill(Ktrl-c2Kwit)
 Al     lS='    less -F -RS'; # lS :       less (with Force auto-Xit if Fitz lS than1 Full scrn,Kill on Ctrl-c,Raw outpt4ANSI SKpz,Scrnwidth-wrap long lInz)
 #Xp PAGER="`which less` -FRS "; # O3QM1AUB:m mo man most must give way to lS less with way better vim && SKp stuf; aparNtly -FK can't retn2cmd prmpt4CtrlC!;
 Al      mo='   most'; #  mo   :           most|more  (the color support in less abov may motiv8 me to chng my PAGER over to that instead of mo here... hmm)
-Al      mdp=' md -p';alias mdv=' md -v'; # mkdir -p(arent) && -v(erbose) flagged basically wher -p cud probably B mAd Dfalt md && giv an mdP 2 !include ;
+Al      mdp=' md -p' mdv=' md -v'; # mkdir -p(arent) && -v(erbose) flagged basically wher -p cud probably B mAd Dfalt md && giv an mdP 2 !include ;
 Al      md='  mkdir'; #  md   :          mkdir; O36LMDPV:mIt want2l8r mk fu md() nstd wi mAB autO Dfalt -p(arent) dir-crE8ion && -v(erbose) mIt B OK 2? ;
 Al      rd='  rmdir'; #  rd   :          rmdir;
-Al      DM='  dmesg';alias dmsg='DM'; #  dmesg <:> DM (this Used 2B just lOwrcAse 'dm' but was UperCased Bcuz nEdz sudo && 2mk room4 dmenu 2 tAk it Over)
+Al      DM='  dmesg' dmsg='DM'; #  dmesg <:> DM (this Used 2B just lOwrcAse 'dm' but was UperCased Bcuz nEdz sudo && 2mk room4 dmenu 2 tAk it Over)
 Al      dm='  DmC  '; #  dm   : "DmNU"?  dmenu wrapper in Oct::a8.pm called DmC (since it was originally just to gNr8 the HEX from my Fb ColorCodes)
 Al     dmn='  dmenu'; #  dmn  :          dmenu
 Al     dmi='  dm -i'; #  dmi  :          dmenu case-insensitive
@@ -1085,117 +1146,116 @@ Al     dmP=' dmC -p'; #  dmP  : take prompt string as nXt pRameter (wich may not
 #     return;
 #   elif   [[ "$1"  !=    ""    ]]; then # 2du:handle paramz && call dmi with a8.pm converted colorz;
 #   fi; fi; };             #      BlO -F<\w+> abbrEV8ionz shud Xpand 2 -font-name stringz in DmC th@ m@ch thOse comNtd aftr (only some of wich Cm2work yet,Y?);
-alias     dmCB='dmC -FB' ; # -fn "Bitstream Vera Sans Mono Bold-32"';   # "Bitstream Vera Sans Mono               Bold"
-alias     dmCc='dmC -Fc' ; # -fn "Cascadia Sans Mono-31"';
-alias     dmCd='dmC -Fd' ; # -fn "Droid Sans Mono Bold-32"';            # "Droid          Sans Mono               Bold"
-alias     dmCD='dmC -FD' ; # -fn "DejaVu Sans Mono Bold-32"';           # "DejaVu         Sans Mono               Bold"
-alias     dmCF='dmC -FF' ; # -fn "Fantasque Sans Mono Bold-32"';        # "Fantasque      Sans Mono               Bold"
-alias     dmCE='dmC -FE' ; # -fn "FreeMono Bold-32"';                   # "Free                Mono  *new_Dfault* Bold"
-alias     dmCj='dmC -Fj' ; # -fn "JetBrains Mono Bold-32"';             # "JetBrains           Mono               Bold"
-alias     dmCJ='dmC -FJ' ; # -fn "JetBrains Mono ExtraBold-32"';        # "JetBrains           Mono          ExtraBold"
-alias     dmCl='dmC -Fl' ; # -fn "League Mono Extended ExtraBold-32"';  # "League              Mono Extended ExtraBold"
-alias     dmCL='dmC -FL' ; # -fn "League Mono Wide ExtraBold-32"';      # "League              Mono Wide     ExtraBold"
-alias     dmCI='dmC -FI' ; # -fn "Liberation Mono Bold-32"';            # "Liberation          Mono               Bold"
-alias     dmCm='dmC -Fm' ; # -fn "MesloLGS NF Bold-32"';                # "MesloLGS   NF (Nerd Font) *was_Dfault* Bold"
-alias     dmCM='dmC -FM' ; # -fn "Monoid Bold-32"';                     # "Monoid                                 Bold"
-alias     dmCo='dmC -Fo' ; # -fn "Monoid Loose Bold-32"';               # "Monoid                   Loose         Bold"
-alias     dmCt='dmC -Ft' ; # -fn "Monoid Tight Bold-32"';               # "Monoid                   Tight         Bold"
-alias     dmCK='dmC -FK' ; # -fn "mononoki Bold-32"';                   # "mononoki                               Bold"
-alias     dmCN='dmC -FN' ; # -fn "Nimbus Mono PS Bold-32"';             # "Nimbus              Mono PS            Bold"
-alias     dmCO='dmC -FO' ; # -fn "Noto Sans Mono Bold-32"';             # "Noto           Sans Mono               Bold"
-alias     dmCT='dmC -FT' ; # -fn "Tlwg Mono Bold-32"';                  # "Tlwg                Mono               Bold"
-alias     dmCU='dmC -FU' ; # -fn "Ubuntu Mono Bold-32"';                # "Ubuntu              Mono               Bold"  # most look pretty similar so far;
-alias      fm='fontm8rx';alias fontm8rx='fontmatrix'; # fm can filter Active&&Proportion:Monospaced to show several more than just these above;
-alias      bf='birdfont';
-alias     mnt='  mount'; #  mnt  :          mount
-alias    umnt=' umount'; # umnt  :         umount
-alias mshr='sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) shr "/home/pip/.hst";rmSS';alias umshr='sudo umount shr;rmSS'; # 4sharngfIlzBtwEnOni&&Ubu&&gN2 VMz;
-alias schu='sudo chown $USER:$USER *;rmSS'; # cho all unhidden filz && dirz in current directory to the normal user from any required super-user permissions;
-alias     cho=' chown '; #  cho  :          chown
-alias     chg=' chgrp '; #  chg  :          chgrp (a little confusing that I've aliased grp='grep --color=auto' so it could mean grep or group depending)
-alias     chm=' chmod '; #  chm  :          chmod
-alias     chr=' chroot'; #  chr  :          chroot
-alias     chs=' chsh  '; #  chs  :          chsh  (follow with -s SHELL to autom8, or get interactive prompting without)
-alias     chf=' chfn  '; #  chf  :          chfn  (changes user FullName, office room number, office phone number, && home phone number)
-alias     cht=' chti  '; #  cht  :          chti  (changes terminal window title)
-#lias      ct='   cht '; #                        (mAB consider `mv chti ct` && alias chti instead or add like noglob so Zsh stops Xpandng alias pRamz?)
-           ct() { chti $@; }     # unalias  ct && redefining as simple function wrapper resolves title parameter alias expansion problem (but still will glob)
-#          mc() already zsh function below
-#lias      mc='  md;cd'; #  mc   :          md+cd (make sure to override MidnightCommander && GH.Com/RWMitchell/els Multi-Column utl if found)
-#          c8   already ~/bin/
-#lias      c8='cut|cat'; #  c8   :        cut|cat (with columnar alignment, coloring, && command matching..)
-alias      zc='   zcat';
-alias       Z='   zc  ';
-#lias      f8='   f80p'; #pal8   : should eventually be CLI && powerful interactive f0nt && pal8 selector && editor
-alias      fp='     ls       ~/lib/Oct/f8/*   '; # fp was fontpal => fpal => f80p but none are presently functional
-alias      f8f='    ls       ~/lib/Oct/f8/f0nt';alias lsf0nt='f8f'; # eventually these should switch to f8 cmdz
-alias      f8p='    ls       ~/lib/Oct/f8/pal8';Al lspal8='f8p' duf8='dusb ~/dvl/f8/ttf/nerd-fonts/pat*-fonts/*|s8n|cma'; # PCRLIDUF:GH/Muesli/duf altrn82`du`;
-alias   fixfont=' etfp -s -f ~/lib/Oct/f8/f0nt/psf/rOMAN3.psf';  # these hopefully restore usable f0nts to full-screen console (or 8trm also eventually)
-alias resetfont=' etfp -s -f ~/lib/Oct/f8/f0nt/psf/france9.psf'; # these maybe should be `setfont` instead of `etfp` for more reliable compatibility
-alias      s8n='    s8 -n';alias s8rn='s8n  -r';alias s8nr='s8rn'; # "PrincODrkns" gAmEvN2ly?||just smpl Numric Sortng alias until then (wi "Saturn" rEversd);
-alias      s8r='    s8 -r';alias rvrs='shfl -r';alias lshf='$(ls|shfl)'; # tMporary plAc-holdr 4 `reverse` sinc sort rearranges all, just high to low; tryXpnd?
-alias      s8='   sort'; #  s8   :           sort (maybe eventually a collection of my own custom sortings for orders beyond the default `sort` offerings)
-#          d8   already ~/bin/               # apparently Zsh (like Bash) has inherent support for 2xx15 0..32767 $RANDOM on the range $((RANDOM % 8)) modulo;
-#lias      d8='   date'; #  d8   :           date|time|pt
-#          g8   already ~/bin/
-#lias      g8='    git'; #  g8   :            git (was my much earlier attempt at wrapping to handle abbreV8ions && gener8 commits from .bak && vice-versa)
-alias    g8c='     git clone    '; # another convenient quick common git command for when needing to clone a new repository probably needing lowercase URLs
-alias    g8co='    git checkout ';alias gas='git add *';      alias g8f='g8 f';alias g8b='g8 br'; # short for git fetch && branch (just b does bisect first)
-alias    g8st='    git status   '; # basic Oct-memorable combined rhyme 1-string altern8 way to call what should be effectively the same as: `g8 st`
-alias    gaa='     git  add .* *'; # handy alias to Add All (Asterisk) changes, Commit by Message string below, then Push Origin Master (likely to GitHub)
-alias    gcm='     git commit -m'; # tried to call each of these through g8 initially, but maybe -m flag wasn't passing on to git correctly so explicit now
-alias    gac='     gaa; gcm     '; # should setup gcm to auto-commit basic gener8d d8-stamp message && maybe list biggest few file changes, if no mesg given
-alias    gacm='    gac          '; # should maybe make as function which takes parameter or gener8d commit message then gpom with auto user Pip pRam or cnfg?
-alias    gpoM='    git push origin master';alias g8l1='g8l --oneline'; # old was master, but new main is betr with just four letr! ;
-alias    gpom='    git push origin main'  ;alias g8st8='g8st';alias g8s='g8 s';alias g8h='g8 h';alias g8l='g8 l';alias g8d='g8 d';alias g8p='g8 p';
-         gap()  {  gac $1;gpom   } # above shortcuts are: status,           show,            help,            log,             diff,            pull
-alias    dkr='  docker';alias dkrb='dkr build . -t oct';alias dkrun='dkr run';alias dkri='dkr images'; # Beppu-san did Docker, build ". -t oct", run "-it oct";
-alias    dokr='   dkr ';alias dkrp='dkr ps'; #ias dkrn='dkrun --mount type=bind,source=/home/pip/.log,target=/home/pip/.log -it oct'; # 2du:prune imgz! ;
-alias    dkrn="dkrun -e DISPLAY --mount type=bind,source=/home/pip/.log,target=/home/tst/.log -v /tmp/.X11-unix:/tmp/.X11-unix -it oct";alias dkra='dkrs -a';
-alias       n=' ncal  ';alias dkre='dkr exec -it';alias dkrs='dkr system prune';dkrx(){dkre `dkrp|hl 2 1|c8 0-1` zsh} # && apNd fm`dkrp` "$id zsh"14hx-chrz;
-alias       N='  calN '; #  N    :            calN (use `rsn` ReSize4calN 171x57 to show 19-Years, 2000-2018 solidly in slightly lRgr than Dflt 160x50 size)
-alias    caln='  calN ';
-alias      l8='  calN '; #  l8   :            cal|cron|at|batch
-alias      sl='  ln -s'; #  sl   :             ln (maybe on this, since ln usually makes SymbolicLinks?)
-alias      slf=' sl -f'; # force upd8 of already existing symbolic link which normally balks
-alias       O='  o    ';
-alias       o='  orpie';
-#lias       Q='  calQ '; #  cl   :            calQl8|bc|dc like my old calc && symlnk cln (maybe swapping so n reverses meaning to non-default append Newline?)
-alias    calq='     Q '; # all lowercase too... or were, before d8:O74MJSVJ:but wanted to unalias up-Q && make that just what low q shud stA snglquOt funcsub;
-#lias    calQ='     Q '; # now q is just replacing old calQ
-#lias       q='  cl   '; #     q was symlinkB4g8 - simple command-line calculator in Oct::b8 with BigFloat (orig:'perl -e "print eval join q( ),@ARGV"')
+Al     dmCB='dmC -FB' ; # -fn "Bitstream Vera Sans Mono Bold-32"';   # "Bitstream Vera Sans Mono               Bold"
+Al     dmCc='dmC -Fc' ; # -fn "Cascadia Sans Mono-31"';
+Al     dmCd='dmC -Fd' ; # -fn "Droid Sans Mono Bold-32"';            # "Droid          Sans Mono               Bold"
+Al     dmCD='dmC -FD' ; # -fn "DejaVu Sans Mono Bold-32"';           # "DejaVu         Sans Mono               Bold"
+Al     dmCF='dmC -FF' ; # -fn "Fantasque Sans Mono Bold-32"';        # "Fantasque      Sans Mono               Bold"
+Al     dmCE='dmC -FE' ; # -fn "FreeMono Bold-32"';                   # "Free                Mono  *new_Dfault* Bold"
+Al     dmCj='dmC -Fj' ; # -fn "JetBrains Mono Bold-32"';             # "JetBrains           Mono               Bold"
+Al     dmCJ='dmC -FJ' ; # -fn "JetBrains Mono ExtraBold-32"';        # "JetBrains           Mono          ExtraBold"
+Al     dmCl='dmC -Fl' ; # -fn "League Mono Extended ExtraBold-32"';  # "League              Mono Extended ExtraBold"
+Al     dmCL='dmC -FL' ; # -fn "League Mono Wide ExtraBold-32"';      # "League              Mono Wide     ExtraBold"
+Al     dmCI='dmC -FI' ; # -fn "Liberation Mono Bold-32"';            # "Liberation          Mono               Bold"
+Al     dmCm='dmC -Fm' ; # -fn "MesloLGS NF Bold-32"';                # "MesloLGS   NF (Nerd Font) *was_Dfault* Bold"
+Al     dmCM='dmC -FM' ; # -fn "Monoid Bold-32"';                     # "Monoid                                 Bold"
+Al     dmCo='dmC -Fo' ; # -fn "Monoid Loose Bold-32"';               # "Monoid                   Loose         Bold"
+Al     dmCt='dmC -Ft' ; # -fn "Monoid Tight Bold-32"';               # "Monoid                   Tight         Bold"
+Al     dmCK='dmC -FK' ; # -fn "mononoki Bold-32"';                   # "mononoki                               Bold"
+Al     dmCN='dmC -FN' ; # -fn "Nimbus Mono PS Bold-32"';             # "Nimbus              Mono PS            Bold"
+Al     dmCO='dmC -FO' ; # -fn "Noto Sans Mono Bold-32"';             # "Noto           Sans Mono               Bold"
+Al     dmCT='dmC -FT' ; # -fn "Tlwg Mono Bold-32"';                  # "Tlwg                Mono               Bold"
+Al     dmCU='dmC -FU' ; # -fn "Ubuntu Mono Bold-32"';                # "Ubuntu              Mono               Bold"  # most look pretty similar so far;
+Al      fm='fontm8rx' fontm8rx='fontmatrix'; # fm can filter Active&&Proportion:Monospaced to show several more than just these above;
+Al      bf='birdfont';
+Al     mnt='  mount'; #  mnt  :          mount
+Al    umnt=' umount'; # umnt  :         umount
+Al mshr='sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) shr "/home/pip/.hst";rmSS' umshr='sudo umount shr;rmSS'; # 4sharngfIlzBtwEnOni&&Ubu&&gN2 VMz;
+Al schu='sudo chown $USER:$USER *;rmSS'; # cho all unhidden filz && dirz in current directory to the normal user from any required super-user permissions;
+Al     cho=' chown '; #  cho  :          chown
+Al     chg=' chgrp '; #  chg  :          chgrp (a little confusing that I've aliased grp='grep --color=auto' so it could mean grep or group depending)
+Al     chm=' chmod '; #  chm  :          chmod
+Al     chr=' chroot'; #  chr  :          chroot
+Al     chs=' chsh  '; #  chs  :          chsh  (follow with -s SHELL to autom8, or get interactive prompting without)
+Al     chf=' chfn  '; #  chf  :          chfn  (changes user FullName, office room number, office phone number, && home phone number)
+Al     cht=' chti  '; #  cht  :          chti  (changes terminal window title)
+#l      ct='   cht '; #                        (mAB consider `mv chti ct` && alias chti instead or add like noglob so Zsh stops Xpandng alias pRamz?)
+        ct() { chti $@; }     # unalias  ct && redefining as simple function wrapper resolves title parameter alias expansion problem (but still will glob)
+#       mc() already zsh function below
+#l      mc='  md;cd'; #  mc   :          md+cd (make sure to override MidnightCommander && GH.Com/RWMitchell/els Multi-Column utl if found)
+#       c8   already ~/bin/
+#l      c8='cut|cat'; #  c8   :        cut|cat (with columnar alignment, coloring, && command matching..)
+Al      zc='   zcat';
+Al       Z='   zc  ';
+#l      f8='   f80p'; #pal8   : should eventually be CLI && powerful interactive f0nt && pal8 selector && editor
+Al      fp='     ls       ~/lib/Oct/f8/*   '; # fp was fontpal => fpal => f80p but none are presently functional
+Al      f8f='    ls       ~/lib/Oct/f8/f0nt' lsf0nt='f8f';p82k() {pa "o8(\$p82k[$1]);";} # eventually these should switch to f8 cmdz; LookUp pal8 Key by ndx;
+Al      f8p='    ls       ~/lib/Oct/f8/pal8' lspal8='f8p' duf8='dusb ~/dvl/f8/ttf/nerd-fonts/pat*-fonts/*|s8n|cma'; # PCRLIDUF:GH/Muesli/duf altrn82`du`;
+Al   fixfont=' etfp -s -f ~/lib/Oct/f8/f0nt/psf/rOMAN3.psf';  # these hopefully restore usable f0nts to full-screen console (or 8trm also eventually)
+Al resetfont=' etfp -s -f ~/lib/Oct/f8/f0nt/psf/france9.psf'; # these maybe should be `setfont` instead of `etfp` for more reliable compatibility
+Al      s8n='    s8 -n' s8rn='s8n  -r' s8nr='s8rn'; # "PrincODrkns" gAmEvN2ly?||just smpl Numric Sortng alias until then (wi "Saturn" rEversd);
+Al      s8r='    s8 -r' rvrs='shfl -r' lshf='$(ls|shfl)'; # tMporary plAc-holdr 4 `reverse` sinc sort rearranges all, just high to low; tryXpnd?
+Al      s8='   sort'; #  s8   :           sort (maybe eventually a collection of my own custom sortings for orders beyond the default `sort` offerings)
+#       d8   already ~/bin/               # apparently Zsh (like Bash) has inherent support for 2xx15 0..32767 $RANDOM on the range $((RANDOM % 8)) modulo;
+#l      d8='   date'; #  d8   :           date|time|pt
+#       g8   already ~/bin/
+#l      g8='    git'; #  g8   :            git (was my much earlier attempt at wrapping to handle abbreV8ions && gener8 commits from .bak && vice-versa)
+Al    g8c='     git clone    '; # another convenient quick common git command for when needing to clone a new repository probably needing lowercase URLs
+Al    g8co='    git checkout ' gas='git add *' g8f='g8 f' g8b='g8 br'; # short for git fetch && branch (just b does bisect first)
+Al    g8st='    git status   '; # basic Oct-memorable combined rhyme 1-string altern8 way to call what should be effectively the same as: `g8 st`
+Al    gaa='     git  add .* *'; # handy alias to Add All (Asterisk) changes, Commit by Message string below, then Push Origin Master (likely to GitHub)
+Al    gcm='     git commit -m'; # tried to call each of these through g8 initially, but maybe -m flag wasn't passing on to git correctly so explicit now
+Al    gac='     gaa; gcm     '; # should setup gcm to auto-commit basic gener8d d8-stamp message && maybe list biggest few file changes, if no mesg given
+Al    gacm='    gac          '; # should maybe make as function which takes parameter or gener8d commit message then gpom with auto user Pip pRam or cnfg?
+Al    gpoM='    git push origin master' g8l1='g8l --oneline'; # old was master, but new main is betr with just four letr! ;
+Al    gpom='    git push origin main'   g8st8='g8st' g8s='g8 s' g8h='g8 h' g8l='g8 l' g8d='g8 d' g8p='g8 p';
+      gap()  {  gac $1;gpom   } # above shortcuts are: status,           show,            help,            log,             diff,            pull
+Al    dkr='  docker' dkrb='dkr build . -t oct' dkrun='dkr run';alias dkri='dkr images'; # Beppu-san did Docker, build ". -t oct", run "-it oct";
+Al    dokr='   dkr ' dkrp='dkr ps'; #ias dkrn='dkrun --mount type=bind,source=/home/pip/.log,target=/home/pip/.log -it oct'; # 2du:prune imgz! ;
+Al    dkrn="dkrun -e DISPLAY --mount type=bind,source=/home/pip/.log,target=/home/tst/.log -v /tmp/.X11-unix:/tmp/.X11-unix -it oct" dkra='dkrs -a';
+Al       n=' ncal  ' dkre='dkr exec -it';alias dkrs='dkr system prune';dkrx(){dkre `dkrp|hl 2 1|c8 0-1` zsh} # && apNd fm`dkrp` "$id zsh"14hx-chrz;
+#l       N='  calN '; #  N    :            calN (use `rsn` ReSize4calN 171x57 to show 19-Years, 2000-2018 solidly in slightly lRgr than Dflt 160x50 size)
+Al    caln='  calN '; #  N is now for n9 && echo already since O P E N F mkup my new prEferd printf wraprz alongside o[45 89],e[45 89],&& s[45] for 16 4mz;
+Al      l8='  calN '; #  l8   :            cal|cron|at|batch
+Al      sl='  ln -s'; #  sl   :             ln (maybe on this, since ln usually makes SymbolicLinks?)
+Al      slf=' sl -f'; # force upd8 of already existing symbolic link which normally balks
+Al       o='  orpie';
+#l       Q='  calQ '; #  cl   :            calQl8|bc|dc like my old calc && symlnk cln (maybe swapping so n reverses meaning to non-default append Newline?)
+Al    calq='     Q '; # all lowercase too... or were, before d8:O74MJSVJ:but wanted to unalias up-Q && make that just what low q shud stA snglquOt funcsub;
+#l    calQ='     Q '; # now q is just replacing old calQ
+#l       q='  cl   '; #     q was symlinkB4g8 - simple command-line calculator in Oct::b8 with BigFloat (orig:'perl -e "print eval join q( ),@ARGV"')
 Al wl='cl' cl='wc -l  '; #  cl was cln && calQl8 before just becoming more predictable CountLines (through WordCount);
-alias     cln='  calQ '; # nOt th@ `nl` is CoreUtilz NumberLinez can B Useful2;
-#lias     nv='nvim    '; # N53M3MIV:NeoVim is now an altern8ive 2 standard Vim;
-alias       V='vim.tiny';Al kk=kak vs=vis; # vs is not 4 VerSus or VisualStudio, but just a 3-char down 2 2 alias for the efficient vis (vim-like) editor;
+Al     cln='  calQ '; # nOt th@ `nl` is CoreUtilz NumberLinez can B Useful2;
+#l     nv='nvim    '; # N53M3MIV:NeoVim is now an altern8ive 2 standard Vim;
+Al       V='vim.tiny';Al kk=kak vs=vis; # vs is not 4 VerSus or VisualStudio, but just a 3-char down 2 2 alias for the efficient vis (vim-like) editor;
 Al ed8='en "v/8/v8=vim,nv=nvim,vs=vis,e=emacs,kk=kakoune,hx=helix;"'; # shortNz Kakoune (like Helix hx),ka alreD tAkN 4 `killall`; 2du:colrIze echoed tXt;
-alias    viii='vim    '; #  viii : v8 v 8     vim (lowercased Roman Numerals for 8 for my vim-style editor command name)
-#lias      v8='viii   '; #  v8  changing to Xport $Hv8f B4 calling vim on it, so that it can also be used by U8:upd8
-alias       8='viii   '; # might try quoting 8 or just synhilite makes it seem wrong when it will work, eventually a c8-based clone that might also perform e
-#lias       v='v8     '; # v8 and v might become an experimental varE8ion branch of my hopefully eventually standardized ~vim-compatible viii and 8 editor
-            v() { v8   $@; }     # unalias   v && redefining as simple function wrapper resolves         param alias expansion problem (but still will glob)
-alias     dif='vimdiff'; #  dif  :            vimdiff|diff|cmp|comm
-alias      vv=' v v';alias  vl=' v l';alias  v2=' v 2';alias   vk=' v k '; # .vimrc .lrc dox/2du/2.du  know.ls
-alias      vz=' v z';alias  vh=' v h';alias  vx=' v x';alias  vpm=' v pm'; # .zshrc .Hrc .Xrc dvl/\?\8/\?\8.pm
-alias     nvv='nv v';alias nvl='nv l';alias nv2='nv 2';alias  nvk='nv k '; # sAm but NeoVim versionz;
-alias     nvz='nv z';alias nvh='nv h';alias nvx='nv x';alias nvpm='nv pm';alias nvi='nv i'; # aded init.(vim|lua)
+Al    viii='vim    '; #  viii : v8 v 8     vim (lowercased Roman Numerals for 8 for my vim-style editor command name)
+#l      v8='viii   '; #  v8  changing to Xport $Hv8f B4 calling vim on it, so that it can also be used by U8:upd8
+Al       8='viii   '; # might try quoting 8 or just synhilite makes it seem wrong when it will work, eventually a c8-based clone that might also perform e
+#l       v='v8     '; # v8 and v might become an experimental varE8ion branch of my hopefully eventually standardized ~vim-compatible viii and 8 editor
+         v() { v8   $@; }     # unalias   v && redefining as simple function wrapper resolves         param alias expansion problem (but still will glob)
+Al     dif='vimdiff'; #  dif  :            vimdiff|diff|cmp|comm
+Al      vv=' v v';alias  vl=' v l';alias  v2=' v 2';alias   vk=' v k '; # .vimrc .lrc dox/2du/2.du  know.ls
+Al      vz=' v z';alias  vh=' v h';alias  vx=' v x';alias  vpm=' v pm'; # .zshrc .Hrc .Xrc dvl/\?\8/\?\8.pm
+Al     nvv='nv v';alias nvl='nv l';alias nv2='nv 2';alias  nvk='nv k '; # sAm but NeoVim versionz;
+Al     nvz='nv z';alias nvh='nv h';alias nvx='nv x';alias nvpm='nv pm';alias nvi='nv i'; # aded init.(vim|lua)
 #   (upd|loc)8  already above near e (which should eventually wrap v8?)
-#lias    loc8=' locate'; #  loc8 :             locate|find # f is already find above
+#l    loc8=' locate'; #  loc8 :             locate|find # f is already find above
 # F5QMGkI3:while trying2`pmei Moose`a tSt sugSted PAR::Dist having an `up` so maybe unalias this in case && ck. u && up used2alias Pip:Utl:updt B4 U8:upd8;
-#lias       u=' upd8  '; #  upd8 :           upd8 (U8 tool to cp dvl code into bin && lib, upd8 may eventually wrap g8 git && collabor8 2ease general sync)
-            u() { upd8 $@; }     # unalias   u && redefining as simple function wrapper resolves         param alias expansion problem (but still will glob)
-alias    updt='perl -MPip::Utl -e "updt @ARGV"'; # replace old tiny ~/bin/updt with alias in case newer upd8 fails
-Al       uptm=' uptime'; #  uptm :           uptime
-Al       upt='  uptm  ';Al Up=upt; # Ut && uT both already taken by different urxvt or similar terminal emul8or aliasez;
-alias     uni='   uniq'; #  uni  :           uniq
-alias     Uni='   uniq';alias Un='Uni';alias Unc='Un -c'; # just count?;
-#         dic   already ~/bin/
-#lias     dic='   dict'; #  dic  :           dict     (reformatted for 160 or other columns, colored, with reviewable query history in ~/.log/dic.log file)
-#lias       d='   dic ';
-            d() { dic  "$@"; }  # unalias   d && redefining as simple function wrapper resolves         param alias expansion problem (but still will glob)
-alias       D='   dfc '; #                            ("D" Used2alsOBshort4 pronunC8ion of "define" too, before realloc8ion to administr8ion DiskFreeColor)
-alias       Y=' yt-dlp'; # OCBLNEWS:shifted Gnome Help yelp to UpCase Y && mapd low-y to YouTube-DownLoadProject (like U2b alias already,U8 stil nEdz upd8);
-#lias       y='   yelp'; # J54MClip:Oni 2day had2 `sz;auu;ai dfc xclip irssi`;
+#l       u=' upd8  '; #  upd8 :           upd8 (U8 tool to cp dvl code into bin && lib, upd8 may eventually wrap g8 git && collabor8 2ease general sync)
+         u() { upd8 $@; }     # unalias   u && redefining as simple function wrapper resolves         param alias expansion problem (but still will glob)
+Al    updt='perl -MPip::Utl -e "updt @ARGV"'; # replace old tiny ~/bin/updt with alias in case newer upd8 fails
+Al    uptm=' uptime'; #  uptm :           uptime
+Al    upt='  uptm  ';Al Up=upt; # Ut && uT both already taken by different urxvt or similar terminal emul8or aliasez;
+Al     uni='   uniq'; #  uni  :           uniq
+Al     Uni='   uniq';alias Un='Uni';alias Unc='Un -c'; # just count?;
+#      dic   already ~/bin/
+#l     dic='   dict'; #  dic  :           dict     (reformatted for 160 or other columns, colored, with reviewable query history in ~/.log/dic.log file)
+#l       d='   dic ';
+         d() { dic  "$@"; }  # unalias   d && redefining as simple function wrapper resolves         param alias expansion problem (but still will glob)
+Al       D='   dfc '; #                            ("D" Used2alsOBshort4 pronunC8ion of "define" too, before realloc8ion to administr8ion DiskFreeColor)
+Al       Y=' yt-dlp'; # OCBLNEWS:shifted Gnome Help yelp to UpCase Y && mapd low-y to YouTube-DownLoadProject (like U2b alias already,U8 stil nEdz upd8);
+#l       y='   yelp'; # J54MClip:Oni 2day had2 `sz;auu;ai dfc xclip irssi`;
 #l spf=superfile; # Q8AMDspf:ckot HTTPS://SuperFile.Dev 4 nice altern8ive2yazi;
 y() { # PC2LHUNT:just lernd of yazi as gr8 vim-lIke term fIle-brwsr from TypeCraft on U2b so swapped old y && Y yt-dlp && yelp && cmNtd y 4 func hEre 2 map;
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"               cwd
@@ -1203,67 +1263,67 @@ y() { # PC2LHUNT:just lernd of yazi as gr8 vim-lIke term fIle-brwsr from TypeCra
 	IFS= read           -r -d '' cwd    < "$tmp"
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm                  -f     --         "$tmp"; }
-alias      zp='    tar czvf'; #zp:            tgz|tar|zip|7z (eventually inspect parameters to detect which zip to use)
-Al          z='    eza'; # PCRLGetZ:nEd2fInd z utl lIk betr cd (proly similR 2 exa && eza ... wher mAB latter gud 2 alias az z until rEal z competitor found;
-#          uz() already function below
-#lias      uz='  unzip'; #  uz   :          unzip
-alias      ev=' evince'; #  ev   :           evince (decent PDF document reader)
-alias    cncl=' cancel'; #  cncl :         cancel
-alias   comma=' cma   '; #  comma:            cma (like coma inserts by 4, these insert after 3)
-#lias      hd='   head'; #  hd   :           head (hd is already HexDump, which maybe should be combined (&& hd is more crucial HardDisk LVM util too?)) 
-alias      tl='   tail'; #  tl   :           tail
-alias     tlf=' tl  -f'; #                   tail with --follow (&& can be =file or =descriptor, the latter being the default)
-alias     tln=' tl  -n'; #                   tail with  -n umber already w8ing;
-alias     hdn='head -n'; #                   head with  -n umber already w8ing;
+Al      zp='    tar czvf'; #zp:            tgz|tar|zip|7z (eventually inspect parameters to detect which zip to use)
+Al       z='    eza'; # PCRLGetZ:nEd2fInd z utl lIk betr cd (proly similR 2 exa && eza ... wher mAB latter gud 2 alias az z until rEal z competitor found;
+#       uz() already function below
+#l      uz='  unzip'; #  uz   :          unzip
+Al      ev=' evince'; #  ev   :           evince (decent PDF document reader)
+Al    cncl=' cancel'; #  cncl :         cancel
+Al   comma=' cma   '; #  comma:            cma (like coma inserts by 4, these insert after 3)
+#l      hd='   head'; #  hd   :           head (hd is already HexDump, which maybe should be combined (&& hd is more crucial HardDisk LVM util too?)) 
+Al      tl='   tail'; #  tl   :           tail
+Al     tlf=' tl  -f'; #                   tail with --follow (&& can be =file or =descriptor, the latter being the default)
+Al     tln=' tl  -n'; #                   tail with  -n umber already w8ing;
+Al     hdn='head -n'; #                   head with  -n umber already w8ing;
 # O1ELINKS:from Angie (my Sister): HTTPS://Share.LibbyApp.Com/title/65667 LibraryAudioBook "Medit8ionForBeginners" by JackKornfield && ThichNhatHanh on d8:725
 #   HTTPS://InSig.ht/xKeKPC1PmGb "Nothing Here But You" 18-minute,49-second dur8:In0 Guided-Medit8ion by Mooji && also HTTPS://InSig.ht/ea7CsraNmGb 4 the app?
-alias    g3pa=' g3 $HOME/muz/mp3/PascalAuclair/PascalAuclair-TrueNorthInsight-AHeartThatReson8s-TruthOrThought-DharmaSeed.Org_talks_77854-dur8_-14V0-N5C.mp3';
+Al    g3pa=' g3 $HOME/muz/mp3/PascalAuclair/PascalAuclair-TrueNorthInsight-AHeartThatReson8s-TruthOrThought-DharmaSeed.Org_talks_77854-dur8_-14V0-N5C.mp3';
 Al rpr="$HOME/dvl/p8/.reap/reaper_linux_x86_64/REAPER/reaper" reap=rpr; # Q9TMCrpr:installed DigitalAudioWorkst8ion 2 tSt out;
-                        alias eprd='epr ~/dox/med/RecoveryDharma-2.0-EBook-O1DLHARM.epub'; # RecoveryDharma.Org v2.0 `epr` instead of Tp;
-                        alias tprd='Tp  ~/dox/med/RecoveryDharma-2.0-EBook-O1DLHARM.epub'; # RecoveryDharma.Org v2.0 (didn't work@1st wi termpub so epr abov);
-alias      Tp='termpub';alias tplp='Tp  ~/dox/dvl/Perl/learning_perl_exercises.epub'; # could also read with Python3 `epr` or `epy` or gnome-books;
-alias      tp='    top'; #  tp   :            top|htop
-alias     htp='   htop'; # htp   :                (ht is already HyperText? in /usr/bin which appears to gener8 HTML from TeX input files, but H also is htop)
-#          ss() already function below
-#lias      ss='    ssh'; #  ss   :            ssh
-alias      wd='    pwd'; #  wd   :            pwd # eventually rep this with new b8:wd in bin like width in wdht span for f(ib|ct)z (su|pr)mz sizing pRam linz
-alias      pw=' passwd'; #  pw   :         passwd
-alias      py='python '; #  py   :         python
-alias      p3='python3';alias py3='p3'; # try 2 remember that older (pre-UTF8?) v2 branch of Python is just `py` while better new version 3 is p3 or py3 here;
-alias      pn=' ping  '; #  pn   :           ping
-alias      pb=' pingb '; #  pb   :           pingb      (needed2`sz; echo net.ipv4.icmp_echo_ignore_broadcasts=0 >> /etc/sysctl.conf; sysctl -p`)
-alias     ic='ifconfig'; #  ic   :       ifconfig
-alias     ipc='ip   -c'; #  ip   :       ip  addr --color=always
-alias     ipd='ipc  -d';alias     ipa='ipS   addr '; ipp(){ aors='addr';if [[ "$1" != "" ]]; then aors="$1";shift; fi; ip --color=never -d -s $aors | pet; };
-alias     ipS='ipd  -s';alias     ips='ipS   stats'; # try2abov just stRt bAsic new ip pipe thru pet 2 perform -color filtering betr than Dflt ipc;
-alias     ns=' netstat'; #         from: N7KMD51f:HTTPS://YouTu.be/ppmUsyafyoo "17 Linux Interview Questions && Answers" # N7K:0GE0 of MarkMcNally;
-alias     nsn='ns   -natp '; # show open UDP && TCP ports a few ways
-alias     sst='ss   -nutpl';
-alias     lso='lsof -i -P '; # /etc/services shows ports;
-alias     msg='   mesg'; #  msg  :           mesg|write
-alias      ty='type   '; #  ty   :                type               # describe command-type like alias, built-in, or with path to bin, etc.;
-alias      W=' whereis'; #  W    :                      whereis      # below replaced wh which alias with function nstd 2 avoid early pRam Xpansion
-#lias      wh='which  '; #  wh   :     type|who|w|which|where|whence (like wi uptm prefix line ls of loggedin userz)  (tried whence -w for single word typez)
+                     Al eprd='epr ~/dox/med/RecoveryDharma-2.0-EBook-O1DLHARM.epub'; # RecoveryDharma.Org v2.0 `epr` instead of Tp;
+                     Al tprd='Tp  ~/dox/med/RecoveryDharma-2.0-EBook-O1DLHARM.epub'; # RecoveryDharma.Org v2.0 (didn't work@1st wi termpub so epr abov);
+Al      Tp='termpub';Al tplp='Tp  ~/dox/dvl/Perl/learning_perl_exercises.epub'; # could also read with Python3 `epr` or `epy` or gnome-books;
+Al      tp='    top'; #  tp   :            top|htop
+Al     htp='   htop'; # htp   :                (ht is already HyperText? in /usr/bin which appears to gener8 HTML from TeX input files, but H also is htop)
+#       ss() already function below
+#l      ss='    ssh'; #  ss   :            ssh
+Al      wd='    pwd'; #  wd   :            pwd # eventually rep this with new b8:wd in bin like width in wdht span for f(ib|ct)z (su|pr)mz sizing pRam linz
+Al      pw=' passwd'; #  pw   :         passwd
+Al      py='python '; #  py   :         python
+Al      p3='python3';Al py3='p3'; # try 2 remember that older (pre-UTF8?) v2 branch of Python is just `py` while better new version 3 is p3 or py3 here;
+Al      pn=' ping  '; #  pn   :           ping
+Al      pb=' pingb '; #  pb   :           pingb      (needed2`sz; echo net.ipv4.icmp_echo_ignore_broadcasts=0 >> /etc/sysctl.conf; sysctl -p`)
+Al     ic='ifconfig'; #  ic   :       ifconfig
+Al     ipc='ip   -c'; #  ip   :       ip  addr --color=always
+Al     ipd='ipc  -d' ipa='ipS   addr '; ipp(){ aors='addr';if [[ "$1" != "" ]]; then aors="$1";shift; fi; ip --color=never -d -s $aors | pet; };
+Al     ipS='ipd  -s' ips='ipS   stats'; # try2abov just stRt bAsic new ip pipe thru pet 2 perform -color filtering betr than Dflt ipc;
+Al     ns=' netstat'; #         from: N7KMD51f:HTTPS://YouTu.be/ppmUsyafyoo "17 Linux Interview Questions && Answers" # N7K:0GE0 of MarkMcNally;
+Al     nsn='ns   -natp '; # show open UDP && TCP ports a few ways
+Al     sst='ss   -nutpl';
+Al     lso='lsof -i -P '; # /etc/services shows ports;
+Al     msg='   mesg'; #  msg  :           mesg|write
+Al      ty='type   '; #  ty   :                type               # describe command-type like alias, built-in, or with path to bin, etc.;
+Al      W=' whereis'; #  W    :                      whereis      # below replaced wh which alias with function nstd 2 avoid early pRam Xpansion
+#l      wh='which  '; #  wh   :     type|who|w|which|where|whence (like wi uptm prefix line ls of loggedin userz)  (tried whence -w for single word typez)
 wh(){          which $@; } # maybe the original wh alias abov was expanding to an old Csh binary nstd of DsIrd Zsh biltin && thN alsO Xpandng pRam2or nahLswr2?
 wr(){          where $@; } # might just be the same as `which` in most or all cases?
-alias     whr='wr     '; #  wr   :                      where        # note that `what` remains free to be l8r alloc8d to some similar purpose as well
-alias     lsh='  lshw '; #  lsh  :          lshw                     # useful when trying to get Ken setup with nVidia bin GeForce7 NV49 G71 driver, !nouveau
-alias     lsm='  lsmod'; #  lsm  :          lsmod                    # HTTPS://Unix.StackExchange.Com/questions/85249/why-not-use-which-what-to-use-then DtAlz
-alias     lsp='  lspci';alias lspn='lsp -nn';alias lspa='lspn|g Au'; # show both textual and numeric ID's (names && numbers) && grep Audio 4 pulse PCI DvIcez:
-alias     lsc='  lscpu'; #  lsc  :          lscpu  # 2e:00.1 Audio device [0403]: …[AMD/ATI] Ellesmere  HDMI Audio [Radeon RX 580  4[78]0-5[789]0] [1002:aaf0]
-alias     lsu='  lsusb'; #  lsu  :          lsusb  # 30:00.3 Audio device [0403]: …[AMD    ] Family 17h HD   Audio Controller (Models 00h-0fh)     [1022:1457]
-alias     ren=' rename';alias _='   rens'; # OCBLM8rn:try2just undrscor?; mIt tAk just Perl quoted regex instead of $from $to before shell fileglob to alter;
-alias     rens="ren 's/ /_/g' *"; # simply REName all Spaces to proper underscores within any non-hidden files && sub-directories in the current-working-dir;
-alias     sho='cd ~/gfx/sho;shot -u'; # change to typical local Oct screenshot directory && take a shot of the focUsed window (no border) in 3 seconds
-alias     br0='byzanz-record -a -c -d 122 -w 1920 -h 1080 Octl-ScrnCap-1080p-`d8`.webm &'; # Byz-Rec up-left monitor 0 zer0 for 2mins2secs to non-ogg .ogv 4m@;
-alias     kaz='kazam';alias ssr='simplescreenrecorder'; # K6EMFMIC: HTTPS://ItsFOSS.Com/best-linux-screen-recorders with `obs` OpenBroadcasterSoftwareStudio;
-alias     kam='kamoso --style        ddark >/dev/null 2>&1'; # KC8LDark:Avail:dsemilight,dsemidark,dlight,ddark,kvantum-dark,kvantum,cde  && try2sNd stderorz
-alias     kad='kamoso --style kvantum-dark >/dev/null 2>&1'; #          Stylz:cleanlooks,gtk2,motif,plastique,qt5ct-style,Windows,Fusion  && stdoutpt2devnul;
-alias    resp='   reso spec'; # joining like =~ /^respect/ shortcut to list resolution specific8ionz  # abovUsed2B S=shl,s=shl8 but S repurposed in a8 4 SKpz
-alias    resg='   res  GA  ';alias res=' reso';alias re='res'; # basic a8.pm resolution HD limit8ion (not to get confused with resoLVE or resoURCE varE8ionz)
-alias    resh='   re   HD  ';alias resa='re Andr';re16='re 16/9';alias re64='re 64/27';alias res9='re /9';alias rest='reso;res9;resp;re16;resg;resh;resa;re64';
-alias    reph='re Pi|gi pi;re HD|gi hd'; # Xmpl alias IsOl8ng m@chz cAse-sNsitivly4 reso && grep,but not gi,so just Pixelz in tItl thN HighDef # RESoTesTz abov
-alias    res8='reset;rest;w8 48;src8;rest'; # J12LFTst:wanting to test a bunch of resting && waiting instead of sleep within resetting the f8 pal8 col8 colr8n;
+Al     whr='wr     '; #  wr   :                      where        # note that `what` remains free to be l8r alloc8d to some similar purpose as well
+Al     lsh='  lshw '; #  lsh  :          lshw                     # useful when trying to get Ken setup with nVidia bin GeForce7 NV49 G71 driver, !nouveau
+Al     lsm='  lsmod'; #  lsm  :          lsmod                    # HTTPS://Unix.StackExchange.Com/questions/85249/why-not-use-which-what-to-use-then DtAlz
+Al     lsp='  lspci' lspn='lsp -nn' lspa='lspn|g Au'; # show both textual and numeric ID's (names && numbers) && grep Audio 4 pulse PCI DvIcez:
+Al     lsc='  lscpu'; #  lsc  :          lscpu  # 2e:00.1 Audio device [0403]: …[AMD/ATI] Ellesmere  HDMI Audio [Radeon RX 580  4[78]0-5[789]0] [1002:aaf0]
+Al     lsu='  lsusb'; #  lsu  :          lsusb  # 30:00.3 Audio device [0403]: …[AMD    ] Family 17h HD   Audio Controller (Models 00h-0fh)     [1022:1457]
+Al     ren=' rename' _='   rens'; # OCBLM8rn:try2just undrscor?; mIt tAk just Perl quoted regex instead of $from $to before shell fileglob to alter;
+Al     rens="ren 's/ /_/g' *"; # simply REName all Spaces to proper underscores within any non-hidden files && sub-directories in the current-working-dir;
+Al     sho='cd ~/gfx/sho;shot -u'; # change to typical local Oct screenshot directory && take a shot of the focUsed window (no border) in 3 seconds
+Al     br0='byzanz-record -a -c -d 122 -w 1920 -h 1080 Octl-ScrnCap-1080p-`d8`.webm &'; # Byz-Rec up-left monitor 0 zer0 for 2mins2secs to non-ogg .ogv 4m@;
+Al     kaz='kazam' ssr='simplescreenrecorder'; # K6EMFMIC: HTTPS://ItsFOSS.Com/best-linux-screen-recorders with `obs` OpenBroadcasterSoftwareStudio;
+Al     kam='kamoso --style        ddark >/dev/null 2>&1'; # KC8LDark:Avail:dsemilight,dsemidark,dlight,ddark,kvantum-dark,kvantum,cde  && try2sNd stderorz
+Al     kad='kamoso --style kvantum-dark >/dev/null 2>&1'; #          Stylz:cleanlooks,gtk2,motif,plastique,qt5ct-style,Windows,Fusion  && stdoutpt2devnul;
+Al    resp='   reso spec'; # joining like =~ /^respect/ shortcut to list resolution specific8ionz  # abovUsed2B S=shl,s=shl8 but S repurposed in a8 4 SKpz
+Al    resg='   res  GA  ' res=' reso' re='res'; # basic a8.pm resolution HD limit8ion (not to get confused with resoLVE or resoURCE varE8ionz)
+Al    resh='   re   HD  ' resa='re Andr' re16='re 16/9' re64='re 64/27' res9='re /9' rest='reso;res9;resp;re16;resg;resh;resa;re64';
+Al    reph='re Pi|gi pi;re HD|gi hd'; # Xmpl alias IsOl8ng m@chz cAse-sNsitivly4 reso && grep,but not gi,so just Pixelz in tItl thN HighDef # RESoTesTz abov
+Al    res8='reset;rest;w8 48;src8;rest'; # J12LFTst:wanting to test a bunch of resting && waiting instead of sleep within resetting the f8 pal8 col8 colr8n;
 xir(){   Hxir='0.2';Hxia='16';Hxit='4'; # xiset Resolution Acceler8ion Threshold for mouse pointer;
   if       [[ "$#" -gt     0    ]]; then # print out some help text for -h as first parameter && then return
     if     [[ "$1"  =~  ^-*h    ]]; then
@@ -1275,57 +1335,57 @@ xir(){   Hxir='0.2';Hxia='16';Hxit='4'; # xiset Resolution Acceler8ion Threshold
 #`xset m …` abov tAkz: 'Acceler8ion' && 'Threshold' (both intz or A canBsimpl fractn '1/2' or '0.5'?). in 10ms past ThrSh mikEz (wudBpixLz) gOz AccL az fast.
 #  if only 1 pRam iz givN, tAkN az AccL. can also giv 'default' flag to set to systM Dfltz. if ThrSh givN iz 0, AccL Uzd in XpOnNt of n8ural 4mUla4 prOgrSiv;
 #  N7KMCxic:   xinput-calibrator switched before this d8 from dash to underscore below. Probably only was needed on Chun or an eventual Juri Fujitsu LifeBook;
-alias   xical='xinput_calibrator';alias xic='xical';alias xbk='xbindkeys';alias xdt='xdotool';alias xd2='xdt'; # basic Chun touch-scrn&&X re-bind&&scrpt utlz
-# ias   xcsc -selection specify which X selection2Uz, optz:"p(rimary)" XA_PRIMARY (default), "s(econdary)" for XA_SECONDARY or "c(lipboard)" for XA_CLIPBOARD;
-alias   xclic='xclip -se c'; # Dfltz: -i (in: read in2 X selection from STDIN or fIlez), -l 0 (loops of selection requests 2 w8 before exiting, 0 unlimited),
+Al   xical='xinput_calibrator';alias xic='xical';alias xbk='xbindkeys';alias xdt='xdotool';alias xd2='xdt'; # basic Chun touch-scrn&&X re-bind&&scrpt utlz
+#    xcsc -selection specify which X selection2Uz, optz:"p(rimary)" XA_PRIMARY (default), "s(econdary)" for XA_SECONDARY or "c(lipboard)" for XA_CLIPBOARD;
+Al   xclic='xclip -se c' xcc=xclic; # Dfltz: -i (in: read in2 X selection from STDIN or fIlez), -l 0 (loops of sLectn rEquStz2 w8 B4 Xiting, 0 unlimited),
 # -se [pscb] (selection used is primary [Dflt pAste from midl-click], secondary, clipboard [right-click context menuz, picked in abov alias], or buffer-cut?),
 # -si (silent mode so run in background and output errors only); might instead wish to use -o to output selection for piping into another utility, -loops 1 so
 #   whatever tmp d8a (lIk a pswd) is only held for a single l8r pAste EvNt, -o -t 'TARGETS' should list possible target atomz, -r (rmlastnl like Perl chomp),
 # -f  (filter when accepting -i in to load selection by also printing back out to send elsewhere), -d ':0' (display [X] to connect to), -vers (version info),
 # -n  (noutf8 so use old broken unicode handling for compatibility), && last 2 are instead of -s silent: -q (quiet info on foreground), -verb (verbose cmNtz);
-alias   xcl1p='xclip -l  1'; # thEse also use Dflt -se p(rimary  middle-click-auto) with just 1 loop w8ing for a pAste before termin8ing && ...
-alias   xcl1c='xclic -l  1'; #                 ... -se c(lipboard right-click-menu) with same 1 loop w8; # mAB othr sLectnz or special tRgetz cud B Useful 2?;
-alias   vclip="v +'silent pu!+' +'$d' +'1' +'set nomodified' +'au BufWriteCmd vimclippy %y+ | set nomodified' vimclippy"; # this alias is hopefully the right
+Al   xcl1p='xclip -l  1'; # thEse also use Dflt -se p(rimary  middle-click-auto) with just 1 loop w8ing for a pAste before termin8ing && ...
+Al   xcl1c='xclic -l  1'; #                 ... -se c(lipboard right-click-menu) with same 1 loop w8; # mAB othr sLectnz or special tRgetz cud B Useful 2?;
+Al   vclip="v +'silent pu!+' +'$d' +'1' +'set nomodified' +'au BufWriteCmd vimclippy %y+ | set nomodified' vimclippy"; # this alias is hopefully the right
 #   form of Rich Cheng's vimclippy at: HTTPS://NormalMo.de/posts/vimclippy which should allow just editing the clipboard directly (without needing any files);
-alias d8xC='pa "\$d8=$HOd8->new();\$ds=qq(\$d8);\$ds=~s/....\$/J000/;\$df=\$d8->Dow().q( ).\$d8->monname().sprintf(q( %2d %4d),\$d8->DY());print qq(\`\$ds\` \x{2665}  \x{1F642} \n\`\$df\`\n\`1900 P / 2000 G\`);"|xclic -f'; # hOpfuly similR2old d8g pushng 3 baktikd lInz2BpAstd wi ♥️  <3 🙂 =) EmOji 4 7PM 1900 Chat;
-alias d8xc='pa "\$d8=$HOd8->new();\$ds=qq(\$d8);                     \$df=\$d8->Dow().q( ).\$d8->monname().sprintf(q( %2d %4d),\$d8->DY());print qq(\`\$ds\` \x{2665}  \x{1F642} \n\`\$df\`\n\`).sprintf(q(%02d%02d P / %02d%02d G),\$d8->hm(),((\$d8->h()+1)%24),\$d8->m()).qq(\`);"|xclic -f'; # hEr closngch@curentime;
-alias     xwi='xwininfo';alias xwid='xwi -id';alias xgaw='xdt getactivewindow';alias xiaw='xwid `xgaw`'; # from Unix.StackExchange.Com q 14159 find wndwdimz?
-alias     xfs='xfontsel';alias ares='appres ';alias lsmo='fls|cut -f2 -d:|sort -u|gi mono';alias fls='fc-list'; # mIt l8r Bcome Able 2 s/cut/c8/ && s/sort/s8/;
-alias    fcls='fls -b|g "fullname:"|cut -f2 -d:|sort -u';
-alias      rx='ares  XTerm|gi UTF8Fonts|sort'; # HTTPS://AskUbuntu.Com/questions/161652/how-to-change-the-default-font-size-of-xterm 2get Xterm font Resources;
-alias    xfds='xfd -fn "`xfs -print`"       ';alias lsmf='fls :scalable=true:spacing=mono: family'; # XFontDisplaySelectd && LiStMonospcd Fontz 4l8r terminalz;
-alias      Xd='xxd';alias XD='Xd -c 40'; # CLI heXxdump && hexyl toolz here && 7 heX editorz BlO wi 2-char aliasez 2 be able 2 rely on whenever one is needed;
-alias      Xr='hexer';alias   Xl='hexyl';alias Xc='hexcurse';alias Xn='  hexeditor'; # ncurses-HE;  # thEse 3 (!rl, just cn) have TUI && run in teXt terminalz;
-alias      Xg='ghex ';alias   Xb='bless';alias Xo='okteta  ';alias Xw='wxHexEditor'; #"dl,cn,rgbow" # thEse 4 (+ hexer abov) have GUI && run graphical windowz;
-alias      Xe="een '${R}heX${Y}editorz$W: ${o}CLI$c:${M}dl$z=${C}xx${M}d$G,${C}hexy${M}l$B; ${o}TUI$c:${M}cn$z=${C}hex${M}c${C}urse$G,$w(${M}n${c}c$K-$w)${C}hexeditor$B; ${o}GUI$c:${M}rgbow$z=${C}hexe${M}r$G,${M}g${C}hex$G,${M}b${C}less$G,${M}o${C}kteta$G,${M}w${C}xHexEditor$B;$z'"; # echo eSKpd colrd editorz 4 rFrNc;
-Al         he=Xe; # may eventually wish to start my own HexEditor project which will probably take over 'he' from this alias to printing colrd editorz above;
-alias    ctor='ctorrent -e 16 -z 64'; # abov: %eval $(xdotool getmouselocation --shell); %echo $X,$Y; will override Dflt $Y bright Yellow mapping with coordz
-alias     sig='signal-desktop'; # I7GMFSIG:installed HTTPS://Signal.Org on my Android phone && Aku/Oni here as likely better than Slack or Discord 4the future;
-alias    stdb='stdbuf -oL';alias sbam='stdb alsactl monitor'; # HTTPS://AskUbuntu.Com/questions/630564/cant-redirect-stdout-of-alsactl-monitor setz lIn-bufrd;
-alias    st4w='speaker-test -l4 -c2 -twav'; # K1VL3PCM:loop 4 times on -Ddefault ~/.asoundrc device with 2-channel stereo test /usr/share/sounds/alsa/ .wavs;
-alias      Es='ecasound';alias Eplay='Es -o alsa -i';alias Erec='Es -i alsa'; # wrap ECASound similarly to `aplay` && `arecord` ALSA equivalent utilities;
-alias     pak='pulseaudio -k';alias pavl='pulseaudio -v --log-time';alias pavv='pavl -v'; # --kill running PA daemon && Verbose print with log-times 4Dbuging;
-export  PULSE_LATENCY_MSEC='64'; # JC7LNice:HTTPS://AskUbuntu.Com/questions/392911/wine-sound-is-played-way-too-fast-and-crackles-horribly to avoid underruns;
-#xport OpenGL_GL_PREFERENCE='GLVND'; # or 'LEGACY'; See `cmake --help-policy CMP0072` for FindOpenGL policy details which prefer GLVND when it's available;
-alias     lvt='lv-tool'; # J28L8888:LibVisual 0.5 ~2014 > ~2006 0.4 && mAB w8,chti,thN fix ~/dvl/n8/viz/*plug* 4 bass kick snAr rEsponsz in hIgh contrastz;
-alias     lvp='lv-tool    -i pulseaudio -s  888 -S 1200'; # setup LibViz 4 -vrbOs? -inpuls -seedrand;  ## BlO blursk dblfrEmM coredumpz aftr 2nd unlOd! ##;
-export   lVSx=' -a lv_gltest -x lv_analyzer,lv_dump,madspin,nastyfft,nebulus,plazma,bumpscope,corona,gdkpixbuf,gforce,oinksie,blursk,goom2k4,jackdaw,lv_scope';
-alias     cad='cadence &';alias qjc='qjackctl &';alias past='pasystray &';alias pav='pavucontrol &'; # old @Mptz2get JACK 2working&&PulseAudioSysTray indic8or;
-alias     LVH='lVH -a lv_gltest -x lv_gltest,lcdcontrol,gdkpixbuf,nastyfft,bumpscope,goom2k4,blursk,madspin,gforce,lv_dump,nebulus,plazma,corona,flower';
-alias     lVH='lvp -D  640x400 '; # above from madspin on can keep being cycled thru without leaking mem && core-dumping, but are Xcluded Bcuz barely visual;
-alias     lvH='lvp -D 1280x800 ';alias lV="lvH $lVSx"; # upper-H 4 old HD720P, lower-h 4 dflt fullhd1080p, othrwIzkeptsAmsOfR; # only 6 lFt mAB nEd 4 2!segf?;
-alias     lvh='lvp -D 1920x1080';alias lv="lvh $lVSx"; # oinksie... lv-tool: malloc.c:4023 coredumpd mAB bAsd on pRam ordr? #; # proly not inflwrgltestjess! ;
-alias     LV='lvh -x lcdcontrol';alias sv='sonic-visualiser'; # K6BMGVis:just installed a new audio spectrum-analysis which is hopefully superior to libvis;
-alias     Lv='lvh -a lv_gltest -x lv_analyzer,lv_dump,lv_scope,lcdcontrol,gdkpixbuf,gforce,nastyfft,nebulus,bumpscope,flower,goom2k4,blursk,oinksie,plazma';
-#lias     Lv='lvh -a lv_gltest -x lv_gltest,lcdcontrol,gdkpixbuf,nastyfft,bumpscope,goom2k4,blursk'; # Xclude inactive plugins or mMlEkz causing core-dumpz;
-alias     Lv8='lv-tool -i pulseaudio -f 60 -s 8 -S 8888 -D 1918x1040 -a jess -x lv_analyzer,lv_dump,lv_scope,lcdcontrol,gdkpixbuf,gforce,nastyfft,nebulus,bumpscope,flower,goom2k4,blursk,oinksie,plazma,madspin,jakdaw'; # K87M1Lv8:just loop jess,lv_gltest,corona,infinite each 4 pretty long but usually stealfocus still;
-alias     p47='parsec47';alias a7='a7xpg'; # some of my favorite Kenta Cho Shmups ("Bullet-Hell") in /usr/games;  ## munmap_chunk(): invalid ptrstilcordumpdx;
-alias      rr='rrootage';alias tt='torus-trooper';alias tf='tumiki-fighters'; # would be gr8 to study BulletML && explor own similRly themed varE8ions someday
-alias      xb='xboard';alias xbsf='xb -fcp stockfish -fUCI'; # gr8 Chess program wi shortcut to top StockFish engine as FirstChessProgram (&& -scp 2ndChesProg)
-alias    rune='pu ~/gmz/Rune;mv Jagex ~;S Kb;cat RS.pw;S ^;rs3-launcher/rs3-launcher;mv ~/Jagex .;po';alias RS='rune'; # K2HLIMMO:signdup4frE acct2plARSwiKyle;
-alias    Rune=' rune ';alias RuneScape='rune'; # hopefully setting up the RuneScape.Com aliasez I'm most likely to remember && want to use l8r 2 call launcher;
-alias    kpcl=' kpcli      --kdb=~/.kp/pswd.kdb --histfile=/dev/null --no-recycle'; # 2!stor any hist or entry changes in /Backup or "/Recycle Bin" old dfalts
-alias    kp='  pu  ~/.kp;    kpc --kdb=pswd.kdb --histfile=/dev/null --no-recycle;chm 600 pswd.kdb;b pswd.kdb;po';  # alias2 kpcli-3.0 modwimor aliasz&&alInmNt
+Al d8xC='pa "\$d8=$HOd8->new();\$ds=qq(\$d8);\$ds=~s/....\$/J000/;\$df=\$d8->Dow().q( ).\$d8->monname().sprintf(q( %2d %4d),\$d8->DY());print qq(\`\$ds\` \x{2665}  \x{1F642} \n\`\$df\`\n\`1900 P / 2000 G\`);"|xclic -f'; # hOpfuly similR2old d8g pushng 3 baktikd lInz2BpAstd wi ♥️  <3 🙂 =) EmOji 4 7PM 1900 Chat;
+Al d8xc='pa "\$d8=$HOd8->new();\$ds=qq(\$d8);                     \$df=\$d8->Dow().q( ).\$d8->monname().sprintf(q( %2d %4d),\$d8->DY());print qq(\`\$ds\` \x{2665}  \x{1F642} \n\`\$df\`\n\`).sprintf(q(%02d%02d P / %02d%02d G),\$d8->hm(),((\$d8->h()+1)%24),\$d8->m()).qq(\`);"|xclic -f'; # hEr closngch@curentime;
+Al     xwi='xwininfo';alias xwid='xwi -id';alias xgaw='xdt getactivewindow';alias xiaw='xwid `xgaw`'; # from Unix.StackExchange.Com q 14159 find wndwdimz?
+Al     xfs='xfontsel';alias ares='appres ';alias lsmo='fls|cut -f2 -d:|sort -u|gi mono';alias fls='fc-list'; # mIt l8r Bcome Able 2 s/cut/c8/ && s/sort/s8/;
+Al    fcls='fls -b|g "fullname:"|cut -f2 -d:|sort -u';
+Al      rx='ares  XTerm|gi UTF8Fonts|sort'; # HTTPS://AskUbuntu.Com/questions/161652/how-to-change-the-default-font-size-of-xterm 2get Xterm font Resources;
+Al    xfds='xfd -fn "`xfs -print`"       ';alias lsmf='fls :scalable=true:spacing=mono: family'; # XFontDisplaySelectd && LiStMonospcd Fontz 4l8r terminalz;
+Al      Xd='xxd';alias XD='Xd -c 40'; # CLI heXxdump && hexyl toolz here && 7 heX editorz BlO wi 2-char aliasez 2 be able 2 rely on whenever one is needed;
+Al      Xr='hexer';alias   Xl='hexyl';alias Xc='hexcurse';alias Xn='  hexeditor'; # ncurses-HE;  # thEse 3 (!rl, just cn) have TUI && run in teXt terminalz;
+Al      Xg='ghex ';alias   Xb='bless';alias Xo='okteta  ';alias Xw='wxHexEditor'; #"dl,cn,rgbow" # thEse 4 (+ hexer abov) have GUI && run graphical windowz;
+Al      Xe="een '${R}heX${Y}editorz$W: ${o}CLI$c:${M}dl$z=${C}xx${M}d$G,${C}hexy${M}l$B; ${o}TUI$c:${M}cn$z=${C}hex${M}c${C}urse$G,$w(${M}n${c}c$K-$w)${C}hexeditor$B; ${o}GUI$c:${M}rgbow$z=${C}hexe${M}r$G,${M}g${C}hex$G,${M}b${C}less$G,${M}o${C}kteta$G,${M}w${C}xHexEditor$B;$z'"; # echo eSKpd colrd editorz 4 rFrNc;
+Al      he=Xe; # may eventually wish to start my own HexEditor project which will probably take over 'he' from this alias to printing colrd editorz above;
+Al    ctor='ctorrent -e 16 -z 64'; # abov: %eval $(xdotool getmouselocation --shell); %echo $X,$Y; will override Dflt $Y bright Yellow mapping with coordz
+Al     sig='signal-desktop'; # I7GMFSIG:installed HTTPS://Signal.Org on my Android phone && Aku/Oni here as likely better than Slack or Discord 4the future;
+Al    stdb='stdbuf -oL';alias sbam='stdb alsactl monitor'; # HTTPS://AskUbuntu.Com/questions/630564/cant-redirect-stdout-of-alsactl-monitor setz lIn-bufrd;
+Al    st4w='speaker-test -l4 -c2 -twav'; # K1VL3PCM:loop 4 times on -Ddefault ~/.asoundrc device with 2-channel stereo test /usr/share/sounds/alsa/ .wavs;
+Al      Es='ecasound';alias Eplay='Es -o alsa -i';alias Erec='Es -i alsa'; # wrap ECASound similarly to `aplay` && `arecord` ALSA equivalent utilities;
+Al     pak='pulseaudio -k';alias pavl='pulseaudio -v --log-time';alias pavv='pavl -v'; # --kill running PA daemon && Verbose print with log-times 4Dbuging;
+Xp PULSE_LATENCY_MSEC='64'; # JC7LNice:HTTPS://AskUbuntu.Com/questions/392911/wine-sound-is-played-way-too-fast-and-crackles-horribly to avoid underruns;
+#Xp OpenGL_GL_PREFERENCE='GLVND'; # or 'LEGACY'; See `cmake --help-policy CMP0072` for FindOpenGL policy details which prefer GLVND when it's available;
+Al     lvt='lv-tool'; # J28L8888:LibVisual 0.5 ~2014 > ~2006 0.4 && mAB w8,chti,thN fix ~/dvl/n8/viz/*plug* 4 bass kick snAr rEsponsz in hIgh contrastz;
+Al     lvp='lv-tool    -i pulseaudio -s  888 -S 1200'; # setup LibViz 4 -vrbOs? -inpuls -seedrand;  ## BlO blursk dblfrEmM coredumpz aftr 2nd unlOd! ##;
+Xp   lVSx=' -a lv_gltest -x lv_analyzer,lv_dump,madspin,nastyfft,nebulus,plazma,bumpscope,corona,gdkpixbuf,gforce,oinksie,blursk,goom2k4,jackdaw,lv_scope';
+Al     cad='cadence &';alias qjc='qjackctl &';alias past='pasystray &';alias pav='pavucontrol &'; # old @Mptz2get JACK 2working&&PulseAudioSysTray indic8or;
+Al     LVH='lVH -a lv_gltest -x lv_gltest,lcdcontrol,gdkpixbuf,nastyfft,bumpscope,goom2k4,blursk,madspin,gforce,lv_dump,nebulus,plazma,corona,flower';
+Al     lVH='lvp -D  640x400 '; # above from madspin on can keep being cycled thru without leaking mem && core-dumping, but are Xcluded Bcuz barely visual;
+Al     lvH='lvp -D 1280x800 ';alias lV="lvH $lVSx"; # upper-H 4 old HD720P, lower-h 4 dflt fullhd1080p, othrwIzkeptsAmsOfR; # only 6 lFt mAB nEd 4 2!segf?;
+Al     lvh='lvp -D 1920x1080';alias lv="lvh $lVSx"; # oinksie... lv-tool: malloc.c:4023 coredumpd mAB bAsd on pRam ordr? #; # proly not inflwrgltestjess! ;
+Al     LV='lvh -x lcdcontrol';alias sv='sonic-visualiser'; # K6BMGVis:just installed a new audio spectrum-analysis which is hopefully superior to libvis;
+Al     Lv='lvh -a lv_gltest -x lv_analyzer,lv_dump,lv_scope,lcdcontrol,gdkpixbuf,gforce,nastyfft,nebulus,bumpscope,flower,goom2k4,blursk,oinksie,plazma';
+#l     Lv='lvh -a lv_gltest -x lv_gltest,lcdcontrol,gdkpixbuf,nastyfft,bumpscope,goom2k4,blursk'; # Xclude inactive plugins or mMlEkz causing core-dumpz;
+Al     Lv8='lv-tool -i pulseaudio -f 60 -s 8 -S 8888 -D 1918x1040 -a jess -x lv_analyzer,lv_dump,lv_scope,lcdcontrol,gdkpixbuf,gforce,nastyfft,nebulus,bumpscope,flower,goom2k4,blursk,oinksie,plazma,madspin,jakdaw'; # K87M1Lv8:just loop jess,lv_gltest,corona,infinite each 4 pretty long but usually stealfocus still;
+Al     p47='parsec47';alias a7='a7xpg'; # some of my favorite Kenta Cho Shmups ("Bullet-Hell") in /usr/games;  ## munmap_chunk(): invalid ptrstilcordumpdx;
+Al      rr='rrootage';alias tt='torus-trooper';alias tf='tumiki-fighters'; # would be gr8 to study BulletML && explor own similRly themed varE8ions someday
+Al      xb='xboard';alias xbsf='xb -fcp stockfish -fUCI'; # gr8 Chess program wi shortcut to top StockFish engine as FirstChessProgram (&& -scp 2ndChesProg)
+Al    rune='pu ~/gmz/Rune;mv Jagex ~;S Kb;cat RS.pw;S ^;rs3-launcher/rs3-launcher;mv ~/Jagex .;po';alias RS='rune'; # K2HLIMMO:signdup4frE acct2plARSwiKyle;
+Al    Rune=' rune ';alias RuneScape='rune'; # hopefully setting up the RuneScape.Com aliasez I'm most likely to remember && want to use l8r 2 call launcher;
+Al    kpcl=' kpcli      --kdb=~/.kp/pswd.kdb --histfile=/dev/null --no-recycle'; # 2!stor any hist or entry changes in /Backup or "/Recycle Bin" old dfalts
+Al    kp='  pu  ~/.kp;    kpc --kdb=pswd.kdb --histfile=/dev/null --no-recycle;chm 600 pswd.kdb;b pswd.kdb;po';  # alias2 kpcli-3.0 modwimor aliasz&&alInmNt
 k8(){        KDBF='pswd';if [[ "$#" -gt 0 && "$1" != "" ]]; then KDBF=".$1"; fi; # if [[ $B64N =~ ^([a-zA-Z]w) ]]; then BNWH=${BNWH:s/  e    / e }; fi; # Xmpl
   if   ! [[ $KDBF =~ .kdb$  ]]; then    KDBF="${KDBF}.kdb"; #    KDBF=".${1:gs/\^./}"; orig atMpt abov was trying2 GloblStrip all anchord stRt dotz,but syntax?
     if ! [[ $KDBF =~  pswd  ]]; then    KDBF="${KDBF}."   ; fi; fi; # so now just any non-default param for d8abase name getz forced hidN prEpNded dot &&apNd2
@@ -1335,127 +1395,127 @@ k8(){        KDBF='pswd';if [[ "$#" -gt 0 && "$1" != "" ]]; then KDBF=".$1"; fi;
     if   [[ $KDBF =~  pswd  ]]; then b $KDBF; fi;     # ideally this should all behave quite similarly to just basic kp alias above && may replace it once same
   else   echo "k8 failed to loc8 ~/.kp/$KDBF;";   fi; # should print out passed in or manipul8d file when it didn't exist where it was expected to be openable
   po;} # simply popd back to the original working directory before the default home d8abase directory was pushd added above the standard shell directory stack
-alias    Upc8='sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl;sudo chmod a+rx /usr/local/bin/youtube-dl;rmSS;hash -r';
-alias    Upw8='sudo wget    https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl;sudo chmod a+rx /usr/local/bin/youtube-dl;rmSS;hash -r';
-alias    Upi8='sudo      -H  pip install      --upgrade        youtube-dl   ;rmSS;hash -r'; # see pypi docUmNt8n4morin4m8n about popUlRPython`pip`package-tool
-alias    UpU8='sudo                                            youtube-dl -U;rmSS;hash -r'; # Oct::U8::Upd8 && ~/bin/Upd8 are similR but for ~/bin versn;
-alias    U8='  U2b8';alias U='U2b8   ';alias U2bk='Uk';alias u2bk='uk'; # shud l8r add 1-colm <98wId mOd&&some a8 autOcolrz 2furthr hIlIt mapngz
-alias    U2BS='pu ~/dox/subs;rm BecomeABashScriptingPr0-FullCourse-U2b-4ygaA_y1wvQ-dur8-0Zx0-by_CodeIsEveryThing-O35-O3KMBash-*.subs;
-         U23c  BecomeABashScriptingPr0-FullCourse-U2b-4ygaA_y1wvQ-dur8-0Zx0-by_CodeIsEveryThing-O35-O3KMBash.subs;po;';
-alias    Ukey='en  "m c b : togl volMute Caption Bakgr colr [ U2b-hotKey ];  Dn Up : lowr 5%vol (arowkyz) rais 5%vol;
+Al    Upc8='sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl;sudo chmod a+rx /usr/local/bin/youtube-dl;rmSS;hash -r';
+Al    Upw8='sudo wget    https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl;sudo chmod a+rx /usr/local/bin/youtube-dl;rmSS;hash -r';
+Al    Upi8='sudo      -H  pip install      --upgrade        youtube-dl   ;rmSS;hash -r'; # see pypi docUmNt8n4morin4m8n about popUlRPython`pip`package-tool
+Al    UpU8='sudo                                            youtube-dl -U;rmSS;hash -r'; # Oct::U8::Upd8 && ~/bin/Upd8 are similR but for ~/bin versn;
+Al    U8='  U2b8';alias U='U2b8   ';alias U2bk='Uk';alias u2bk='uk'; # shud l8r add 1-colm <98wId mOd&&some a8 autOcolrz 2furthr hIlIt mapngz
+Al    U2BS='pu ~/dox/subs;rm BecomeABashScriptingPr0-FullCourse-U2b-4ygaA_y1wvQ-dur8-0Zx0-by_CodeIsEveryThing-O35-O3KMBash-*.subs;
+      U23c  BecomeABashScriptingPr0-FullCourse-U2b-4ygaA_y1wvQ-dur8-0Zx0-by_CodeIsEveryThing-O35-O3KMBash.subs;po;';
+Al    Ukey='en  "m c b : togl volMute Caption Bakgr colr [ U2b-hotKey ];  Dn Up : lowr 5%vol (arowkyz) rais 5%vol;
 p f n : Prevplayls toglFulsc Nextplayls (Escap=2exitf);  Lt Rt : bkwd 5secs (arowkyz) 4wrd 5secs;
 j k l : bkwd10secs toglpause 4wrd10secs (Space=2pause);   , .  : bkwd 1fram (ifpausd) 4wrd 1fram;
  0-9  : jump to N *10% playbak position (Home/End=0/9);   < >  : slow down< playbkspd >up> fastr;"';
-alias    ukey='en  "m c b:volu Muted toglCaptn Bakgr cycl;(Home/End= 0/9 2)> 0-9 :jmp% \$n*10 plabakpos =r8io %abs; < > :slow down< plabakspd >upup fast;
+Al    ukey='en  "m c b:volu Muted toglCaptn Bakgr cycl;(Home/End= 0/9 2)> 0-9 :jmp% \$n*10 plabakpos =r8io %abs; < > :slow down< plabakspd >upup fast;
 j k l:bkwd 10sec toglpausd 10sec 4wrd<(Spacebar=pause2);Lt Rt:bkwd -5sec arrowkeys +5sec 4wrd; , . :bkwd -1frm whenpausd +1frm 4wrd;
 p f n:Prev plals toglFulsc plals Next<(Escapkey=exitf2);Dn Up:dec% -5vol arrowkeys +5vol %inc;"';
-alias    uky=' ec  "j k l:bkwd 10sec toglpausd 10sec 4wrd<(Spc=pausHmEnd0-9); 0-9 :jmp% \$n*10 plabakpos =r8io %abs;Lt Rt:bkwd -5sec +5sec 4wrd; < > :slow down< >upup fast;
+Al    uky=' ec  "j k l:bkwd 10sec toglpausd 10sec 4wrd<(Spc=pausHmEnd0-9); 0-9 :jmp% \$n*10 plabakpos =r8io %abs;Lt Rt:bkwd -5sec +5sec 4wrd; < > :slow down< >upup fast;
 p f n:Prev plals toglFulsc plals Next<(Escapekey=exitf2);m c b:volu Muted toglCaptn Bakgr cycl;Dn Up:dec% -5vol +5vol %inc; , . :bkwd -1frm +1frm 4wrd;"';
-alias    Uk='  een "${R}m$G c$K b${W}:${B}togl${M}vol${R}Mute${G}Caption${K}Bakgr${C}colr${Y}[${G}U2b$C-${R}hot${r}Key${Y}]${W}${M}Dn$G Up${W}:${M}lowr${C}5${Y}%${w}vol${Y}(${O}arow${r}kyz${Y})${G}rais${C}5${Y}%${w}vol
+Al    Uk='  een "${R}m$G c$K b${W}:${B}togl${M}vol${R}Mute${G}Caption${K}Bakgr${C}colr${Y}[${G}U2b$C-${R}hot${r}Key${Y}]${W}${M}Dn$G Up${W}:${M}lowr${C}5${Y}%${w}vol${Y}(${O}arow${r}kyz${Y})${G}rais${C}5${Y}%${w}vol
 ${M}p$C f$B n${W}:${M}Prev${P}pla${c}ls${B}togl${C}Fulsc${B}Next${P}pla${c}ls${Y}(${O}Esc${W}=${g}2${R}exit${C}f${Y})${W}${Y}Lt$R Rt${W}:${B}bkwd${C}5${M}secs${Y}(${O}arow${r}kyz$Y)${R}4wrd${C}5${M}secs
 ${B}j$M k$R l${W}:${B}bkwd${G}10${M}sec${B}togl${M}pause${R}4wrd${G}10${M}sec${Y}(${M}Spc${W}=${g}2${M}pause${Y})${W}$B ,$M .$W :${B}bkwd${O}1${c}fram${Y}(if${M}pausd${Y})${R}4wrd${O}1${c}fram
 $C 0$O-${R}9$W :${Y}jump${w}to$r N${C}*${G}10${Y}%${O}play${B}bak${P}position${Y}(${C}Hm${Y}/${R}End${W}=${C}0${Y}/${R}9${Y})${W}$M <$G >$W :${r}slow${M}down<${O}play${B}bk${c}spd${G}>up${K}fastr${W};"'; # squEzdout most spaces so whole keymap now fitz 80x4 term dimNsions,c turns Captions off but!togl on,no b bkgrnd
-alias    Uk2=' ee  "${R}m$G c$K b${W}:${R}Mute${G}Caption${K}Bkgr${Y}[${G}U2b$C-${R}hot${r}Key${Y}]$W;${M}Dn$G Up${W}:${M}lowr${C}5${Y}%${w}vol${G}rais$W;${B}j$M k$R l${W}:${B}bkwd${G}10${M}secs${R}4wrd${Y}(${M}Spc${W}=${M}K${g}2${M}paus${Y})$W;$B ,$M .$W :${B}bkwd${O}1${c}frm${Y}(${M}pausd${Y})${R}4wrd$W;
+Al    Uk2=' ee  "${R}m$G c$K b${W}:${R}Mute${G}Caption${K}Bkgr${Y}[${G}U2b$C-${R}hot${r}Key${Y}]$W;${M}Dn$G Up${W}:${M}lowr${C}5${Y}%${w}vol${G}rais$W;${B}j$M k$R l${W}:${B}bkwd${G}10${M}secs${R}4wrd${Y}(${M}Spc${W}=${M}K${g}2${M}paus${Y})$W;$B ,$M .$W :${B}bkwd${O}1${c}frm${Y}(${M}pausd${Y})${R}4wrd$W;
 ${M}p$C f$B n${W}:${M}Prv${z}ls${C}Fulsc${B}Nxt${z}ls${Y}(${O}Esc${W}=${g}2${R}exit${C}f${Y})$W;${Y}Lt$R Rt${W}:${B}bkwd${C}5${M}secs${R}4wrd$W;$C 0$O-${R}9$W :${Y}jmp${R}N${C}*${G}10${Y}%${O}pla${P}pos${Y}(${C}Hm${Y}/${R}End${W}=${C}0${Y}/${R}9${Y})$W;$M <$G >$W :${r}slo${M}<down<${O}pla${c}spd${G}>up>$W;"';
 # abov try2cram Uk in2 lt 160x2 (or 113x2 4now) wi just colrz 4 mAn Keyz
-alias    uk2=' ee  "${R}m$G c$K b${W}:${B}togl${M}vol${R}Mute${G}Caption${K}Bakgr${C}colr${Y}[${G}U2b$C-${R}hot${r}Key${Y}]$W;${M}Dn$G Up${W}:${M}lowr${C}5${Y}%${w}vol${Y}(${O}arow${r}kyz${Y})${G}rais${C}5${Y}%${w}vol$W;${B}j$M k$R l${W}:${B}bkwd${G}10${M}sec${B}togl${M}pause${R}4wrd${G}10${M}sec${Y}(${M}Spc${W}=${g}2${M}pause${Y})$W;$B ,$M .$W :${B}bkwd${O}1${c}fram${Y}(if${M}pausd${Y})${R}4wrd${O}1${c}fram$W;
+Al    uk2=' ee  "${R}m$G c$K b${W}:${B}togl${M}vol${R}Mute${G}Caption${K}Bakgr${C}colr${Y}[${G}U2b$C-${R}hot${r}Key${Y}]$W;${M}Dn$G Up${W}:${M}lowr${C}5${Y}%${w}vol${Y}(${O}arow${r}kyz${Y})${G}rais${C}5${Y}%${w}vol$W;${B}j$M k$R l${W}:${B}bkwd${G}10${M}sec${B}togl${M}pause${R}4wrd${G}10${M}sec${Y}(${M}Spc${W}=${g}2${M}pause${Y})$W;$B ,$M .$W :${B}bkwd${O}1${c}fram${Y}(if${M}pausd${Y})${R}4wrd${O}1${c}fram$W;
 ${M}p$C f$B n${W}:${M}Prev${P}pla${c}ls${B}togl${C}Fulsc${B}Next${P}pla${c}ls${Y}(${O}Esc${W}=${g}2${R}exit${C}f${Y})$W;${Y}Lt$R Rt${W}:${B}bkwd${C}5${M}secs${Y}(${O}arow${r}kyz$Y)${R}4wrd${C}5${M}secs$W;$C 0$O-${R}9$W :${Y}jump${w}to$r N${C}*${G}10${Y}%${O}play${B}bak${P}position${Y}(${C}Hm${Y}/${R}End${W}=${C}0${Y}/${R}9${Y})$W;$M <$G >$W :${r}slow${M}down<${O}play${B}bk${c}spd${G}>up>${K}fastr${W};"'; # try"2"cram Uk 80x4 in2 just 160x2 nstd (mAB 178+wId 2fit prmpt2wi -n)
-alias    uk='een "${R}m$G c$K b$W:${M}volu$R Muted$B togl${G}Captn$K Bakgr$C cycl$W;$Y(${C}Home$Y/${R}End$W=$C 0$Y/${R}9$g 2$Y)$W>$C 0$O-${R}9$W :${O}jmp$Y%$G \$${r}n$C*${G}10$O pla${B}bak${P}pos$W =${R}r8io$Y %${P}abs$W;$M <$G >$W :${r}slow$M down<$O pla${B}bak${c}spd$G >upup$K fast$W;
+Al    uk='een "${R}m$G c$K b$W:${M}volu$R Muted$B togl${G}Captn$K Bakgr$C cycl$W;$Y(${C}Home$Y/${R}End$W=$C 0$Y/${R}9$g 2$Y)$W>$C 0$O-${R}9$W :${O}jmp$Y%$G \$${r}n$C*${G}10$O pla${B}bak${P}pos$W =${R}r8io$Y %${P}abs$W;$M <$G >$W :${r}slow$M down<$O pla${B}bak${c}spd$G >upup$K fast$W;
 ${B}j$M k$R l$W:${B}bkwd$G 10${M}sec$B togl${M}pausd$G 10${M}sec$R 4wrd$W<$Y(${M}Spacebar$W=${M}pause${g}2$Y)$W;${Y}Lt$R Rt$W:${B}bkwd$g -${C}5${M}sec$O arrow${r}keys$G +${C}5${M}sec$R 4wrd$W;$B ,$M .$W :${B}bkwd$g -${O}1${c}frm$w when${M}pausd$G +${O}1${c}frm$R 4wrd$W;
 ${M}p$C f$B n$W:${M}Prev$O pla${c}ls$B togl${C}Fulsc$O pla${c}ls$B Next$W<$Y(${O}Escap${r}key$W=${R}exit${C}f${g}2$Y)$W;${M}Dn$G Up$W:${M}dec$Y%$g -${C}5${M}vol$O arrow${r}keys$G +${C}5${M}vol$Y %${G}inc$W;"'; # should consider making new 1-column Uk varE8ion which auto-resizes term @start && only needs rescaling2Bbig
-alias    ukz='Uk;ec;uk'; # for clearest biggest, open Default 80x24 purple GnomTerm, resize to 97x5, scale up a couple times, then run just `Uk`
-alias    U2b=' ec "U2b=yt-dlp 2save file2probably runthru U2b4 aftr orbetr2Use U2b8..."; yt-dlp'; # precede dlp with some of my help text,mAB nEd 2 upd8 U2b8?;
-alias    U2bm='U2b  -o "%(title)s-tItL-%(uploader)s-uldr-%(extractor)s-Xtrc-%(id)s-IdNt-%(epoch)s-epch-%(upload_date)s-uldt-%(autonumber)s-otnm.%(ext)s" --restrict-filenames';
-#lias    U2b3='U2bm -x --audio-format=mp3  --audio-quality=0'; # just having --audio-format=mp3 was converting to just 32K quality =( hopefully 0 will improve
-#lias    U2ba='U2bm -x --audio-format=best --audio-quality=0'; # gst123 works admirably on most formats, but `mpg123 -Cv` is much nicer interface-wise
-#lias    mysrut='mysql -u root'; # used to also alias just my to the same, back when I was developing any MySQL code && had mysqld installed
+Al    ukz='Uk;ec;uk'; # for clearest biggest, open Default 80x24 purple GnomTerm, resize to 97x5, scale up a couple times, then run just `Uk`
+Al    U2b=' ec "U2b=yt-dlp 2save file2probably runthru U2b4 aftr orbetr2Use U2b8..."; yt-dlp'; # precede dlp with some of my help text,mAB nEd 2 upd8 U2b8?;
+Al    U2bm='U2b  -o "%(title)s-tItL-%(uploader)s-uldr-%(extractor)s-Xtrc-%(id)s-IdNt-%(epoch)s-epch-%(upload_date)s-uldt-%(autonumber)s-otnm.%(ext)s" --restrict-filenames';
+#l    U2b3='U2bm -x --audio-format=mp3  --audio-quality=0'; # just having --audio-format=mp3 was converting to just 32K quality =( hopefully 0 will improve
+#l    U2ba='U2bm -x --audio-format=best --audio-quality=0'; # gst123 works admirably on most formats, but `mpg123 -Cv` is much nicer interface-wise
+#l    mysrut='mysql -u root'; # used to also alias just my to the same, back when I was developing any MySQL code && had mysqld installed
 #for ip in $( seq 1 254);             do ping -c 1 192.168.8.$ip>/dev/null; # NAbl pb rEspnsbyapNdng "net.ipv4.icmp_echo_ignore_broadcasts=0" 2/etc/sysctl.conf
   #[       $? -eq 0    ]              && echo     "192.168.8.$ip UP" || : ; # pb could probably `w8 4U` after each for a bit of welcome but forgot -c seconds?;
 #done # instead of doing pingb below (or just pb), could run this for loop without needing to open systemz to DDoS thru configur8ion for broadcast response
-export i19='192.168.9'; # hopefully this can mk LAN IPv4 addrz EZer?; # gvg added 2 psag BlO to autO lEave out any grep commandz themselves from rEsultz 1st;
-alias psag='ps  aux | gvg |grP';alias pingb='ping  192.168.9.255 -b'; #   ...or lern2Use`nmap -sP 192.168.8.1/24`nstd? or`arp-scan -l --interface=(eth|wlan)0`
-alias psgi='psag          -i  ';alias psagi='psgi                  '; # add another pair of aliases for Ignoring-case with the Grep on Process-Snapshots aux;
+Xp i19='192.168.9'; # hopefully this can mk LAN IPv4 addrz EZer?; # gvg added 2 psag BlO to autO lEave out any grep commandz themselves from rEsultz 1st;
+Al psag='ps  aux | gvg |grP' pingb='ping  192.168.9.255 -b'; #   ...or lern2Use`nmap -sP 192.168.8.1/24`nstd? or`arp-scan -l --interface=(eth|wlan)0`
+Al psgi='psag          -i  ' psagi='psgi                  '; # add another pair of aliases for Ignoring-case with the Grep on Process-Snapshots aux;
 # 2du:maybe redefine psag as function instead of just alias since secondary expansion on parameter which is also an alias is annoying && potential disaster;
-alias idmg='identify          ';alias idmv=' idmg     -verbose     '; # ImageMagick IDentify IMaGe utl && verbose probably needs | $PAGER
-#lias ckya='w3m Mail.Yahoo.Com';alias gnuya='gnuyahoo -u=piptigger '; # !UsngYahoo!NEmor; Ubu brwsrz !inDflt rEpOz:Opera Vivaldi (mAB some othrz listed BlO);
-#lias cktm='w3m HTTP://Time.Gov'; # need to enable JavaScript in w3m for redirect to /HTML5/ to work so maybe just use FireFox or Chrome
+Al idmg='identify          ' idmv=' idmg     -verbose     '; # ImageMagick IDentify IMaGe utl && verbose probably needs | $PAGER
+#l ckya='w3m Mail.Yahoo.Com';alias gnuya='gnuyahoo -u=piptigger '; # !UsngYahoo!NEmor; Ubu brwsrz !inDflt rEpOz:Opera Vivaldi (mAB some othrz listed BlO);
+#l cktm='w3m HTTP://Time.Gov'; # need to enable JavaScript in w3m for redirect to /HTML5/ to work so maybe just use FireFox or Chrome
 # 2du:ckot "QuteBrowser" non-plugin but minimal && fast Vim design, then Saka && WasaVi && Vimium for Chrom(e|ium) should offer small Vi emul8or in TextArea;
-alias cu='  curl              ';alias cus='  cu       -s           ';alias cs='  cus'; # setup Silent Collectn ofURLz wich mItBpIpd2 STDIN Lswer or rEdIrctd;
-alias lsbr='lsb_release       ';alias lsbc=' lsbr     -sc          ';alias lsba='lsbr -a '; # setupLinuxStandardsBase wiShrtCodnmz2quickckdistro; 2du:upd8LUT;
-alias barr='barrier           ';alias barc=' barrierc              ';alias brc=' barc    '; #ias brs='bars'; # GitHub debauchee/barrier 4koffSymlesSynergy1.9;
-alias bars='barriers          ';alias bar='  barr';alias br='bar   '; #ias bs='  bars    '; # bc taken others tapered almost consistently; N52MDbrs:don't use;
+Al cu='  curl              ' cus='  cu       -s           ' cs='  cus'; # setup Silent Collectn ofURLz wich mItBpIpd2 STDIN Lswer or rEdIrctd;
+Al lsbr='lsb_release       ' lsbc=' lsbr     -sc          ' lsba='lsbr -a '; # setupLinuxStandardsBase wiShrtCodnmz2quickckdistro; 2du:upd8LUT;
+Al barr='barrier           ' barc=' barrierc              ' brc=' barc    '; #ias brs='bars'; # GitHub debauchee/barrier 4koffSymlesSynergy1.9;
+Al bars='barriers          ' bar='  barr' br='bar   '; # bs='  bars    '; # bc taken others tapered almost consistently; N52MDbrs:don't use;
 # mAB Ubu brwsrz:FireFox Chrom(e|ium) Epiphany Arora Dillo WebBrowser-App (cudinstl) QupZilla Konqueror NetSurf Links2 (!in acs) Yandex PaleMoon Midori Brave;
 # nOt:crmm= chromium-browser requires snapd as of d8:K3DMIGHT so `apt-get remove`d both && will just rely on other web-browsers for now until no snapd DpNdNC;
 # O3QMMnEW:HTTPS://GitHub.Com/Floorp-Projects/Floorp-private-components alsO!;  qb can Uz :config-write-py 2 thN v +'/colors.webpage.bg' ~/.config/qut*/co*.py
 #   thN :w in vim, Alt-Tab bak2 qb && :config-source rElOdz upd8z nIcly sO thN mAB plan2 add DtAlz 2 new .Hrc sO .py canBgNr8d from a8.pm && map kEz2 :cfg-src;
 # O3TM2FOX:ckot BetterFox LibreWolf edbrowse browsh chawan (wher ifUr term duz!rEspond2querying XTGETTCAP && $COLORTERM !set,Chawan falls back to ANSI colors);
-alias crmm='chromium-browser  ';alias crom=' google-chrome';alias crm='crom';alias epip='epiphany';alias aror='arora';alias dilo='dillo';alias lnx2='links2';
-alias brav='   brave-browser  ';alias brvb='brav';alias bb='brvb';alias tb='torb';alias FF='firefox'; # prEfer prv8 tb&&bb&&FF mor than old(WebKitbAsd?)abovz;
-alias torb='pu ~/bin/.tst/.tor-brwsr-linux64-8.0_en-US-I98MKtor;./start-tor-browser.desktop;po';alias tor='tb'; # new d8d locl v8.0 instal of sepR8 brwzr methd
-alias qtbr='qutebrowser';alias qb='qtbr';alias mido='midori';alias mb='mido';alias ffs='FF -screenshot'; # shudB Abl2giv ffs URL pRam 'HTTPS://BavL.Org' 4shot;
-alias wtrf='waterfox   ';alias wf='w8rf'; # P35LCOOL:also ckot Floorp,Vivaldi,Mulldev,etc. since mAB mIgr8ing AwA from FF ought to be undertaken somewhat soon;
-alias w8rf='flatpak run net.waterfox.waterfox >/dev/null 2>&1 &'; # dnlOded 6.5.5.tbz2 but didn't C how2 instl or findon sIt sO DDG said just instl wf flatpak;
+Al crmm='chromium-browser  ' crom=' google-chrome' crm='crom' epip='epiphany' aror='arora' dilo='dillo' lnx2='links2';
+Al brav='   brave-browser  ' brvb='brav' bb='brvb' tb='torb' FF='firefox'; # prEfer prv8 tb&&bb&&FF mor than old(WebKitbAsd?)abovz;
+Al torb='pu ~/bin/.tst/.tor-brwsr-linux64-8.0_en-US-I98MKtor;./start-tor-browser.desktop;po' tor='tb'; # new d8d locl v8.0 instal of sepR8 brwzr methd
+Al qtbr='qutebrowser' qb='qtbr' mido='midori' mb='mido' ffs='FF -screenshot'; # shudB Abl2giv ffs URL pRam 'HTTPS://BavL.Org' 4shot;
+Al wtrf='waterfox   ' wf='w8rf'; # P35LCOOL:also ckot Floorp,Vivaldi,Mulldev,etc. since mAB mIgr8ing AwA from FF ought to be undertaken somewhat soon;
+Al w8rf='flatpak run net.waterfox.waterfox >/dev/null 2>&1 &'; # dnlOded 6.5.5.tbz2 but didn't C how2 instl or findon sIt sO DDG said just instl wf flatpak;
 # abov ffs mIt nEd dbl-dash B4 ss optn && similR mA work 4 chromium-bAsd browsrz like: `vivaldi --headless --screenshot=/tmp/img.png   HTTPS://ReddIt.Com`mAB?;
 # HTTPS://GitHub.Com/PwnWriter/haylxon is also anotherUtl4 chromium-bAsd browsrz 2 tAk headlS scrEnshotz (writN in Rust) fastr than GH.Com/SensePost/gowitness;
-alias brwz='en "PipzBrwz: FF=FireFox, bb=Brave, qb=QtB, wf=WaterFox, tb=Tor, crom=Chrome, crmm=Chromium, epip=Epiphany, aror=Arora, dilo=Dillo, lnx2=Links2;"';
-alias 2lo=' perl -e "rename(\$_,lc) for @ARGV"'; # orig fIlnAm lOwrcAsng 1-lInr was ~/bin/tolo thN as 2lo but mAB zsh func can't stRt wi '2'? Alias workz tho!
-alias j2k=' joy2key $TTY -terminal -rcfile ~/.joy2keyrc -axis Left Right Up Down -buttons a b c d e f g h i j &'; # IA6MAPJS:Reddit cmnt linkd map altrn8ive:
-alias j2kx='joy2key      -X        -rcfile ~/.joy2keyrc                                                       &'; # HTTPS://GitHub.Com/jgeumlek/MoltenGamepad
-alias glxg='glxgears -info -geometry 1920x1056+0+0'; # had to agi libssl-dev to configure opusfile, then below should be good to compress speech for Dad
-alias opuse='echo    "opusenc --bitrate 32 --vbr --artist GerryStuart,PipStuart --genre Radio --album FixTheRadio-0 --title FixTheRadio-0.0 --date `date +%Y-%m-%d` in.wav out.opus";
-             echo -n "opusenc --bitrate 32 --vbr --artist GerryStuart,PipStuart --genre Radio --album FixTheRadio-0 --title FixTheRadio-0.0 --date `date +%Y-%m-%d` in.wav out.opus"|xclip -si -se p -l 1';
-#lias setfont='consolechars -f'; # fb lines on Gen:  # setfont is its own sepR8 command now, so don't alias over it
-alias fb6=' fbset  640x480-60 '; #              30
-alias fb8=' fbset  800x600-100'; #              37
-alias fb10='fbset 1024x768-100'; #              48
-alias fb12='fbset 1280x1024-75'; #              64
-alias fb16='fbset 1600x1200-76'; #              75
-alias moz='/usr/local/mozilla/mozilla -P Pip >/dev/null 2>&1 &'; # from way back when I used Pip Profile (likely before FireFox) with Mozilla spewing warningz
-alias irc='irssi';
-#lias    ircsdl='     irssi -c IRC.Perl.Org          -n Pip      '; #sdl         # no longer using any b(itch)?x, switched completely to Perl-based Irssi.Org
-#lias    ircpl='      irssi -c IRC.Perl.Org          -n Pip      '; #perl  #yapc (which might be renamed after 2016 to just ThePerlConference #tpc?)
-#lias    ircpl6='     irssi -c IRC.FreeNode.Org      -n PipStuart'; #perl6       # might need Chat.FreeNode.Net instead? Changing nick destroys config form@ing
-#lias    ircrt='      irssi -c IRC.RT.Ru             -n Pip      ';alias irc='ircpl'; # probably wrapping in scrn like `sirc` below is preferred 2 any of these
-#lias       sc='      irssi -c IRC.Prison.Net        -n PipStuart'; #soulcalibur # Uzd2Uz -n Pipsurugi  ## `sx $AgN` "Attaching from inside of screen?\n" ##;
-#lias       srk='     irssi -c IRC.ServerCentral.Net -n PipStuart'; #srk         # can also do -w evl2003 to include pswd && might need -p to chng port BlO
-#lias       srk='     irssi -c IRC.INet.Tele.Dk:6667 -n PipStuart'; #srk         # altern8 IRC servers to try to connect to if otherz are down or net-split
-#  otherz:  EFNet.Demon.Co.UK  IRC.Nijenrode.Nl  HomeLien.No  QEast.Net          # for ScreenOct*.pm editz BlO had2rEplAc e wi vim for multi-fIl OpNng
-alias smok='en " `d8`" >> $d2/smok.ls'; # log a spaced current d8-stamp onto the end of my file listing all the times I'm about to go outside to smoke a cigar;
-alias swip='screen -wipe   '; # learn how2 restore block cursor within multiplexed vim from the $TERM=screen.linux console (sEmz scrn mustXitB4 `curs` resetz)
-alias scrn='screen -h 65535'; # might not need to temporarily change TERM for irc (or any of these if TERM becomes working screen.xterm-256color) below
-alias s2du='pu ~/dox/2du;export TERM="xterm";scrn -S 2du -t 2du e 2;export TERM="xterm-256color";po';alias s2='s2du'; # Used2wrap2ovrId TERM=screen ,xterm betr
-alias sirc='ct "irssi"  ;scrn -S irc -t irc irssi       ;  ';alias si='sirc';  # don't need -c IRC.Perl.Org or -n Pip since specified in ~/.irssi/config now
-alias sbrs='ct "bars"   ;scrn -S brs -t brs       zsh   ;  '; # also screen in some barrier (Synrg+) server&&client 2detatch from standrd terminal debug output
-alias sbrc='ct "barc"   ;scrn -S brc -t brc barrierc    ;  ';alias ssig='pu;scrn -S sig -t sig signal-desktop;po'; # might want to tst -x for cnfrm8 Xit !DtA?;
+Al brwz='en "PipzBrwz: FF=FireFox, bb=Brave, qb=QtB, wf=WaterFox, tb=Tor, crom=Chrome, crmm=Chromium, epip=Epiphany, aror=Arora, dilo=Dillo, lnx2=Links2;"';
+Al 2lo=' perl -e "rename(\$_,lc) for @ARGV"'; # orig fIlnAm lOwrcAsng 1-lInr was ~/bin/tolo thN as 2lo but mAB zsh func can't stRt wi '2'? Alias workz tho!
+Al j2k=' joy2key $TTY -terminal -rcfile ~/.joy2keyrc -axis Left Right Up Down -buttons a b c d e f g h i j &'; # IA6MAPJS:Reddit cmnt linkd map altrn8ive:
+Al j2kx='joy2key      -X        -rcfile ~/.joy2keyrc                                                       &'; # HTTPS://GitHub.Com/jgeumlek/MoltenGamepad
+Al glxg='glxgears -info -geometry 1920x1056+0+0'; # had to agi libssl-dev to configure opusfile, then below should be good to compress speech for Dad
+Al opuse='echo    "opusenc --bitrate 32 --vbr --artist GerryStuart,PipStuart --genre Radio --album FixTheRadio-0 --title FixTheRadio-0.0 --date `date +%Y-%m-%d` in.wav out.opus";
+          echo -n "opusenc --bitrate 32 --vbr --artist GerryStuart,PipStuart --genre Radio --album FixTheRadio-0 --title FixTheRadio-0.0 --date `date +%Y-%m-%d` in.wav out.opus"|xclip -si -se p -l 1';
+#l setfont='consolechars -f'; # fb lines on Gen:  # setfont is its own sepR8 command now, so don't alias over it
+Al fb6=' fbset  640x480-60 '; #              30
+Al fb8=' fbset  800x600-100'; #              37
+Al fb10='fbset 1024x768-100'; #              48
+Al fb12='fbset 1280x1024-75'; #              64
+Al fb16='fbset 1600x1200-76'; #              75
+Al moz='/usr/local/mozilla/mozilla -P Pip >/dev/null 2>&1 &'; # from way back when I used Pip Profile (likely before FireFox) with Mozilla spewing warningz
+Al irc='irssi';
+#l    ircsdl='     irssi -c IRC.Perl.Org          -n Pip      '; #sdl         # no longer using any b(itch)?x, switched completely to Perl-based Irssi.Org
+#l    ircpl='      irssi -c IRC.Perl.Org          -n Pip      '; #perl  #yapc (which might be renamed after 2016 to just ThePerlConference #tpc?)
+#l    ircpl6='     irssi -c IRC.FreeNode.Org      -n PipStuart'; #perl6       # might need Chat.FreeNode.Net instead? Changing nick destroys config form@ing
+#l    ircrt='      irssi -c IRC.RT.Ru             -n Pip      ';alias irc='ircpl'; # probably wrapping in scrn like `sirc` below is preferred 2 any of these
+#l       sc='      irssi -c IRC.Prison.Net        -n PipStuart'; #soulcalibur # Uzd2Uz -n Pipsurugi  ## `sx $AgN` "Attaching from inside of screen?\n" ##;
+#l       srk='     irssi -c IRC.ServerCentral.Net -n PipStuart'; #srk         # can also do -w evl2003 to include pswd && might need -p to chng port BlO
+#l       srk='     irssi -c IRC.INet.Tele.Dk:6667 -n PipStuart'; #srk         # altern8 IRC servers to try to connect to if otherz are down or net-split
+# otherz:  EFNet.Demon.Co.UK  IRC.Nijenrode.Nl  HomeLien.No  QEast.Net          # for ScreenOct*.pm editz BlO had2rEplAc e wi vim for multi-fIl OpNng
+Al smok='en " `d8`" >> $d2/smok.ls'; # log a spaced current d8-stamp onto the end of my file listing all the times I'm about to go outside to smoke a cigar;
+Al swip='screen -wipe   '; # learn how2 restore block cursor within multiplexed vim from the $TERM=screen.linux console (sEmz scrn mustXitB4 `curs` resetz)
+Al scrn='screen -h 65535'; # might not need to temporarily change TERM for irc (or any of these if TERM becomes working screen.xterm-256color) below
+Al s2du='pu ~/dox/2du;export TERM="xterm";scrn -S 2du -t 2du e 2;export TERM="xterm-256color";po' s2='s2du'; # Used2wrap2ovrId TERM=screen ,xterm betr
+Al sirc='ct "irssi"  ;scrn -S irc -t irc irssi       ;  ' si='sirc';  # don't need -c IRC.Perl.Org or -n Pip since specified in ~/.irssi/config now
+Al sbrs='ct "bars"   ;scrn -S brs -t brs       zsh   ;  '; # also screen in some barrier (Synrg+) server&&client 2detatch from standrd terminal debug output
+Al sbrc='ct "barc"   ;scrn -S brc -t brc barrierc    ;  ' ssig='pu;scrn -S sig -t sig signal-desktop;po'; # might want to tst -x for cnfrm8 Xit !DtA?;
 # since -x Screen refuses to attach from within itself, rejection can detect loop, but when cascading multiple screens,loopz R *NOT* auto-detected; take care!;
-alias sfah='pu ~/.local/share/FoldingAtHome/;scrn -S fah -t fah zsh;po';alias sF='sfah'; # mIt want2just run`FAHClient`nstd of zsh 1st undr scrn,but not sure;
+Al sfah='pu ~/.local/share/FoldingAtHome/;scrn -S fah -t fah zsh;po' sF='sfah'; # mIt want2just run`FAHClient`nstd of zsh 1st undr scrn,but not sure;
 #/etc/fahclient/config.xml was aftr 9989 B4 runas # K3SMMJCo:wrapNrunyO!; # oye m8E arg I'm a pIr8 swabin the land-lubbr skalywag rum yOhO!
-alias  FaH='FAHClient --child --lifeline 9989 \
-               ~/.local/share/FoldingAtHome/config.xml --run-as fahclient --pid-file=/var/run/fahclient.pid --daemon';
-#lias s2du='pu ~/dox/2du;scrn -S 2du -t 2du e     2     ;po';alias s2='s2du';  # reverted to exporting TERM=xterm around s2 2mk vim statusbar dRk AgN
-alias s2.d='pu ~/dox/2du;scrn -S 2.d -t 2.d v     2.du  ;po';alias s2.='s2.d'; # mk new screen entry for editing 2.du as my current l8st ~/dox/2du/ list file
-alias s28u='pu ~/dox/2du;scrn -S 8uf -t 8uf vim   8     ;po';alias s28='s28u'; # leave legacy .txt below, from before proper switch to .utf since it holds afew
-alias s28x='pu ~/dox/2du;scrn -S 8xt -t 8xt vim   8     ;po';alias s2x='s28x'; # s8 is already aliased to sort; weird that e 8 didn't have e 2 problM
-alias s8lc='pu ~/dox/2du;scrn -S 8lc -t 8lc vim   8plc  ;po';alias s8l='s8lc'; # elabor8ing out2 tRget all sepR8 doQmNtz stil mAntAnd as 2du EvN2ally
-alias satl='pu ~/dox/2du;scrn -S atl -t atl vim   at.ls ;po';alias SA='satl';alias soa='pu ~/dvl/a8;scrn -S oa8 -t oa8 e a8.pm;po'; # OpenOct *8.PlModulez
-alias sb8a='pu ~/dox/2du;scrn -S b8a -t b8a vim  b8a.ls ;po';alias sb='sb8a';alias sob='pu ~/dvl/b8;scrn -S ob8 -t ob8 e b8.pm;po'; # Screen_lib/Oct/\w.pm
-alias sbxl='pu ~/dox/2du;scrn -S bxl -t bxl vim boox.ls ;po';alias sB='sbxl';alias scS='            scrn -S';alias sat=' sa      '; # kinda similR2old e fIl.ls
-alias scm8='pu ~/dox/2du;scrn -S cm8 -t cm8 vim ckm8.utf;po';alias sC='scm8';alias soc='pu ~/dvl/c8;scrn -S oc8 -t oc8 e c8.pm;po'; #   ..2Elabor8Uni4m abrEV8z
-alias skno='pu ~/dox/2du;scrn -S kno -t kno vim know.ls ;po';alias sk='skno';alias sod='pu ~/dvl/d8/lib/Oct     ;scS od8 -t od8 vim d8.pm d8/[df]??[8z].pm;po';
-alias smul='pu ~/dox/2du;scrn -S mul -t mul vim  muz.ls ;po';alias Sm='smul';alias som='pu ~/dvl/m8/xml         ;scS om8 -t om8 vim [MT][ei][rd]*[ey]/*.pm;po';
-alias smvl='pu ~/dox/2du;scrn -S mvl -t mvl vim  mvz.ls ;po';alias SM='smvl';alias sop='pu ~/dvl/p8;scS op8 -t op8 vim [tmnp]??[hx8s]/[tmnp]??[hx8s].pm   ;po';
-alias sput='pu ~/dox/2du;scrn -S put -t put vim putr.ls ;po';alias sP='sput';alias sot='pu ~/dvl/t8/Octl/Oct    ;scS ot8 -t ot8 vim *.md;po;en oupd,gac,gpom';
-alias scvi='pu ~/dox/2du;scrn -S cvi -t cvi vim scvi.ls ;po';alias sC6='scvi'; # switching main fighting game emphasis from StreetFighterV to SoulCaliburVI;
-alias ssfv='pu ~/dox/2du;scrn -S sfv -t sfv vim sfv.utf8;po';alias sf='ssfv';alias sof='pu ~/dvl/f8;scrn -S of8 -t of8 e f8.pm;po'; # mABl8r vary4asOC8d binz2
-alias stab='pu ~/dox/2du;scrn -S tab -t tab vim tabz.ls ;po';alias sT='stab';alias sog='pu ~/dvl/g8;scrn -S og8 -t og8 e g8   ;po'; # not A sepR8 PlModule yet
-alias stip='pu ~/dox/2du;scrn -S tip -t tip vim tipz.ls ;po';alias sI='stip';alias soU='pu ~/dvl/U8;scrn -S ou8 -t ou8 e U8.pm;po';alias sou='soU'; # bOthKsez
-alias sud8='pu ~/dox/2du;scrn -S ud8 -t ud8 vim  u.8.   ;po';alias sU='sud8';  # mAB 2du hLpr wi rEorg && chng prspctv upd8d wi paired 8trm prep code 2 preT;
-alias sud2='pu ~/dox/2du;scrn -S ud2 -t ud2 vim  ud2.ls ;po'; #ias sU='sud2';  # mAB 2du hLpr wi rEorg && chng prspctv on donez Ovrcomng prIOriTz?;
-alias sdvl='pu ~/dvl    ;scrn -S dvl -t dvl             ;po'; #ias sd='sdvl';  # PCRLIESD:just cargo installed sd as XcLNt Rust-bAsed `sed` rEplAcemNt from GH;
-alias smuz='pu ~/muz    ;scrn -S muz -t muz             ;po';alias sm='smuz';alias SO=' ob ';alias mob='ob';alias Obs='ob';alias OBS='ob';alias sobs='   ob';
-alias smvz='pu ~/mvz    ;scrn -S mvz -t mvz             ;po';alias sM='smvz';alias Ob=' ob ';alias ob=' pu ~/muz/U2b;scrn -S mob -t mob g3 **/*Obs*     ;po';
-alias srut='pu  /       ;scrn -S rut -t rut sudo    bash;po';alias sr='srut';alias Ob8='lob';alias lob='pu          ;l              m[uv]z/**/*Obs*ate_*;po';
-alias sadm='pu  /etc    ;scrn -S adm -t adm sudo -E  zsh;po';alias sA='sadm'; #abovOb8 orig just listed: (Annihil|Deso|Domin|InitE|Obliter)8 B4XtNdng2alldirz
+Al  FaH='FAHClient --child --lifeline 9989 \
+            ~/.local/share/FoldingAtHome/config.xml --run-as fahclient --pid-file=/var/run/fahclient.pid --daemon';
+#l s2du='pu ~/dox/2du;scrn -S 2du -t 2du e     2     ;po' s2='s2du';  # reverted to exporting TERM=xterm around s2 2mk vim statusbar dRk AgN
+Al s2.d='pu ~/dox/2du;scrn -S 2.d -t 2.d v     2.du  ;po' s2.='s2.d'; # mk new screen entry for editing 2.du as my current l8st ~/dox/2du/ list file
+Al s28u='pu ~/dox/2du;scrn -S 8uf -t 8uf vim   8     ;po' s28='s28u'; # leave legacy .txt below, from before proper switch to .utf since it holds afew
+Al s28x='pu ~/dox/2du;scrn -S 8xt -t 8xt vim   8     ;po' s2x='s28x'; # s8 is already aliased to sort; weird that e 8 didn't have e 2 problM
+Al s8lc='pu ~/dox/2du;scrn -S 8lc -t 8lc vim   8plc  ;po' s8l='s8lc'; # elabor8ing out2 tRget all sepR8 doQmNtz stil mAntAnd as 2du EvN2ally
+Al satl='pu ~/dox/2du;scrn -S atl -t atl vim   at.ls ;po' SA='satl' soa='pu ~/dvl/a8;scrn -S oa8 -t oa8 e a8.pm;po'; # OpenOct *8.PlModulez
+Al sb8a='pu ~/dox/2du;scrn -S b8a -t b8a vim  b8a.ls ;po' sb='sb8a' sob='pu ~/dvl/b8;scrn -S ob8 -t ob8 e b8.pm;po'; # Screen_lib/Oct/\w.pm
+Al sbxl='pu ~/dox/2du;scrn -S bxl -t bxl vim boox.ls ;po' sB='sbxl' scS='            scrn -S' sat=' sa      '; # kinda similR2old e fIl.ls
+Al scm8='pu ~/dox/2du;scrn -S cm8 -t cm8 vim ckm8.utf;po' sC='scm8' soc='pu ~/dvl/c8;scrn -S oc8 -t oc8 e c8.pm;po'; #   ..2Elabor8Uni4m abrEV8z
+Al skno='pu ~/dox/2du;scrn -S kno -t kno vim know.ls ;po' sk='skno' sod='pu ~/dvl/d8/lib/Oct     ;scS od8 -t od8 vim d8.pm d8/[df]??[8z].pm;po';
+Al smul='pu ~/dox/2du;scrn -S mul -t mul vim  muz.ls ;po' Sm='smul' som='pu ~/dvl/m8/xml         ;scS om8 -t om8 vim [MT][ei][rd]*[ey]/*.pm;po';
+Al smvl='pu ~/dox/2du;scrn -S mvl -t mvl vim  mvz.ls ;po' SM='smvl' sop='pu ~/dvl/p8;scS op8 -t op8 vim [tmnp]??[hx8s]/[tmnp]??[hx8s].pm   ;po';
+Al sput='pu ~/dox/2du;scrn -S put -t put vim putr.ls ;po' sP='sput' sot='pu ~/dvl/t8/Octl/Oct    ;scS ot8 -t ot8 vim *.md;po;en oupd,gac,gpom';
+Al scvi='pu ~/dox/2du;scrn -S cvi -t cvi vim scvi.ls ;po' sC6='scvi'; # switching main fighting game emphasis from StreetFighterV to SoulCaliburVI;
+Al ssfv='pu ~/dox/2du;scrn -S sfv -t sfv vim sfv.utf8;po' sf='ssfv' sof='pu ~/dvl/f8;scrn -S of8 -t of8 e f8.pm;po'; # mABl8r vary4asOC8d binz2
+Al stab='pu ~/dox/2du;scrn -S tab -t tab vim tabz.ls ;po' sT='stab' sog='pu ~/dvl/g8;scrn -S og8 -t og8 e g8   ;po'; # not A sepR8 PlModule yet
+Al stip='pu ~/dox/2du;scrn -S tip -t tip vim tipz.ls ;po' sI='stip' soU='pu ~/dvl/U8;scrn -S ou8 -t ou8 e U8.pm;po' sou='soU'; # bOthKsez
+Al sud8='pu ~/dox/2du;scrn -S ud8 -t ud8 vim  u.8.   ;po' sU='sud8';  # mAB 2du hLpr wi rEorg && chng prspctv upd8d wi paired 8trm prep code 2 preT;
+Al sud2='pu ~/dox/2du;scrn -S ud2 -t ud2 vim  ud2.ls ;po' #sU='sud2';  # mAB 2du hLpr wi rEorg && chng prspctv on donez Ovrcomng prIOriTz?;
+Al sdvl='pu ~/dvl    ;scrn -S dvl -t dvl             ;po' #sd='sdvl';  # PCRLIESD:just cargo installed sd as XcLNt Rust-bAsed `sed` rEplAcemNt from GH;
+Al smuz='pu ~/muz    ;scrn -S muz -t muz             ;po' sm='smuz' SO=' ob ' mob='ob' Obs='ob' OBS='ob' sobs='   ob';
+Al smvz='pu ~/mvz    ;scrn -S mvz -t mvz             ;po' sM='smvz' Ob=' ob ' ob=' pu ~/muz/U2b;scrn -S mob -t mob g3 **/*Obs*     ;po';
+Al srut='pu  /       ;scrn -S rut -t rut sudo    bash;po' sr='srut' Ob8='lob' lob='pu          ;l              m[uv]z/**/*Obs*ate_*;po';
+Al sadm='pu  /etc    ;scrn -S adm -t adm sudo -E  zsh;po' sA='sadm'; #abovOb8 orig just listed: (Annihil|Deso|Domin|InitE|Obliter)8 B4XtNdng2alldirz
 # O1TLISTN:I changed my mind about using all these super-valuable names for a bunch of would-be PAGER programs && instead want them for gNral "sIz" c@egorEz;
 #lias some='more'; # O1TLESMO:rEnAmd alias so abov 2 SO 4 scrn 2 Obsidia so th@ so can (in ordr 2 prEpAr 4 future Simp|c8|k8 wi fU && few pAgrz) B Uzd lIk so:
 #lias so='  some';alias ma='  many';alias many='more';alias fU='   few';alias  few='some'; # lS is alreD less && mo set after exit && B4 mkdir 2 most alsO
@@ -1487,9 +1547,9 @@ scx() { if [[ "$#" -gt     0    ]]; then # print out some help text for -h (or l
   elif     [[ "$HsxF" !=  ""    ]]; then scrn  -x  "$HsxF";echo "Scrn-x HsxF:$HsxF;"; fi; }
       # if    scrn -ls has no $1 in Screen Sessions List, then dispatch to the correct screen session crE8or above, so more -x multipleXed can connect l8r;
 # O1TLK00L: sO BlO indic8z . z w u r p k e e with  p = 0.8  sO du dur8ion:{13p} 4 almOst 64-secondz 2 autO-cap2r viDOz wi a countdown && autO-chop in2 8z;
-alias b6d=' pa   "@prcz=(0.98, 0.96, 0.92, 0.88, 0.84, 0.8 , 0.72, 0.64, 0.63);for(@prcz){\$b6=int(64*\$_);o9(qq(\$_ : \$b6 b64 ) . b64(\$b6) . q(;))}"';
-#lias sls=' scrn -ls'; # stuD screenie 2mkOwn version. wrapd `scrn -ls` BlObutl8r tAkthOs b8 && d8 rE4m@z as valid pRamz2reattach2. rEplAc scrn wi autO sx;
-alias SLS=' pabd "\$u=0;\$v=q(screen -ls);\$v.=qq( @ARGV) if(@ARGV > 0);\$S=\`\$v\`;while(\$S=~ /\t((\d+)\.(\S+)\s+\((\d+)\/(\d+)\/(\d+)\s+(\d+:\d+:\d+)\s+
+Al b6d=' pa   "@prcz=(0.98, 0.96, 0.92, 0.88, 0.84, 0.8 , 0.72, 0.64, 0.63);for(@prcz){\$b6=int(64*\$_);o9(qq(\$_ : \$b6 b64 ) . b64(\$b6) . q(;))}"';
+#l sls=' scrn -ls'; # stuD screenie 2mkOwn version. wrapd `scrn -ls` BlObutl8r tAkthOs b8 && d8 rE4m@z as valid pRamz2reattach2. rEplAc scrn wi autO sx;
+Al SLS=' pabd "\$u=0;\$v=q(screen -ls);\$v.=qq( @ARGV) if(@ARGV > 0);\$S=\`\$v\`;while(\$S=~ /\t((\d+)\.(\S+)\s+\((\d+)\/(\d+)\/(\d+)\s+(\d+:\d+:\d+)\s+
   ([AP])M\)\t\(([AD])[te]tached\)\n)/x){\$L=\$1;\$I=q();\$I.=q( ) if(\$2 < (64**2));\$I.=b8c(b64(\$2));\$H=\$3;\$N=\$4;\$D=\$5;\$E=\$6;\$T=\$7;\$n=\$8;\$t=
   \$9;\$x=S(q(Rr));\$d=2;\$t=\$x.\$t if(\$t=~ /D/);\$h=int(\$u++ / \$d)+1;if(!(\$u % \$d)){\$e=abs(\$d- 1)*abs(\$h- 0);\$S=~
   s/^(.*([^\\n]*\\n){\$e}[^\\n]*)\\n/\$1/;\$S.=qq(Logic4DivideNotBy2StillBuggy:e=\$e;) if(0);}
@@ -1502,8 +1562,8 @@ if(\$S=~ /(\d+)( Sockets?)( in )(.+)\..*/){\$s=b8c(b64(\$1));\$X=\$2;\$i=\$3;\$F
 # proly chop-off "There * screen* on:" 1st unimportant line && join last 2 lines so counted socketz with path follows list's last detaild entry mor compactly,
 # prEpNd DtAlz list Ntryz wi b64 ndxz wich can Bcom altrn8 wA 2 pik session 2 scrn -x rEconect 2,add scls BlO2 U8.pm also as sls ^-*h(elp)? duing bOth wi -*v,
 # Xplor posibl or bSt wAz 2 autO-rEstor pal8z aftr Dtachng or Xiting from scrn sessionz (proly by trigering XeQt of just orig pal8 fIl or re-sourcing .zshrc);
-alias sls='scls;SLS';alias lsl='scls;SLS';alias SL='SCLS;SLS'; # rEwrapd regUlR ScrnLiStDfltn@uralabrEV8nwitop21doQmNt8nmap prntBlOB4abov
-alias SCLS='en "IA8ME8LS:LiSt ofL8St SCrnShortCut aLiaSeS: (scls lssc lSCR lscrn lscreen):
+Al sls='scls;SLS' lsl='scls;SLS' SL='SCLS;SLS'; # rEwrapd regUlR ScrnLiStDfltn@uralabrEV8nwitop21doQmNt8nmap prntBlOB4abov
+Al SCLS='en "IA8ME8LS:LiSt ofL8St SCrnShortCut aLiaSeS: (scls lssc lSCR lscrn lscreen):
 2du: 2du.ls s2=s2du; put:putr.ls  sP=sput; (aLSoL8r aLiaSd:LS SL lsl sls):
 8uf:  8.ls s28=s28x; sfv:sfv.utf8 sf=ssfv; # 2du:l8r sx \`scrn -x\` shudBcm
 8lc:8plc*  s8l=s8lc; tab:tabz.ls  sT=stab; #   funcn from alias 2 storENV
@@ -1516,8 +1576,8 @@ mul: muz.ls Sm=smul; muz:cd ~/muz sm=smuz; // obsequious obtuse obviously,
 mvl: mvz.ls SM=smvl; mvz:cd ~/mvz sM=smvz; // obov8 obrog8 obdur8 obfirm8,
 // obfusc8 obimbric8 objectiv8 obsecr8 obcord8 obequit8 oblong observ8ion,
 // obl8obluct8 obnoxious obnubil8 obscene obstetric8;"'; # 2du:mAB mv sa 2 sA && mk sa lIk ea 2 scrn OpN .zshrc && mk 1 4 .vimrc 2 && upd8 hLp tXtz,upd8 cmNtz;
-alias lssc='scls';alias lSCR='scls';alias lscrn='scls';alias lscreen='scls'; # 2du:contMpl8 bSt wA 2 Unify 234-char scrn session cmdz && cOdz&&crE8 or sx bak2;
-alias scls='pabd "\$d=$HOd8->new(q(IAGMLsls));\$S=              ## everything is looking pretty tight && nicely color-highlighted for distinctions now
+Al lssc='scls' lSCR='scls' lscrn='scls' lscreen='scls'; # 2du:contMpl8 bSt wA 2 Unify 234-char scrn session cmdz && cOdz&&crE8 or sx bak2;
+Al scls='pabd "\$d=$HOd8->new(q(IAGMLsls));\$S=              ## everything is looking pretty tight && nicely color-highlighted for distinctions now
 q[LiSt ofL8St SCrnShortCut aLiaSeS: (scls lssc lSCR lscrn lscreen):    // also l8r 2du:Dtecting width alreD done; ## nowBcAm obvious solid 7blok;
 2du: 2du.ls s2=s2du; put:putr.ls  sP=sput; (aLSoL8r aLiaSd:LS SL lsl sls):    bxl:boox.ls sB=sbxl; rut:sudobash sr=srut; // pLuS my ob=obSidia pLaLiStS:
 8uf:  8.ls s28=s28x; cvi:scvi.ls  sC=scvi; # 2du:l8r sx \`scrn -x\` shudBcom    cm8:ckm8*tf sc=scm8; adm:sudo zsh sA=sadm; //\`sm;3 U*/Ob*ob*\`pLafvr8Cobra;
@@ -1539,11 +1599,11 @@ b8a: b8a.ls sb=sb8a; irc:pl irssi si=sirc; #  upd8 this list colr 4 cstmz;    mv
 # 2du:upgrAd sls to buffer a quick DtachmNt LS rECv 2 C if last attached aftr mAB pull from wndO tItl aftr:colon 2 try wut 2 -x confirm if in rEcNt stil? ;
 #There are screens on: #        17836.b8a       (10/03/2018 04:09:10 AM)        (Detached)  # /defhijlnqstuvx/i + AZ are sOlOz avAl 4 golf abov (aftr a8 sOlO color Xportz);
 # cangiv m@chpRam now; #         5604.irc       (10/02/2018 07:48:46 PM)        (Attached)\n#2 Sockets in /run/screen/S-pip.  # SCreenLiStcmnd=S,ScreenLINe=L,PRocessIDnt=I,
-#lias g3='   gst123 '; # replaced by Xpct XperimNt  # sux2havnOsyntxhIlIt  # ScreenTiTL(PID.TTY.Host)=H,moNth=N,Day=D,yEar=E,Time=T,afterNoon=n,deTached=t,
-alias m3='   mpg123 '; # replace  wi Xpct l8r too   # butsumvrynIcalInmNt  # Hour=h,d8OBject=d,d8colrEskaped=e,Socketcount=s,soX=X,In=i,screenpathFilenm=F,
-#lias m1='   mpg321 '; # replace  wi Xpct l8r too   # guessngaboutARGVthO  # eXtra_detached_color_with_red_background=x (mOmNtary modific8ionB4cmNt filrz);
-#lias m0='   mpr0   '; # replace  wi Xpct l8r too;  already replaced by function below for now!   # OMG! Such consistNtly blockedout p@rnz of alInmNt abov;
-alias dvdb=' dvdbackup -M -p';alias dvdbak='dvdb';  # default DVD backups -Mirroring full disc into current working directory && upd8ing d8a copy -progress
+#l g3='   gst123 '; # replaced by Xpct XperimNt  # sux2havnOsyntxhIlIt  # ScreenTiTL(PID.TTY.Host)=H,moNth=N,Day=D,yEar=E,Time=T,afterNoon=n,deTached=t,
+Al m3='   mpg123 '; # replace  wi Xpct l8r too   # butsumvrynIcalInmNt  # Hour=h,d8OBject=d,d8colrEskaped=e,Socketcount=s,soX=X,In=i,screenpathFilenm=F,
+#l m1='   mpg321 '; # replace  wi Xpct l8r too   # guessngaboutARGVthO  # eXtra_detached_color_with_red_background=x (mOmNtary modific8ionB4cmNt filrz);
+#l m0='   mpr0   '; # replace  wi Xpct l8r too;  already replaced by function below for now!   # OMG! Such consistNtly blockedout p@rnz of alInmNt abov;
+Al dvdb=' dvdbackup -M -p' dvdbak='dvdb';  # default DVD backups -Mirroring full disc into current working directory && upd8ing d8a copy -progress
 # H7IM3Qvo:mplyr -vo help; MPlayer 1.3.0 (Debian), built with gcc-6.3.0 (C) 2000-2016 MPlayer Team; Available video output drivers:  # pretty old optnz now
 # vdpau      X11 VDPAU                                           fbdev    Framebuffer Device                        xvmc     XVideo Motion Compensation
 # xv         X11/Xv                                              fbdev2   Framebuffer Device                        mpegpes  MPEG-PES to DVB card
@@ -1559,20 +1619,20 @@ alias dvdb=' dvdbackup -M -p';alias dvdbak='dvdb';  # default DVD backups -Mirro
 # K1DLDSDL:upd8d mp to use -ao sdl or openal since they don't seem to stutter, but alsa under-runs && stops right away && pulse skips quite annoyingly 4 now;
 # O3FMDRIV:not sure why mplayer -ao alsa && oss were freezing after one buffer but could arrow skip then play another buffer but realized that pavucontrol
 #   gave interface to see mplayer applic8ion as muted output for pulseaudio so now default sdl audio seems to work fine again so mAB mk betr pamix 4 whNAgN?;
-alias mplyr='mplayer';alias mplr='mplyr';alias mplx='mpx -loop 0'; # EBIL4AcZ:upgrAded all putrs2 mplayer2 sO nEdz --no-keepaspect 2sKl 2full wndw dimNsionz;
-alias mpp='  mplr -vo xv    -fixed-vo -ao pulse -cache 16384 -cache-min 64'; # shudtrydif -vo (xv was Dfalt) 4per4manc;`mplr -ao help`4list;
-alias mpa='  mplr -vo xv    -fixed-vo -ao alsa  -cache 16384 -cache-min 64';alias ov='cd ~/mvz;mpx  $(ls **/*[OV][ob][sn]*|shfl)'; #Obs+Vnk;
-alias mp='   mplr -vo xv    -fixed-vo -ao sdl   -cache 16384 -cache-min 64';alias vo='cd ~/mvz;mplx $(ls **/*[VO][ob][sn]*|shfl)'; #Vnl+Obs;
-      mpls () { if [[ $# -gt 0 ]]; then mp $(ls $@|shfl); else mp $(ls|shfl); fi; } # MPlayer LiSting paramz piped thru basic ShfL. try2add -z && -Z options;
-alias mpns='cd ~/mvz/U2b/nxt;mp $(ls B* Dr* *Tut* Ex* M* O*-Res* Var* *Trap* *Trap* *Boy*|shfl);cd ..'; # mk MPlyrNxtShfl 4quik favor8 mvz Drub&&Trap vidzls;
-alias mpx='  mp   -fs';alias vnk='cd ~/mvz/U2b;mpx vnk/V?n?k*';alias vnl='cd;mvz/U2b/;mplx vnk/V?n?k*'; #-x 1920 -y 1080'; had -noborder but thN cud!mv wndw;
-alias mplo=' mplr -vo xv    -fixed-vo -ao sdl   -cache 16384 -cache-min 88 -framedrop -delay -4 -autosync 30 -demuxer +lavfpref -vfm ffmpeg -lavdopts lowres=1:fast:skiploopfilter=all -v ~/mvz/U2b/nxt/O*On*'; # try to play Obsidia One_Winged_Angel thru SDL audio since Pulse stutters && ALSA totally freezes up;
-alias mj='   mjoin'; mjoin() {ffmpeg -i $1 -i $2 -acodec copy -vcodec copy $3;};alias Vnk='cd ~/mvz/U2b/vnk;mpx *Doo* *Kob* *Str*'; # IB6LExci:in ~/.tmp/ aftr;
-alias ffll='ffmpeg -loglevel verbose -i'; # should now just take single Input filename to do verbose logging of details about, mainly for me looking up dur8nz;
+Al mplyr='mplayer' mplr='mplyr' mplx='mpx -loop 0'; # EBIL4AcZ:upgrAded all putrs2 mplayer2 sO nEdz --no-keepaspect 2sKl 2full wndw dimNsionz;
+Al mpp='  mplr -vo xv    -fixed-vo -ao pulse -cache 16384 -cache-min 64'; # shudtrydif -vo (xv was Dfalt) 4per4manc;`mplr -ao help`4list;
+Al mpa='  mplr -vo xv    -fixed-vo -ao alsa  -cache 16384 -cache-min 64' ov='cd ~/mvz;mpx  $(ls **/*[OV][ob][sn]*|shfl)'; #Obs+Vnk;
+Al mp='   mplr -vo xv    -fixed-vo -ao sdl   -cache 16384 -cache-min 64' vo='cd ~/mvz;mplx $(ls **/*[VO][ob][sn]*|shfl)'; #Vnl+Obs;
+   mpls () { if [[ $# -gt 0 ]]; then mp $(ls $@|shfl); else mp $(ls|shfl); fi; } # MPlayer LiSting paramz piped thru basic ShfL. try2add -z && -Z options;
+Al mpns='cd ~/mvz/U2b/nxt;mp $(ls B* Dr* *Tut* Ex* M* O*-Res* Var* *Trap* *Trap* *Boy*|shfl);cd ..'; # mk MPlyrNxtShfl 4quik favor8 mvz Drub&&Trap vidzls;
+Al mpx='  mp   -fs' vnk='cd ~/mvz/U2b;mpx vnk/V?n?k*' vnl='cd;mvz/U2b/;mplx vnk/V?n?k*'; #-x 1920 -y 1080'; had -noborder but thN cud!mv wndw;
+Al mplo=' mplr -vo xv    -fixed-vo -ao sdl   -cache 16384 -cache-min 88 -framedrop -delay -4 -autosync 30 -demuxer +lavfpref -vfm ffmpeg -lavdopts lowres=1:fast:skiploopfilter=all -v ~/mvz/U2b/nxt/O*On*'; # try to play Obsidia One_Winged_Angel thru SDL audio since Pulse stutters && ALSA totally freezes up;
+Al mj='   mjoin'; mjoin() {ffmpeg -i $1 -i $2 -acodec copy -vcodec copy $3;};Al Vnk='cd ~/mvz/U2b/vnk;mpx *Doo* *Kob* *Str*'; # IB6LExci:in ~/.tmp/ aftr;
+Al ffll='ffmpeg -loglevel verbose -i'; # should now just take single Input filename to do verbose logging of details about, mainly for me looking up dur8nz;
 # IAIMFFMP:ffmpjoin.sh crE8d by PipStuart <Pip@CPAN.Org> to take 2 sepR8 file parameters of audio && video (probably from calls to U2b8) && join in2 cntAnr4m@;
 # 2du:upd8 U2b8 autom8ion to test -F output first && harvest out best audio && video available then gener8 joined container name; nOt:out.avi did!work,mp4 did;
-alias fml='ffll';alias smp='smplayer';alias aply='aplay';alias aplr='alsaplayer';alias hg='mplx ~/mvz/U2b/vnk/*Head*'; # not Mercurial! ;)  HeadGrindr bSt evR!
-alias  ap='aply';alias arec='arecord'; # `arec -d 8 8sec.wav` sets --duration;
+Al fml='ffll' smp='smplayer' aply='aplay' aplr='alsaplayer' hg='mplx ~/mvz/U2b/vnk/*Head*'; # not Mercurial! ;)  HeadGrindr bSt evR!
+Al  ap='aply' arec='arecord'; # `arec -d 8 8sec.wav` sets --duration;
 # in addition to mplayer, gst123, xine, qmmp, && xmms2, smplayer, vlc, mpv, aplay, alsaplayer, mikmod I've already been using, Oni did following apt install:
 # ai gir1.2-rb-3.0 totem totem-plugins adplay ario-common ario audacious bplay clementine cmus-plugin-ffmpeg cmus cplay draai easyh10 faad gbemol glurp       \
 #   gmerlin-data gmerlin libgrooveplayer-dev libgrooveplayer4 libgroove4 libsmpeg-dev libsmpeg0 smpeg-gtv smpeg-plaympeg libjs-mediaelement                   \
@@ -1581,129 +1641,129 @@ alias  ap='aply';alias arec='arecord'; # `arec -d 8 8sec.wav` sets --duration;
 #   ices2 libadplug-dev libadplug-2.2.1-0v5 adplug-utils goattracker protracker modplug-tools bino libdmr-dev libdmr0.1 deepin-movie dragonplayer gmerlin     \
 #   kaffeine kylin-video parole-dev parole ser-player termrec
 # 2du:run `acs media|gi player` to find others without audio or video in their descriptions, then go thru list && rank && alias them;
-alias kscr='k $(psag "/screeps_server\$"|g " Ssl "|head -n 1|cut -c10-14)'; # try2 kill prv8 screeps_server process easier than typing k $PID aftr psag Sc
-alias kamp='ka -q -9 mplayer'; # -quiet (!warn if!mtch) && -9 kill force signal  ## du! actually kill any @all (if U can hLp it, plEz)!
-alias kasd='ka -q speech-dispatcher'; # resolve Aku's buggy loud HDMI audio clicking loop from "cicero" tXt2sPch4 mbrola wich surfaced aftr watching Twitch vid
-alias kisp='kasd';alias kasp='kasd';alias ksp='kasp';alias kspd='kasp'; # make a bunch of other good guesses at what the alias was when forgotten J5CMGnwN;
-alias kafp='ka -q plugin-container'; #'kill `ps ax | grep firefox | grep flash | cut -d" " -f1`'; # Kill crashed adobe Flash plugin (altho bad if ever running additional firefox plugins && will have to restart those too). Could also use   | c8 0'; #now instead.
+Al kscr='k $(psag "/screeps_server\$"|g " Ssl "|head -n 1|cut -c10-14)'; # try2 kill prv8 screeps_server process easier than typing k $PID aftr psag Sc
+Al kamp='ka -q -9 mplayer'; # -quiet (!warn if!mtch) && -9 kill force signal  ## du! actually kill any @all (if U can hLp it, plEz)!
+Al kasd='ka -q speech-dispatcher'; # resolve Aku's buggy loud HDMI audio clicking loop from "cicero" tXt2sPch4 mbrola wich surfaced aftr watching Twitch vid
+Al kisp='kasd' kasp='kasd' ksp='kasp' kspd='kasp'; # make a bunch of other good guesses at what the alias was when forgotten J5CMGnwN;
+Al kafp='ka -q plugin-container'; #'kill `ps ax | grep firefox | grep flash | cut -d" " -f1`'; # Kill crashed adobe Flash plugin (altho bad if ever running additional firefox plugins && will have to restart those too). Could also use   | c8 0'; #now instead.
 #/usr/lib/firefox/plugin-container /usr/lib/flashplugin-installer/libflashplayer.so -greomni /usr/lib/firefox/omni.ja 1881 true plugin
 # sudo modprobe pcspkr;say 'you have a speaker voice'; # ALSA lib pcm_dmix.c:1108:(snd_pcm_dmix_open) unable to open slave; espeak 'you have a speaker voice';
 # zsh: command not found: espeak [pip@OniK2HL78q9~]acs espeak;acs beep;  HTTPS://YouTu.be/M0eEwqUpKDc "How to Haunt a Computer Using SSH" # K2HL7Lr0:19m09s;
-alias kas=' kasd'; # KillAllStupidScratchySpeechSoundStaticShockSparkSpaz
-alias  klok='dclock -date "%A %B %d, %Y" -geometry 256x88-1920-0 -miltime -bg "#03071B" -led_off "#031B0B" -fn Fixed &';
-alias xklok='xclock -digital -fg yellow -bg black -rv -geometry 512x64 -update 1 &'; # stuD fdclock gworldclock osd_?clock twclock tzwatch 2add more good here
-alias tklok='tclock -sbBcC 2 -d 0 -a 199899799';alias tclock='tty-clock';alias tclk='tklok'; # -s show-seconds, -r rebound, -C [0-7] Color [krgobmcw], -b bold,
+Al kas=' kasd'; # KillAllStupidScratchySpeechSoundStaticShockSparkSpaz
+Al  klok='dclock -date "%A %B %d, %Y" -geometry 256x88-1920-0 -miltime -bg "#03071B" -led_off "#031B0B" -fn Fixed &';
+Al xklok='xclock -digital -fg yellow -bg black -rv -geometry 512x64 -update 1 &'; # stuD fdclock gworldclock osd_?clock twclock tzwatch 2add more good here
+Al tklok='tclock -sbBcC 2 -d 0 -a 199899799' tclock='tty-clock' tclk='tklok'; # -s show-seconds, -r rebound, -C [0-7] Color [krgobmcw], -b bold,
 # -B Blinking-colons, -d delay-seconds, -a delay-nanoseconds (billionthz), -c toggle-centering, -S ScreenSaver-mode (any key quitz), -x show-box, -t 12h-time,
 # -u use-utc, -T <TTY-TargeT>, -f <strftime-format>, -n no-key-quitz (needs signal sent nstd), -D hiDe-Date-Display, -v version, -i info, && -h help-on-usage;
-alias echoe='echo -e'; #  enable interpret8ion of backslashed escapes (default is -E to disable)
-alias echon='echo -n';alias cppa='c8 ~/.log/PPA.ansi'; # disable trailing NewliNe
-alias echos='echon  ';alias ewh="ene '${C}$COLUMNS${w}x$O$LINES'"; # echo (with -NoNewliNe) colrd curNt term NvIronmNt varz 4 Width x Height (like `wdht`);
-alias eqx='/home/pip/dvl/m8/clda/eqx/eqx-0.9.4.26/equinox3d-0.9.4.26-Linux64bit/eqx &'; # Gabor Nagy's awesome EQuinoX3D
+Al echoe='echo -e'; #  enable interpret8ion of backslashed escapes (default is -E to disable)
+Al echon='echo -n' cppa='c8 ~/.log/PPA.ansi'; # disable trailing NewliNe
+Al echos='echon  ' ewh="ene '${C}$COLUMNS${w}x$O$LINES'"; # echo (with -NoNewliNe) colrd curNt term NvIronmNt varz 4 Width x Height (like `wdht`);
+Al eqx='/home/pip/dvl/m8/clda/eqx/eqx-0.9.4.26/equinox3d-0.9.4.26-Linux64bit/eqx &'; # Gabor Nagy's awesome EQuinoX3D
 Al tml='o8 "timelocal_posix(s,m,h, D1,M0,Y1900): ";pa "o8(timelocal(30,20,10,10,7,126).q(;))"'; # Q8AMAKUM:upd8d pabd (&&pa) 2 -MTime::Local 4 tml 2 work AgN;
 Al tm=' ec " MonthDay(1-bAsd),Month(0-b),Yr(+1900),WkDay(0-b),YrDay(0-b);Sun0!";ec "timelocal(\$s,\$m,\$h,     \$mday,  \$mon,   \$year,\$wday,\$yday,\$isdst):";pa "@l=localtime;print join(qq(\\t),@l)";ec ";"'; # simple echo && perl command to display TiMe(local) d8a nicely 4m@d wi header hints about fields' bases;
-alias fstat='  pl -MTime::PT -E "@s=split(/ /,scalar(localtime((stat(shift))[9])));print   \"@s\"      ;"';
-#lias fstatpt='pl -MTime::PT -E "@s=split(/ /,scalar(localtime((stat(shift))[9])));print `pt @s`,\"\n\";"'; #pt(@s) not exported,so try shell,leav Nwln?
-alias fstd8='  pl -M$HOd8    -E "@s=split(/ /,scalar(localtime((stat(shift))[9])));print $HOd8->new(\"full\"=>\"@s\");"'; 
-alias wmc='  wmctrl ';alias gtt=' gnome-tweaks  '; # Uzd2B gt-tool scAling all fontz2 1.5&&mkCapsLock Ctrl;XperimNt wiCaps2:Hyper,Menu,orWin 2CwutLsIcan map2;
-alias gt='   env TERM_PROGRAM=gt  gnome-terminal'; # wrap GnomTerm wi ENV var to be l8r capable of determining the actual term apart from just xterm-256color;
+Al fstat='  pl -MTime::PT -E "@s=split(/ /,scalar(localtime((stat(shift))[9])));print   \"@s\"      ;"';
+#l fstatpt='pl -MTime::PT -E "@s=split(/ /,scalar(localtime((stat(shift))[9])));print `pt @s`,\"\n\";"'; #pt(@s) not exported,so try shell,leav Nwln?
+Al fstd8='  pl -M$HOd8    -E "@s=split(/ /,scalar(localtime((stat(shift))[9])));print $HOd8->new(\"full\"=>\"@s\");"'; 
+Al wmc='  wmctrl ' gtt=' gnome-tweaks  '; # Uzd2B gt-tool scAling all fontz2 1.5&&mkCapsLock Ctrl;XperimNt wiCaps2:Hyper,Menu,orWin 2CwutLsIcan map2;
+Al gt='   env TERM_PROGRAM=gt  gnome-terminal'; # wrap GnomTerm wi ENV var to be l8r capable of determining the actual term apart from just xterm-256color;
 # nOt:xrg BlO had g wi multiple -e expressionz but I changed g() to call grP for -P Perl PCRE so had to chng this to be grp 4 regUlR grep th@ handlz multi -e;
-alias xrnr='xrandr';alias xrg="xrnr|grp -e '^[DH][^ ]*' -e ' connected' -e primary"; # mk func tkng [dhp]\d* wich ndx2cfg r8z whN cRd,Kbl,&&displAsuportz144?;
-alias xr='xrnr --output DVI-D-0 --mode 1920x1080 --rate 60';alias cx='ct "init";xr'; # nEd2set ViotekGN32C over DVI from Dflt 144 rEfresh down2cAbl suportd 60
-#    `xr` abov was DVI-1 thN DVI-D-1 thN DVI-D-0 && had --mode 1920x1080 B4 just --rate 60; # new50"TV was H3WideFormat set above as $H3WF to booleon flag it;
-#    `xt` used to be a sym-link to ~/bin/xmltidy (or l8r just xtidy) but is more consistent with st, at, gt, et, etc. to have it alias for XTerm now instead;
-alias xt='   env TERM_PROGRAM=xt   xterm          -geometry 160x50 -fa        "Monospace" -fs 12              &'; # N52MCKit:instld kitty && tilix +somothrz;
-alias xtm80='env TERM_PROGRAM=x80  xterm          -geometry 80x25  -fa        "Monospace" -fs 24              &'; # atMpt2mk big dbl-sIz xt wi FontSize pRam;
-alias gtm80='env TERM_PROGRAM=g80 gnome-terminal --geometry=80x25 --window-with-profile=Pips8025GnomTerm-NiceFont-K2FL8025  2>/dev/null &'; # mk dbl-sIzd gt;
-alias gtm40='env TERM_PROGRAM=g40 gnome-terminal --geometry=40x12 --window-with-profile=Pips40x12GnomTerm-NiceFont-L66MGG40 2>/dev/null &'; # mkquad-sIzd gt;
-alias uxtrm='env TERM_PROGRAM=uxt uxterm          -geometry 160x50 -bc -bcn 512 -bcf 256                      &'; #`appres XTerm|gi utf8font`shOwz mNU fontz;
-alias utm80='env TERM_PROGRAM=u80 uxterm          -geometry  80x25 -bc           &'; # setup consistNtly 2 or 3-char aliases for almost all usable termz;
-alias lxtrm='env TERM_PROGRAM=lxt lxterm          -geometry 160x50               &'; # =lxterm is sepR8 sh scrpt wich tStz locale&&wrapz plain uxterm 4 UTF-8;
-alias lxt80='env TERM_PROGRAM=l80 lxterm          -geometry  80x25               &';
-alias lxtmn='env TERM_PROGRAM=lxm lxterminal     --geometry=160x50               &'; # =lxterminal LXDE lItw8 GTK+ term MUl8r wi dox frm`d8 86S`;`d8 4CJ`BlO;
-alias lxm80='env TERM_PROGRAM=L80 lxterminal     --geometry=80x25                &'; # nOte:also have rio ghostty && alacritty instald wich Dserv aliasz too;
-alias sakra='env TERM_PROGRAM=sak sakura          -c     160 -r 50 -f  "Ubuntu Mono,monospace 13" 2>/dev/null &'; # mk Ech similR 2my prEferd Dfalt dimNsionz;
-alias sak80='env TERM_PROGRAM=S80 sakura          -c      80 -r 25 -f  "Ubuntu Mono,monospace 28" 2>/dev/null &'; # mk sepR8 160x50 &&dbl-sIz 80x25 Sak alias;
-alias sak40='env TERM_PROGRAM=S40 sakura          -c      40 -r 12 -f  "Ubuntu Mono,monospace 48" 2>/dev/null &'; # mk sepR8         quad-sIz 40x12 Sak alias;
-alias roxtm='env TERM_PROGRAM=rox roxterm        --geometry=160x50 -c  "Default" &'; # anothr VTE-bAsd xterm (-z $ZoomFrom1.0 [want 0.8333] CRIT assert pango);
-alias rox80='env TERM_PROGRAM=r80 roxterm        --geometry=80x25  -c  "Default" &'; # had 2 add-apt-repository for ppa:h-realh 2 get roxterm installed again;
-alias tmn8r='env TERM_PROGRAM=t8r terminator     --geometry=1458x920 -T t8r -b 2>/dev/null &'; # geom pixLz,!charz wi dmNsnz 10x18 1608x932pixLz+bordr&&tab-bR;
-alias xf4tm='env TERM_PROGRAM=x4t xfce4-terminal --geometry=160x50   -T x4t    2>/dev/null &'; # like rox, x4t && m8t accept --zoom=$ZOOM level varyng from ...
-alias x4t80='env TERM_PROGRAM=X80 xfce4-terminal --geometry=80x25    -T X80    2>/dev/null &'; #   -7 to 7 with 0 as norml sIz or   $ZOOM factor with ...
-alias m8trm='env TERM_PROGRAM=m8t mate-terminal  --geometry=160x50   -t m8t      &';           #      1.0         as norml sIz as float scAle;
-alias m80tm='env TERM_PROGRAM=m80 mate-terminal  --geometry=80x25    -t m80      &'; # tmg BlOhas -c=$BOOL CursorBlink && -G=$BOOL VisualBell && -B Borderless;
-alias tmnlg='env TERM_PROGRAM=tmg terminology    --geometry=160x50   -T tmg -2    ';alias Re='pu ~;rd -p .elementary/config/standard;po 2>/dev/null'; # no & so
-alias tmg80='env TERM_PROGRAM=T80 terminology    --geometry=80x25    -T t80 -2 2>/dev/null   ;pu ~;rd -p .elementary/config/standard;po 2>/dev/null'; # rd aftr
-alias qterm='env TERM_PROGRAM=qtm qterminal                     1>/dev/null 2>&1 &'; # DsIgnd 4 LXQt dsktp NvIrnmNt Cmz 2 hv almOst nO cmd-lIn optnz 2 adjust;
-alias qt240='env TERM_PROGRAM=q24 qterminal       -p qt240x67   1>/dev/null 2>&1 &'; # HTTPS://GitHub.Com/lxqt/qterminal/issues/488 says must be in ~/.config/
-alias qt160='env TERM_PROGRAM=q16 qterminal       -p qt160x50   1>/dev/null 2>&1 &'; #   as .conf files that are manually configurd but thN sAv st8 whN editd;
-alias qtm80='env TERM_PROGRAM=q80 qterminal       -p qt_80x25   1>/dev/null 2>&1 &'; # can I customize an 80x25 qterminal somehow? proly hv2mk -p profilez4it;
-alias qtm40='env TERM_PROGRAM=q80 qterminal       -p qt_40x12   1>/dev/null 2>&1 &'; # still need to mk a 40x12 qterm profile for this 2 eventually work rite;
-alias Trmnl='env TERM_PROGRAM=Trm Terminal                      2>/dev/null      &'; # looks lIk Terminal app so old that it can hardly render prmpt or colrz;
-alias liltm='env TERM_PROGRAM=ltm lilyterm        -g        160x50   -T ltm    2>/dev/null &'; # lily&&termit spew lots ofGTK warnz2STDERR;
-alias lil80='env TERM_PROGRAM=i80 lilyterm        -g         80x25   -T i80    2>/dev/null &'; # lily in 80-column mode getz 'i80' Title since l80 && L80 tAkN;
-alias konsl='env TERM_PROGRAM=kon konsole        --profile  PipProfile0-K2ELGANT &'; # qterminal && konsole cfgz in ~/.config/ && ~/.local/share/;
-alias trmit='env TERM_PROGRAM=tit termit    -i "$HOME/.config/termit/rc.lua"   2>/dev/null &'; # cud -T tit 2set TITle of TermIT, but thN can!`ct` in it l8r;
-alias tit80='env TERM_PROGRAM=T80 termit    -i "$HOME/.config/termit/rc80.lua" 2>/dev/null &'; # try 2 mk termit with 80x25 config
-alias Pterm='env TERM_PROGRAM=ptm pterm           -geometry 160x50 -fn             "Monospace 12"             &'; # pterm has lotz of .Xrc && CLI optz 2 add;
-alias ptm80='env TERM_PROGRAM=p80 pterm           -geometry  80x25 -fn             "Monospace 24"             &';
-alias Urxvt='env TERM_PROGRAM=urx urxvt           -geometry 160x50               &'; # Unicode-Rxvt cnfigd nEr botm of ~/.Xrc wi `xrc` 2lOd xrdb d8a B4hand;
-alias urx80='env TERM_PROGRAM=U80 urxvt           -geometry  80x25               &';
-alias rxvtu='env TERM_PROGRAM=rxu rxvt-unicode    -geometry 160x50               &';
-alias rxu80='env TERM_PROGRAM=R80 rxvt-unicode    -geometry  80x25               &';
-alias st='   env TERM_PROGRAM=st  stterm          -g        160x50   -T st  -f "Ubuntu Mono:size=14"          &'; # also SimpleTerminal (or SucklessTerminal);
-alias s80='  env TERM_PROGRAM=s80 stterm          -g         80x25   -T s80 -f "Ubuntu Mono:size=28"          &'; # dbl-sIz varE8ion but nEd2 fix lsd8 colrz2;
-alias s40='  env TERM_PROGRAM=s40 stterm          -g         40x12   -T s40 -f "Ubuntu Mono:size=48"          &'; #quad-sIz varE8ion but nEd2 fix lsd8 colrz2;
-alias to='   tio';alias et=' Et';alias s3t='s3dvt  &'; # tio is just simple TTY term I/O app,not a ful term by itsLf; s3dvt nEdz S3D && a TCP servr2connect2?;
-alias ATM='  atm';alias atm='At'; # `pt` stil ~/bin/ Time::PT.pm PipTime but othrz can shrnk 3 to 2-char aliasz;
-alias crt='cd ~/dvl/c8/trm8;CRT'; # CoolRetroTerm nEdz2cfg termrc 2Uz smalr font; # Terminal cfg in ~/.GNUstep/ (aftr chgz mAd2 /etc/ .conf 2mk dir dot-fIl);
-alias stp='cd ~/dvl/c8/trm8/st;patch -Np1 -i'; # SucklessTermPatch with No attempt to reverse 1st failed hunk && stripping 1st slash from Path B4 Input fIl;
-alias smci='sudo make clean install'; # HTTPS://BrianBuccola.Com/how-to-build-and-install-st-suckless-simple-terminal-from-source-on-arch-linux `d8 H3J`;
-alias vtst='vttest'; # `vtst` might be good to run all termz thru 2 see which have what fE8urez; BlO echo compact term alias mapingz;
-alias xT='x80';alias x80='xtm80'; # tSt setng all my 3-char && smaller aliasez 2 prefix larger 5-char aliasez with ENV var lIk GNUstep_Terminal.app has;
-alias GT='g80';alias g80='gtm80';   # I'm not sure yet if each of these are detected as different behaviorz bAsd on $0;
-alias g4='g40';alias g40='gtm40';   # new 40x12 profile;
-alias ut='uxt';alias uxt='uxtrm';   #lrwxrwxrwx 1 root root       5 Sep  5 06:08 /usr/bin/rxvt         -> urxvt
-alias uT='u80';alias u80='utm80';   #lrwxrwxrwx 1 root root       5 Sep  5 06:08 /usr/bin/rxvt-unicode -> urxvt
-alias lt='lxt';alias lxt='lxtrm';   #lrwxrwxrwx 1 root root       5 Sep  5 06:08 /usr/bin/rxvt-xpm     -> urxvt
-alias lT='l80';alias l80='lxt80';   #lrwxrwxrwx 1 root root       5 Sep  5 06:08 /usr/bin/rxvt-xterm   -> urxvt
-alias Lt='lxm';alias lxm='lxtmn';   #-rwxr-sr-x 1 root utmp 1423512 Sep  5 06:08 /usr/bin/urxvt
-alias LT='L80';alias L80='lxm80';   #-rwxr-xr-x 1 root root   97056 Sep  5 06:08 /usr/bin/urxvtc
-alias sa='sak';alias sak='sakra';   #-rwxr-xr-x 1 root root      86 Jun  9  2016 /usr/bin/urxvtcd
-alias SA='S80';alias S80='sak80';   #-rwxr-sr-x 1 root utmp 1431704 Sep  5 06:08 /usr/bin/urxvtd
-alias S4='S40';alias S40='sak40';alias s4='s40'; # basic Sakura && stterm 40x12 floor of quarter-quarter of my main 160x50 term dimensions for quad-sIz EZ2rEd;
-alias rt='rox';alias rox='roxtm';
-alias rT='r80';alias r80='rox80';
-alias T8='t8r';alias t8r='tmn8r';
-alias Xt='x4t';alias x4t='xf4tm';
-alias XT='X80';alias X80='x4t80';
-alias Mt='m8t';alias m8t='m8trm';
-alias mT='m80';alias m80='m80tm'; # OMG! EFL terminology BlO is so fscking awesome with the beautiful VisualBell alarm alert in the lower-right corner;
-alias Tt='tmg';alias tmg='tmnlg'; # `tt` is already mapped to the gr8 KentaCho of BulletML fame's ported DMD game: Torus-Troopers so can't remap that!;
-alias tT='t80';alias t80='tmg80'; # I am unabashedly heels-over-head reeling in love with the puls8ing glittery cursor of terminology && its esthetics;
-alias qt='qtm';alias qtm='qterm'; # qt should be almost identical to qt160 (with -p profile ~/.config/qt160x50.conf that's not in qterminal.org/ path);
-alias q2='q24';alias q24='qt240';
-alias q1='q16';alias q16='qt160';
-alias q8='q80';alias q80='qtm80'; # Damn! ~/.GNUstep/ Terminal.app is so horribly broken with all the settings I could try to saddle it wi sOfR.4getit?
-alias q4='q40';alias q40='qtm40'; # new 40x12 profile that still needs a config file to be capable of running;
-alias TT='Trm';alias Trm='Trmnl'; # mAB this 1 will get overridden by GNUstep so shud vary,or mAB all varz shud just B shrunk 2 only TERM_(PROG|ALIAS)?
-alias it='ltm';alias ltm='liltm'; # it might also be betr 2 rEwrIt all thEz az shL functionz wich can pass argz in2 term programz B4 & thM 2 bkgr jobz?
-alias iT='i80';alias i80='lil80';
-alias ko='kon';alias kon='konsl';
-alias It='tit';alias tit='trmit';
-alias IT='T80';alias T80='tit80';
-alias pT='ptm';alias ptm='Pterm';
-alias p8='p80';alias p80='ptm80';alias wez='wezterm'; # wezai is AppImage in /usr/local/bin
-alias Ut='urx';alias urx='Urxvt';alias wezfp='flatpak run org.wezfurlong.wezterm';
-alias UT='U80';alias U80='urx80'; # also study tio 4 anythng useful?
-alias Rt='rxu';alias rxu='rxvtu'; # should l8r go through `trmz` list below && re-order the major groupz to prioritize displaying the best onez first
-alias RT='R80';alias R80='rxu80'; # BlO trmz usez echo -e on SKpd colr-coded terminal MUl8orz mapng lstz of alIgnd 2 && 3-char aliasz fitng in 160-char lInz;
-alias trmz='ee "${R}xt$w,${o}st$w,${Y}gt$w,${G}at$w,${C}et$W => ${R}xterm$w,${o}s${w}[${O}imple${w}]${o}tterm$w,${Y}gnome-terminal$w,${G}aterm$w,${C}E${w}[${c}nlightenment${w}]${C}term$W; ${R}uxt$w,${o}lxt$w,${Y}lxm$w,${G}sak$w,${C}tmg$w,${B}t8r$w,${M}tit$w,${p}s3t$w,${R}urx$w,${o}rox$w,${Y}crt$w,${G}x4t$w,${C}m8t$w,${B}Trm$w,${M}kon$w,${p} to$w,${R}ltm$w,${o}ptm$w,${Y}qtm$W =>";
+Al xrnr='xrandr' xrg="xrnr|grp -e '^[DH][^ ]*' -e ' connected' -e primary"; # mk func tkng [dhp]\d* wich ndx2cfg r8z whN cRd,Kbl,&&displAsuportz144?;
+Al xr='xrnr --output DVI-D-0 --mode 1920x1080 --rate 60' cx='ct "init";xr'; # nEd2set ViotekGN32C over DVI from Dflt 144 rEfresh down2cAbl suportd 60
+# `xr` abov was DVI-1 thN DVI-D-1 thN DVI-D-0 && had --mode 1920x1080 B4 just --rate 60; # new50"TV was H3WideFormat set above as $H3WF to booleon flag it;
+# `xt` used to be a sym-link to ~/bin/xmltidy (or l8r just xtidy) but is more consistent with st, at, gt, et, etc. to have it alias for XTerm now instead;
+Al xt='   env TERM_PROGRAM=xt   xterm          -geometry 160x50 -fa        "Monospace" -fs 12              &'; # N52MCKit:instld kitty && tilix +somothrz;
+Al xtm80='env TERM_PROGRAM=x80  xterm          -geometry 80x25  -fa        "Monospace" -fs 24              &'; # atMpt2mk big dbl-sIz xt wi FontSize pRam;
+Al gtm80='env TERM_PROGRAM=g80 gnome-terminal --geometry=80x25 --window-with-profile=Pips8025GnomTerm-NiceFont-K2FL8025  2>/dev/null &'; # mk dbl-sIzd gt;
+Al gtm40='env TERM_PROGRAM=g40 gnome-terminal --geometry=40x12 --window-with-profile=Pips40x12GnomTerm-NiceFont-L66MGG40 2>/dev/null &'; # mkquad-sIzd gt;
+Al uxtrm='env TERM_PROGRAM=uxt uxterm          -geometry 160x50 -bc -bcn 512 -bcf 256                      &'; #`appres XTerm|gi utf8font`shOwz mNU fontz;
+Al utm80='env TERM_PROGRAM=u80 uxterm          -geometry  80x25 -bc           &'; # setup consistNtly 2 or 3-char aliases for almost all usable termz;
+Al lxtrm='env TERM_PROGRAM=lxt lxterm          -geometry 160x50               &'; # =lxterm is sepR8 sh scrpt wich tStz locale&&wrapz plain uxterm 4 UTF-8;
+Al lxt80='env TERM_PROGRAM=l80 lxterm          -geometry  80x25               &';
+Al lxtmn='env TERM_PROGRAM=lxm lxterminal     --geometry=160x50               &'; # =lxterminal LXDE lItw8 GTK+ term MUl8r wi dox frm`d8 86S`;`d8 4CJ`BlO;
+Al lxm80='env TERM_PROGRAM=L80 lxterminal     --geometry=80x25                &'; # nOte:also have rio ghostty && alacritty instald wich Dserv aliasz too;
+Al sakra='env TERM_PROGRAM=sak sakura          -c     160 -r 50 -f  "Ubuntu Mono,monospace 13" 2>/dev/null &'; # mk Ech similR 2my prEferd Dfalt dimNsionz;
+Al sak80='env TERM_PROGRAM=S80 sakura          -c      80 -r 25 -f  "Ubuntu Mono,monospace 28" 2>/dev/null &'; # mk sepR8 160x50 &&dbl-sIz 80x25 Sak alias;
+Al sak40='env TERM_PROGRAM=S40 sakura          -c      40 -r 12 -f  "Ubuntu Mono,monospace 48" 2>/dev/null &'; # mk sepR8         quad-sIz 40x12 Sak alias;
+Al roxtm='env TERM_PROGRAM=rox roxterm        --geometry=160x50 -c  "Default" &'; # anothr VTE-bAsd xterm (-z $ZoomFrom1.0 [want 0.8333] CRIT assert pango);
+Al rox80='env TERM_PROGRAM=r80 roxterm        --geometry=80x25  -c  "Default" &'; # had 2 add-apt-repository for ppa:h-realh 2 get roxterm installed again;
+Al tmn8r='env TERM_PROGRAM=t8r terminator     --geometry=1458x920 -T t8r -b 2>/dev/null &'; # geom pixLz,!charz wi dmNsnz 10x18 1608x932pixLz+bordr&&tab-bR;
+Al xf4tm='env TERM_PROGRAM=x4t xfce4-terminal --geometry=160x50   -T x4t    2>/dev/null &'; # like rox, x4t && m8t accept --zoom=$ZOOM level varyng from ...
+Al x4t80='env TERM_PROGRAM=X80 xfce4-terminal --geometry=80x25    -T X80    2>/dev/null &'; #   -7 to 7 with 0 as norml sIz or   $ZOOM factor with ...
+Al m8trm='env TERM_PROGRAM=m8t mate-terminal  --geometry=160x50   -t m8t      &';           #      1.0         as norml sIz as float scAle;
+Al m80tm='env TERM_PROGRAM=m80 mate-terminal  --geometry=80x25    -t m80      &'; # tmg BlOhas -c=$BOOL CursorBlink && -G=$BOOL VisualBell && -B Borderless;
+Al tmnlg='env TERM_PROGRAM=tmg terminology    --geometry=160x50   -T tmg -2    ';alias Re='pu ~;rd -p .elementary/config/standard;po 2>/dev/null'; # no & so
+Al tmg80='env TERM_PROGRAM=T80 terminology    --geometry=80x25    -T t80 -2 2>/dev/null   ;pu ~;rd -p .elementary/config/standard;po 2>/dev/null'; # rd aftr
+Al qterm='env TERM_PROGRAM=qtm qterminal                     1>/dev/null 2>&1 &'; # DsIgnd 4 LXQt dsktp NvIrnmNt Cmz 2 hv almOst nO cmd-lIn optnz 2 adjust;
+Al qt240='env TERM_PROGRAM=q24 qterminal       -p qt240x67   1>/dev/null 2>&1 &'; # HTTPS://GitHub.Com/lxqt/qterminal/issues/488 says must be in ~/.config/
+Al qt160='env TERM_PROGRAM=q16 qterminal       -p qt160x50   1>/dev/null 2>&1 &'; #   as .conf files that are manually configurd but thN sAv st8 whN editd;
+Al qtm80='env TERM_PROGRAM=q80 qterminal       -p qt_80x25   1>/dev/null 2>&1 &'; # can I customize an 80x25 qterminal somehow? proly hv2mk -p profilez4it;
+Al qtm40='env TERM_PROGRAM=q80 qterminal       -p qt_40x12   1>/dev/null 2>&1 &'; # still need to mk a 40x12 qterm profile for this 2 eventually work rite;
+Al Trmnl='env TERM_PROGRAM=Trm Terminal                      2>/dev/null      &'; # looks lIk Terminal app so old that it can hardly render prmpt or colrz;
+Al liltm='env TERM_PROGRAM=ltm lilyterm        -g        160x50   -T ltm    2>/dev/null &'; # lily&&termit spew lots ofGTK warnz2STDERR;
+Al lil80='env TERM_PROGRAM=i80 lilyterm        -g         80x25   -T i80    2>/dev/null &'; # lily in 80-column mode getz 'i80' Title since l80 && L80 tAkN;
+Al konsl='env TERM_PROGRAM=kon konsole        --profile  PipProfile0-K2ELGANT &'; # qterminal && konsole cfgz in ~/.config/ && ~/.local/share/;
+Al trmit='env TERM_PROGRAM=tit termit    -i "$HOME/.config/termit/rc.lua"   2>/dev/null &'; # cud -T tit 2set TITle of TermIT, but thN can!`ct` in it l8r;
+Al tit80='env TERM_PROGRAM=T80 termit    -i "$HOME/.config/termit/rc80.lua" 2>/dev/null &'; # try 2 mk termit with 80x25 config
+Al Pterm='env TERM_PROGRAM=ptm pterm           -geometry 160x50 -fn             "Monospace 12"             &'; # pterm has lotz of .Xrc && CLI optz 2 add;
+Al ptm80='env TERM_PROGRAM=p80 pterm           -geometry  80x25 -fn             "Monospace 24"             &';
+Al Urxvt='env TERM_PROGRAM=urx urxvt           -geometry 160x50               &'; # Unicode-Rxvt cnfigd nEr botm of ~/.Xrc wi `xrc` 2lOd xrdb d8a B4hand;
+Al urx80='env TERM_PROGRAM=U80 urxvt           -geometry  80x25               &';
+Al rxvtu='env TERM_PROGRAM=rxu rxvt-unicode    -geometry 160x50               &';
+Al rxu80='env TERM_PROGRAM=R80 rxvt-unicode    -geometry  80x25               &';
+Al st='   env TERM_PROGRAM=st  stterm          -g        160x50   -T st  -f "Ubuntu Mono:size=14"          &'; # also SimpleTerminal (or SucklessTerminal);
+Al s80='  env TERM_PROGRAM=s80 stterm          -g         80x25   -T s80 -f "Ubuntu Mono:size=28"          &'; # dbl-sIz varE8ion but nEd2 fix lsd8 colrz2;
+Al s40='  env TERM_PROGRAM=s40 stterm          -g         40x12   -T s40 -f "Ubuntu Mono:size=48"          &'; #quad-sIz varE8ion but nEd2 fix lsd8 colrz2;
+Al to='   tio' et=' Et' s3t='s3dvt  &'; # tio is just simple TTY term I/O app,not a ful term by itsLf; s3dvt nEdz S3D && a TCP servr2connect2?;
+Al ATM='  atm' atm='At'; # `pt` stil ~/bin/ Time::PT.pm PipTime but othrz can shrnk 3 to 2-char aliasz;
+Al crt='cd ~/dvl/c8/trm8;CRT'; # CoolRetroTerm nEdz2cfg termrc 2Uz smalr font; # Terminal cfg in ~/.GNUstep/ (aftr chgz mAd2 /etc/ .conf 2mk dir dot-fIl);
+Al stp='cd ~/dvl/c8/trm8/st;patch -Np1 -i'; # SucklessTermPatch with No attempt to reverse 1st failed hunk && stripping 1st slash from Path B4 Input fIl;
+Al smci='sudo make clean install'; # HTTPS://BrianBuccola.Com/how-to-build-and-install-st-suckless-simple-terminal-from-source-on-arch-linux `d8 H3J`;
+Al vtst='vttest'; # `vtst` might be good to run all termz thru 2 see which have what fE8urez; BlO echo compact term alias mapingz;
+Al xT='x80' x80='xtm80'; # tSt setng all my 3-char && smaller aliasez 2 prefix larger 5-char aliasez with ENV var lIk GNUstep_Terminal.app has;
+Al GT='g80' g80='gtm80';   # I'm not sure yet if each of these are detected as different behaviorz bAsd on $0;
+Al g4='g40' g40='gtm40';   # new 40x12 profile;
+Al ut='uxt' uxt='uxtrm';   #lrwxrwxrwx 1 root root       5 Sep  5 06:08 /usr/bin/rxvt         -> urxvt
+Al uT='u80' u80='utm80';   #lrwxrwxrwx 1 root root       5 Sep  5 06:08 /usr/bin/rxvt-unicode -> urxvt
+Al lt='lxt' lxt='lxtrm';   #lrwxrwxrwx 1 root root       5 Sep  5 06:08 /usr/bin/rxvt-xpm     -> urxvt
+Al lT='l80' l80='lxt80';   #lrwxrwxrwx 1 root root       5 Sep  5 06:08 /usr/bin/rxvt-xterm   -> urxvt
+Al Lt='lxm' lxm='lxtmn';   #-rwxr-sr-x 1 root utmp 1423512 Sep  5 06:08 /usr/bin/urxvt
+Al LT='L80' L80='lxm80';   #-rwxr-xr-x 1 root root   97056 Sep  5 06:08 /usr/bin/urxvtc
+Al sa='sak' sak='sakra';   #-rwxr-xr-x 1 root root      86 Jun  9  2016 /usr/bin/urxvtcd
+Al SA='S80' S80='sak80';   #-rwxr-sr-x 1 root utmp 1431704 Sep  5 06:08 /usr/bin/urxvtd
+Al S4='S40' S40='sak40'; #s4='s40'; # basic Sakura && stterm 40x12 floor of quarter-quarter of my main 160x50 term dimensions for quad-sIz EZ2rEd;
+Al rt='rox' rox='roxtm';
+Al rT='r80' r80='rox80';
+Al T8='t8r' t8r='tmn8r';
+Al Xt='x4t' x4t='xf4tm';
+Al XT='X80' X80='x4t80';
+Al Mt='m8t' m8t='m8trm';
+Al mT='m80' m80='m80tm'; # OMG! EFL terminology BlO is so fscking awesome with the beautiful VisualBell alarm alert in the lower-right corner;
+Al Tt='tmg' tmg='tmnlg'; # `tt` is already mapped to the gr8 KentaCho of BulletML fame's ported DMD game: Torus-Troopers so can't remap that!;
+Al tT='t80' t80='tmg80'; # I am unabashedly heels-over-head reeling in love with the puls8ing glittery cursor of terminology && its esthetics;
+Al qt='qtm' qtm='qterm'; # qt should be almost identical to qt160 (with -p profile ~/.config/qt160x50.conf that's not in qterminal.org/ path);
+Al q2='q24' q24='qt240';
+Al q1='q16' q16='qt160';
+Al q8='q80' q80='qtm80'; # Damn! ~/.GNUstep/ Terminal.app is so horribly broken with all the settings I could try to saddle it wi sOfR.4getit?
+Al q4='q40' q40='qtm40'; # new 40x12 profile that still needs a config file to be capable of running;
+Al TT='Trm' Trm='Trmnl'; # mAB this 1 will get overridden by GNUstep so shud vary,or mAB all varz shud just B shrunk 2 only TERM_(PROG|ALIAS)?
+Al it='ltm' ltm='liltm'; # it might also be betr 2 rEwrIt all thEz az shL functionz wich can pass argz in2 term programz B4 & thM 2 bkgr jobz?
+Al iT='i80' i80='lil80';
+Al ko='kon' kon='konsl';
+Al It='tit' tit='trmit';
+Al IT='T80' T80='tit80';
+Al pT='ptm' ptm='Pterm';
+Al p8='p80' p80='ptm80' wez='wezterm'; # wezai is AppImage in /usr/local/bin
+Al Ut='urx' urx='Urxvt' wezfp='flatpak run org.wezfurlong.wezterm';
+Al UT='U80' U80='urx80'; # also study tio 4 anythng useful?
+Al Rt='rxu' rxu='rxvtu'; # should l8r go through `trmz` list below && re-order the major groupz to prioritize displaying the best onez first
+Al RT='R80' R80='rxu80'; # BlO trmz usez echo -e on SKpd colr-coded terminal MUl8orz mapng lstz of alIgnd 2 && 3-char aliasz fitng in 160-char lInz;
+Al trmz='ee "${R}xt$w,${o}st$w,${Y}gt$w,${G}at$w,${C}et$W => ${R}xterm$w,${o}s${w}[${O}imple${w}]${o}tterm$w,${Y}gnome-terminal$w,${G}aterm$w,${C}E${w}[${c}nlightenment${w}]${C}term$W; ${R}uxt$w,${o}lxt$w,${Y}lxm$w,${G}sak$w,${C}tmg$w,${B}t8r$w,${M}tit$w,${p}s3t$w,${R}urx$w,${o}rox$w,${Y}crt$w,${G}x4t$w,${C}m8t$w,${B}Trm$w,${M}kon$w,${p} to$w,${R}ltm$w,${o}ptm$w,${Y}qtm$W =>";
             ee "${R}uxterm$w,${o}lxterminal$w,${Y}lxterm$w,${G}sakura$w,${C}terminology$w,${B}terminator$w,${M}termit$w${p}s3dvt$w${R}urxvt$w${o}roxterm$w, ${Y}CoolRetroT*$w,${G}xfce4-terminal$w,${C}mate-terminal$w,${B}Terminal$w,${M}konsole$w${p}tio$w${R}lilyt*$w${o}pt*$w${Y}qterminal$W;";
             ee "${R}it$w,${o}Pt$w,${Y}qt$w,${G}At$w,${C}Rt$W => ${R}lilyterm$w,${o}pterm$w,${Y}qterminal$w,${G}aterm$w,${C}rxvt-unicode$W;${B}Lt$W =>$B lxterminal$W;$C 80${K}x${o}25$G varE8ionz$W:$R x80$w,${o}X80$w,${Y}l80$w,${G}L80$w,${C}r80$w,${B}R80$w,${M}s80$w,${p}S80$w,${R}i80$w,${o}p80$w,${Y}q80$w,${G}u80$w,${C}U80$w,${B}g80$w,${M}m80${K}...";
             ee "${G}      l8r  alsO$W:$w t80$w,T80$w,G80$w,M80$w,k80$w,I80 && sa, Tt, Xt, Mt, Ut, ut, ko, lt, rt$W;$z also note most first letters followed by \"T\" do 80x25 varE8ionz of lowercase-t;"';
 Al topz="pu /usr/bin;ls *top* ../sbin/*top*|gv '(ocamlmk|desk|lap|p.m|au|s)top'|gv top.m|gv 'top[sk]\$'|gv topdf|clm|g top;po"; # sO many 2 stuD && lern!;
 Al tpz="pu -q /usr;ls *bin/*top*|gv '(ocamlmk|desk|lap|p.m|au|s)top'|gv 'top(.m|df|[sk]\$)'|clm|g top;po -q"; # short wi shared /usr && -quiet push&&popd;
-alias  Etrm='env TERM_PROGRAM=et Eterm --geometry 160x50 --scrollbar-width 15 --cmod 227 -L 65536 &';alias Et='E';alias E='Etrm   '; # Used 2B 'Eterm -t E &'…
+Al  Etrm='env TERM_PROGRAM=et Eterm --geometry 160x50 --scrollbar-width 15 --cmod 227 -L 65536 &' Et='Etrm '; # Used 2B 'Eterm -t E &'…
 #xport ETERM_THEME_ROOT="~/.Eterm/themes"; # wuz ~/.Eterm/themes/Eterm                # ... but it looks like I don't even need that plain old  E theme anymore
 #lias E=' Eterm -t E --scrollbar-type motif --scrollbar-width 15 &'; # --cmod 227 &';
 #lias Et='Eterm --background-pixmap mits1024.jpg -c orange -T PipzEtrm --scrollbar-type motif --scrollbar-color blue --scrollbar-width 15 --scrollbar-right --path /home/pip/.Eterm/ --default-font-index 4 &'
@@ -1742,18 +1802,18 @@ elif     [[ "${(L)HHst}" ==  ryu*   ]] || [[ "${(L)HHst}" ==  ken*   ]]; then ex
 if       [[ "${(L)HHst}" ==  ryu*   ]];                                  then                                                            export HVH1='1200'; fi
 if       [[ "${(L)HHst}" ==  chun*  ]] || [[ "${(L)HHst}" ==  taki*  ]]; then export HVW1='1280';export HVW2='2560';export gtss='sleep 3';export HVH1='800'; fi
 #alias mpx='  mp      -fs'; #-x 1920 -y 1080'; # originally quite a long time ago, I used to include -noborder optn abov but thN cud!mv wndw... rEdFIning rL8iv
-alias Mply='  en "er -vo xv  -fixed-vo -nosound -loop 0          -geometry  1916x$(Q $HVH1 - 28)+0+0"   '; # try Mply echo dbl-quOtd ...?
-alias mply=' mplayer -vo xv  -fixed-vo -nosound -loop 0          -geometry "1916x$(Q $HVH1 - 28)+0+0"    '; #-x 1916 -y 1052' # mplayer canOnly stRt wi1920maxBcuzXinerama?
-alias mpb='  mpr0    -speed 0.04                  -keepaspect    -geometry   600x1024+1320+8  ~/mvz/.pr0/mp4/Bl*'; # O3QMHaru:ckot haruna vs mp && sxiv 4imgVw;
-Al    mpbd=' mpr0    -speed 1.0 -geometry 710x1024+8+8 -keepaspect   ~/gfx/.pr0/fap/Ins*-L6PMMIns/InstantFap.Com_post_1586515-EnormousSnoopyArthropods.webm';
-#lias mpr0=' mplayer                   -nosound --no-keepaspect  -geometry "1920x$(q $HVH1 - 28)+0+0"    '; # still needs vid file params like: ~/mvz/U2b/**/*Obsidia*.opus
-alias mpr0=' mplayer -vo xv  -fixed-vo -nosound -nokeepaspect    -geometry "1920x$(Q $HVH1 / 2 - 28)+0+0"       -loop 0'; # this 4 MPlayer && above 4 MPlayer2 (wich I had4 awhIl)
-alias mpr1=' mplayer -vo xv  -fixed-vo -nosound -nokeepaspect    -geometry "1920x$(Q $HVH1 / 2 - 28)+1919+0"    -loop 0'; # this 4 same as mpr0 but on Aku's  middle   24" display
-alias mpr2=' mplayer -vo xv  -fixed-vo -nosound -nokeepaspect    -geometry "1920x$(Q $HVH1 / 2 - 28)+1919+1079" -loop 0'; # this 4 same as mpr0 but on Aku's far right 50" display
-alias mpr0t='mplayer -vo xv  -fixed-vo -nosound -msgcolor -noborder -cache 16384 -cache-min 99 -geometry "1916x$(Q $HVH1 - 28)+0+0" -msglevel all=0:identify=4 ~/mvz/.pr0/tst/Aut0pr0-9AS4gTn/pr0-*/*'; # test if messages can report desired details; # for some reason,above mpr1 won't take geom 2full midl display so just offset a bit?
-alias mpfb=' mplayer -vo fbdev -vf scale=640:400   -loop 0'; # ~/mvz/U2b/* for some old scaled FrameBuffer modes
-alias mpfbs='mplayer -vo fbdev -vf scale=1920:1200 -loop 0'; # ~/mvz/muV/*
-alias mpf8=' mplayer -vo fbdev        -nosound --no-keepaspect  -vf scale=1920:1080 '; # still needs vid file params to follow
+Al Mply='  en "er -vo xv  -fixed-vo -nosound -loop 0          -geometry  1916x$(Q $HVH1 - 28)+0+0"   '; # try Mply echo dbl-quOtd ...?
+Al mply=' mplayer -vo xv  -fixed-vo -nosound -loop 0          -geometry "1916x$(Q $HVH1 - 28)+0+0"    '; #-x 1916 -y 1052' # mplayer canOnly stRt wi1920maxBcuzXinerama?
+Al mpb='  mpr0    -speed 0.04                  -keepaspect    -geometry   600x1024+1320+8  ~/mvz/.pr0/mp4/Bl*'; # O3QMHaru:ckot haruna vs mp && sxiv 4imgVw;
+Al mpbd=' mpr0    -speed 1.0 -geometry 710x1024+8+8 -keepaspect   ~/gfx/.pr0/fap/Ins*-L6PMMIns/InstantFap.Com_post_1586515-EnormousSnoopyArthropods.webm';
+#l mpr0=' mplayer                   -nosound --no-keepaspect  -geometry "1920x$(q $HVH1 - 28)+0+0"    '; # still needs vid file params like: ~/mvz/U2b/**/*Obsidia*.opus
+Al mpr0=' mplayer -vo xv  -fixed-vo -nosound -nokeepaspect    -geometry "1920x$(Q $HVH1 / 2 - 28)+0+0"       -loop 0'; # this 4 MPlayer && above 4 MPlayer2 (wich I had4 awhIl)
+Al mpr1=' mplayer -vo xv  -fixed-vo -nosound -nokeepaspect    -geometry "1920x$(Q $HVH1 / 2 - 28)+1919+0"    -loop 0'; # this 4 same as mpr0 but on Aku's  middle   24" display
+Al mpr2=' mplayer -vo xv  -fixed-vo -nosound -nokeepaspect    -geometry "1920x$(Q $HVH1 / 2 - 28)+1919+1079" -loop 0'; # this 4 same as mpr0 but on Aku's far right 50" display
+Al mpr0t='mplayer -vo xv  -fixed-vo -nosound -msgcolor -noborder -cache 16384 -cache-min 99 -geometry "1916x$(Q $HVH1 - 28)+0+0" -msglevel all=0:identify=4 ~/mvz/.pr0/tst/Aut0pr0-9AS4gTn/pr0-*/*'; # test if messages can report desired details; # for some reason,above mpr1 won't take geom 2full midl display so just offset a bit?
+Al mpfb=' mplayer -vo fbdev -vf scale=640:400   -loop 0'; # ~/mvz/U2b/* for some old scaled FrameBuffer modes
+Al mpfbs='mplayer -vo fbdev -vf scale=1920:1200 -loop 0'; # ~/mvz/muV/*
+Al mpf8=' mplayer -vo fbdev        -nosound --no-keepaspect  -vf scale=1920:1080 '; # still needs vid file params to follow
 m0() { # mplayer pr0n function, but called aliases reloc8d to below host tests DfIning dimNshnz && mAB mk prv8 Xtractd Xtrnl mor? ;
   if       [[ "$#" -gt   0 ]]; then # print out some help text for -h (or l8r add --help) as first parameter && then return
     if     [[ "$1"  ==  *h ]]; then echo 'm0 crE8d by PipStuart <Pip@CPAN.Org> to wrap mpr0 for streamlining calls to mplayer on my pr0n;'
@@ -1773,8 +1833,8 @@ m0() { # mplayer pr0n function, but called aliases reloc8d to below host tests D
   elif     [[ `pwd` ==  *pr0/mpg/   ]] || [[ `pwd` ==  *pr0/wmv/   ]] || [[ `pwd` ==  *pr0/avi/   ]]; then mpr0 *
   else                                                                             cd ~/mvz/.pr0/         ;mpr0 mpg/*   wmv/*   avi/*;fi }
 # NCCLAsTm: HTTPS://AskUbuntu.Com/questions/1103540/why-is-there-a-steampath-in-my-home-directory XplAnz why my ~ has brOkN symlink .steampath 2 sdk32/ !ther;
-alias m1='m0 1'; # could also try to add |g -v "_server /home/" or |g steam|g " Ssl " below to inVert match to try to not get child processes first
-alias m2='m0 2'; #   Screeps was below, but for some reason spawning server process was uniquely showing up with space for second 's' but no longer
+Al m1='m0 1'; # could also try to add |g -v "_server /home/" or |g steam|g " Ssl " below to inVert match to try to not get child processes first
+Al m2='m0 2'; #   Screeps was below, but for some reason spawning server process was uniquely showing up with space for second 's' but no longer
 chvp() { # CHange ViewPort ("virtual desktop") thru wmc -o ... based on host dimz && Compiz 8 viewportz in 4x2 grid
   if     [[ "$1"         ==     ""  ]] ||
          [[ "$1"         ==    "0"  ]]; then wmc -o     0,0;
@@ -1786,57 +1846,57 @@ chvp() { # CHange ViewPort ("virtual desktop") thru wmc -o ... based on host dim
     elif [[ "$1"         ==    "5"  ]]; then wmc -o $HVW1,$HVH1;
     elif [[ "$1"         ==    "6"  ]]; then wmc -o $HVW2,$HVH1;
     elif [[ "$1"         ==    "7"  ]]; then wmc -o $HVW3,$HVH1; fi; fi }
-alias chv0='chvp 0';alias chv1='chvp 1';alias chv2='chvp 2';alias chv3='chvp 3';
-alias chv4='chvp 4';alias chv5='chvp 5';alias chv6='chvp 6';alias chv7='chvp 7';
-alias   gt3='gt --geometry=+0+0         --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
-        gtss;wmc -r :ACTIVE: -T test                ;
-             gt --geometry=-0+0         --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &;
-        gtss;wmc -r :ACTIVE: -T othr                ;
-             gt --geometry=+0-0         --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=ckm8                                 &;
-        gtss;wmc -r :ACTIVE: -T ckm8               '; # slower now calling sleep between every spawn to give wmctrl time to grab active && set title
-alias   gt4='gt3;
-             gt --geometry=-$HWd0+0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=Othr                                 &;
-        gtss;wmc -r :ACTIVE: -T Othr               '; # so far, only Aku has multiple displayz in default configur8ion, with room for these 2 xtra terminalz
-alias   gt5='gt4;
-             gt --geometry=-$HVW1+0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &;
-        gtss;wmc -r :ACTIVE: -T othr               '; # so far, it's too bad that Othr background dark green looks just black with l8st Sony TV settingz
-alias   gt8='gt4;
-             gt --geometry=+0+$HHt0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
-        gtss;wmc -r :ACTIVE: -T test                ;
-             gt --geometry=+$HWd0+0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
-        gtss;wmc -r :ACTIVE: -T test                ;
-             gt --geometry=+0-$HHt0     --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=ckm8                                 &;
-        gtss;wmc -r :ACTIVE: -T ckm8                ;
-             gt --geometry=-$HWd0+$HHt0 --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &;
-        gtss;wmc -r :ACTIVE: -T othr                ;
-             gt --geometry=-0+$HHt0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &;
-        gtss;wmc -r :ACTIVE: -T othr                ;
-             gt --geometry=+$HWd0+$HHt0 --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
-        gtss;wmc -r :ACTIVE: -T test                ;
-             gt --geometry=+$HWd0-0     --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=ckm8                                 &;
-        gtss;wmc -r :ACTIVE: -T ckm8               '; # had gt5 for temporary 3-Wide setup for Aku, but now moving to gt8 for Oni with quad 2x2 setup instead;
-alias rs=' resize'; # also able to pass '-s $rowz $colz' to set term dimNsionz,sO mAB cnvrt this alias in2 function wi pRam optnz l8r Dtectng ${W}x$H 4m@z too
-alias rsN='noglob eval `resize -s 57 171`';alias rs171='rsN'; # N for 171-wide (for calN to show 19-Years slightly lRgr than Dflt 160x50 standRd Used Lswhere)
-alias rsZ='noglob eval `resize -s 67 240`';alias rs240='rsZ'; # Zdflt 240-wide (wich is what full-screen 1080p consoles fit && some small font term sizes too)
-alias rsz='noglob eval `resize -s 50 160`';alias rs160='rsz'; # zdflt 160-wide (not sure how necessary noglob, eval, or backtix are, but they make cmnd quiet)
-alias Rs8='noglob eval `resize -s 25  80`';alias rs80=' Rs8'; # 8 for  80-wide (might want to make these only 24 high, like Default Gnome-Terminal profile)
-alias Rs4='noglob eval `resize -s 12  40`';alias rs40=' Rs4'; # 4 for  40 && also 2 for 20 as good halvingz 2l8r suport4low-reso nEdz (thO int(25/2)= just 12)
-alias Rs2='noglob eval `resize -s  6  20`';alias rs20=' Rs2'; # if ever capable of displaying on large 4K HD monitorz, may want to try out a huge 320x100 too
-alias Rs1='noglob eval `resize -s  3  10`';alias rs10=' Rs1'; # continue halving standards to obtain dimensions all the way down to just 30 characters total
-alias Rs3='noglob eval `resize -s  1  33`';alias rs33=' Rs3'; # 3 for  33-wide d8ok termz (somewhat more straightforward && brief 2 use char dimz versus pixlz)
-alias Rs9='noglob eval `resize -s  1  49`';alias rs49=' Rs9'; # 9 for  49-wide d8ok termz with -1 or -4 or -9 (to show multi-formatz on single line together)
-alias rs160x50='rsz';alias rs80x25='Rs8 ';alias rs33x1='Rs3'; # HB1MBPrr:just removing Ubu17.10 deprec8d -e && -x + pRams to popul8 in GT d8ok profls && this;
-alias rsd8ok='noglob eval `resize -s 1 8`; d8ok -8'; #   && a few more for d8ok; 2du:mAB mk nIc litl rEsIz Utl 2 just grO/shrink Ech bordr && call in wdht 2?;
-alias rsd8ok9=' Rs9;d8ok -d -9';alias rs9='rsd8ok9'; # NCALMING:tryng 2 mk clOn of d8k4 GnomTerm prOfIl Abl2stRt1of thEs but mA segfalt&&nEd 'reset;src'aftr?;
-alias rsd8ok4=' Rs9;d8ok    -4';alias rs4='rsd8ok4';alias rs8=' rsd8'; # du thEsnEd'noglob eval'orjust wmctrl -e nstdof resize isbetr4thEs purposzhEr anywAy?;
-alias rsd8ok2=' Rs9;d8ok    -2';alias rs2='rsd8ok2';alias rsd8='rsd8ok'; # -8;# ReddIt.Com/r/zsh/comments/18f52gy/parameter_expansion_flags_f_vs_0_differences
+Al chv0='chvp 0' chv1='chvp 1' chv2='chvp 2' chv3='chvp 3';
+Al chv4='chvp 4' chv5='chvp 5' chv6='chvp 6' chv7='chvp 7';
+Al   gt3='gt --geometry=+0+0         --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
+     gtss;wmc -r :ACTIVE: -T test                ;
+          gt --geometry=-0+0         --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &;
+     gtss;wmc -r :ACTIVE: -T othr                ;
+          gt --geometry=+0-0         --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=ckm8                                 &;
+     gtss;wmc -r :ACTIVE: -T ckm8               '; # slower now calling sleep between every spawn to give wmctrl time to grab active && set title
+Al   gt4='gt3;
+          gt --geometry=-$HWd0+0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=Othr                                 &;
+     gtss;wmc -r :ACTIVE: -T Othr               '; # so far, only Aku has multiple displayz in default configur8ion, with room for these 2 xtra terminalz
+Al   gt5='gt4;
+          gt --geometry=-$HVW1+0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &;
+     gtss;wmc -r :ACTIVE: -T othr               '; # so far, it's too bad that Othr background dark green looks just black with l8st Sony TV settingz
+Al   gt8='gt4;
+          gt --geometry=+0+$HHt0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
+     gtss;wmc -r :ACTIVE: -T test                ;
+          gt --geometry=+$HWd0+0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
+     gtss;wmc -r :ACTIVE: -T test                ;
+          gt --geometry=+0-$HHt0     --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=ckm8                                 &;
+     gtss;wmc -r :ACTIVE: -T ckm8                ;
+          gt --geometry=-$HWd0+$HHt0 --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &;
+     gtss;wmc -r :ACTIVE: -T othr                ;
+          gt --geometry=-0+$HHt0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &;
+     gtss;wmc -r :ACTIVE: -T othr                ;
+          gt --geometry=+$HWd0+$HHt0 --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
+     gtss;wmc -r :ACTIVE: -T test                ;
+          gt --geometry=+$HWd0-0     --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=ckm8                                 &;
+     gtss;wmc -r :ACTIVE: -T ckm8               '; # had gt5 for temporary 3-Wide setup for Aku, but now moving to gt8 for Oni with quad 2x2 setup instead;
+Al rs=' resize'; # also able to pass '-s $rowz $colz' to set term dimNsionz,sO mAB cnvrt this alias in2 function wi pRam optnz l8r Dtectng ${W}x$H 4m@z too
+Al rsN='noglob eval `resize -s 57 171`' rs171='rsN'; # N for 171-wide (for calN to show 19-Years slightly lRgr than Dflt 160x50 standRd Used Lswhere)
+Al rsZ='noglob eval `resize -s 67 240`' rs240='rsZ'; # Zdflt 240-wide (wich is what full-screen 1080p consoles fit && some small font term sizes too)
+Al rsz='noglob eval `resize -s 50 160`' rs160='rsz'; # zdflt 160-wide (not sure how necessary noglob, eval, or backtix are, but they make cmnd quiet)
+Al Rs8='noglob eval `resize -s 25  80`' rs80=' Rs8'; # 8 for  80-wide (might want to make these only 24 high, like Default Gnome-Terminal profile)
+Al Rs4='noglob eval `resize -s 12  40`' rs40=' Rs4'; # 4 for  40 && also 2 for 20 as good halvingz 2l8r suport4low-reso nEdz (thO int(25/2)= just 12)
+Al Rs2='noglob eval `resize -s  6  20`' rs20=' Rs2'; # if ever capable of displaying on large 4K HD monitorz, may want to try out a huge 320x100 too
+Al Rs1='noglob eval `resize -s  3  10`' rs10=' Rs1'; # continue halving standards to obtain dimensions all the way down to just 30 characters total
+Al Rs3='noglob eval `resize -s  1  33`' rs33=' Rs3'; # 3 for  33-wide d8ok termz (somewhat more straightforward && brief 2 use char dimz versus pixlz)
+Al Rs9='noglob eval `resize -s  1  49`' rs49=' Rs9'; # 9 for  49-wide d8ok termz with -1 or -4 or -9 (to show multi-formatz on single line together)
+Al rs160x50='rsz' rs80x25='Rs8 ' rs33x1='Rs3'; # HB1MBPrr:just removing Ubu17.10 deprec8d -e && -x + pRams to popul8 in GT d8ok profls && this;
+Al rsd8ok='noglob eval `resize -s 1 8`; d8ok -8'; #   && a few more for d8ok; 2du:mAB mk nIc litl rEsIz Utl 2 just grO/shrink Ech bordr && call in wdht 2?;
+Al rsd8ok9=' Rs9;d8ok -d -9' rs9='rsd8ok9'; # NCALMING:tryng 2 mk clOn of d8k4 GnomTerm prOfIl Abl2stRt1of thEs but mA segfalt&&nEd 'reset;src'aftr?;
+Al rsd8ok4=' Rs9;d8ok    -4' rs4='rsd8ok4' rs8=' rsd8'; # du thEsnEd'noglob eval'orjust wmctrl -e nstdof resize isbetr4thEs purposzhEr anywAy?;
+Al rsd8ok2=' Rs9;d8ok    -2' rs2='rsd8ok2' rsd8='rsd8ok'; # -8;# ReddIt.Com/r/zsh/comments/18f52gy/parameter_expansion_flags_f_vs_0_differences
 # files=( /var/tmp/**/*(ND.) );ec "N NAblz nullglob, D NAblz dotglob, and . rEstrictz glob 2 regUlR fIlz. When Using print it's almOst alwAz necSary2Use -r.";
 # print -rC1 -- $files;ec "Without -r produces incorrect results for files with literal \\n (backslash followed by 'n') and the lIk in their names. -RomKatV";
 # printf '%s\n' $files;ec "Also, it's betr 2 Use -C1 nstd of -l Bcuz it works as U wud Xpect whN nO aRgUmeNtz aRe giveN. Using printf instd is ofteN Easier;";
-alias rsd8ok1=' Rs9;d8ok    -1';alias rs1='rsd8ok1'; # -1duz!work yet sOfixit;
-alias rsd8okf=' Rs3;d8ok    -f';alias rsf='rsd8okf'; # -9nEdz2chop3spAcz2fit2;
-alias rsec='ec "ReSizECho(rsec) echOing rEsIzingz ( rs[8f3 1249] ) -- rs8:just d8,  rsf:33 full,  (rSt all 49) rs1:b128,  rs2:b256,  rs4:Yk4m, and rs9:b93k;"';
-alias rs3='rsf'; # mk 3 for 33 -full alsO
+Al rsd8ok1=' Rs9;d8ok    -1' rs1='rsd8ok1'; # -1duz!work yet sOfixit;
+Al rsd8okf=' Rs3;d8ok    -f' rsf='rsd8okf'; # -9nEdz2chop3spAcz2fit2;
+Al rsec='ec "ReSizECho(rsec) echOing rEsIzingz ( rs[8f3 1249] ) -- rs8:just d8,  rsf:33 full,  (rSt all 49) rs1:b128,  rs2:b256,  rs4:Yk4m, and rs9:b93k;"';
+Al rs3='rsf'; # mk 3 for 33 -full alsO
 # HC3L0DNV:noglob eval around backticks may try to reach out to propag8 exported upd8 dimensions to invoking parent environment && variables, workz without?;
 if       [[ "${(L)HHst}" ==  oni    ]] ||
          [[ "${(L)HHst}" ==  aku    ]]; then # 664||-1882,-e2586 1294w 3840-1958=-1882 wmc -r :ACTIVE: -e 0,664,-1,-1,-1;wmc -r:ACTIVE:-e 0,-1882,-1,-1,-1;
@@ -1847,7 +1907,7 @@ if       [[ "${(L)HHst}" ==  oni    ]] ||
   # Same page: HTTPS://SuperUser.Com/questions/576057/bash-resize-terminal-xterm has `echo -e "\e[8;1;34t"` which also workz nicely 2 resize my d8ok terminalz.
  if      [[ "$DISPLAY"               !=  "" ]] &&    # K3EMJoke:nEded 2 tSt for X.Org DISPLAY so that full-screen console linux TERM doesn't print warnings;
          [[ `xrg|g -c ' connected '` == "4" ]]; then # K3EM2x2H:crE8d new condition for grid monitor layout that tries2auto-detect connected count from `xrg`;
-  alias gtI='gt --geometry=+1620-$HHt0  --hide-menubar --window-with-profile=d8k8                               --role=d8k8                                 &;
+   Al   gtI='gt --geometry=+1620-$HHt0  --hide-menubar --window-with-profile=d8k8                               --role=d8k8                                 &;
    gtss;gtss;wmc -r :ACTIVE: -T d8k8                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
              wmc -r :ACTIVE: -e  10,1620,1008,300,72;wmc -r :ACTIVE: -b add,skip_taskbar,below;
              gt --geometry=+1620-0      --hide-menubar --window-with-profile=d8k8                               --role=d8k8                                 &;
@@ -1876,7 +1936,7 @@ if       [[ "${(L)HHst}" ==  oni    ]] ||
         gtss;wmc -r :ACTIVE: -T 2du                 ;
              gt --geometry=-0+0         --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=sys                                  &;
         gtss;wmc -r :ACTIVE: -T sys                '; # might want to experiment with 5-centered or 10-static gravity to see if they're any better than S && SE
-  alias gtm='gt --geometry=+0+$HHt0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
+   Al   gtm='gt --geometry=+0+$HHt0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &;
         gtss;wmc -r :ACTIVE: -T test                ;
              gt --geometry=+0-0         --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=ckm8                                 &;
         gtss;wmc -r :ACTIVE: -T ckm8                ;
@@ -1898,7 +1958,7 @@ if       [[ "${(L)HHst}" ==  oni    ]] ||
         gtss;wmc -r :ACTIVE: -T muz                 ;
              gt --geometry=+0-$HHt0     --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=mvz    --working-directory=~/mvz/U2b &;
         gtss;wmc -r :ACTIVE: -T mvz                '; # Aku gti below fully loadz GTz in all 8 ViewPortz
-  alias gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt8;gtss;chv4;gtss;gt8;gtss;chv5;gtss;gt8;gtss;chv6;gtss;gt8;gtss;chv7;gtss;gt8;gtss;chv3;gtss;gt8;chv0';
+   Al   gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt8;gtss;chv4;gtss;gt8;gtss;chv5;gtss;gt8;gtss;chv6;gtss;gt8;gtss;chv7;gtss;gt8;gtss;chv3;gtss;gt8;chv0';
  elif    [[ "$DISPLAY"               !=  "" ]] &&
          [[ `xrg|g -c ' connected '` == "3" ]] && [[ "$H3WF" == "1" ]]; then # H78M19EK:insertd new H variable test for whether using Sony50"1080iTV or ...
   #   ... 32"Viotek display as 3-Wide-Flag 4Aku; # Below used to just have "-e ~/bin/d8ok" before appending the -d parameter so needing the -x instead.
@@ -1906,7 +1966,7 @@ if       [[ "${(L)HHst}" ==  oni    ]] ||
   # q 1306/34=38.41176470588235294117647058823529411765
   # 1306-1292=14 mAB scrlbR widt; 4x38=152; 512,4352,2432; mIt nEd2scAl 1306 wIdr2 1458; try even shorter 1268, wi each of 34 char widz 38px or 33 wo padspc?
   # q 1458/34=42.882352941176470; 4x42=166; 496,4336,2416; othr was +306+0 up2 466;
-  alias gtI='gt --geometry=+784-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
+   Al   gtI='gt --geometry=+784-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
         gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
              wmc -r :ACTIVE: -e  10,824,1006,1108,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
              gt --geometry=-0-0       --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
@@ -1921,7 +1981,7 @@ if       [[ "${(L)HHst}" ==  oni    ]] ||
         gtss;wmc -r :ACTIVE: -T sys                 ;
              gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &;
         gtss;wmc -r :ACTIVE: -T 2du                '; # might want to experiment with 5-centered or 10-static gravity to see if they're any better than S && SE
-  alias gtm='gt --geometry=+0+0       --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                   &;
+   Al   gtm='gt --geometry=+0+0       --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                   &;
         gtss;wmc -r :ACTIVE: -T test                ;
              gt --geometry=-1920+0    --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=Othr                                   &;
         gtss;wmc -r :ACTIVE: -T Othr                ;
@@ -1929,9 +1989,9 @@ if       [[ "${(L)HHst}" ==  oni    ]] ||
         gtss;wmc -r :ACTIVE: -T muz                 ;
              gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=mvz    --working-directory=~/mvz/U2b   &;
         gtss;wmc -r :ACTIVE: -T mvz                '; # Aku gti below fully loadz GTz in all 8 ViewPortz
-  alias gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt5;gtss;chv4;gtss;gt5;gtss;chv5;gtss;gt5;gtss;chv6;gtss;gt5;gtss;chv7;gtss;gt5;gtss;chv3;gtss;gt5;chv0';
+   Al   gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt5;gtss;chv4;gtss;gt5;gtss;chv5;gtss;gt5;gtss;chv6;gtss;gt5;gtss;chv7;gtss;gt5;gtss;chv3;gtss;gt5;chv0';
  else # back to older Aku GnomTerm aliases for just 2 24-inch Asus displays, before adding SonyTV or new curved as 3rd display
-  alias gtI='gt --geometry=-1882-0    --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
+   Al   gtI='gt --geometry=-1882-0    --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
         gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
              wmc -r :ACTIVE: -e  10,664,1006,1306,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
              gt --geometry=-0-0       --hide-menubar --window-with-profile=d8fd                               --role=d8fd                                   &;
@@ -1943,7 +2003,7 @@ if       [[ "${(L)HHst}" ==  oni    ]] ||
         gtss;wmc -r :ACTIVE: -T sys                 ;
              gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &;
         gtss;wmc -r :ACTIVE: -T 2du                '; # might want to experiment with 5-centered or 10-static gravity to see if they're any better than S && SE
-  alias gtm='gt --geometry=+0+0       --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                   &;
+   Al   gtm='gt --geometry=+0+0       --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                   &;
         gtss;wmc -r :ACTIVE: -T test                ;
              gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=Othr                                   &;
         gtss;wmc -r :ACTIVE: -T Othr                ;
@@ -1951,11 +2011,11 @@ if       [[ "${(L)HHst}" ==  oni    ]] ||
         gtss;wmc -r :ACTIVE: -T muz                 ;
              gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=mvz    --working-directory=~/mvz/U2b   &;
         gtss;wmc -r :ACTIVE: -T mvz                ';
-  alias gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt4;gtss;chv4;gtss;gt4;gtss;chv5;gtss;gt4;gtss;chv6;gtss;gt4;gtss;chv0'; # Aku loadz GTz in left 6 ViewPortz
+   Al   gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt4;gtss;chv4;gtss;gt4;gtss;chv5;gtss;gt4;gtss;chv6;gtss;gt4;gtss;chv0'; # Aku loadz GTz in left 6 ViewPortz
  fi
 else # following settings will hopefully work well for single-screen Ryu, Ken, && Chun (Taki's hard drive failz && she runz slow && hot, she's pretty dead)
   if     [[ "${(L)HHst}" ==  ken*   ]]; then # should be almost the same as Aku's left screen, but mAB 10-static like Chun will also position best?
-    alias gtI='gt --geometry=-0-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
+    Al gtI='gt --geometry=-0-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
         gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
              wmc -r :ACTIVE: -e  10,664,1006,1306,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
              gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                   &;
@@ -1963,7 +2023,7 @@ else # following settings will hopefully work well for single-screen Ryu, Ken, &
              gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &;
         gtss;wmc -r :ACTIVE: -T 2du                ';
   elif   [[ "${(L)HHst}" ==  ryu*   ]]; then # Ryu should just resize to Aku's d8ok y-offset + 120    (for display pixel heightz 1200 - 1080)
-    alias gtI='gt --geometry=-0-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
+    Al gtI='gt --geometry=-0-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
         gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
              wmc -r :ACTIVE: -e  10,664,1126,1306,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
              gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                   &;
@@ -1971,7 +2031,7 @@ else # following settings will hopefully work well for single-screen Ryu, Ken, &
              gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &;
         gtss;wmc -r :ACTIVE: -T 2du                ';
   elif   [[ "${(L)HHst}" ==  chun*  ]]; then # d8ok resize geometry to fit Chun best, starting 421 602 886 198, each row is 49 pixlz high so less 147 for 3
-    alias gtI='gt --geometry=-0-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
+    Al gtI='gt --geometry=-0-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &;
    gtss;gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
              wmc -r :ACTIVE: -e    10,420,749,886,51;wmc -r :ACTIVE: -b add,skip_taskbar,below;
              gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                   &;
@@ -1979,18 +2039,18 @@ else # following settings will hopefully work well for single-screen Ryu, Ken, &
              gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &;
         gtss;wmc -r :ACTIVE: -T 2du                ';
   fi
-  alias gtm='gt --geometry=+0+0       --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                   &;
+  Al gtm='gt --geometry=+0+0       --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                   &;
         gtss;wmc -r :ACTIVE: -T test                ;
              gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=muz    --working-directory=~/muz/U2b   &;
         gtss;wmc -r :ACTIVE: -T muz                 ;
              gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=mvz    --working-directory=~/mvz/U2b   &;
         gtss;wmc -r :ACTIVE: -T mvz                ';
-  alias gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt3;gtss;chv3;gtss;gt3;gtss;chv0'; fi; #xport Hm='muz';export HM='mvz'; # can I even use these 4 anythingd?;
-alias cti='ct   ti'; # ChangeTitle 2 Init as quick simple similar command B4 gti or ti to call right after booting up && starting my first default GnomTerm;
-alias cTI='ct   TI';
-alias  ti='cti;gti'; # maybe l8r mk a custom TermInit alias here wich spawnz more than just GTz but mAB some alpha'd Sakuraz|LilyTermz|QTerminalz etc. too;
-#lias  ti='cTI; TI'; # ch title && call my new TI perl script instead of gti alias;
-#lias gti='gtI;sleep 3;wmctrl -o 1280,0;sleep 3;gt3;sleep 3;wmctrl -o 2560,0;sleep 3;gt3;sleep 3;wmctrl -o 3840,0;sleep 3;gt3;sleep 3;wmctrl -o 0,0';
+  Al gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt3;gtss;chv3;gtss;gt3;gtss;chv0'; fi; #xport Hm='muz';export HM='mvz'; # can I even use these 4 anythingd?;
+Al cti='ct   ti'; # ChangeTitle 2 Init as quick simple similar command B4 gti or ti to call right after booting up && starting my first default GnomTerm;
+Al cTI='ct   TI';
+Al  ti='cti;gti'; # maybe l8r mk a custom TermInit alias here wich spawnz more than just GTz but mAB some alpha'd Sakuraz|LilyTermz|QTerminalz etc. too;
+#l  ti='cTI; TI'; # ch title && call my new TI perl script instead of gti alias;
+#l gti='gtI;sleep 3;wmctrl -o 1280,0;sleep 3;gt3;sleep 3;wmctrl -o 2560,0;sleep 3;gt3;sleep 3;wmctrl -o 3840,0;sleep 3;gt3;sleep 3;wmctrl -o 0,0';
 # abov are new Ubu14.10 GT aliasz tstd on Chun; mA nEd geom chgz 4 Akuz 2 monitorz; tryd 2 ch d8ok profile 2 autorun d8ok nstd of zsh but can't figure out yet;
 #   mIt also want 2 try 2 figure out how 2 autom8 dangling d8ok over edge && Dflt visible on all wrkspcz && hide wndw bordr tItlbar;
 # according 2 HTTP://AskUbuntu.Com/questions/41093/is-there-a-command-to-go-a-specific-workspace I can send Ckm8+Othr GTz 2> wrkspcz wi wmctrl or xdotool:
@@ -2015,8 +2075,8 @@ ctSt() { for HScF in k r O g c b P w  K R Y G C B M W  e h o d t s p i  E H y D 
              done;
 #        ec; done;
 } # 2du:add loop on all :SGRz && mk sure they cycle roundtrip too;
-alias tStl='tStc R;ec;tStc R d;ec;tStc R a;ec;tStc R l'; # loop all 4 colr layrz,leaving Lite last,calling just Reverse to pretend lower L indic8s bkgrounds
-alias tStL='tStc F;ec;tStc F D;ec;tStc F A;ec;tStc F L'; # loop all 4 colr layrz,leaving Lite last,calling just Fraktur wich rarely duz anythng,Xcept in 8trm
+Al tStl='tStc R;ec;tStc R d;ec;tStc R a;ec;tStc R l'; # loop all 4 colr layrz,leaving Lite last,calling just Reverse to pretend lower L indic8s bkgrounds
+Al tStL='tStc F;ec;tStc F D;ec;tStc F A;ec;tStc F L'; # loop all 4 colr layrz,leaving Lite last,calling just Fraktur wich rarely duz anythng,Xcept in 8trm
 tStc() { # tSt 8pal8 colrz (this is a very slow precursor to ~/bin/tstc since many sub-processes need to load zsh,perl,&&a8 d8a just to manipUl8 eScApe valUz);
 # en "$R Foregrnd F:01;38;5;160 `S :C` \e[58;5;77m Red Fg uC Green... where 38 48 58;2;decR;decG;decB or ;5;dec255 \e[4:2;58;5;160m W?"
   if       [[ "$#" -gt 0 ]]; then # print out some help text for just h or -h or --help as first parameter && then return
@@ -2245,26 +2305,20 @@ Xv8() { if     [[  $#       -ge  1  ]]; then export Hv8f="$1"          ;    fi;}
           elif [[ "$1"      == "pm" ]]; then shift;$HAEd +\'\" $@ $HOME/dvl/?8/?8.pm       ;return 0;
           else                               export Hv8f="$1";shift;fi;$HAEd +\'\" $Hv8f  $@;
         elif   [[ "$Hv8f"    != ""  ]]; then                           $HAEd +\'\" $Hv8f; fi;}
-mn()  { if     [[  $#       -ge  1  ]]; then export Hmpt="$1"   ;      man         $@   ;  # try2 lOd pRam in2 %ENV 4 ManPageTopic 2BrEvisitd on subCquNt callz
-        elif   [[ "$Hmpt"    != ""  ]]; then                           man  $Hmpt;    fi;} # shud alsO add $Hv8l && $Hmtl 4Last(||Prev?)valUz4 !-e 'l' 2jmpbak2
-# O44MBman:HTTPS://YouTu.be/cnmtKv2kUXs "Stop Using 'man' Pages Incorrectly!" # O3Q:06r0 of RobertElderSoftware explaining man history && sub-sectionz;
-alias fMs='                 man  -k .                         | sed '"'"'s/.* (\([^)]\+\)).*- .*/\1/g'"'"'   | s8 | Unc | s8rn'; # from dur8:{04S0}; findMan…
-alias fMS='f /usr/share/man/man* -type f -exec basename {} \; | sed '"'"'s/.*\.\([^.]\+\)\.[^.]\+$/\1/g'"'"' | s8 | Unc | s8rn'; # from dur8:{04A0}; …SectnSlO;
-#   See also:HTTPS://YouTu.be/v9DmtvMwv4c "I Was Wrong About 'man' Pages && 'info' Pages" # O3U:04u0 of RES 4Days l8r on built-in help,man,info,--help,etc.;
 m423(){ # convert m4a filez to mp3 using ffmpeg, was originally bash script in ~/bin/m4a2mp3 derived from HTTP://UbuntuForums.Org/showthread.php?t=1643093 ;
   for M4FN in $@
   do  if  [[ -f "$M4FN" ]] && [[ "$M4FN" == *.m4a ]]; then M4BN=`basename "$M4FN" .m4a`; # echo "M4FileName:$M4FN:"; echo "M4BaseName:$M4BN:";
       ffmpeg -i "$M4FN" -acodec libmp3lame -ac 2 -ab 256k -ar 44100 "$M4BN.mp3"; else echo "!*EROR*! Parameter:$M4FN not found as .m4a file!"; fi; done}
-#lias sslbox=' ssLBox' ; alias ssLBox='                ssh LBox.Org'; #216.158.99.146; #old 9PNet.Com download:screwyou;
-alias sstaki=' ssTaki' ; alias ssTaki='                ssh Taki' ; # SShortcuts to my main machines based on /etc/hosts entries to map names to IP addresses
-alias sstakiw='ssTakiW'; alias ssTakiW='               ssh TakiW'; # might be better to unify these to ping Taki then TakiW 2DcId wich IP&&IF 2auto ssh in2
-alias sschunw='ssChunW'; alias ssChunW='               ssh ChunW'; # K23LBavL:today Beppu-san kindly enabled a public_html/ dir for HTTP://Pip.BavL.Org Yay!
-alias sschun=' ssChun' ; alias ssChun='                ssh Chun' ;alias ssb='ssh BavL.Org     ';alias ssbavl='ssb';alias ssBavL='ssb';alias ssg="ssh $i19.5";
-alias ssryu0=' ssRyu0' ; alias ssRyu0='                ssh Ryu0' ;alias ssm='ssh MetaNotes.Com';alias ssmeta='ssm';alias ssMeta='ssm';
-alias ssken0=' ssKen0' ; alias ssKen0='                ssh Ken0' ; # hopefully someday Beppu-san can grant me HTTP://MetaNotes.Com/~pip as ~/pub/ 4 HTML?
-alias ssken='  ssKen'  ; alias ssKen='                 ssh Ken'  ; # I'd like to link my HTTPS://Baduk.Club profile to any good picture hosted there someday;
-alias ssryu='  ssRyu'  ; alias ssRyu='                 ssh Ryu'  ;alias asbo='autossh -o ServerAliveInterval=30 -R 2222:localhost:22 bavl.org'; # allowRtunL;
-alias ssaku='  ssAku'  ; alias ssAku='                 ssh Aku'  ;alias abvl='asbo';alias ab.o='asbo';alias asb='asbo';alias abo='asbo';alias aB='asbo';
+#l sslbox=' ssLBox'  ssLBox='                ssh LBox.Org'; #216.158.99.146; #old 9PNet.Com download:screwyou;
+Al sstaki=' ssTaki'  ssTaki='                ssh Taki' ; # SShortcuts to my main machines based on /etc/hosts entries to map names to IP addresses
+Al sstakiw='ssTakiW' ssTakiW='               ssh TakiW'; # might be better to unify these to ping Taki then TakiW 2DcId wich IP&&IF 2auto ssh in2
+Al sschunw='ssChunW' ssChunW='               ssh ChunW'; # K23LBavL:today Beppu-san kindly enabled a public_html/ dir for HTTP://Pip.BavL.Org Yay!
+Al sschun=' ssChun'  ssChun='                ssh Chun' ;Al ssb='ssh BavL.Org     ' ssbavl='ssb' ssBavL='ssb' ssg="ssh $i19.5";
+Al ssryu0=' ssRyu0'  ssRyu0='                ssh Ryu0' ;Al ssm='ssh MetaNotes.Com' ssmeta='ssm' ssMeta='ssm';
+Al ssken0=' ssKen0'  ssKen0='                ssh Ken0' ; # hopefully someday Beppu-san can grant me HTTP://MetaNotes.Com/~pip as ~/pub/ 4 HTML?
+Al ssken='  ssKen'   ssKen='                 ssh Ken'  ; # I'd like to link my HTTPS://Baduk.Club profile to any good picture hosted there someday;
+Al ssryu='  ssRyu'   ssRyu='                 ssh Ryu'  ;Al asbo='autossh -o ServerAliveInterval=30 -R 2222:localhost:22 bavl.org'; # allowRtunL;
+Al ssaku='  ssAku'   ssAku='                 ssh Aku'  ;Al abvl='asbo' ab.o='asbo' asb='asbo' abo='asbo' aB='asbo';
 ldh()      { DHst='Aku'; # LoadDestin8ionHost cking if AkuChunRyuKenTaki are!current host&&are on net to select ss && rsyn targetz  # BlO PingDestin8ion4Errorz
              if     [[ "${(L)HHst}" ==  aku   ]]; then echo "LoadDestin8ionHost() checking net..." ;DHst='ChunW';PD4E=`pn -c 1 -q $DHst|g error`;
                if   [[ "$PD4E"      != ""     ]]; then printf "DHst:%-5s had PD4E:%s\n" $DHst $PD4E;DHst='Chun' ;PD4E=`pn -c 1 -q $DHst|g error`; fi;
