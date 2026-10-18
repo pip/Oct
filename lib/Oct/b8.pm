@@ -53,8 +53,8 @@ use         Carp; # orig Math::BaseCnv BlO memoized Sum8(as summ) hEr&&had nO Fi
 use           IO::Handle qw( ); # trying to get dupd (or just orig) STDERR to autoflush(1) since being buffered in b2b8; # Pnt8 Hex8 probably 2 hUge 2 mMOIz?;
 use Memoize;memoize('Prim');memoize('Fibo');memoize('Fact');memoize('Chus');memoize('Xpn8');memoize('Ttr8'); #moize('Pnt8');memoize('Hex8');
 our @EXPORT= qw(b8 cnv cnv10__ cnv__10 ocT deC dec heX HEX b10 b64 b64sort b110 b128 b210 b256 b910 b93k dig diginit  cma coma  rotW rot1
-    @kana $umbc b8b2 b2b8  Prim Prmz  Sum8 Sumz  Fibo Fibz  Fact Fctz  Chus   Xpn8 Xpnz  Ttr8 Ttrz  Pnt8 Pntz  Hex8 Hexz  calQ       txt8);
-our $VERSION='0.0';my  $d8VS='Q6DMElog';my $Auth='PipStuart <Pip@CPAN.Org>';
+    @kana $umbc b8b2 b2b8  Prim Prmz  Sum8 Sumz  Fibo Fibz  Fact Fctz  Chus   Xpn8 Xpnz  Ttr8 Ttrz  Pnt8 Pntz  Hex8 Hexz  calQ  b8ls txt8);
+our $VERSION='0.0';my  $d8VS='QA1MGutf';my $Auth='PipS <PipStuart@GMail.Com>';
 our @kana=qw(ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞた
 だちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみ
 むめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖ゗1゛゜ゝゞゟ
@@ -487,7 +487,7 @@ sub cnv     {my $rtns = '';my $nega = '';my($numb,$fbas,$tbas)  = (decode('UTF-8
 #     also again if difrz from -b givN but use -b as prEferd,add slurp to fhnd reads,try adding crAZ -ball wich uses 10,16,64,256,65k all 2gethr && thN inside
 #     b8b2 whN lOdng all analyze && keep cntz of how many discrepanCz R found on wich lInz && warn @Nd if multi-chngz mAd in dif lAyrz but use gr8St dif lAyr,
 #   add UTF8 Dconstruction showing Ech bytez bitz hIlItd wher they shO sIz && how d8a-bitz combIn from around byte-headrz 2 4m complEt HEX-cOd-pointz in ordr;
-sub zpad {my $psiz=shift||2;my $strn=shift||'';if($psiz > length($strn)){$strn= ('0' x ($psiz - length($strn))) . $strn;} return($strn);}
+sub zpad {my $psiz=shift||2;my $strn=shift||'';if($psiz > length($strn)){$strn= ('0' x ($psiz - length($strn))) . $strn;} return($strn);} # Zer0-pad sIz,strn;
 sub b2b8 {my($flnm,$fd8a,$rslt);my $tobs=256;my $spec='152/2,4';my @sd8a; # these 1st converters are gr8 but supporting other basez l8r will be much trickier;
   my $clmz=80;$clmz=$ENV{'COLUMNS'} if(exists($ENV{'COLUMNS'})); #my $linz=24;$linz=$ENV{'LINES'  } if(exists($ENV{'LINES'  }));
   open my $err8,'>&',STDERR or die "Can't open  duplic8 STDERR handle: $!";binmode $err8,':encoding(UTF-8)';$err8->autoflush(1); # IO::Handle 2unbufr my dupd;
@@ -805,6 +805,23 @@ sub calQ{my $ajps='';if(@_){$ajps=join('',@_);}elsif(!-t STDIN){$ajps=join('',<S
 # if(#$prefix ne '' &&  # 0x, 0, 0b
 #    $tbase <= $signedBase && $tref ne 'user'){return($sign . $prefix . $nstr);} # base in signed set
 #                                              return(        $prefix . $nstr);}
+sub b8ls{my $minn=0;my $maxn=255;my $jxls="1468";my @bsls=();my $twid=160;$twid=$ENV{'COLUMNS'} if(exists($ENV{'COLUMNS'}) && $ENV{'COLUMNS'});
+  # ba loopz from 0..$1 (as MaX) && outputz every value in many b8 number-basez all nicely 4m@d in2 columnz && wrapz 2 fit terminal $COLUMNS width;
+  open   my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";binmode $out8,':encoding(UTF-8)';my $sofh=select($out8);$|=1;
+  for(@_){if(/^-?-?h(elp)?/i){$maxn=-1;print "b8ls help text version d8VS:$d8VS by $Auth;
+  -n=miNn  set miNimum number starting value (default:   0) where  dash  is optional;
+  -x=maXn  set maXimum number   ending value (default: 255) where equals is optional; below setting 1346789 would do (2,8,16,64,128,256,93100);
+   [1-9]+  just non-zer0 digits sets the joined exponents list for powers of 2 in requested order (except for 9, which indic8s b93k as: 93100);
+   \\d+,\\d+(,\\d+)*  2 or more digit sequences sepR8d by commas (with no spaces) directly sets desired output number bases (not requiring powers of 2);\n";}
+    elsif(/^[1-9]+$/){$jxls=$_;}elsif(/^-?-?n=?(\d+)$/i){$minn=$1;}
+    elsif(   /,/    ){$jxls=$_;}elsif(/^-?-?x=?(\d+)$/i){$maxn=$1;}} # done procSing RgUmNtz;
+  if($jxls=~ /,/){@bsls= split(/,/, $jxls);}else{for(split(//,$jxls)){if(/9/){push(@bsls,93100);}else{push(@bsls,2**$_);}}} # popUl8 BaseSequenceLiSt;
+  my $maxl=length("$maxn");my $colc=0; # determine maximum length needed for decimal maximum && initialize COLumnCounter to zer0;
+  my $clsz=$maxl+3;for(@bsls){$clsz+= length(cnv10__($maxn,$_))+1;} # fill CoLumnSiZe with maximum width needed for each target base;
+  for($minn..$maxn){printf("%${maxl}d:",$_   );for my $basn (@bsls){my $b8vl=cnv10__($_,$basn);my $basl=length(cnv10__($maxn,$basn));
+                    printf("%${basl}s ",$b8vl);} $colc+=$clsz; # figUre out why b8 2 b64 mAB duz nothing?!;
+    if(($colc+$clsz) >= $twid){print "\n";$colc=0;}} # simpl quik&&dirT runthru4prntng BinaryBits of AllAway-from-A(deci)&&othr fAvorit numbAsz;
+  close     $out8             or die "Can't close duplic8 STDOUT handle: $!"; select($sofh);} # that should du it! =) ;
 sub txt8{ # KCKL8txt:txt8 2 stRt turning 8 k'z in2 any tXt thru CquNcz of top64 opr8nz gNr8d in autOm8d wAz (mAB initially from dic.log && U2b CC transcriptz);
   # 2du:split off $hwrd space-sepR8d multi-wordz && don't lc them into %dlog keyz,q avg word lengthz && b10 of all char valz,stuD dictd 4 getng avgz of all DB;
   # NAGM8Pow:this was a pretty crAZ IDa but it lookz lIk mAB just taking NE numb or b10(word) thN fInd clOsSt 2 it of Prim|Sum8|Fibo|Fact(n) or n**x 4 all valz
