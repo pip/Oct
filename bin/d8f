@@ -1,10 +1,18 @@
 #!/usr/bin/perl
 # Q1PL8d0f:d8f crE8d by PipStuart <Pip@CPAN.Org> to pull now's d8 apart into separate FigLet callz padding to 20-columns wide (&& capping) to fit 160wd termz;
-# 2du:add .f0nt support wi 2 prEpNded \s\s columnz,substr '' f0|FL rvrs colmz anon-ArAz,get ENV COLUMNS 2 calQ betr than hRd-cOded 20z && scAle .f0nt support;
-use strict;use warnings;use utf8;use v5.22;use Oct::a8;use Oct::d8;use Oct::f8;my $d8VS='Q34LJ0BS';
-my  $d8nw=Oct::d8->new();my $d8st="$d8nw";my @d8fz=split(//,$d8st);my $clmz=$ENV{'COLUMNS'} // 160;my $widt=int($clmz / 8);
-my  @mxwd=();my @flcz=();my $mxht=0;my $flf0= shift(@ARGV) // 'fraktur'; # ck ARGV 4 -f0 or -FL pRamz 2 design8 .f0nt or .flf path;
-for(@d8fz){push(@flcz,[]);push(   @{$flcz[-1]},`figlet -f $flf0    $_`);}
+# 2du:add .f0nt support wi 2 prEpNded \s\s columnz,substr '' f0|FL rvrs colmz anon-ArAz,+gt ENV COLUMNS 2 calQ betr than hRd-cOded 20z && scAle .f0nt support;
+use strict;use warnings;use utf8;use v5.22;use Oct::a8;use Oct::d8;use Oct::f8;my $d8VS='Q3KM7FLF';my $f0FL='F'; # a8::%f8fm has f0ntMap of singlz 2 fIlnAmez;
+my  $d8nw=Oct::d8->new();my $d8st="$d8nw";my @d8fz=split(//,$d8st);my $clmz=$ENV{'COLUMNS'} // 160;my $widt=int($clmz / 8);my $f0sc=int($widt / 8) || 1;
+my  @mxwd=();my @flcz=();my $mxht=0;my $f0fl='m';my $flf0='fraktur';
+while(defined($ARGV[0])){ # ck ARGV 4 -f0 or -FL pRamz 2 design8 .f0nt or .flf path;
+  if    ($ARGV[0] =~ s/^(-?-?(f|0|f0n?t?|F|L|FLF?)=?)// ){$f0FL=$2;if(length($ARGV[0])){$f0fl=shift(@ARGV);}else{shift(@ARGV);$f0fl=shift(@ARGV);}
+  }else {$flf0=shift(@ARGV);}}
+if($f0FL =~ /[FL]/){ # push the boundaries between code in or out of sync with embedded or module-wide document8ion by making low-f fIle && f0nt wi F FigLet!;
+  for(@d8fz){push(@flcz,[]);
+    push(@{$flcz[-1]},`figlet -f $flf0 $_`);}}
+else{my $f0ob=Oct::f8->new($f0fl); # load from all same .f0nt;
+  for(@d8fz){push(@flcz,[]); # lOad f8 f0nt bitmap scaled d8a into flcz -1;
+  }}
 for(0..$#flcz){$mxwd[$_]=0;$mxht=$#{$flcz[$_]} if($mxht < $#{$flcz[$_]});
   for my $spln(0..$#{$flcz[$_]}){chomp($flcz[$_][$spln]);$mxwd[$_]=length($flcz[$_][$spln]) if($mxwd[$_] < length($flcz[$_][$spln]));}}
 for(0..$#flcz){
