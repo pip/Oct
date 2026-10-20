@@ -31,7 +31,7 @@
 use warnings;use strict;use utf8;use v5.22; # mAB tSt if just regUlR -t STDIN && -t STDOUT R Dtectng intractiviT corectly 1st,B4 fallng bak on IO::Interactive
 #se IO::Interactive qw(is_interactive); # employ if(is_interactive()){} around all colring to attempt to behave like `ls --color=auto` when piped away
 use Encode;use Oct::a8;#se Oct::c8;
-           use Oct::b8;use Oct::d8;use Time::PT;use Time::Zone;my $VERSION='0.0';my $d8VS='Q9SMAels';
+           use Oct::b8;use Oct::d8;use Time::PT;use Time::Zone;my $VERSION='0.0';my $d8VS='QAIMCUTE';
 my $sllw=0;my $cauf=1;my $cnvf=0; # SymLnk lRgStWidt2 track 4 alignment;
 my $S=S('S');my $U=S('U');my $N=S('N');my $cnof=0;my $cnef=0; # had2ad SUN bak in local here since just removed from a8.pm (wanting to see where used anyway);
 my $vsrt='-v'; my @b64d;my $t;my $sbdr;my $b64c;my($pwnw,$grpw,$grpx);$pwnw=$grpw=$grpx=0; # default -v Version SoRT,reversed b8 Colr List matchz Dfalt d8 ordr
@@ -54,7 +54,7 @@ for(@ARGV){if   (-d  "$_"  ){s/([()&!'])/\\$1/g;}  # atMpt2alow`l *`2work bySKpn
 # K2LLAIgn:had added "-Isnap " to ls command below before just now installing a new l8st signal-desktop && removing ~/snap/ (aftr mvng sig 2 .local/.snap/);
 my @ldat=();my $t0tl='0';my $subd='.';my($list,$prmz,$blsz,$pwnr,$grup,$fsiz,$d8tz,$fnam,$cmpr,$b6bs,$b6fs);
 if(!-t STDIN){@ldat=<STDIN>;$elsf=1;}elsif($elsf){@ldat=`els -lFp $vsrt $elst @ARGV`;}else{ # try2flag4 els nstdof lsft butwil nEd2hndl ZoneNmz nstdof UTCofst;
-   @ldat=`ls -lF $vsrt --full-time --color=never @ARGV`;}
+   @ldat=`ls -lF $vsrt --full-time --color=never @ARGV`;} # QAIM9YPR:aded --hyperlink=always 2 C if my lsd8 hEre can handle it nIcely too?;
 my %lsp8;my %sqrm;my %sqra;my $cqrk;my $psdl=0; # Separ8or QuotedRegex Main&&Altern8 mapz, Current QuotedRegex Key, Previous SubDirectory Length
 # if($cnef){ } # mAB none is anothr bAsic lsd8xt?
 # if($cnof){ } #  && no   is just not b8 && d8 or smthng?;
@@ -240,7 +240,12 @@ for(@ldat){if(($prmz,$blsz,$pwnr,$grup,$fsiz,$d8tz,$fnam)= /^(\S{10})(\s+\d+)(\s
     if(0&& exists($ENV{'TERM'}) && $ENV{'TERM'} !~ /^([Ex]|st)term/){ # only substitute custom f0nt code escapez 4 terminals that support or ignore such codez
       my($ft,$fc,$fr,$fm,$fa,$fE,$fq)= qw(t c r m a E q);#(S('f:t'),S('f:c'),S('f:r'),S('f:m'),S('f:a'),S('f:E'),S('f:q'));
           $_ = "$ft$cmpr$fc$b6bs$tS$fr$pwnr$z$gS$fm$grup$z $fa$b6fs $fE$ttim $fq$z$tnam$lspt{'no'}\n";  # add colrz && f0ntz to d8a && reset to NOrmal @EOL
-    }else{$_ =    "$cmpr$b6bs$tS$pwnr$z$gS$grup$z " .        "$b6fs "."$ttim "."$z$tnam$lspt{'no'}\n";} # add colrz          to d8a && reset to NOrmal @EOL
+    }else{my $d8tt=sS('--',$ttim);my $d8fo=Oct::d8->new($d8tt); #$_=    "$cmpr$b6bs$tS$pwnr$z$gS$grup$z " .        "$b6fs "."$ttim "."$z$tnam$lspt{'no'}\n";
+      my($O8,$st,$ppth,$d8fe,$fnwd)=("\e]8;;","\e\\","file://$ENV{'HOSTNAME'}/home/$pwnr",$d8fo->full(), # DfIn Osc8 && StrngTrmn8or 4 Mbedng thru output;
+                                                     "file://$ENV{'HOSTNAME'}$ENV{'PWD'}/$fnam");$ppth=~ s/\s+//g;$fnwd=~ s/\*+$//; # Uzr,d8FullExp,&&fIlnAm;
+      $_ = "$O8$prmz$st$cmpr$O8$st$b6bs$tS$O8$ppth$st$pwnr$O8$st$z$gS$grup$z " ;  # try 2 inject DcNtly swEt hyprlinx around mOst fieldz;
+      $_.= "$O8$fsiz$st$b6fs$O8$st $O8$d8fe$st$ttim$O8$st $z$O8$fnwd$st$tnam$O8$st$lspt{'no'}\n";} # add colrz to d8a && reset to NOrmal @EOL;
+    # `en '\e]8;;http://Xmpl.Com\e\\XmpLnk\e]8;;\e\\\n'` shOz how 2 mAB wrap Ech abov pRt with hyprlinx 2 give popup hLp for Ech type of d8a-field sensibly;
   }elsif(/^total\s+(\d+)/){$t0tl=b8c(sprintf("%${tpwd}s",b64($1)));my $rjtp='';$rjtp=' 'x ($hwid-$psdl-6-$tpwd) if($hwid     &&  $psdl &&
                                                                                           ($hwid-$psdl-6-$tpwd) > 0); # rEvrscolrb64$t0tl
     for my $achr (split(//,$subd)){$rjtp.=' ' if(192 <= ord($achr) && ord($achr) <= 385);} # realign t0tlz aftr dirnamez with high-bit charz but then actually
