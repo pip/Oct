@@ -77,7 +77,7 @@ our %EXPORT_TAGS = ('all'  => [ qw($d $e $f $h $i $j $l $n $q $s $t $u $v $x $A 
                    #'b64'  => [ qw(CardB64   B64Card HandB64  B64Hand       ) ],
                    #'pd8a' => [ qw(                %pd8a   %zdnh %zplf %zloh) ],
                    ); # just load all singles (skipping sort $a && $b [&& $z] );
-our $VERSION='0.000_001';our $d8VS='QAIM0axe';our $Auth='PipS <PipStuart@GMail.Com>'; # abov not!Xporting $b sinc cOlIdz with sort{$a<=>$b}; unalloc'd sOlOz^;
+our $VERSION='0.000_001';our $d8VS='QAIMG8s4';our $Auth='PipS <PipStuart@GMail.Com>'; # abov not!Xporting $b sinc cOlIdz with sort{$a<=>$b}; unalloc'd sOlOz^;
 our $dbug=0;our $ucdf= eval('use Color::Similarity::RGB qw(distance);1') || 0; # try2set UseColorDistncFlag if optnl module is avail; /defhijlnqstuvx/i+/AZ/^;
 BEGIN{ # METHOD NAME ALIASES  # HTTPS://StackOverFlow.Com/questions/17543925/getting-used-only-once-possible-typo-warning-when-aliasing-subroutines
   *sf = \&F; *s4 = \&F; *O = \&o8; *N = \&n9;
@@ -364,7 +364,12 @@ sub co{if(!@_ && !-t STDIN){ (@_=decode('UTF-8',join(''  ,<STDIN>)));}
   for    ( @_){chop ;} return(@_);} sub chip{return(co(@_));} # above && mappings could be like Chimps chomp chopping chips can code cn co;)
 sub n9{return(say STDOUT @_);} # not sure if sayz nEd '' nstd of lIkely MpT @_ ?!;
 sub eN{return(say STDERR @_);} # 4 some rEason,without shifting 4m@ string off @_ 1st BlO,this was tkng @_ in scalR contXt&&just rEtrning 2as argcnt,why?!;
-sub F {my $f4mt='';$f4mt=shift(@_) if(@_);return(sprintf($f4mt,@_));}
+sub F {my $f4mt='';$f4mt=shift(@_) if(@_); #return(sprintf($f4mt,@_)); # 2du:wrIt F f4mt pRser wich loopz callz 2 sprintf with just rIt numb of Rgz 2 consume;
+       my $retn='';my $Rgct=0;my @RgUz;if(length($f4mt)){$_=$f4mt;while(/(^|[^%])%[^%]/ && s/^([^%]*?|%%)*%([^%])/$2/){
+      if(s/^[-#0 +'I]*(\*\d*\$?)?\d*\.?(\*\d*\$?)?\d*[hlqLjzZt]?[hl]?[diouxXeEfFgGaAcsCSpnm]//){$Rgct++;}} # `pm 1 printf` listz: diouxXfeEgGcs && shud ck pl;
+    while(@_ && $Rgct){@RgUz=();push(@RgUz,shift(@_)) for(1..$Rgct);
+           $retn.=sprintf($f4mt,@RgUz);}}
+    return($retn);} # pRs && conc8N8 sf callz in loop 2 consume;
 sub P {return(o8(F(@_)));}   #[pip@OniQAIM3tbj~]pa 'P("dec:%4d; str:%8s;\n",63,sixthrE,4095,fournIne);'; # lookz lIk Perl duz not loop 2 consume Xtra RgUmNtz!;
                              # Redundant argument in sprintf at /home/pip/lib/Oct/a8.pm line 367. # dec:  63; str: sixthrE; # my Zsh printf duz loop 2 consume;
 sub s5{my $retn=F(@_);N();return($retn);} # these cannot just append newline 2 arglist 2 output Bcuz Perl pf duz not consume...
@@ -388,10 +393,10 @@ sub e8{my $Uflg=1;my $cflg=0;my $Stxt='';return unless(@_);my $ncfl=0;$ncfl=1 if
   if(defined($Stxt) && length($Stxt)){ # mA want2ck Dflt $_ or STDIN if!givN pRam2prnt ANSI SKpd colors on UTF-8 STDERR or flag 4 OUT insted?;
     open my $err8,'>&',STDERR or die "Can't open  duplic8 STDERR handle: $!";if($Uflg){binmode $err8,':encoding(UTF-8)';};$sofh=select($err8);$|=1;print $Stxt;
     close   $err8             or die "Can't close duplic8 STDERR handle: $!";}}select($sofh);} # e8 does not test for -h --help or -c or -u flagz,see o8 4 hLp;
-sub spff{my $frmt='%12.12f';if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_){return( sprintf("%16s",F("$frmt",@_)));}} # SPFfloat,dec,HX,Ss;
-sub spfd{my $frmt='%03d'   ;if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_&& defined($_[0])&& $_[0]=~/^\d+$/){return(F("$frmt",@_));}}
-sub spfX{my $frmt='%02X'   ;if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_&& defined($_[0])&& $_[0]=~/^\d+$/){return(F("$frmt",@_));}}
-sub spfs{my $frmt='%1d%1s' ;if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_&& defined($_[0])&& $_[0]=~/^\d+$/){return(F("$frmt",int($_[0]/64),
+sub spff{my $frmt='%12.12f';if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_){  return(F("%16s",F($frmt,@_)));}} # SPFfloat,dec,HX,Ss;
+sub spfd{my $frmt='%03d'   ;if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_&& defined($_[0])&& $_[0]=~/^\d+$/){return(sprintf($frmt,@_));}} # !F?;
+sub spfX{my $frmt='%02X'   ;if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_&& defined($_[0])&& $_[0]=~/^\d+$/){return(F($frmt,@_));}}
+sub spfs{my $frmt='%1d%1s' ;if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_&& defined($_[0])&& $_[0]=~/^\d+$/){return(F($frmt,int($_[0]/64),
     $sb64[shift(@_) % 64]) );}} # SPrintF Ss 256ndx in [0-3] . b64;
 # QA3MDOPE:the following several comment lines are pasted in from my ~/.zshrc file to show Zshell definitions of OPENF o[4589] e[4589] s[45] n9 && eN 4 17addz;
 #Al O='P %s  '  P='printf' ece='ec -e' eec=ece; #   && I Db8d mkng BlO F -> ftst,file,firefox,fortune, thN DcIded 2du fgrep 4abit B4 sprintf && kEp P 4 printf;
