@@ -15,7 +15,7 @@ use warnings;use  strict;use utf8;use v5.22; # use open qw[:std :encoding(UTF-8)
 #   2(bin)2b8(64) Xtra 1..3 b64 char shud tell how many bytz of last 4-block of b64 charz shud be written out B4 Nding the bin fIle (aftr chopng th@ Xtra off),
 #   cud cnv bin src bytz 2 b256 so length of total charz sAme az orig fIlsIz but DcOded UTF-8 bytz wud B slIghtly lRgr,cud cnv binfIl2 8byt 64bit uintz sepR8d,
 #   mAB mk new base set with all the common singl-widt charz sinc 93k probably mixes singl && dbl-widtz somewhat annoyingly, mAB mk 128k && 256k setz az well,
-#     rewrite Fibo wo recursion,mk new calQ parser for closer to real oper8or && paren precedence handling,alsO add 2 calQ any new oper8orz th@ cudBUseful&&EZ,
+#     rewrite Fibo wo recursion,mk new Q parser for closer to real oper8or && paren precedence handling,alsO add 2 Q any new oper8orz th@ cud B Useful && EZ,
 #   mk pfcz to hash up a loop to list all Prime FaCtorZ (with powerz) of any BigInt param,bNchmRk memoized Fact vs bfac && prim vs not && Fibo iter8ive vs not,
 #   stuD Math::Base::Convert && bNchmRk2lern how2Use just scalar or 32-bit reg when it fitz4sPd && Xpand2othr objz B4 BigFloat && rmv all M:B:C if sPd close,
 #   get rid of old Moose attempt,stOr sepR8 usrFromTo digsetz,add cache cfg,add from() && tobs() && all mUt8orz,retool intrfAc4allfuncz2alsOB obj methodz,
@@ -53,8 +53,8 @@ use         Carp; # orig Math::BaseCnv BlO memoized Sum8(as summ) hEr&&had nO Fi
 use           IO::Handle qw( ); # trying to get dupd (or just orig) STDERR to autoflush(1) since being buffered in b2b8; # Pnt8 Hex8 probably 2 hUge 2 mMOIz?;
 use Memoize;memoize('Prim');memoize('Fibo');memoize('Fact');memoize('Chus');memoize('Xpn8');memoize('Ttr8'); #moize('Pnt8');memoize('Hex8');
 our @EXPORT= qw(b8 cnv cnv10__ cnv__10 ocT deC dec heX HEX b10 b64 b64sort b110 b128 b210 b256 b910 b93k dig diginit  cma coma  rotW rot1
-    @kana $umbc b8b2 b2b8  Prim Prmz  Sum8 Sumz  Fibo Fibz  Fact Fctz  Chus   Xpn8 Xpnz  Ttr8 Ttrz  Pnt8 Pntz  Hex8 Hexz  calQ  b8ls txt8);
-our $VERSION='0.0';my  $d8VS='QA1MGutf';my $Auth='PipS <PipStuart@GMail.Com>';
+    @kana $umbc b8b2 b2b8  Prim Prmz  Sum8 Sumz  Fibo Fibz  Fact Fctz  Chus   Xpn8 Xpnz  Ttr8 Ttrz  Pnt8 Pntz  Hex8 Hexz     Q  b8ls txt8);
+our $VERSION='0.0';my  $d8VS='QAJMJalQ';my $Auth='PipS <PipStuart@GMail.Com>';
 our @kana=qw(ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞた
 だちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみ
 むめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖ゗1゛゜ゝゞゟ
@@ -341,7 +341,7 @@ sub b128    {my $rtns = ''; # may want b128sort also
       for my $ilss(split(/\s+/,$id8l)){                   $ilss =~ s/^\s*\+?//;$ilss =~ s/[^0-9-]//g;
                   $rtns .=                         cnv10__(   $ilss ,       128 ) . ' '; } $rtns =~ s/\s$/\n/;}$rtns =~ s/\n$//;}return($rtns);}
 sub b210    {my $rtns = ''; # M:B:C doesn't have my b256 set so skip $umbc
-# cmnt BlO fixng `pab "print b210(b256(calQ('15xx63')))"` 2nOlongr prnt "Wide char at /usr/lib/x86_64-linux-gnu/perl/5.28/Encode.pm line 228." butBlIk *|b210;
+# cmnt BlO fixng `pab "print b210(b256(Q('15xx63')))"` 2nOlongr prnt "Wide char at /usr/lib/x86_64-linux-gnu/perl/5.28/Encode.pm line 228." butBlIk *|b210;
   if   (@_       ){while(@_          ){my $narg=decode('UTF-8',shift(@_));$narg =~ s/^\s*\+?//; # mAB just decode UTF-8 from STDIN but not function pRamz?
                   $rtns .=                         cnv__10(   $narg ,       256 ) . ' '; } $rtns =~ s/\s$//  ;} # short4 base256     -> base10
   elsif(!-t STDIN){my @id8a;chomp(@id8a=decode('UTF-8',<STDIN>));for my $id8l(@id8a){ # Input d8a Line && Input Line Split on Spacez below
@@ -691,11 +691,11 @@ sub rot1{my @strz=();push(@strz, decode('UTF-8', join(' ',@_)))  if(@_);  # this
          my $rslt='';push(@strz, decode('UTF-8',<STDIN>)) if(!-t STDIN);my $b2f1='';my $b2s1=''; # Base256 First&&Second128       #   from custom256 digset too
   for(0..127){$b2f1.=$digsetz{'256'}[$_];$b2s1.=$digsetz{'256'}[128+$_];} # not using rangez below since accented standard letterz might match in wrong order
   for(@strz){eval("y/$b2f1$b2s1/$b2s1$b2f1/");$rslt.=$_;} return($rslt);} # normal y/// transl8 does not interpol8 scalar halves so string needs to be evalU8d
-# 2du:rEwrIt calQ az just Q or new q hEr wich folOz JBlow888 && pRtner in:     # nEd 2 EvN2aly handl pRNz && bigr new oper8orz && functionz Byond just L2R!;
+# 2du:rEwrIt calQ az just Q hEr wich folOz JBlow888 && pRtner in:     # nEd 2 EvN2aly handl pRNz && bigr new oper8orz && functionz Byond just L2R!;
 #   O3RM3mrk:HTTPS://YouTu.be/r6sIXUChB3U "Jonathan Blow on Calling Functions" # O3Q:0EA0 of JonathanBlowHigh wich talkz rEcursN by prIOriTz4nStng oper8or()?;
 #   O42MJclQ:HTTPS://GitHub.Com/BGKillas/kalc "ComplexNums, 2D/3D Graphing, ArbitraryPrecision, Vector/M8rix, CLI calQl8or(inRust)wiRealTime output && units";
-sub calQ{my $ajps='';if(@_){$ajps=join('',@_);}elsif(!-t STDIN){$ajps=join('',<STDIN>);}$ajps=~ s/(\s|_|,)+//g;my $bgfl=''; # AllJoinedParamStringz && BiGFLoat
-  if ($ajps=~ /h/i){$ajps='';$bgfl=" calQ v$VERSION d8VS:$d8VS crE8d by $Auth to CALcul8 most standard math oper8ions using high-precision BigFloat objects;
+sub Q{my $ajps='';if(@_){$ajps=join('',@_);}elsif(!-t STDIN){$ajps=join('',<STDIN>);}$ajps=~ s/(\s|_|,)+//g;my $bgfl=''; # AllJoinedParamStringz && BiGFLoat
+  if ($ajps=~ /h/i){$ajps='';$bgfl=" Q v$VERSION d8VS:$d8VS crE8d by $Auth to calQl8 most standard math oper8ions using high-precision BigFloat objects;
    h - print this Help text and exit
        all spaces, underscores, and commas are stripped from input, so feel free to include them for clarity when entering particularly large numbers.
        all altern8s below are case-insensitive except 'x' times and 'X' Xor. two adjacent times characters like 'xx' can be used for exponentE8ion.
@@ -714,9 +714,8 @@ sub calQ{my $ajps='';if(@_){$ajps=join('',@_);}elsif(!-t STDIN){$ajps=join('',<S
    X - altern8 for Xor      ^ caret
        basic parens seem to work but some oper8or precedence will still be going simply left-to-right without following the proper priorities expected from
          HTTPS://PerlDoc.Perl.Org/perlop.html or other typical math utility functions like `bc` and `dc`. Reverse-Polish Not8ion in `orpie` side-steps this.
-       calQ is exported from the Oct::b8 Perl Module and comes with a small executable wrapper script which is intended to be suitable for placing in a
-         bin/ directory which is in the user's path. you might also find it useful to crE8 a symbolic-link to the script with a command like:
-         `cd ~/bin/; ln -s calQ Q` which will enable entering expressions like `Q '64-(128/7)+15'` from the shell and ':r!Q 4096xx2048-1' from within vim.
+       Q is exported from the Oct::b8 Perl Module and comes with a small executable wrapper script which is intended to be suitable for placing in a ~/bin/.
+         Q enables entering expressions like `Q '64-(128/7)+15'` (nEd 2 tSt!) from the shell and ':r!Q 4096xx2048-1' from within a typical vim editor buffr.
        2du:rewrite parsing to handle arbitrary expressions in parens, expand sub-expressions in real precedence order, handle unary oper8ors, add ++ and --;
 ";} # clear all other parameters && assign return value BiGFLoat to hold Help text instead
   $ajps=~ s/s/-/gi;$ajps=~ s/p/+/g ;$ajps=~ s/d/\//gi;$ajps=~ s/o/|/gi;$ajps=~ s/a/&/gi;$ajps=~ s/x/*/g;$ajps=~ s/X/^/g;$ajps=~ s/n/~/gi;$ajps=~ s/m/%/gi;
