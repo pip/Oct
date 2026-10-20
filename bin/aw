@@ -5,7 +5,7 @@
 # Last Updated: 2023-01-09; # AnsiWeather is released under the BSD 2-Clause license. See LICENSE file for details. SPDX-License-Identifier: BSD-2-Clause;
 # 2du:mk option for hourly forecasts instead of just daily,add order sequence option which auto-sets (&& unsetz any UPPERCASE flagz included2) show flagz,
 #     add support for imperial, metric, standard true/false values in config_file in addition to old units value (which should behave like -IiMmNn flagz);
-d8VS="Q6DM7b64"; # this d8 is close to the last upd8 date&&time by Pip; # aw may be released (soon?) under the GNU GPL version 3+. See GNU.Org && FSF.Org;
+d8VS="QAKM5Adc"; # this d8 is close to the last upd8 date&&time by Pip; # aw may be released (soon?) under the GNU GPL version 3+. See GNU.Org && FSF.Org;
 LC_NUMERIC=C; export LC_NUMERIC
 if   [ -n "$AWRC"                      ]; then config_file="$AWRC"
 elif [ -s "$XDG_CONFIG_HOME"/aw/config ]; then config_file="$XDG_CONFIG_HOME"/aw/config
@@ -177,12 +177,12 @@ get_icon() { case $1 in
     Thunderstorm) echo                                "$thunderstorm " ;; esac; }
 if [ "$forecast" != 0 ]; then output="$background$text$city $forecast_text$text$dlim "; i=0
   while [ $i -lt "$forecast" ]; do
-     day=$(                              echo "$weather" | jq    ".list[$i]")
+     day=$(                                 echo "$weather" | jq    ".list[$i]")
     date=$(d8c $(d8 $(epoch_to_date   "$(echo "$day"     | jq -r '.dt')") | c8 -c0-3))
-     low=$(                              echo "$day"     | jq -r '.temp.min' | xargs printf "%.0f")
-    high=$(                              echo "$day"     | jq -r '.temp.max' | xargs printf "%.0f")
+     low=$(                                 echo "$day"     | jq -r '.temp.min' | xargs printf "%.0f")
+    high=$(                                 echo "$day"     | jq -r '.temp.max' | xargs printf "%.0f")
     icon=""
-    if [ "$symbols" = true ]; then sky=$(echo "$day"     | jq -r '.weather[0].main'); icon=$(get_icon "$sky"); fi
+    if [ "$symbols" = true ]; then    sky=$(echo "$day"     | jq -r '.weather[0].main'); icon=$(get_icon "$sky"); fi
                                          output="$output$text$date$dlim $(tmpc $high)$data$text/$(tmpc $low)$data $scale $icon"
     if [ $i -lt $((forecast-1)) ]; then  output="$output$dash "; fi
     i=$(( i + 1)); done;                 output="$output$termin8or";
