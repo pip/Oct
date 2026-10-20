@@ -2,8 +2,8 @@
 use warnings;use strict;use utf8;use v5.22; # F33L8iqa:testng installed terminals for SGR Select Graphic Rendition support to mimic in 8trm aftr c8 adds layrz,
 use Oct::a8; # might want to add codez to a8 d8a then ref here? My custom f0nt codes in here are making l8st xterm resize! Learn how.
 use Oct::b8; # just for b64, but could also use a8's @sb64 && manually handle multiplic8ion together as needed, to maintain fewer dependencies on .pm's.
-use Oct::d8;my $d8VS='P48MNsNk';my $term='';$term=$ENV{'TERM'} if(exists($ENV{'TERM'})); # `msgcat --color=test` haz intNsiv HSV color test to learn from.
-my $ccC=S('::C');open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";binmode $out8,':encoding(UTF-8)'; # crE8 local duplic8 of global
+use Oct::d8;my $d8VS='QAGMMQAG';my $term='';$term=$ENV{'TERM'} if(exists($ENV{'TERM'})); # `msgcat --color=test` haz intNsiv HSV color test to learn from.
+my $cC=S(':C');open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";binmode $out8,':encoding(UTF-8)'; # crE8 local duplic8 of global
 # 2du:cnsidr rEmapng C to UnderCurl 4:3, W to UnderDouble lIk DblUU, D Dim instead of fAint or UnderDotted or UnderDashed but those shud probably be . && _ ,
 #   use S for StrikeThrough nstd of CrossdOut (in a8.pm S() it's X ;5;256ndx as b64 rIt now but wud alsOBgud4 SubSuperScripts but mAB thOs can folO Z altz?),
 #   mA want 2 put both X ;2; wi RGBl && 5;256ndx 2gether or kEp sepR8 but S is nEded Lswher sO C wutz avail,
@@ -40,25 +40,28 @@ my @sd8a=([ 0     , 'N Normal / reset  (also available as z zer0)            '],
           [26     , 'A reserved : remAp?    (was S butnow 256ndx)            '], #   tmux,evilvte,lxterminal,lxterm,sakura,pterm,mrxvt,urxvt,roxterm,vttest,
           [27     , 'r image    :  positive        (Reverse: off)            '], #   mlterm,aterm-ml,rxvt-ml,yeahconsole,lilyterm;
           [28     , 'v image    :   Visible (reVeal,conceal: off)            '],
-          [29     , 's not Strike-thru                    (:none)            '], # G7LM4ccv:l8st xterm-256color now supports 9 [BAIULRVCD], still 7 [BAIURVC]
+          [29     , 's not Strike-thru                    (:none)            '],
+         #[37     , '  set     text color        foreground:color            '], # G7LM4ccv:l8st xterm-256color now supports 9 [BAIULRVCD], still 7 [BAIURVC]  
          #[30–37  , '  set     text color       (foreground)                 '], #   of GT && sak, sortof 5 [BIULR] on console (A&&U appear same&&Lduz!bLink),
-          [38     , 'X eXtended     colorX   set foreground:(clr)            '], #   sortof 5 [BIULR] urxvt (L&&K bLinK@same r8,TERM='rxvt-unicode-256color',
-          [39     , 'Y default text colorY      (foreground:colr)            '], #   COLORTERM='rxvt-xpm',VTE_VERSION=4205);
-         #[40–47  , '  set     text color        background                  '], # G8SM00TH:aterm startz with many bakslashez&&prmpt but duz!accept input, Et
-          [48     , 'x eXtended     colorX   set background:color            '], #   has 4 [BULR] (but Lduz!bLink), terminator has 6 [BAURVC] (with TERM just
-          [49     , 'y default text colorY      (background:colr)            '], #   'xterm'&&COLORTERM='gnome-terminal'&&no VTE_VERSION), tilda [BAIURVC],
-          [50     , 'a reserved : remAp?    (was s,thN _) (:none)            '], #   xfce4-terminal [BAURVC] (wi TERM='xterm',COLORTERM=$0,&&VTE_VERSION=4205),
-          [51     , 'M fraMed   : on                                     ?sup'], #   xvt [BUR] (many bakslashez then no colrz,TERM='xterm-r6',COLORTERM='',
-          [52     , 'E Encircled: on                                     ?sup'], #   VTE_VERSION=4205,slow), st [BIULKR] (L&&K same r8,TERM=stterm-256color,
-          [53     , 'O Overlined: on           (Gnome-Terminal:4DWin!)hRdlsup'], #   COLORTERM='',VTE=4205), lilyterm [BAIURVC] (TERM=xterm-256color,COLORTERM=
-         #           d maybe   remap to Double overline?                         #   $0,VTE=4205);
+         #[40–47  , '  set     text color        background                  '], #   sortof 5 [BIULR] urxvt (L&&K bLinK@same r8,TERM='rxvt-unicode-256color',
+          [38     , 'J extended 256 colorJ   set foreground:(clr)            '], #   COLORTERM='rxvt-xpm',VTE_VERSION=4205);
+          [48     , 'j extended 256 colorJ   set background:color            '],
+          [38     , 'X eXtended24bitcolorX   set foreground:(clr)            '], # G8SM00TH:aterm startz with many bakslashez&&prmpt but duz!accept input, Et
+          [48     , 'x eXtended24bitcolorX   set background:color            '], #   has 4 [BULR] (but Lduz!bLink), terminator has 6 [BAURVC] (with TERM just
+          [39     , 'Y default text colorY      (foreground:colr)            '], #   'xterm'&&COLORTERM='gnome-terminal'&&no VTE_VERSION), tilda [BAIURVC],    
+          [49     , 'y default text colorY      (background:colr)            '], #   xfce4-terminal [BAURVC] (wi TERM='xterm',COLORTERM=$0,&&VTE_VERSION=4205),
+          [50     , 'a reserved : remAp?    (was s,thN _) (:none)            '], #   xvt [BUR] (many bakslashez then no colrz,TERM='xterm-r6',COLORTERM='',
+          [51     , 'M fraMed   : on                                     ?sup'], #   VTE_VERSION=4205,slow), st [BIULKR] (L&&K same r8,TERM=stterm-256color,
+          [52     , 'E Encircled: on                                     ?sup'], #   COLORTERM='',VTE=4205), lilyterm [BAIURVC] (TERM=xterm-256color,COLORTERM=
+          [53     , 'O Overlined: on           (Gnome-Terminal:4DWin!)hRdlsup'], #   $0,VTE=4205);
+         #           d maybe   remap to Double overline?
           [54     , 'm fraMed   : off, Encircled: off     (:none)            '],
          #           e => m or remap to double fraMEd?
           [55     , 'o Overlined: off                     (:none)            '],
-         #[56     , '? reserved : remap?    (was .)                          '], # N8BM5GRT:added reserved 56 to cause 6 ideogram rows to line up together;
-         #[57     , '? reserved : remap?                                     '],
-          [58     , 'k kitty RGB to just color under(line|double|curl|.|_)   '], # P1IL32un:so add this over secondary bLinK end;
-         #[59     , '  reserved                                              '], # P1HLMNtZ:maybe kitty introduced 58;2;decR;decB;decG to just color unders;
+          [58     , 'P kitty 256ndx to just color under(line|double|curl|.|_)'],
+          [58     , 'Q kitty 24bRGB to just color under(line|double|curl|.|_)'],
+          [58     , 'Z kitty FDAL and b64 color code (alwAz aftr coln: or Fb)'],
+          [59     , 'pqz kitty reset underline color (P256ndx Q24-bit colorz)'], # P1HLMNtZ:maybe kitty introduced 58;2;decR;decB;decG to just color undrln;
           [60     , 'H ideogram forget underline so Hang figure eigHt !yetsup'], # J5JM5Yth:only aftr the double-stress-markings, other way if stress after;
           [61     , 'h ideogram alreaD underline so doublHHline rigHt hRdlsup'],
           [62     , 'T ideogram alreaD  overline or sTrike lineTlefT  hRdlsup'],
@@ -72,13 +75,13 @@ my @sd8a=([ 0     , 'N Normal / reset  (also available as z zer0)            '],
          #[100    , '  set background      color, high intensity  (up to:107)'],
          ); # show above table then light && 256 colorz
 #f($term !~ /^([Ex]|st)term/){ # prepend a8 custom f0nt code escapez for terminalz that support or ignore such codez
-# $sd8a[ 1]->[1]=S('::B') . $sd8a[ 1]->[1];  # Bold      on  # need to add -f flag to enable f0nt layer processing again
-# $sd8a[ 2]->[1]=S('::7') . $sd8a[ 2]->[1];  # Dim       on
-# $sd8a[ 3]->[1]=S('::i') . $sd8a[ 3]->[1];  # Italic    on
-# $sd8a[ 7]->[1]=S('::R') . $sd8a[ 7]->[1];  # Reverse   on
-# $sd8a[20]->[1]=S('::F') . $sd8a[20]->[1];  # Fraktur   on
-# $sd8a[23]->[1]=S('::t') . $sd8a[23]->[1];  # italic    off
-# $sd8a[24]->[1]=S('::F') . $sd8a[24]->[1];} # underline none
+# $sd8a[ 1]->[1]=S(':B') . $sd8a[ 1]->[1];  # Bold      on  # need to add -f flag to enable f0nt layer processing again
+# $sd8a[ 2]->[1]=S(':D') . $sd8a[ 2]->[1];  # Dim       on
+# $sd8a[ 3]->[1]=S(':I') . $sd8a[ 3]->[1];  # Italic    on
+# $sd8a[ 7]->[1]=S(':R') . $sd8a[ 7]->[1];  # Reverse   on
+# $sd8a[20]->[1]=S(':F') . $sd8a[20]->[1];  # Fraktur   on
+# $sd8a[23]->[1]=S(':i') . $sd8a[23]->[1];  # italic    off
+# $sd8a[24]->[1]=S(':u') . $sd8a[24]->[1];} # underline none
 my %ster=(2=>1,8=>1,9=>1,10=>1,20=>1,21=>1,26=>1,28=>1,29=>1,38=>1,48=>1,50=>1,51=>1,52=>1,53=>1,54=>1,55=>1,60=>1,61=>1,62=>1,63=>1,64=>1,65=>1); # STerm ERor
 my $widt=0;$widt=1 if(exists($ENV{'COLUMNS'}) && $ENV{'COLUMNS'} >= 144);my $cwid=16;$cwid=32 if($widt); # support normal or double wide output
 my $argz='';$argz= join(' ',@ARGV) if(@ARGV);$argz.='b' if($argz=~ /p/ && $argz!~ /b/);$argz.='B' if($argz=~ /P/ && $argz!~ /B/);
@@ -125,8 +128,7 @@ sub TP {my $tlns=  shift(@_)  || return(0);my @sf=();my $ok=$k;$ok=~ s/\[/\\[/; 
   }   # for(my $i= $n   ;$i< $n+31;$i+= 6){$tl.=sprintf("$k\e[$q;5;%dm%2s %03d %4s ",$i,$p82k[$i],$i,h2rl($x256[$i]));TP($tl);}
       # for(my $i= $n   ;$i< $n+31;$i+= 6){$tl.=sprintf("$k\e[$q;5;%dm%2s %02X %6s" ,$i,  b64($i),$i,     $x256[$i] );TP($tl);}
 # print $out8 $tlns;
-  return($tlns);
-}
+  return($tlns); }
 if($argz !~ /s/i){my $d8bo=$cmap{'d8bo'};
   for(0.. $#sd8a){my $d8ca=Oct::d8->new()->colr('a'); # printf($out8 "\e[m%3d ",$sd8a[$_]->[0]);  # new d8 obj Colored with Ansi, && locl code prntd, !S
     printf($out8 "\e[m%s%3d$z ",  S(substr($d8bo,(int($sd8a[$_]->[0]/2) % 8),1).'b'),$sd8a[$_]->[0]);  # try to colr decimal indicez by d8bo
@@ -141,11 +143,11 @@ if($argz !~ /s/i){my $d8bo=$cmap{'d8bo'};
     $dscs=~ s/(de)(creased)/$R$1$c$2$K/gi;$dscs=~ s/(in)(creased)/$G$1$c$2$W/gi; # mA want2add fore back,under over,or,not,text,remap,framed,reserved,extended
     $dscs=~ s/(re)([SZ]erved)/$W$1$c$2$w/gix;$dscs=~ s/(X)(ten\w*|\W)/$P$1$g$2$B/gi; # J5JMB8wq:try to insert new entries for next paired sub-words
     $dscs=~ s/([()])/$B$1$w/g;$dscs=~ s/([^4])([:?])/$1$W$2/g;
-    $dscs=~ s/(4:3|uCurl)/$ccC$1\e[24m/gi;$dscs=~ s/(4:4|uDot)/\e[4:4m$1\e[24m/gi;$dscs=~ s/(4:5|udash)/\e[4:5m$1\e[24m/gi;
+    $dscs=~ s/(4:3|uCurl)/$cC$1\e[24m/gi;$dscs=~ s/(4:4|uDot)/\e[4:4m$1\e[24m/gi;$dscs=~ s/(4:5|udash)/\e[4:5m$1\e[24m/gi;
     printf($out8 "%s"      ,$dscs         );
     printf($out8   "$z%s"  ,      $d8ca   ) if($ENV{'COLUMNS'} >= 64);say $out8 '' if(!$widt || $_ % 2);
     if($argz =~ /C/){print $out8 $z if($widt);for my $clnd(1..9,0){ # try 2 use 'C' to tSt Colon optionz on all valuez; # lookz lIk it only workz 4 UndrlIn 4;
-        printf($out8 "\e[m\e[%d:%dm%3d:%1d$z ", $sd8a[$_]->[0],$clnd, $sd8a[$_]->[0],$clnd ); } say $out8 ''; } }}
+        printf($out8 "\e[m\e[%d:%dm%3d:%1d$z ", $sd8a[$_]->[0],$clnd, $sd8a[$_]->[0],$clnd ); } say $out8 ''; }} say $out8 '' unless($#sd8a % 2);}
 if($argz !~ /c/i){print $out8 $z if($widt);if($argz=~ /b/i){my $p88c=$cmap{'8pal8'};$p88c=~  s/\s+//g; my $q=38;$q=48 if($argz =~ /b/); # showing color tables
     if($widt){ # try to make Foreground text color blacK over bright blocks        # big blockz in lowercase b background mode, B for Fg both uppercase
       if  ($argz=~ /p/i){my $oF='K';$oF='' if($argz=~ /P/); # show locl 8pal8?
@@ -227,29 +229,29 @@ if($argz !~ /c/i){print $out8 $z if($widt);if($argz=~ /b/i){my $p88c=$cmap{'8pal
                       for my $p82n (8..15){my $n=$_*16 + $p82n;my $p8V8=$pl8n{substr($p88c,$n,1)};$p8V8=substr($p8V8, 0,10) if(length($p8V8) > 10);
                                                                printf($out8 "%s%-10s"  ,      S($oF.substr($p88c,$n,1)),$p8V8);}                 say $out8 $z;}
         }} # below colons are old style from Fb layer ignores before colon design8d Pal8 plane page (so probably just need single colons to SGR now)
-      else{my $oA=S('::bAUI');my $oI=S('::I'); # not /p/ Pal8 mode so show full spec of xterm 256 && /l/ makes the Length LittLe
+      else{my $oD=S(':bDUI');my $oI=S(':I'); # not /p/ Pal8 mode so show full spec of xterm 256 && /l/ makes the Length LittLe
         for(  0..  7){printf($out8 "\e[$q;5;%dm %02X $oI%03d  $z",$_,      $_, $_ );print $out8 $z . ' ' x 2 if(!(($_+1) % 4)&& $_< 7);}say $out8 $z;
         for(  0..  7){printf($out8 "\e[$q;5;%dm %6s  "           ,$_,$x256[    $_]);print $out8 $z . ' ' x 2 if(!(($_+1) % 4)&& $_< 7);}say $out8 $z;
         for(  8.. 15){printf($out8 "\e[$q;5;%dm %02X $oI%03d  $z",$_,      $_, $_ );print $out8 $z . ' ' x 2 if(!(($_+1) % 4)&& $_<15);}say $out8 $z;
         for(  8.. 15){printf($out8 "\e[$q;5;%dm %6s  "           ,$_,$x256[    $_]);print $out8 $z . ' ' x 2 if(!(($_+1) % 4)&& $_<15);}say $out8 $z;
         for  (my $n=    16;$n<    22;$n++  ){ # maybe adding to all %02X linez to contain a parallel %2s b64 && have %3d in between
-          for(my $i= $n   ;$i< $n+31;$i+= 6){printf($out8 "$k\e[1;$q;5;%dm%02X $oA%03d$z",$i,  $i, $i );}
-          for(my $i= $n+66;$i> $n+35;$i-= 6){printf($out8 "$k\e[1;$q;5;%dm%02X $oA%03d$z",$i,  $i, $i );} say $out8 $z; if($argz !~ /l/i){
+          for(my $i= $n   ;$i< $n+31;$i+= 6){printf($out8 "$k\e[1;$q;5;%dm%02X $oD%03d$z",$i,  $i, $i );}
+          for(my $i= $n+66;$i> $n+35;$i-= 6){printf($out8 "$k\e[1;$q;5;%dm%02X $oD%03d$z",$i,  $i, $i );} say $out8 $z; if($argz !~ /l/i){
           for(my $i= $n   ;$i< $n+31;$i+= 6){printf($out8 "$k\e[1;$q;5;%dm%6s"           ,$i,$x256[$i]);}
           for(my $i= $n+66;$i> $n+35;$i-= 6){printf($out8 "$k\e[1;$q;5;%dm%6s"           ,$i,$x256[$i]);} say $out8 $z;}}
         for  (my $n=    93;$n>    87;$n--  ){
-          for(my $i= $n   ;$i< $n+31;$i+= 6){printf($out8 "$k\e[1;$q;5;%dm%02X $oA%03d$z",$i,  $i, $i );}
-          for(my $i= $n+66;$i> $n+35;$i-= 6){printf($out8 "$k\e[1;$q;5;%dm%02X $oA%03d$z",$i,  $i, $i );} say $out8 $z; if($argz !~ /l/i){
+          for(my $i= $n   ;$i< $n+31;$i+= 6){printf($out8 "$k\e[1;$q;5;%dm%02X $oD%03d$z",$i,  $i, $i );}
+          for(my $i= $n+66;$i> $n+35;$i-= 6){printf($out8 "$k\e[1;$q;5;%dm%02X $oD%03d$z",$i,  $i, $i );} say $out8 $z; if($argz !~ /l/i){
           for(my $i= $n   ;$i< $n+31;$i+= 6){printf($out8 "$k\e[1;$q;5;%dm%6s"           ,$i,$x256[$i]);}
           for(my $i= $n+66;$i> $n+35;$i-= 6){printf($out8 "$k\e[1;$q;5;%dm%6s"           ,$i,$x256[$i]);} say $out8 $z;}}
         for  (my $n=   160;$n<   166;$n++  ){
-          for(my $i= $n   ;$i< $n+31;$i+= 6){printf($out8 "$k\e[1;$q;5;%dm%02X $oA%03d$z",$i,  $i, $i );}
-          for(my $i= $n+66;$i> $n+35;$i-= 6){printf($out8 "$k\e[1;$q;5;%dm%02X $oA%03d$z",$i,  $i, $i );} say $out8 $z; if($argz !~ /l/i){
+          for(my $i= $n   ;$i< $n+31;$i+= 6){printf($out8 "$k\e[1;$q;5;%dm%02X $oD%03d$z",$i,  $i, $i );}
+          for(my $i= $n+66;$i> $n+35;$i-= 6){printf($out8 "$k\e[1;$q;5;%dm%02X $oD%03d$z",$i,  $i, $i );} say $out8 $z; if($argz !~ /l/i){
           for(my $i= $n   ;$i< $n+31;$i+= 6){printf($out8 "$k\e[1;$q;5;%dm%6s"           ,$i,$x256[$i]);}
           for(my $i= $n+66;$i> $n+35;$i-= 6){printf($out8 "$k\e[1;$q;5;%dm%6s"           ,$i,$x256[$i]);} say $out8 $z;}}#say $out8 '';
-        for(232..243){printf($out8 "$k\e[1;$q;5;%dm%02X $oA%03d$z",    $_,    $_,    $_ );} say $out8 $z; if($argz !~ /l/i){
+        for(232..243){printf($out8 "$k\e[1;$q;5;%dm%02X $oD%03d$z",    $_,    $_,    $_ );} say $out8 $z; if($argz !~ /l/i){
         for(232..243){printf($out8 "$k\e[1;$q;5;%dm%6s"           ,    $_,$x256[     $_]);} say $out8 $z;}
-        for(  0.. 11){printf($out8 "$k\e[1;$q;5;%dm%02X $oA%03d$z",255-$_,255-$_,255-$_ );} say $out8 $z; if($argz !~ /l/i){
+        for(  0.. 11){printf($out8 "$k\e[1;$q;5;%dm%02X $oD%03d$z",255-$_,255-$_,255-$_ );} say $out8 $z; if($argz !~ /l/i){
         for(  0.. 11){printf($out8 "$k\e[1;$q;5;%dm%6s"           ,255-$_,$x256[ 255-$_]);} say $out8 $z;}}}
   }else{ # just show simple 256 color indices without RGB value blockz
     for(10,9){for my $q(0..7){my $n=$_*10+$q;printf($out8 "\e[$n"."m%3d$z",   $n);($_ % 8)? print $out8 ' ' : say $out8 '';} print $out8 '  ';} print $out8 $z;
