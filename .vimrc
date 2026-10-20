@@ -40,6 +40,7 @@ se    enc=utf-8               "     encoding    - was already loading utf-8 from
 let  g:VERSION='0.000001'     " was just 0.0 B4, but now trying to extend sOfR MpT vers wi millionthz, not milli- but micro-? 4 majr.minr.rles spliting l8r;
 let     g:d8VS='QAHM9Vim'     " d8VersionString - l8st significant upd8 to whole file was then; nOte:whN Using ampersand B4 var nAm,it rEferz 2 nAmd optn nstd;
 let     g:vid8=system('d8')   " VimInit d8      - save d8 when this Vim session first stRtz up to use as dRk pRt at Nd of STatusLine just before bright upd8 d8
+let     g:tSt8=system('wr zsh')   " quik tSt of vim system call 2 C if shL is zsh && can lOad my ~/.zshenv && get my where function 2 fInd the /usr/bin/zsh ?;
 let     g:cucf=1              " CUrsorColumFlag - flag to toggle whether :se cuc should be used (since dflt of it on gets slow whN lots of syntx hili on scrn)
 let     g:culb=1              " CUrsorLineBold  - flag to toggle whether :se cul below should use highlight with bold across whole line (dbl-mapd2Ctrl-L&&hls)
 let     &t_Cs = "\e[4:3m"
@@ -1074,7 +1075,7 @@ iab      liek  like
 iab  liekwise  likewise
 iab      Pelr  Perl
 iab      pelr  perl
-"ab        ;t  't       " K6PM8Yuk:Do not want! Suckz for xe `xte`-wrapr 4m@ 4 StRING tYPEZ tHAt SHOULDN't tRY BULLSHIt INSERt-MODE ABBREV8IONIZAtION DAMNIt ;)
+""iab      ;t  't       " K6PM8Yuk:Do not want! Sux 4 a8:XE `xte`-wrapr 4m@ 4 StRING tYPEZ tH@ SHOULDN't tRY BULLSHIt INSERt-MODE ABBREV8IONIZAtION DAMNIt ;) ;
 iab    Jarrko  Jarkko
 iab    jarrko  jarkko
 iab      moer  more
@@ -1155,8 +1156,8 @@ nmap                                 <silent> <expr>  zu  FS_FoldAroundTarget('^
 "====[ Much smarter "edit next file" command ]====
 "nmap <silent> <expr>  e  g:GTF_goto_file()
 "nmap <silent> <expr>  q  g:GTF_goto_file('`')
-""====[ Smarter interstitial completions of identifiers ]====
-"" When autocompleting within an identifier, prevent duplications...
+"====[ Smarter interstitial completions of identifiers ]====
+" When autocompleting within an identifier, prevent duplications...
 "augroup Undouble_Completions
 "  autocmd!
 "  autocmd CompleteDone *  call Undouble_Completions()
