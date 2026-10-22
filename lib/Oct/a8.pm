@@ -77,7 +77,7 @@ our %EXPORT_TAGS = ('all'  => [ qw($d $e $f $h $i $j $l $n $q $s $t $u $v $x $A 
                    #'b64'  => [ qw(CardB64   B64Card HandB64  B64Hand       ) ],
                    #'pd8a' => [ qw(                %pd8a   %zdnh %zplf %zloh) ],
                    ); # just load all singles (skipping sort $a && $b [&& $z] );
-our $VERSION='0.000_001';our $d8VS='QAIMG8s4';our $Auth='PipS <PipStuart@GMail.Com>'; # abov not!Xporting $b sinc cOlIdz with sort{$a<=>$b}; unalloc'd sOlOz^;
+our $VERSION='0.000_001';our $d8VS='QAKMALEX';our $Auth='PipS <PipStuart@GMail.Com>'; # abov not!Xporting $b sinc cOlIdz with sort{$a<=>$b}; unalloc'd sOlOz^;
 our $dbug=0;our $ucdf= eval('use Color::Similarity::RGB qw(distance);1') || 0; # try2set UseColorDistncFlag if optnl module is avail; /defhijlnqstuvx/i+/AZ/^;
 BEGIN{ # METHOD NAME ALIASES  # HTTPS://StackOverFlow.Com/questions/17543925/getting-used-only-once-possible-typo-warning-when-aliasing-subroutines
   *sf = \&F; *s4 = \&F; *O = \&o8; *N = \&n9;
@@ -1164,28 +1164,29 @@ sub shfl{ # takes an arrayref or list of items to shuffle, or pipe thru by lines
 our @d8cl=();our @d8cS=();my $pfms=0;my @sccz=();my($ptsz,$ptms)=(0,0); #gettimeofday(); # dflt d8ColrList lOded wi SKpd 4mz of ColrMap's d8bo,FDALyr,SGRplane;
 our $pfil="$ENV{'HOME'}/.log/p";our $pP; # `dd if=/dev/urandom count=1 bs=128 | sha512sum` can B Used 4 gNr8ing crypto-secure tOkNz && mAB bs=6 4 b64?;
 our $lfil="$ENV{'HOME'}/.log/prof.ls"; # load ProfileListD8aHash key => val (just spcd) pairz thN ck just p picked-profile-file for d8bo OvrId selection;
-if  (!-d  "$ENV{'HOME'}/.log"          ){mkdir("$ENV{'HOME'}/.log",0750);
-  open        my   $pflh, '>',$pfil or die "!*EROR*! Couldn't open  pfil:$pfil for writing! $!\n";binmode $pflh,':encoding(UTF-8)';print $pflh 'd';
-  close            $pflh            or die "!*EROR*! Couldn't close pfil:$pfil for writing! $!\n";
-  open        my   $lflh, '>',$lfil or die "!*EROR*! Couldn't open  lfil:$lfil for writing! $!\n";binmode $lflh,':encoding(UTF-8)';
-  print            $lflh q(# KCJL6Pls:~/.log/prof.ls crE8d by PipStuart <Pip@CPAN.Org> 4 a b64 key-table list of YouTube channel profile d8bo master color-sequences;my $d8VS='L1CLEAR1';
-# 2du:stRt adding optional extra layerz for DarkAvrgLite && SGRcodez B4 mAB also bkgrndaloh BtwEn && multiSGRz 2 flag attrz on thru all d8bo usagez;
-d RoYGCBMp                   # PipStuart Primary U2bchanL ; RoYGCBMp
-# RF3Hh2fr                   # PedantPip Secndry U2bchanL ; RfFrHh32 RHFrRHFf FFFFLLLL iIiuDUDu ;
-# R F 3 r H h 2 f            # Ped8bSPip Secndry U2bchanL ; RfFrHh32
-p D:RUIc A:FDCol L:3 Fa:fbuic D:HOI hfoi 2bI rki #D:RUIc A:FDCol L:3 Fa:rbuicL D:HOI hfoil 2b fk;
-c Cz8tZT9c FFDDAALL uiLlUIui # CapCtion8 terTary U2bchanL ; CzZcTt98
-g AG76Dadg FFLLAADD iuDuIOio # GuyGooway MGTOWay U2bchanL ; AaGg76Dd
-j Y45UuyoO FFDDAALL OUiDIuoi # JewJesus8 Skeptic U2bchanL ; Y45OUuyo ## Note: CantAlow OhhhHooo?;
-i NnSVvMms FFLLAADD UDuDUlLl # ImprovIs8 Ingland U2bchanL?; NnSsVvMm
-R YGTBUDSN                   # RappingRt AntiRed U2bchanL?; YGTBUDSN RiteBlue LeftOrng WiteUpKs ;
-B SBsbXx1N                   # BluBoieB8 NonBinG U2bchanL?; SBsbXx1N BcuzCmdz prpbplow weretAkN ;
-L LlHhvV23                   # LadyLacy8 Literal U2bchanL?; LlHhvV23
-O o5YOUJ4u                   # OldObsid8 DubStep U2bchanL?; o5YOUJo4 ## Note: DublOwoo WarnBugy?;
-W WJIqQwij                   # WigWearW8 costume U2bchanL?; WJIqQwij
-k KeEk10Nn                   # KekPepeK8 MemeR8n U2bchanL?; KeEk10Nn
-v VvMmLlPp                   # ValVocal8 BtBoxin U2bchanL?; VvMmLlPp
-);close            $lflh            or die "!*EROR*! Couldn't close lfil:$lfil for writing! $!\n";}
+sub pPwl{ # ProfilePicker WriteLogz;
+  if  (!-d  "$ENV{'HOME'}/.log"          ){mkdir("$ENV{'HOME'}/.log",0750);
+    open        my   $pflh, '>',$pfil or die "!*EROR*! Couldn't open  pfil:$pfil for writing! $!\n";binmode $pflh,':encoding(UTF-8)';print $pflh 'd';
+    close            $pflh            or die "!*EROR*! Couldn't close pfil:$pfil for writing! $!\n";
+    open        my   $lflh, '>',$lfil or die "!*EROR*! Couldn't open  lfil:$lfil for writing! $!\n";binmode $lflh,':encoding(UTF-8)';
+    print            $lflh q(# KCJL6Pls:~/.log/prof.ls crE8d by PipStuart <Pip@CPAN.Org> 4 a b64 key-table list of YouTube channel profile d8bo master color-sequences;my $d8VS='L1CLEAR1';
+  # 2du:stRt adding optional extra layerz for DarkAvrgLite && SGRcodez B4 mAB also bkgrndaloh BtwEn && multiSGRz 2 flag attrz on thru all d8bo usagez;
+  d RoYGCBMp                   # PipStuart Primary U2bchanL ; RoYGCBMp
+  # RF3Hh2fr                   # PedantPip Secndry U2bchanL ; RfFrHh32 RHFrRHFf FFFFLLLL iIiuDUDu ;
+  # R F 3 r H h 2 f            # Ped8bSPip Secndry U2bchanL ; RfFrHh32
+  p D:RUIc A:FDCol L:3 Fa:fbuic D:HOI hfoi 2bI rki #D:RUIc A:FDCol L:3 Fa:rbuicL D:HOI hfoil 2b fk;
+  c Cz8tZT9c FFDDAALL uiLlUIui # CapCtion8 terTary U2bchanL ; CzZcTt98
+  g AG76Dadg FFLLAADD iuDuIOio # GuyGooway MGTOWay U2bchanL ; AaGg76Dd
+  j Y45UuyoO FFDDAALL OUiDIuoi # JewJesus8 Skeptic U2bchanL ; Y45OUuyo ## Note: CantAlow OhhhHooo?;
+  i NnSVvMms FFLLAADD UDuDUlLl # ImprovIs8 Ingland U2bchanL?; NnSsVvMm
+  R YGTBUDSN                   # RappingRt AntiRed U2bchanL?; YGTBUDSN RiteBlue LeftOrng WiteUpKs ;
+  B SBsbXx1N                   # BluBoieB8 NonBinG U2bchanL?; SBsbXx1N BcuzCmdz prpbplow weretAkN ;
+  L LlHhvV23                   # LadyLacy8 Literal U2bchanL?; LlHhvV23
+  O o5YOUJ4u                   # OldObsid8 DubStep U2bchanL?; o5YOUJo4 ## Note: DublOwoo WarnBugy?;
+  W WJIqQwij                   # WigWearW8 costume U2bchanL?; WJIqQwij
+  k KeEk10Nn                   # KekPepeK8 MemeR8n U2bchanL?; KeEk10Nn
+  v VvMmLlPp                   # ValVocal8 BtBoxin U2bchanL?; VvMmLlPp
+  );close            $lflh            or die "!*EROR*! Couldn't close lfil:$lfil for writing! $!\n";}}
 sub PrfM{my($pcsz,$pcms)=gettimeofday() ;return() if($pcsz == $ptsz);($ptsz,$ptms)=($pcsz,$pcms); # just retn rIt AwA if calld multi tImz during sAm second;
   my $pfmc=eval("(-M        \"$pfil\")");return() if(defined( $pfmc) && # proly OK2upd8 ProFile Modific8ion Start B4 Nd of subroutine;
                                                      $pfmc == $pfms); $pfmc=0 unless(defined($pfmc)); $pfms=$pfmc;
@@ -1217,9 +1218,10 @@ sub PrfM{my($pcsz,$pcms)=gettimeofday() ;return() if($pcsz == $ptsz);($ptsz,$ptm
                               $rnd8=$sb64[int(rand(64))];while(length($rnd8) < 8){my $rndc=$sb64[int(rand(64))];$rnd8.=$rndc if($rnd8 !~ /[$rndc]/);}
         my $rstr='FDALOH'; my $rndl='';while(length($rndl) < 8){$rndl.=substr($rstr,int(rand(length($rstr))),1);} $rstr=join('',keys(%sgrm));
                            my $rnds='';while(length($rnds) < 8){$rnds.=substr($rstr,int(rand(length($rstr))),1);} # shud fix up psrand 4 SGR 2 spAc gap many;
-        open       $lflh,'>>',$lfil or die "!*EROR*! Couldn't open  lfil:$lfil for writing! $!\n";binmode $lflh,':encoding(UTF-8)';
-        say        $lflh                   "$b64c $rnd8 $rndl $rnds # PsRandom gener8d8 L19LGnr8 ;";$pldh{$b64c}=$rnd8;$pldl{$b64c}=$rndl;$plds{$b64c}=$rnds;
-        close      $lflh            or die "!*EROR*! Couldn't close lflh! $!\n";}}
+      # open       $lflh,'>>',$lfil or die "!*EROR*! Couldn't open  lfil:$lfil for writing! $!\n";binmode $lflh,':encoding(UTF-8)';
+      # say        $lflh                   "$b64c $rnd8 $rndl $rnds # PsRandom gener8d8 L19LGnr8 ;";$pldh{$b64c}=$rnd8;$pldl{$b64c}=$rndl;$plds{$b64c}=$rnds;
+      # close      $lflh            or die "!*EROR*! Couldn't close lflh! $!\n"; # comNting out autO-apNding pseudo-random d8bo,layr,&&sgrz sinc not! nEded;
+      }}
     if   (defined(            $pfil) && -r "$pfil"){
       open    my   $pflh, '<',$pfil or die "!*EROR*! Couldn't open  pfil:$pfil for reading! $!\n";binmode $pflh,':encoding(UTF-8)';
       while($line=<$pflh>){if($line=~ /^\s*([0-9A-Z._]+)/i && exists($pldS{$1})){   $pP  =  $1;$cmap{'d8bo'}=$cmap{'d8bl'}=$cmap{'d8bs'}='';
@@ -1246,8 +1248,8 @@ sub PrfM{my($pcsz,$pcms)=gettimeofday() ;return() if($pcsz == $ptsz);($ptsz,$ptm
     $schr=$sccz[$dndx] if($#sccz >= $dndx && defined($sccz[$dndx]) && length($sccz[$dndx]));
     if(exists($ENV{'TERM'}) && $ENV{'TERM'} =~ /linux/){$lchr='O';$schr='';}
     $d8cS[$dndx]=$d8cl[$dndx]=S("$lchr:$cchr$schr");}
-  if(defined($pP) && exists($pldS{$pP}) && $pldS{$pP}=~ /\s/){@d8cS=();for my $spdS (split(/\s+/,$pldS{$pP})){push(@d8cS,S($spdS));}}}
-PrfM();
+  if(defined($pP) && exists($pldS{$pP}) && $pldS{$pP}=~ /\s/){@d8cS=();for my $spdS (split(/\s+/,$pldS{$pP})){push(@d8cS,S($spdS));}}
+} #PrfM(); # no longer autO-call PrfM which can 
   @sccz=split(//   ,$cmap{'d8bs'}); # hopefully fix d8::fldz undef d8cS probz?
   @sccz=split(/\s+/,$cmap{'d8bs'}) if($cmap{'d8bs'}=~ /\s/);
   for my $dndx (0 ..length($cmap{'d8bo'}) - 1){my $cchr=substr($cmap{'d8bo'},$dndx,1);my $lchr='F';my $schr='B';
@@ -1362,7 +1364,7 @@ sub spcs{my($ssfn,$CP)=@_; # subroutine handling SPeCial separ8or character Subs
             $ssfn=~s/(\++)                     /$R$1$CP/xg   if($CP ne $R);
             $ssfn=~s/(\++)                     /$B$1$CP/xg   if($CP eq $R);
   return   ($ssfn);} # 2du:fix c8fn UTF8 decoding to try to only do where needed like lsd8,sync all highlightz,
-sub c8fn{  my $fnam;my $aflg=0;$aflg=1 if(@_);my $zflg=0;if($aflg && $_[0] =~ /^-*z$/){$zflg=1; shift(@_);$aflg=0 unless(@_);}my $sflg=0;my $rtxt='';
+sub c8fn{my $fnam;my $aflg=0;$aflg=1 if(@_);my $zflg=0;if($aflg && $_[0]=~ /^-*z$/){$zflg=1;shift(@_);$aflg=0 if(!@_)}my $sflg=0;my $rtxt='';my $B=S('H:B');
   open my $sin8,'<&','STDIN'  or die "Can't open  duplic8 STDIN  handle: $!";binmode $sin8,':encoding(UTF-8)'; # crE8 local duplic8 of global
   lodl() unless(%lsp8 && %lspt);my $Y=$d8cS[2] if(defined($d8cS[2])); # mk sure global LS_COLORS d8a regXz R lOded,&& set nwlocl Y dir-sepR8or2prOfIl pal8Ntry;
   if(!$aflg && !-t $sin8){     $sflg=1;   @_=<$sin8>;} # BlO renamed $k $kolumn_x to $v for Named color && String 2!colide with
@@ -1408,7 +1410,7 @@ sub c8fn{  my $fnam;my $aflg=0;$aflg=1 if(@_);my $zflg=0;if($aflg && $_[0] =~ /^
       $tnam    =~s/\/home\/$ENV{'USER'}/$lspt{'di'}~/ if($zflg); # replace absolute path with rel8ive home in regular dir colr (only4Zsh prmpt,but bash ndz2!)
       #f($tnam =~s/(\/)([-0-9A-Z._~+]+)/$Y$1$B$2/gi){$tnam=~s/([-0-9A-Z._~+]+)(\/)/$1$Y$2/i;} # F1FLAAER:atMpt2mk c8fn colrnAmd pathdirz&&sepR8orz(l8rUz'di')
       #  $tnam =~s/([-0-9A-Z._~+]+)(\/)/$lspt{'di'}$1$Y$2/gi;                                 # F26LB0Ib:atMpt2mk c8fn colrnAmd pathz&&sepR8orz(l8rUzHrc:s 4Y)
-      if($tnam =~s/(\/)([-0-9A-Z._~+]+)/$Y$1$lspt{'di'}$2/gi){$tnam=~s/([-0-9A-Z._~+]+)(\/)/$1$Y$2/i;} # maybe replace all of these if just $tnam =~ /\//
+      if($tnam =~s/(\/)([-0-9A-Z._~+]+)/$Y$1$B$2/gi){$tnam=~s/([-0-9A-Z._~+]+)(\/)/$1$Y$2/i;} # maybe replace all of these if just $tnam =~ /\//
       $fnam=~ s/^.*$/$g$tnam$lspt{'no'}/; # abov fix just / $Y,don't $B ovrId stRt of fIlnAm@Nd,alow stRting rel8ive non-absolute dirname,NAbl zshcolrz4prmpt
       if($aflg){                 $rtxt .="$fnam ";} # substitute colorz && reset 2 NOrmal then append return text && strip spacez at end
       else     {$fnam =~ s/\n$//;$rtxt .= $fnam  ;}}} $rtxt =~ s/\s$//                    if($aflg);my $lpno=$lspt{'no'};$lpno=~ s/(\[)/\\$1/g;
