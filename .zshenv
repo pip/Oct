@@ -913,7 +913,7 @@ Al       M='mplayer';
 Al m='mn'; # m() { mn   $@; }     # unalias   m && redefining as simple function wrapper resolves manpage param alias expansion problM (but still will glob)
 Al      mm=' mikmod'; # prolly scream 3 times if you can read hahahaha !!! :)  # test local DeepSeek-R1 ("DpCk") LargeLanguageModel $optn;
 Al ol=ollama ols='ol list' olp='ol pull' olr='ol run' oll='ol launch' olsrv='ol serve' cg=chatgpt gpt=cg cdx=codex; # QAKM4cdx:just yStrdA nstld ChatGPT!;
-Al cr=' cdx resume 01a15365-c87e-7f12-820c-8ff43ec27203';
+Al cr=' cdx resume';
 Al cra='cdx resume --all'; # CodexResumeAll;
 Al cfa='cdx  fork  --all'; # Codex Fork All;
 Al crs='cra --sandbox read-only --no-alt-screen'; # CodexResumeSandbox(RO nOaltscrn);
