@@ -1,9 +1,10 @@
 # QAJMANLY:~/.zshenv by PipS <PipStuart@GMail.Com>; nOt:this should get sourced automatically every time Zsh gets invoked && hopefully can src in .bashrc too!;
-alias Al=alias Xp=export Bk=bindkey UA=unalias Sh=shift Rn=return Wh=while Th=then Ls=elif; # SH iz SHutdownHalt && RN iz RebootNow stil;
+if [ -n "${BASH_VERSION-}" ]; then shopt -s expand_aliases; fi; # nEd aliasez Xpanded rIght AwAy for bash 2 be able 2 handle all my Al && Xp deliber8 prFerNcz;
+alias Al=alias Xp=export UA=unalias Sh=shift Rn=return Wi=while Th=then Li=elif Ls=else; # tAk mor from pR? SH iz SHutdnHalt&& RN iz RebootNow stil;
 wh(){ which "$@"; } # maybe the original wh alias abov was expanding to an old Csh binary nstd of DsIrd Zsh biltin && thN alsO Xpandng pRam2or nah Lswher2?
 wr(){ where "$@"; } # might just be the same as `which` in most or all cases?; 2du:lern if U can combIn multi Xp Vr=VarValue On=SameLine B4=SemiColon ?;
-Xp Vers='0.000001';Xp d8VS='QAJMKRE8';Xp Auth='PipS <PipStuart@GMail.Com>'; # 'Xp','Al','Bk' => export,alias,bindkey  'sl','cl' => SymLink,CountLines,… ;
-if     [[       "$SHELL"    == "" ]] ||
+Xp Vers='0.000001';Xp d8VS='QAMM8xBk';Xp Auth='PipS <PipStuart@GMail.Com>';
+if     [[       "$SHELL"    == "" ]] || # 2du:wrap all `which` callz wi tStz 4 'not found' 2 set MpT or mAB '-1' or some betr indic8ion of unavailabiliT;
        [[       "$SHELL" =~ bash  ]]; then       Xp SHELL=$(which   zsh);Xp HShl="$SHELL";fi; # H Xport mAB shud B HshL 4 prOnunC8ion nstd?;
 if     [[       "$HOSTNAME" == "" ]]; then       Xp HOSTNAME="$(hostname)";fi; #`hostname`retnz fsckd nwlInz\n4CygWinzRxvt... ||smthng els lame  =(
 if     [[       "$HOST"     == "" ]]; then       Xp     HOST="$HOSTNAME";fi;Xp VERBOSE='1'; # set flag to print debug && status info from system utilz
@@ -27,11 +28,14 @@ if     [   -z  "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then   # set
 Xp HOa8='Oct::a8';Xp HOb8='Oct::b8';Xp HOc8='Oct::c8';Xp HOd8='Oct::d8'; # Perl Octl Module nAme abbrEV8ionz 4 abcd8 Ufk8;
 Xp HOU8='Oct::U8';Xp HOf8='Oct::f8';Xp HOk8='Oct::k8';Xp HTHi='Time::HiRes' ;
 # BlO  TMP from HTTPS://StackOverFlow.Com/questions/2435062/what-happened-to-the-tmp-environment-variable (mAB add -d -t 2 mktemp call aftr rEding man pgz?);
-Xp TMP="${TMP:-$(dirname $(mkt  -u))}/"; # OvrIdDflt /tmp wi ~/.tmp if the latter Xistz, thN Xport othr 3 common ENV varz which mIt B Used 2 design8 TMP;
-if     [[  -d   "$HOME/.tmp"        ]]; then  Xp      TMP="$HOME/.tmp/";fi;Xp TEMP="$TMP";Xp TMPDIR="$TMP";Xp TMPPREFIX="$TMP";
-Xp   EDITOR="$HEdt";Xp PERL5LIB="$HOME/lib:$HOME/lib/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:$HOME/lib/perl5/lib/perl5:./lib";
-Xp    PAGER="$HPgr";Xp PERL_TEST_POD='1'   ;Xp PERLDOC="-w width:$COLUMNS"; #pdoc;`which most`||PAGER=`which less`||PAGER=`which more`;Xp PAGER;
-Xp MANPAGER="$HPgr";Xp PERL_TEST_CRITIC='1';Xp PMARSHOME='/usr/share/games/pmars/macros'; #fyn,letz get crit! ;) && pmars-sdl needz its macroz; nOt:pm PerlMan;
+#Xp TMP="${TMP:-$(dirname $(mkt  -u))}/"; # OvrIdDflt /tmp wi ~/.tmp if the latter Xistz, thN Xport othr 3 common ENV varz which mIt B Used 2 design8 TMP;
+if     [[ "$TMP" == "" ]]; then Xp TMP="/tmp/"; fi;
+if     [[ -d "$HOME/.tmp" ]] && [[ -w "$HOME/.tmp" ]]; then Xp TMP="$HOME/.tmp/"; fi;
+if     [[ "$TMP" != "" ]]; then Xp TEMP="$TMP";Xp TMPDIR="$TMP"; fi;
+Xp   EDITOR="$HEdt";Xp PERL5LIB="$HOME/lib:$HOME/lib/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:$HOME/lib/perl5/lib/perl5";
+Xp    PAGER="$HPgr";Xp PERLDOC="-w width:$COLUMNS"; #pdoc;`which most`||PAGER=`which less`||PAGER=`which more`;Xp PAGER;
+Xp MANPAGER="$HPgr";Xp PMARSHOME='/usr/share/games/pmars/macros'; #fyn,letz get crit! ;) && pmars-sdl needz its macroz; nOt:pm PerlMan;
+#Xp PERL_TEST_POD='1';Xp PERL_TEST_CRITIC='1'; # these shud not be global but shud B just NAbld whN runing tStz wher U want thM!;
 Al blm='bat -l man' bm=blm;Xp SDL_VIDEO_CENTERED='center'; #Xp SDL_VIDEO_WINDOW_POS='x,y'; try2cNtrSDLapzfrom: HTTP://SDL.Beuc.Net/sdl.wiki/SDL_SetVideoMode
 #                          Xp SDL_WINDOWPOS_CENTERED='1' ; # try 2 center SDL applic8ionz from:
 #                              HTTP://Wiki.LibSDL.Org/moin.cgi/SDL_SetWindowPosition?highlight=%28\bCategoryVideo\b%29|%28CategoryEnum%29|%28CategoryStruct%29
@@ -67,6 +71,13 @@ Al q='Q';Xp q="'";Xp qq='"'; # OCBLLETS:until q() && qq() get remapd from Perl 2
 Al     epc='  ep|b8clr'; #d8 e|cma!=epoc # rEgRdng sudo abov cannot run both -Intractiv && -Shell optz; # d8 e>epoc by~3.56528hourz 13Ksecz sOmABclOs2UTC?;
 Al    epoc="   pab   'o8 cma $HTHi::time'"; # alias 2 output non-colrd epoch float secz from Perl Time::HiRes wi cma int KMGT sepR8orz; epoc==`date +%s`;
 Al      ep="   pab '\$t6=b64($HTHi::time);\$t6=~s/(%....).+\$/\$1/;o8 coma(\$t6)'"; # alias 2 gNr8 b64 trunc8d coma'd epoch float secondz && abov colrz;
+Xp PATH="$HOME/bin:$HOME/.local/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/dvl/t8/raku/rakudo-moar-2022.12-01-linux-x86_64-gcc/bin:$HOME/dvl/t8/raku/rakudo-moar-2022.12-01-linux-x86_64-gcc/share/perl6/site/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:$HOME/.nodebrew/current/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:$HOME/lib/perl5/bin:$HOME/lib/Oct/f8/pal8:$HOME/dvl/t8/dmd/linux/bin:$HOME/.vim/bundle/vim-superman/bin:$PATH";
+DDEV(){ command perl -C0 -E 'my $is = exists($ENV{IS}) ? $ENV{IS} : ($ENV{PATH} //  q());
+                             my $dc = length($ENV{DC} // q()) ? $ENV{DC} : q(:);my %seen;
+  print join($dc, grep { !$seen{$_}++ } split(/\Q$dc\E/, $is, -1));'; } # QAKMIGr8:Wow! ChatGPT made a way better version here than I wrote below. Impressed!;
+#DDEV(){ perl -C0 -E '$is=$ENV{PATH};$is=$ENV{IS} if(exists($ENV{IS}) && length($ENV{IS})); # De-Duplic8 EnvironmentVariable, InputString, DelimiterCharacter;
+#                     $dc=q(:);      $dc=$ENV{DC} if(exists($ENV{DC}) && length($ENV{DC}));@sp=split(/$dc/,$is);$ps=@sp; # SplitPartz, PartzSize, iNdexUp2du;
+# for(1..$#sp){for my $nu(0..($ps-$_)-1){if($sp[$ps-$_] eq $sp[$nu]){splice(@sp,$ps-$_,1);last;}}}; print join($dc,@sp);'; } # can backtix this bak in2Nvar?;
 # PerlDoc PipeExec PipeLess was orig called pelS, thN pdel B4 tAkng Ovr pdoc 4 colrng perldoc output thru less (2 hopefully look nIce lIk man pAgz in most);
 # QAIMHZsh:HTTPS://Unix.StackExchange.Com/questions/217932/run-zshrc-when-passing-command-via-c in4md mE th@ I can`zsh -ic 'P "%-4d%8s" 63 "sixthrE"'`from pl;
 #   while Zsh doesnot load .zshrc in non-interactive shells, it does load .zshenv so if youare doing setup that doesnot require a tty, such as configuring
@@ -139,8 +150,8 @@ Xp hK="[100m"  ;Xp hR="[101m"  ;Xp hO="[103m"  ;Xp hY="[103m"  ;Xp hG="[102
 Xp hC="[106m"  ;Xp hB="[104m"  ;Xp hM="[105m"  ;Xp hP="[105m"  ;Xp hW="[107m"  ; # set high-intensity (bg);
 Xp HK="[90m"   ;Xp HR="[91m"   ;Xp HO="[93m"   ;Xp HY="[93m"   ;Xp HG="[92m"   ; # set HIGH-INTENSITY (FG);
 Xp HC="[96m"   ;Xp HB="[94m"   ;Xp HM="[95m"   ;Xp HP="[95m"   ;Xp HW="[97m"   ; # d8bo BlO just scalar or hash-key? Look-it-up!;
-Xp D0=$(pla 'o8 $d8cS[0]');Xp D4=$(pla 'o8 $d8cS[4]');Xp D2=$(pla 'o8 $d8cS[2]');Xp D6=$(pla 'o8 $d8cS[6]'); # d8cS 0..7     &&  d8bo  ;
-Xp D1=$(pla 'o8 $d8cS[1]');Xp D5=$(pla 'o8 $d8cS[5]');Xp D3=$(pla 'o8 $d8cS[3]');Xp D7=$(pla 'o8 $d8cS[7]'); #port D8=$(pla 'o8 $d8bo'); # 2du;
+#Xp D0=$(pla 'o8 $d8cS[0]');Xp D4=$(pla 'o8 $d8cS[4]');Xp D2=$(pla 'o8 $d8cS[2]');Xp D6=$(pla 'o8 $d8cS[6]'); # d8cS 0..7     &&  d8bo  ;
+#Xp D1=$(pla 'o8 $d8cS[1]');Xp D5=$(pla 'o8 $d8cS[5]');Xp D3=$(pla 'o8 $d8cS[3]');Xp D7=$(pla 'o8 $d8cS[7]'); #port D8=$(pla 'o8 $d8bo'); # 2du;
 Xp HpPF='0'; # set 8sh "H" profilePicker Flag to 1 to popul8 base single-char color variablez with l8st d8bo entries as desired override of standard Dfltz;
 # if setng 2 1,rEmMbr th@ all thEz baktix BlO R super slO evry tIm Zsh stRtz up or I run src sO probably mk fastr somehow B4 NAblng this stuf th@z barely Uzd!;
 #      [[       "$HUsr"     == *I   ]]; then  # try to remember that non-"pip" users are not going to see these profile-based changes when sourcing this file!;
@@ -187,9 +198,9 @@ Al EMx='/snap/emacs/current/usr/bin/emacs'; # --version 28.2 2022 … not sure h
 Al EM='                             emacs'; # --version 26.3 2019
 Al eM="EM -g '${COLUMNS}x${ROWS}'"; # runs DoomEmacs hopefully;
 Al e=' eM -nw' wm='wikiman'; # using -nw for NoNewWindow to run in calling terminal instead of spawning own new graphical window like above just EM;
-path=($HOME/bin $HOME/.local/bin /usr/local/sbin /usr/sbin /sbin                    .  $HOME/dvl/t8/raku/rakudo-moar-2022.12-01-linux-x86_64-gcc/bin
-  $HOME/dvl/t8/raku/rakudo-moar-2022.12-01-linux-x86_64-gcc/share/perl6/site/bin       $HOME/.cargo/bin $HOME/.emacs.d/bin $HOME/.nodebrew/current/bin
-  /usr/local/bin /usr/bin /bin /opt/bin $HOME/lib/perl5/bin $HOME/lib/Oct/f8/pal8 $HOME/dvl/t8/dmd/linux/bin $HOME/.vim/bundle/vim-superman/bin $path);
+# typeset -U path;path=($HOME/bin $HOME/.local/bin /usr/local/sbin /usr/sbin /sbin       $HOME/dvl/t8/raku/rakudo-moar-2022.12-01-linux-x86_64-gcc/bin
+#   $HOME/dvl/t8/raku/rakudo-moar-2022.12-01-linux-x86_64-gcc/share/perl6/site/bin       $HOME/.cargo/bin $HOME/.emacs.d/bin $HOME/.nodebrew/current/bin
+#   /usr/local/bin /usr/bin /bin /opt/bin $HOME/lib/perl5/bin $HOME/lib/Oct/f8/pal8 $HOME/dvl/t8/dmd/linux/bin $HOME/.vim/bundle/vim-superman/bin $path);
 # old:atmptd2nstl DMDv2.052 on Java7OpenJDK && GoogleAndroid-18 (4.2), now J5BMGPOM:tryng2setup l8st NodeJS 4 React_n8ive Expo d8ok nstdof nodebrew hopefully;
 #          path=($path  $HOME/dvl/t8/node $HOME/.nodebrew/current/bin );export path; # I7CMBrew:got GitHub NodeBrew 4NodeJS; Not sure why src doesn't get this?
 #          path=($path  $HOME/dvl/jobz/InnovationProtocol/Android/Android-Google-Linux_x86-SDK-1.6_r1-99GFQiD/tools); # old2009GoogleAndroid dvlpmnt-toolz path
@@ -197,14 +208,17 @@ path=($HOME/bin $HOME/.local/bin /usr/local/sbin /usr/sbin /sbin                
 #          path=($path  $HOME/.rakudobrew/bin $HOME/.rakudobrew/moar-nom/install/share/perl6/site/bin              ); # G1NLJQKA:try out RakudoBrew for Perl6
 # eval               "$($HOME/.rakudobrew/bin/rakudobrew init -)"; fi; fi # this shud lOd RakudoBrew autOmaticly with new shells (Xample said add 2 .profile)
 #          path=(       $HOME/lib/site/PerlBrew/bin   $HOME/lib/site/Perlbrew/perls/current/bin               $path); # CrAzY PerlBrew wanting2crE8 perl5 in~!
-Xp AUTHOR_TESTING='1'; # Xp    PERLBREW_ROOT="$HOME/lib/site/PerlBrew";                                       #   ... && 2prEpNd th@+/perlbrew/**/bin!
-Xp PERL_LOCAL_LIB_ROOT="       $HOME/lib/perl5";Xp QT_XCB_DEBUG_XINPUT_DEVICES='1'; # HTTPS://Wiki.Qt.IO/Building_Qt_5_from_Git#Getting_the_source_code
+#Xp AUTHOR_TESTING='1'; # Xp    PERLBREW_ROOT="$HOME/lib/site/PerlBrew";                                       #   ... && 2prEpNd th@+/perlbrew/**/bin!
+Xp PERL_LOCAL_LIB_ROOT="$HOME/lib/perl5"; #Xp QT_XCB_DEBUG_XINPUT_DEVICES='1'; # HTTPS://Wiki.Qt.IO/Building_Qt_5_from_Git#Getting_the_source_code
 Xp PERL_MB_OPT="--install_base $HOME/lib/perl5";Al pnp='/opt/Qt5.13.1-pnp/examples/widgets/tools/plugandpaint/plugandpaint &'; # JCKLFIXR:Works well!;
-Xp PERL_MM_OPT="  INSTALL_BASE=$HOME/lib/perl5";      # I know these && path below were slightly different on Ryu, && Aku hasn't even needed lib/perl5;
+Xp PERL_MM_OPT="INSTALL_BASE=$HOME/lib/perl5";        # I know these && path below were slightly different on Ryu, && Aku hasn't even needed lib/perl5;
 Xp CHROME_USER_DATA_DIR="$HOME/.chrome";              # G1NL5XYZ:Used2hv2vim /opt/google/chrome/google-chrome &&nsrt cd /tmp B4 last blok aftrEch upd8;
-Xp LD_LIBRARY_PATH="/usr/local/lib:/usr/local/lib/lua/5.2:/usr/lib:/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"; #:/opt/Qt5.13.1-pnp/lib"; # JCJLM4LD:Added opt 2C if bilt Qt could run krita AgN;
-Xp LUA_PATH='/usr/local/share/lua/5.2/?.lua;/usr/local/share/lua/5.2/?/init.lua;/usr/local/lib/lua/5.2/?.lua;/usr/local/lib/lua/5.2/?/init.lua;/usr/share/lua/5.2/?.lua;/usr/share/lua/5.2/?/init.lua;./?.lua;./?/init.lua;/home/pip/.luarocks/share/lua/5.2/?.lua;/home/pip/.luarocks/share/lua/5.2/?/init.lua';
-Xp LUA_CPATH='/usr/local/lib/liblua.so;/usr/local/lib/lpeg.so'; #/usr/lib/x86_64-linux-gnu/liblua5.2.so;/usr/local/lib/lua/5.2/?.so;/usr/lib/x86_64-linux-gnu/lua/5.2/?.so;/usr/lib/lua/5.2/?.so;/usr/local/lib/lua/5.2/loadall.so;./?.so;/home/pip/.luarocks/lib/lua/5.2/?.so';
+Xp OP="$LD_LIBRARY_PATH"; # save temporary 2 tSt if it had a value already to be appended after it is next set with main pathz d8a;
+Xp LD_LIBRARY_PATH="/usr/local/lib:/usr/local/lib/lua/5.2:/usr/lib:/usr/lib/x86_64-linux-gnu"; #:/opt/Qt5.13.1-pnp/lib";
+if [[ "$OP" != "" ]]; then # save OldOrigPath, thN if there was one append it back on to end of what was just set, thN set InputString 4 DeDuplic8 bak 2 LLP;
+  Xp IS="$LD_LIBRARY_PATH:$OP";Xp LD_LIBRARY_PATH=`DC= DDEV`;Xp OP= IS= ; fi; # baktik DeDup wi MpT DelimChar 2 get Dfalt ':' thN Xport rEset MpT OldPath&&IS;
+#Xp LUA_PATH='/usr/local/share/lua/5.2/?.lua;/usr/local/share/lua/5.2/?/init.lua;/usr/local/lib/lua/5.2/?.lua;/usr/local/lib/lua/5.2/?/init.lua;/usr/share/lua/5.2/?.lua;/usr/share/lua/5.2/?/init.lua;./?.lua;./?/init.lua;/home/pip/.luarocks/share/lua/5.2/?.lua;/home/pip/.luarocks/share/lua/5.2/?/init.lua';
+#Xp LUA_CPATH='/usr/local/lib/liblua.so;/usr/local/lib/lpeg.so'; # ChatGPT told me not 2 mk workaroundz global for Qt or Lua && put thM in app wraprz betr;
 Xp PKG_CONFIG_PATH="/usr/lib/pkgconfig"; #xport QML_IMPORT_TRACE='1';  # E2LLATsm:PkgCnfgPth Added4SrcHiLite; ## belo aliases may no longer work aftr mvd;
 Al vpnp="cd $HOME/.mk/qt5/qt5.13.1/qtbase/examples/widgets/tools/plugandpaint;g8f;cd app;vim *.*;gas"; #thN `gcm $MSG` g8co -b 5.13.1-pnp origin/5.13.1;
 Al mpnp="cd $HOME/.mk/qt5/Qt5.13.1-pnp;./config.status -recheck-all;cd qtbase/examples/widgets/tools/plugandpaint;mkcl;mkj;smi;pnp "; # v ed,m mk&&instl
@@ -267,12 +281,13 @@ Al sysc='  systemctl' syc='sysc  '; # systemd control:`syc list-unit-files --typ
 Al  cdc='coredumpctl' cdr='cdc -r'; # seg-fault core-dumps, with useful params -r Reverse, -S $DATE Since YYYY-MM-DD date, --no-pager 4 just STDOUT;
 Al  cds='cdc -S' cdS='cds' cdsK='cds 2020-01-01'; # shortcuts for doing --since=$DATE && cdsK does since `d8 K11` for everything Year 2020 on;
 Al   dn='drnm  ' drnm='dirname   '; # to view %ENV in zsh, $IFS NUL requires `set | grep -a` 2 procS bInary as-if --text or `printenv | grep TMP`?;
-Al  tdc=timedatectl;                             Xp TZ='America/Chicago'; # .. which is the same as my /etc/timezone file && maybe CDT -5 at D8FCQgn;
-#xport DST='0'; watch=(notme);                  #Xp TZ='CST';     # DaylightSavingsTime?;                            | Coordinated Universal Time (UTC|GMT)
-#f   [[ "$HOTy" ==         cygwin* ]]; then Xp TZ='PST'; fi; # United States of America / Los Angeles (PST|PDT) | Coordinated Universal Time (UTC|GMT)
+Al  tdc=timedatectl; if [[ "$TZ" == "" ]]; then Xp TZ='America/Chicago'; fi; # .. which is the same as my /etc/timezone file && maybe CDT -5 at D8FCQgn;
+#Xp DST='0'; watch=(notme);                    #Xp TZ='CST';     # DaylightSavingsTime?;                            | Coordinated Universal Time (UTC|GMT)
 # J5FMLoTH:HTTPS://AskUbuntu.Com/questions/359753/gtk-warning-locale-not-supported-by-c-library-when-starting-apps-from-th said case-sensitiv locale stuff BlO;
-Xp LANG='en_US.UTF-8';Xp LC_ALL="$LANG";Xp LC_CTYPE="$LANG";Xp LANGUAGE="$LANG"; # orig mA hav nEded thEs lang setngz4 urxvt?
-Xp LC_MESSAGES='C.utf8'; # override locale for terminal zsh to global default for messages;
+if [[ "$LANG"     == "" ]]; then Xp LANG='en_US.UTF-8'; fi;
+if [[ "$LC_CTYPE" == "" ]]; then Xp LC_CTYPE="$LANG"  ; fi; #Uzd2alsO Xp LC_ALL="$LANG"; but ChatGPT said rm LC_ALL 4ovrIdz; orig. mA hav nEded thEz…
+if [[ "$LANGUAGE" == "" ]]; then Xp LANGUAGE="$LANG"  ; fi; #  …lang setngz 4 urxvt? bSt 2 only load all 3 remaining there if they are already MpT B4;
+if [[ "$LC_MESSAGES" == "" ]]; then Xp LC_MESSAGES='C.utf8'; fi; # ovrId locale 4 terminal zsh 2 global default 4 messages; now only load LC_Msgz if MpT 2!;
 Xp NCURSES_NO_UTF8_ACS='0'; # N1ML8CUR: set ncurses to not use Alternate CharSet since there's real Unicode box-drawing chars that render in putty fine;
 # 82DJ06ZE:instead of abov relying on exported ENV variablez it seemz betr2set /etc/(env.)?d(efault)?/(02)?locale or2use `localedef` probably4mostUsecases?;
 #Xp TERM='linux'; # find out when explicit TERM assignment has seemed necessary (maybe for vim colors but fixed by .vimrc "set background=dark"?)
@@ -280,7 +295,7 @@ Xp NCURSES_NO_UTF8_ACS='0'; # N1ML8CUR: set ncurses to not use Alternate CharSet
 #Xp TERMINFO_DIRS='/usr/lib/terminfo'; # specify explicit TERMINFO_DIRS path too (probably redundant && not needed except for like NixOS && such);
 #Xp COLORTERM='24bit'; # according 2 HTTPS://Gist.GitHub.Com/XVilka/8346728 this mA nEd 2B set sO th@ l8r versions of GNU Screen can support true/direct colrz;
 Xp COLORTERM='truecolor'; # according 2 HTTPS://GitHub.Com/TermStandard/colors mAB 'truecolor' is more widely detected than '24bit', sO I'm preferring tc nstd;
-Al kr=krita bl=blender;Xp PYTHONPATH='/usr/lib/x86_64-linux-gnu/krita-python-libs/krita'; # nothing set this B4 && krita wantd it,but Xprt here is!enuf;
+Al kr=krita bl=blender; #Xp PYTHONPATH='/usr/lib/x86_64-linux-gnu/krita-python-libs/krita'; # nothing set this B4 && krita wantd it,but Xprt here is!enuf;
 Al ki=kitty kn=kitten kt=ki kit=ki; # PCMLDkit:just upd8d from old /usr/bin/kitty-v0.21.2 (mAB instald via snap?) to new ~/.local/kitty.app/bin/kitty-v0.44.0;
 Al kc='pal8 -q -C_8C' ysap='curl YSaP.sh/theme' hotd='curl -L HotDogStand.LoL'; # quietly Color Kitty Cursor Red; set thEme2 Dave's YouSuk@Programng or HotDog;
 # QAHMGEEK:just lernd th@ in kitty Ctrl-Shft-h opNz all scrollback in less,thN g (go2top), | (wrIt2pIpe), $ (go2Nd), thN Enter 'dd of=~/.tmp/kityscrl.u8' 2sAv;
@@ -301,38 +316,9 @@ Xp HHAl='--hyperlink=always'; # QAIM9AWE:saw on interview with KovidGoyal of Kit
 Xp HHAu='--hyperlink=auto  '; # mIght alsO want -w(idth) `tput cols` 2 set 2 term column-width;
 Xp LS_OPTIONS="$HCAu $HHAl"; #'--color=auto --hyperlink=auto'; # LsOptz: --color=always|yes|force|never|no|none|auto|tty|if-tty;
 Xp CVS_RSH=`which ssh`;Xp CVSROOT='/var/cvs';Al dir="dir $LS_OPTIONS" vdir="vdir $LS_OPTIONS"; # dir Cmz 2 B sAm az ls && vdir just lIk ls -l or my ll;
-dircolors=`which dircolors`||dircolors=`which gdircolors`;Xp dircolors;Al drc='dircolors';Xp COLORFGBG='default;default'; # abov Dfalt CVSRootPath..
-if   [[ "$HOTy"      == *bsd ]]; then Al         ls="gls $LS_OPTIONS"   ;              # .. does not exist && is pretty obsOlEt now
-else                                  Al         ls=" ls $LS_OPTIONS"   ; fi # load ls/dir color resources...
-if   [[ -r   "$HOME/.lsrc"   ]]; then  eval $($dircolors -b $HOME/.lsrc);    # orig also ck'd 4 m/^~\/\.(ls|dir)_colors$/i beyond .lsrc but I don't think
-else                                   eval $($dircolors -b            ); fi #   I'll need to further support any of those; just init sysdefaults if!.lsrc
-# K R 0oO Y G C B M W  # a8,c8,f8::pal8 `S` colrz mapd to ANSI SGR wi CSI then 1; then 30+$BlOn;
-# 0 1 0;3 3 2 6 4 5 7  # KRoYG CBMW => 01-32 6457 ;
-# F1ELGnuL:RoYG CBMp => 1;3[1o32 645p] thEse lInz should evN2LE get gNR8d from `ls /boot`; I98M89I9:rEsortd2XplicitNtrEzB4quStnz sinc wrkin lsd8 but!nrml `ls`;
-# NCALK4d8:trIed AgN 2 add *-`d8`: wi ? in diminishng fEldz but it Cmz all XtNsionz must B NtIrly Xplicit now (nO ? @all anymor! =( ) sO rEmovd mOst of thM;
-  #      LS_COLORS="*-E??L????=3;22;31;40:*-E??M????=4;22;31;44:*-I??L????=9;01;36;40:*-I??M????=3;01;36;44;21:$LS_COLORS"; #try2ad.bak/.longXtN-`d8`$/ 2Bgin
-  #      LS_COLORS="*-F??L????=3;22;33;40:*-F??M????=4;22;33;44:*-J??L????=9;01;34;40:*-J??M????=3;01;34;44;21:$LS_COLORS";
-#        LS_COLORS="$LS_COLORS*-E??L????=3;22;31;40:*-E??M????=4;22;31;44:*-C??L????=9;22;36;40:*-C??M????=3;22;36;44;21:"; #try2ad.bak/.longXtN-`d8`$/ 2Nd
-#        LS_COLORS="$LS_COLORS*-F??L????=3;22;33;40:*-F??M????=4;22;33;44:*-D??L????=9;22;32;40:*-D??M????=3;22;32;44;21:"; # lFtcolm:E-J rIt:CDK-N
-#Quick LUT: 0zNorm 1Bold 2fAint 3Italic 4Underline 5bLink 6blinK 7Reverse 8inVisible 9Crossedout 20Fraktur 21Dblunder 22boldoff 23iFoff 24uoff 25lKoff 27roff
-#  28voff 29coff 38/48 XF/xbcolr 39/49 YF/ybdfltcolr 51fraMed 52Encircled 54mEoff 53Overline 55ooff 73Super 74sZub 75sZoff 60-65ideogramz 10-19f0ntz [34]0-7Fb;
-# Oct lsd8 does rEad ?? && [LM] 4 15Yrz m@chez && regUlR ls duzn't complAin; # can't put underCurl 4:3 in Bcuz conflictz wi normal colon sepR8or of p@rnz;
-         LS_COLORS="$LS_COLORS*-A[1-9A-C][1-9A-V][I-P][0-9A-N]???=21;01;32;40:*-B[1-9A-C][1-9A-V][I-P][0-9A-N]???=21;01;34;40:";
-         LS_COLORS="$LS_COLORS*-C[1-9A-C][1-9A-V][I-P][0-9A-N]???=21;22;36;40:*-D[1-9A-C][1-9A-V][I-P][0-9A-N]???=21;22;32;40:"; 
-         LS_COLORS="$LS_COLORS*-E[1-9A-C][1-9A-V][I-P][0-9A-N]???=21;22;35;40:*-F[1-9A-C][1-9A-V][I-P][0-9A-N]???=21;22;31;40:";
-         LS_COLORS="$LS_COLORS*-G[1-9A-C][1-9A-V][I-P][0-9A-N]???=21;01;32;40:*-H[1-9A-C][1-9A-V][I-P][0-9A-N]???=21;22;35;40:";
-         LS_COLORS="$LS_COLORS*-I[1-9A-C][1-9A-V][I-P][0-9A-N]???=03;22;37;40:*-J[1-9A-C][1-9A-V][I-P][0-9A-N]???=03;01;37;44:";
-         LS_COLORS="$LS_COLORS*-K[1-9A-C][1-9A-V][I-P][0-9A-N]???=03;01;30;44:*-L[1-9A-C][1-9A-V][I-P][0-9A-N]???=03;22;35;44:";
-         LS_COLORS="$LS_COLORS*-M[1-9A-C][1-9A-V][I-P][0-9A-N]???=03;01;35;44:*-N[1-9A-C][1-9A-V][I-P][0-9A-N]???=04;01;31;44:";
-         LS_COLORS="$LS_COLORS*-O[1-9A-C][1-9A-V][I-P][0-9A-N]???=04;22;33;44:"; # ... l8r -P 2025
-         LS_COLORS="$LS_COLORS*-interface-security=01;31:*-shim-state=01;36:*.?.=22;36:*.??.=22;34:*.???.=22;30:*.????.=22;32:";  # /run  # .?. cbkg prvz
-         LS_COLORS="$LS_COLORS*.3.=22;34:*.33.=22;30:*.66.=22;34;40:*.0.=22;30:*.O.=22;33;43:*.96.=22;34;42:*.9G.=22;32;44:"; #3nd0tn6Xz # gN96z # .?upd8?
-         LS_COLORS="$LS_COLORS*.G.=22;44:*.GG.=22;34:*.G9.=22;30;40:*.9.=22;34:*.=22;34:*..=22;30:*...=22;30;44:"; #endotnGXtraz  # gN9Gz # .?bbkbkk prv? +nw g
-         LS_COLORS="$LS_COLORS*.png.=22;35;45:*.Hrc.=22;30:*.ls.=22;34;44:*.log.=22;32:*.kdb.=22;30;40:*.txt.=22;36:"; #smAnXtraz # gNrl  # .?mkbgkc prvz m b k
-         LS_COLORS="$LS_COLORS*.g.=22;35:*.gg.=22;30:*.g6.=22;34;44:*.6.=22;32:*.H.=22;30;40:*.8.=22;36:*.prv8.=22;34:"; #mormAnXtrz#gNg8z# .?mkbgkc prvz +nw b
-Xp       LS_COLORS="$LS_COLORS*.serverauth.???=22;32:*.serverauth.????=22;31:*.serverauth.?????=22;35:*.goutputstream-??????=22;31:"; #*.gout*-? duz!wrk4 `ls`;
-#xport GREP_COLORS="mt=01;34"; bindkey -v; #`bindkey -e`setzEmacs-stylCmdLynEdtng; -v hazBn betRsofR4mE,butdu!4getEmaxAtaxBax; #rEmMbr"^foo^bar"subst prEv cmd;
-Xp     GREP_COLORS="ms=01;04;94:mc=01;02;33:sl=:cx=:fn=01;03;95:ln=01;92:bn=22;33:se=01;96"; #Bk -v; #RoYG CBMp=>1o32 645p;RGY BMC;`gis -Hnb`shOFlNmLNumBytN
+if   [[ "$HOTy"      == *bsd ]]; then Al         ls="gls $LS_OPTIONS"   ; # gls does not Xist for mE anymore && is probably pretty obsOlEt by now?;
+else                                  Al         ls=" ls $LS_OPTIONS"   ; fi; # BlO GREP_COLORS="mt=01;34:..." mIght hLp 4 something but I forget wut;
+Xp     GREP_COLORS="ms=01;04;94:mc=01;02;33:sl=:cx=:fn=01;03;95:ln=01;92:bn=22;33:se=01;96"; # RoYG CBMp=>1o32 645p;RGY BMC;`gis -Hnb`shO fIlnAm lInenum by tN;
 Al  grP="grep -P $HCAl"; # want grep --color=always wi Perl PCRE 2 pIp 2 lS 4 shOing colrz; 4 4mz R: -F(ixdstrz) -G(basicgrep) -E(xtndedp@rnz) -P(erlp@rnz)
 Al  grp="grep    $HCAu"; # want grep --color=auto all za tym2(&&mayB`dircolrz ~/.gprc`?)&&2hv -nubTHZ?fulnSwi:Hedrfylnmz,lyNumZeroUnixTabalyndBytofstz
 Al fgrep="fgrep  $HCAu"; #   ...also fgrep Fixedstr nEdz auto2; it wud B cool 2 mk perl grep from grepp&&sarep 2 auto colr multiple m@chz difrNtly;
@@ -341,11 +327,6 @@ Al rgrep="rgrep  $HCAu"; #   ...also rgrep Recursive && above is Extended Expres
 # nOt:pgrep iz a difrNt Utl th@ srchz runing procSz && fIndz IDz bAsd on p@rn pRamz && iz rEl8d 2 pkill && pidwait, sO try not 2 confUz it wi Perl grep -P;
 Al gpnt=' grp -nubTH' gpnz='gpnt -Z' gca="grep $HCAl" xa=xargs xapf='xa printf'; # nd2tSt4nmspc cOlIdz4`gpn?`&&stuD`(perl|xargs) -0`,`(sort|grep)-z`; O3GM0vPF;
 Xp KEYTIMEOUT=8; # P6CMDotF:GitHub.Com/IbhaGwan/dots .zshrc:set 8ms timeout for Esc press so we can switch between vi "normal" and "command" modes fast!;
-#bindkey -M menuselect 'h' vi-backward-char        # Use vim keys in tab complete menu (2nd tab press);
-#bindkey -M menuselect 'j' vi-down-line-or-history
-#bindkey -M menuselect 'k' vi-up-line-or-history   # Below, by default backspace (^?) is bound to `vi-backward-delete-char`.
-#bindkey -M menuselect 'l' vi-forward-char         # We want it to have the same bahvior as vim/nvim (i.e. backspace=del).
-#bindkey -v           '^?' backward-delete-char    # without this we will get stuck unable to backspace after Esc-k-A;
 # O2JLNGn8:HTTPS://YouTu.be/crFZOrqlqao "grep: A Practical Guide" # O1H:0Dr0 of Navek covering how man lsof | grep -- '-a' can use -e end pRamz 2 srch flagz;
 # from`man grep`:".*Uzd wiCmdz lyk:`find -print0`,`perl -0`,`sort -z`,&&`xargs -0` 2procRbitrarEfylnamz,EvNthoz contNngNwLnz(azNulTrmN8dCstylStrzNstdOvNwLn).";
 #      GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36" wi booleans rv && ne omitted (false). Supported capabilities are as follows:
@@ -369,11 +350,6 @@ Xp KEYTIMEOUT=8; # P6CMDotF:GitHub.Com/IbhaGwan/dots .zshrc:set 8ms timeout for 
 #   needed on terminals on which EL is not supported.  It is otherwise useful on terminals for  which  the  back_color_erase (bce) boolean terminfo capability
 #   does not apply, when the chosen highlight colors do not affect the background, or when EL is too slow or causes too much flicker. The default is false
 #   (i.e., the capability is omitted). nOt:bool capabilities have no "=..." part. They are omitted (false) by default && become true when specified;
-# OldeBashStylPrmt:   PS1='%{[1;33m%}[%{[1;36m%}%n%{[1;37m%}@%{[1;36m%}%m%{[1;31m%}`pt`%{[1;34m%}%~%{[1;33m%}]%{[1;32m%}%(!.#.$) ';
-# NewZshStlPmt:export PS1='%{[1;33m%}%[%{[1;36m%}%n%{[1;37m%}@%{[1;36m%}%m%{[1;31m%}`pt`%{[1;34m%}%~%{[1;33m%}]%{[0;33m%}%(!.#.$)%{[1;32m%}';
-#xport PS1='%{[1;33m%}%(!.<.[)%{[1;36m%}%n%{[1;37m%}@%{[1;36m%}$HHst%{[1;31m%}`pt -cp`%{[1;34m%}%~%{[1;33m%}%(!.>.])%{[1;32m%}';
-#xport PS1='[1;37m%(!.<.[)[1;33m%n[1;34m@[1;35m$HHst`d8 -a`[1;34m`c8fn $PWD`[1;37m%(!.>.])[1;32m'; # aparNtly -z && all %{ %} nEded4CLIwidtcalQl8
-#xport PS1='%{[1;37m%}%(!.<.[)%{[1;33m%}%n%{[1;34m%}@%{[1;35m%}$HHst`d8 -z`%{[1;34m%}%~%{[1;37m%}%(!.>.])%{[1;32m%}'; # F1PLEswI:s/%~/c8fn/;
 #xport  K="\e[01;30m";export  R="\e[01;31m";export  O="\e[22;33m";export  Y="\e[01;33m";export  G="\e[01;32m";export    z="\e[00m"; # like a8 $SKp0 . 'm'
 #xport  C="\e[01;36m";export  B="\e[01;34m";export  M="\e[01;35m";export  P="\e[22;35m";export  W="\e[01;37m"; # these then should become able to use in Uk etc
 #xport  K="[01;38;5;247m";export  R="[01;38;5;009m";export  O="[22;38;5;172m";export  Y="[01;38;5;011m";export  G="[01;38;5;010m";export z="[00m";
@@ -381,20 +357,8 @@ Xp KEYTIMEOUT=8; # P6CMDotF:GitHub.Com/IbhaGwan/dots .zshrc:set 8ms timeout for 
 #xport  K="[01;38;5;247m";export  W="[01;38;5;015m";export  Z="[01m"; # these re-define basic color variables from earlier 1z around line 63 && abit B4;
 # 4 super custom Zsh prompt: HTTPS://GitHub.Com/RomKatV/powerlevel10k#features && probably ch GnomTerm font 2 recommended ~/dvl/f8/ttf/**/Menlo*Regular.ttf;
 # apparNtly StarShip is a popUlR competitor 2 P10k th@ has many gr8 fE8urz && shud B worth ckngout l8r (@lEst 4 IDaz about how 2 improve my prmpt hEr whNevr);
-#export       PS1='%{$W%}%(!.<.[)%{$G%}%n%{$z$B%}@%{$C%}$HHst`d8 -z;d8|b10|b93k|b8c`%{$z$B%}`c8fn -z $PWD`%{$W%}%(!.>.])%{$z$G%}';
-#p           PS1='%{$W%}%(!.<.[)%{$G%}%n%{$z$B%}@%{$C%}$HHst`d8 -z`%{$z$B%}`c8fn -z $PWD`%{$W%}%(!.>.])%{$z$G%}';
-#if [[ "$TERM" == "xterm-kitty" ]]; then #Xp W=`S I` G=`S A` B=`S S` C=`S Z`; # see if re-assigning main prmpt used dark user@host colrz2hIer in 8pal8 brItNz;
-# Xp         PS1='%{$W%}%(!.<.[)%{$G%}%n%{$z$B%}@%{$C%}$HHst`d8 -z`%{$z$B%}`c8fn -z $PWD`%{$W%}%(!.>.])%{$z%}'; # workd but rEalIzd Orig8+Bold !not 38;5;…m !;
-#fi; # can just set CursorColor chng shape from beam 2 block, or what will? nOpe!; # sO comNted new Xp PS1 but stil want Red CursorColor 2B set;
-# nOt:PCOL0045:I just got notific8ion th@ newSt version 0.45.0 was rElEased sO installed it, thN discoverd th@ Xpectd block cursor avail in Vim SKp normalmOde;
-#Xp          PS1='%B%F{green}%n@%m%k %B%F{blue}%1~ %# %b%f%k'; # N8DMJ9HI:this seems to be my current zsh prompt;
-#Xp          PS1='%B%F{green}%n@%m%k %B%F{blue}%1~ %{$W%}%(!.<.[)%{$G%}%n%{$z$B%}@ %# %b%f%k'; # green looks yellow;
-#Xp          PS1='%B%F{red}%n@%m%k %B%F{cyan}%1~ %# %b%f%k';
-# see if sakura can accept colr varz in prmpt
-# it seems that sakura won't bright bold 01;30..37 like other termz but setting prompt with xterm-256color SKp cOdz will work 4 her like it does elsewhere;
-#Xp          PS1='%{[1;37m%}%(!.<.[)%{[1;32m%}%n%{[1;34m%}@%{[1;36m%}$HHst` d8 -z `%{[1;34m%}` c8fn -z $PWD `%{[1;37m%}%(!.>.])%{[1;32m%}';
-#l xp="Xp PS1='%{[1;33m%}%(!.<.[)%{[1;36m%}%n%{[1;37m%}@%{[1;36m%}$HHst\`d8 -f|sS z\`%{[1;34m%}%~%{[01;01;01;1;33m%}%(!.>.])%{[1;32m%}'";
-#l dp="Xp PS1='%{[1;37m%}%(!.<.[)%{[1;32m%}%n%{[1;34m%}@%{[1;36m%}$HHst\`d8 -z\`%{[1;34m%}\`c8fn -z \$(pwd)\`%{[1;37m%}%(!.>.])%{[1;32m%}'";
+#Xp PS1='%(!.<.[)%n@$HHst `d8` $PWD %~%(!.>.])'; # super bare-bones colorless for .zshenv;
+#Xp PS1='%{[1;97m%}%(!.<.[)%{[1;92m%}%n%{[1;94m%}@%{[1;96m%}$HHst` d8 -z `%{[1;94m%}` c8fn -z $PWD `%{[1;97m%}%(!.>.])%{[1;92m%}';
 # J5IMApwd:Above DefaultPrompt $PWD was not getting upd8d properly like it would for just str8 PS1 assignment, so had to wrap in sub \$(pwd) command 2 work;
 #case "$TERM" in xterm*|rxvt*) # if this is an xterm set the title to user@host:dir; J5AMBPS1:shudBcool2mk ps1() set PS1 func wich tAkez dif d8,c8fn,4m@z,etc.;
 #      PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1";; # also setz windO tItl2 Uzr@hOst:dir; abov R4 Xpanded (-full) && Default Ps1 PromPtz;
@@ -428,30 +392,9 @@ if       [[ "$HUsr"     !=  "root"  ]];                                  then #X
   elif   [[  $TTY  =~ ^/dev/(tty|pts/)(8|16|24|32|40|48|56|64)$ ]] && [[ -x "$Hpal8dir/$Hpal8ts8.pal8" ]]; then Xp Hpl8="$Hpal8dir/$Hpal8ts8.pal8"; fi;
   # 8 unUsed pal8 fIlz aftr abov: cOOL DARKpRIM dARKZ deepRed Flipped r Tigzfavz t ;   ## !sure how2alias just call? note Dflt GnomTerm 0 orig got none;
   # K2FL7WHY:only konsole was spewing 16 backslashes when `src` ran to XeQt $Hpal (the f8.pm pal8 file on nXt lIn below) Bcuz it sepR8d charz of OSC ST;
-  if     [[  $TTY  =~ ^/dev/(tty|pts/) ]] && [[ -x "$Hpl8" ]]; then Xp Hpal="$Hpl8";Al src8="$Hpal";Pal8Qiet='1' $Hpal; fi; # goodEnuf wo SKpd bktx?
+# if     [[  $TTY  =~ ^/dev/(tty|pts/) ]] && [[ -x "$Hpl8" ]]; then Xp Hpal="$Hpl8";Al src8="$Hpal";Pal8Qiet='1' $Hpal; fi; # goodEnuf wo SKpd bktx?
   # J12LEAP8:trying to Xtract pal8 call so mAB new `$Hpal` or Al src8 could just reset proper 8-category term pal8 without src full .zshrc?
-  if     [[ "$DISPLAY" ==           "" ]] && [[ "$TERM" == "linux" ]]; then # orig had PipzGlobalf8Flag 2!redo but!DISPLAY also4ssh so $TERM"linux"4console
-    # no more old Gen /dev/vc/\d+ && curNtly only /dev/tty[1-24] (orig1-6) active anyway && old pts/ which was left in to align with above could match
-    #   && fail the IO call when sshing from Chun console to Aku, so replaced it with "tty/", which is now aligned altern8ion which should never match
-    # maybe setfont betr than setf etfp as proly able 2 handle more PSF varE8ionz l8r?                              setfont also should work fine below
-    # couldn't find etfp to set font, nEd altern8ive;
-    if   [[  $TTY  =~ ^/dev/(tty|tty/)(0|65|66|67|68|69|70|71)$ ]] && [[ -r "$Hf0ntdir/$Hf0ntts0.psf"  ]]; then     setf     $Hf0ntdir/$Hf0ntts0.psf  ;
-    elif [[  $TTY  =~ ^/dev/(tty|tty/)(1|9$|17|25|33|41|49|57)$ ]] && [[ -r "$Hf0ntdir/$Hf0ntts1.psf"  ]]; then     setf     $Hf0ntdir/$Hf0ntts1.psf  ;
-    elif [[  $TTY  =~ ^/dev/(tty|tty/)(2|10|18|26|34|42|50|58)$ ]] && [[ -r "$Hf0ntdir/$Hf0ntts2.psf"  ]]; then     setf     $Hf0ntdir/$Hf0ntts2.psf  ;
-    elif [[  $TTY  =~ ^/dev/(tty|tty/)(3|11|19|27|35|43|51|59)$ ]] && [[ -r "$Hf0ntdir/$Hf0ntts3.psf"  ]]; then     setf     $Hf0ntdir/$Hf0ntts3.psf  ;
-    elif [[  $TTY  =~ ^/dev/(tty|tty/)(4|12|20|28|36|44|52|60)$ ]] && [[ -r "$Hf0ntdir/$Hf0ntts4.psf"  ]]; then     setf     $Hf0ntdir/$Hf0ntts4.psf  ;
-    elif [[  $TTY  =~ ^/dev/(tty|tty/)(5|13|21|29|37|45|53|61)$ ]] && [[ -r "$Hf0ntdir/$Hf0ntts5.psf"  ]]; then     setf     $Hf0ntdir/$Hf0ntts5.psf  ;
-    elif [[  $TTY  =~ ^/dev/(tty|tty/)(6|14|22|30|38|46|54|62)$ ]] && [[ -r "$Hf0ntdir/$Hf0ntts6.psf"  ]]; then     setf     $Hf0ntdir/$Hf0ntts6.psf  ;
-    elif [[  $TTY  =~ ^/dev/(tty|tty/)(7|15|23|31|39|47|55|63)$ ]] && [[ -r "$Hf0ntdir/$Hf0ntts7.psf"  ]]; then     setf     $Hf0ntdir/$Hf0ntts7.psf  ;
-    elif [[  $TTY  =~ ^/dev/(tty|tty/)(8|16|24|32|40|48|56|64)$ ]] && [[ -r "$Hf0ntdir/$Hf0ntts8.psf"  ]]; then     setf     $Hf0ntdir/$Hf0ntts8.psf  ; fi;
-    # maybe psf fonts should be set in /etc/init.d/consolechars through /etc/default/console-setup even sooner
-#   if   [[ `which curs` != '' ]]; then curs; fi; # need curs again down here for consoles not to have just default underline
-  fi; # Ryu was Old until `pmei Curses` or fpal didn't require curses to wrap etfp; RyuOld && Gen used to use the following on /dev/(tty|vc/)\d+:
-      #   3/15 HyLAS      6/18 mED          9/21 france9     12/24 futura-2    # 3/15 hylas also had etfp A172 F177; mkng 2 brItz dRk proly 4 lowcontrast prym
-      #   4/16 FRESNo     7/19 cALLIGRA    10/22 ANTIqUE     13    CRAKRjAK    # orig filenames were all lowercase since it was prior to .Hrc renaming 4 keyz
-      #   5/17 ZanZurf    8/20 rOMAN3      11/23 bROADWAY
 fi; # ls.*? -1:OnlE1FyLynz($_\n);clasiFy(dir/,symlnk@,exefyl*,etc);QuotRsltnzFylNmz(2sealSpcz&&othrDynabiliTBhynd lit txt);Long(shoXact byte fylsizes);
-if [[ "$TERM" == "xterm-kitty" ]]; then kc;fi; # originally trIed 2 set KittyCursorColor B4 .pal8-per-term was calld,but nEdz 2B down hEr aftrwardz 2 tk Fect;
 Al lsQ=' ls -Q ' l1=' ls -1'  lQ1=' lQ -1 ' l1Q='  lQ1 ' lF1='lF -1' l1F='lF1' ls1='l1'; #Human readable approx fylsyz;
 Al  lsF='ls -vF' lL=' ls -l'   lFl=' lF -l'  llF='  lFl' lQl='lQ -l' llQ='lQl' ll='lFl'; #!?"proly adng 1A|StekSauc"?!;
 Al  lQF='  lsQF'  lFQ=' lQF' lsQF=' lQ  -F' lsFQ='lsQF ' lsgdf='ls --group-directories-first' lsv='ls -v'; #ias lv='lsv -l';
@@ -822,7 +765,7 @@ Al      Wf='d8wf';FL() {  figlet -w $COLUMNS -f $@; # just Wrap   Flet in d8z;al
 }; Al lsfl="ls /usr/share/figlet/*|gv -|pe 's{/usr/share/figlet/}{};s/\\.[ft]lf\\n/ /g;s/ \[0-9a-z_\]+ / /g;'" fff='FL fraktur `d8`|lolcat' fd8=fff lfl=lsfl;
 Al ffp='FL flowerpower `d8`|lolcat' ffb='FL Obanner132 `d8`|lolcat' ffu='FL univers `d8`|lolcat'; # flowerpower almost as awesome && wide as fraktur,gr8!;
 Al ffz='ec "${R}fff$w:${R}fraktur$p p$w:${p}flowerpower$Y u$w:${Y}univers$B b$w:${B}Obanner132$z;";fff;ffp;ffu'; # Q1KL4FPU:appended three wide ffz together;
-# Q14LAFFZ:abov print Figlet -f function FL wi fontz && colrz; # Q4AMHOME:BlO AnsiWeather may rEquir -k $(b10 IpfoGZHfy0oKZwbMJO_Qm|heX) OpenWeatherMapAPIkey;
+# Q14LAFFZ:abov print Figlet -f function FL wi fontz && colrz; # Q4AMHOME:BlO AnsiWeather may rEquir -k $OpenWeatherMapAPIkey;
 Al AW='ansiweather'                     AWo='AWi -l     Oshkosh' AWr='AWi -l Reading' AWc='AWi -l Columbia'; # Dfalt -u (system) is metric (not imperial);
 Al AWi='AW -u imperial -H true -d true' AWl='AWi -l Long\ Beach' AWs='AWi -l San\ Luis\ Obispo' AWa='AWo;AWr;AWc;AWl;AWs'; # enable FeelsLike && daylight d8a;
 Al AWn='AW -u imperial -a false -s false -i false -w false -h false -H false -p false -d false'; # AnsiWeather None of the xtra optnz 4 just pulling tmper8rz;
@@ -839,75 +782,7 @@ Al aWk='AWi -l Kansas\ City' AWK='AWn -l Kansas\ City' AW6='aWU;c8 /tmp/awU|s8n;
 Al aWU='AWO|c8 4,3  |pe "s/://;s/\t/ /; s/hkosh/Wi 54902/"  >/tmp/awU;AWR|c8 4,3  |pe "s/://;s/\t/ /;           s/ading/Pa 19602/" >>/tmp/awU;
         AWC|c8 4,3  |pe "s/://;s/\t/ /;s/lumbia/Mo 65201/" >>/tmp/awU;AWL|c8 5,3,4|pe "s/://;s/\t/ /;s/\t//;s/ongBeach/BCa 90814/" >>/tmp/awU;
         AWS|c8 6,3-5|pe "s/://;s/\t/ /;s/\t//g;s/anLuisObispo/LCa 93401/" >>/tmp/awU;AWK|c8 5,3,4|pe "s/://;s/\t/ /;s/\t//;s/ansasCity/CMo 64114/" >>/tmp/awU';
-# Q4EM8Geo:rsltz from cmnd BlO were: [{"name":"Oshkosh","local_names":{"en":"Oshkosh"},"lat":44.0206919,"lon":-88.5408574,"country":"US","state":"Wisconsin"}];
-# curl -X GET "http://api.openweathermap.org/geo/1.0/direct?q=Oshkosh,WI,US&limit=5&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json"
-# curl -X GET "http://api.openweathermap.org/geo/1.0/zip?zip=54902,US&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" instead gets:
-#   {"zip":"54902","name":"Winnebago County","lat":43.9946,"lon":-88.526,"country":"US"} so the Latitude && Longitude of those are slightly off from each othr;
-#   Further rsltz: [{"name":"Reading","local_names":{"en":"Reading","ru":"Рединг"},"lat":40.335345,"lon":-75.9279495,"country":"US","state":"Pennsylvania"}]
-#     [{"name":"Columbia","local_names":{"en":"Columbia"},"lat":38.951883,"lon":-92.3337366,"country":"US","state":"Missouri"}]  ## && use units=imperial BlO!;
-#     [{"name":"Kansas City","local_names":{"en":"K…","oc":"K…","ru":"Канзас-Сити"},"lat":39.100105,"lon":-94.5781416,"country":"US","state":"Missouri"}]
-#     [{"name":"Long Beach","local_names":{"ar":"لونغ بيتش","ru":"Лонг-Бич","vi":"Long Beach","fa":"لانگ بیچ، کالیفرنیا","hi":"लंबे समुद्र तट","he":"חוף ארוך","zh":"长滩","ja":"ロングビーチ","ko":"롱비치","en":"Long Beach"},"lat":33.7690164,"lon":-118.191604,"country":"US","state":"California"}]; # curl -silent -failsilNt;
-#     [{"name":"San Luis Obispo","local_names":{"sr":"Сан Луис Обиспо","ur":"سان لوئیس اوبسپو","en":"San Luis Obispo","ru":"Сан-Луис-Обиспо","de":"San Luis Obispo","es":"San Luis Obispo"},"lat":35.2827525,"lon":-120.659615,"country":"US","state":"California"}];  ## Note:Need to use plus '+' as spaces in GeoCoded City;
-#   Then "https://api.openweathermap.org/data/3.0/onecall?lat=44.0206919&lon=-88.5408574&exclude=minutely,hourly,daily,alerts&appid={APIKey:12ce…}" 2 get rest;
-Al cO3='curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=44.0206919&lon=-88.5408574&exclude=minutely,hourly,daily,alerts&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" > ~/.tmp/cowo-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=40.3353450&lon=-75.9279495&exclude=minutely,hourly,daily,alerts&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" > ~/.tmp/cowr-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=38.9518830&lon=-92.3337366&exclude=minutely,hourly,daily,alerts&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" > ~/.tmp/cowc-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=39.1001050&lon=-94.5781416&exclude=minutely,hourly,daily,alerts&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" > ~/.tmp/cowk-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=33.7690164&lon=-118.191604&exclude=minutely,hourly,daily,alerts&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" > ~/.tmp/cowl-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/3.0/onecall?lat=35.2827525&lon=-120.659615&exclude=minutely,hourly,daily,alerts&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)" -H "Content-Type: application/json" > ~/.tmp/cows-`d8`.json;ec "Then maybe just jq to pull weather, descriptions from JSON?"';
-# 3.0 requires a sepR8 subscription so it looks like I didn't need to GeoCode for the Lat && Lon anyway since free 2.5 works directly with City+Name in URLz;
-Al cOw='curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Oshkosh,WI,US"         -sf -H "Content-Type: application/json" > ~/.tmp/cowo-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Reading,PA,US"         -sf -H "Content-Type: application/json" > ~/.tmp/cowr-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Columbia,MO,US"        -sf -H "Content-Type: application/json" > ~/.tmp/cowc-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Kansas+City,MO,US"     -sf -H "Content-Type: application/json" > ~/.tmp/cowk-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Long+Beach,CA,US"      -sf -H "Content-Type: application/json" > ~/.tmp/cowl-`d8`.json;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=San+Luis+Obispo,CA,US" -sf -H "Content-Type: application/json" > ~/.tmp/cows-`d8`.json; ec "Now try to use jq to extract weather, main, && description ... && temper8ure together?"';
-# ^…,"main":"Clouds","description":"overcast clouds","icon":"04d"}],"base":"stations","main":{"temp":62.35,…$  ## instead of learning jq, just regexing wi pe;
-Al cOW='curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Oshkosh,WI,US"         -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
-          printf(\"%-6s OsWi 54902 lat=44.0206919 lon=-88.5408574 %-10s(%18s);\n\",\$3,\$1,\$2)" > ~/.tmp/cOW.ls;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Reading,PA,US"         -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
-          printf(\"%-6s RePa 19602 lat=40.3353450 lon=-75.9279495 %-10s(%18s);\n\",\$3,\$1,\$2)" >>~/.tmp/cOW.ls;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Columbia,MO,US"        -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
-          printf(\"%-6s CoMo 65201 lat=38.9518830 lon=-92.3337366 %-10s(%18s);\n\",\$3,\$1,\$2)" >>~/.tmp/cOW.ls;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Kansas+City,MO,US"     -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
-          printf(\"%-6s KCMo 64114 lat=39.1001050 lon=-94.5781416 %-10s(%18s);\n\",\$3,\$1,\$2)" >>~/.tmp/cOW.ls;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=Long+Beach,CA,US"      -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
-          printf(\"%-6s LBCa 90814 lat=33.7690164 lon=-118.191604 %-10s(%18s);\n\",\$3,\$1,\$2)" >>~/.tmp/cOW.ls;
-        curl -X GET "https://api.openweathermap.org/data/2.5/weather?lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)&q=San+Luis+Obispo,CA,US" -sf -H "Content-Type: application/json" | pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":\"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//;
-          printf(\"%-6s SLCa 93401 lat=35.2827525 lon=-120.659615 %-10s(%18s);\n\",\$3,\$1,\$2)" >>~/.tmp/cOW.ls;c8 ~/.tmp/cOW.ls|s8n';
-Al cow='d8=`d8`;ur="https://api.openweathermap.org/data/2.5/weather";op="lang=en&units=imperial&appid=$(b10 IpfoGZHfy0oKZwbMJO_Qm|heX)";
-        ct="Content-Type:";aj="application/json";bp="$HOME/dvl/k8/bash/.bak/cow";cmNt=" # Date8, URl, OPtions, ContentType, Applic8ionJson, BashbackupPath;";
-  curl -sf -X GET "$ur?$op&q=Oshkosh,WI,US"         -H "$ct $aj" -o $bp-o-$d8.json;c8 $bp-o-$d8.json|pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":
-    \"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//x;printf(\"%-6s OsWi 54902 %-12s(%31s);\n\",\$3,\$1,\$2)" > ~/.tmp/cow.ls;
-  curl -sf -X GET "$ur?$op&q=Reading,PA,US"         -H "$ct $aj" -o $bp-r-$d8.json;c8 $bp-r-$d8.json|pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":
-    \"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//x;printf(\"%-6s RePa 19602 %-12s(%31s);\n\",\$3,\$1,\$2)" >>~/.tmp/cow.ls;
-  curl -sf -X GET "$ur?$op&q=Columbia,MO,US"        -H "$ct $aj" -o $bp-c-$d8.json;c8 $bp-c-$d8.json|pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":
-    \"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//x;printf(\"%-6s CoMo 65201 %-12s(%31s);\n\",\$3,\$1,\$2)" >>~/.tmp/cow.ls;
-  curl -sf -X GET "$ur?$op&q=Kansas+City,MO,US"     -H "$ct $aj" -o $bp-k-$d8.json;c8 $bp-k-$d8.json|pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":
-    \"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//x;printf(\"%-6s KCMo 64114 %-12s(%31s);\n\",\$3,\$1,\$2)" >>~/.tmp/cow.ls;
-  curl -sf -X GET "$ur?$op&q=Long+Beach,CA,US"      -H "$ct $aj" -o $bp-l-$d8.json;c8 $bp-l-$d8.json|pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":
-    \"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//x;printf(\"%-6s LBCa 90814 %-12s(%31s);\n\",\$3,\$1,\$2)" >>~/.tmp/cow.ls;
-  curl -sf -X GET "$ur?$op&q=San+Luis+Obispo,CA,US" -H "$ct $aj" -o $bp-s-$d8.json;c8 $bp-s-$d8.json|pe "s/^.*?,\"main\":\"([^\"]*)\",\"description\":
-    \"([^\"]*)\",.*?\"temp\":([^,]*),.*\$//x;printf(\"%-6s SLCa 93401 %-12s(%31s);\n\",\$3,\$1,\$2)" >>~/.tmp/cow.ls;c8 ~/.tmp/cow.ls|s8n'; # CheckOpenWeather;
-# CraftOpenweatherD8a (CarryOnDad) clobberz cod.ls with fresh header, runs cow 2 clobber cos.ls for s8n, xclipz without -filter, && cpz cod 2 d8 versioned;
-Al cod='ec "Weather Report ?/3" > ~/.tmp/cod.ls;pld "\$d8=Oct::d8->new();printf(qq(  %s %02d-%02d-%4d at %02d%02d CDT\\n),
-  \$d8->Dow(),\$d8->MDYhm())"   >>~/.tmp/cod.ls;ec "Current Weather for Favorite Cities" >>~/.tmp/cod.ls;cow > ~/.tmp/cos.ls;c8 ~/.tmp/cos.ls|
-  pe "%clut=(OsWi=>q(Oshkosh          WI),RePa=>q(Reading          PA),CoMo=>q(Columbia         MO),KCMo=>q(Kansas City      MO),
-             LBCa=>q(Long Beach       CA),SLCa=>q(San Luis Obispo  CA));s/^(\\S+)\\s+(\\w+)\\s+(\\d+)[^(]+\\(\\s*([^)]+)\\);\$//;
-  \$degz=\$1;\$city=\$2;\$zipc=\$3;@desc=split(/\\s/,\$4);for my \$word(@desc){\$word=~ s/^(\\w)/uc(\$1)/e;} printf(qq(%s  (%s)  %-5s%s  %s),
-  \$clut{\$city},\$zipc,\$degz,chr(176),join(q( ),@desc))" >>~/.tmp/cod.ls;c8 ~/.tmp/cod.ls|xclic;cp ~/.tmp/cod.ls ~/.tmp/cod-`d8`.ls';
-Al coc='cod;rm ~/.tmp/co[sw].ls;c8 ~/.tmp/cod.ls|pe "s/(Weather)/\$W\$1/gi;s/(Report )(\?)(\/)(3)/\$G\$1\$R\$2\$Y\$3\$o\$4/i;s/(Current)/\$M\$1/i;
-    s/( Cities\$)/\$C\$1/;s/^(\s+[SMTWF][uoehra][neduit] )(\d{2})(-)(\d{2})(-)(\d+)( at)/\$Y\$1\$o\$2\$w\$3\$Y\$4\$w\$5\$R\$6\$m\$7/;s/(Favorite)/\$G\$1/i;
-    s/(at )(\d{2})(\d{2})( \w+)\$/\$1\$C\$2\$B\$3\$G\$4\$z/;s/(Clouds)/\$W\$1/;s/(Sky)/\$B\$1/;s/(Clear)/\$Y\$1/;s/(Rain)/\$B\$1/;s/(Snow)/\$W\$1/;
-  s/^(Osh.*?)(\s+WI)(\s+\()(\d{5})(\))(\s+[0-9]+)(\.)?([0-9]*)/\$R\$1\$r\$2\$o\$3\$R\$4\$o\$5\$G\$6\$y\$7\$B\$8\$W/;s/(Haze)/\$o\$1/;s/(Light)/\$Y\$1/;
-  s/^(Rea.*?)(\s+PA)(\s+\()(\d{5})(\))(\s+[0-9]+)(\.)?([0-9]*)/\$G\$1\$g\$2\$o\$3\$G\$4\$o\$5\$G\$6\$y\$7\$B\$8\$W/;s/(With)/\$K\$1/;s/(Heavy)/\$R\$1/;
-  s/^(Col.*?)(\s+MO)(\s+\()(\d{5})(\))(\s+[0-9]+)(\.)?([0-9]*)/\$B\$1\$b\$2\$o\$3\$B\$4\$o\$5\$G\$6\$y\$7\$B\$8\$W/;s/(Thunder\\w+)/\$R\$1/;s/(Fog)/\$w\$1/;
-  s/^(Kan.*?)(\s+MO)(\s+\()(\d{5})(\))(\s+[0-9]+)(\.)?([0-9]*)/\$C\$1\$c\$2\$o\$3\$C\$4\$o\$5\$G\$6\$y\$7\$B\$8\$W/;s/(Drizzle)/\$c\$1/;s/(Shower)/\$B\$1/;
-  s/^(Lon.*?)(\s+CA)(\s+\()(\d{5})(\))(\s+[0-9]+)(\.)?([0-9]*)/\$M\$1\$m\$2\$o\$3\$M\$4\$o\$5\$G\$6\$y\$7\$B\$8\$W/;s/(Intensity)/\$G\$1/;s/(for)/\$p\$1/i;
-  s/^(San.*?)(\s+CA)(\s+\()(\d{5})(\))(\s+[0-9]+)(\.)?([0-9]*)/\$Y\$1\$y\$2\$o\$3\$Y\$4\$o\$5\$G\$6\$y\$7\$B\$8\$W/;s/(Extreme)/\$R\$1/;
-    s/(Ragged)/\$g\$1/;s/(Sleet)/\$W\$1/;s/(and)/\$m\$1/;s/(Mist)/\$w\$1/;s/(Smoke)/\$W\$1/;s/(Sand)/\$O\$1/;s/(Dust)/\$O\$1/;s/(Whirls)/\$B\$1/;
-    s/(Few)/\$G\$1/;s/(Scattered)/\$o\$1/;s/(Broken)/\$C\$1/;s/(Overcast)/\$M\$1/;s/(Volcanic)/\$R\$1/;s/(Ash)/\$K\$1/;s/(Tornado)/\$R\$1/; # pretty badass!;
-    s/(Squalls)/\$C\$1/;s/(Moderate)/\$o\$1/;s/(Freezing)/\$W\$1/;s/(\/)/\$W\$1/;"'; # coc calls cod then c8 (catz) tmp cod.ls in2 pe 2 colriz condition codz!;
+Al srcoc='src ~/dox/Ppl/Dad/cow.zsh;coc;'; # src cow cod coc with OpenWeatherMap API keyz th@ R betr not 2 Xpose hEre;
 Al jsc='pe "s/(\")((\\\"|[^\"]*)*)(\")(: )/\$o\$1\$Y\$2\$o\$4\$W\$5\$G/;s/(: \\e\[[0-9;:]*m)(\")((\\\"|[^\"]*)*)(\")/\$1\$R\$2\$M\$3\$R\$5/;
             s/^(\\s*)(\")((\\\"|[^\"]*)*)(\")(,)?\$/\$1\$r\$2\$m\$3\$r\$5\$C\$6/;s/(,\$)/\$B\$1/g;\$cmnt=q(2du:d8-colr 2025-04-15T06:21:04.199Z && blue URLz);
             s/([0-9]{4})(-)([0-9]{2})(-)([0-9]{2}T)/\$R\$1\$w\$2\$o\$3\$w\$4\$Y\$5/g;   \$quot=chr(39); # cannot include literal or SKpd single quote difrNtly;
@@ -1038,6 +913,11 @@ Al       M='mplayer';
 Al m='mn'; # m() { mn   $@; }     # unalias   m && redefining as simple function wrapper resolves manpage param alias expansion problM (but still will glob)
 Al      mm=' mikmod'; # prolly scream 3 times if you can read hahahaha !!! :)  # test local DeepSeek-R1 ("DpCk") LargeLanguageModel $optn;
 Al ol=ollama ols='ol list' olp='ol pull' olr='ol run' oll='ol launch' olsrv='ol serve' cg=chatgpt gpt=cg cdx=codex; # QAKM4cdx:just yStrdA nstld ChatGPT!;
+Al cr=' cdx resume 01a15365-c87e-7f12-820c-8ff43ec27203';
+Al cra='cdx resume --all'; # CodexResumeAll;
+Al cfa='cdx  fork  --all'; # Codex Fork All;
+Al crs='cra --sandbox read-only --no-alt-screen'; # CodexResumeSandbox(RO nOaltscrn);
+Al cfs='cfa --sandbox read-only --no-alt-screen'; # CodexForrkkSandbox(RO nOaltscrn);
 Al olr7='olr deepseek-r1:7b' o7='olr7'; # could ~/.dl/ OLLaMa.Com srch for othr than my initial 7b reasoning model;
 Al olrp='olr phi4:latest   ' op='olrp'; # Q8NM6Phi:just ran `olp phi4` && got 9.1GB of much more recent Phi4 model;
 Al olrq='olr qwen3.6:27b   ' oq='olrq'; # Q8PM8Q36:last nIt `olp qwen3.6:27b` && got 17GB of likely EvN betr model;
@@ -1222,8 +1102,8 @@ Xv8() { if     [[  $#       -ge  1  ]]; then Xp Hv8f="$1"          ;    fi;   # 
  # 2du:Dtect mor fIlnAm or Vim optn pRamz && sAv 2 multipl varz 2 call wi AgN, mAB mk prEv calld pRamz sAvd alsO && just '-' for -1 ndx can rEtn 2 just B4,
  #   alsO tSt if any of thEs shortcutz BlO alreD Xist as fIlnAmz 2 just OpN;  # 2du:mk new $Hv8e 2ndary Xportd editfIl 4mkng ve env+rc&&vz rc+env;
           if   [[ "$1"       == "v" ]]; then Xp Hv8f="$HOME/.vimrc"                         ; shift;
-          elif [[ "$1"       == "z" ]]; then Xp Hv8f="$HOME/.zshrc" ;Xp Hv8e="$HOME/.zshenv"; shift;
-          elif [[ "$1"       == "e" ]]; then Xp Hv8f="$HOME/.zshenv";Xp Hv8e="$HOME/.zshrc" ; shift; # aded ve for ~/.zshenv common Al,Xp,&&shLfuncz4 bash 2;
+          elif [[ "$1"       == "z" ]]; then Xp Hv8f="$HOME/.zshrc"                         ; shift;
+          elif [[ "$1"       == "e" ]]; then Xp Hv8f="$HOME/.zshenv"                        ; shift; # aded ve for ~/.zshenv common Al,Xp,&&shLfuncz4 bash 2;
           elif [[ "$1"       == "b" ]]; then Xp Hv8f="$HOME/.bashrc";Xp Hv8e="$HOME/.zshenv"; shift; # aded`v b` 4 ~/.zshenv common Al,Xp,&&shLfuncz4 bashrc;
           elif [[ "$1"       == "l" ]]; then Xp Hv8f="$HOME/.lrc"                           ; shift;
           elif [[ "$1"       == "h" ]]; then Xp Hv8f="$HOME/.Hrc"                           ; shift;
@@ -1236,8 +1116,8 @@ Xv8() { if     [[  $#       -ge  1  ]]; then Xp Hv8f="$1"          ;    fi;   # 
         elif   [[ "$Hv8f"    != ""  ]]; then                       $HEdt +\'\" $Hv8f $Hv8e   ; fi; } # mAB betr2sAv $@ nstd thN split on spAcz 4 multipl fIlz;
  nv() { if     [[  $#       -ge  1  ]]; then Xp Hv8e= ; # sAm az v8 abov but wi Altern8 Editor (NeoVim instead of standard Vim);
           if   [[ "$1"       == "v" ]]; then Xp Hv8f="$HOME/.vimrc"                         ; shift;
-          elif [[ "$1"       == "z" ]]; then Xp Hv8f="$HOME/.zshrc" ;Xp Hv8e="$HOME/.zshenv"; shift;
-          elif [[ "$1"       == "e" ]]; then Xp Hv8f="$HOME/.zshenv";Xp Hv8e="$HOME/.zshrc" ; shift;
+          elif [[ "$1"       == "z" ]]; then Xp Hv8f="$HOME/.zshrc"                         ; shift;
+          elif [[ "$1"       == "e" ]]; then Xp Hv8f="$HOME/.zshenv"                        ; shift;
           elif [[ "$1"       == "b" ]]; then Xp Hv8f="$HOME/.bashrc";Xp Hv8e="$HOME/.zshenv"; shift;
           elif [[ "$1"       == "l" ]]; then Xp Hv8f="$HOME/.lrc"                           ; shift;
           elif [[ "$1"       == "h" ]]; then Xp Hv8f="$HOME/.Hrc"                           ; shift;
@@ -1907,154 +1787,13 @@ Al rsd8okf=' Rs3;d8ok    -f;' rsf='rsd8okf'; # -9nEdz2chop3spAcz2fit2;
 Al rsec='ec "ReSizECho(rsec) echOing rEsIzingz ( rs[8f3 1249] ) -- rs8:just d8,  rsf:33 full,  (rSt all 49) rs1:b128,  rs2:b256,  rs4:Yk4m, and rs9:b93k;";';
 Al rs3='rsf'; # mk 3 for 33 -full alsO
 # HC3L0DNV:noglob eval around backticks may try to reach out to propag8 exported upd8 dimensions to invoking parent environment && variables, workz without?;
-if       [[ "$HHst" ==  Oni    ]] || [[ "$HHst" ==  Aku    ]]; then
-# 664||-1882,-e2586 1294w 3840-1958=-1882 wmc -r :ACTIVE: -e 0,664,-1,-1,-1;wmc -r:ACTIVE:-e 0,-1882,-1,-1,-1;
-  # Most of these below originally had --title= parameters like d8ok,d8ok-f,othr,2du,muz,mvz but current version no longer supports it. I've run s/title/role/g
-  #   since their purpose is similar but I wish GT would just enable titles&&less than 4 rowz again like B4. Lookz like wmctrl is Able2resolv all these issuez.
-  #     gtss;wmc -r :ACTIVE: -b add,sticky,below; # this was all linez aftr any d8ok (B4Itried2set -Titlez,add skip_(pager|taskbar) && upd8 geom wi -e rEsize)
-  # Apparently 1st resize field is gravity:0-WinMngr shud use grav specified in WM_SIZE_HINTS.win_gravity,1-NW,2-N,3-NE,4-W,5-cNtr,6-E,7-SW,8-S,9-SE,10-static.
-  # Same page: HTTPS://SuperUser.Com/questions/576057/bash-resize-terminal-xterm has `echo -e "\e[8;1;34t"` which also workz nicely 2 resize my d8ok terminalz.
- if      [[ "$DISPLAY"               !=  "" ]] &&    # K3EMJoke:nEded 2 tSt for X.Org DISPLAY so that full-screen console linux TERM doesn't print warnings;
-         [[ `xrg|g -c ' connected '` == "4" ]]; then # K3EM2x2H:crE8d new condition for grid monitor layout that tries2auto-detect connected count from `xrg`;
-   Al   gtI='gt --geometry=+1620-$HHt0  --hide-menubar --window-with-profile=d8k8                               --role=d8k8                                 &
-   gtss;gtss;wmc -r :ACTIVE: -T d8k8                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
-             wmc -r :ACTIVE: -e  10,1620,1008,300,72;wmc -r :ACTIVE: -b add,skip_taskbar,below;
-             gt --geometry=+1620-0      --hide-menubar --window-with-profile=d8k8                               --role=d8k8                                 &
-        gtss;wmc -r :ACTIVE: -T d8k8                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
-             wmc -r :ACTIVE: -e  10,1620,2088,300,72;wmc -r :ACTIVE: -b add,skip_taskbar,below;
-             gt --geometry=-0-$HHt0     --hide-menubar --window-with-profile=d8k4                               --role=d8k4                                 &
-        gtss;wmc -r :ACTIVE: -T d8k4                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
-             wmc -r :ACTIVE: -e 10,1921,1006,1919,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
-             gt --geometry=+0+$HHt0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &
-        gtss;wmc -r :ACTIVE: -T test                ;
-             gt --geometry=+$HWd0+$HHt0 --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=Test                                 &
-        gtss;wmc -r :ACTIVE: -T Test                ;
-             gt --geometry=+$HWd0+0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &
-        gtss;wmc -r :ACTIVE: -T test                ;
-             gt --geometry=+0-$HHt0     --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=ckm8                                 &
-        gtss;wmc -r :ACTIVE: -T ckm8                ;
-             gt --geometry=+$HWd0-0     --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=Ckm8                                 &
-        gtss;wmc -r :ACTIVE: -T Ckm8                ;
-             gt --geometry=-$HWd0+0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &
-        gtss;wmc -r :ACTIVE: -T othr                ;
-             gt --geometry=-0+$HHt0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=Othr                                 &
-        gtss;wmc -r :ACTIVE: -T Othr                ;
-             gt --geometry=-$HWd0+$HHt0 --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=8xt                                  &
-        gtss;wmc -r :ACTIVE: -T 8xt                
-             gt --geometry=+0-0         --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                  &
-        gtss;wmc -r :ACTIVE: -T 2du                 ;
-             gt --geometry=-0+0         --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=sys                                  &
-        gtss;wmc -r :ACTIVE: -T sys                '; # might want to experiment with 5-centered or 10-static gravity to see if they're any better than S && SE
-   Al   gtm='gt --geometry=+0+$HHt0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &
-        gtss;wmc -r :ACTIVE: -T test                ;
-             gt --geometry=+0-0         --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=ckm8                                 &
-        gtss;wmc -r :ACTIVE: -T ckm8                ;
-             gt --geometry=-$HWd0+$HHt0 --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &
-        gtss;wmc -r :ACTIVE: -T othr                ;
-             gt --geometry=+0+0         --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &
-        gtss;wmc -r :ACTIVE: -T test                ;
-             gt --geometry=+$HWd0+0     --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &
-        gtss;wmc -r :ACTIVE: -T test                ;
-             gt --geometry=+$HWd0+$HHt0 --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                 &
-        gtss;wmc -r :ACTIVE: -T test                ;
-             gt --geometry=+$HWd0-0     --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=ckm8                                 &
-        gtss;wmc -r :ACTIVE: -T ckm8                ;
-             gt --geometry=-0+$HHt0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                 &
-        gtss;wmc -r :ACTIVE: -T othr                ;
-             gt --geometry=-0+0         --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=Othr                                 &
-        gtss;wmc -r :ACTIVE: -T Othr                ;
-             gt --geometry=-$HWd0+0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=muz    --working-directory=~/muz/U2b &
-        gtss;wmc -r :ACTIVE: -T muz                 ;
-             gt --geometry=+0-$HHt0     --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=mvz    --working-directory=~/mvz/U2b &
-        gtss;wmc -r :ACTIVE: -T mvz                '; # Aku gti below fully loadz GTz in all 8 ViewPortz
-   Al   gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt8;gtss;chv4;gtss;gt8;gtss;chv5;gtss;gt8;gtss;chv6;gtss;gt8;gtss;chv7;gtss;gt8;gtss;chv3;gtss;gt8;chv0;';
- elif    [[ "$DISPLAY"               !=  "" ]] &&
-         [[ `xrg|g -c ' connected '` == "3" ]] && [[ "$H3WF" == "1" ]]; then # H78M19EK:insertd new H variable test for whether using Sony50"1080iTV or ...
-  #   ... 32"Viotek display as 3-Wide-Flag 4Aku; # Below used to just have "-e ~/bin/d8ok" before appending the -d parameter so needing the -x instead.
-  # I71M8wxh:Maybe Ubu18.04 upd8d GnomTerm or GnomTwekTool gone dropd scaling so old d8ok32->36 && main8->7.9 nEdz x664,4504,2584 chopd 4 4mor char widthz;
-  # q 1306/34=38.41176470588235294117647058823529411765
-  # 1306-1292=14 mAB scrlbR widt; 4x38=152; 512,4352,2432; mIt nEd2scAl 1306 wIdr2 1458; try even shorter 1268, wi each of 34 char widz 38px or 33 wo padspc?
-  # q 1458/34=42.882352941176470; 4x42=166; 496,4336,2416; othr was +306+0 up2 466;
-   Al   gtI='gt --geometry=+784-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &
-        gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
-             wmc -r :ACTIVE: -e  10,824,1006,1108,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
-             gt --geometry=-0-0       --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &
-        gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
-             wmc -r :ACTIVE: -e 10,4504,1006,1268,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
-             gt --geometry=-0-0       --hide-menubar --window-with-profile=d8fd                               --role=d8fd                                   &
-        gtss;wmc -r :ACTIVE: -T d8fd                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
-             wmc -r :ACTIVE: -e 10,2416,1006,1458,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
-             gt --geometry=+466+0     --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                   &
-        gtss;wmc -r :ACTIVE: -T othr                ;
-             gt --geometry=-1920+0    --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=sys                                    &
-        gtss;wmc -r :ACTIVE: -T sys                 ;
-             gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &
-        gtss;wmc -r :ACTIVE: -T 2du                 ;'; # might want to experiment with 5-centered or 10-static gravity to see if they're any better than S && SE
-   Al   gtm='gt --geometry=+0+0       --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                   &
-        gtss;wmc -r :ACTIVE: -T test                ;
-             gt --geometry=-1920+0    --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=Othr                                   &
-        gtss;wmc -r :ACTIVE: -T Othr                ;
-             gt --geometry=-3840+0    --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=muz    --working-directory=~/muz/U2b   &
-        gtss;wmc -r :ACTIVE: -T muz                 ;
-             gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=mvz    --working-directory=~/mvz/U2b   &
-        gtss;wmc -r :ACTIVE: -T mvz                 ;'; # Aku gti below fully loadz GTz in all 8 ViewPortz
-   Al   gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt5;gtss;chv4;gtss;gt5;gtss;chv5;gtss;gt5;gtss;chv6;gtss;gt5;gtss;chv7;gtss;gt5;gtss;chv3;gtss;gt5;chv0;';
- else # back to older Aku GnomTerm aliases for just 2 24-inch Asus displays, before adding SonyTV or new curved as 3rd display
-   Al   gtI='gt --geometry=-1882-0    --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &
-        gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
-             wmc -r :ACTIVE: -e  10,664,1006,1306,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
-             gt --geometry=-0-0       --hide-menubar --window-with-profile=d8fd                               --role=d8fd                                   &
-        gtss;wmc -r :ACTIVE: -T d8ok-fd             ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
-             wmc -r :ACTIVE: -e 10,2584,1006,1306,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
-             gt --geometry=-1920+0    --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                   &
-        gtss;wmc -r :ACTIVE: -T othr                ;
-             gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=sys                                    &
-        gtss;wmc -r :ACTIVE: -T sys                 ;
-             gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &
-        gtss;wmc -r :ACTIVE: -T 2du                 ;'; # might want to experiment with 5-centered or 10-static gravity to see if they're any better than S && SE
-   Al   gtm='gt --geometry=+0+0       --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                   &
-        gtss;wmc -r :ACTIVE: -T test                ;
-             gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=Othr                                   &
-        gtss;wmc -r :ACTIVE: -T Othr                ;
-             gt --geometry=-1920+0    --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=muz    --working-directory=~/muz/U2b   &
-        gtss;wmc -r :ACTIVE: -T muz                 ;
-             gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=mvz    --working-directory=~/mvz/U2b   &
-        gtss;wmc -r :ACTIVE: -T mvz                 ;';
-   Al   gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt4;gtss;chv4;gtss;gt4;gtss;chv5;gtss;gt4;gtss;chv6;gtss;gt4;gtss;chv0;'; # Aku loadz GTz in left 6 ViewPortz
- fi
-else # following settings will hopefully work well for single-screen Ryu, Ken, && Chun (Taki's hard drive failz && she runz slow && hot, she's pretty dead)
-  if     [[ "$HHst" ==  ken*   ]]; then # should be almost the same as Aku's left screen, but mAB 10-static like Chun will also position best?
-    Al gtI='gt --geometry=-0-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &
-        gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
-             wmc -r :ACTIVE: -e  10,664,1006,1306,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
-             gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                   &
-        gtss;wmc -r :ACTIVE: -T othr                ;
-             gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &
-        gtss;wmc -r :ACTIVE: -T 2du                 ;';
-  elif   [[ "$HHst" ==  ryu*   ]]; then # Ryu should just resize to Aku's d8ok y-offset + 120    (for display pixel heightz 1200 - 1080)
-    Al gtI='gt --geometry=-0-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &
-        gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
-             wmc -r :ACTIVE: -e  10,664,1126,1306,74;wmc -r :ACTIVE: -b add,skip_taskbar,below;
-             gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                   &
-        gtss;wmc -r :ACTIVE: -T othr                ;
-             gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &
-        gtss;wmc -r :ACTIVE: -T 2du                 ;';
-  elif   [[ "$HHst" ==  chun*  ]]; then # d8ok resize geometry to fit Chun best, starting 421 602 886 198, each row is 49 pixlz high so less 147 for 3
-    Al gtI='gt --geometry=-0-0     --hide-menubar --window-with-profile=d8ok                               --role=d8ok                                   &
-   gtss;gtss;wmc -r :ACTIVE: -T d8ok                ;wmc -r :ACTIVE: -b add,skip_pager,sticky;
-             wmc -r :ACTIVE: -e    10,420,749,886,51;wmc -r :ACTIVE: -b add,skip_taskbar,below;
-             gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=othr                                   &
-        gtss;wmc -r :ACTIVE: -T othr                ;
-             gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=2du                                    &
-        gtss;wmc -r :ACTIVE: -T 2du                 ;';
-  fi
-  Al gtm='gt --geometry=+0+0       --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                   &
-        gtss;wmc -r :ACTIVE: -T test                ;
-             gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=muz    --working-directory=~/muz/U2b   &
-        gtss;wmc -r :ACTIVE: -T muz                 ;
-             gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=mvz    --working-directory=~/mvz/U2b   &
-        gtss;wmc -r :ACTIVE: -T mvz                 ;';
-  Al gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt3;gtss;chv3;gtss;gt3;gtss;chv0;'; fi; #xport Hm='muz';export HM='mvz'; # can I even use these 4 anythingd?;
+# Al gtm='gt --geometry=+0+0       --show-menubar --window-with-profile=PipsTestGnomTerm-DiffFont-D1NBxCf  --role=test                                   &
+#       gtss;wmc -r :ACTIVE: -T test                ;
+#            gt --geometry=-0+0       --show-menubar --window-with-profile=PipsOthrGnomTerm-TestFont-CCIHPS8  --role=muz    --working-directory=~/muz/U2b   &
+#       gtss;wmc -r :ACTIVE: -T muz                 ;
+#            gt --geometry=+0-0       --show-menubar --window-with-profile=PipsCkm8GnomTerm-NiceFont-DC9LDaPt --role=mvz    --working-directory=~/mvz/U2b   &
+#       gtss;wmc -r :ACTIVE: -T mvz                 ;';
+# Al gti='gtI;gtss;chv1;gtss;gtm;gtss;chv2;gtss;gt3;gtss;chv3;gtss;gt3;gtss;chv0;'; #xport Hm='muz';export HM='mvz'; # can I even use these 4 anythingd?;
 Al cti='ct   ti;'; # ChangeTitle 2 Init as quick simple similar command B4 gti or ti to call right after booting up && starting my first default GnomTerm;
 Al cTI='ct   TI;';
 Al  ti='cti;gti;'; # maybe l8r mk a custom TermInit alias here wich spawnz more than just GTz but mAB some alpha'd Sakuraz|LilyTermz|QTerminalz etc. too;
@@ -2258,11 +1997,11 @@ alias                   lsrc='lrc;src'; # L5KMJ0J0:just making a quick easy new 
 goo() { w3m "HTTP://Google.Com/search?q=$1+$2+$3+$4+$5+$6+$7+$8"     ; } # should probably pass $@ =~ s/ /+/g; or something smarter than this
 un()  {    [[ $# -lt 1 ]] && {                 uname  -a             ; return 0; }   # should eventually c8 filter all uname output to add colrz && f0ntz
                                                uname           $@    ; }
-src() {    [[ $# -lt 1 ]] && {                source         ~/.zshrc; return 0; }   # reload main shell resource file, or load parameter filename of script
-                                              source           $@    ; } # mA nEd 2 `src ~/.tmp/.src` nstd of MpT 2 try 2 unalias all old OveridN Usez 2 upd8
+src() {    [[ $# -lt 1 ]] && { source ~/.zshenv;source       ~/.zshrc; return 0; }   # reload main shell resource file, or load parameter filename of script
+                                                source         $@    ; } # mA nEd 2 `src ~/.tmp/.src` nstd of MpT 2 try 2 unalias all old OveridN Usez 2 upd8
 xrc() {    [[ $# -lt 1 ]] && {                  xrdb  -merge ~/.Xrc  ; return 0; }   # merge  main X.Org resource file, or load parameter filename of altern8
                                                 xrdb  -merge   $@    ; } # tryd2auto-call xrc at startx in .xinit but doesn't work so calling here BlO instead
-if         [[ "$DISPLAY" != ""  ]];                                    then xrc; fi; # since Ubu14.10UUX11!srcing   .xinit,just rElOd .Xrc 4evry nonconsol zsh
+#if         [[ "$DISPLAY" != ""  ]];                                   then xrc; fi; # since Ubu14.10UUX11!srcing   .xinit,just rElOd .Xrc 4evry nonconsol zsh
 mcp() { if [[ $# -gt 2 ]] && [[ ! -d ${$#} ]];  then   /bin/cp $@ .  ; return 0; fi; # adds a basic many-argument form of `cp` where all parameters are remote
                                                        /bin/cp $@    ; }             #   files to be copied into the current directory
 mc()  { # used to be mcd for Mk&&ChDir on $1 but just MakeChng, MkCh is nicer, && now also does MvFil $1 into && ChDir $2;
