@@ -5,7 +5,7 @@ require      Oct::d8::fldz;
 use base qw( Oct::d8::fldz );
 use          Oct::b8;
 use          Carp;
-my $VERSION='0.0';my $d8VS='NBSL8UTF';
+my $VERSION='0.0';my $d8VS='QBFLDir8';
 use constant ONE_MINUTE          => '1 min'               ;   #         60;
 use constant ONE_HOUR            => '1 hour'              ;   #      3_600;
 use constant ONE_DAY             => '1 day'               ;   #     86_400;
@@ -42,8 +42,24 @@ sub _stringify{ # cat non-zero b64 fields down to phass or should just be used f
 sub _cmp_num{
   my($larg,$rarg,$srvr)=@_;
   ($larg,$rarg)=($rarg,Oct::d8::dur8->new($larg)) if($srvr); # mk both args dur8 objects
-  # maybe compare _total_phasses() or something?
-  return(0);}
+  $rarg=Oct::d8::dur8->new($rarg) unless(ref($rarg) && $rarg->isa('Oct::d8::dur8'));
+  if   (($larg->Y < $rarg->Y) || # maybe better to compare _total_phasses() of dur8ions or something?
+        ($larg->M < $rarg->M) ||
+        ($larg->D < $rarg->D) ||
+        ($larg->z < $rarg->z) || # should probably have smarter h+z <=>
+        ($larg->h < $rarg->h) ||
+        ($larg->m < $rarg->m) ||
+        ($larg->s < $rarg->s) ||
+        ($larg->p < $rarg->p)){return(-1);}
+  elsif(($larg->Y > $rarg->Y) ||
+        ($larg->M > $rarg->M) ||
+        ($larg->D > $rarg->D) ||
+        ($larg->z > $rarg->z) ||
+        ($larg->h > $rarg->h) ||
+        ($larg->m > $rarg->m) ||
+        ($larg->s > $rarg->s) ||
+        ($larg->p > $rarg->p)){return(1);}
+  else                        {return(0);}}
 sub _cmp_str{my $r= _cmp_num(@_); ($r<0) ? return('lt') : ($r) ? return('gt') : return('eq');}
 # dur8 + dur8  = dur8
 # dur8 + d8    = d8   (calcul8ion is passed off to d8.pm)
@@ -51,8 +67,8 @@ sub _cmp_str{my $r= _cmp_num(@_); ($r<0) ? return('lt') : ($r) ? return('gt') : 
 # dur8 + anything else is not supported yet
 sub _add{
   my($larg,$rarg,$srvr)=@_;my $rslt;
-  $larg=Oct::d8->new($larg) if($srvr);
-  $rarg=Oct::d8->new($rarg) unless(ref($rarg)&& $rarg->isa('Oct::d8::dur8'));
+  $larg=Oct::d8::dur8->new($larg) if($srvr);
+  $rarg=Oct::d8->new(      $rarg) unless(ref($rarg)&& $rarg->isa('Oct::d8::dur8'));
   if((ref($larg)&& $larg->isa('Oct::d8'))||
      (ref($rarg)&& $rarg->isa('Oct::d8'))){
     $rslt=$larg+$rarg; # pass off calculation to d8.pm
@@ -119,9 +135,9 @@ sub new{my($nvkr,$ityp,$idat)=@_;my $nobj=ref($nvkr);my $clas=$ityp;
       for(my $i=(8-$ilen);$i<8;$i++){
         if($idat=~ s/^(.)//){$self->{$attz[$i]}=b10($1);}} # break down str
     }elsif($ityp=~ /^g/i){ # 'g3'  might want to l8r add more flexible parsing for optional fldz && fractional partz
-      if($idat=~ /(\d+):(\d+):(\d+)\.(\d+)/){$self->{'h'}=$1;$self->{'m'}=$2;$self->{'s'}=$3;$self->{'p'}=int($4/100.0*64);}
+      if($idat=~ /(\d+):(\d+):(\d+)\.(\d+)/){$self->{'h'}=$1;$self->{'m'}=$2;$self->{'s'}=$3;$self->{'p'}=int($4/100.0*60);}
     }elsif($ityp=~ /^m/i){ # 'mp'
-      if($idat=~ /(\d+)\.(\d+)/){                                            $self->{'s'}=$1;$self->{'p'}=int($2/ 10.0*64);
+      if($idat=~ /(\d+)\.(\d+)/){                                            $self->{'s'}=$1;$self->{'p'}=int($2/ 10.0*60);
         while($self->{'s'} >= 60){
           $self->{    's'} -= 60;$self->{'m'}=0 unless(exists($self->{'m'}) && defined($self->{'m'}) && $self->{'m'}=~ /^\d+$/);$self->{'m'}++;}
         while($self->{'m'} >= 60){ # assuming there won't be Dayz long secondz

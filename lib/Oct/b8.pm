@@ -706,8 +706,8 @@ sub rot1{my @strz=();push(@strz, decode('UTF-8', join(' ',@_)))  if(@_);  # this
 #   O3RM3mrk:HTTPS://YouTu.be/r6sIXUChB3U "Jonathan Blow on Calling Functions" # O3Q:0EA0 of JonathanBlowHigh wich talkz rEcursN by prIOriTz4nStng oper8or()?;
 #   O42MJclQ:HTTPS://GitHub.Com/BGKillas/kalc "ComplexNums, 2D/3D Graphing, ArbitraryPrecision, Vector/M8rix, CLI calQl8or(inRust)wiRealTime output && units";
 sub Q{my $ajps='';if(@_){$ajps=join('',@_);}elsif(!-t STDIN){$ajps=join('',<STDIN>);}$ajps=~ s/(\s|_|,)+//g;my $bgfl=''; # AllJoinedParamStringz && BiGFLoat
-  if ($ajps=~ /h/i){$ajps='';$bgfl=" Q v$VERSION d8VS:$d8VS crE8d by $Auth to calQl8 most standard math oper8ions using high-precision BigFloat objects;
-   h - print this Help text and exit
+  if ($ajps=~ /-?-h/){$ajps='';$bgfl=" Q v$VERSION d8VS:$d8VS crE8d by $Auth to calQl8 most standard math oper8ions using high-precision BigFloat objects;
+  -h - print this Help text and exit.
        all spaces, underscores, and commas are stripped from input, so feel free to include them for clarity when entering particularly large numbers.
        all altern8s below are case-insensitive except 'x' times and 'X' Xor. two adjacent times characters like 'xx' can be used for exponentE8ion.
    l - altern8 for Left     ( parenthesis  # note a nice approxim8ion for Pi to demonstr8 is `Q 355/113|c8 0-1_` to just trunc8 to show 1 line of precision;
@@ -727,7 +727,8 @@ sub Q{my $ajps='';if(@_){$ajps=join('',@_);}elsif(!-t STDIN){$ajps=join('',<STDI
          HTTPS://PerlDoc.Perl.Org/perlop.html or other typical math utility functions like `bc` and `dc`. Reverse-Polish Not8ion in `orpie` side-steps this.
        Q is exported from the Oct::b8 Perl Module and comes with a small executable wrapper script which is intended to be suitable for placing in a ~/bin/.
          Q enables entering expressions like `Q '64-(128/7)+15'` (nEd 2 tSt!) from the shell and ':r!Q 4096xx2048-1' from within a typical vim editor buffr.
-       2du:rewrite parsing to handle arbitrary expressions in parens, expand sub-expressions in real precedence order, handle unary oper8ors, add ++ and --;
+       2du:rewrite parsing to handle arbitrary expressions in parens, expand sub-expressions in real precedence order, handle unary oper8ors, add ++ and --.
+         would be really nice if Q could Dtect /:[0-9]/ for design8ing bases:10,2,4,8,16,32,64,128,256,&&93k as DsIred output target base,trAil : 4 input2?;
 ";} # clear all other parameters && assign return value BiGFLoat to hold Help text instead
   $ajps=~ s/s/-/gi;$ajps=~ s/p/+/g ;$ajps=~ s/d/\//gi;$ajps=~ s/o/|/gi;$ajps=~ s/a/&/gi;$ajps=~ s/x/*/g;$ajps=~ s/X/^/g;$ajps=~ s/n/~/gi;$ajps=~ s/m/%/gi;
   $ajps=~ s/l/(/gi;$ajps=~ s/r/)/gi;$ajps=~ s/b/!/gi; # strips spaces, (low-basses) "underscores", && commas up above help-text, then...

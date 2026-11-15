@@ -1081,7 +1081,7 @@ Al      s8='   sort'; #  s8   :           sort (maybe eventually a collection of
 #       g8   already ~/bin/
 #l      g8='    git'; #  g8   :            git (was my much earlier attempt at wrapping to handle abbreV8ions && gener8 commits from .bak && vice-versa)
 Al    g8c='     git clone    '; # another convenient quick common git command for when needing to clone a new repository probably needing lowercase URLs
-Al    g8co='    git checkout ' gas='git add *' g8f='g8 f' g8b='g8 br'; # short for git fetch && branch (just b does bisect first)
+Al    g8co='    git checkout ' g8a='git add' gas='git add *' g8f='g8 f' g8b='g8 br'; # short for git fetch && branch (just b does bisect first)
 Al    g8st='    git status   '; # basic Oct-memorable combined rhyme 1-string altern8 way to call what should be effectively the same as: `g8 st`
 Al    gaa='     git  add .* *'; # handy alias to Add All (Asterisk) changes, Commit by Message string below, then Push Origin Master (likely to GitHub)
 Al    gcm='     git commit -m'; # tried to call each of these through g8 initially, but maybe -m flag wasn't passing on to git correctly so explicit now

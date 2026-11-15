@@ -1,41 +1,42 @@
 #!/usr/bin/perl
-# 3AAJFVlt:01times.t crE8d by Pip@CPAN.Org to valid8 Octology::d8 behavior;
-use utf8;use v5.22;use Test;use Octology::d8;
+# 3AAJFVlt:03d8-01times.t crE8d by PipS <PipStuart@GMail.Com> to valid8 Octology::d8 behavior, but now (QBFLBGPT) fixed to test newer Oct instead;
+use utf8;use v5.22;use Test;
+use FindBin qw($RealBin);use lib "$RealBin/../lib";use Oct::d8;
 # HARNESS-DURATION-SHORT
 BEGIN { plan tests => 16 }
 my $rslt; my $fldz; my $tnum = 0; our $lded = 1; my @rdat = (); ok(1);
-$fldz = new Octology::d8;
+$fldz = new Oct::d8;
 ok($fldz);
 $rslt = $fldz->p(20);
 ok($rslt, 20);
-$fldz = Octology::d8->new();
+$fldz = Oct::d8->new();
 ok($fldz);
-$fldz = Octology::d8->new('d8' => '01234567');
+$fldz = Oct::d8->new('d8' => '01234567');
 ok($fldz);
-#fldz = Octology::d8->new('hash' => { 'frame' => 31 }); # hash constructor is different now
-$fldz = Octology::d8->new('d8' => '0123456V');
+#fldz = Oct::d8->new('hash' => { 'frame' => 31 }); # hash constructor is different now
+$fldz = Oct::d8->new('d8' => '0123456V');
 ok($fldz);
 $rslt = $fldz->p();
 ok($rslt, 31);
-#fldz = Octology::d8->new('list' => [ 0, 3, 6, 9, 12, 15, 18, 21 ]); # list constructor is different now
-$fldz = Octology::d8->new('d8' => '0369CFIL');
+#fldz = Oct::d8->new('list' => [ 0, 3, 6, 9, 12, 15, 18, 21 ]); # list constructor is different now
+$fldz = Oct::d8->new('d8' => '0369CFIL');
 ok($fldz);
 @rdat = $fldz->ymd();
 ok($rdat[2], 6);
 @rdat = $fldz->ymd(4, 8, 12);
 ok($rdat[1], 8);
-$fldz = Octology::d8->new('76543210');
+$fldz = Oct::d8->new('76543210');
 ok($fldz);
 $rslt = $fldz->p(127);
 ok($rslt, 127);
 @rdat = $fldz->MyPSP(4, 8, 12, 16, 20);
 ok($rdat[1],  8);
 ok($rdat[3], 16);
-#fldz = Octology::d8->new('verbose' => 'July 4, 2004'); # verbose constructor is different now; # was 'verbose', thN 'expand', now just 'full'?;
-$fldz = Octology::d8->new('full'   => 'Mon Jul 28 18:48:07:11 -0500 2014');
+#fldz = Oct::d8->new('verbose' => 'July 4, 2004'); # verbose constructor is different now; # was 'verbose', thN 'expand', now just 'full'?;
+$fldz = Oct::d8->new('full'   => 'Mon Jul 28 18:48:07:11 -0500 2014');
 $rslt = $fldz->D();
 ok($rslt, 28);
-$fldz = Octology::d8->new(            'Sun Mar 17 10:12:14:16 -0500 2024');
+$fldz = Oct::d8->new(            'Sun Mar 17 10:12:14:16 -0500 2024');
 $rslt = $fldz->D();
 ok($rslt, 17); # O3HMACEG:try2mk new obj wi just full str out from `d8 d8`;
 

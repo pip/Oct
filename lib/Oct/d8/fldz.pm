@@ -13,7 +13,7 @@ use overload
                else     {$tstr.=          b64($fdat[$i]);}
              } return($tstr);};
 use Oct::a8;
-use Oct::b8;
+use Oct::b8;use Time::DaysInMonth;
 use Carp;my @d8bo=split(//,$cmap{'d8bo'}); # setup what was a8.pm ColorMAP originally for pal8, then 8bow, then d8bo here (were RoYGCBMp B4 YGTBUDSN);
        # my @d8bl=split(//,$cmap{'d8bl'}); # setup FDAL layerz 2;
        # my @d8bs=split(//,$cmap{'d8bs'}); # setup SGR  planez 2;
@@ -130,17 +130,17 @@ sub _sift{ # settles fields into standard ranges (for overflow from add/sub)
       $self->{    'h'}+=                 24;$self->{'D'}--;$self->{'D'}-- unless($self->D());} # decrement again past 0
     while(                  $self->{'h'}  >=              24){
       $self->{    'h'}-=                 24;$self->{'D'}++;  }
-#   $dinf=1 unless(defined($self->{'M'}) && $self->{'M'});
-#   $self->{'M'}=1 if($dinf); # probably will need special handling of allowable 0 Day or Month which shouldn't alter larger field
-#   while($self->{'D'}< 0                                   ){ # this will probably also need to lookup adjacent days_in values to alter most logically
-#     $self->{    'D'}+= days_in($self->YM);$self->{'M'}--;$self->{'M'}-- unless($self->M());}
-#   while(                  $self->{'D'}> days_in($self->YM)){ # maybe just days_in is breaking d8obj += dur8obj?
-#     $self->{    'D'}-= days_in($self->YM);$self->{'M'}++;  }
+    $dinf=1 unless(defined($self->{'M'}) && $self->{'M'});
+    $self->{'M'}=1 if($dinf); # probably will need special handling of allowable 0 Day or Month which shouldn't alter larger field
+    while($self->{'D'}< 0                                   ){ # this will probably also need to lookup adjacent days_in values to alter most logically
+      $self->{    'D'}+= days_in($self->YM);$self->{'M'}--;$self->{'M'}-- unless($self->M());}
+    while(                  $self->{'D'}> days_in($self->YM)){ # maybe just days_in is breaking d8obj += dur8obj?
+      $self->{    'D'}-= days_in($self->YM);$self->{'M'}++;  }
     while($self->{'M'}< 0                                   ){
       $self->{    'M'}+=                 12;$self->{'Y'}--;  }
     while(                  $self->{'M'}>                 12){
       $self->{    'M'}-=                 12;$self->{'Y'}++;  }
-#   $self->{'M'}-- if($dinf);
+    $self->{'M'}-- if($dinf);
   }else{
     while($self->{'M'}< 0                                   ){
       $self->{    'M'}+=                 12;$self->{'Y'}--;  }

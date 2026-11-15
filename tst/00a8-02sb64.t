@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
-use utf8;use v5.22;use Test2::V0 qw(!E !F);use Oct::a8; # both modulez Xport F() && a8 wil probably Xp E() soon too so masked thOz out from Test2::V0 Uz;
+use utf8;use v5.22;use Test2::V0 qw(!E !F); # both modulez Xport F() && a8 wil probably Xp E() soon too so masked thOz out from Test2::V0 Uz;
+use FindBin qw($RealBin);use lib "$RealBin/../lib";use Oct::a8;
 # HARNESS-DURATION-SHORT
 plan tests => 64;my $d8VS='QBELFcdu'; # just dupl8c8d all of a8.pm's exportz above as importz here but removed F (sprintf) since provided by Test2::V0 too!;
                  # use Test::More skip_all => $reason; require_ok( 'Some::Module' ); # mAB see pdoc Test2::Suite or Test2::V0 4 l8St *.t lIk Test::More;

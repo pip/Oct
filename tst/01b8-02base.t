@@ -2,7 +2,8 @@
 # 37KK2jPD:01b8-02base.t originally crE8d by PipS <PipStuart@GMail.Com> to valid8 Math::BaseCnv functionality (before becoming the model for Oct::b8 tests).
 #   This script initially mimicked Ken Williams' <Ken@Forums.Swathmore.Edu> test cases for his similar Math::BaseCalc module, but has diverged significantly.
 #   Perl's hex() built-in was the opposite behavior of mine (but now mine is called heX() a-f && HEX() A-F to distinguish by UpperCasingX, as mine HEXify!).
-use utf8;use v5.22;use Test;use Oct::b8;
+use utf8;use v5.22;use Test;
+use FindBin qw($RealBin);use lib "$RealBin/../lib";use Oct::b8;
 # HARNESS-DURATION-SHORT
 my $rslt;my $tnum=1;my $lded=1;my $tvrb=0;my $tsts=32;
 END { print "not " unless($lded); print "ok $tsts\n"; }

@@ -1,5 +1,14 @@
 #!/usr/bin/env perl
-use utf8;use v5.22;use Test2::V0 qw(!E !F);use Oct::a8;
+# 2du:Chax said:"For future improvements, three findings stand out:
+# -Arithmetic  : 03d8-03math.t script currently asserts only ok(1); calQl8ions are printed, without checking expected results. I don't knO wut math 2 tSt yet;
+# -Object tests: 01b8-03bobj.t exits after its first assertion, leaving the object exercises below it unexecuted.    b8.pm doesn't have a new() 4 objects yet;
+# -Portability : 00a8-03Sorc.t document dependencies and make the color test’s terminal assumptions explicit."
+# Tests S()/c() round trips under the xterm-256color profile.
+# Requires TERM=xterm-256color before Oct::a8 loads.
+# No actual display, terminal emul8or, or attached TTY is required.
+BEGIN { $ENV{TERM} = 'xterm-256color'; }
+use utf8;use v5.22;use Test2::V0 qw(!E !F);
+use FindBin qw($RealBin);use lib "$RealBin/../lib";use Oct::a8;
 # HARNESS-DURATION-SHORT
 plan tests =>384;my $d8VS='QAHM8888'; # just dupl8c8d all of a8.pm's exportz above as importz here but removed F (sprintf) since provided by Test2::V0 too!;
 # 2du:du psrand Fb in DAL wi SGRz,lern wut exported Test2::V0::F() is && does since it collIdez wi my a8 s4 (string-print-4m@d) shortNing nAm;

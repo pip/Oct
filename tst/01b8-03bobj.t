@@ -1,8 +1,9 @@
 #!/usr/bin/perl
 use utf8;use v5.22;use Test2::V0;
+use FindBin qw($RealBin);use lib "$RealBin/../lib";
 # HARNESS-DURATION-SHORT
 use   Oct::b8;my $bobj; # F5KM0EvF:03bobj.t crE8d by PipS <PipStuart@GMail.Com> to start some basic valid8ion of new Oct::b8 functionality;
-plan tests => 1;ok(       '20220122012211010111001202111100' eq b8('53cd_oVXH',64, 3),  " t00: b64 53cd_oVXH in b3; ");exit(); # done_testing() retn undF
+plan tests => 1;ok(       '20220122012211010111001202111100' eq b8('53cd_oVXH',64, 3),  " t00: b64 53cd_oVXH in b3; ");exit(); # b8.pm has no new() objz yet!;
 $bobj=Oct::b8->new(       '20220122012211010111001202111100'            , 3,64);say "bobj: $bobj :"; # I don't think b8 objX evr workd rIt yet!;
 #`cnv 53cd_oVXH 64 3` :   '20220122012211010111001202111100'
 #bobj=Oct::b8->new(       '2j7x.KUCe9Vd8k_%D_fNx'                       ,64,10);say "bobj: $bobj :"; # need new, !fadd 4 from b64 cnv
