@@ -64,23 +64,22 @@ require         Exporter;  # add new colr systM; NC6LDSNT:rmvd old ygTbUDSN sing
 use base     qw(Exporter); # mainly exporting global utility functions && variables originally inherited from c8.pm as well as a few f8.pm d8a structures
 our @EXPORT= qw(bfr8c    b8c    d8c   dur8c @d8cl @d8cS  a8c   chti  c8fn gnp8  S2 c2 S c sS olde lodl @Monz @Mon    %mc2F %mc2b %mF2c %mb2c @Kana %sb10 %sb210
  $SKp8 $SKp0 $SKp1 $SKp2 b8clr  $SKpf $SKpt %pmap %cmap %pldl %pl8n  ftst acs  %f8fm %f8pm %sgrm %sgrn @Dayz @Day lrc d8cs comma  curs  sumb @x256 @sb64 @sb256
-    $z    $k    $r    $o    $y    $g     $c   $Sb $q $m    $p    $w  tstc    $K    $R    $O    $Y    $G    $C    $B    $M    $P    $W    %p622 %p222   upd8
-  PrfM   $bk   $br   $bo   $by   $bg    $bc   $bb   $bm   $bp   $bw %plds   $hK   $hR   $hO   $hY   $hG   $hC   $hB   $hM   $hP   $hW DmC h2rl  rl2h   drkh
-  xrtr %xrth XE sf pf eN  $pP pP t1             cn chmp  chip  co   %pldS   $HK   $HR   $HO   $HY   $HG   $HC   $HB   $HM   $HP   $HW %pldh hl $pfil  o4 o5
- $tnhf $ucdf spff spfd spfX spfs shfl  reso $Auth %cmsp %p8k2 @p82k  chp8 aw8 S2f4 c2f4 dm2u cdst %crgb %cbrt @snls @mrls %cdrd %cdrn    %nrgb $lfil  o8 o9
- $dbug      $Sz  $Sa  $d $e $f  $h $i $j  $l  $n  $qq $s $t $u $v $x  $A  $D $E $F  $H $I $J  $L  $N  $Q  $S $T $U $V  $X $Z s4 s5 O P E N F e4 e5 n9 e8 e9);
+$qq $q $z $Sz $k $r   $o    $y    $g     $c $Sa $Sb  $m    $p    $w  tstc    $K    $R    $O    $Y    $G    $C    $B    $M    $P    $W    %p622 %p222     %sb910
+  PrfM   $bk   $br   $bo   $by   $bg    $bc   $bb   $bm   $bp   $bw %plds   $hK   $hR   $hO   $hY   $hG   $hC   $hB   $hM   $hP   $hW DmC h2rl  rl2h     @sb93k
+  xrtr %xrth XE sf pf     $pP pP t1             cn chmp  chip  co   %pldS   $HK   $HR   $HO   $HY   $HG   $HC   $HB   $HM   $HP   $HW %pldh hl $pfil upd8
+ $tnhf $ucdf spff spfd spfX spfs shfl  reso $Auth %cmsp %p8k2 @p82k  chp8 aw8 S2f4 c2f4 dm2u cdst %crgb %cbrt @snls @mrls %cdrd %cdrn    %nrgb $lfil drkh $dbug
+                                                                                                                 o4 o5 o8 o9 s4 s5 O P E N F e4 e5 e8 e9 eN);
  # of 52 posibl sngl-letr var nmz,a8 Xportz 20,$b && $a unavail,sOshudB thEs 30 lFt4quik shortSt nAmz: 'def hij l n    stuv x', 'A  DEF HIJ L N  Q STUV X Z';
- # of 52 ygTbUDSN was aded sO now 30 Xportz,see `pa 'print t1'`,sOshudB thEs 20 lFt4quik shortSt nAmz: ' ef hij l    q    v x', 'A   EF HIJ L    Q    V X Z';
 #ur @EXPORT_OK   = qw($d $e $f  $h $i $j  $l  $n  $q  $s $t $u $v $x  $A  $D $E $F  $H $I $J  $L  $N  $Q  $S $T $U $V  $X  $Z); # scoop up abov as Dflt clrz;
 our %EXPORT_TAGS = ('all'  => [ qw($d $e $f $h $i $j $l $n $q $s $t $u $v $x $A $D $E $F $H $I $J $L $N $Q $S $T $U $V $X  $Z $Sz $Sa) ],
                    #'best' => [ qw(BestIndices   BestHand                   ) ],
                    #'b64'  => [ qw(CardB64   B64Card HandB64  B64Hand       ) ],
                    #'pd8a' => [ qw(                %pd8a   %zdnh %zplf %zloh) ],
                    ); # just load all singles (skipping sort $a && $b [&& $z] );
-our $VERSION='0.000_001';our $d8VS='QAIMG8s4';our $Auth='PipS <PipStuart@GMail.Com>'; # abov not!Xporting $b sinc cOlIdz with sort{$a<=>$b}; unalloc'd sOlOz^;
+our $VERSION='0.000_001';our $d8VS='QBDLFAST';our $Auth='PipS <PipStuart@GMail.Com>'; # abov not!Xporting $b sinc cOlIdz with sort{$a<=>$b}; unalloc'd sOlOz^;
 our $dbug=0;our $ucdf= eval('use Color::Similarity::RGB qw(distance);1') || 0; # try2set UseColorDistncFlag if optnl module is avail; /defhijlnqstuvx/i+/AZ/^;
 BEGIN{ # METHOD NAME ALIASES  # HTTPS://StackOverFlow.Com/questions/17543925/getting-used-only-once-possible-typo-warning-when-aliasing-subroutines
-  *sf = \&F; *s4 = \&F; *O = \&o8; *N = \&n9;
+  *sf = \&F; *s4 = \&F; *O = \&o8;
   *pf = \&P; *o4 = \&P; *E = \&e8; }
 our @sb64 =('0'..'9','A'..'Z','a'..'z','.','_'); # SingleBase64 array && Base10 hash (since it's probably best not to use b8.pm here in a8)
 our %sb10 =();$sb10{$sb64[$_]}=$_ for(0..$#sb64);our %crgb;our %cbrt;our @snls;our @mrls;our %cdrd;our %cdrn; # DclAr ColrDist d8a:BRiTness,Srch iNdex LiSt,
@@ -105,7 +104,8 @@ our @sb256=('0'..'9', 'A'..'Z', 'a'..'z', '.', '_',  # Base256 but starting with
             'Ⓠ', 'Ⓡ', 'Ⓢ', 'Ⓣ', 'Ⓤ', 'Ⓥ', 'Ⓦ', 'Ⓧ', 'Ⓨ', 'Ⓩ',
             'ⓐ', 'ⓑ', 'ⓒ', 'ⓓ', 'ⓔ', 'ⓕ', 'ⓖ', 'ⓗ',
             'ⓘ', 'ⓙ', 'ⓚ', 'ⓛ', 'ⓜ', 'ⓝ', 'ⓞ', 'ⓟ', # oops! only did 192;
-            'ⓠ', 'ⓡ', 'ⓢ', 'ⓣ', 'ⓤ', 'ⓥ', 'ⓦ', 'ⓧ', 'ⓨ', 'ⓩ', 'Ø', 'Ī',
+            'ⓠ', 'ⓡ', 'ⓢ', 'ⓣ', 'ⓤ', 'ⓥ', 'ⓦ', 'ⓧ', 'ⓨ', 'ⓩ', 'ʘ', 'Ɵ', # whIl I'm considrng chngng b256 2 rEordr Braille Left2Right B4 TopDown,mAB ._ abov 2?;
+# QBDLMudu:B4 dot && underscore equivalNtz abov were: 'Ø', 'Ī', thN rEplAcemNt candid8z:'.ʘ_Ɵ ϾϿϴ ȪȫȬȭȮȯȰȱ Θθ ✳ ✴ ✵ ✶ ✷ ✸ ❁ ❂ ❈ ❉ ❊ ❋  .✇ _✆ ?'
 #   HTTPS://Symbl.CC/en/search/?q=Braille 2800-28FF; `u8 10240 10496|sS`;
 # 10240 2800 2W0⠀⠁⠂⠃⠄⠅⠆⠇8⠈⠉⠊⠋⠌⠍⠎⠏G⠐⠑⠒⠓⠔⠕⠖⠗O⠘⠙⠚⠛⠜⠝⠞⠟W⠠⠡⠢⠣⠤⠥⠦⠧e⠨⠩⠪⠫⠬⠭⠮⠯m⠰⠱⠲⠳⠴⠵⠶⠷u⠸⠹⠺⠻⠼⠽⠾⠿:
 # 10304 2840 2X0⡀⡁⡂⡃⡄⡅⡆⡇8⡈⡉⡊⡋⡌⡍⡎⡏G⡐⡑⡒⡓⡔⡕⡖⡗O⡘⡙⡚⡛⡜⡝⡞⡟W⡠⡡⡢⡣⡤⡥⡦⡧e⡨⡩⡪⡫⡬⡭⡮⡯m⡰⡱⡲⡳⡴⡵⡶⡷u⡸⡹⡺⡻⡼⡽⡾⡿:
@@ -115,22 +115,34 @@ our @sb256=('0'..'9', 'A'..'Z', 'a'..'z', '.', '_',  # Base256 but starting with
 #           'à','á','â','ã','ä','å','æ','ç',  'è','é','ê','ë','ì','í','î','ï',  'ð','ñ','ò','ó','ô','õ','ö','÷',  'ø','ù','ú','û','ü','ý','þ','ÿ',
 #           'Ā','ā','Ă','ă','Ą','ą','Ć','ć',  'Ĉ','ĉ','Ċ','ċ','Č','č','Ď','ď',  'Đ','đ','Ē','ē','Ĕ','ĕ','Ė','ė',  'Ę','ę','Ě','ě','Ĝ','ĝ','Ğ','ğ',
 #           'Ġ','ġ','Ģ','ģ','Ĥ','ĥ','Ħ','ħ',  'Ĩ','ĩ','Ī','ī','Ĭ','ĭ','Į','į',  'İ','ı','Ĳ','ĳ','Ĵ','ĵ','Ķ','ķ',  'ĸ','Ĺ','ĺ','Ļ','ļ','Ľ','ľ','Ŀ',
+#           '⠀', '⠁', '⠂', '⠃', '⠄', '⠅', '⠆', '⠇',  '⠈', '⠉', '⠊', '⠋', '⠌', '⠍', '⠎', '⠏', # thEz R old Braille 1st 64 in orig. Dfalt UniCode ordr;
+#           '⠐', '⠑', '⠒', '⠓', '⠔', '⠕', '⠖', '⠗',  '⠘', '⠙', '⠚', '⠛', '⠜', '⠝', '⠞', '⠟',
+#           '⠠', '⠡', '⠢', '⠣', '⠤', '⠥', '⠦', '⠧',  '⠨', '⠩', '⠪', '⠫', '⠬', '⠭', '⠮', '⠯',
+#           '⠰', '⠱', '⠲', '⠳', '⠴', '⠵', '⠶', '⠷',  '⠸', '⠹', '⠺', '⠻', '⠼', '⠽', '⠾', '⠿',
 # 10240 2800 2W0⠀⠁⠂⠃⠄⠅⠆⠇8⠈⠉⠊⠋⠌⠍⠎⠏G⠐⠑⠒⠓⠔⠕⠖⠗O⠘⠙⠚⠛⠜⠝⠞⠟W⠠⠡⠢⠣⠤⠥⠦⠧e⠨⠩⠪⠫⠬⠭⠮⠯m⠰⠱⠲⠳⠴⠵⠶⠷u⠸⠹⠺⠻⠼⠽⠾⠿:; # 2du:just add this quOtd commad split optn 2 UTF8 az u8;
-            '⠀', '⠁', '⠂', '⠃', '⠄', '⠅', '⠆', '⠇',  '⠈', '⠉', '⠊', '⠋', '⠌', '⠍', '⠎', '⠏',
-            '⠐', '⠑', '⠒', '⠓', '⠔', '⠕', '⠖', '⠗',  '⠘', '⠙', '⠚', '⠛', '⠜', '⠝', '⠞', '⠟',
-            '⠠', '⠡', '⠢', '⠣', '⠤', '⠥', '⠦', '⠧',  '⠨', '⠩', '⠪', '⠫', '⠬', '⠭', '⠮', '⠯',
-            '⠰', '⠱', '⠲', '⠳', '⠴', '⠵', '⠶', '⠷',  '⠸', '⠹', '⠺', '⠻', '⠼', '⠽', '⠾', '⠿',
+# 10240 2800 2W0⠀⠁⠈⠉⠂⠃⠊⠋8⠐⠑⠘⠙⠒⠓⠚⠛G⠄⠅⠌⠍⠆⠇⠎⠏O⠔⠕⠜⠝⠖⠗⠞⠟W⠠⠡⠨⠩⠢⠣⠪⠫e⠰⠱⠸⠹⠲⠳⠺⠻m⠤⠥⠬⠭⠦⠧⠮⠯u⠴⠵⠼⠽⠶⠷⠾⠿:; # rEordrd bitz from .zshenv rob() ReOrdrBrailleBitz UL 2 UR,thN dn;
+            '⠀','⠁','⠈','⠉','⠂','⠃','⠊','⠋', '⠐','⠑','⠘','⠙','⠒','⠓','⠚','⠛', '⠄','⠅','⠌','⠍','⠆','⠇','⠎','⠏', '⠔','⠕','⠜','⠝','⠖','⠗','⠞','⠟',
+            '⠠','⠡','⠨','⠩','⠢','⠣','⠪','⠫', '⠰','⠱','⠸','⠹','⠲','⠳','⠺','⠻', '⠤','⠥','⠬','⠭','⠦','⠧','⠮','⠯', '⠴','⠵','⠼','⠽','⠶','⠷','⠾','⠿',
+            # 1st 64 rEordrd Braille bitz from `rob q` QuotedSepR8orz abov thN up2 256 also rEordrd BlOw:
+#           '⡀','⡁','⡈','⡉','⡂','⡃','⡊','⡋', '⡐','⡑','⡘','⡙','⡒','⡓','⡚','⡛', '⡄','⡅','⡌','⡍','⡆','⡇','⡎','⡏', '⡔','⡕','⡜','⡝','⡖','⡗','⡞','⡟',
+#           '⡠','⡡','⡨','⡩','⡢','⡣','⡪','⡫', '⡰','⡱','⡸','⡹','⡲','⡳','⡺','⡻', '⡤','⡥','⡬','⡭','⡦','⡧','⡮','⡯', '⡴','⡵','⡼','⡽','⡶','⡷','⡾','⡿',
+#           '⢀','⢁','⢈','⢉','⢂','⢃','⢊','⢋', '⢐','⢑','⢘','⢙','⢒','⢓','⢚','⢛', '⢄','⢅','⢌','⢍','⢆','⢇','⢎','⢏', '⢔','⢕','⢜','⢝','⢖','⢗','⢞','⢟',
+#           '⢠','⢡','⢨','⢩','⢢','⢣','⢪','⢫', '⢰','⢱','⢸','⢹','⢲','⢳','⢺','⢻', '⢤','⢥','⢬','⢭','⢦','⢧','⢮','⢯', '⢴','⢵','⢼','⢽','⢶','⢷','⢾','⢿',
+#           '⣀','⣁','⣈','⣉','⣂','⣃','⣊','⣋', '⣐','⣑','⣘','⣙','⣒','⣓','⣚','⣛', '⣄','⣅','⣌','⣍','⣆','⣇','⣎','⣏', '⣔','⣕','⣜','⣝','⣖','⣗','⣞','⣟',
+#           '⣠','⣡','⣨','⣩','⣢','⣣','⣪','⣫', '⣰','⣱','⣸','⣹','⣲','⣳','⣺','⣻', '⣤','⣥','⣬','⣭','⣦','⣧','⣮','⣯', '⣴','⣵','⣼','⣽','⣶','⣷','⣾','⣿',
               # mAB som othr gUd 64 can gO in abov && lEv Braille full-256 4 up2 512 thN?;
            ); # upd8 b8.pm 2 stRt having encircled && 6-dot Braille 4 new 256;
-#           '0'..'9', 'A'..'Z', 'a'..'z', '.', '_',  # Base256 but starting with b128 && b64 characters (-1)
-#           '♟', '♙', '♞', '♘', '♝', '♗', '♜', '♖', '♛', '♕', '🂡', '🂢', '🂣', '🂤', '🂥', '🂦', '🂧', '🂨', '🂩', '🂪', '🂫',
-#           '🂭', '🂮', '🃑', '🃒', '🃓', '🃔', '🃕', '🃖', '🃗', '🃘', '🃙', '🃚', '🃛', '🃝', '🃞', '🂱', '🂲', '🂳', '🂴', '🂵', '🂶',
-#           '🂷', '🂸', '🂹', '🂺', '🂻', '🂽', '🂾', '🃁', '🃂', '🃃', '🃄', '🃅', '🃆', '🃇', '🃈', '🃉', '🃊', '🃋', '🃍', '🃎', '♚', '♔', # shud ck if BlO =~ /[A-Z]/
-#           'À','Á','Â','Ã','Ä','Å','Æ','Ç',  'È','É','Ê','Ë','Ì','Í','Î','Ï',  'Ð','Ñ','Ò','Ó','Ô','Õ','Ö','×',  'Ø','Ù','Ú','Û','Ü','Ý','Þ','ß',
-#           'à','á','â','ã','ä','å','æ','ç',  'è','é','ê','ë','ì','í','î','ï',  'ð','ñ','ò','ó','ô','õ','ö','÷',  'ø','ù','ú','û','ü','ý','þ','ÿ',
-#           'Ā','ā','Ă','ă','Ą','ą','Ć','ć',  'Ĉ','ĉ','Ċ','ċ','Č','č','Ď','ď',  'Đ','đ','Ē','ē','Ĕ','ĕ','Ė','ė',  'Ę','ę','Ě','ě','Ĝ','ĝ','Ğ','ğ',
-#           'Ġ','ġ','Ģ','ģ','Ĥ','ĥ','Ħ','ħ',  'Ĩ','ĩ','Ī','ī','Ĭ','ĭ','Į','į',  'İ','ı','Ĳ','ĳ','Ĵ','ĵ','Ķ','ķ',  'ĸ','Ĺ','ĺ','Ļ','ļ','Ľ','ľ','Ŀ');
 our %sb210=();$sb210{$sb256[$_]}=$_ for(0..$#sb256); # SingleBase256 array && Base10 hash (since it's probably best not to use b8.pm here in a8)
+our @sb93k=@sb256; #for (0..255  ){ push(   @sb93k, $sb256[$_]); }
+for (hex('04E00') .. hex('09FFC')){ push(   @sb93k, chr($_)); } # CJK Unified Ideographs ## loop through && add all the Unicode CJK 92_844 chars;
+for (hex('03400') .. hex('04DBF')){ push(   @sb93k, chr($_)); } # CJK Unified Ideographs Extension A     ## might prepend '256' digz 93100 so 93k
+for (hex('20000') .. hex('2A6DD')){ push(   @sb93k, chr($_)); } # CJK Unified Ideographs Extension B     ##   can be new default digset to work 4
+for (hex('2A700') .. hex('2B734')){ push(   @sb93k, chr($_)); } # CJK Unified Ideographs Extension C     ##   all my b16, b64, b128, b256 already;
+for (hex('2B740') .. hex('2B81D')){ push(   @sb93k, chr($_)); } # CJK Unified Ideographs Extension D
+for (hex('2B820') .. hex('2CEA1')){ push(   @sb93k, chr($_)); } # CJK Unified Ideographs Extension E
+for (hex('2CEB0') .. hex('2EBE0')){ push(   @sb93k, chr($_)); } # CJK Unified Ideographs Extension F
+for (hex('30000') .. hex('3134A')){ push(   @sb93k, chr($_)); } # CJK Unified Ideographs Extension G
+our %sb910=();$sb910{$sb93k[$_]}=$_ for(0..$#sb93k); # SingleBase93k array && Base10 hash (since it's probably best not to use b8.pm here in a8);
 # mIt alsO want 2 lOd old Original handmAd b64 8pal8 wich is in %pmap 2ck4 l8r distanc AgNst; cmNtz by clrz; #   MatchRsltLiSt,ColrDistRsltD8a,RsltNdxz
 our @Monz=qw(January February March   April     May June July   August September October November December);our @Mon=();push(@Mon,substr($_,0,3)) for(@Monz);
 our @Dayz=qw(Sunday  Monday   Tuesday Wednesday Thursday Friday Saturday                                  );our @Day=();push(@Day,substr($_,0,3)) for(@Dayz);
@@ -362,12 +374,12 @@ sub cn{if(!@_ && !-t STDIN){ (@_=decode('UTF-8',join(''  ,<STDIN>)));}
   for    ( @_){chomp;} return(@_);} sub chmp{return(cn(@_));} # just try 2 XpOz bAsic UTF8 ChompNewline && ChopOff 2 shL (chip 4 chop BlO);
 sub co{if(!@_ && !-t STDIN){ (@_=decode('UTF-8',join(''  ,<STDIN>)));}
   for    ( @_){chop ;} return(@_);} sub chip{return(co(@_));} # above && mappings could be like Chimps chomp chopping chips can code cn co;)
-sub n9{return(say STDOUT @_);} # not sure if sayz nEd '' nstd of lIkely MpT @_ ?!;
+sub  N{return(say STDOUT @_);} # not sure if sayz nEd '' nstd of lIkely MpT @_ ?!;
 sub eN{return(say STDERR @_);} # 4 some rEason,without shifting 4m@ string off @_ 1st BlO,this was tkng @_ in scalR contXt&&just rEtrning 2as argcnt,why?!;
 sub F {my $f4mt='';$f4mt=shift(@_) if(@_); #return(sprintf($f4mt,@_)); # 2du:wrIt F f4mt pRser wich loopz callz 2 sprintf with just rIt numb of Rgz 2 consume;
-       my $retn='';my $Rgct=0;my @RgUz;if(length($f4mt)){$_=$f4mt;while(/(^|[^%])%[^%]/ && s/^([^%]*?|%%)*%([^%])/$2/){
-      if(s/^[-#0 +'I]*(\*\d*\$?)?\d*\.?(\*\d*\$?)?\d*[hlqLjzZt]?[hl]?[diouxXeEfFgGaAcsCSpnm]//){$Rgct++;}} # `pm 1 printf` listz: diouxXfeEgGcs && shud ck pl;
-    while(@_ && $Rgct){@RgUz=();push(@RgUz,shift(@_)) for(1..$Rgct);
+       my $retn='';my $Rgct=0;my @RgUz;if(length($f4mt)){my $fm=$f4mt;while($fm =~ /(^|[^%])%[^%]/ && $fm =~ s/^([^%]*?|%%)*%([^%])/$2/){ # `pm 1 printf`listz:
+      if($fm =~ s/^[-#0 +'I]*(\*\d*\$?)?\d*\.?(\*\d*\$?)?\d*[hlqLjzZt]?[hl]?[diouxXeEfFgGaAcsCSpnm]//){$Rgct++;}} # … diouxXfeEgGcs && shud ck pl;
+    while(@_ && $Rgct){@RgUz=();for my $Rndx(1..$Rgct){push(@RgUz,shift(@_));}
            $retn.=sprintf($f4mt,@RgUz);}}
     return($retn);} # pRs && conc8N8 sf callz in loop 2 consume;
 sub P {return(o8(F(@_)));}   #[pip@OniQAIM3tbj~]pa 'P("dec:%4d; str:%8s;\n",63,sixthrE,4095,fournIne);'; # lookz lIk Perl duz not loop 2 consume Xtra RgUmNtz!;
@@ -398,20 +410,6 @@ sub spfd{my $frmt='%03d'   ;if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_)
 sub spfX{my $frmt='%02X'   ;if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_&& defined($_[0])&& $_[0]=~/^\d+$/){return(F($frmt,@_));}}
 sub spfs{my $frmt='%1d%1s' ;if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_);}if(@_&& defined($_[0])&& $_[0]=~/^\d+$/){return(F($frmt,int($_[0]/64),
     $sb64[shift(@_) % 64]) );}} # SPrintF Ss 256ndx in [0-3] . b64;
-# QA3MDOPE:the following several comment lines are pasted in from my ~/.zshrc file to show Zshell definitions of OPENF o[4589] e[4589] s[45] n9 && eN 4 17addz;
-#Al O='P %s  '  P='printf' ece='ec -e' eec=ece; #   && I Db8d mkng BlO F -> ftst,file,firefox,fortune, thN DcIded 2du fgrep 4abit B4 sprintf && kEp P 4 printf;
-#Al F='P -v F'  E='>&2 P' pf=P; # OCBLNXFt:upd8d old F->P did point 2my fIltStUtl B4 I wantd spAcd-some str-print-4m@d 4 F just in  a8.pm || e[cn] chomp o89?;
-#Al N=ec n9=N s4=F o4=P o8=O e4=E e8='E %s'; e5() {e4 "$@";>&2 N;}; e9() {e8 "$@";>&2 N;}; o5() {o4 "$@";N;}; o9() {o8 "$@";N;}; s5() {s4 "$@";F="$F\n";}; #16;
-#Al OF="pewh O P E N F n9 o4 o8 e4 e8 s4 o5 o9 e5 e9 s5|pe 's/^\\e\\[01;38;5;010m(\\w+\\s+)(\\(\\)\\s+)(\\{)/\$G\$1\$O\$2\$W\$3/;s/(\\\\n)/\$z\$1\$R/g;
-# s/^\\e\\[01;38;5;010m(\\})$/\$W\$1\$z/;s/(\\s+)(%\\w+)/\$1\$B\$2/g;s/(\")/\$F\$1\$R/g;s/(\\\$\\@)/\$M\$1/g;s/(\\>&\\d+)/\$C\$1\$y/g; # the 16 added+eN R 17!;
-# s/^\\e\\[01;38;5;010m(\\s+)(\\w+\\s+)/\$1\$A\$2\$C/;'" eN='>&2 N'; # QA3MCueN:emrgN BcAm ErrNwln; # thru $(pe) shO all OF OpenF's $(which) dFz in nIce colrz;
-# abov OPENF are 1st 5 of 16 cmndz I'm adding to en && ec (4 18 wraprz tOtal), N && n9 just alias ec but shud B Uzd without pRameterz just 4 prOducing NewliNz;
-# rEmAining 10 (aftr 6 of OPENF+n9) are o4+o5 for 4m@d Output+NewliNe,o8+o9 un4m@d OutUTF8+NewliNe, e4+e5 && e8+e9 just like o[45 89] but 2 stdErr not stdOut!;
-# last s4+s5 are for sprintf-like assigning 4m@d RgUmNtz to $ENV{'F'}+NewliNe 4 s5,with e5+e9,of+o9,&& s5 all Bing functionz whIl rSt R aliasez 2 printf || ec;
-#  F now duz assign $F wi formatted str output && E also seemz 2 pf 2 stderr 2; E cud try: `cat <<< "$@" 1>&2` or `printf "%s" "$*" >&2` 2 get out 2 err;
-# alsOcud: `ec foo >>/dev/stderr` or /proc/self/fd/2 nstd az more obvious && apparently zsh or bash probably emul8z it fine if not already found in fIlesysteM;
-# further: `read -t 0.1 -p "This is sent 2 stderr."` Uzez timeout disabling var storage func (wh I mIt want 4 F spf) && not sure what -p does yet so shud rEad;
-# mAB o9 shud Bcome a wrapr function calling O='P %s' && passing all argz thN a fInal `ec` 2 NewLine @Nd nstd of print which joinz spAcz BtwEn RgUmNtz.du!want;
 # \e escape, \f form-feed, \n new-line, \r carriage-return, \t horizontal-tab, \v vertical-tab, \0NNN byte-wi-octal-val-NNN(1to3digits), \xHH byte-Hexa-val-HH;
 # O3FMFMTP:so `m printf` showz GNU coreutils 8.32 from January 2024 basic manual: SYNOPSIS  printf OPTION  or  printf FORMAT [ARGUMENT]...
 #   DESCRIPTION - Print ARGUMENT(s) according to FORMAT, or execute according to OPTION:  --(help|version)  display help or version in4m8ion && exit
@@ -567,7 +565,7 @@ sub spfs{my $frmt='%1d%1s' ;if(@_&& defined($_[0])&& $_[0]=~/%/){$frmt=shift(@_)
 # Perl5: sprintf - vector flag tells Perl to interpret supplied string as a vector of integers, one for each character in string. Perl applies the format to
 #   each integer in turn, then joins resulting strings with separator (a dot . by default). Useful 4 displaying ordinal values of charz in arbitrary strings:
 # :r!ifconfig  enp42s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500 inet 192.168.9.18  netmask 255.255.255.0  broadcast 192.168.9.255
-#if(0){printf "%vd", "AB\x{100}";my @addr=qw( 2603:6000:cd02:4b30:4f2c:a6df:79c8:c167  2603:6000:cd02:4b30:315d:7c95:12a2:d5da  fe80::9ad0:e08f:8f99:be62
+#if(0){printf "%vd", "AB\x{100}";my @addr=qw(2603:6000:cd02:4b30:4f2c:a6df:79c8:c167  2603:6000:cd02:4b30:315d:7c95:12a2:d5da  fe80::9ad0:e08f:8f99:be62
 #   2603:6000:cd02:4b30:289c:baf9:c974:17ff  2603:6000:cd02:4b30:bd01:b0a8:95f7:29a2  2603:6000:cd02:4b30:e6c6:8e97:6400:645b
 #   2603:6000:cd02:4b30:342c:f8c:690c:3cd0   2603:6000:cd02:4b30:525c:1a4d:6afd:813   2603:6000:cd02:4b30:f0a4:86a7:f9ed:6f0c);my $adi6=$addr[0];
 #     printf "version is v%vd\n",      $^V  ; # above prints "65.66.256" && this line prints Perl's version. Put asterisk * B4 v 2 override sepR8or string:
@@ -1022,23 +1020,23 @@ if((!defined($codz) || !length($codz)) && !-t STDIN){chomp($codz= join('',<STDIN
         my $rndf=$sb64[int(rand(64))];$rndf= lc($rndf) if($rndf=~ /^[CGHIRT]$/);$rndf='d' if($rndf eq '.');$rndf='1' if($rndf eq '_'); # chng illegible f0nts
         $rndf   ='m' if($rndf=~ /^[8WP]$/i); $rndf='F' if($rndf=~ /^[kY46]$/  );$Sl8f=$SKpf. $rndf . $SKpt;}} # 8 surely was causng erorz&&probably some abov
     my  $sndx=0; # Sepc-iNDeX;                                     # kY were set to r abov && 46 fellthru so aded && set to F;
-    for(@lyrz){if(@sepc){ # had % && # shortcutz 2 X tended but FDAL is just betr;
-        if   (/[FDALOH]/ && exists($mc2F{$_ . $sepc[0]})){$Sstr.= ';' if(length($Sstr));$Sstr.=$mc2F{$_ .        $sepc[   0]};}
-        elsif(/[bdaloh]/ && exists($mc2b{$_ . $sepc[0]})){$Sstr.= ';' if(length($Sstr));$Sstr.=$mc2b{$_ .        $sepc[   0]};}
-        elsif(/[f]/      && $sepc[0]=~ /^[0-9A-Z._]$/i  ){$Sl8f = $SKpf . $sepc[0] . $SKpt;} # hopefully don't need to add a -f flag just 2 design8 f0nt layer
+    for my $ly(@lyrz){if(@sepc){ # had % && # shortcutz 2 X tended but FDAL is just betr;
+        if   ($ly =~ /[FDALOH]/ && exists($mc2F{$ly . $sepc[0]})){$Sstr.= ';' if(length($Sstr));$Sstr.=$mc2F{$ly .        $sepc[   0]};}
+        elsif($ly =~ /[bdaloh]/ && exists($mc2b{$ly . $sepc[0]})){$Sstr.= ';' if(length($Sstr));$Sstr.=$mc2b{$ly .        $sepc[   0]};}
+        elsif($ly =~ /[f]/      && $sepc[0]=~ /^[0-9A-Z._]$/i  ){$Sl8f = $SKpf . $sepc[0] . $SKpt;} # hopefully don't nEd2add a -f flag just2design8 f0nt layr
         shift(@sepc);}} # should only be 1 or 2 of these since not checking f0nt for now  # might want to save dash skip above for bg -1 versus real 0 blacK
     while($sndx <= $#sepc){ # should have documented why special-case bkgrnd x followed by low-o was coded 2 mk bright-White,so look4it elsewhere!
       if     ($sepc[$sndx] eq ','){ # mAB apNd Xtra SKp cOdz in @mSsz if comma or caret ^ or semicolon ; could be better or altern8ivez?;
         if   (length($Sstr)){push(@mSsz, $SKp8 . $Sstr . 'm');$Sstr= '';}
-        @lyrz= qw(F b);$codz='';if($sndx++ < $#sepc){for($sndx..$#sepc){$codz.=$sepc[$_];}
+        @lyrz= qw(F b);$codz='';if($sndx++ < $#sepc){for my $Sndx($sndx..$#sepc){$codz.=$sepc[$Sndx];}
           if($codz=~ s/^\^//){unshift(@mSsz, $SKp8 . '00m');}
           if($codz=~ s/^([FDALOHbdalohf]*:)//){@lyrz= split(//,$1);pop(@lyrz) if(@lyrz && $lyrz[-1] eq ':');}
           @sepc = split(//,$codz);$Sl8f='';$sndx=0; }
-        for(@lyrz){ #if(/\^/){if($Sstr=~ /^\d/){$Sstr="00;$Sstr";}elsif(!length($Sstr)){$Sstr='00';}}
+        for my $ly(@lyrz){ #if(/\^/){if($Sstr=~ /^\d/){$Sstr="00;$Sstr";}elsif(!length($Sstr)){$Sstr='00';}}
           if(@sepc){ # had % && # shortcutz 2 X tended but FDAL is just betr;  # not sure if this for @lyrz loop nEded 2 B duplic8d from abov2rEset?;
-            if   (/[FDALOH]/ && exists($mc2F{$_ . $sepc[0]})){$Sstr.= ';' if(length($Sstr));$Sstr.=$mc2F{$_ .        $sepc[   0]};}
-            elsif(/[bdaloh]/ && exists($mc2b{$_ . $sepc[0]})){$Sstr.= ';' if(length($Sstr));$Sstr.=$mc2b{$_ .        $sepc[   0]};}
-            elsif(/[f]/      && $sepc[0]=~ /^[0-9A-Z._]$/i  ){$Sl8f = $SKpf . $sepc[0] . $SKpt;} # hopefuly don't nEd 2 add a -f flag just 2 design8 f0nt lAyr
+            if   ($ly =~ /[FDALOH]/ && exists($mc2F{$ly . $sepc[0]})){$Sstr.= ';' if(length($Sstr));$Sstr.=$mc2F{$ly .        $sepc[   0]};}
+            elsif($ly =~ /[bdaloh]/ && exists($mc2b{$ly . $sepc[0]})){$Sstr.= ';' if(length($Sstr));$Sstr.=$mc2b{$ly .        $sepc[   0]};}
+            elsif($ly =~ /[f]/      && $sepc[0]=~ /^[0-9A-Z._]$/i  ){$Sl8f = $SKpf . $sepc[0] . $SKpt;} # hOpfly don't nEd2add a -f flag just2design8 f0nt lAyr
             shift(@sepc);}} # should only be 1 or 2 of these since not checking f0nt for now  # might want 2 save dash skip above 4 bg -1 versus real 0 blacK?
       } # rEset Xpected Default lAyerz 2 hopefully allow for taking fresh Fb:Gk aftr comma now;
       if     ($sndx <= $#sepc && $sepc[$sndx] eq 'Z'){ # specify FDAL layer && b64 color key for Kitty Underline Color; just look them up in Pal8Keyz2-256ndx;
@@ -1164,28 +1162,29 @@ sub shfl{ # takes an arrayref or list of items to shuffle, or pipe thru by lines
 our @d8cl=();our @d8cS=();my $pfms=0;my @sccz=();my($ptsz,$ptms)=(0,0); #gettimeofday(); # dflt d8ColrList lOded wi SKpd 4mz of ColrMap's d8bo,FDALyr,SGRplane;
 our $pfil="$ENV{'HOME'}/.log/p";our $pP; # `dd if=/dev/urandom count=1 bs=128 | sha512sum` can B Used 4 gNr8ing crypto-secure tOkNz && mAB bs=6 4 b64?;
 our $lfil="$ENV{'HOME'}/.log/prof.ls"; # load ProfileListD8aHash key => val (just spcd) pairz thN ck just p picked-profile-file for d8bo OvrId selection;
-if  (!-d  "$ENV{'HOME'}/.log"          ){mkdir("$ENV{'HOME'}/.log",0750);
-  open        my   $pflh, '>',$pfil or die "!*EROR*! Couldn't open  pfil:$pfil for writing! $!\n";binmode $pflh,':encoding(UTF-8)';print $pflh 'd';
-  close            $pflh            or die "!*EROR*! Couldn't close pfil:$pfil for writing! $!\n";
-  open        my   $lflh, '>',$lfil or die "!*EROR*! Couldn't open  lfil:$lfil for writing! $!\n";binmode $lflh,':encoding(UTF-8)';
-  print            $lflh q(# KCJL6Pls:~/.log/prof.ls crE8d by PipStuart <Pip@CPAN.Org> 4 a b64 key-table list of YouTube channel profile d8bo master color-sequences;my $d8VS='L1CLEAR1';
-# 2du:stRt adding optional extra layerz for DarkAvrgLite && SGRcodez B4 mAB also bkgrndaloh BtwEn && multiSGRz 2 flag attrz on thru all d8bo usagez;
-d RoYGCBMp                   # PipStuart Primary U2bchanL ; RoYGCBMp
-# RF3Hh2fr                   # PedantPip Secndry U2bchanL ; RfFrHh32 RHFrRHFf FFFFLLLL iIiuDUDu ;
-# R F 3 r H h 2 f            # Ped8bSPip Secndry U2bchanL ; RfFrHh32
-p D:RUIc A:FDCol L:3 Fa:fbuic D:HOI hfoi 2bI rki #D:RUIc A:FDCol L:3 Fa:rbuicL D:HOI hfoil 2b fk;
-c Cz8tZT9c FFDDAALL uiLlUIui # CapCtion8 terTary U2bchanL ; CzZcTt98
-g AG76Dadg FFLLAADD iuDuIOio # GuyGooway MGTOWay U2bchanL ; AaGg76Dd
-j Y45UuyoO FFDDAALL OUiDIuoi # JewJesus8 Skeptic U2bchanL ; Y45OUuyo ## Note: CantAlow OhhhHooo?;
-i NnSVvMms FFLLAADD UDuDUlLl # ImprovIs8 Ingland U2bchanL?; NnSsVvMm
-R YGTBUDSN                   # RappingRt AntiRed U2bchanL?; YGTBUDSN RiteBlue LeftOrng WiteUpKs ;
-B SBsbXx1N                   # BluBoieB8 NonBinG U2bchanL?; SBsbXx1N BcuzCmdz prpbplow weretAkN ;
-L LlHhvV23                   # LadyLacy8 Literal U2bchanL?; LlHhvV23
-O o5YOUJ4u                   # OldObsid8 DubStep U2bchanL?; o5YOUJo4 ## Note: DublOwoo WarnBugy?;
-W WJIqQwij                   # WigWearW8 costume U2bchanL?; WJIqQwij
-k KeEk10Nn                   # KekPepeK8 MemeR8n U2bchanL?; KeEk10Nn
-v VvMmLlPp                   # ValVocal8 BtBoxin U2bchanL?; VvMmLlPp
-);close            $lflh            or die "!*EROR*! Couldn't close lfil:$lfil for writing! $!\n";}
+sub pPwl{ # ProfilePicker WriteLogz;
+  if  (!-d  "$ENV{'HOME'}/.log"          ){mkdir("$ENV{'HOME'}/.log",0750);
+    open        my   $pflh, '>',$pfil or die "!*EROR*! Couldn't open  pfil:$pfil for writing! $!\n";binmode $pflh,':encoding(UTF-8)';print $pflh 'd';
+    close            $pflh            or die "!*EROR*! Couldn't close pfil:$pfil for writing! $!\n";
+    open        my   $lflh, '>',$lfil or die "!*EROR*! Couldn't open  lfil:$lfil for writing! $!\n";binmode $lflh,':encoding(UTF-8)';
+    print            $lflh q(# KCJL6Pls:~/.log/prof.ls crE8d by PipStuart <Pip@CPAN.Org> 4 a b64 key-table list of YouTube channel profile d8bo master color-sequences;my $d8VS='L1CLEAR1';
+  # 2du:stRt adding optional extra layerz for DarkAvrgLite && SGRcodez B4 mAB also bkgrndaloh BtwEn && multiSGRz 2 flag attrz on thru all d8bo usagez;
+  d RoYGCBMp                   # PipStuart Primary U2bchanL ; RoYGCBMp
+  # RF3Hh2fr                   # PedantPip Secndry U2bchanL ; RfFrHh32 RHFrRHFf FFFFLLLL iIiuDUDu ;
+  # R F 3 r H h 2 f            # Ped8bSPip Secndry U2bchanL ; RfFrHh32
+  p D:RUIc A:FDCol L:3 Fa:fbuic D:HOI hfoi 2bI rki #D:RUIc A:FDCol L:3 Fa:rbuicL D:HOI hfoil 2b fk;
+  c Cz8tZT9c FFDDAALL uiLlUIui # CapCtion8 terTary U2bchanL ; CzZcTt98
+  g AG76Dadg FFLLAADD iuDuIOio # GuyGooway MGTOWay U2bchanL ; AaGg76Dd
+  j Y45UuyoO FFDDAALL OUiDIuoi # JewJesus8 Skeptic U2bchanL ; Y45OUuyo ## Note: CantAlow OhhhHooo?;
+  i NnSVvMms FFLLAADD UDuDUlLl # ImprovIs8 Ingland U2bchanL?; NnSsVvMm
+  R YGTBUDSN                   # RappingRt AntiRed U2bchanL?; YGTBUDSN RiteBlue LeftOrng WiteUpKs ;
+  B SBsbXx1N                   # BluBoieB8 NonBinG U2bchanL?; SBsbXx1N BcuzCmdz prpbplow weretAkN ;
+  L LlHhvV23                   # LadyLacy8 Literal U2bchanL?; LlHhvV23
+  O o5YOUJ4u                   # OldObsid8 DubStep U2bchanL?; o5YOUJo4 ## Note: DublOwoo WarnBugy?;
+  W WJIqQwij                   # WigWearW8 costume U2bchanL?; WJIqQwij
+  k KeEk10Nn                   # KekPepeK8 MemeR8n U2bchanL?; KeEk10Nn
+  v VvMmLlPp                   # ValVocal8 BtBoxin U2bchanL?; VvMmLlPp
+  );close            $lflh            or die "!*EROR*! Couldn't close lfil:$lfil for writing! $!\n";}}
 sub PrfM{my($pcsz,$pcms)=gettimeofday() ;return() if($pcsz == $ptsz);($ptsz,$ptms)=($pcsz,$pcms); # just retn rIt AwA if calld multi tImz during sAm second;
   my $pfmc=eval("(-M        \"$pfil\")");return() if(defined( $pfmc) && # proly OK2upd8 ProFile Modific8ion Start B4 Nd of subroutine;
                                                      $pfmc == $pfms); $pfmc=0 unless(defined($pfmc)); $pfms=$pfmc;
@@ -1217,9 +1216,10 @@ sub PrfM{my($pcsz,$pcms)=gettimeofday() ;return() if($pcsz == $ptsz);($ptsz,$ptm
                               $rnd8=$sb64[int(rand(64))];while(length($rnd8) < 8){my $rndc=$sb64[int(rand(64))];$rnd8.=$rndc if($rnd8 !~ /[$rndc]/);}
         my $rstr='FDALOH'; my $rndl='';while(length($rndl) < 8){$rndl.=substr($rstr,int(rand(length($rstr))),1);} $rstr=join('',keys(%sgrm));
                            my $rnds='';while(length($rnds) < 8){$rnds.=substr($rstr,int(rand(length($rstr))),1);} # shud fix up psrand 4 SGR 2 spAc gap many;
-        open       $lflh,'>>',$lfil or die "!*EROR*! Couldn't open  lfil:$lfil for writing! $!\n";binmode $lflh,':encoding(UTF-8)';
-        say        $lflh                   "$b64c $rnd8 $rndl $rnds # PsRandom gener8d8 L19LGnr8 ;";$pldh{$b64c}=$rnd8;$pldl{$b64c}=$rndl;$plds{$b64c}=$rnds;
-        close      $lflh            or die "!*EROR*! Couldn't close lflh! $!\n";}}
+      # open       $lflh,'>>',$lfil or die "!*EROR*! Couldn't open  lfil:$lfil for writing! $!\n";binmode $lflh,':encoding(UTF-8)';
+      # say        $lflh                   "$b64c $rnd8 $rndl $rnds # PsRandom gener8d8 L19LGnr8 ;";$pldh{$b64c}=$rnd8;$pldl{$b64c}=$rndl;$plds{$b64c}=$rnds;
+      # close      $lflh            or die "!*EROR*! Couldn't close lflh! $!\n"; # comNting out autO-apNding pseudo-random d8bo,layr,&&sgrz sinc not! nEded;
+      }}
     if   (defined(            $pfil) && -r "$pfil"){
       open    my   $pflh, '<',$pfil or die "!*EROR*! Couldn't open  pfil:$pfil for reading! $!\n";binmode $pflh,':encoding(UTF-8)';
       while($line=<$pflh>){if($line=~ /^\s*([0-9A-Z._]+)/i && exists($pldS{$1})){   $pP  =  $1;$cmap{'d8bo'}=$cmap{'d8bl'}=$cmap{'d8bs'}='';
@@ -1246,8 +1246,8 @@ sub PrfM{my($pcsz,$pcms)=gettimeofday() ;return() if($pcsz == $ptsz);($ptsz,$ptm
     $schr=$sccz[$dndx] if($#sccz >= $dndx && defined($sccz[$dndx]) && length($sccz[$dndx]));
     if(exists($ENV{'TERM'}) && $ENV{'TERM'} =~ /linux/){$lchr='O';$schr='';}
     $d8cS[$dndx]=$d8cl[$dndx]=S("$lchr:$cchr$schr");}
-  if(defined($pP) && exists($pldS{$pP}) && $pldS{$pP}=~ /\s/){@d8cS=();for my $spdS (split(/\s+/,$pldS{$pP})){push(@d8cS,S($spdS));}}}
-PrfM();
+  if(defined($pP) && exists($pldS{$pP}) && $pldS{$pP}=~ /\s/){@d8cS=();for my $spdS (split(/\s+/,$pldS{$pP})){push(@d8cS,S($spdS));}}
+} #PrfM(); # no longer autO-call PrfM which can 
   @sccz=split(//   ,$cmap{'d8bs'}); # hopefully fix d8::fldz undef d8cS probz?
   @sccz=split(/\s+/,$cmap{'d8bs'}) if($cmap{'d8bs'}=~ /\s/);
   for my $dndx (0 ..length($cmap{'d8bo'}) - 1){my $cchr=substr($cmap{'d8bo'},$dndx,1);my $lchr='F';my $schr='B';
@@ -1362,7 +1362,7 @@ sub spcs{my($ssfn,$CP)=@_; # subroutine handling SPeCial separ8or character Subs
             $ssfn=~s/(\++)                     /$R$1$CP/xg   if($CP ne $R);
             $ssfn=~s/(\++)                     /$B$1$CP/xg   if($CP eq $R);
   return   ($ssfn);} # 2du:fix c8fn UTF8 decoding to try to only do where needed like lsd8,sync all highlightz,
-sub c8fn{  my $fnam;my $aflg=0;$aflg=1 if(@_);my $zflg=0;if($aflg && $_[0] =~ /^-*z$/){$zflg=1; shift(@_);$aflg=0 unless(@_);}my $sflg=0;my $rtxt='';
+sub c8fn{my $fnam;my $aflg=0;$aflg=1 if(@_);my $zflg=0;if($aflg && $_[0]=~ /^-*z$/){$zflg=1;shift(@_);$aflg=0 if(!@_)}my $sflg=0;my $rtxt='';my $B=S('H:B');
   open my $sin8,'<&','STDIN'  or die "Can't open  duplic8 STDIN  handle: $!";binmode $sin8,':encoding(UTF-8)'; # crE8 local duplic8 of global
   lodl() unless(%lsp8 && %lspt);my $Y=$d8cS[2] if(defined($d8cS[2])); # mk sure global LS_COLORS d8a regXz R lOded,&& set nwlocl Y dir-sepR8or2prOfIl pal8Ntry;
   if(!$aflg && !-t $sin8){     $sflg=1;   @_=<$sin8>;} # BlO renamed $k $kolumn_x to $v for Named color && String 2!colide with
@@ -1408,7 +1408,7 @@ sub c8fn{  my $fnam;my $aflg=0;$aflg=1 if(@_);my $zflg=0;if($aflg && $_[0] =~ /^
       $tnam    =~s/\/home\/$ENV{'USER'}/$lspt{'di'}~/ if($zflg); # replace absolute path with rel8ive home in regular dir colr (only4Zsh prmpt,but bash ndz2!)
       #f($tnam =~s/(\/)([-0-9A-Z._~+]+)/$Y$1$B$2/gi){$tnam=~s/([-0-9A-Z._~+]+)(\/)/$1$Y$2/i;} # F1FLAAER:atMpt2mk c8fn colrnAmd pathdirz&&sepR8orz(l8rUz'di')
       #  $tnam =~s/([-0-9A-Z._~+]+)(\/)/$lspt{'di'}$1$Y$2/gi;                                 # F26LB0Ib:atMpt2mk c8fn colrnAmd pathz&&sepR8orz(l8rUzHrc:s 4Y)
-      if($tnam =~s/(\/)([-0-9A-Z._~+]+)/$Y$1$lspt{'di'}$2/gi){$tnam=~s/([-0-9A-Z._~+]+)(\/)/$1$Y$2/i;} # maybe replace all of these if just $tnam =~ /\//
+      if($tnam =~s/(\/)([-0-9A-Z._~+]+)/$Y$1$B$2/gi){$tnam=~s/([-0-9A-Z._~+]+)(\/)/$1$Y$2/i;} # maybe replace all of these if just $tnam =~ /\//
       $fnam=~ s/^.*$/$g$tnam$lspt{'no'}/; # abov fix just / $Y,don't $B ovrId stRt of fIlnAm@Nd,alow stRting rel8ive non-absolute dirname,NAbl zshcolrz4prmpt
       if($aflg){                 $rtxt .="$fnam ";} # substitute colorz && reset 2 NOrmal then append return text && strip spacez at end
       else     {$fnam =~ s/\n$//;$rtxt .= $fnam  ;}}} $rtxt =~ s/\s$//                    if($aflg);my $lpno=$lspt{'no'};$lpno=~ s/(\[)/\\$1/g;

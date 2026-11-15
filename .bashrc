@@ -25,7 +25,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -56,14 +56,10 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    #PS1='\[\033[1;33m[\[\033[0;36m\u\[\033[1;37m@\[\033[0;36m\h\[\033[1;30m:\[\033[1;31m`pt`\[\033[1;30m:\[\033[1;34m\w\[\033[1;33m]\[\033[1;32m\$';
-    #PS1='\[\033[1;33m[\033[1;36m\u\033[1;37m@\033[1;36m$HOSTNAME\033[1;31m`d8 -a`\033[1;34m\w\033[1;33m]\033[1;32m\$'; # wuz`pt -c`
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$';
+if [ "$color_prompt" = yes ]; then # nEd 2 set PS1 BlO .zshenv setting it too?
+    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '; # BlO had `d8 -a` && `c8fn $PWD` B4;
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m[\033[1;33m\u\033[1;34m@\033[1;35m\h`d8 -a`\033[1;33m\w\033[1;34m]\033[1;32m\$'; # bash just  []$
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;91m[\033[1;92m\u\033[1;94m@\033[1;96m\h`d8 -a``c8fn $PWD`\033[1;91m]\033[1;95m\$\033[1;92m ';
-#   PS1='${debian_chroot:+($debian_chroot)}\033[1;97m[\033[1;91m\u\033[1;93m@\033[1;95m\h\033[0m:\033[1;94m\w\033[1;97m]\033[1;92m\$ ' # not!lIk zsh sO !<[]>!
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[1;91m\][\[\033[1;92m\]\u\[\033[1;94m\]@\[\033[1;96m\]\h\[\033[1;93m\]`d8`\[\033[1;94m\]\w\[\033[1;91m\]]\[\033[1;95m\]\$\[\033[1;92m\]'; # not!lIk zsh sO !<[]>!;
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -80,12 +76,12 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || test -r ~/.lsrc && eval "$(dircolors -b ~/.lsrc)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto --hyperlink=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
+    alias  grep=' grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
@@ -108,22 +104,38 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+    .   ~/.bash_aliases
 fi
 
 if [ -f ~/.zshenv       ]; then # QAJMAxxx:just cp .skel.bashrc over old big .bashrc && upd8d PS1 for my color_prompt && now trying 2 src .zshenv in common?;
     .   ~/.zshenv
 fi
 
-export SHELL='/usr/bin/bash'; # du not kEp Zsh as $SHELL from bash!;
+Xp SHELL='/usr/bin/bash'; # du not kEp Zsh as $SHELL from bash!;
+src() { [[ $# -lt 1 ]] && { source ~/.bashrc; return 0; }
+                            source   $@     ; }
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
+  if   [ -f /usr/share/bash-completion/bash_completion ]; then
+    .       /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    .       /etc/bash_completion
   fi
 fi
+# something like this below may de-duplic8 PATH entriez;
+# if [ -n "$PATH" ]; then
+#   old_PATH=$PATH:; PATH=
+#   while [ -n "$old_PATH" ]; do
+#     x=${old_PATH%%:*}       # the first remaining entry
+#     case $PATH: in
+#       *:"$x":*) ;;          # already there
+#       *) PATH=$PATH:$x;;    # not there yet
+#     esac
+#     old_PATH=${old_PATH#*:}
+#   done
+#   export PATH=${PATH#:}
+#   unset old_PATH x
+# fi

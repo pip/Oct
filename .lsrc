@@ -1,8 +1,8 @@
 # 819J2Pip:~/.lsrc by PipStuart <Pip@CPAN.Org> izAheavily modifId`dircolors`cfgfIl(Orig ~/.DIR_COLORS)wich setz $ENV{'LS_COLORS'} 4GNU`ls --color`&&`lsd8`;
-# $VERSION='0.0';$d8VS='QAHMFULL'; 2du:lrc optn2gNr8 altrn8 versN th@purposfuly varEz colrzof comon typz,add *[-_?]* NtrEz frm .zshrc hEr,audit oldz,ck /etc/*,
+# $VERSION='0.0';$d8VS='QAKMCDIR'; 2du:lrc optn2gNr8 altrn8 versN th@purposfuly varEz colrzof comon typz,add *[-_?]* NtrEz frm .zshrc hEr,audit oldz,ck /etc/*,
 #   add interaction2 lsd8 wN it Dtectz unrecognIzd XtNshNz offerng c@egOrEz with comon colr2autOm@ically insrt chOsN NtrEz,mk lrc gNr8 Xportd LS_COLORS 4 Eval,
 #   confirm all accept f0nt cOdez wi dash accepting Dfalt 4grnd thN redo NORMAL FILE LINK as no fi ln,Dtect cOlIdz OvrIdz&&warn,mAB 8trm aded2 TERM ls sumdA?;
-# This file was gNR8d by `lrc` Vers:0.000_001 d8VS:QAHMBSBS on d8:QAHMFVFY. Please edit ~/.lrc and run `lrc` then `src` to see changes;
+# This file was gNR8d by `lrc` Vers:0.000_001 d8VS:QAKMALEX on d8:QAKMCGmB. Please edit ~/.lrc and run `lrc` then `src` to see changes;
 # nOt:I'm pretty sure itz Chunz(!Takiz)`ls`&&`dircolors`th@cud!hndl (MULTI)?HARDLINK sO rEmMbr2kEp th@ lIn cmNtd out4her(&&kEptstng2cnfirm);
 # Keywords COLOR,OPTIONS,&& EIGHTBIT (honored by Slackware dircolors) are recognized but ignored; TERMz && XtNsionz syncd2 2016;
 # Copyright(C) 1996-2018 FreeSoftwareFound8ion,Inc. Copying and distribution of this file, with or without modific8ion, are permitted provided the
@@ -103,7 +103,7 @@ TERM xterm-ghostty
 RESET                     0                    #rs= 00          00ReSet2"normal"colr&&mAB rEplAcingNORMAL&&FILEsinc theyRcomNtd out of rEcNt`dircolors -p`
 NORMAL                    0                    #no= 00          00riginal NOrmal   Dflt (althO idealy everything shud Bcome something distinct)
 FILE                      0                    #fi= 00          00        normal   FIle
-DIR                       01;38;5;012          #di= 01;34       01;34     normal   DIrectory
+DIR                       94                   #di= 01;34       01;34     normal   DIrectory
 LINK                      01;38;5;015          #ln= 01;37       01;36     symbolic LiNk (if set2'target'instd of colr;codez,colr inherits file symlinked2)
 MULTIHARDLINK             0                    #mh= 00          00        regular  file with more than one link (Usd2B"HARDLINK"wi 44;37 B4 9A6J8d7P)
 ORPHAN                    01;38;5;009;48;5;006;5 #or= 01;31;46;05 01;31;40  sym------link to nonexistent file
