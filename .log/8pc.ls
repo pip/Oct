@@ -164,4 +164,4 @@
  2c7 conglome       2cF contritu       2cR decla          2cX defenest       2cd disinteg       2ch explo          2c_ inspi          2d3 intermig      
  2dL protecto       2dN respi          2dZ resto          2df resve          2dj transmig       2dp unadulte       2e1 unregene       2eJ chancello     
  2eT flutte         2eb overelabo      2el perspi         2fF punctu         2fL translite      2fV unexagge       2fb incommensu     2fh sequest       
- 2fj maladminist  
+ 2fj maladminist

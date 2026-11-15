@@ -1,4 +1,4 @@
-# D8FMKTuW: Oct::d8.pm by PipStuart <Pip@CPAN.Org> to define simple objects for storing instants in time, adapted from the old poorly named Time::PT;
+# D8FMKTuW: Oct::d8.pm by PipS <PipStuart@GMail.Com> to define simple objects for storing instants in time, adapted from the old poorly named Time::PT;
 package     Oct::d8;
 use warnings;use  strict;use utf8;use v5.22;use open qw[:std :encoding(UTF-8)];
 # 2du:either duplic8 or just wrap `date` for rL8ive timez like: $(date -v Monday +"%Y%d%m") or `date -d 'this Monday'`, 'next Monday', 'Monday last week'…,

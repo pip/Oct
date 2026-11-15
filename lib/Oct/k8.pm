@@ -1,4 +1,4 @@
-# NACM55k8:Oct::k8.pm crE8d by PipStuart <Pip@CPAN.Org> from old Curses::Simp to be new Perl text-mode applic8ion development with ReadKey (getk);
+# NACM55k8:Oct::k8.pm crE8d by PipS <PipStuart@GMail.Com> from old Curses::Simp to be new Perl text-mode applic8ion development with ReadKey (getk);
 package    Oct::k8; # 2du:binary search down on Curses CONSTANTS to figure out why no warnings or errors result when trying to incorpor8 the bad ones,
 #   from pdoc it looks like Term::ReadLine::Gnu supports getc && a char_mode 2 try here instead of ReadKey (sinc it sEmz RL suports many more control optnz),
 #   just watched HTTPS://YouTu.be/iZdTgwXy20Q on Gum (writN in Go) 4 CLI interactive cmndz sO lern asdf && how 2 instal it since some fE8urez && optnz mAB gud;
@@ -24,6 +24,8 @@ package    Oct::k8; # 2du:binary search down on Curses CONSTANTS to figure out w
 #   ♟ ♙ ♞ ♘ ♝ ♗ ♜ ♖ ♛ ♕ 🂡 🂢 🂣 🂤 🂥 🂦 🂧 🂨 🂩 🂪 🂫 🂭 🂮 🃑 🃒 🃓 🃔 🃕 🃖 🃗 🃘 🃙 🃚 🃛 🃝 🃞 🂱 🂲 🂳 🂴 🂵 🂶 🂷 🂸 🂹 🂺 🂻 🂽 🂾 🃁 🃂 🃃 🃄 🃅 🃆 🃇 🃈 🃉 🃊 🃋 🃍 🃎 ♚ ♔  ##   … `b8ls|sS >/tmp/x`
 #   À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß à á â ã ä å æ ç è é ê ë ì í î ï ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ  ##   … thN Vim :r/tmp/x
 #   Ā ā Ă ă Ą ą Ć ć Ĉ ĉ Ċ ċ Č č Ď ď Đ đ Ē ē Ĕ ĕ Ė ė Ę ę Ě ě Ĝ ĝ Ğ ğ Ġ ġ Ģ ģ Ĥ ĥ Ħ ħ Ĩ ĩ Ī ī Ĭ ĭ Į į İ ı Ĳ ĳ Ĵ ĵ Ķ ķ ĸ Ĺ ĺ Ļ ļ Ľ ľ Ŀ  ##   … but s/b256/top128;
+#   QBDLNStZ:nOte:abov were remapd cRdz 2 DHcs SuitZ ordr,thN Ncircld 0..9,A-Z,a-z,'ʘ',&& 'Ɵ', thN 1st 64 Braille re-ordered (thru `zsh -c rob q`):
+#   ⠀⠁⠈⠉⠂⠃⠊⠋⠐⠑⠘⠙⠒⠓⠚⠛⠄⠅⠌⠍⠆⠇⠎⠏⠔⠕⠜⠝⠖⠗⠞⠟⠠⠡⠨⠩⠢⠣⠪⠫⠰⠱⠸⠹⠲⠳⠺⠻⠤⠥⠬⠭⠦⠧⠮⠯⠴⠵⠼⠽⠶⠷⠾⠿... Nd nOte;
 #     BC && OP are rEally tIte 2gethr whIl KW are Usually mor distant (but their powrz let him rush her dn && shE can C it but lIk Only bLUE can nOtic thOz?),
 #     P knOz R az wL az M knOz K && O && W knOz Y (bAsicly),thN G knOz C && K sAm wi R knOng W lEst wL of nAborz,charz sH&&cD swap whN turn dRk but rankz stA,
 #     b knOz Y quIt wL but B && y almOst nevr mEt (until chS Pcz intrOduc thM wi dramatic rEsultz),giv evry1 aliter8ionz&&their Letr|Rank|Suit by dA,lrs @nIt,
@@ -180,7 +182,7 @@ sub TIEARRAY{#OScr() unless($GLBL{'FLAGOPEN'}); # need Open main Screen for new 
     unless($foun){
       for my $attr($self->AttrNamz()){
         if($vanz{$attr} eq $keey  ){$self->{$attr}=$valu;$foun=1;}} # exact match
-#     unless($foun){die "!*EROR*! Oct::k8->new initialization key:$keey was not recognized!";}
+#     unless($foun){die "!*EROR*! Octology::k8->new initialization key:$keey was not recognized!";}
     }}
   my($cwid,$chit,$pwid,$phit)=GetTerminalSize(); # in bash (or zsh too?) LINES=$(tput lines) mItB betr aftr rEsIz than just inheriting Xported from shL init;
   if(defined($cwid) && $cwid){$self->{'_widt'} = $cwid;}elsif(exists($ENV{'COLUMNS'})){$self->{'_widt'}=$ENV{'COLUMNS'};}else{$self->{'_widt'}=`tput cols `;}
@@ -257,7 +259,7 @@ sub CScr{ # Close previously OpenedCursesScreen # Following are Curses funcs tha
   return(); }
 sub EndW{ return(endwin()); } # just func alone can wrap things up nicely enough for l8r printz to work afterward from calling script? Not sure how or why!;
 sub NumC{ return(COLORS()); }                                     # might also need delscreen() after endwin() above before returning?
-# Oct::k8 object constructor as class method or copy as object method. First param can be ref to copy. Not including optional ref from copy,
+# Octology::k8 object constructor as class method or copy as object method. First param can be ref to copy. Not including optional ref from copy,
 #   default is no params to create a new empty k8 object. If params are supplied, they must be hash key => value pairs.
 sub new{#OScr() unless($GLBL{'FLAGOPEN'});
   my($nvkr, $cork)= @_; my($keey, $valu); my $nobj = ref($nvkr); my $clas = $cork; # need Open Screen for new obj
@@ -267,12 +269,12 @@ sub new{#OScr() unless($GLBL{'FLAGOPEN'});
   if(defined($cork) && $cork !~ /::/){ $nvkr = shift if($nvkr =~ /::/); while(@_){ my $foun = 0; ($keey, $valu)=(shift, shift); # handle init params with
       for my $attr ($self->AttrNamz()){ if($attr =~ /$keey/i){ $self->{$attr} = $valu;$foun = 1; } }                            #   no colons (classname)
       unless(  $foun){ for my $attr ($self->AttrNamz()){ if($vanz{$attr} eq $keey){ $self->{$attr} = $valu; $foun = 1; } } # exact match
-#       unless($foun){ die "!*EROR*! Oct::k8->new initialization key:$keey was not recognized!\n"; }
+#       unless($foun){ die "!*EROR*! Octology::k8->new initialization key:$keey was not recognized!\n"; }
       }}}
   $self->{'_flagshrk'} = 0 if($self->{'_hite'} && $self->{'_widt'}); $self->Updt(1);
   $self->{'_wind'}=NeewWind($self->{'_hite'}, $self->{'_widt'}, $self->{'_yoff'}, $self->{'_xoff'});
   unless(exists($self->{'_wind'}) && defined($self->{'_wind'})){
-   #die "!*EROR*! Oct::k8->new could not create window with hite:$self->{'_hite'},widt:$self->{'_widt'},yoff:$self->{'_yoff'},xoff:$self->{'_xoff'}!\n";
+   #die "!*EROR*! Octology::k8->new could not create window with hite:$self->{'_hite'},widt:$self->{'_widt'},yoff:$self->{'_yoff'},xoff:$self->{'_xoff'}!\n";
   } $self->TestDraw();$self->Move(-1, -1) unless($self->{'_ycrs'} || $self->{'_xcrs'}); # newwin does!autodraw so if therz init _text && autodraw is on...
  #CrsrVisi($self->{'_flagcvis'});
   return($self);}
@@ -607,9 +609,9 @@ sub Updt { # update a Simp object's dimensions (resize && mvwin)
   return(!$noch);} # return flag telling whether self resized or moved
 sub DESTROY{my $self=shift || return(); }
 # allow sgr attr d8a 2D array to be tied too; 2du:fix 2B 2D array;
-package Oct::k8::sgra;
+package Octology::k8::sgra;
 sub TIEARRAY {my $clas=shift;my $prnt=shift; # bless an anon array with just parent in case more to store
-  die "!*EROR*! Tie::Array to sgra has no parent k8 object!\n" unless(defined($prnt) && ref($prnt) eq 'Oct::k8');
+  die "!*EROR*! Tie::Array to sgra has no parent k8 object!\n" unless(defined($prnt) && ref($prnt) eq 'Octology::k8');
   my $self=bless([$prnt], $clas);return($self); }
 sub FETCH    {if(@_ > 2){
                 return(         $_[0]->[0]->{'_sgra'}->[$_[1]]->[$_[2]]); }
@@ -620,66 +622,66 @@ sub STORE    {if(@_ > 3){
   $_[0]->[0]->{'_sgra'}->[$_[1]]->[$_[2]] = $_[3];}
               else      {
   $_[0]->[0]->{'_sgra'}->[$_[1]] = $_[2];}
-  $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadts'});}
+  $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadts'});}
 sub STORESIZE{
   splice(@{$_[0]->[0]->{'_sgra'}}, $_[1], @{$_[0]->[0]->{'_sgra'}} - $_[1]);
-  $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadts'});}
+  $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadts'});}
 sub EXISTS   { return(0) unless(defined($_[0]->[0]->{'_sgra'}->[$_[1]])); return(1); }
-sub CLEAR    {             @{$_[0]->[0]->{'_sgra'}} = ();         $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadts'}); }
-sub PUSH     {        push(@{$_[0]->[0]->{'_sgra'}}, $_[1]);      $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadts'}); }
-sub POP      { $_ =    pop(@{$_[0]->[0]->{'_sgra'}});             $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadts'}); return($_); }
-sub SHIFT    { $_ =  shift(@{$_[0]->[0]->{'_sgra'}});             $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadts'}); return($_); }
-sub UNSHIFT  {     unshift(@{$_[0]->[0]->{'_sgra'}}, $_[1]);      $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadts'}); }
+sub CLEAR    {             @{$_[0]->[0]->{'_sgra'}} = ();         $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadts'}); }
+sub PUSH     {        push(@{$_[0]->[0]->{'_sgra'}}, $_[1]);      $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadts'}); }
+sub POP      { $_ =    pop(@{$_[0]->[0]->{'_sgra'}});             $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadts'}); return($_); }
+sub SHIFT    { $_ =  shift(@{$_[0]->[0]->{'_sgra'}});             $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadts'}); return($_); }
+sub UNSHIFT  {     unshift(@{$_[0]->[0]->{'_sgra'}}, $_[1]);      $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadts'}); }
 sub SPLICE   {my $self = shift;my $offs = shift || 0;
   my $leng = shift; $leng = $self->[0]->FETCHSIZE() - $offs unless(defined($leng));
   my $retn = splice(@{$self->[0]->{'_sgra'}}, $offs, $leng, @_);
-  $self->[0]->Oct::k8::TestDraw() if($self->[0]->{'_flagadts'});return($retn);}
+  $self->[0]->Octology::k8::TestDraw() if($self->[0]->{'_flagadts'});return($retn);}
 sub EXTEND   { }
 # allow color arrays to be tied too
-package Oct::k8::fclr;
+package Octology::k8::fclr;
 sub TIEARRAY {my $clas=shift;my $prnt=shift; # bless an anon array with just parent in case more to store
-  die "!*EROR*! Need additional Parent object reference  parameter to tie $clas to!\n" unless(defined($prnt) && ref($prnt) eq 'Oct::k8');
+  die "!*EROR*! Need additional Parent object reference  parameter to tie $clas to!\n" unless(defined($prnt) && ref($prnt) eq 'Octology::k8');
   my $self=bless([$prnt], $clas);$prnt->{'_flagclru'}=1;return($self);}
 sub FETCH    { return(         $_[0]->[0]->{'_fclr'}->[$_[1]]); }
 sub FETCHSIZE{ return(scalar(@{$_[0]->[0]->{'_fclr'}})       ); }
 sub STORE    {
   $_[0]->[0]->{'_fclr'}->[$_[1]] = $_[2];
-  $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'});}
+  $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'});}
 sub STORESIZE{
   splice(@{$_[0]->[0]->{'_fclr'}}, $_[1], @{$_[0]->[0]->{'_fclr'}} - $_[1]);
-  $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'});}
+  $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'});}
 sub EXISTS   { return(0) unless(defined($_[0]->[0]->{'_fclr'}->[$_[1]])); return(1); }
-sub CLEAR    {             @{$_[0]->[0]->{'_fclr'}} = ();         $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'}); }
-sub PUSH     {        push(@{$_[0]->[0]->{'_fclr'}}, $_[1]);      $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'}); }
-sub POP      { $_ =    pop(@{$_[0]->[0]->{'_fclr'}});             $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'}); return($_); }
-sub SHIFT    { $_ =  shift(@{$_[0]->[0]->{'_fclr'}});             $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'}); return($_); }
-sub UNSHIFT  {     unshift(@{$_[0]->[0]->{'_fclr'}}, $_[1]);      $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'}); }
+sub CLEAR    {             @{$_[0]->[0]->{'_fclr'}} = ();         $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'}); }
+sub PUSH     {        push(@{$_[0]->[0]->{'_fclr'}}, $_[1]);      $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'}); }
+sub POP      { $_ =    pop(@{$_[0]->[0]->{'_fclr'}});             $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'}); return($_); }
+sub SHIFT    { $_ =  shift(@{$_[0]->[0]->{'_fclr'}});             $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'}); return($_); }
+sub UNSHIFT  {     unshift(@{$_[0]->[0]->{'_fclr'}}, $_[1]);      $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtf'}); }
 sub SPLICE   {my $self = shift;my $offs = shift || 0;
   my $leng = shift; $leng = $self->[0]->FETCHSIZE() - $offs unless(defined($leng));
   my $retn = splice(@{$self->[0]->{'_fclr'}}, $offs, $leng, @_);
-  $self->[0]->Oct::k8::TestDraw() if($self->[0]->{'_flagadtf'});return($retn);}
+  $self->[0]->Octology::k8::TestDraw() if($self->[0]->{'_flagadtf'});return($retn);}
 sub EXTEND   { }
-package Oct::k8::bclr;
+package Octology::k8::bclr;
 sub TIEARRAY {my $clas=shift;my $prnt=shift;
-  die "!*EROR*! Need additional Parent object reference  parameter to tie $clas to!\n" unless(defined($prnt) && ref($prnt) eq 'Oct::k8');
+  die "!*EROR*! Need additional Parent object reference  parameter to tie $clas to!\n" unless(defined($prnt) && ref($prnt) eq 'Octology::k8');
   my $self=bless([$prnt], $clas);$prnt->{'_flagclru'}=1;return($self);}
 sub FETCH    { return(         $_[0]->[0]->{'_bclr'}->[$_[1]]); }
 sub FETCHSIZE{ return(scalar(@{$_[0]->[0]->{'_bclr'}})       ); }
 sub STORE    {
   $_[0]->[0]->{'_bclr'}->[$_[1]] = $_[2];
-  $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'});}
+  $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'});}
 sub STORESIZE{
   splice(@{$_[0]->[0]->{'_bclr'}}, $_[1], @{$_[0]->[0]->{'_bclr'}} - $_[1]);
-  $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'});}
+  $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'});}
 sub EXISTS   { return(0) unless(defined($_[0]->[0]->{'_bclr'}->[$_[1]])); return(1); }
-sub CLEAR    {             @{$_[0]->[0]->{'_bclr'}} = ();         $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'}); }
-sub PUSH     {        push(@{$_[0]->[0]->{'_bclr'}}, $_[1]);      $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'}); }
-sub POP      { $_ =    pop(@{$_[0]->[0]->{'_bclr'}});             $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'}); return($_); }
-sub SHIFT    { $_ =  shift(@{$_[0]->[0]->{'_bclr'}});             $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'}); return($_); }
-sub UNSHIFT  {     unshift(@{$_[0]->[0]->{'_bclr'}}, $_[1]);      $_[0]->[0]->Oct::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'}); }
+sub CLEAR    {             @{$_[0]->[0]->{'_bclr'}} = ();         $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'}); }
+sub PUSH     {        push(@{$_[0]->[0]->{'_bclr'}}, $_[1]);      $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'}); }
+sub POP      { $_ =    pop(@{$_[0]->[0]->{'_bclr'}});             $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'}); return($_); }
+sub SHIFT    { $_ =  shift(@{$_[0]->[0]->{'_bclr'}});             $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'}); return($_); }
+sub UNSHIFT  {     unshift(@{$_[0]->[0]->{'_bclr'}}, $_[1]);      $_[0]->[0]->Octology::k8::TestDraw() if($_[0]->[0]->{'_flagadtb'}); }
 sub SPLICE   {my $self=shift;my $offs=shift || 0;
   my $leng = shift; $leng = $self->[0]->FETCHSIZE() - $offs unless(defined($leng));
   my $retn = splice(@{$self->[0]->{'_bclr'}}, $offs, $leng, @_);
-  $self->[0]->Oct::k8::TestDraw() if($self->[0]->{'_flagadtb'});return($retn);}
+  $self->[0]->Octology::k8::TestDraw() if($self->[0]->{'_flagadtb'});return($retn);}
 sub EXTEND   { }
 8;

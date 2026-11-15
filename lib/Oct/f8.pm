@@ -1,4 +1,4 @@
-# E7TMLKEY: Oct::f8.pm by PipStuart <Pip@CPAN.Org> to provide general f0nt && pal8 objects && files for usage, management, && manipul8ion of present8ion;
+# E7TMLKEY: Oct::f8.pm by PipS <PipStuart@GMail.Com> to provide general f0nt && pal8 objects && files for usage, management, && manipul8ion of present8ion;
 package     Oct::f8;
 # O1LLJUCY: 2du: gNr8 all b256 UTF-8 charz in2 .f0x fIlz (like ./f0nt/01.x) thN mk dMO th@ shOz all .f0nt fIlz az src 4 .f0x wich thN gNr8 all .psf && .ttf,
 #   the 1920x1080 (FHD 1080p) linux console fitz 12x21.6 bitmapz in 160x50 char dimNsionz && 3840x2160 (4K? UHD) can have 24x43.2 bitmapz thN run an anim8ion
@@ -17,7 +17,7 @@ use         Oct::b8;
 use         Oct::d8;
 use         Carp;
 #ur        @EXPORT= qw();
-our $VERSION='0.000001';my $d8VS='O3TM9OpN';our $Auth='PipStuart <Pip@CPAN.Org>';
+our $VERSION='0.000001';my $d8VS='QBFL34f8';our $Auth='PipS <PipStuart@GMail.Com>';
 my %libz =();my @lfls =();my @lpls =(); # search lib dirs for usable f0nts && pal8s && load LibF0ntLiSt && LibPal8LiSt
 #if(exists($ENV{'PERL5LIB'})){for(split(/:/,$ENV{'PERL5LIB'})){$libz{$_}=1 if(-d "$_");}}
 #if(exists($ENV{'HOME'}) && -d "$ENV{'HOME'}/lib"){$libz{"$ENV{'HOME'}/lib"}=1;}

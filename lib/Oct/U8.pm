@@ -1,7 +1,7 @@
-# F4IMHtuH: Oct::U8.pm crE8d by PipStuart <Pip@CPAN.Org> to have effective Ultim8 Utiliz8ion of U "You" tUbe and Useful methodz and Octoformz of upd8ing;
+# F4IMHtuH: Oct::U8.pm crE8d by PipS <PipStuart@GMail.Com> to have effective Ultim8 Utiliz8ion of U "You" tUbe and Useful methodz and Octoformz of upd8ing;
 #   U2b8() Blongz hEre in nw U8.pm 4"Utiliz8ion" module wi Utlz4UniT of U thEm wi U2b && upd8 (as smRt nw port of Utl:updt Using upd8z 4 Oct 4 future),
 # 2du:add2 U2b8 Dtection4 -F bSt sepR8 aud&&vid avail && thN try2 dnld both && post-join wi `ffmpeg -i $1 -i $2 -acodec copy -vcodec copy out.mp4` B4 U2b4 nAm,
-#   mABadd U2b8 optn2auto rebild all mvz 2HD,add2 upd8 th@ if HHst eq Aku && fromHome path is in dvl/t8/Octl/Oct/ to also copy there for next `git add..`,
+#   mABadd U2b8 optn2auto rebild all mvz 2HD,add2 upd8 th@ if HHst eq Aku && fromHome path is in dvl/t8/Octl/Octology/ to also copy there for next `git add..`,
 #   bild U2bd autOm8dtStmOde4 U2b8 2CrEsult ofruning evry dnlOded fIle thru U2b4&&shO discrepanCz Btwn NE loc8abl fIl wi sAm IdNt fEld2knO wher cOd lackz,
 #   port Utl:bak e ?,gNralIzXpct,U2b8:rEplAc `yt-dl` wi Xpct2shOprogrS,rEwrIt die8 here2Dflt b64 wi many more optnz(as "Urol" or "dieU" or othr betr name?),
 #   Xtract the qregex keyz && reuse them in sn() for less redundancy && use ($xp->matchlist)[\d] 4better Unific8ion (altho staging simple B4 complex good2),
@@ -23,7 +23,7 @@ our @EXPORT=qw(Upd8 U2b8 U2b2 U2b3 U2b4 Udl8 UTF8 u8); # autom8d U2bdl-upd8 Utl,
 #END{      ReadMode 0;} # good practice to auto-restore orig TTY read settingz at END
 #          ReadMode 3;  # setup 4 raw mode or 3 cbreak mode where Ctrl-C workz since signalz are enabled
 #$ENV{'TERM'}='linux';  # this is needed for arrow cursor keyz to get interpreted properly (vt100 does not do it)
-our $VERSION='0.0';my $d8VS='O3IMMU2b';my $Dbug= 0; #   4 4name 4matting, UTF-8 (or ASCII) tables, U2b-DownLoad altern8 Xpect version;
+our $VERSION='0.0';my $d8VS='QBDLIRu8';my $Dbug= 0; #   4 4name 4matting, UTF-8 (or ASCII) tables, U2b-DownLoad altern8 Xpect version;
 sub Upd8{my $Ud='youtube-dl';my $home='/home/pip';$home='/home/' . $ENV{'USER'} if(exists($ENV{'USER'}));$home=$ENV{'HOME'} if(exists($ENV{'HOME'}));
   $_=`cd /tmp;wget https://YT-dl.org/downloads/latest/$Ud;mv $Ud $home/bin/U2bdl;cd $home/bin;chmod 755 U2bdl;bak U2bdl`;return($_);} # bAsic YouTube-DL upd8r
   # Upd8 very similar to .zshrc aliasez but oper8z on my own local ~pip/bin/ version instead of my system-wide /usr/local/bin/ version with alias:
@@ -216,12 +216,17 @@ sub U2b4{my   $ogfn=shift(@_);my($psfn,$ocfn,$pcfn); # U2b4m@r (youtube-dl forma
 sub u8  {my $optz=join(' ',@_);my $stHX='0000';my $szHX='0FFF'; # O2KL4HEX:mk u8 as betr than utf8 Zsh func with auto-empty 4096 dec pRam or too d8bo-ey old;
   my $strt=hex($stHX);my $size=hex($szHX); # sO rEmMbr th@ biltin Vim syn-hili probably Yellow lc hex function shud B mOstly sAm as b8::dec dessifying HEX;
   # 2du:ck @_ or just optz joind strng for stRt && sIze HEX pRamz,thN l8r ck it furthr 4 -help -colr -quot -dbug (a8.pm @sb256)  && -b10 -b64 -b256 -b93k ;
-  if(@_){if(defined($optz) && $optz && $optz=~ /(^|\s)-?-?h(elp)?(\s|$)/){o9('a8 @sb256: '.join('',@sb256)); # Single Base a8 versus below b8 Digit Setz! ;
+  if(@_){for my $ondx(0..$#_){if($_[$ondx] =~ /^U\+?([0-9A-Fa-f]+)(-([0-9A-Fa-f]+))?$/){$_[$ondx]=hex($1);if(defined($3)){splice(@_,$ondx+1,0,hex($3)+1);}
+                           elsif($#_ > $ondx && $_[$ondx+1] =~ /^-?([0-9A-Fa-f]+)$/ ){$_[$ondx+1]=hex($1)+1;}}}
+         if    (defined($optz) && $optz && $optz=~ /(^|\s)-?-?x(\s|$)/){
+         for my $ondx(0..$#_){if($_[$ondx] =~ /^([0-9A-Fa-f]+)$/){$_[$ondx]=hex($_[$ondx]);}}
+        } elsif(defined($optz) && $optz && $optz=~ /(^|\s)-?-?h(elp)?(\s|$)/){o9('a8 @sb256: '.join('',@sb256)); # Single Base a8 versus below b8 Digit Setz! ;
                                     my @ds256=dig(256);                   o9('b8 @ds256: '.join('',@ds256)); # @{$Oct::b8::digsetz{'256'}} Ugh!notXportd;
+          o9(' -x sets start && size options from heXadecimal && converts them first (or prefacing the start option with "U+" enables auto-heX conversion);');
         }return(UTF8(@_));}           # mAB sIze shud B +offset, !not orig eNd ndx?;             # mIt nEd 2 put $Octl::b8:: or Xport %digsetz 2 cmpr 2 a8?;
   else  {return(UTF8($strt,$size));}} # mAB add some sepR8 -help just 4 u8 wrapng HEX plus dumping a8::@sb256 && b8::digsetz;
 sub UTF8{my $optz=join(' ',@_);my $strt=0;my $uprb= 256; # 2BNJCDfo:asci utility to colorfully print most ASCII characterz (G7KMJqLF: ... now2 UTF8 < 256)
-  open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!"; # crE8 local duplic8 of global
+  open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";$|=1; # my $sofh=select($out8); # crE8 local duplic8 of global
   my $widf=           0 ;$widf=         1   if(exists($ENV{'COLUMNS'}) && $ENV{'COLUMNS'} >= 153);my $outp; # fitz nicely in either 80 or 160 column termz
   my $trmt=      'xterm';$trmt=$ENV{'TERM'} if(exists($ENV{'TERM'   }));my $tsxf=0;$tsxf=1 if($trmt =~ /^(screen|xterm|st-)/); # Eterm badly nEdz betr fontz1st
   my $trmp='gtm';$trmp=$ENV{'TERM_PROGRAM'} if(exists($ENV{'TERM_PROGRAM'})); # might need to test for special-cases on per-term-prog + font basis l8r
@@ -233,12 +238,13 @@ sub UTF8{my $optz=join(' ',@_);my $strt=0;my $uprb= 256; # 2BNJCDfo:asci utility
  d8c("# &*Eat8π Björk  CrüxShadows #@# ΑΕΠ-Ζ8Τ  ΨPledge\\=` ✡⎈✡-אבגדהוזחטיכלמנסעפצקרשת_ഒ࿕࿗྾྿※࿘࿖-_ΒΓΔ__ΗΘΙΚΛΜΝΞΟ_ΡΣ_ΥΦΧ_Ω-SirLinUx-ⵥ✳✴✷✵✸❂❋米-¡ȣ°¿?°Ȣ!"    ) ;
   }elsif($optz =~  /(^|\s)(-*h(elp)?)(\s|$)/){ # -h parameter design8z to just print help text as output && exit
     $outp = " UTF8  - print out 256 colorful UTF-8 or ASCII characters in order  Vers:$VERSION  d8VS:$d8VS  by Auth:$Auth
-   -p    skips over first 32 to start from the predominantly Printable characters  (since most of the 1st 32 are control chars)
-   -c    disable printing of escape sequences which are used to Color the default output in 8bow and index columns
-   -C    set start and end around Cards and Chess 127136-127199 and 9812-9823  ## -H should do some special color8ion of help;
-   -k    set start and end around Kana      (Nipponese Hiragana and Katakana need some special handling to restore alignment.) 12352-12543=192
-   -r    set start and end around Radicals  (CJK Supplement     and Kangxi) (note terminals need to stretch to 225 chars wId.) 11904-12255=352
-   -h    display this Help text and exit    (Greek 913-970= 67)     (See HTTP://Unicode.Org/charts for more character blocks.)
+   -p    skips over first 32 to start from the predominantly Printable characters  (since most of the 1st 32 are control chars).
+   -c    disable printing of escape sequences which are used to Color the default output in 8bow and index columns.
+   -C    set start and end around Cards and Chess 127136-127199 U+1F0A0-1F0DF and 9812-9823 U+2654-265F . ## -H does some silly color8ion of Help hed&&tAl;
+   -k    set start and end around Kana      (Nipponese Hiragana and Katakana need some special handling to restore alignment.) 12352-12543=192 U+3040-30FF;
+   -r    set start and end around Radicals  (CJK Supplement     and Kangxi) (note terminals need to stretch to 225 chars wId.) 11904-12255=352 U+2E80-2FDF;
+   -b    set start and end around Braille   (    10240-10495= 256) U+2800-28FF.
+   -h    display this Help text and exit    (Greek 913-970  =  67)  (See HTTP://Unicode.Org/charts for more character blocks.)
   Note : If you pass a single parameter  of just digits, it will be treated as the new upper-bounds for UTF-8 instead of 256.
     If you pass in two separ8 parameters of just digits, they will be treated as the decimal values to use for start and end.
   2du  : Add some more letter options as shortcuts to set the start and end around majorly useful named blocks of characters.
@@ -255,6 +261,7 @@ sub UTF8{my $optz=join(' ',@_);my $strt=0;my $uprb= 256; # 2BNJCDfo:asci utility
     if($optz =~ s/(^|\s)(-*c)(\s|$)/$1$3/){$clrf= 0;} # -c parameter design8z Colorless output (disabling the CoLoRFlag)
     if($optz =~ s/(^|\s)(-*p)(\s|$)/$1$3/){$strt=32;} # -p parameter design8z skipping to mainly Printable characterz
     if($optz =~ s/(^|\s)(-*C)(\s|$)/$1$3/){$strt=  127_136  ;$uprb=  127_200  ;} # -C parameter tries Cards 1st thN should reset uprb && indx 2loop Chess aftr
+    if($optz =~ s/(^|\s)(-*b)(\s|$)/$1$3/){$strt=dec('2800');$uprb=dec('2900');} # -b parameter design8z Braille (256tOtlfrom 10240-10495); did uprb++ 4-b    ;
     if($optz =~ s/(^|\s)(-*k)(\s|$)/$1$3/){$strt=dec('3040');$uprb=dec('3100');  # -k parameter design8z Kana (1st Hiragana then Katakana); did uprb++ 4-k&&-r;
       if($optz=~s/(^|\s)(-*r)(\s|$)/$1$3/){$strt=dec('2E80');}                 } #   specially allow k && r rangez to be combined
     if($optz =~ s/(^|\s)(-*r)(\s|$)/$1$3/){$strt=dec('2E80');$uprb=dec('2FE0');} # -r parameter design8z Radicals (CJK Supplement && Kangxi)
@@ -265,11 +272,11 @@ sub UTF8{my $optz=join(' ',@_);my $strt=0;my $uprb= 256; # 2BNJCDfo:asci utility
       $ib6c= " $ib6c" if($indx <   64);         my $hexi=    HEX($indx) ; # pad top-row b64 indicez with a space to the left if they're just one char
       if  ($indx    <= 9999 || $indx != $strt){ # when starting on super-huge indices, don't need to preface with White colon && NewLine
         if($indx    < 11_904){
-          if($widf){$outp .= "$W:\n" if($indx &&  !($indx % 64) && defined($outp)                );} # hopefully adding defined tst here will stop empty : line
-          else     {$outp .= "$W:\n" if($indx &&  !($indx % 32) && ($indx >   32 || $optz !~ /p/));}
+          if($widf){$outp .= "$W:\n" if($indx &&  !($indx % 64) && defined($outp)                );$outp =~ s/\Q$W\E:\n$/\n/ if($indx >= 10_240);} # strip $W:;
+          else     {$outp .= "$W:\n" if($indx &&  !($indx % 32) && ($indx >   32 || $optz !~ /p/));} # hopefully adding DfInd tSt abov will stop empty : lIne;
         } else     {
           if($widf){$outp .= "$W:\n" if($indx &&  !($indx % 32)                                  );} # try2 insert newlinez for wide-charz in high loopz too
-          else     {$outp .= "$W:\n" if($indx &&  !($indx % 16)                                  );}}}
+          else     {$outp .= "$W:\n" if($indx &&  !($indx % 16)                                  );}}} #$outp =~ s/\Q$W\E:\n$/\n/ if($indx >= 10_240);
       unless ($indx %     8){
         if   ($indx <=  255){$outp .= sprintf("$W:$G%3d$W:$B%02s$W:%s$W:",$indx,$hexi,$ib6c);}
         elsif($indx <=  999){$outp .= sprintf("$W:$G%3d$B%03s$W:%s$W:"   ,$indx,$hexi,$ib6c);}
@@ -299,8 +306,10 @@ sub UTF8{my $optz=join(' ',@_);my $strt=0;my $uprb= 256; # 2BNJCDfo:asci utility
         $outp .= ' ';} # try to space out what are presumably something like combin8ion code-points without whole grapheme clusterz
       if($indx == 127_199 && $strt == 127_136){$outp.="$W:\n";$uprb= 9_824;$indx= 9_811;$strt= 9_812; # atMpt2autO-jump from end of Cards dn2 Chess: 9812-9824
         $ib6c  =     b8c(b64($strt));$hexi= HEX($strt);$outp.= sprintf(   "$G%4d$B%04s%s"         ,$strt,$hexi,$ib6c);}
-    }   $outp .= "$W:";$outp = sS($outp) unless($clrf);
-  } say $out8 $outp;close $out8 or die "Can't close duplic8 STDOUT handle: $!";}
+        $outp = sS($outp) unless($clrf);print $out8 $outp;$outp=''; # try 2 prnt progrS as it goez nstd of sAving all 2 just dump 1nce @Nd;
+    } # $outp .= "$W:";
+        $outp = sS($outp) unless($clrf);
+  } say $out8      $outp;close $out8 or die "Can't close duplic8 STDOUT handle: $!";}
 # : 64:40:10:@ABCDEFG: 72:48:18:HIJKLMNO: 80:50:1G:PQRSTUVW: 88:58:1O:XYZ[\]^_: 96:60:1W:`abcdefg:104:68:1e:hijklmno:112:70:1m:pqrstuvw:120:78:1u:xyz{|}~!:
   # !*NOTE*! Windows trEtzASCII26(CtrlZ)asEOF! Ctrl lynz BlO just vim tXtvershere2avoid th@prob
   # 000: 0:^@^A^B^C^D^E^F^G   008: 8:^H^I ^K^L^M^N^O   016:10:^P^Q^R^S^T^U^V^W   024:18:^X^Y^Z^[^\^]^^^_   #144:~P~Q~R~S~T~U~V~W ~X~Y~Z~[~\~]~^~_
@@ -312,7 +321,7 @@ sub UTF8{my $optz=join(' ',@_);my $strt=0;my $uprb= 256; # 2BNJCDfo:asci utility
   # 192:C0:ÀÁÂÃÄÅÆÇ   200:C8:ÈÉÊËÌÍÎÏ   208:D0:ÐÑÒÓÔÕÖ×   216:D8:ØÙÚÛÜÝÞß                                  # ÀÁÂÃÄÅÆÇ ÈÉÊËÌÍÎÏ ÐÑÒÓÔÕÖ× ØÙÚÛÜÝÞß
   # 224:E0:àáâãäåæç   232:E8:èéêëìíîï   240:F0:ðñòóôõö÷   248:F8:øùúûüýþÿ                                  # àáâãäåæç èéêëìíîï ðñòóôõö÷ øùúûüýþÿ 
 #   128:80:<80><81><82><83><84><85><86><87>   136:88:<88><89><8a><8b><8c><8d><8e><8f>   144:90:<90><91><92><93><94><95><96><97>   152:98:<98><99><9a><9b..f>
-#   128:80:   136:88:   144:90:   152:98:...
+# originally I had actual charz:80-9f wich showed in Vim in angle-brackets like above but each one was a single char to jump to… but I removed the real charz;
 8;
 
 =encoding utf8
@@ -365,18 +374,12 @@ Revision history for Perl extension Oct::U8:
 
 =head1 INSTALL
 
-From the command shell, please run:
-
-  `perl -MCPAN -e "install Oct"`
-
-or uncompress the package and run the standard:
-
-  `perl Makefile.PL; make; make test; make install`
+From the command shell, copy the Oct library (PerlModules) into your PERL5LIB;
 
 =head1 LICENSE
 
 Most source code should be Free! Code I have lawful authority over is and shall be!
-CopyRight: (c) 2014-2020, Pip Stuart.
+CopyRight: (c) 2014-2026, Pip Stuart.
 CopyLeft : This software is licensed under the GNU General Public License
   (version 3 or l8r). Please consult L<HTTPS://GNU.Org/licenses/gpl-3.0.txt>
   for important inform8ion about your freedom. This is Free Software: you

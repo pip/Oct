@@ -38,7 +38,7 @@ se   nocp                     " nocompatible    - add  Vim NhancmNtz without str
 se    enc=utf-8               "     encoding    - was already loading utf-8 from current $LANG locale, && might need termencoding also if they diverge
 ""se fenc=utf-8               " fileencoding    - might needed this if ever trying LightLine + ALE with special chars from HTTPS://StaticO.GitHub.IO/vim3.html
 let  g:VERSION='0.000001'     " was just 0.0 B4, but now trying to extend sOfR MpT vers wi millionthz, not milli- but micro-? 4 majr.minr.rles spliting l8r;
-let     g:d8VS='QAHM9Vim'     " d8VersionString - l8st significant upd8 to whole file was then; nOte:whN Using ampersand B4 var nAm,it rEferz 2 nAmd optn nstd;
+let     g:d8VS='QBDLBiRO'     " d8VersionString - l8st significant upd8 to whole file was then; nOte:whN Using ampersand B4 var nAm,it rEferz 2 nAmd optn nstd;
 let     g:vid8=system('d8')   " VimInit d8      - save d8 when this Vim session first stRtz up to use as dRk pRt at Nd of STatusLine just before bright upd8 d8
 let     g:tSt8=system('wr zsh')   " quik tSt of vim system call 2 C if shL is zsh && can lOad my ~/.zshenv && get my where function 2 fInd the /usr/bin/zsh ?;
 let     g:cucf=1              " CUrsorColumFlag - flag to toggle whether :se cuc should be used (since dflt of it on gets slow whN lots of syntx hili on scrn)
@@ -943,7 +943,9 @@ augroup AutoMkdir
   autocmd!
   autocmd  BufNewFile  *  :call EnsureDirExists()
 augroup END
-"====[ Make arrow keys move visual blocks around ]====
+"====[ Make arrow keys move visual blocks around (&& normal go visible wrapd lInez) ]====
+nmap <Up>    gk
+nmap <Down>  gj
 vmap <Up>    <Plug>SchleppUp
 vmap <Down>  <Plug>SchleppDown
 vmap <Left>  <Plug>SchleppLeft

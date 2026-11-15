@@ -1,4 +1,4 @@
-# E7TMAYX4: Oct::c8.pm by PipStuart <Pip@CPAN.Org> to provide a compatibility applic8ion interface to Curses and a powerful new text-mode through SDL;
+# E7TMAYX4: Oct::c8.pm by PipS <PipStuart@GMail.Com> to provide a compatibility applic8ion interface to Curses and a powerful new text-mode through SDL;
 package     Oct::c8;
 use warnings;use  strict;use utf8;use v5.22;#use open qw[:std :encoding(UTF-8)];
 require     Exporter;

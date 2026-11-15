@@ -1,4 +1,4 @@
-# 315J9mLT: Oct::b8.pm crE8d by PipStuart <Pip@CPAN.Org> to construct custom precision Big numbers && perform arbitrary Base-transl8ions. I love Bass!
+# 315J9mLT: Oct::b8.pm crE8d by PipS <PipStuart@GMail.Com> to construct custom precision Big numbers && perform arbitrary Base-transl8ions. I love Base&&Bass!
 package     Oct::b8;
 use warnings;use  strict;use utf8;use v5.22; # use open qw[:std :encoding(UTF-8)]; # mAB can't use open since bAse-transl8ionz nEd 2 NcOd && DcOd thMsLvz?;
 # 2du:stuD SchwartzianTrans4m 4 EvN2al s8 sorter th@ Uzez a cached 2ndary comparison wi"map sort map"lIk: qx(time perl -wE 'my @L=`head -1000000 find_N6E.txt`;
@@ -54,7 +54,7 @@ use           IO::Handle qw( ); # trying to get dupd (or just orig) STDERR to au
 use Memoize;memoize('Prim');memoize('Fibo');memoize('Fact');memoize('Chus');memoize('Xpn8');memoize('Ttr8'); #moize('Pnt8');memoize('Hex8');
 our @EXPORT= qw(b8 cnv cnv10__ cnv__10 ocT deC dec heX HEX b10 b64 b64sort b110 b128 b210 b256 b910 b93k dig diginit  cma coma  rotW rot1
     @kana $umbc b8b2 b2b8  Prim Prmz  Sum8 Sumz  Fibo Fibz  Fact Fctz  Chus   Xpn8 Xpnz  Ttr8 Ttrz  Pnt8 Pntz  Hex8 Hexz     Q  b8ls txt8);
-our $VERSION='0.0';my  $d8VS='QAJMJalQ';my $Auth='PipS <PipStuart@GMail.Com>';
+our $VERSION='0.0';my  $d8VS='QBELGIUM';my $Auth='PipS <PipStuart@GMail.Com>';
 our @kana=qw(ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞた
 だちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみ
 むめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖ゗1゛゜ゝゞゟ
@@ -127,7 +127,8 @@ my %digsetz=(
             'Ⓠ', 'Ⓡ', 'Ⓢ', 'Ⓣ', 'Ⓤ', 'Ⓥ', 'Ⓦ', 'Ⓧ', 'Ⓨ', 'Ⓩ',
             'ⓐ', 'ⓑ', 'ⓒ', 'ⓓ', 'ⓔ', 'ⓕ', 'ⓖ', 'ⓗ',
             'ⓘ', 'ⓙ', 'ⓚ', 'ⓛ', 'ⓜ', 'ⓝ', 'ⓞ', 'ⓟ', # oops! only did 192;
-            'ⓠ', 'ⓡ', 'ⓢ', 'ⓣ', 'ⓤ', 'ⓥ', 'ⓦ', 'ⓧ', 'ⓨ', 'ⓩ', 'Ø', 'Ī',
+            'ⓠ', 'ⓡ', 'ⓢ', 'ⓣ', 'ⓤ', 'ⓥ', 'ⓦ', 'ⓧ', 'ⓨ', 'ⓩ', 'ʘ', 'Ɵ', # whIl I'm considrng chngng b256 2 rEordr Braille Left2Right B4 TopDown,mAB ._ abov 2?;
+# QBDLMudu:B4 dot && underscore equivalNtz abov were: 'Ø', 'Ī', thN rEplAcemNt candid8z:'.ʘ_Ɵ ϾϿϴ ȪȫȬȭȮȯȰȱ Θθ ✳ ✴ ✵ ✶ ✷ ✸ ❁ ❂ ❈ ❉ ❊ ❋  .✇ _✆ ?'
 #   HTTPS://Symbl.CC/en/search/?q=Braille 2800-28FF; `u8 10240 10496|sS`;
 # 10240 2800 2W0⠀⠁⠂⠃⠄⠅⠆⠇8⠈⠉⠊⠋⠌⠍⠎⠏G⠐⠑⠒⠓⠔⠕⠖⠗O⠘⠙⠚⠛⠜⠝⠞⠟W⠠⠡⠢⠣⠤⠥⠦⠧e⠨⠩⠪⠫⠬⠭⠮⠯m⠰⠱⠲⠳⠴⠵⠶⠷u⠸⠹⠺⠻⠼⠽⠾⠿:
 # 10304 2840 2X0⡀⡁⡂⡃⡄⡅⡆⡇8⡈⡉⡊⡋⡌⡍⡎⡏G⡐⡑⡒⡓⡔⡕⡖⡗O⡘⡙⡚⡛⡜⡝⡞⡟W⡠⡡⡢⡣⡤⡥⡦⡧e⡨⡩⡪⡫⡬⡭⡮⡯m⡰⡱⡲⡳⡴⡵⡶⡷u⡸⡹⡺⡻⡼⡽⡾⡿:
@@ -137,11 +138,21 @@ my %digsetz=(
 #           'à','á','â','ã','ä','å','æ','ç',  'è','é','ê','ë','ì','í','î','ï',  'ð','ñ','ò','ó','ô','õ','ö','÷',  'ø','ù','ú','û','ü','ý','þ','ÿ',
 #           'Ā','ā','Ă','ă','Ą','ą','Ć','ć',  'Ĉ','ĉ','Ċ','ċ','Č','č','Ď','ď',  'Đ','đ','Ē','ē','Ĕ','ĕ','Ė','ė',  'Ę','ę','Ě','ě','Ĝ','ĝ','Ğ','ğ',
 #           'Ġ','ġ','Ģ','ģ','Ĥ','ĥ','Ħ','ħ',  'Ĩ','ĩ','Ī','ī','Ĭ','ĭ','Į','į',  'İ','ı','Ĳ','ĳ','Ĵ','ĵ','Ķ','ķ',  'ĸ','Ĺ','ĺ','Ļ','ļ','Ľ','ľ','Ŀ',
+#           '⠀', '⠁', '⠂', '⠃', '⠄', '⠅', '⠆', '⠇',  '⠈', '⠉', '⠊', '⠋', '⠌', '⠍', '⠎', '⠏', # thEz R old Braille 1st 64 in orig. Dfalt UniCode ordr;
+#           '⠐', '⠑', '⠒', '⠓', '⠔', '⠕', '⠖', '⠗',  '⠘', '⠙', '⠚', '⠛', '⠜', '⠝', '⠞', '⠟',
+#           '⠠', '⠡', '⠢', '⠣', '⠤', '⠥', '⠦', '⠧',  '⠨', '⠩', '⠪', '⠫', '⠬', '⠭', '⠮', '⠯',
+#           '⠰', '⠱', '⠲', '⠳', '⠴', '⠵', '⠶', '⠷',  '⠸', '⠹', '⠺', '⠻', '⠼', '⠽', '⠾', '⠿',
 # 10240 2800 2W0⠀⠁⠂⠃⠄⠅⠆⠇8⠈⠉⠊⠋⠌⠍⠎⠏G⠐⠑⠒⠓⠔⠕⠖⠗O⠘⠙⠚⠛⠜⠝⠞⠟W⠠⠡⠢⠣⠤⠥⠦⠧e⠨⠩⠪⠫⠬⠭⠮⠯m⠰⠱⠲⠳⠴⠵⠶⠷u⠸⠹⠺⠻⠼⠽⠾⠿:; # 2du:just add this quOtd commad split optn 2 UTF8 az u8;
-            '⠀', '⠁', '⠂', '⠃', '⠄', '⠅', '⠆', '⠇',  '⠈', '⠉', '⠊', '⠋', '⠌', '⠍', '⠎', '⠏',
-            '⠐', '⠑', '⠒', '⠓', '⠔', '⠕', '⠖', '⠗',  '⠘', '⠙', '⠚', '⠛', '⠜', '⠝', '⠞', '⠟',
-            '⠠', '⠡', '⠢', '⠣', '⠤', '⠥', '⠦', '⠧',  '⠨', '⠩', '⠪', '⠫', '⠬', '⠭', '⠮', '⠯',
-            '⠰', '⠱', '⠲', '⠳', '⠴', '⠵', '⠶', '⠷',  '⠸', '⠹', '⠺', '⠻', '⠼', '⠽', '⠾', '⠿',
+# 10240 2800 2W0⠀⠁⠈⠉⠂⠃⠊⠋8⠐⠑⠘⠙⠒⠓⠚⠛G⠄⠅⠌⠍⠆⠇⠎⠏O⠔⠕⠜⠝⠖⠗⠞⠟W⠠⠡⠨⠩⠢⠣⠪⠫e⠰⠱⠸⠹⠲⠳⠺⠻m⠤⠥⠬⠭⠦⠧⠮⠯u⠴⠵⠼⠽⠶⠷⠾⠿:; # rEordrd bitz from .zshenv rob() ReOrdrBrailleBitz UL 2 UR,thN dn;
+            '⠀','⠁','⠈','⠉','⠂','⠃','⠊','⠋', '⠐','⠑','⠘','⠙','⠒','⠓','⠚','⠛', '⠄','⠅','⠌','⠍','⠆','⠇','⠎','⠏', '⠔','⠕','⠜','⠝','⠖','⠗','⠞','⠟',
+            '⠠','⠡','⠨','⠩','⠢','⠣','⠪','⠫', '⠰','⠱','⠸','⠹','⠲','⠳','⠺','⠻', '⠤','⠥','⠬','⠭','⠦','⠧','⠮','⠯', '⠴','⠵','⠼','⠽','⠶','⠷','⠾','⠿',
+            # 1st 64 rEordrd Braille bitz from `rob q` QuotedSepR8orz abov thN up2 256 also rEordrd BlOw:
+#           '⡀','⡁','⡈','⡉','⡂','⡃','⡊','⡋', '⡐','⡑','⡘','⡙','⡒','⡓','⡚','⡛', '⡄','⡅','⡌','⡍','⡆','⡇','⡎','⡏', '⡔','⡕','⡜','⡝','⡖','⡗','⡞','⡟',
+#           '⡠','⡡','⡨','⡩','⡢','⡣','⡪','⡫', '⡰','⡱','⡸','⡹','⡲','⡳','⡺','⡻', '⡤','⡥','⡬','⡭','⡦','⡧','⡮','⡯', '⡴','⡵','⡼','⡽','⡶','⡷','⡾','⡿',
+#           '⢀','⢁','⢈','⢉','⢂','⢃','⢊','⢋', '⢐','⢑','⢘','⢙','⢒','⢓','⢚','⢛', '⢄','⢅','⢌','⢍','⢆','⢇','⢎','⢏', '⢔','⢕','⢜','⢝','⢖','⢗','⢞','⢟',
+#           '⢠','⢡','⢨','⢩','⢢','⢣','⢪','⢫', '⢰','⢱','⢸','⢹','⢲','⢳','⢺','⢻', '⢤','⢥','⢬','⢭','⢦','⢧','⢮','⢯', '⢴','⢵','⢼','⢽','⢶','⢷','⢾','⢿',
+#           '⣀','⣁','⣈','⣉','⣂','⣃','⣊','⣋', '⣐','⣑','⣘','⣙','⣒','⣓','⣚','⣛', '⣄','⣅','⣌','⣍','⣆','⣇','⣎','⣏', '⣔','⣕','⣜','⣝','⣖','⣗','⣞','⣟',
+#           '⣠','⣡','⣨','⣩','⣢','⣣','⣪','⣫', '⣰','⣱','⣸','⣹','⣲','⣳','⣺','⣻', '⣤','⣥','⣬','⣭','⣦','⣧','⣮','⣯', '⣴','⣵','⣼','⣽','⣶','⣷','⣾','⣿',
            ], # mAB som othr gUd 64 can gO in abov && lEv Braille full-256 4 up2 512 thN?;
   '2562'=> ['^0', '^1', '^2', '^3', '^4', # 2du:mk 256 just singl charz! ;
  #'256' => ['^0', '^1', '^2', '^3', '^4', # mAB trAil wi ^ nstd of prEfix? ;
@@ -1183,20 +1194,35 @@ etc. places between triplets of decimal digits.
 Another simple function very similar to cma() above except this one by default inserts comma ',' characters around every cluster of four (4) characters (which
 no longer need to just consist of 0..9 decimal digits).
 
-=head2 calQ($mequs)
+=head2    Q($mequs)
 
 This is an incomplete utility which accepts Math-Equ8ion-String parameters which will try to get parsed for BigFloat values && oper8ions to calcul8 together.
 
 !*Warning*!: PEMDAS is *NOT* followed! Parentheses are not handled at all yet && other expected oper8ion-orders may remain unavailable or maybe just
 potentially quite surprisingly non-default. Complex calQl8ions may often require several stages of tedious sub-processing && manual re-entry or substitutions.
 
-calQ (often shortened to just 'Q' or 'q' in the shell) was just crE8d quickly to expose some really huge BigInt math to my GNU/Linux Z-shell command-
+Q (shortened from original 'calQ' for easy shell access) was just crE8d quickly to expose some really huge BigInt math to my GNU/Linux Z-shell command-
 interpreter outside of Perl as well as to support several simple options which suit me, like letters as mnemonic altern8ives to standard oper8ors, so:
 
   p -> +
   m -> -   # or s(ubtract)? wertherothrz2?
   x -> *   # && xx works for exponentE8ion
   d -> /
+
+=head2 b8ls()
+
+b8ls (very similar to ba in my shell) loops through a range of values and outputs a nicely formatted list of many number-base (Base-transl8) conversions.
+
+You can pass in -n=<miN_number> and -x=<maX_number> to assign the starting and ending values. The dashes and equals-signs are optional. Default min is 0.
+Default max is 255.
+
+You can pass in a string of non-zer0 digits which will be taken as the joined exponents list for powers of 2 in requested order (except for 9, which
+indic8s base-93k i.e., 93100). For example, passing in the string '134' would convert every number in the specified range to binary, octal, and hexadecimal
+(2 to the 1st power, 3rd, and 4th respectively). '6789' would specify base64, base128, base256, and base93k. Default is '1468' for binary, hex, b64, and b256.
+
+If instead of passing in a string of joined exponents, you provide decimal digits sepR8d by commas, then those exact number-bases will be converted to
+(which do not need to stick to powers-of-2). For example, passing in '3,15,31' would convert the specified number range into ternary, base15, and base31
+(all odd). This option requires 2 or more digit sequences sepR8d by commas (with no spaces) to directly set desired output number-bases without exponentE8ion.
 
 =head2 b8b2()
 
