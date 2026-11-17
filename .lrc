@@ -1,5 +1,5 @@
 # F1RLLK2K:~/.lrc  by PipStuart <Pip@CPAN.Org> as an altern8 format for .lsrc ideally having new ~/bin/lrc gNR8 either from the other;
-# $VERSION='0.0';$d8VS='QAKMCDIR'; 2du:lrc optn2gNr8 altrn8 versN th@purposfuly varEz colrzof comon typz,add *[-_?]* NtrEz frm .zshrc hEr,audit oldz,ck /etc/*,
+# $VERSION='0.0';$d8VS='QBHL7web'; 2du:lrc optn2gNr8 altrn8 versN th@purposfuly varEz colrzof comon typz,add *[-_?]* NtrEz frm .zshrc hEr,audit oldz,ck /etc/*,
 #   add interaction2 lsd8 wN it Dtectz unrecognIzd XtNshNz offerng c@egOrEz with comon colr2autOm@ically insrt chOsN NtrEz,mk lrc gNr8 Xportd LS_COLORS 4 Eval,
 #   confirm all accept f0nt cOdez wi dash accepting Dfalt 4grnd thN redo NORMAL FILE LINK as no fi ln,Dtect cOlIdz OvrIdz&&warn,mAB 8trm aded2 TERM ls sumdA?;
 # 819J2Pip:~/.lsrc by PipStuart <Pip@CPAN.Org> izAheavily modifId`dircolors`cfgfIl(Orig ~/.DIR_COLORS)wich setz $ENV{'LS_COLORS'} 4GNU`ls --color`&&`lsd8`;
@@ -595,7 +595,8 @@ CHR                            Yk              #cd= 01;33;40    01;33;40  CHaRac
 *jsc                           o               # Qt JavaScript?      Cache      filz (from ~/.cache/krita/qmlcache/)
 *jso                           p               #    JavaScript (JohnSatoshi) perhaps converted Over to Other Octology d8 && b64 format for Perl(PipScrpt)purps?
 *json
-*jsonc                         C               #    JavaScriptObjectNot8ion C (schema?) filz like as: ~/.config/fastfetch/config.jsonc ;
+*json3                         pkI
+*jsonc                         CkI             #    JavaScriptObjectNot8ion C (schema?) filz like as: ~/.config/fastfetch/config.jsonc ;
 *jsonl                         mkI
 *jshintrc                      C               # Beppu-san's dot-file in MadSciLab/ta && tvaa2/ presumably for some JavaScript SHell integer resource maybe?
 *npmrc                         p

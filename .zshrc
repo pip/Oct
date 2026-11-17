@@ -65,6 +65,7 @@ Xp PS1='%{[1;97m%}%(!.<.[)%{[1;92m%}%n%{[1;94m%}@%{[1;96m%}$HHst`d8 -z`%{[1
 #Xp D0=$(pla 'o8 $d8cS[0]');Xp D4=$(pla 'o8 $d8cS[4]');Xp D2=$(pla 'o8 $d8cS[2]');Xp D6=$(pla 'o8 $d8cS[6]'); # d8cS 0..7     &&  d8bo  ;
 #Xp D1=$(pla 'o8 $d8cS[1]');Xp D5=$(pla 'o8 $d8cS[5]');Xp D3=$(pla 'o8 $d8cS[3]');Xp D7=$(pla 'o8 $d8cS[7]'); #  Xp D8=$(pla 'o8 $d8bo');
 # just comNtd out 8 sepR8 shell callz 2 Perl sinc they're not even used anywhere yet && should be batched,lIk join('%',@d8cS) thN split thru awk && set how?;
+# BlOw xrc (xrdb merge) can still fail during an interactive SSH/headless session with a stale DISPLAY setting. not sure how 2 handle the failure Dliber8ly?;
 if   [[ "$DISPLAY" != ""  ]]; then xrc; fi; # this calls xrc wrapper 4 xrdb merge on my ~/.Xrc file && ChatGPT said it doesn't belong in .zshenv if!run X11;
 if    [  -t  1  ]; then # like calling `test -t 1` or `tty -s` or [ -n "$TERM" ] or mAB opposite output 4 my basic isatty.c `ttyt` or `ttpy`?;
   if [[  $TTY  =~ ^/dev/(tty|pts/) ]] && [[ -x "$Hpl8" ]]; then Xp Hpal="$Hpl8";Al src8="$Hpal";Pal8Qiet='1' $Hpal; fi; # mAadd Pal8VQet VeryQuiet noSKpzout!;
@@ -161,7 +162,7 @@ _nala_completion() { eval $(env _TYPER_COMPLETE_ARGS="${words[1,$CURRENT]}" _NAL
 # NC8L3SHL:now found z-s-hl pkg AgN sO nala installed it, along with autosuggestions, antigen, && zsh-dev (but still want bat from src l8r too)... sO nEd 2:
 #lugins=(zsh-autosuggestions zsh-syntax-highlighting);  # l8r prEpNd git && bat? lookz lIk this type of cnfg wud just B 4 OhMyZsh && !aplicabl 2othr setupz;
 #ource /usr/share/zsh-antigen/antigen.zsh;  # 2du:rEad HTTPS://GitHub.Com/Zsh-Users/antigen 4 instal instructnz; mAB rEad wethr ZSH_CUSTOM shud = ~/.zsh/ ?;
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE='64';ZSH_AUTOSUGGEST_STRATEGY+=(history completion);  # disAblz autOsuggSt 4 lRg bufrz (recOmNded sIz just 20?); #S_HL_STYL?
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE='64';ZSH_AUTOSUGGEST_STRATEGY=(history completion);  # disAblz autOsuggSt 4 lRg bufrz (recOmNded sIz just 20?); #S_HL_STYL?;
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#3377FF,bg=#070F1F,underline'     ;  # sIte-eXample:ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline";
 typeset -A ZSH_HIGHLIGHT_STYLES; # see HTTPS://GitHub.Com/Zsh-Users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md 4 typez, Dtailz,&& Xamplz:
 ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'; # to differentiate aliases from other command types; # 2du:fIndout if I nEd 2 typeset all thEs varz or what?;

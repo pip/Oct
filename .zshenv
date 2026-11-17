@@ -3,7 +3,7 @@ if [ -n "${BASH_VERSION-}" ]; then shopt -s expand_aliases; fi; # nEd aliasez Xp
 alias Al=alias Xp=export UA=unalias Sh=shift Rn=return Wi=while Th=then Li=elif Ls=else; # tAk mor from pR? SH iz SHutdnHalt&& RN iz RebootNow stil;
 wh(){ which "$@"; } # maybe the original wh alias abov was expanding to an old Csh binary nstd of DsIrd Zsh biltin && thN alsO Xpandng pRam2or nah Lswher2?
 wr(){ where "$@"; } # might just be the same as `which` in most or all cases?; 2du:lern if U can combIn multi Xp Vr=VarValue On=SameLine B4=SemiColon ?;
-Xp Vers='0.000001';Xp d8VS='QBELCFix';Xp Auth='PipS <PipStuart@GMail.Com>';
+Xp Vers='0.000001';Xp d8VS='QBHL9var';Xp Auth='PipS <PipStuart@GMail.Com>';
 if     [[       "$SHELL"    == "" ]] || # rEplAced all `which` callz wi POSIX standRd `command -v` wich setz MpT as indic8ion of unavailabiliT;
        [[       "$SHELL" =~ bash  ]]; then       Xp SHELL=$(command -v zsh);Xp HShl="$SHELL";fi; # H Xport mAB shud B HshL 4 prOnunC8ion nstd?;
 if     [[       "$HOSTNAME" == "" ]]; then       Xp HOSTNAME="$(hostname)";fi; #`hostname`retnz fsckd nwlInz\n4CygWinzRxvt... ||smthng els lame  =(
@@ -24,7 +24,7 @@ Xp  COLUMNS="$COLUMNS";Xp LINES="$LINES";Xp ROWS="$LINES";Al hn='hostname'; # zs
 Xp XConfHom="$HOME/.config";     Xp XConfDrz="/etc/xdg";Al    mkt='mktemp';Xp XDG_CONFIG_HOME="$XConfHom";Xp XDG_CONFIG_DIRS="$XConfDrz";
 Xp XDataHom="$HOME/.local/share";Xp XDataDrz="/usr/local/share:/usr/share";Xp   XDG_DATA_HOME="$XDataHom";
 Xp XCachHom="$HOME/.cache";      Xp XSESSION='Gnome'   ;                   Xp  XDG_CACHE_HOME="$XCachHom";Xp XDG_MENU_PREFIX='gnome-';
-Xp XDataDrz="$XDataDrz:/var/lib/flatpak/Xps/share:$XDataHom/flatpak/Xps/share"                           ;Xp   XDG_DATA_DIRS="$XDataDrz";
+Xp XDataDrz="$XDataDrz:/var/lib/flatpak/exports/share:$XDataHom/flatpak/exports/share"                   ;Xp   XDG_DATA_DIRS="$XDataDrz";
 # N26L8989:append flatpak share dirz for handbrake video transcoder && whatever other desktop app packages to be installed through flathub or similar;
 Xp SNAP_USER_DATA="$XDG_DATA_HOME/snap"; # J54MISNA:HTTPS://Bugs.LaunchPad.Net/ubuntu/+source/snapd/+bug/1575053 HTTPS://AskUbuntu.Com/questions/882562 ;
 if     [   -z  "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then   # set variable IdNtifyng the chroot U wrk in (Used in prmpt bElO)
@@ -76,13 +76,12 @@ Al q='Q';Xp q="'";Xp qq='"'; # OCBLLETS:until q() && qq() get remapd from Perl 2
 Al     epc='  ep|b8clr'; #d8 e|cma!=epoc # rEgRdng sudo abov cannot run both -Intractiv && -Shell optz; # d8 e>epoc by~3.56528hourz 13Ksecz sOmABclOs2UTC?;
 Al    epoc="   pab   'o8 cma $HTHi::time'"; # alias 2 output non-colrd epoch float secz from Perl Time::HiRes wi cma int KMGT sepR8orz; epoc==`date +%s`;
 Al      ep="   pab '\$t6=b64($HTHi::time);\$t6=~s/(%....).+\$/\$1/;o8 coma(\$t6)'"; # alias 2 gNr8 b64 trunc8d coma'd epoch float secondz && abov colrz;
-Xp PATH="$HOME/bin:$HOME/.local/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/dvl/t8/raku/rakudo-moar-2022.12-01-linux-x86_64-gcc/bin:$HOME/dvl/t8/raku/rakudo-moar-2022.12-01-linux-x86_64-gcc/share/perl6/site/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:$HOME/.nodebrew/current/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:$HOME/lib/perl5/bin:$HOME/lib/Oct/f8/pal8:$HOME/dvl/t8/dmd/linux/bin:$HOME/.vim/bundle/vim-superman/bin:$PATH";
-DDEV(){ command perl -C0 -E 'my $is = exists($ENV{IS}) ? $ENV{IS} : ($ENV{PATH} //  q());
-                             my $dc = length($ENV{DC} // q()) ? $ENV{DC} : q(:);my %seen;
-  print join($dc, grep { !$seen{$_}++ } split(/\Q$dc\E/, $is, -1));'; } # QAKMIGr8:Wow! ChatGPT made a way better version here than I wrote below. Impressed!;
-#DDEV(){ perl -C0 -E '$is=$ENV{PATH};$is=$ENV{IS} if(exists($ENV{IS}) && length($ENV{IS})); # De-Duplic8 EnvironmentVariable, InputString, DelimiterCharacter;
-#                     $dc=q(:);      $dc=$ENV{DC} if(exists($ENV{DC}) && length($ENV{DC}));@sp=split(/$dc/,$is);$ps=@sp; # SplitPartz, PartzSize, iNdexUp2du;
-# for(1..$#sp){for my $nu(0..($ps-$_)-1){if($sp[$ps-$_] eq $sp[$nu]){splice(@sp,$ps-$_,1);last;}}}; print join($dc,@sp);'; } # can backtix this bak in2Nvar?;
+ddev() { command perl -C0 -E 'my $ev = exists($ENV{ev}) ? $ENV{ev} : ($ENV{PATH} //  q()); # EnvVar; # De-Duplic8 EnvVariable; # tryng2regex out MpTz BlOw;
+                              my $dc = length($ENV{dc} // q()) ? $ENV{dc} : q(:);my %seen;$ev=~ s/(\Q$dc\E)\1+/$1/g;$ev=~ s/(^\Q$dc\E|\Q$dc\E$)//g; # DlimChar;
+  print join($dc, grep { !$seen{$_}++ } split(/\Q$dc\E/, $ev, -1));'; } # QAKMIGr8:Wow! ChatGPT made a way better version here than I wrote B4. Impressed!;
+Xp ev="$HOME/bin:$HOME/.local/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/dvl/t8/raku/rakudo-moar-2022.12-01-linux-x86_64-gcc/bin:$HOME/dvl/t8/raku/rakudo-moar-2022.12-01-linux-x86_64-gcc/share/perl6/site/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:$HOME/.nodebrew/current/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:$HOME/lib/perl5/bin:$HOME/lib/Oct/f8/pal8:$HOME/dvl/t8/dmd/linux/bin:$HOME/.vim/bundle/vim-superman/bin:$PATH";
+if [[ "$PATH" == "" ]]; then Xp PATH="$ev"; fi; local tr=`dc= ddev`; # not sure if local instead of Xp can work fine for this TmpResult var?;
+if [[ "$tr"   != "" ]]; then Xp PATH="$tr"; fi; # not sure if this is proper way 2 call ddev assigning TmpResult && only Xp PATH on success?;
 # PerlDoc PipeExec PipeLess was orig called pelS, thN pdel B4 tAkng Ovr pdoc 4 colrng perldoc output thru less (2 hopefully look nIce lIk man pAgz in most);
 # QAIMHZsh:HTTPS://Unix.StackExchange.Com/questions/217932/run-zshrc-when-passing-command-via-c in4md mE th@ I can`zsh -ic 'P "%-4d%8s" 63 "sixthrE"'`from pl;
 #   while Zsh doesnot load .zshrc in non-interactive shells, it does load .zshenv so if youare doing setup that doesnot require a tty, such as configuring
@@ -108,13 +107,17 @@ Xp LESS_TERMCAP_ZO=$'\e[73m';Xp LESS_TERMCAP_us=$'\e[1;32;4m'  ; # thEz from Q9S
 #   (press h for help or q to quit)$ MAN_PN=man(1) nvim +Man!"; sO lookz lIk my snapd.apparmor sandbox is not found for nvim 2 start az MANPAGER properly;
 Xp RAKULIB="$HOME/lib/raku"; # nEds2B comma-sepR8d,!colon I think; # SKpz:\033 \x1b \u001b \27 \e mAB Ndngin:\007 \x07 \u0007 \7 \a (OctHexUnicodDecAscii);
 Xp PYENV_ROOT="$HOME/.pyenv"; # PCRL4env:HTTPS://GitHub.Com/PyEnv/pyenv?tab=readme-ov-file#linuxunix auto-instalr wi curl said 2 add these 2 my .bashrc:
-[[ -d $PYENV_ROOT/bin ]] && Xp PATH="$PYENV_ROOT/bin:$PATH"; # nEd2Bwi othr path setngz, or here's fine Bcuz nested preservez? orig. was PE_R:$PATH trId rvrsd;
+if [[ -d $PYENV_ROOT/bin ]]; then  local ov="$PATH"; # nEd 2B wi othr path setngz,or hErz fInBcuz nStd prEsrvz? orig. was PE_R:$PATH trId rvrsd;
+  if [[ "$ov" != "" ]]; then # save OrigVar, thN if there was one append it back on to end of what was just set, thN set EnvVar 4 DeDuplic8 bak 2 PATH;
+    local ev="$ov:$PYENV_ROOT/bin";local tr=`dc= ddev`;if [[ "$tr" != "" ]]; then Xp PATH="$tr"; fi; fi; fi; # baktik DeDupEnvVar kinda pain4PyEnv;
 #eval "$(pyenv init -  zsh)"; # restRt shell for changes to take effect. zsh2?;
 # load pyenv-virtualenv automatically by adng folOing 2 ~/.bashrc (or .zshrc?):
 #eval "$(pyenv virtualenv-init -)"; # may need 2 install or setup virtualenv sepR8ly 1st? couldn't eval pyenv init - bash because completionz are diff wi zsh?;
 Xp GOPATH="$HOME/dvl/n8/.go"; # ROOT shud B /usr/local/ && PATH shud B in home;
 Xp GOROOT="/usr/local/go"; # Q9UMATgo:ran `uz go1.27*.tgz /usr/local/`add2path;
-[[ -d     $GOROOT/bin ]] && Xp PATH="$PATH:$GOROOT/bin"; # HTTPS://Go.Dev/doc/install describez getting release, unzipping in2 /usr/local/ thN setting up path;
+if [[ -d     $GOROOT/bin ]]; then local ov="$PATH"; # HTTPS://Go.Dev/doc/install DscrIbz getng rElEas,unzpng in2 /usr/local/ thN setngup path;
+  if [[ "$ov" != "" ]]; then # save oldOrigVar, thN if there was one append it back on to end of what was just set, thN set EnvVar 4 DeDuplic8 bak 2 PATH;
+    local ev="$ov:$GOROOT/bin"   ;local tr=`dc= ddev`;if [[ "$tr" != "" ]]; then Xp PATH="$TR"; fi; fi; fi; # baktik DeDupEnvVar nEded4non-intractv Zsh;
 # HTTPS://YouTu.be/3T2Al3jdY38&t=492  "Weaponizing ANSI Escapes" N9F:0eU0 Bash(&& Zsh?) prefers Octal, Python Hex, Java/JavaScript Unicode, PowerShell Decimal;
 pewh() { wh "$@"| pe 's/;/$W;$y/g;s/-/$C-$y/g;s/:/\t$R/;s/:/$B:$Y/g;s/^/$G/;s/  +/ /;s/ to /$o to$Y /;s/\|/$M|$O/g;s/=/$B=$C/'; } # xmpl pRamz2 pe colr;
 # abov loox bood in 80x25 term with cmnd to show xpandng many aliasz like this: `pewh ag agu aguu au auu agr agar aar ai ac acs h H D T Q N n grp psag pl pe` ;
@@ -228,10 +231,11 @@ Xp PERL_LOCAL_LIB_ROOT="$HOME/lib/perl5"; #Xp QT_XCB_DEBUG_XINPUT_DEVICES='1'; #
 Xp PERL_MB_OPT="--install_base $HOME/lib/perl5";Al pnp='/opt/Qt5.13.1-pnp/examples/widgets/tools/plugandpaint/plugandpaint &'; # JCKLFIXR:Works well!;
 Xp PERL_MM_OPT="INSTALL_BASE=$HOME/lib/perl5";        # I know these && path below were slightly different on Ryu, && Aku hasn't even needed lib/perl5;
 Xp CHROME_USER_DATA_DIR="$HOME/.chrome";              # G1NL5XYZ:Used2hv2vim /opt/google/chrome/google-chrome &&nsrt cd /tmp B4 last blok aftrEch upd8;
-Xp OP="$LD_LIBRARY_PATH"; # save temporary 2 tSt if it had a value already to be appended after it is next set with main pathz d8a;
+local ov="$LD_LIBRARY_PATH"; # save temporary OrigVar 2 tSt if it had a value already to be appended after it is next set with main pathz d8a;
 Xp LD_LIBRARY_PATH="/usr/local/lib:/usr/local/lib/lua/5.2:/usr/lib:/usr/lib/x86_64-linux-gnu"; #:/opt/Qt5.13.1-pnp/lib";
-if [[ "$OP" != "" ]]; then # save OldOrigPath, thN if there was one append it back on to end of what was just set, thN set InputString 4 DeDuplic8 bak 2 LLP;
-  Xp IS="$LD_LIBRARY_PATH:$OP";Xp LD_LIBRARY_PATH=`DC= DDEV`;Xp OP= IS= ; fi; # baktik DeDup wi MpT DelimChar 2 get Dfalt ':' thN Xport rEset MpT OldPath&&IS;
+if [[ "$ov" != "" ]]; then # save oldOrigVar, thN if there was one append it back on to end of what was just set, thN set InputString 4 DeDuplic8 bak 2 LLP;
+  local ev="$LD_LIBRARY_PATH:$ov";local tr=`dc= ddev`;if [[ "$tr" != "" ]]; then Xp LD_LIBRARY_PATH="$tr"; fi; fi; # backtick DeDupEnvVar with MpT DelimChar
+  #   2 get Dfalt ':', thN Only Xport LD_LIB_PATH if TmpResult got string result, du!not nEd 2 Xport rEset MpT oldOrigVar, EnvVar, && TmpResult since local;
 #Xp LUA_PATH='/usr/local/share/lua/5.2/?.lua;/usr/local/share/lua/5.2/?/init.lua;/usr/local/lib/lua/5.2/?.lua;/usr/local/lib/lua/5.2/?/init.lua;/usr/share/lua/5.2/?.lua;/usr/share/lua/5.2/?/init.lua;./?.lua;./?/init.lua;/home/pip/.luarocks/share/lua/5.2/?.lua;/home/pip/.luarocks/share/lua/5.2/?/init.lua';
 #Xp LUA_CPATH='/usr/local/lib/liblua.so;/usr/local/lib/lpeg.so'; # ChatGPT told me not 2 mk workaroundz global for Qt or Lua && put thM in app wraprz betr;
 Xp PKG_CONFIG_PATH="/usr/lib/pkgconfig"; #xport QML_IMPORT_TRACE='1';  # E2LLATsm:PkgCnfgPth Added4SrcHiLite; ## belo aliases may no longer work aftr mvd;
@@ -329,7 +333,7 @@ Xp HCAl='--color=always';Al lscr='ls $HCAl|pa "\$y=\$Y;\$y=~s/\\[/\\\\[/;@lsop=<
 Xp HCAu='--color=auto  ';Al gica='gca -i'; # above: "ls ColoR Remap" could become function taking ls pRamz && from->to mapz to streamline auto recolor;
 Xp HHAl='--hyperlink=always'; # QAIM9AWE:saw on interview with KovidGoyal of Kitty fame th@ ls can have autOm@ic hyperlinking too && I wanted 2 NAbl it alsO;
 Xp HHAu='--hyperlink=auto  '; # mIght alsO want -w(idth) `tput cols` 2 set 2 term column-width;
-Xp LS_OPTIONS="$HCAu $HHAl"; #'--color=auto --hyperlink=auto'; # LsOptz: --color=always|yes|force|never|no|none|auto|tty|if-tty;
+Xp LS_OPTIONS="$HCAu $HHAu"; #'--color=auto --hyperlink=auto'; # LsOptz: --color=always|yes|force|never|no|none|auto|tty|if-tty;
 Xp CVS_RSH="$(command -v ssh)";Xp CVSROOT='/var/cvs';Al dir="dir $LS_OPTIONS" vdir="vdir $LS_OPTIONS"; # dir Cmz 2 B sAm az ls && vdir just lIk ls -l or my ll;
 if   [[ "$HOTy"      == *bsd ]]; then Al         ls="gls $LS_OPTIONS"   ; # gls does not Xist for mE anymore && is probably pretty obsOlEt by now?;
 else                                  Al         ls=" ls $LS_OPTIONS"   ; fi; # BlO GREP_COLORS="mt=01;34:..." mIght hLp 4 something but I forget wut;
@@ -384,7 +388,7 @@ Xp KEYTIMEOUT=8; # P6CMDotF:GitHub.Com/IbhaGwan/dots .zshrc:set 8ms timeout for 
 # I71M8PS1:2du mAB rewrite sp,np,dp 2B ps1 varE8ionz && basicz wi no Perl DpNdNCz to calm warnz,mAB try2zsh regX colr pwd&&gNr8 aprox colrd d8stampz2 4comp@;
 Al pala='cd ~/lib/Oct/f8/pal8/paleta-palz;ls;paleta > ~/.cache/cur-pala < '; # PALMEXIC:Al to just give paleta filename to send on STDIN;
 Al pals='ls ~/lib/Oct/f8/pal8/paleta-palz' palc8='cat ~/.cache/cur-pala' palc=palc8 pale=palc palz=pals; # palc rEsetz pal2l8St curfrom paleta inew locl trmz?;
-Xp HISTFILE=~/.zsh_history;Al sp="Xp PS1='%(!.<.[)%n@$HHst:\`d8\`:%~%(!.>.])'";  #Prmptz:SimplPrmt||NormlPrmt Uzd2hvBigPrmt2but ch eq2Norm soIrmd;
+if [ -n "${ZSH_VERSION-}" ]; then Xp HISTFILE="$HOME/.zsh_history"; fi; Al sp="Xp PS1='%(!.<.[)%n@$HHst:\`d8\`:%~%(!.>.])'";  # Prmptz:SimplPrmt||NormlPrmt;
 Xp HISTSIZE=65536;Xp BdOn="tput smso";Xp Bond='BdOn';Al setfp='etfp -s'; #from`man tput`:BoldOn&&Off TermSeQNcz4:`echo "${BdOn}NtrNm:${BdOf}\c"`
 Xp SAVEHIST=65536;Xp BdOf="tput rmso";Xp Bofd='BdOf';Al setf='setfont ' setf0='setf -o' setp='setfp -p'; # mk .?ttyrc 2gN folOing
 if       [[ "$HUsr"     !=  "root"  ]];                                  then #Xp PipzTmpC='~/lib/Oct/f8/f0nt/psf'; #fpal -x -l ~/dvl/f8/*/*/font';
@@ -805,7 +809,7 @@ Al aWk='AWi -l Kansas\ City' AWK='AWn -l Kansas\ City' AW6='aWU;c8 /tmp/awU|s8n;
 Al aWU='AWO|c8 4,3  |pe "s/://;s/\t/ /; s/hkosh/Wi 54902/"  >/tmp/awU;AWR|c8 4,3  |pe "s/://;s/\t/ /;           s/ading/Pa 19602/" >>/tmp/awU;
         AWC|c8 4,3  |pe "s/://;s/\t/ /;s/lumbia/Mo 65201/" >>/tmp/awU;AWL|c8 5,3,4|pe "s/://;s/\t/ /;s/\t//;s/ongBeach/BCa 90814/" >>/tmp/awU;
         AWS|c8 6,3-5|pe "s/://;s/\t/ /;s/\t//g;s/anLuisObispo/LCa 93401/" >>/tmp/awU;AWK|c8 5,3,4|pe "s/://;s/\t/ /;s/\t//;s/ansasCity/CMo 64114/" >>/tmp/awU';
-Al srcoc='src ~/dox/Ppl/Dad/cow.zsh;coc;'; # src cow cod coc with OpenWeatherMap API keyz th@ R betr not 2 Xpose hEre;
+Al srcoc='src ~/.zshenv.prv8;coc;'; # src Dad's cow cod coc with OpenWeatherMap API keyz th@ R betr not 2 Xpose hEre, thN call lOaded `coc`;
 Al jsc='pe "s/(\")((\\\"|[^\"]*)*)(\")(: )/\$o\$1\$Y\$2\$o\$4\$W\$5\$G/;s/(: \\e\[[0-9;:]*m)(\")((\\\"|[^\"]*)*)(\")/\$1\$R\$2\$M\$3\$R\$5/;
             s/^(\\s*)(\")((\\\"|[^\"]*)*)(\")(,)?\$/\$1\$r\$2\$m\$3\$r\$5\$C\$6/;s/(,\$)/\$B\$1/g;\$cmnt=q(2du:d8-colr 2025-04-15T06:21:04.199Z && blue URLz);
             s/([0-9]{4})(-)([0-9]{2})(-)([0-9]{2}T)/\$R\$1\$w\$2\$o\$3\$w\$4\$Y\$5/g;   \$quot=chr(39); # cannot include literal or SKpd single quote difrNtly;
@@ -936,18 +940,23 @@ Al       M='mplayer';
 Al m='mn'; # m() { mn   $@; }     # unalias   m && redefining as simple function wrapper resolves manpage param alias expansion problM (but still will glob)
 Al      mm=' mikmod'; # prolly scream 3 times if you can read hahahaha !!! :)  # test local DeepSeek-R1 ("DpCk") LargeLanguageModel $optn;
 Al ol=ollama ols='ol list' olp='ol pull' olr='ol run' oll='ol launch' olsrv='ol serve' cg=chatgpt gpt=cg cdx=codex; # QAKM4cdx:just yStrdA nstld ChatGPT!;
-#l cr=' cdx resume';
-Al cra='cdx resume --all'; # CodexResumeAll;
-Al cfa='cdx  fork  --all'; # Codex Fork All;
-Al crs='cra --sandbox read-only --no-alt-screen'; # CodexResumeSandbox(RO nOaltscrn);
-Al cfs='cfa --sandbox read-only --no-alt-screen'; # CodexForrkkSandbox(RO nOaltscrn);
+Al cdxt='codex-trace'; # HTTPS://GitHub.Com/PixelPaw-Labs/codex-trace sessions JSONL viewer (which dies on bad DRI Mesa 4 mE!) that I found out about from:
+#l cr='  cdx  resume'; # HTTPS://Codex.DanielVaughan.Com/2026/05/21/codex-cli-log-files-debug-tracing-diagnostic-toolkit-troubleshooting/ ;
+Al cra=' cdx  resume --all'; # CodexResumeAll         ;
+Al cfa=' cdx   fork  --all'; # Codex Fork All         ;
+Al cran='cdxn resume --all'; # CodexResumeAllNoaltscrn;
+Al cfan='cdxn  fork  --all'; # Codex Fork AllNoaltscrn;
+Al cnr=' cdxn resume' crn=cnr ; # 4 whN I want `CodexNoaltscreenResume` (lIk `CdxResNoas`) alias B4 manual: <UUID> || --all 4 what 2 resume (or mA giv pikr?);
+Al cdxn='cdx  --no-alt-screen'; # just crE8 a new Codex session wi Noaltscrn;
+Al crsr='cran --sandbox read-only'; # CodexResumeSandboxReadonlyNoaltscrn;
+Al cfsr='cfan --sandbox read-only'; # CodexForrkkSandboxReadonlyNoaltscrn;
 Al olr7='olr deepseek-r1:7b' o7='olr7'; # could ~/.dl/ OLLaMa.Com srch for othr than my initial 7b reasoning model;
 Al olrp='olr phi4:latest   ' op='olrp'; # Q8NM6Phi:just ran `olp phi4` && got 9.1GB of much more recent Phi4 model;
 Al olrq='olr qwen3.6:27b   ' oq='olrq'; # Q8PM8Q36:last nIt `olp qwen3.6:27b` && got 17GB of likely EvN betr model;
 Al   qs='qemu-system-x86_64' qs64='qs' shck='shuck check' sh4='shuck format' shs='shuck server' shcl='shuck clean'; # QA2M8shc:installed Zsh linter shuck!;
 # P1RLINUX:HTTPS://YouTu.be/u2Juz5sQyYQ "Making Smallest Possible Linux Distro" # P1I:0Rg0 of NirLichtman detailing minimum config for 1.3MB ISO wo Lua;
-Al gw='g3 ~/muz/mp3/gw/Genius_Wave-P1S*.mp3';
-Al gW='g3 ~/muz/mp3/gw/Genius_Wave*_no*.mp3';
+Al gw='g3 ~/muz/mp3/gw/Genius_Wave-P1S*.mp3';Al v2d='sudo bash $HOME/dvl/t8/.usb/ventoy-1.1.18/Ventoy2Disk.sh -i'; # /dev/sdX (the USB device, e.g., /dev/sdb);
+Al gW='g3 ~/muz/mp3/gw/Genius_Wave*_no*.mp3'; # HTTPS://Ventoy.Net USBdrIv ISO installer abov; cud: `cd ~/dvl/t8/.usb/ventoy-1.1.18; ./VentoyGUI.x86_64` nstd?;
 Al GW='g3 ~/muz/mp3/gw/Genius_Wave*P1S*.mp3'; # HTTPS://GitHub.Com/Beucismis/awesome-fetch has gr8 long list of myriad fetch projectz 2 l8r gathr mor 4 fz BlO;
 Al fz=ftz  cf=' cpufetch';Al ftz='en "${C}cf=cpufetch$B nf=neofetch$R ff=fastfetch$W;"'; # PCNL9CPU:just wanted similar cousin to nf && ff belO&& echo FeTchZ;
 Al         nf=' neofetch';Al p8w='~/dvl/p8/pico8/pico-8/;pico8 -windowed 1  '; # P1QL9Sht:shooting for learning pico8 && HumbleBundles before migr8ing 2 Godot;
@@ -1113,9 +1122,9 @@ Al    viii='vim    '; #  viii : v8 v 8     vim (lowercased Roman Numerals for 8 
 #l      v8='viii   '; #  v8  changing to Xport $Hv8f B4 calling vim on it, so that it can also be used by U8:upd8
 Al       8='viii   '; # might try quoting 8 or just synhilite makes it seem wrong when it will work, eventually a c8-based clone that might also perform e
 #l       v='v8     '; # v8 and v might become an experimental varE8ion branch of my hopefully eventually standardized ~vim-compatible viii and 8 editor
-         v() { v8   $@; }     # unalias   v && redefining as simple function wrapper resolves         param alias expansion problem (but still will glob)
+         v() { v8   "$@"; } # unalias   v && redefining as simple function wrapper resolves         param alias expansion problem (but still will glob)
 Al     dif='vimdiff'; #  dif  :            vimdiff|diff|cmp|comm
-Al      vv=' v v'  vl=' v l'  v2=' v 2'   vk=' v k ';                       # .vimrc .lrc dox/2du/2.du  know.ls;
+Al      vv=' v v'  vl=' v l'  v2=' v 2'   vk=' v k '  vp=' v p'           ; # .vimrc .lrc dox/2du/2.du  know.ls  .zshenv.prv8     ;
 Al      vz=' v z'  vh=' v h'  vx=' v x'  vpm=' v pm'  ve=' v e'  vb=' v b'; # .zshrc .Hrc .Xrc dvl/\?\8/\?\8.pm; .zshenv .bashrc 2;
 Al     nvv='nv v' nvl='nv l' nv2='nv 2'  nvk='nv k ';                       # sAm az abov but just NeoVim version variantz instead;
 Al     nvz='nv z' nvh='nv h' nvx='nv x' nvpm='nv pm' nve='nv e' nvb='nv b' nvi='nv i'; # aded init.(vim|lua); pulld dFinitionz of v / v8() && nv() up hEr BlO;
@@ -1128,29 +1137,31 @@ Xv8() { if     [[  $#       -ge  1  ]]; then Xp Hv8f="$1"          ;    fi;   # 
           elif [[ "$1"       == "z" ]]; then Xp Hv8f="$HOME/.zshrc"                         ; shift;
           elif [[ "$1"       == "e" ]]; then Xp Hv8f="$HOME/.zshenv"                        ; shift; # aded ve for ~/.zshenv common Al,Xp,&&shLfuncz4 bash 2;
           elif [[ "$1"       == "b" ]]; then Xp Hv8f="$HOME/.bashrc";Xp Hv8e="$HOME/.zshenv"; shift; # aded`v b` 4 ~/.zshenv common Al,Xp,&&shLfuncz4 bashrc;
+          elif [[ "$1"       == "p" ]]; then Xp Hv8f="$HOME/.zshenv.prv8"                   ; shift; # aded`v p` 4 ~/.zshenv.prv8   Al,Xp,&&shLfuncz4!shared;
           elif [[ "$1"       == "l" ]]; then Xp Hv8f="$HOME/.lrc"                           ; shift;
           elif [[ "$1"       == "h" ]]; then Xp Hv8f="$HOME/.Hrc"                           ; shift;
           elif [[ "$1"       == "x" ]]; then Xp Hv8f="$HOME/.Xrc"                           ; shift; # OMG! stupid elif [[ "$1" == "pm"]]; fAilz without ...
           elif [[ "$1"       == "2" ]]; then Xp Hv8f="$HOME/dox/2du/2.du"                   ; shift; #   ... spAc in BtwEn clOsng dblquOt && rItsqurbrkt: "]];
           elif [[ "$1"       == "k" ]]; then Xp Hv8f="$HOME/dox/2du/know.ls"                ; shift; # nEd2 tSt BlO2mksure work rIt&&glob l8r||disAbl4!SKp?;
-          elif [[ "$1"       == "i" ]]; then shift;$HEdt +\'\" $@ $HOME/.config/nvim/init.* ;return 0; # mAB alias as vI?;
-          elif [[ "$1"      == "pm" ]]; then shift;$HEdt +\'\" $@ $HOME/dvl/?8/?8.pm        ;return 0; # shud get all Oct [abcdfk]8.pm PerlModulz @1nc hOpfuly;
-          else                  Xp Hv8f="$1";Xp Hv8e="$2";shift;fi;$HEdt +\'\" $Hv8f $Hv8e $@; # try2lOdpRamz in2 %ENV 4 a8:upd8 2 autO-Uz 4tSt aftr editing;
-        elif   [[ "$Hv8f"    != ""  ]]; then                       $HEdt +\'\" $Hv8f $Hv8e   ; fi; } # mAB betr2sAv $@ nstd thN split on spAcz 4 multipl fIlz;
+          elif [[ "$1"       == "i" ]]; then shift;$HEdt +\'\" "$@"                         ;return 0; # mAB alias as vI?;
+          elif [[ "$1"      == "pm" ]]; then shift;$HEdt +\'\" "$@" $HOME/dvl/?8/?8.pm      ;return 0; # shud get all Oct [abcdfk]8.pm PerlModulz @1nc hOpfuly;
+          else                  Xp Hv8f="$1";Xp Hv8e="$2";shift;fi;$HEdt +\'\" $Hv8f $Hv8e  $@ ; # try2lOdpRamz in2 %ENV 4 a8:upd8 2 autO-Uz 4tSt aftr editing;
+        elif   [[ "$Hv8f"    != ""  ]]; then                       $HEdt +\'\" $Hv8f $Hv8e     ; fi; } # mAB betr2sAv $@ nstd thN split on spAcz4 multipl fIlz;
  nv() { if     [[  $#       -ge  1  ]]; then Xp Hv8e= ; # sAm az v8 abov but wi Altern8 Editor (NeoVim instead of standard Vim);
           if   [[ "$1"       == "v" ]]; then Xp Hv8f="$HOME/.vimrc"                         ; shift;
           elif [[ "$1"       == "z" ]]; then Xp Hv8f="$HOME/.zshrc"                         ; shift;
           elif [[ "$1"       == "e" ]]; then Xp Hv8f="$HOME/.zshenv"                        ; shift;
           elif [[ "$1"       == "b" ]]; then Xp Hv8f="$HOME/.bashrc";Xp Hv8e="$HOME/.zshenv"; shift;
+          elif [[ "$1"       == "p" ]]; then Xp Hv8f="$HOME/.zshenv.prv8"                   ; shift;
           elif [[ "$1"       == "l" ]]; then Xp Hv8f="$HOME/.lrc"                           ; shift;
           elif [[ "$1"       == "h" ]]; then Xp Hv8f="$HOME/.Hrc"                           ; shift;
           elif [[ "$1"       == "x" ]]; then Xp Hv8f="$HOME/.Xrc"                           ; shift;
           elif [[ "$1"       == "2" ]]; then Xp Hv8f="$HOME/dox/2du/2.du"                   ; shift;
           elif [[ "$1"       == "k" ]]; then Xp Hv8f="$HOME/dox/2du/know.ls"                ; shift;
-          elif [[ "$1"       == "i" ]]; then shift;$HAEd +\'\" $@ $HOME/.config/nvim/init.* ;return 0;
-          elif [[ "$1"      == "pm" ]]; then shift;$HAEd +\'\" $@ $HOME/dvl/?8/?8.pm        ;return 0;
-          else                               Xp Hv8f="$1";Xp Hv8e="$2";shift;fi;$HAEd +\'\" $Hv8f $Hv8e $@;
-        elif   [[ "$Hv8f"    != ""  ]]; then                                    $HAEd +\'\" $Hv8f $Hv8e   ; fi; }
+          elif [[ "$1"       == "i" ]]; then shift;$HAEd +\'\" "$@" $HOME/.config/nvim/init.*;return 0;
+          elif [[ "$1"      == "pm" ]]; then shift;$HAEd +\'\" "$@" $HOME/dvl/?8/?8.pm       ;return 0;
+          else                               Xp Hv8f="$1";Xp Hv8e="$2";shift;fi;$HAEd +\'\" $Hv8f $Hv8e  $@ ;
+        elif   [[ "$Hv8f"    != ""  ]]; then                                    $HAEd +\'\" $Hv8f $Hv8e     ; fi; }
 #   (upd|loc)8  already above near e (which should eventually wrap v8?)
 #l    loc8=' locate'; #  loc8 :             locate|find # f is already find above
 # F5QMGkI3:while trying2`pmei Moose`a tSt sugSted PAR::Dist having an `up` so maybe unalias this in case && ck. u && up used2alias Pip:Utl:updt B4 U8:upd8;
@@ -1166,6 +1177,7 @@ Al     Uni='   uniq';alias Un='Uni';alias Unc='Un -c'; # just count?;
 #l       d='   dic ';
          d() { dic  "$@"; }  # unalias   d && redefining as simple function wrapper resolves         param alias expansion problem (but still will glob)
 Al       D='   dfc '; #                            ("D" Used2alsOBshort4 pronunC8ion of "define" too, before realloc8ion to administr8ion DiskFreeColor)
+Al       Ys='yt-dlp --ignore-config --skip-download --no-cache-dir --no-playlist --write-auto-subs --write-subs --sub-langs en-orig,en --sub-format json3 --write-info-json -o "/home/pip/.tmp/`d8`-U2b.subs/%(id)s.%(ext)s"'; # "https://www.youtube.com/watch?v=brNAuoFi2Xo" "https://www.youtube.com/watch?v=q-N7GzMvLsQ"
 Al       Y=' yt-dlp'; # OCBLNEWS:shifted Gnome Help yelp to UpCase Y && mapd low-y to YouTube-DownLoadProject (like U2b alias already,U8 stil nEdz upd8);
 #l       y='   yelp'; # J54MClip:Oni 2day had2 `sz;auu;ai dfc xclip irssi`;
 #l spf=superfile; # Q8AMDspf:ckot HTTPS://SuperFile.Dev 4 nice altern8ive2yazi;
@@ -1242,7 +1254,7 @@ Al    res8='reset;rest;w8 48;src8;rest'; # J12LFTst:wanting to test a bunch of r
 xir(){   Hxir='0.2';Hxia='16';Hxit='4'; # xiset Resolution Acceler8ion Threshold for mouse pointer;
   if       [[ "$#" -gt     0    ]]; then # print out some help text for -h as first parameter && then return
     if     [[ "$1"  =~  ^-*h    ]]; then
-  en "xir crE8d by PipStuart <Pip@CPAN.Org> to wrap xinput for mouse 1:($Hxir)Resolution && xset for 2:($Hxia)Acceler8ion and 3:($Hxit)Threshold;";return 0;
+  en "xir crE8d by PipS <PipStuart@GMail.Com> to wrap xinput for mouse 1:($Hxir)Resolution && xset for 2:($Hxia)Acceler8ion and 3:($Hxit)Threshold;";return 0;
     elif   [[ "$1"  !=    ""    ]]; then Hxir="$1";
       if   [[ "$2"  !=    ""    ]]; then Hxia="$2";
         if [[ "$3"  !=    ""    ]]; then Hxit="$3"; fi; fi; fi; fi; # it doesn't seem like `xset m …` does anything with 3/2 0 or 1/8 8 or 8 8 or 1 1 ! =( ;
@@ -1260,7 +1272,7 @@ Al   xclic='xclip -se c' xcc=xclic; # Dfltz: -i (in: read in2 X selection from S
 # -n  (noutf8 so use old broken unicode handling for compatibility), && last 2 are instead of -s silent: -q (quiet info on foreground), -verb (verbose cmNtz);
 Al   xcl1p='xclip -l  1'; # thEse also use Dflt -se p(rimary  middle-click-auto) with just 1 loop w8ing for a pAste before termin8ing && ...
 Al   xcl1c='xclic -l  1'; #                 ... -se c(lipboard right-click-menu) with same 1 loop w8; # mAB othr sLectnz or special tRgetz cud B Useful 2?;
-Al   vclip="v +'silent pu!+' +'$d' +'1' +'set nomodified' +'au BufWriteCmd vimclippy %y+ | set nomodified' vimclippy"; # this alias is hopefully the right
+Al   vclip="v +'silent pu!+' +'\$d' +'1' +'set nomodified' +'au BufWriteCmd vimclippy %y+ | set nomodified' vimclippy"; # this alias is hopefully the right
 #   form of Rich Cheng's vimclippy at: HTTPS://NormalMo.de/posts/vimclippy which should allow just editing the clipboard directly (without needing any files);
 Al d8xC='pa "\$d8=$HOd8->new();\$ds=qq(\$d8);\$ds=~s/....\$/J000/;\$df=\$d8->Dow().q( ).\$d8->monname().sprintf(q( %2d %4d),\$d8->DY());print qq(\`\$ds\` \x{2665}  \x{1F642} \n\`\$df\`\n\`1900 P / 2000 G\`);"|xclic -f'; # hOpfuly similR2old d8g pushng 3 baktikd lInz2BpAstd wi ♥️  <3 🙂 =) EmOji 4 7PM 1900 Chat;
 Al d8xc='pa "\$d8=$HOd8->new();\$ds=qq(\$d8);                     \$df=\$d8->Dow().q( ).\$d8->monname().sprintf(q( %2d %4d),\$d8->DY());print qq(\`\$ds\` \x{2665}  \x{1F642} \n\`\$df\`\n\`).sprintf(q(%02d%02d P / %02d%02d G),\$d8->hm(),((\$d8->h()+1)%24),\$d8->m()).qq(\`);"|xclic -f'; # hEr closngch@curentime;
@@ -2025,9 +2037,8 @@ alias                   lsrc='lrc;src'; # L5KMJ0J0:just making a quick easy new 
 goo() { w3m "HTTP://Google.Com/search?q=$1+$2+$3+$4+$5+$6+$7+$8"     ; } # should probably pass $@ =~ s/ /+/g; or something smarter than this
 un()  {    [[ $# -lt 1 ]] && {                 uname  -a             ; return 0; }   # should eventually c8 filter all uname output to add colrz && f0ntz
                                                uname          "$@"   ; }
-src() {    [[ $# -lt 1 ]] && { source ~/.zshenv;source       ~/.zshrc; if [[ -r ~/.zshenv.prv8 ]]; then source ~/.zshenv.prv8; fi; # adding .prv8 2 MpT src;
-                                                                       return 0; }   # reload main shell resource file, or load parameter filename of script
-                                                source        "$@"   ; } # mA nEd 2 `src ~/.tmp/.src` nstd of MpT 2 try 2 unalias all old OveridN Usez 2 upd8
+src() {    [[ $# -lt 1 ]] && { source ~/.zshenv;source       ~/.zshrc; if [[ -r ~/.zshenv.prv8 ]]; then source ~/.zshenv.prv8; fi; } # adding .prv8 2 MpT src;
+           [[ $# -ge 1 ]] && {                  source        "$@"   ;}} # mA nEd 2 `src ~/.tmp/.src` nstd of MpT 2 try 2 unalias all old OveridN Usez 2 upd8
 xrc() {    [[ $# -lt 1 ]] && {                  xrdb  -merge ~/.Xrc  ; return 0; }   # merge  main X.Org resource file, or load parameter filename of altern8
                                                 xrdb  -merge  "$@"   ; } # tryd2auto-call xrc at startx in .xinit but doesn't work so calling here BlO instead
 #if         [[ "$DISPLAY" != ""  ]];                                   then xrc; fi; # since Ubu14.10UUX11!srcing   .xinit,just rElOd .Xrc 4evry nonconsol zsh
