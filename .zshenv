@@ -3,7 +3,7 @@ if [ -n "${BASH_VERSION-}" ]; then shopt -s expand_aliases; fi; # nEd aliasez Xp
 alias Al=alias Xp=export UA=unalias Sh=shift Rn=return Wi=while Th=then Li=elif Ls=else; # tAk mor from pR? SH iz SHutdnHalt&& RN iz RebootNow stil;
 wh(){ which "$@"; } # maybe the original wh alias abov was expanding to an old Csh binary nstd of DsIrd Zsh biltin && thN alsO Xpandng pRam2or nah Lswher2?
 wr(){ where "$@"; } # might just be the same as `which` in most or all cases?; 2du:lern if U can combIn multi Xp Vr=VarValue On=SameLine B4=SemiColon ?;
-Xp Vers='0.000001';Xp d8VS='QBHL9var';Xp Auth='PipS <PipStuart@GMail.Com>';
+Xp Vers='0.000001';Xp d8VS='QBHLBinF';Xp Auth='PipS <PipStuart@GMail.Com>';
 if     [[       "$SHELL"    == "" ]] || # rEplAced all `which` callz wi POSIX standRd `command -v` wich setz MpT as indic8ion of unavailabiliT;
        [[       "$SHELL" =~ bash  ]]; then       Xp SHELL=$(command -v zsh);Xp HShl="$SHELL";fi; # H Xport mAB shud B HshL 4 prOnunC8ion nstd?;
 if     [[       "$HOSTNAME" == "" ]]; then       Xp HOSTNAME="$(hostname)";fi; #`hostname`retnz fsckd nwlInz\n4CygWinzRxvt... ||smthng els lame  =(
@@ -125,7 +125,7 @@ Al ec='echo ' eE='ec -E'  enE='en -E' eEn=enE; # if -E (supposedly Dfault?), bac
 Al en='ec -n' ee='ec -e'  ene='en -e' een=ene; # if -e escape interprt8ion enabled 4: \\ bkslsh,\a alert(BEL),\b bkspAc,\c no-more-output,
 Al O='P %s  '  P='printf' ece='ec -e' eec=ece; #   && I Db8d mkng BlO F -> ftst,file,firefox,fortune, thN DcIded 2du fgrep 4abit B4 sprintf && kEp P 4 printf;
 Al F='P -v F'  E='P %s >&2 ' pf=P; # OCBLNXFt:upd8d old F->P did point 2my fIltStUtlB4I wantd spAcd-some str-print-4m@d 4 F just in  a8.pm || e[cn] chomp o89?;
-Al N=ec s4=F o4=P o8=O eN='N >&2' e4='P >&2' e8=E;e5(){ e4 "$@";>&2 N;};e9(){ e8 "$@";>&2 N;};o5(){ o4 "$@";N;};o9(){ o8 "$@";N;};s5(){ s4 "$@";F="$F\n";}
+Al N=ec s4=F o4=P o8=O eN='N >&2' e4='P >&2' e8=E;e5(){ e4 "$@";>&2 N;};e9(){ e8 "$@";>&2 N;};o5(){ o4 "$@";N;};o9(){ o8 "$@";N;};s5(){ s4 "$@";F+=$'\n';}
 Al OF="pewh O P E N F o8 e4 e8 eN s4 o4 o5 o9 e5 e9 s5|pe 's/^\\e\\[01;38;5;010m(\\w+\\s+)(\\(\\)\\s+)(\\{)/\$G\$1\$O\$2\$W\$3/;s/(\\\\n)/\$z\$1\$R/g;
   \$F=S(q(F));s/^\\e\\[01;38;5;010m(\\})$/\$W\$1\$z/;s/(\\s+)(%\\w+)/\$1\$B\$2/g;s/(\")/\$F\$1\$R/g;s/(\\\$\\@)/\$M\$1/g;s/(\\>&\\d+)/\$C\$1\$y/g;
   \$A=S(q(A));s/^\\e\\[01;38;5;010m(\\s+)(\\w+\\s+)/\$1\$A\$2\$C/;'"; # QA3MCueN:emrgN BcAm ErrNwln; # thru $(pe) shO all OF OpenF's $(which) dFz in nIc colrz;

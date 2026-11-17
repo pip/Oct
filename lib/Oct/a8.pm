@@ -76,7 +76,7 @@ our %EXPORT_TAGS = ('all'  => [ qw($d $e $f $h $i $j $l $n $q $s $t $u $v $x $A 
                    #'b64'  => [ qw(CardB64   B64Card HandB64  B64Hand       ) ],
                    #'pd8a' => [ qw(                %pd8a   %zdnh %zplf %zloh) ],
                    ); # just load all singles (skipping sort $a && $b [&& $z] );
-our $VERSION='0.000_001';our $d8VS='QBDLFAST';our $Auth='PipS <PipStuart@GMail.Com>'; # abov not!Xporting $b sinc cOlIdz with sort{$a<=>$b}; unalloc'd sOlOz^;
+our $VERSION='0.000_001';our $d8VS='QBHLBeNF';our $Auth='PipS <PipStuart@GMail.Com>'; # abov not!Xporting $b sinc cOlIdz with sort{$a<=>$b}; unalloc'd sOlOz^;
 our $dbug=0;our $ucdf= eval('use Color::Similarity::RGB qw(distance);1') || 0; # try2set UseColorDistncFlag if optnl module is avail; /defhijlnqstuvx/i+/AZ/^;
 BEGIN{ # METHOD NAME ALIASES  # HTTPS://StackOverFlow.Com/questions/17543925/getting-used-only-once-possible-typo-warning-when-aliasing-subroutines
   *sf = \&F; *s4 = \&F; *O = \&o8;
@@ -376,26 +376,29 @@ sub co{if(!@_ && !-t STDIN){ (@_=decode('UTF-8',join(''  ,<STDIN>)));}
   for    ( @_){chop ;} return(@_);} sub chip{return(co(@_));} # above && mappings could be like Chimps chomp chopping chips can code cn co;)
 sub  N{return(say STDOUT @_);} # not sure if sayz nEd '' nstd of lIkely MpT @_ ?!;
 sub eN{return(say STDERR @_);} # 4 some rEason,without shifting 4m@ string off @_ 1st BlO,this was tkng @_ in scalR contXt&&just rEtrning 2as argcnt,why?!;
-sub F {my $f4mt='';$f4mt=shift(@_) if(@_); #return(sprintf($f4mt,@_)); # 2du:wrIt F f4mt pRser wich loopz callz 2 sprintf with just rIt numb of Rgz 2 consume;
+sub F {my $f4mt='';$f4mt=shift(@_) if(@_); #return(sprintf($f4mt,@_)); # wrOt F f4mt pRser wich loopz callz 2 sprintf with just rIt numb of Rgz 2 consume;
        my $retn='';my $Rgct=0;my @RgUz;if(length($f4mt)){my $fm=$f4mt;while($fm =~ /(^|[^%])%[^%]/ && $fm =~ s/^([^%]*?|%%)*%([^%])/$2/){ # `pm 1 printf`listz:
-      if($fm =~ s/^[-#0 +'I]*(\*\d*\$?)?\d*\.?(\*\d*\$?)?\d*[hlqLjzZt]?[hl]?[diouxXeEfFgGaAcsCSpnm]//){$Rgct++;}} # … diouxXfeEgGcs && shud ck pl;
-    while(@_ && $Rgct){@RgUz=();for my $Rndx(1..$Rgct){push(@RgUz,shift(@_));}
-           $retn.=sprintf($f4mt,@RgUz);}}
-    return($retn);} # pRs && conc8N8 sf callz in loop 2 consume;
+      if($fm =~ s/^[-#0 +'I]*(\*?\d*\$?)?\d*\.?(\*?\d*\$?)?\d*[hlqLjzZt]?[hl]?[diouxXeEfFgGaAcsCSpnm]//){my($d1,$d2)=($1,$2);
+        $Rgct++ if(defined($d1) && $d1=~ /\*/); # incremNt Rgct whN there was an asterisk for variable width;
+        $Rgct++ if(defined($d2) && $d2=~ /\*/); #   && again after a dot?;
+        $Rgct++;}} $retn=$f4mt unless(@_ || $Rgct); # now this shud keep 4m@z with no RgUmNtz;
+    while(@_ && $Rgct){@RgUz=();for my $Rndx(1..$Rgct){push(@RgUz,shift(@_));} # … diouxXfeEgGcs && shud ck pl;
+      $retn.=sprintf($f4mt,@RgUz);}} return($retn);} # pRs && conc8N8 sf callz in loop 2 consume hopefully proper number of specified Rgz;
 sub P {return(o8(F(@_)));}   #[pip@OniQAIM3tbj~]pa 'P("dec:%4d; str:%8s;\n",63,sixthrE,4095,fournIne);'; # lookz lIk Perl duz not loop 2 consume Xtra RgUmNtz!;
                              # Redundant argument in sprintf at /home/pip/lib/Oct/a8.pm line 367. # dec:  63; str: sixthrE; # my Zsh printf duz loop 2 consume;
-sub s5{my $retn=F(@_);N();return($retn);} # these cannot just append newline 2 arglist 2 output Bcuz Perl pf duz not consume...
-sub o5{my $retn=P(@_);N();return($retn);} #   && cannot modify ReadOnly value Either, sO rEwrIting 2 just call N @ Nd;
+sub s5{return(F(@_)."\n");}  # these cannot just append newline 2 arglist 2 output Bcuz Perl pf duz not consume...
+sub o5{       P(@_);  N();}  #   && cannot modify ReadOnly value Either, sO rEwrIting 2 just call N @ Nd; Whoops! s5 needs 2 apNd \n nstd of calling N;
 sub e9{return(e8(@_,"\n"));} sub e4{return(e8(F(@_)));} sub e5{return(e8(F(@_),"\n"));}
 sub o9{return(o8(@_,"\n"));} # 2du:cnsidr mkng new sub:en() mABjust alias2 o8(wich iz lIk prnt or`en`)&&ec()||o9(outf8 wi9NewlIn)2BlIk say||Dflt shL`echo`;
 sub o8{my $Uflg=1;my $cflg=0;my $Stxt='';return unless(@_);my $ncfl=0;$ncfl=1 if((exists($ENV{'NO_COLOR'}) && $ENV{'NO_COLOR'})); # || !-t STDOUT); #!autO !-t;
   my $sofh; # StdOutOldOrigFileHandle; # only accepts single RgUmNt among -h -u -c az 1st pRam BlO,nO looping 4 combIning -cu yet whIl -h can proly stA IsOl8d;
-  if(defined($_[0]) && $_[0]=~  /^-?-([uhc])(elp|tf8|flg|olo?r)?(\s?|$)/ ){ # mAB nEd 2 tSt if BlO s/// is trying 2 modify ReadOnly $_[0]?;
-                       $_[0]=~ s/^-?-([uhc])(elp|tf8|flg|olo?r)?(\s?|$)//; if($1 eq 'u'){$Uflg=0;}elsif($1 eq 'c'){$cflg=1;}else{
-      $Stxt=" o8 Help text - autom8 printing out UTF-8 encoded texts which may also include ANSI escape codes for colors or SGR attributes (out8 utf8 and o9);
- This is basically an example of a manipul8ion parameter, but may not make standalone CLI wi ARGV (i.e., for now o8 is just a Perl sub that must have these...
- -h - show this Help text;  ... options given as only the very first function parameter and almost anything else is output, where o9 just appends newline too);
- -u - disable default Utf-8 encoding;";};shift(@_);};$Stxt.=join('',@_);$Stxt=sS($Stxt) if(!$cflg && $ncfl); # 2du:mk sS call hEr Only strip colrz,!othrSGR@z;
+# if(defined($_[0]) && $_[0]=~  /^-?-([uhc])(elp|tf8|flg|olo?r)?(\s?|$)/ ){ # mAB nEd 2 tSt if BlO s/// is trying 2 modify ReadOnly $_[0]?;
+#                      $_[0]=~ s/^-?-([uhc])(elp|tf8|flg|olo?r)?(\s?|$)//; if($1 eq 'u'){$Uflg=0;}elsif($1 eq 'c'){$cflg=1;}else{
+#     $Stxt=" o8 Help text - autom8 printing out UTF-8 encoded texts which may also include ANSI escape codes for colors or SGR attributes (out8 utf8 and o9);
+#This is basically an example of a manipul8ion parameter, but may not make standalone CLI wi ARGV (i.e., for now o8 is just a Perl sub that must have these...
+#-h - show this Help text;  ... options given as only the very first function parameter and almost anything else is output, where o9 just appends newline too);
+#-u - disable default Utf-8 encoding;";};shift(@_);}; # DcIded to treat tXt strictly as d8a (lIk Zsh O && o8). -help, -u encoding optn, && -color can B sepR8!;
+  $Stxt.=join('',@_);$Stxt=sS($Stxt) if(!$cflg && $ncfl); # 2du:mk sS call hEr Only strip colrz,!othrSGR@z;
   if(defined($Stxt) && length($Stxt)){ # mA want2ck Dflt $_ or STDIN if!givN pRam2prnt ANSI SKpd colors on UTF-8 STDOUT or flag 4 ERR insted?;
     # BlO select && dollar-pipe=1 mAkz $out8 unbufrd 4 progrS without nwlInz; probably shud figure out how 2 restore buffering again after done printing also!;
     open my $out8,'>&',STDOUT or die "Can't open  duplic8 STDOUT handle: $!";if($Uflg){binmode $out8,':encoding(UTF-8)';};$sofh=select($out8);$|=1;print $Stxt;
